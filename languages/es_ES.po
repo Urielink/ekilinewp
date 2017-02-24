@@ -1,0 +1,296 @@
+# Copyright (C) 2015 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _ekiline 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2016-09-15 21:30-0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-09-15 21:32-0500\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.9\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+
+# @ _ekiline
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "¡Lo sentimos! La página que buscas no se puede encontrar."
+
+# @ _ekiline
+#: 404.php:21
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Parece que no encontramos nada en esta ubicación. Prueba con los links que aparecen abajo o haz una búsqueda."
+
+# @ _ekiline
+#: 404.php:29
+msgid "Most Used Categories"
+msgstr "Categorías más usadas"
+
+# @ _ekiline
+#. translators: %1$s: smiley
+#: 404.php:46
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Intenta buscar en nuestro archivo mensual. %1$s"
+
+# @ _ekiline
+#: comments.php:31
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Una idea en &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s pensaminetos en &ldquo;%2$s&rdquo;"
+
+# @ _ekiline
+#: comments.php:40 comments.php:61
+msgid "Comment navigation"
+msgstr "Navegación de comentarios"
+
+# @ _ekiline
+#: comments.php:43 comments.php:64
+msgid "Older Comments"
+msgstr "Comentarios anteriores"
+
+# @ _ekiline
+#: comments.php:44 comments.php:65
+msgid "Newer Comments"
+msgstr "Comentarios nuevos"
+
+# @ _ekiline
+#: comments.php:77
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+# @ _ekiline
+#: footer.php:18
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+# @ _ekiline
+#: footer.php:18
+#, php-format
+msgid "Proudly powered by %s"
+msgstr "Desarrollado con %s"
+
+# @ _ekiline
+#: footer.php:20
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr "Tema: %1$s por %2$s."
+
+# @ _ekiline
+#: functions.php:47 header.php:38
+msgid "Primary Menu"
+msgstr "Menú primario (Primary Menu)"
+
+# @ _ekiline
+#: functions.php:102
+msgid "Sidebar"
+msgstr "Sidebar"
+
+# @ _ekiline
+#: header.php:25
+msgid "Skip to content"
+msgstr "Ir al contenido"
+
+# @ _ekiline
+#: inc/template-tags.php:28
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Publicado en %s"
+
+# @ _ekiline
+#: inc/template-tags.php:33
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr "por %s"
+
+# @ _ekiline
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:50 inc/template-tags.php:56
+msgid ", "
+msgstr ", "
+
+# @ _ekiline
+#: inc/template-tags.php:52
+#, php-format
+msgid "Posted in %1$s"
+msgstr "Publicado en %1$s"
+
+# @ _ekiline
+#: inc/template-tags.php:58
+#, php-format
+msgid "Tagged %1$s"
+msgstr "Etiquetado %1$s"
+
+# @ _ekiline
+#: inc/template-tags.php:64
+msgid "Leave a comment"
+msgstr "Deja un comentario"
+
+# @ _ekiline
+#: inc/template-tags.php:64
+msgid "1 Comment"
+msgstr "1 Comentario"
+
+# @ _ekiline
+#: inc/template-tags.php:64
+#, php-format
+msgid "% Comments"
+msgstr "% Comentarios"
+
+# @ _ekiline
+#. translators: %s: Name of current post
+#: inc/template-tags.php:71 template-parts/content-page.php:32
+#, php-format
+msgid "Edit %s"
+msgstr "Editar %s"
+
+# @ _ekiline
+#: search.php:18
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Buscar en este sitio: %s"
+
+# @ _ekiline
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "No se ha encontrado"
+
+# @ _ekiline
+#: template-parts/content-none.php:20
+#, php-format
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Listo para publicar tu primer post? <a href=\"%1$s\">Inicia aquí</a>."
+
+# @ _ekiline
+#: template-parts/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Lo sentimos, nada se ha encontrado con tus términos. Intenta con otras palabras."
+
+# @ _ekiline
+#: template-parts/content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Parece que no encontramos esto. Quizá un búsqueda más profunda ayude."
+
+# @ _ekiline
+#: template-parts/content-page.php:21 template-parts/content-single.php:25
+#: template-parts/content.php:34
+msgid "Pages:"
+msgstr "Páginas:"
+
+# @ _ekiline
+#. translators: %s: Name of current post.
+#: template-parts/content.php:27
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Continuar leyendo %s <span class=\"meta-nav\">&rarr;</span>"
+
+#. Theme Name of the plugin/theme
+msgid "_s"
+msgstr "_s"
+
+# @ _ekiline
+#. Theme URI of the plugin/theme
+msgid "http://underscores.me/"
+msgstr "http://underscores.me/"
+
+# @ _ekiline
+#. Description of the plugin/theme
+msgid "Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
+msgstr "Hola soy el tema oficial de Wordpress basado en Underscores y Bootstrap 3.5, por Ekiline: El taller creativo. http://www.ekiline.com"
+
+# @ _ekiline
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"
+
+# @ _ekiline
+#. Author URI of the plugin/theme
+msgid "http://automattic.com/"
+msgstr "http://automattic.com/"
+
+# @ _ekiline
+#. Login addon of the plugin/theme
+#: inc/addon-privateaccess.php:42
+msgid "Invalid username and/or password."
+msgstr "Nombre de usuario ó contraseña inválidos."
+
+# @ _ekiline
+#. Login addon of the plugin/theme
+#: inc/addon-privateaccess.php:44
+msgid "Username and/or Password is empty."
+msgstr "Nombre de usuario ó contraseña están vacíos."
+
+# @ _ekiline
+#. Login addon of the plugin/theme
+#: inc/addon-privateaccess.php:46
+msgid "You are logged out."
+msgstr "Estás fuera del sistema."
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:95
+msgid "Sorry! Security first."
+msgstr "Lo sentimos, la seguridad ante todo."
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:108
+msgid "A username is required for registration."
+msgstr "Se requiere de un nombre de usuario para un registro."
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:110
+msgid "Sorry, that username already exists!"
+msgstr "Lo sentimos, ese nombre de usuario ya existe."
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:112
+msgid "You must enter a valid email address."
+msgstr "Debe introducir un correo electrónico válido."
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:114
+msgid "Sorry, that email address is already used!"
+msgstr "Lo sentimos, ese correo electrónico ya está en uso"
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:127
+msgid "Thank you for registering "
+msgstr "Gracias por registrarse "
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:128
+msgid "Please check your email for recieve your login password (Be sure to check your spam folder)."
+msgstr "Por favor revisa tu correo para obtener tu contraseña. (Asegúrate de revisar la bandeja de spam)"
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:164
+msgid "Username"
+msgstr "Nombre de usuario"
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:169
+msgid "E-mail"
+msgstr "Correo Electrónico"
+
+# @ _ekiline
+#. Register addon of the plugin/theme
+#: inc/addon-privateaccess.php:174
+msgid "Request Acces"
+msgstr "Solicitar Acceso"
