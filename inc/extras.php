@@ -910,6 +910,12 @@ function readRss($atts) {
 
 add_shortcode('rss', 'readRss'); 
 
+/** Poner en modo de mantenimineto **/
+function maintenace_mode() {
+      if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance.');}
+}
+add_action('get_header', 'maintenace_mode');
+
 /*	
  * Todos los componentes que no formen parte del template, es decir, 
  * fueran metodos o funciones para complementar plugins se recomienda manejarlas
