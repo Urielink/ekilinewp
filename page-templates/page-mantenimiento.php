@@ -20,7 +20,7 @@
 <body <?php body_class(); ?>>
 
 
-<div class="cover-wrapper">
+<div class="cover-wrapper text-center">
 
       <div class="cover-wrapper-inner">
 
