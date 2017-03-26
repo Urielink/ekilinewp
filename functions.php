@@ -252,6 +252,10 @@ function ekiline_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
+// optimizacion de carga de css y js, utilizando localize.
+// https://codex.wordpress.org/Function_Reference/wp_localize_script
+// https://pippinsplugins.com/use-wp_localize_script-it-is-awesome/
+
 
 /**
  * Implement the Custom Header feature.
