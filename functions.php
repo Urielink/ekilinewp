@@ -209,6 +209,7 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+ 
 function ekiline_scripts() {
 	
 	// // Extra CSS
@@ -259,7 +260,7 @@ add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 **/
 function optimizar_carga() {
 
-	wp_enqueue_script('optimizar', get_stylesheet_directory_uri().'/js/optimizar.js', array('jquery'),'1.0', true );
+	wp_enqueue_script('optimizar', get_template_directory_uri().'/js/optimizar.js', array('jquery'),'1.0', true );
 		
 	wp_localize_script('optimizar', 'recurso_script', array(
 			//creo la url del tema como una variable para mis scripts.
@@ -275,11 +276,38 @@ function optimizar_carga() {
 }
 add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
 
+/** urls relativas 
+ * http://www.deluxeblogtips.com/relative-urls/
+**/
 
+$filters = array(
+    'post_link',       // Normal post link
+    'post_type_link',  // Custom post type link
+    'page_link',       // Page link
+    'attachment_link', // Attachment link
+    'get_shortlink',   // Shortlink
 
+    'post_type_archive_link',    // Post type archive link
+    'get_pagenum_link',          // Paginated link
+    'get_comments_pagenum_link', // Paginated comment link
 
+    'term_link',   // Term link, including category, tag
+    'search_link', // Search link
 
+    'day_link',   // Date archive link
+    'month_link',
+    'year_link'
 
+);
+
+foreach ( $filters as $filter ) {
+    add_filter( $filter, 'wp_make_link_relative' );
+}
+
+// $CssLink = wp_make_link_relative( get_stylesheet_uri() );
+// $ThemeLink = wp_make_link_relative( get_template_directory_uri() );
+// http://www.wpbeginner.com/wp-tutorials/25-extremely-useful-tricks-for-the-wordpress-functions-file/
+// http://www.hongkiat.com/blog/wordpress-url-rewrite/
 
 
 /**
