@@ -211,15 +211,15 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
  */
 function ekiline_scripts() {
 	
-	// Extra CSS
-	wp_enqueue_style( 'bootstrap-335', get_template_directory_uri() . '/libs/css/bootstrap.min.css', array(), '3.3.5', 'all' );
-	wp_enqueue_style( 'bootstrap-transitions', get_template_directory_uri() . '/libs/css/bootstrap-transition.css', array(), '3.x', 'all' );
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/libs/css/font-awesome.min.css', array(), '4.4.0', 'all' );
-	// Llamar google fonts desde url.
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
-    // metodo ekiline, no modificar.
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/libs/css/ekiline-layout.css', array(), '1.0', 'all' );
-	
+	// // Extra CSS
+	// wp_enqueue_style( 'bootstrap-335', get_template_directory_uri() . '/libs/css/bootstrap.min.css', array(), '3.3.5', 'all' );
+	// wp_enqueue_style( 'bootstrap-transitions', get_template_directory_uri() . '/libs/css/bootstrap-transition.css', array(), '3.x', 'all' );
+	// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/libs/css/font-awesome.min.css', array(), '4.4.0', 'all' );
+	// // Llamar google fonts desde url.
+	// wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
+    // // metodo ekiline, no modificar.
+	// wp_enqueue_style( 'layout', get_template_directory_uri() . '/libs/css/ekiline-layout.css', array(), '1.0', 'all' );
+// 	
 	// U_ style: CSS (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
@@ -252,9 +252,34 @@ function ekiline_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
-// optimizacion de carga de css y js, utilizando localize.
-// https://codex.wordpress.org/Function_Reference/wp_localize_script
-// https://pippinsplugins.com/use-wp_localize_script-it-is-awesome/
+/** optimizacion de carga de css y js, utilizando localize.
+ *	https://codex.wordpress.org/Function_Reference/wp_localize_script
+ *	https://pippinsplugins.com/use-wp_localize_script-it-is-awesome/	
+ *  requiere de: optimizar.js
+**/
+function optimizar_carga() {
+
+	wp_enqueue_script('optimizar', get_stylesheet_directory_uri().'/js/optimizar.js', array('jquery'),'1.0', true );
+		
+	wp_localize_script('optimizar', 'recurso_script', array(
+			//creo la url del tema como una variable para mis scripts.
+			'templateUrl' => get_template_directory_uri() . '/libs/css/',
+			//asigno el css por cada archivo interno
+				'css1' => 'bootstrap.min.css',
+				'css2' => 'bootstrap-transition.css',
+				'css3' => 'font-awesome.min.css',
+				'css4' => 'ekiline-layout.css'
+		)
+	);
+
+}
+add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
+
+
+
+
+
+
 
 
 /**
