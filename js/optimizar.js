@@ -12,13 +12,7 @@
 
 
 	//  Optimización, estilos dinámicos después de la carga
-		// setTimeout(function () {
-			
-			// parametros
-			WebFontConfig = {
-			  google: { families: [ 'Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic' ] }
-			};		 
-			
+		setTimeout(function () {						
 
 		function miCss(archivoCss){
 	
@@ -45,7 +39,7 @@
 		miCss(recurso_script.css2);
 		miCss(recurso_script.css3);
 
-		// }, 2000);
+		}, 2000); // setTimeout()
 		
 
 	});
