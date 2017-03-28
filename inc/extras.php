@@ -580,7 +580,7 @@ function cssColors() {
 	if ( $enlaces == '') : $enlaces = '#f8af0c'; else : $enlaces ; endif;
 	if ( $modulos == '') : $modulos = '#d0d7dd'; else : $modulos ; endif;
 
-	$miestilo = '<style> 
+	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
 		body,.mini-fecha .dia{ color:'.$texto.'; }
 		a{ color:'.$enlaces.'; }
 		a:hover,a:focus,a:active{ color:'.$modulos.'; }
@@ -911,10 +911,10 @@ function readRss($atts) {
 add_shortcode('rss', 'readRss'); 
 
 /** Poner en modo de mantenimineto **/
-function maintenace_mode() {
-      if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance.');}
-}
-add_action('get_header', 'maintenace_mode');
+// function maintenace_mode() {
+      // if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance.');}
+// }
+// add_action('get_header', 'maintenace_mode');
 
 /*	
  * Todos los componentes que no formen parte del template, es decir, 
