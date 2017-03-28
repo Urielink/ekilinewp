@@ -12,20 +12,24 @@
 
 
 	//  Optimización, estilos dinámicos después de la carga
-		setTimeout(function () {
+		// setTimeout(function () {
+			
+			// parametros
+			WebFontConfig = {
+			  google: { families: [ 'Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic' ] }
+			};		 
+			
 
 		function miCss(archivoCss){
 	
+			// modifico el script para que busque los estilos del tema.
 			var $head = $("head");
-			var $ultimocss = $head.find("link[rel='stylesheet']:last");
-			// modifico el script para que busque el estilo principal de la página.
-//			var $ultimocss = $head.find("link[id='ekiline-style-css']:last");
+//			var $ultimocss = $head.find("link[rel='stylesheet']:last");
 //			var $cssinline = $head.find("style:last");
+			var $ultimocss = $head.find("link[id='ekiline-style-css']:last");
 			var $cssinline = $head.find("style[id='ekiline-inline']:last");
 			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
-			
-			console.log(templateUrl);
-	
+				
 	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
 	        	
 			if ($cssinline.length){ 
@@ -41,7 +45,7 @@
 		miCss(recurso_script.css2);
 		miCss(recurso_script.css3);
 
-		}, 1500);
+		// }, 2000);
 		
 
 	});
