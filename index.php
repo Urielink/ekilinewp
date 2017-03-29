@@ -13,7 +13,6 @@
  */
 
 get_header(); ?>
-<?php get_sidebar(); ?>
 
 	<div id="primary" class="content-area<?php sideOn(); ?>">
 		
@@ -57,6 +56,8 @@ get_header(); ?>
 		<?php dynamic_sidebar( 'content-w2' ); ?>		
 
 	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 
 <?php get_sidebar('right'); ?>
 

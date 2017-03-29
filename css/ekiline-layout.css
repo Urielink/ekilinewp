@@ -73,6 +73,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 	#sidebar-left, 
 	.toggle-sidebars.left-on #secondary {
 		left: 0px;
+		top: 0px;
 		margin-left: -300px;
 		width: 300px;
 		background: #222;

@@ -581,6 +581,8 @@ function cssColors() {
 	if ( $modulos == '') : $modulos = '#d0d7dd'; else : $modulos ; endif;
 
 	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
+		body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
+		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}
 		body,.mini-fecha .dia{ color:'.$texto.'; }
 		a{ color:'.$enlaces.'; }
 		a:hover,a:focus,a:active{ color:'.$modulos.'; }
@@ -800,14 +802,12 @@ function google_analytics_tracking_code(){
 	if ( $gacode != '' ) {
 		
 	echo "<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		  		
-		  ga('create', '" . $gacode . "', 'auto');
-		  ga('send', 'pageview');		
-		 </script>";		
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', '" . $gacode . "', 'auto');
+		ga('send', 'pageview');
+		 </script>
+		 <script async defer src='https://www.google-analytics.com/analytics.js'></script>
+		 ";		
 
 	}
 }

@@ -5,24 +5,22 @@
 	/** variables globales: 
 	 * la url del template
 	 */	
-	var templateUrl = recurso_script.templateUrl;
-
 			
 	jQuery(document).ready(function($) {
 
 
 	//  Optimización, estilos dinámicos después de la carga
-		setTimeout(function () {						
+		// setTimeout(function () {						
 
-		function miCss(archivoCss){
+		function miCss(optimizarCSS){
 	
 			// modifico el script para que busque los estilos del tema.
 			var $head = $("head");
-//			var $ultimocss = $head.find("link[rel='stylesheet']:last");
-//			var $cssinline = $head.find("style:last");
+			// var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			// var $cssinline = $head.find("style:last");
 			var $ultimocss = $head.find("link[id='ekiline-style-css']:last");
 			var $cssinline = $head.find("style[id='ekiline-inline']:last");
-			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
+			var linkCss = "<link rel='stylesheet' href='"+ optimizarCSS +"' type='text/css' media='screen'>";
 				
 	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
 	        	
@@ -38,8 +36,10 @@
 		miCss(recurso_script.css1);
 		miCss(recurso_script.css2);
 		miCss(recurso_script.css3);
+		miCss(recurso_script.css4);
+		miCss(recurso_script.css5);
 
-		}, 2000); // setTimeout()
+		// }, 1000); // setTimeout()
 		
 
 	});
