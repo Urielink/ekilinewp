@@ -222,7 +222,7 @@ function ekiline_scripts() {
 	// Llamar google fonts desde url.
 	wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
     // metodo ekiline, no modificar.
-	wp_register_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.min.css', array(), '1.0', 'all' );	
+	wp_register_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	// U_ style: CSS (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 	wp_register_style( 'ekiline-style', get_stylesheet_uri() );	
 	
@@ -241,8 +241,8 @@ function ekiline_scripts() {
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '3.3.7', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array(), '20150716', true  );
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array(), '20170327', true  );
-    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.min.js', array(), '20151226', true  );
-    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '20151113', true  );
+    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array(), '20151226', true  );
+    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array(), '20151113', true  );
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
 		wp_script_add_data( 'ie10-vpbugwkrnd', 'conditional', 'gte IE 8' );
@@ -357,7 +357,7 @@ function optimizar_carga() {
 			//asigno el css por cada archivo interno
 				'css1' => get_template_directory_uri() . '/css/bootstrap.min.css',
 				'css2' => get_template_directory_uri() . '/css/font-awesome.min.css',
-				'css3' => get_template_directory_uri() . '/css/ekiline-layout.min.css',
+				'css3' => get_template_directory_uri() . '/css/ekiline-layout.css',
 				'css4' => '//fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic',
 				'css5' => get_template_directory_uri() . '/style.css',
 		)
