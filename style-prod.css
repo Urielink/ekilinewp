@@ -242,20 +242,6 @@ body{margin-bottom:60px;}
  .descarga-archivo::before { content: "\f0c5";}
  .descarga-zip::before { content: "\f1c6";}
  .descarga-video::before { content: "\f1c8";}
- 
- .site-footer::after{
- 	content:'normal';
- 	text-align: center;
- 	color:#000000;
- 	width:100%;
- 	height:10px;
- 	position: fixed;
- 	left:0px;
- 	right:0px;
- 	bottom:0px;
- 	background:#FFFFFF;
- 	z-index:1000; 	
- }
 
 /* CSS RESPONSIVO: Non-Mobile First Method
  -------------------------------------------------- */
@@ -267,13 +253,11 @@ body{margin-bottom:60px;}
 
 @media only screen and (max-width : 1200px) {
 /* Bootstrap container 1200 */
-	.site-footer::after {content:'Bootstrap container 1200';background-color: orange;}
 	#secondary.affix { width: 235px; }	
 }
 
 @media only screen and (max-width : 992px) {
 /* Bootstrap container 992 */	
-	.site-footer::after {content:'Bootstrap container 992';background-color:yellow;}
 }
 
 
@@ -285,12 +269,10 @@ body{margin-bottom:60px;}
 
 @media only screen and (max-width : 768px) { 
 	/*Cambio a tablet en bootstrap */
-	.site-footer::after { content:'Cambio a tablet en bootstrap se activa toogle menu';background-color: teal; }
 }
 
 @media only screen and (max-width : 480px) {
 	#main{padding:0;}
-	.site-footer::after {content:'screen and (max-width: 480px)';background-color:aqua;}
 	.entry-content p > img{ max-width:100%; }
 	.destacado-estilo { background-size: cover;	}	
 }
@@ -302,5 +284,4 @@ body{margin-bottom:60px;}
 
 @media only screen and (max-width : 320px){
 	/*Smartphones en general, modo vertical*/	
-	.site-footer::after {content:'screen and (max-width: 320px)';background-color:gray;}	
 }	
