@@ -351,14 +351,34 @@ add_filter( 'get_search_form', 'my_search_form' );
  *index.php, single.php, search.php, page.php, archive.php, 404.php */
 
 function sideOn() {
+	// debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
+	$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
+	    if ($leftOn != 'off') { $gridFix = 'col-sm-push-3 '; }
+	
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
              $sideon = ' col-sm-9 side1'; 
     } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
              $sideon = ' col-sm-9 side2'; 
     } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-6 side1 side2'; 
+             $sideon = ' col-sm-6 '. $gridFix .'side1 side2'; 
     }     
     echo $sideon;
+}
+
+function gridCss() {
+
+	// debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
+	$rightOn = get_theme_mod('ekiline_sidebarRight','on');
+	    if ($rightOn != 'off') { $gridFix = ' col-sm-pull-6'; } else { $gridFix = ' col-sm-pull-9';}
+
+    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
+             $gridCss = ' col-sm-3 col-sm-pull-6'; 
+    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
+             $gridCss = ' col-sm-3'; 
+    } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
+             $gridCss = ' col-sm-3'.$gridFix; 
+    }     
+    echo $gridCss;
 }
 
 /* Para que la información interna tenga una mejor distribución,

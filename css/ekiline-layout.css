@@ -105,10 +105,10 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 	width: 75%;
 }
 
-#page-content-wrapper, 
+/*#page-content-wrapper, 
 .toggle-sidebars.right-on #primary {
 	width: 75%;
-}
+}*/
 
 #page-content-wrapper, 
 .toggle-sidebars.right-on.left-on #primary {
@@ -137,6 +137,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 	.toggle-sidebars.right-on #third {
 		margin-right: -80%;
 		right: 10px;
+		top:0px;
 		width: 80%;
 		background: #ddd;
 		position: fixed;
@@ -553,7 +554,11 @@ html, body { height: 100%; }
 	/* SideBars plegables */
 	#page-content-wrapper, .toggle-sidebars.left-on #primary {
 	    width: inherit;
-	}	
+	}		
+	#page-content-wrapper, .toggle-sidebars.right-on #primary {
+	    width: inherit;
+	}
+	
 }
 
 @media only screen and (max-width : 480px) {
