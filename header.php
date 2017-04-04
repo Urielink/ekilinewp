@@ -16,8 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress ?>
-<meta name="description" content="<?php if ( is_single() ) { single_post_title('', true); } else { bloginfo('name'); echo " - "; bloginfo('description');} ?>" />
+<meta name="description" content="<?php getDescription(); ?>" />
 <meta name="keywords" content="<?php getTags(); ?> " />
 
 <?php wp_head(); ?>

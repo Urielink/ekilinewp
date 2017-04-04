@@ -70,13 +70,34 @@ function getTags() {
 	endif;
 }
 
-// custom field, la descripción de un artículo
-function cfPageDescription() { 
+
+// Optimización metas
+
+function getDescription(){
+    // el dato que se mostrará
+    if ( is_single() || is_page() ) {
+        
     global $wp_query;
     $postid = $wp_query->post->ID;
-    echo get_post_meta($postid, 'pagina-descripcion', true);
+    $stdDesc = get_post_meta($postid, 'metaDescripcion', true);
     wp_reset_query();
+            
+       if ( ! empty( $stdDesc ) ){
+           // Si utilizan nuestro custom field
+           echo $stdDesc;
+       } else {
+           echo single_post_title(); 
+       }
+     
+    } elseif ( is_archive() ) {
+        // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
+     echo single_cat_title();
+    } else {
+     echo bloginfo('name'). ' - ' .bloginfo('description');
+    }
+    
 }
+
 
 /** si necesitaramos añadir campos en la edicion usamos metabox: 
  *  https://developer.wordpress.org/reference/functions/add_meta_box/
