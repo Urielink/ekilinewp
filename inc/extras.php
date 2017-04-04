@@ -366,41 +366,6 @@ function my_search_form( $form ) {
 add_filter( 'get_search_form', 'my_search_form' );
 
 
-/** Sidebars dinamicas **/
-
-/* En caso de que el sidebar esté activo, añade la clase columna de 9: 
- *index.php, single.php, search.php, page.php, archive.php, 404.php */
-
-function sideOn() {
-	// debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
-	$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
-	    if ($leftOn != 'off') { $gridFix = 'col-sm-push-3 '; }
-	
-    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-9 side1'; 
-    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-9 side2'; 
-    } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-6 '. $gridFix .'side1 side2'; 
-    }     
-    echo $sideon;
-}
-
-function gridCss() {
-
-	// debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
-	$rightOn = get_theme_mod('ekiline_sidebarRight','on');
-	    if ($rightOn != 'off') { $gridFix = ' col-sm-pull-6'; } else { $gridFix = ' col-sm-pull-9';}
-
-    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3 col-sm-pull-6'; 
-    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3'; 
-    } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3'.$gridFix; 
-    }     
-    echo $gridCss;
-}
 
 /* Para que la información interna tenga una mejor distribución,
  * no siempre el fullwidth es necesario  */
@@ -785,7 +750,7 @@ if ( ! function_exists ( 'topWidgets' ) ) {
 
 // widgets dinamicos: video
 
-/** function videoHeader() {
+ function videoHeader() {
 
 
     if ( ! empty( get_theme_mod('ekiline_video') ) ) {
@@ -798,7 +763,7 @@ if ( ! function_exists ( 'topWidgets' ) ) {
 	}       
 
 }
-**/
+
 
 // Formatear la fecha
 function miniDate() {	    
@@ -855,70 +820,6 @@ function google_analytics_tracking_code(){
 // Usar 'wp_head' 'wp_footer' para situar el script 
 add_action('wp_footer', 'google_analytics_tracking_code', 100);	
 	
-
-// si se elige que los sidebars se oculten o muestren añade un boton al menu nav.
-
-function add_sidebar_action( $items, $args ) {
-
-	$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
-	$rightOn = get_theme_mod('ekiline_sidebarRight','on');
-
-	
-    if ($leftOn == 'off') {
-        $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a></li>';
-    }
-
-    if ($rightOn == 'off') {
-        $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a></li>';
-    }
-	
-    return $items;
-	
-}
-add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
-
-
-function sidebarButtons(){
-
-	$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
-	$rightOn = get_theme_mod('ekiline_sidebarRight','on');
-
-	
-    if ($leftOn == 'off') {
-        $items .= '<a href="#" id="show-sidebar-left" class="btn btn-default btn-sbleft">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a>';
-    }
-
-    if ($rightOn == 'off') {
-        $items .= '<a href="#" id="show-sidebar-right" class="btn btn-default btn-sbright">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a>';
-    }
-	
-    echo $items; 
-}
-
-
-
-/* Función especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos específicos
- * Se inyecta una CSS en el body
- * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
- * https://developer.wordpress.org/reference/functions/body_class/
- */
-
-add_filter( 'body_class', function( $classes ) {
-	
-	$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
-	$rightOn = get_theme_mod('ekiline_sidebarRight','on');
-	
-    if ( $leftOn == 'off' && $rightOn == 'on' ) {
-	    return array_merge( $classes, array( 'toggle-sidebars left-on' ) );
-	} elseif ( $rightOn == 'off' && $leftOn == 'on' ) {
-	    return array_merge( $classes, array( 'toggle-sidebars right-on' ) );
-	} elseif ( $rightOn == 'off' && $leftOn == 'off' ) {
-	    return array_merge( $classes, array( 'toggle-sidebars right-on left-on' ) );
-	} else {
-	    return array_merge( $classes, array( 'show-sidebars' ) );
-	} 	
-	
-} );
 
 /* Función para eliminar los comentarios que aparecen en los adjuntos (attachments)
  */

@@ -293,7 +293,8 @@ require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 /**
  * Añadir personalizaciones extra.
  */
-require get_template_directory() . '/inc/custom-navbars.php'; 
+require get_template_directory() . '/inc/custom-sidebars.php'; 
+ require get_template_directory() . '/inc/custom-navbars.php'; 
 require get_template_directory() . '/inc/addon-breadcrumb.php';
 require get_template_directory() . '/inc/addon-verticalnavbar.php';
 require get_template_directory() . '/inc/addon-horizontalnavbar.php';
