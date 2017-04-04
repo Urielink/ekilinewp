@@ -8,7 +8,6 @@
  */
 
 get_header(); ?>
-<?php get_sidebar(); ?>
 
 	<section id="primary" class="content-area<?php sideOn(); ?>">
 
@@ -50,5 +49,6 @@ get_header(); ?>
 		
 	</section><!-- #primary -->
 
+<?php get_sidebar(); ?>
 <?php get_sidebar('right'); ?>
 <?php get_footer(); ?>
