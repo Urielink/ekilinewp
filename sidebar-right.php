@@ -12,6 +12,6 @@ if ( ! is_active_sidebar( 'sidebar-2' ) ) {
 }
 ?>
 
-<div id="third" class="widget-area col-sm-3" role="complementary">
+<div id="third" class="widget-area<?php rightSideOn(); ?>" role="complementary">
 	<?php dynamic_sidebar( 'sidebar-2' ); ?>
 </div><!-- #secondary -->

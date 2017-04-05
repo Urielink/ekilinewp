@@ -160,7 +160,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'label' => 'Sidebar izquierdo',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
-                    'on' => 'Visible',
+                    'on' => 'Estático',
                     'off' => 'Plegable',
                 ),
             )
@@ -178,7 +178,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'label' => 'Sidebar derecho',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
-                    'on' => 'Visible',
+                    'on' => 'Estático',
                     'off' => 'Plegable',
                 ),
             )

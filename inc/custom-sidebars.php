@@ -5,8 +5,11 @@
  * @package ekiline
  */
 
-// cada sidebar tiene una variable.
+// Global, sidebar activas
+$sideLeft = is_active_sidebar( 'sidebar-1' );
+$sideRight = is_active_sidebar( 'sidebar-2' ); 
 
+// Global, sidebar plegable
 $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
 $rightOn = get_theme_mod('ekiline_sidebarRight','on');
 
@@ -22,7 +25,6 @@ add_filter( 'body_class', function( $classes ) {
     //Llamo a mis variables
     global $leftOn, $rightOn;
     
-    
     if ( $leftOn == 'off' && $rightOn == 'on' ) {
         return array_merge( $classes, array( 'toggle-sidebars left-on' ) );
     } elseif ( $rightOn == 'off' && $leftOn == 'on' ) {
@@ -30,48 +32,67 @@ add_filter( 'body_class', function( $classes ) {
     } elseif ( $rightOn == 'off' && $leftOn == 'off' ) {
         return array_merge( $classes, array( 'toggle-sidebars right-on left-on' ) );
     } else {
-        return array_merge( $classes, array( 'show-sidebars' ) );
+        return array_merge( $classes, array( 'static-sidebars' ) );
     }   
     
 } );
 
-
-
-/* En caso de que el sidebar esté activo, añade la clase columna de 9: 
- *index.php, single.php, search.php, page.php, archive.php, 404.php */
+/* En caso de estar activos los sidebars, cambia la clase del contenedor principal y los sidebars.
+ * Este fragmento afecta a la container: index.php, single.php, search.php, page.php, archive.php, 404.php 
+ */
 
 function sideOn() {
-    // debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
-    global $leftOn;
     
-    if ($leftOn != 'off') { $gridFix = 'col-sm-push-3 '; }
-    
-    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-9 side1'; 
-    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-9 side2'; 
-    } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $sideon = ' col-sm-6 '. $gridFix .'side1 side2'; 
+    //Llamo a mis variables
+    global $sideLeft, $sideRight, $leftOn, $rightOn;
+            
+    if ( $sideLeft && !$sideRight ) {
+        // si el sidebar izquierdo existe y no el derecho        
+        if ($leftOn == 'off') : $sideon = ' toggle-side1';  
+        else : $sideon = ' col-sm-9 pull-right side1'; endif;
+        
+    } else if ( !$sideLeft && $sideRight ) {
+        // si el sidebar derecho existe y no el izquierdo                
+        if ($rightOn == 'off') : $sideon = ' toggle-side2';  
+        else : $sideon = ' col-sm-9 side2'; endif;            
+              
+    } else if ( $sideLeft && $sideRight ) {
+        // si ambos sidebars existen                
+        if ($leftOn == 'off' && $rightOn == 'off' ) : $sideon = ' toggle-bothsides';  
+        elseif ($leftOn == 'off' && $rightOn != 'off' ) : $sideon = ' col-sm-9 toggle-side1'; 
+        elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 pull-right toggle-side2'; 
+        else : $sideon = ' col-sm-6 col-sm-push-3 side1 side2'; endif;       
+                                     
+    } else if ( !$sideLeft && !$sideRight ) {
+        // si ninguno                        
+         $sideon = ' no-sidebars'; 
     }     
     echo $sideon;
 }
 
-function gridCss() {
+/* Estos 2 fragmentos añaden una clase a cada sidebar
+ * afectan a sidebar.php y sidebar-right.php 
+ */
 
-    // debo sobreescribir la clase que actúa en conjunto con el grid, para darle prioridad al contenido (SEO).
-    global $rightOn;
-    
-    if ($rightOn != 'off') { $gridFix = ' col-sm-pull-6'; } else { $gridFix = ' col-sm-pull-9';}
-
-    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3 col-sm-pull-6'; 
-    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3'; 
-    } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-             $gridCss = ' col-sm-3'.$gridFix; 
-    }     
-    echo $gridCss;
+function leftSideOn() {    
+    //Llamo a mis variables
+    global $sideLeft, $sideRight, $leftOn, $rightOn;
+                
+    if ( $sideLeft && !$sideRight ) {
+        echo ' col-sm-3 pull-left';
+    } elseif ( $sideLeft && $sideRight ) {
+        if ($leftOn != 'off' && $rightOn == 'off' ) : echo ' col-sm-3 pull-left';
+        elseif ($leftOn == 'off' && $rightOn == 'off' ) : echo ' col-sm-3';
+        else : echo ' col-sm-3 col-sm-pull-6'; endif;          
+    }
 }
+
+function rightSideOn() {    
+    //Llamo a mis variables
+    global $sideRight;            
+    if ( $sideRight ) : echo ' col-sm-3'; endif;     
+}
+
 
 // si se elige que los sidebars se oculten o muestren añade un boton al menu nav.
 
@@ -95,16 +116,16 @@ add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
 
 function sidebarButtons(){
 
-    global $leftOn, $rightOn;
-    
-    if ($leftOn == 'off') {
-        $items .= '<a href="#" id="show-sidebar-left" class="btn btn-default btn-sbleft">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a>';
-    }
+    global $sideLeft, $sideRight, $leftOn, $rightOn;
 
-    if ($rightOn == 'off') {
-        $items .= '<a href="#" id="show-sidebar-right" class="btn btn-default btn-sbright">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a>';
-    }
+        if ( $sideLeft && $leftOn == 'off') {
+            $items .= '<a href="#" id="show-sidebar-left" class="btn btn-default btn-sbleft">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a>';
+        }
     
+        if ( $sideRight && $rightOn == 'off') {
+            $items .= '<a href="#" id="show-sidebar-right" class="btn btn-default btn-sbright">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a>';
+        }
+
     echo $items; 
 }
 

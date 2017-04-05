@@ -100,10 +100,10 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 }
  */
 
-#page-content-wrapper, 
+/*#page-content-wrapper, 
 .toggle-sidebars.left-on #primary {
 	width: 75%;
-}
+}*/
 
 /*#page-content-wrapper, 
 .toggle-sidebars.right-on #primary {

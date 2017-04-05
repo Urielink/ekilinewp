@@ -12,6 +12,6 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 
-<div id="secondary" class="widget-area<?php gridCss(); ?>" role="complementary">
+<div id="secondary" class="widget-area<?php leftSideOn(); ?>" role="complementary">
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 </div><!-- #secondary -->
