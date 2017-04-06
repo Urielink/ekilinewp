@@ -93,39 +93,27 @@ function rightSideOn() {
     if ( $sideRight ) : echo ' col-sm-3'; endif;     
 }
 
-
-// si se elige que los sidebars se oculten o muestren añade un boton al menu nav.
-
-function add_sidebar_action( $items, $args ) {
-
-    global $leftOn, $rightOn;
-    
-    if ($leftOn == 'off') {
-        $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a></li>';
-    }
-
-    if ($rightOn == 'off') {
-        $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a></li>';
-    }
-    
-    return $items;
-    
+/* Añadimos los botones a los sidebars, 
+ * afectan a sidebar.php y sidebar-right.php 
+ */
+ 
+function leftSideButton(){
+    global $sideLeft, $leftOn;
+    if ( $sideLeft && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
-add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
 
-
-function sidebarButtons(){
-
-    global $sideLeft, $sideRight, $leftOn, $rightOn;
-
-        if ( $sideLeft && $leftOn == 'off') {
-            $items .= '<a href="#" id="show-sidebar-left" class="btn btn-default btn-sbleft">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a>';
-        }
-    
-        if ( $sideRight && $rightOn == 'off') {
-            $items .= '<a href="#" id="show-sidebar-right" class="btn btn-default btn-sbright">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a>';
-        }
-
-    echo $items; 
+function rightSideButton(){
+    global $sideRight,$rightOn;    
+    if ( $sideRight && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
+
+// PRUEBA: si se elige que los sidebars se oculten o muestren añade un boton al menu nav.
+// function add_sidebar_action( $items, $args ) {
+    // global $leftOn, $rightOn;    
+        // if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a></li>'; endif;
+        // if ($rightOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a></li>'; endif;    
+    // return $items;    
+// }
+// add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
+
 

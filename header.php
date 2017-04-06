@@ -25,7 +25,7 @@
 
 <body <?php body_class(); ?>>
 	
-<?php topNavbar();topshortcode();topWidgets();sidebarButtons(); ?>  
+<?php topNavbar();topshortcode();topWidgets();?>  
 
 <div id="page" class="site <?php wideSite(); ?>">
 
