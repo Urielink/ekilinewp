@@ -25,7 +25,7 @@
 
 <body <?php body_class(); ?>>
 	
-<?php topNavbar();topshortcode();topWidgets();?>  
+<?php topNavbar();topshortcode();topWidgets();videoHeader();?>  
 
 <div id="page" class="site <?php wideSite(); ?>">
 

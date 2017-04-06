@@ -567,9 +567,10 @@ if ( ! function_exists ( 'topWidgets' ) ) {
     if ( ! empty( get_theme_mod('ekiline_video') ) ) {
          
         echo	'<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
-        		'<video autoplay loop poster="'. get_header_image() .'" id="bgvid" style="background-image: url('. get_header_image() .');">
-            	<source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
-        		</video>';
+        		'<div class="embed-responsive embed-responsive-4by3">
+        		  <video autoplay loop poster="'. get_header_image() .'" id="bgvid" style="background-image: url('. get_header_image() .');">
+            	   <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
+        		  </video></div>';
                     
 	}       
 
