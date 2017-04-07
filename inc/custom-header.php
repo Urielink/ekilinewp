@@ -91,7 +91,11 @@ function customHeader() {
 			$siteDescription = get_bloginfo( 'description', 'display' );
 			$quickLink = esc_html( 'Ir al contenido', 'ekiline' );
 			// Estilo de imagen de fondo: invocamos la imagen del editor de página y lo añadimos como css.
-			$headerStyle = 'style="background-image:url(' . get_header_image() . ');"';
+			// En combinación con un range
+			$rangeHead = get_theme_mod('ekiline_range_header');
+			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
+						
+			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;background-position: center top;margin-left:-15px;margin-right:-15px;"';
 			
 			//Estructura
 

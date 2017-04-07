@@ -70,20 +70,50 @@ function ekiline_theme_customizer( $wp_customize ) {
     ) ) );  
         
  // video
-    $wp_customize->add_section( 'ekiline_video_portada' , array(
-            'title'       => __( 'Video de cabecera', 'ekiline' ),
-            'priority'    => 90,
-            'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptará como fondo en caso de que los dispositivos no puedan reproducir video.',
-    ) );
+//     $wp_customize->add_section( 'ekiline_video_portada' , array(
+//             'title'       => __( 'Video de cabecera', 'ekiline' ),
+//             'priority'    => 90,
+//             'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptará como fondo en caso de que los dispositivos no puedan reproducir video.',
+//     ) );
+    
+//     $wp_customize->add_setting( 'ekiline_video' );
+    
+//     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
+//             'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
+//             'section'  => 'ekiline_video_portada',
+//             'settings' => 'ekiline_video',
+//     ) ) );  
+
+    // video
     
     $wp_customize->add_setting( 'ekiline_video' );
     
     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
-            'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
-            'section'  => 'ekiline_video_portada',
-            'settings' => 'ekiline_video',
-    ) ) );  
+    		'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
+        	'description' => '<b>Debes tener seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptará como fondo en caso de que los dispositivos no puedan reproducir video.',
+    		'section'  => 'header_image',
+    		'settings' => 'ekiline_video',
+            'priority'    => 90,
+    ) ) );   
 
+    // Controlador para estalecer la altura de la imagen de cabecera
+    
+    $wp_customize->add_setting( 'ekiline_range_header', array( 
+			'default' => '30',
+    ) );
+
+    $wp_customize->add_control( 'ekiline_range_header', array(
+    		'type'        => 'range',
+    		'priority'    => 10,
+    		'section'     => 'header_image',
+    		'label'       => 'Altura de cabecera',
+    		'description' => 'Especifica la altura de la cabecera, esto solo afectará tu homepage.',
+    		'input_attrs' => array(
+    				'min'   => 30,
+    				'max'   => 100,
+    				'step'  => 10,
+    		),
+	) );    
 
 // ancho de la página
     $wp_customize->add_section( 'ekiline_vista_section' , array(
