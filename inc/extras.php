@@ -431,35 +431,6 @@ function logoTheme() {
 
 }
 
-// Imagen de cabecera
-
-function headerStyle() {
-    if (get_header_image()){   
-        echo 'style="background-image:url(' . get_header_image() . ');"';
-    }
-}
-
-function headerImage() {
-    if (get_header_image()){   
-        echo '<img src="' . get_header_image() . '" />';
-    }
-}
-
-
-// Imagen destacada
-
-function destacadoStyle() {
-    // si es post o página :
-    if ( is_single() || is_page() ){
-        $titulo = get_the_title($post->ID);    
-    }
-        
-    // y si tiene imagen destacada
-    if ( has_post_thumbnail() ) {
-        $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-        echo '<div class="destacado-estilo" style="background-image: url(' . $url . ');"><h1>'.$titulo.'</h1></div>'; 
-    }    
-}
 
 function destacadoUrl() {    
     if ( has_post_thumbnail() ) {

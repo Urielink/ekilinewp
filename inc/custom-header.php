@@ -45,7 +45,7 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     	 * If no custom options for text are set, let's bail.
     	 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
     	 */
-    	if ( HEADER_TEXTCOLOR === $header_text_color ) {
+    	if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
     		return;
     	}
     
@@ -75,3 +75,102 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     	<?php
     }
 endif;  // ekiline_admin_header_image
+
+// Creo una función para añadir un header personalizado
+
+function customHeader() {
+		
+		/* Para el HOME:
+		 * en caso de tener una imagen de cabecera aparecer un header
+		 */ 
+
+		if ( is_front_page() && get_header_image() ){
+
+			// Variables
+			$siteName = get_bloginfo( 'name' );
+			$siteDescription = get_bloginfo( 'description', 'display' );
+			$quickLink = esc_html( 'Ir al contenido', 'ekiline' );
+			// Estilo de imagen de fondo: invocamos la imagen del editor de página y lo añadimos como css.
+			$headerStyle = 'style="background-image:url(' . get_header_image() . ');"';
+			
+			//Estructura
+
+			$customHeader = '<header id="masthead" class="site-header" role="banner">';
+			    
+				$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
+							
+					if ( is_front_page() && is_home() ) : 
+						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';
+					else :
+						$customHeader .= '<p class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></p>';
+					endif;	
+					
+					if ( $siteDescription || is_customize_preview() ) :
+						$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
+					endif;
+									
+					$customHeader .= '<a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a>';
+		
+				$customHeader .= '</div><!-- .site-branding -->
+		
+			</header><!-- #masthead -->';
+		}
+
+		/* Para las internas :
+		 * en caso de tener una imagen destacada convertirla en un header
+		 */		
+		
+		elseif ( is_single() || is_page() ){
+			
+			//extrae el id
+			$titulo = get_the_title($post->ID);
+			
+			// y si tiene imagen destacada
+			if ( has_post_thumbnail() ) {
+
+				// obten la url de la imagen
+				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
+				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
+    			$customHeader .= '<div class="site-branding jumbotron destacado-estilo" style="background-image: url(' . $url . ');">';
+    			$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
+    			$customHeader .= '</div></header>';
+			}
+				
+			
+		}
+		
+		/* Para las categorías :
+		 * en caso de tener una imagen convertirla en un header
+		 * archivo complementario: *addon-categoryfield.php
+		*/
+		
+		elseif ( is_category() ){
+				
+			// invocamos al titulo para insertar en header.
+			$titulo = single_cat_title("", false);			
+			//Llamamos el ID
+			$cat_id = get_query_var('cat');
+			//llamamos ese dato desde la BD
+			$cat_data = get_option("category_$cat_id");
+			
+				
+			// y si tiene imagen destacada
+			if ( $cat_data['img'] ) {
+		
+				// obten la url de la imagen
+				$url = $cat_data['img'];
+		
+				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
+				$customHeader .= '<div class="site-branding jumbotron destacado-estilo categoria" style="background-image: url(' . $url . ');">';
+				$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
+				$customHeader .= '</div></header>';
+			}
+		
+				
+		}		
+		
+	
+	echo $customHeader;
+	
+}

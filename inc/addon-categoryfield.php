@@ -74,19 +74,3 @@ function save_extra_category_fileds( $term_id ) {
     }
 }
 
-function categoryImage() {            
-          
-    // invocamos al titulo para insertar en header.
-    $titulo = single_cat_title("", false);
-            
-    //first get the current category ID
-    $cat_id = get_query_var('cat');
-    //then i get the data from the database
-    $cat_data = get_option("category_$cat_id");
-    //and then i just display my category image if it exists
-    if (isset($cat_data['img'])){
-        $url = $cat_data['img'];
-        echo '<div class="destacado-estilo" style="background-image: url(' . $url . ');"><h1>'. $titulo .'</h1></div>';                        
-    }        
-
-}

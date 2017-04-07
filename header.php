@@ -18,42 +18,21 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <meta name="description" content="<?php getDescription(); ?>" />
 <meta name="keywords" content="<?php getTags(); ?> " />
-
 <?php wp_head(); ?>
-
 </head>
+<body <?php body_class(); ?>>	
 
-<body <?php body_class(); ?>>
-	
-<?php topNavbar();topshortcode();topWidgets();videoHeader();?>  
+<?php topNavbar(); // en caso de un menu superior ?>  
+<?php topshortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
+<?php topWidgets(); // en caso de widgets en la parte superior  ?>  
+<?php videoHeader(); // en caso de cabecera con video  ?>  
 
 <div id="page" class="site <?php wideSite(); ?>">
 
-<?php if ( is_front_page() && get_header_image()){ /* en caso de tener una imagen de cabecera aparecer un header solo en el home */ ?>	
-	<header id="masthead" class="site-header" role="banner">
-	    
-		<div class="site-branding jumbotron" <?php headerStyle(); ?>>
-			<?php if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php endif;
+<?php customHeader(); // header personalizado ?>
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-			
-			<a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content"><?php esc_html_e( 'Ir al contenido', 'ekiline' ); ?></a>
+<?php primaryNavbar(); // menu principal ?>		
 
-		</div><!-- .site-branding -->
-
-	</header><!-- #masthead -->
-<? } ?>
-
-<?php primaryNavbar(); ?>	
-	
-<?php if( !is_front_page() && !is_archive() ) { destacadoStyle().breadcrumb(); } // breadcrumb e imagen destacada ?>
-<?php if(is_archive() ) { categoryImage().breadcrumb(); } // imagen de categoría ?>
+<?php if( !is_front_page() ) : breadcrumb(); endif; // breadcrumb e imagen destacada ?>
 
 	<div id="content" class="site-content">
