@@ -8,9 +8,17 @@
 // menu en la parte superior top
  
 function topNavbar(){
+
+$menuSettings = get_theme_mod('ekiline_topmenuSettings');
+if ($menuSettings == '0') { $cssClass = ' navbar-static-top'; }
+else if ($menuSettings == '1') { $cssClass = ' navbar-fixed-top'; }
+else if ($menuSettings == '2') { $cssClass = ' navbar-fixed-bottom'; }
+else if ($menuSettings == '3') { $cssClass = ' navbar-affix'; }// $affixAtts = ' data-spy="affix" data-offset-top="200"'; }
+
 	 
 if ( has_nav_menu( 'top' ) ) : ?>
-<nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar" role="navigation" data-spy="affix" data-offset-top="200">
+<?php // <nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar" role="navigation" data-spy="affix" data-offset-top="200"> ?>
+<nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar<?php echo $cssClass;?>" role="navigation"<?php echo $affixAtts;?>>
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">

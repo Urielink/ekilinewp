@@ -212,7 +212,32 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'off' => 'Plegable',
                 ),
             )
-        );                      
+        );              
+
+	// Atributos especiales a los menus.
+
+        $wp_customize->add_setting(
+            'ekiline_topmenuSettings', array(
+                    'default' => '0',
+                ) );
+        
+        $wp_customize->add_control(
+            'ekiline_topmenuSettings',
+            array(
+                'type' => 'select',
+                'label' => 'Top Menu extras',
+            	'description' => __( 'Puedes fijar el menu, o hacer que se estacione con el scroll (affix).', 'ekiline' ),
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => 'Normal',
+                    '1' => 'Fijo superior',
+                	'2' => 'Fijo inferior',
+                	'3' => 'Fijo al scroll (affix)',
+                ),
+            )
+        );   
+        
 
     // Optimización, códigos de seguimiento
    

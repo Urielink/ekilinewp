@@ -79,10 +79,12 @@
 	        $('#primary').removeClass('col-md-offset-3')
 	    });
 */
-	    
+
 	    if ( $('#masthead').length ) {
 	    	
 	    	console.log ('si header');
+	    	console.log ( $('#masthead').height() );
+	    	
 	    	$('.top-navbar').affix({
 		        offset: {
 		          top: $('#masthead').height()
@@ -90,9 +92,21 @@
 		    });
 
 	    } else {
+	    	
 	    	console.log ('no header');
+	    	console.log ( $('.top-navbar').height() );
+
+	    	$('.top-navbar').affix({
+		        offset: {
+		          top: $('.top-navbar').height()
+		        }
+		    });	    	
+	    	
 	    }
 	    
+	    
+	    
+
 	    // Carrusel con swipe
 	    $('.carousel').carousel({
 	    	  swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
