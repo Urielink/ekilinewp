@@ -23,16 +23,16 @@
 <body <?php body_class(); ?>>	
 
 <?php topNavbar(); // en caso de un menu superior ?>  
-<?php topshortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
+<?php topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
 <?php topWidgets(); // en caso de widgets en la parte superior  ?>  
 <?php videoHeader(); // en caso de cabecera con video  ?>  
+<?php customHeader(); // header personalizado ?>
 
 <div id="page" class="site <?php wideSite(); ?>">
 
-<?php customHeader(); // header personalizado ?>
 
 <?php primaryNavbar(); // menu principal ?>		
 
-<?php if( !is_front_page() ) : breadcrumb(); endif; // breadcrumb e imagen destacada ?>
+<?php breadcrumb(); // menos en el home  ?>
 
 	<div id="content" class="site-content">

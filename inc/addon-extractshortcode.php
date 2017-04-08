@@ -26,8 +26,8 @@ add_shortcode('topcontent', 'ekiline_topcontent');
 
 /* 2) se crea la función para el template, en caso de existir el shortcode.*/
  
-if ( ! function_exists( 'topshortcode' ) ) {
-	function topshortcode() {
+if ( ! function_exists( 'topShortcode' ) ) {
+	function topShortcode() {
 		global $post; // identificar si es post
 		if($post) {
 			// identifica si en el contenido del post existe [topcontent]
@@ -41,9 +41,9 @@ if ( ! function_exists( 'topshortcode' ) ) {
 				} 
 			endif; //$matches			
 		} // endif $post						
-	}// end func. topshortcode	
+	}// end func. topShortcode	
 }
-add_action( 'init', 'topshortcode' );
+add_action( 'init', 'topShortcode' );
 
 /* 3) se limpia el contenido del post.
  * http://stackoverflow.com/questions/22227106/strip-wordpress-gallery-shortcode-from-the-content-and-use-outside-the-loop
