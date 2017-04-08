@@ -56,7 +56,7 @@ class HorizontalNavbarWidget extends WP_Widget {
 
         // variable contenedora
                 
-        $abreMenu = '<nav id="site-navigation"  class="navbar navbar-default" role="navigation">
+        $abreMenu = '<nav id="site-navigation-horizontal"  class="navbar navbar-default" role="navigation">
 	    			<div class="container">
 		        		<div class="navbar-header">
 	                        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->

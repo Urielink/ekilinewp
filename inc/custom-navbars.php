@@ -10,7 +10,7 @@
 function topNavbar(){
 	 
 if ( has_nav_menu( 'top' ) ) : ?>
-<nav id="site-navigation"  class="navbar navbar-default overtake" role="navigation" data-spy="affix" data-offset-top="197">
+<nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar" role="navigation" data-spy="affix" data-offset-top="200">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
@@ -21,7 +21,7 @@ if ( has_nav_menu( 'top' ) ) : ?>
             </button>
             <!-- Your site title as branding in the menu -->                
             <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-			<p class="navbar-text"><?php echo get_bloginfo( 'description' ); ?></p>        	
+			<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
         </div>
         
         <div id="navbar-collapse-out" class="collapse navbar-collapse top">
@@ -58,7 +58,7 @@ if ( has_nav_menu( 'top' ) ) : ?>
 function primaryNavbar(){
 	
 if ( has_nav_menu( 'primary' ) ) : ?>
-        <nav id="site-navigation"  class="navbar navbar-default" role="navigation">
+        <nav id="site-navigation-primary"  class="navbar navbar-default primary-navbar" role="navigation">
             <div class="navbar-header">
                 <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">

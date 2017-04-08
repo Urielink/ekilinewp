@@ -56,7 +56,7 @@ class VerticalMenuWidget extends WP_Widget {
 
         // variable contenedora
                 
-        $abreMenu = '<nav id="site-navigation"  class="navbar navbar-default sidebar-nav" role="navigation">
+        $abreMenu = '<nav id="site-navigation-vertical"  class="navbar navbar-default sidebar-nav" role="navigation">
                     <div class="navbar-header">
                         <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.vertical-menu">

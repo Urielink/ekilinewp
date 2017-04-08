@@ -4,7 +4,7 @@
  */
 
 	jQuery(document).ready(function($){
-		
+/*		
 		var desfaseItem = '.carousel';
 		var desfaseItem = '.destacado-estilo';
 		var desfaseDerecho = '.thumb';
@@ -34,18 +34,17 @@
 	        }).css('background-position', 'right ' + parseInt(y / 2) + 'px');                
 	        
 	    });
-	    
 
 	    // aparece los elementos a medida del scroll
 	    $(window).scroll( function(){
 
-	        /* Por cada imagen */
+	        // Por cada imagen 
 	        $( apareceItem ).each( function(i){
 
 	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
 	            var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-	            /* Si está en el lugar fade in */
+	            // Si está en el lugar fade in 
 	            if( bottom_of_window > bottom_of_object ){
 	                $(this).animate({'opacity':'1'},500);
 	            }            
@@ -63,7 +62,7 @@
 	        }).join(' '));
 	    });
 	    
-	    /** affix al menu
+	    // affix al menu
 	    $('#secondary').affix({
 	    	  offset: {
 	    	    top: 100,
@@ -79,7 +78,20 @@
 	    $('#secondary').on('affix-top.bs.affix', function () {
 	        $('#primary').removeClass('col-md-offset-3')
 	    });
-	    **/
+*/
+	    
+	    if ( $('#masthead').length ) {
+	    	
+	    	console.log ('si header');
+	    	$('.top-navbar').affix({
+		        offset: {
+		          top: $('#masthead').height()
+		        }
+		    });
+
+	    } else {
+	    	console.log ('no header');
+	    }
 	    
 	    // Carrusel con swipe
 	    $('.carousel').carousel({
