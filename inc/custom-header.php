@@ -124,19 +124,17 @@ function customHeader() {
 			
 			} else {				
 				
-				require get_template_directory() . '/inc/extras.php';
-				$coverLogo = logoTheme();
-// 				// Si la altura es mayor, la imagen hereda la estructura de cover.
-// 				if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
-// 					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-// 				} elseif ( get_theme_mod( 'ekiline_logo_min' ) && !get_theme_mod( 'ekiline_logo_max' ) ) {
-// 					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-// 				} elseif ( get_theme_mod( 'ekiline_logo_max' ) && get_theme_mod( 'ekiline_logo_min' ) ) {
-// 					$coverLogo = '<img class="img-responsive hidden-xs" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>
-//         			<img class="img-responsive visible-xs" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-// 				} else {
-// 					$coverLogo =  bloginfo( 'name' );
-// 				}
+				// Si la altura es mayor, la imagen hereda la estructura de cover.
+				if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
+					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+				} elseif ( get_theme_mod( 'ekiline_logo_min' ) && !get_theme_mod( 'ekiline_logo_max' ) ) {
+					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+				} elseif ( get_theme_mod( 'ekiline_logo_max' ) && get_theme_mod( 'ekiline_logo_min' ) ) {
+					$coverLogo = '<img class="img-responsive hidden-xs" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>
+        			<img class="img-responsive visible-xs" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+				} else {
+					$coverLogo =  bloginfo( 'name' );
+				}
 												
 				$customHeader = '<header id="masthead"  class="cover-wrapper"'.$headerStyle.'>
 							      <div class="cover-wrapper-inner">
