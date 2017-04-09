@@ -52,22 +52,12 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 'ekiline_logo_max' );
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_max', array(
-            'label'    => __( 'Imagen de logo horizontal', 'ekiline' ),
-            'description' => 'Esta imagen se recomienda para su vista en ordenadores de escritorio.',
+            'label'    => __( 'Logotipo horizontal', 'ekiline' ),
+            'description' => 'Esta es la imagen de tu marca que aparecerá en el menu.',
             'section'  => 'title_tagline', // esta seccion corresponde a una predeterminada.
             'settings' => 'ekiline_logo_max',
             'priority' => 100,
     ) ) );
-
-    $wp_customize->add_setting( 'ekiline_logo_min' );
-
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_min', array(
-        'label'    => __( 'Imagen de logo vertical', 'ekiline' ),
-        'description' => 'Esta imagen se recomienda para su vista en dispositivos móviles.',
-        'section'  => 'title_tagline', // esta seccion corresponde a una predeterminada.
-        'settings' => 'ekiline_logo_min',
-        'priority' => 100,
-    ) ) );  
         
  // video
 //     $wp_customize->add_section( 'ekiline_video_portada' , array(
@@ -114,6 +104,17 @@ function ekiline_theme_customizer( $wp_customize ) {
     				'step'  => 10,
     		),
 	) );    
+    
+    $wp_customize->add_setting( 'ekiline_logo_min' );
+    
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_min', array(
+    		'label'    => __( 'Logotipo header', 'ekiline' ),
+    		'description' => 'Añade tu logotipo si deseas que aparezca en el encabezado.',
+    		'section'  => 'header_image', 
+    		'settings' => 'ekiline_logo_min',
+    		'priority' => 100,
+    ) ) );
+    
 
 // ancho de la página
     $wp_customize->add_section( 'ekiline_vista_section' , array(

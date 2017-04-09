@@ -398,8 +398,8 @@ function cssColors() {
 	if ( $modulos == '') : $modulos = '#d0d7dd'; else : $modulos ; endif;
 
 	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
-		body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
-		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}
+		/**body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
+		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}**/
 		body,.mini-fecha .dia{ color:'.$texto.'; }
 		a{ color:'.$enlaces.'; }
 		a:hover,a:focus,a:active{ color:'.$modulos.'; }
@@ -417,16 +417,19 @@ add_action('wp_head','cssColors');
  **/
  
 function logoTheme() {
-    
-    if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
-        echo '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-    } elseif ( get_theme_mod( 'ekiline_logo_min' ) && !get_theme_mod( 'ekiline_logo_max' ) ) {
-        echo '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-    } elseif ( get_theme_mod( 'ekiline_logo_max' ) && get_theme_mod( 'ekiline_logo_min' ) ) {
-        echo '<img class="img-responsive hidden-xs" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>
-        <img class="img-responsive visible-xs" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+	//variables de logotipo
+	$logoHor = get_theme_mod( 'ekiline_logo_max' );
+	$logoIcono = get_site_icon_url();
+	
+    if ( $logoHor && !$logoIcono ) {
+        echo '<img class="img-responsive" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>';
+    } elseif ( !$logoHor && $logoIcono ) {
+        echo '<img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' );
+    } elseif ( $logoHor && $logoIcono ) {
+        echo '<img class="img-responsive hidden-xs" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
+        <span class="visible-xs"><img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' ) . '</span>';
     } else {
-        echo bloginfo( 'name' );
+        echo get_bloginfo( 'name' );
     } 
 
 }

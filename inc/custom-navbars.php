@@ -5,57 +5,57 @@
  * @package ekiline
  */
 
+
 // menu en la parte superior top
  
 function topNavbar(){
 
-$menuSettings = get_theme_mod('ekiline_topmenuSettings');
-if ($menuSettings == '0') { $cssClass = ' navbar-static-top'; }
-else if ($menuSettings == '1') { $cssClass = ' navbar-fixed-top'; }
-else if ($menuSettings == '2') { $cssClass = ' navbar-fixed-bottom'; }
-else if ($menuSettings == '3') { $cssClass = ' navbar-affix'; }// $affixAtts = ' data-spy="affix" data-offset-top="200"'; }
-
-	 
-if ( has_nav_menu( 'top' ) ) : ?>
-<?php // <nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar" role="navigation" data-spy="affix" data-offset-top="200"> ?>
-<nav id="site-navigation-top"  class="navbar navbar-default overtake top-navbar<?php echo $cssClass;?>" role="navigation"<?php echo $affixAtts;?>>
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
-                <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Your site title as branding in the menu -->                
-            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-			<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
-        </div>
-        
-        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
-        			
-        <!-- The WordPress Menu goes here -->
-        <?php wp_nav_menu( array(
-                'menu'              => 'top',
-                'theme_location'    => 'top',
-                'depth'             => 2,
-//                'container'         => 'div',
-//                    'container_class'   => 'collapse navbar-collapse top',
-//                    'container_id'      => 'navbar-collapse-out',
-                'container'         => '',
-                'menu_class'        => 'nav navbar-nav navbar-right',
-                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                'menu_id'           => 'top-menu',
-                'walker'            => new wp_bootstrap_navwalker()
-                )
-        ); ?>
-
-		<?php dynamic_sidebar( 'navwidget-nw1' ); ?>     
-        
-        </div>
-    </div><!-- .container -->         
-</nav><!-- .site-navigation -->         
-<?php endif;
+	// TOP aciones de menu
+	$navSet = get_theme_mod('ekiline_topmenuSettings');
+	if ($navSet == '0') { $navAction = ' navbar-static-top'; }
+	else if ($navSet == '1') { $navAction = ' navbar-fixed-top'; }
+	else if ($navSet == '2') { $navAction = ' navbar-fixed-bottom'; }
+	else if ($navSet == '3') { $navAction = ' navbar-affix'; }
+		
+	if ( has_nav_menu( 'top' ) ) : ?>
+	<nav id="site-navigation-top"  class="navbar navbar-default top-navbar<?php echo $navAction;?>" role="navigation">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
+	                <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <!-- Your site title as branding in the menu -->                
+	            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+	        </div>
+	        
+	        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
+				<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
+	        
+	        <!-- The WordPress Menu goes here -->
+	        <?php wp_nav_menu( array(
+	                'menu'              => 'top',
+	                'theme_location'    => 'top',
+	                'depth'             => 2,
+	//                'container'         => 'div',
+	//                    'container_class'   => 'collapse navbar-collapse top',
+	//                    'container_id'      => 'navbar-collapse-out',
+	                'container'         => '',
+	                'menu_class'        => 'nav navbar-nav navbar-right',
+	                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+	                'menu_id'           => 'top-menu',
+	                'walker'            => new wp_bootstrap_navwalker()
+	                )
+	        ); ?>
+	
+			<?php dynamic_sidebar( 'navwidget-nw1' ); ?>     
+	        
+	        </div>
+	    </div><!-- .container -->         
+	</nav><!-- .site-navigation -->         
+	<?php endif;
 
 }
 
@@ -77,7 +77,6 @@ if ( has_nav_menu( 'primary' ) ) : ?>
                 </button>
                 <!-- Your site title as branding in the menu -->                
                 <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-	            <p class="navbar-text"><?php echo get_bloginfo( 'description' ); ?></p>
             </div><!-- .navbar-header -->
             
 

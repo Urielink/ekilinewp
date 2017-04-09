@@ -214,17 +214,17 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
 function ekiline_scripts() {
 	
 	// // Extra CSS
-	wp_register_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
+	wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	// Css con condicion: https://developer.wordpress.org/reference/functions/wp_style_add_data/
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
-	wp_register_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 	// Llamar google fonts desde url.
-	wp_register_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
+	// wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
     // metodo ekiline, no modificar.
-	wp_register_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	// U_ style: CSS (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
-	wp_register_style( 'ekiline-style', get_stylesheet_uri() );	
+	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	/* Javascript : Desactivar Jquery para enviarlo al fondo (http://wordpress.stackexchange.com/questions/173601/enqueue-core-jquery-in-the-footer)
 	 * en caso contrario, solo añade esta linea y el script se ubucará en el <head>.
@@ -305,7 +305,7 @@ require get_template_directory() . '/inc/addon-tabs.php';
 require get_template_directory() . '/inc/addon-widgetoptions.php';
 require get_template_directory() . '/inc/addon-extractshortcode.php';
 require get_template_directory() . '/inc/addon-sublanguage.php';
-require get_template_directory() . '/inc/addon-optimize.php';
+// require get_template_directory() . '/inc/addon-optimize.php';
 // require get_template_directory() . '/inc/addon-minify.php';
 // require get_template_directory() . '/inc/addon-privateaccess.php';
 

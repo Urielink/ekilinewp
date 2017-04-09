@@ -87,9 +87,8 @@ function customHeader() {
 		if ( is_front_page() && get_header_image() ){
 
 			// Variables
-			$siteName = get_bloginfo( 'name' );
-			$siteDescription = get_bloginfo( 'description', 'display' );
-			$quickLink = esc_html( 'Ir al contenido', 'ekiline' );
+			$siteName = get_bloginfo( 'name', 'display' );
+			$siteDescription = get_bloginfo( 'description', 'display'  );
 			// Estilo de imagen de fondo: invocamos la imagen del editor de página y lo añadimos como css.
 			// En combinación con un range
 			$rangeHead = get_theme_mod('ekiline_range_header');
@@ -115,9 +114,7 @@ function customHeader() {
 						if ( $siteDescription || is_customize_preview() ) :
 							$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
 						endif;
-										
-						$customHeader .= '<a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a>';
-			
+													
 					$customHeader .= '</div><!-- .site-branding -->
 			
 				</header><!-- #masthead -->'; 
@@ -153,9 +150,8 @@ function customHeader() {
     									</div>
 							          </div>
 							          <div class="inner cover">
-										<h1>'.$siteName.'</h1>
+										<h1 class="site-title">'.$siteName.'</h1>
 										<p class="site-description">'. $siteDescription.'</p>
-										<p><a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a></p>
 					    			  </div>
 							          <!--div class="cover-footer">
 							            <div class="inner"><p>Algún contenido</p></div>
@@ -183,7 +179,7 @@ function customHeader() {
 				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
 				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
-    			$customHeader .= '<div class="site-branding jumbotron destacado-estilo" style="background-image: url(' . $url . ');">';
+    			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
     			$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
     			$customHeader .= '</div></header>';
 			}
@@ -213,7 +209,7 @@ function customHeader() {
 				$url = $cat_data['img'];
 		
 				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
-				$customHeader .= '<div class="site-branding jumbotron destacado-estilo categoria" style="background-image: url(' . $url . ');">';
+				$customHeader .= '<div class="site-branding jumbotron categoria" style="background-image: url(' . $url . ');">';
 				$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
 				$customHeader .= '</div></header>';
 			}
