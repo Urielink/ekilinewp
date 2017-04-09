@@ -97,27 +97,76 @@ function customHeader() {
 						
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;background-position: center top;padding-left:48px;padding-right:48px;"';
 			
-			//Estructura
+			//Estructura con condición:
+			
+			if ($rangeHead <= '95') {
+				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
 
-			$customHeader = '<header id="masthead" class="site-header" role="banner">';
-			    
-				$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
-							
-					if ( is_front_page() && is_home() ) : 
-						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';
-					else :
-						$customHeader .= '<p class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></p>';
-					endif;	
-					
-					if ( $siteDescription || is_customize_preview() ) :
-						$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
-					endif;
-									
-					$customHeader .= '<a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a>';
-		
-				$customHeader .= '</div><!-- .site-branding -->
-		
-			</header><!-- #masthead -->';
+				$customHeader = '<header id="masthead" class="site-header" role="banner">';
+				    
+					$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
+								
+						if ( is_front_page() && is_home() ) : 
+							$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';
+						else :
+							$customHeader .= '<p class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></p>';
+						endif;	
+						
+						if ( $siteDescription || is_customize_preview() ) :
+							$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
+						endif;
+										
+						$customHeader .= '<a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a>';
+			
+					$customHeader .= '</div><!-- .site-branding -->
+			
+				</header><!-- #masthead -->'; 
+			
+			} else {				
+				
+				require get_template_directory() . '/inc/extras.php';
+				$coverLogo = logoTheme();
+// 				// Si la altura es mayor, la imagen hereda la estructura de cover.
+// 				if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
+// 					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+// 				} elseif ( get_theme_mod( 'ekiline_logo_min' ) && !get_theme_mod( 'ekiline_logo_max' ) ) {
+// 					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+// 				} elseif ( get_theme_mod( 'ekiline_logo_max' ) && get_theme_mod( 'ekiline_logo_min' ) ) {
+// 					$coverLogo = '<img class="img-responsive hidden-xs" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>
+//         			<img class="img-responsive visible-xs" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
+// 				} else {
+// 					$coverLogo =  bloginfo( 'name' );
+// 				}
+												
+				$customHeader = '<header id="masthead"  class="cover-wrapper"'.$headerStyle.'>
+							      <div class="cover-wrapper-inner">
+							        <div class="cover-container">
+							          <div class="cover-header clearfix">
+							            <div class="inner">
+    										<h3 class="cover-header-brand">'.$coverLogo.'</h3>
+											<nav> 
+												<ul class="nav cover-header-nav">
+													<li><a href="https://www.google.com/search?q=bixnia.com" target="_blank"><i class="fa fa-google"></i></a></li>
+													<li><a href="https://www.linkedin.com/company/bixnia" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+													<li><a href="https://es-la.facebook.com/bixnia/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+													<li><a href="https://twitter.com/bixnia/" target="_blank"><i class="fa fa-twitter"></i></a></li> 
+												</ul>
+											</nav>				
+    									</div>
+							          </div>
+							          <div class="inner cover">
+										<h1>'.$siteName.'</h1>
+										<p class="site-description">'. $siteDescription.'</p>
+										<p><a class="skip-link screen-reader-text btn btn-sm btn-default" href="#content">'. $quickLink .'</a></p>
+					    			  </div>
+							          <!--div class="cover-footer">
+							            <div class="inner"><p>Algún contenido</p></div>
+							          </div-->
+							        </div>
+							      </div>
+							    </header>';	
+			}			
+				
 		}
 
 		/* Para las internas :

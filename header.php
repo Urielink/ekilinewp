@@ -22,17 +22,15 @@
 </head>
 <body <?php body_class(); ?>>	
 
-<?php topNavbar(); // en caso de un menu superior ?>  
-<?php topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
 <?php topWidgets(); // en caso de widgets en la parte superior  ?>  
-<?php videoHeader(); // en caso de cabecera con video  ?>  
+<?php topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
+<?php videoHeader(); // Cabecera con video  ?>  
 <?php customHeader(); // header personalizado ?>
+<?php topNavbar(); // en caso de un menu superior ?>  
 
 <div id="page" class="site <?php wideSite(); ?>">
 
-
 <?php primaryNavbar(); // menu principal ?>		
-
 <?php breadcrumb(); // menos en el home  ?>
 
 	<div id="content" class="site-content">

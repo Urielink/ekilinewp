@@ -509,7 +509,7 @@ html, body { height: 100%; }
 
 .cover-footer {position: absolute;bottom: 0;width:80%;}
 
- .site-footer::after{
+ /*.site-footer::after{
  	content:'normal';
  	text-align: center;
  	color:#000000;
@@ -521,7 +521,7 @@ html, body { height: 100%; }
  	bottom:30px;
  	background:#FFFFFF;
  	z-index:1000; 	
- }
+ }*/
 
 /* CSS RESPONSIVO: Non-Mobile First Method
  -------------------------------------------------- */
@@ -533,13 +533,13 @@ html, body { height: 100%; }
 
 @media only screen and (max-width : 1200px) {
 /* Bootstrap container 1200 */
-	.site-footer::after {content:'Bootstrap container 1200';background-color: orange;padding:10px;}
+	/*.site-footer::after {content:'Bootstrap container 1200';background-color: orange;padding:10px;}*/
 	#secondary.affix { width: 235px; }	
 }
 
 @media only screen and (max-width : 992px) {
 /* Bootstrap container 992 */	
-	.site-footer::after {content:'Bootstrap container 992';background-color:yellow;padding:10px;}
+	/*.site-footer::after {content:'Bootstrap container 992';background-color:yellow;padding:10px;}*/
 	
 /** Ejecutar el menu responsivo antes: https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint **/
 	.overtake .navbar-header{float:none;}
@@ -564,7 +564,7 @@ html, body { height: 100%; }
 
 @media only screen and (max-width : 768px) { 
 	/*Cambio a tablet en bootstrap */
-	.site-footer::after { content:'Cambio a tablet en bootstrap se activa toogle menu';background-color: teal;padding:10px; }
+	/*.site-footer::after { content:'Cambio a tablet en bootstrap se activa toogle menu';background-color: teal;padding:10px; }*/
 	
 	/* SideBars plegables */
 	#page-content-wrapper, .toggle-sidebars.left-on #primary {
@@ -578,7 +578,7 @@ html, body { height: 100%; }
 
 @media only screen and (max-width : 480px) {
 	#main{padding:0;}
-	.site-footer::after {content:'screen and (max-width: 480px)';background-color:aqua;padding:10px;}
+	/*.site-footer::after {content:'screen and (max-width: 480px)';background-color:aqua;padding:10px;}*/
 	.entry-content p > img{ max-width:100%; }
 	.destacado-estilo { background-size: cover;	}	
 
@@ -601,7 +601,7 @@ html, body { height: 100%; }
 
 @media only screen and (max-width : 320px){
 	/*Smartphones en general, modo vertical*/	
-	.site-footer::after {content:'screen and (max-width: 320px)';background-color:gray;padding:10px;}	
+	/*.site-footer::after {content:'screen and (max-width: 320px)';background-color:gray;padding:10px;}	*/
 }	
 
 

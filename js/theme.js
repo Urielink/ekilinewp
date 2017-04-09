@@ -85,7 +85,7 @@
 	    	console.log ('si header');
 	    	console.log ( $('#masthead').height() );
 	    	
-	    	$('.top-navbar').affix({
+	    	$('.top-navbar.navbar-affix').affix({
 		        offset: {
 		          top: $('#masthead').height()
 		        }
@@ -94,9 +94,9 @@
 	    } else {
 	    	
 	    	console.log ('no header');
-	    	console.log ( $('.top-navbar').height() );
+	    	console.log ( $('.top-navbar.navbar-affix').height() );
 
-	    	$('.top-navbar').affix({
+	    	$('.top-navbar.navbar-affix').affix({
 		        offset: {
 		          top: $('.top-navbar').height()
 		        }
