@@ -39,9 +39,14 @@ img{max-width:100%;height:auto;}
 .no-margin{margin:0px;}
 /* En el menu */
 .navbar-brand img {height:50px;max-width: 220px;float:left;margin-top: -15px;}
-
 /* En caso de fijar el menu */
 .navbar.affix,.navbar.affix-top{left:0;right:0;z-index:1000;margin-bottom:0px;}
+/* Jumbotron con imagen */
+.jumbotron{
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
 
 /* ------------------------------------------------
  * LAYOUT Ekiline CSS, tus estilos van aqui.

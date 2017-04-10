@@ -94,14 +94,14 @@ function customHeader() {
 			$rangeHead = get_theme_mod('ekiline_range_header');
 			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
 						
-			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;background-position: center top;padding-left:48px;padding-right:48px;"';
+			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
 			
 			//Estructura con condición:
 			
 			if ($rangeHead <= '95') {
 				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
 
-				$customHeader = '<header id="masthead" class="site-header" role="banner">';
+				$customHeader = '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
 					$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
 								
@@ -122,36 +122,28 @@ function customHeader() {
 			} else {				
 				
 				// Si la altura es mayor, la imagen hereda la estructura de cover.
-				if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
-					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-				} elseif ( get_theme_mod( 'ekiline_logo_min' ) && !get_theme_mod( 'ekiline_logo_max' ) ) {
-					$coverLogo = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-				} elseif ( get_theme_mod( 'ekiline_logo_max' ) && get_theme_mod( 'ekiline_logo_min' ) ) {
-					$coverLogo = '<img class="img-responsive hidden-xs" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>
-        			<img class="img-responsive visible-xs" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
-				} else {
-					$coverLogo =  bloginfo( 'name' );
-				}
+				if ( get_theme_mod( 'ekiline_logo_min' ) ) {
+					$coverLogo = '<img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
+				} 
 												
-				$customHeader = '<header id="masthead"  class="cover-wrapper"'.$headerStyle.'>
+				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">
-    										<h3 class="cover-header-brand">'.$coverLogo.'</h3>
+							            <div class="inner">'.$coverLogo.'											
 											<nav> 
 												<ul class="nav cover-header-nav">
-													<li><a href="https://www.google.com/search?q=bixnia.com" target="_blank"><i class="fa fa-google"></i></a></li>
-													<li><a href="https://www.linkedin.com/company/bixnia" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="https://es-la.facebook.com/bixnia/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="https://twitter.com/bixnia/" target="_blank"><i class="fa fa-twitter"></i></a></li> 
+													<li><a href="https://www.google.com/search?q=ekiline.com" target="_blank"><i class="fa fa-google"></i></a></li>
+													<li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+													<li><a href="https://es-la.facebook.com/ekiline/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+													<li><a href="https://twitter.com/ekilinemx/" target="_blank"><i class="fa fa-twitter"></i></a></li> 
 												</ul>
 											</nav>				
     									</div>
 							          </div>
 							          <div class="inner cover">
-										<h1 class="site-title">'.$siteName.'</h1>
-										<p class="site-description">'. $siteDescription.'</p>
+										<h1 class="cover-title">'.$siteName.'</h1>
+										<p><mark class="cover-description">'. $siteDescription.'</mark></p>
 					    			  </div>
 							          <!--div class="cover-footer">
 							            <div class="inner"><p>Algún contenido</p></div>
@@ -178,7 +170,7 @@ function customHeader() {
 				// obten la url de la imagen
 				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
-				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
+				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
     			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
     			$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
     			$customHeader .= '</div></header>';
@@ -208,7 +200,7 @@ function customHeader() {
 				// obten la url de la imagen
 				$url = $cat_data['img'];
 		
-				$customHeader .= '<header id="masthead" class="site-header" role="banner">';
+				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				$customHeader .= '<div class="site-branding jumbotron categoria" style="background-image: url(' . $url . ');">';
 				$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
 				$customHeader .= '</div></header>';

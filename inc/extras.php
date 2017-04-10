@@ -402,9 +402,10 @@ function cssColors() {
 		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}**/
 		body,.mini-fecha .dia{ color:'.$texto.'; }
 		a{ color:'.$enlaces.'; }
-		a:hover,a:focus,a:active{ color:'.$modulos.'; }
+		a:hover,a:focus,a:active,.cover-title{ color:'.$modulos.'; }
         body > footer, .site-footer, .mini-fecha .dia{ background-color:'.$modulos.'; }
-        .mini-fecha .mes{ background-color:'.$texto.'; }
+        mark{ background-color:'.$enlaces.'; }
+       	.mini-fecha .mes{ background-color:'.$texto.'; }
 		</style>';
 
 	echo $miestilo;

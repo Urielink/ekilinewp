@@ -483,29 +483,28 @@ html, body { height: 100%; }
  * cover header
  */
 .cover-header { position: absolute; top: 0; width:80%;}
-.cover-header-brand {margin-top: 10px;margin-bottom: 10px;float:left;}
-.cover-header-nav > li {float:right;}
+.cover-header-brand {
+    float: left;
+    width: 200px;
+    height: auto;
+    background: #FFFFFF;
+    margin-top: -30px;
+}
+.cover-header-nav > li {float:right;margin-left: 20px;}
 .cover-header-nav > li + li {margin-left: 20px;}
 
 .cover-header-nav > li > a {
   padding-right: 0;
   padding-left: 0;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  color: #fff; 
-  color: rgba(255,255,255,.75);
   border-bottom: 2px solid transparent;
 }
+
 .cover-header-nav > li > a:hover,
 .cover-header-nav > li > a:focus {
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.cover-header-nav > .active > a,
-.cover-header-nav > .active > a:hover,
-.cover-header-nav > .active > a:focus {
-  color: #fff;
   border-bottom-color: #fff;
+  background-color: transparent !important;
 }
 
 /* cover body */
