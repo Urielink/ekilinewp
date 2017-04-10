@@ -8,10 +8,6 @@
  */
 
 get_header(); ?>
-
-	<section id="primary" class="content-area<?php sideOn(); ?>">
-
-		<?php breadcrumb(); ?>
 	
 		<?php dynamic_sidebar( 'content-w1' ); ?>		
 
@@ -49,8 +45,4 @@ get_header(); ?>
 		
 		<?php dynamic_sidebar( 'content-w2' ); ?>		
 		
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_sidebar('right'); ?>
 <?php get_footer(); ?>

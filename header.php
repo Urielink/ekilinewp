@@ -34,3 +34,7 @@
 
 	<div id="content" class="site-content">
 	
+		<div id="primary" class="content-area<?php sideOn(); ?>"><!-- // termina en footer.php -->
+				
+		<?php breadcrumb(); ?>
+	

@@ -15,9 +15,14 @@
  */
 ?>
 
+		</div><!-- #primary -->
+	
+		<?php get_sidebar(); ?>
+		<?php get_sidebar('right'); ?>	
+	
 	</div><!-- #content -->
 
-    </div><!-- #page -->
+</div><!-- #page -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 	    	    

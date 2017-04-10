@@ -13,10 +13,6 @@
  */
 
 get_header(); ?>
-
-	<div id="primary" class="content-area<?php sideOn(); ?>">
-	
-		<?php breadcrumb(); ?>
 	
 		<?php dynamic_sidebar( 'content-w1' ); ?>
 
@@ -38,9 +34,5 @@ get_header(); ?>
 		</main><!-- #main -->
 
 		<?php dynamic_sidebar( 'content-w2' ); ?>		
-
-	</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_sidebar('right'); ?>
+		
 <?php get_footer(); ?>
