@@ -153,7 +153,7 @@ function my_post_gallery( $output, $attr) {
     	 
     }
     $columns = $numero;    
-    $wrapper ='<div class="row gallery-module wrapper-'.$name.'">';
+    $wrapper ='<div class="clearfix gallery-module wrapper-'.$name.'">';
     $wrapperClose ="</div>";
     
     

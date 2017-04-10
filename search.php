@@ -11,6 +11,8 @@ get_header(); ?>
 
 	<section id="primary" class="content-area<?php sideOn(); ?>">
 
+		<?php breadcrumb(); ?>
+	
 		<?php dynamic_sidebar( 'content-w1' ); ?>		
 
 		<main id="main" class="site-main<?php mainContainer(); ?>" role="main">

@@ -31,6 +31,6 @@
 <div id="page" class="site <?php wideSite(); ?>">
 
 <?php primaryNavbar(); // menu principal ?>		
-<?php breadcrumb(); // menos en el home  ?>
 
 	<div id="content" class="site-content">
+	

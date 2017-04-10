@@ -438,12 +438,6 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
     font-size: 15px;
     margin: -10px -15px;
 }
-.carousel-control.left {
-    left: -10px;
-}
-.carousel-control.right {
-    right: -10px;
-}
 
 /* Carrusel de notas */
 .carousel.single-thumb.x3 .item .col-xs-4{

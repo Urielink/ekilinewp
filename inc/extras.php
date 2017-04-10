@@ -373,9 +373,8 @@ add_filter( 'get_search_form', 'my_search_form' );
 function mainContainer() {
     
     if ( ! is_home() && ! is_front_page() ) {
-             $mainContainer = ' main-custom'; 
+             echo ' main-custom'; 
     } 
-    echo $mainContainer;
 }
 
 
@@ -558,7 +557,6 @@ function miniDate() {
 	//  http://wordpress.stackexchange.com/questions/90321/how-to-get-date-for-each-post **/
  	echo '<div class="mini-fecha"><span class="dia">'.get_the_date('j').'</span><span class="mes">'.get_the_date('M').'</span></div>';
 }
-
 
 /* Eliminar párrafos vacíos en shortcodes.
  * http://mattpierce.info/2015/10/fixing-shortcodes-and-paragraph-tags-in-wordpress/
