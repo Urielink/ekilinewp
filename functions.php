@@ -308,4 +308,5 @@ require get_template_directory() . '/inc/addon-sublanguage.php';
 // require get_template_directory() . '/inc/addon-optimize.php';
 // require get_template_directory() . '/inc/addon-minify.php';
 // require get_template_directory() . '/inc/addon-privateaccess.php';
+require get_template_directory() . '/inc/addon-maintenance.php';
 

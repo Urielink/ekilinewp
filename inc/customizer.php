@@ -48,6 +48,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 // añadir un controlador: https://codex.wordpress.org/Class_Reference/WP_Customize_Control  
 // https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
 // https://developer.wordpress.org/themes/advanced-topics/customizer-api/
+// http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
 
     $wp_customize->add_setting( 'ekiline_logo_max' );
 
@@ -265,5 +266,31 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
         );      
     
+    // Servicios varios
+     
+    $wp_customize->add_section( 'ekiline_services' , array(
+    		'title'       => __( 'Servicios extra', 'ekiline' ),
+    		'priority'    => 160,
+    		'description' => __( 'Características añadidas para tu sitio.', 'ekiline' )
+    ) );
+    
+    // Poner en mantenimiento
+    $wp_customize->add_setting(
+    		'ekiline_maintenance', array(
+    				'default' => ''
+    		) );
+    
+    $wp_customize->add_control(
+    		'ekiline_maintenance',
+    		array(
+    				'label'          => __( 'Poner mi sitio en mantenimiento', 'ekiline' ),
+    				'description'    => 'Si es necesario ',
+    				'section'        => 'ekiline_services',
+    				'settings'       => 'ekiline_maintenance',
+    				'type'           => 'checkbox',
+    		)
+    );    
+
+        
 }
 add_action('customize_register', 'ekiline_theme_customizer');

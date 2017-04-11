@@ -404,7 +404,7 @@ function cssColors() {
 		a:hover,a:focus,a:active,.cover-title{ color:'.$modulos.'; }
         body > footer, .site-footer, .mini-fecha .dia{ background-color:'.$modulos.'; }
         mark{ background-color:'.$enlaces.'; }
-       	.mini-fecha .mes{ background-color:'.$texto.'; }
+       	.mini-fecha .mes, .page-maintenance{ background-color:'.$texto.'; }
 		</style>';
 
 	echo $miestilo;
@@ -637,11 +637,6 @@ function readRss($atts) {
 
 add_shortcode('rss', 'readRss'); 
 
-/** Poner en modo de mantenimineto **/
-// function maintenace_mode() {
-      // if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {wp_die('Maintenance.');}
-// }
-// add_action('get_header', 'maintenace_mode');
 
 /*	
  * Todos los componentes que no formen parte del template, es decir, 
