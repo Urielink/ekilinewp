@@ -390,21 +390,29 @@ function cssColors() {
 	$texto = get_option('text_color');
 	$enlaces = get_option('links_color');
 	$modulos = get_option('module_color');
-
+	$menu = get_option('menu_color');
+	$footer = get_option('footer_color');
+	
 	// si las opciones no están customizadas utiliza los valores por default.
 	if ( $texto == '') : $texto = '#7c8d96'; else : $texto ; endif;
 	if ( $enlaces == '') : $enlaces = '#f8af0c'; else : $enlaces ; endif;
 	if ( $modulos == '') : $modulos = '#d0d7dd'; else : $modulos ; endif;
-
+	//if ( $menu == '') : $menu = '#f8f8f8'; else : $menu ; endif;
+	if ( $footer == '') : $footer = $modulos; else : $footer ; endif;
+	if( true === get_theme_mod('ekiline_inversemenu') ){ $inverseMenu = 'color:#ffffffcc';}
+	
+	
 	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
 		/**body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
 		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}**/
 		body,.mini-fecha .dia{ color:'.$texto.'; }
 		a{ color:'.$enlaces.'; }
 		a:hover,a:focus,a:active,.cover-title{ color:'.$modulos.'; }
-        body > footer, .site-footer, .mini-fecha .dia{ background-color:'.$modulos.'; }
+        .mini-fecha .dia{ background-color:'.$modulos.'; }
         mark{ background-color:'.$enlaces.'; }
        	.mini-fecha .mes, .page-maintenance{ background-color:'.$texto.'; }
+		.navbar-default,.navbar-inverse { background-color:'.$menu.';}
+		.site-footer { background-color: '.$footer.';'.$inverseMenu.'}       			
 		</style>';
 
 	echo $miestilo;

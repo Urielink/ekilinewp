@@ -35,15 +35,47 @@ function ekiline_theme_customizer( $wp_customize ) {
     $colors[] = array( 'slug'=>'text_color', 'default' => '#7c8d96', 'label' => __( 'Color de texto', 'ekiline' ) );
     $colors[] = array( 'slug'=>'links_color', 'default' => '#f8af0c', 'label' => __( 'Color de links', 'ekiline' ) );
     $colors[] = array( 'slug'=>'module_color', 'default' => '#d0d7dd', 'label' => __( 'Color de modulos', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Color de menu', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'footer_color', 'default' => '#d0d7dd', 'label' => __( 'Color de pie de página', 'ekiline' ) );
     
     foreach($colors as $color)
     {
         // SETTINGS
-        $wp_customize->add_setting( $color['slug'], array( 'default' => $color['default'], 'type' => 'option', 'capability' => 'edit_theme_options' ));
+        $wp_customize->add_setting( 
+        		$color['slug'], array( 
+        				'default' => $color['default'], 
+        				'type' => 'option', 
+        				'capability' => 'edit_theme_options' )
+        		);
 
         // CONTROLS
-        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $color['slug'], array( 'label' => $color['label'], 'section' => 'colors', 'settings' => $color['slug'] )));
+        $wp_customize->add_control( 
+        		new WP_Customize_Color_Control( 
+        				$wp_customize, $color['slug'], 
+        				array( 'label' => $color['label'], 
+        						'section' => 'colors', 
+        						'settings' => $color['slug'] 
+        				)
+        		)
+        );
     }
+    
+    // Invertir el menu
+    $wp_customize->add_setting(
+    		'ekiline_inversemenu', array(
+    				'default' => ''
+    		) );
+    
+    $wp_customize->add_control(
+    		'ekiline_inversemenu',
+    		array(
+    				'label'          => __( 'Textos claros en menu y footer', 'ekiline' ),
+    				'description'    => 'Habilita esta opción en caso de utilizar un menú y un footer oscuros.',
+    				'section'        => 'colors',
+    				'settings'       => 'ekiline_inversemenu',
+    				'type'           => 'checkbox'
+    		)
+    );    
 
 // añadir un controlador: https://codex.wordpress.org/Class_Reference/WP_Customize_Control  
 // https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
