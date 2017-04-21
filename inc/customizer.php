@@ -32,11 +32,11 @@ function ekiline_theme_customizer( $wp_customize ) {
     
 // colores  
     $colors = array();
-    $colors[] = array( 'slug'=>'text_color', 'default' => '#7c8d96', 'label' => __( 'Color de texto', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'links_color', 'default' => '#f8af0c', 'label' => __( 'Color de links', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'module_color', 'default' => '#d0d7dd', 'label' => __( 'Color de modulos', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Color de menu', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'footer_color', 'default' => '#d0d7dd', 'label' => __( 'Color de pie de página', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'menu_color', 'default' => '#f8f8f8', 'label' => __( 'Color de menu', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de página', 'ekiline' ) );
     
     foreach($colors as $color)
     {

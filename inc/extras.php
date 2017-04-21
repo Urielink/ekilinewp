@@ -394,25 +394,52 @@ function cssColors() {
 	$footer = get_option('footer_color');
 	
 	// si las opciones no están customizadas utiliza los valores por default.
-	if ( $texto == '') : $texto = '#7c8d96'; else : $texto ; endif;
-	if ( $enlaces == '') : $enlaces = '#f8af0c'; else : $enlaces ; endif;
-	if ( $modulos == '') : $modulos = '#d0d7dd'; else : $modulos ; endif;
-	//if ( $menu == '') : $menu = '#f8f8f8'; else : $menu ; endif;
-	if ( $footer == '') : $footer = $modulos; else : $footer ; endif;
-	if( true === get_theme_mod('ekiline_inversemenu') ){ $inverseMenu = 'color:#ffffffcc';}
+	if ( $texto == '') : $texto = '#333333'; else : $texto ; endif;
+	if ( $enlaces == '') : $enlaces = '#337ab7'; else : $enlaces ; endif;
+	if ( $modulos == '') : $modulos = '#eeeeee'; else : $modulos ; endif;
+	if ( $menu == '') : $menu = '#f8f8f8'; else : $menu ; endif;
+	if ( $footer == '') : $footer = $menu; else : $footer ; endif;
+	if( true === get_theme_mod('ekiline_inversemenu') ){
+	     $invFooter = '#ffffff;';
+    } else {
+         $invFooter = $texto ;
+    }
 	
 	
 	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
 		/**body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
 		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}**/
 		body,.mini-fecha .dia{ color:'.$texto.'; }
-		a{ color:'.$enlaces.'; }
-		a:hover,a:focus,a:active,.cover-title{ color:'.$modulos.'; }
+		a:hover,a:focus,a:active{ color:'.$modulos.'; }
         .mini-fecha .dia{ background-color:'.$modulos.'; }
-        mark{ background-color:'.$enlaces.'; }
        	.mini-fecha .mes, .page-maintenance{ background-color:'.$texto.'; }
-		.navbar-default,.navbar-inverse { background-color:'.$menu.';}
-		.site-footer { background-color: '.$footer.';'.$inverseMenu.'}       			
+        .navbar-default { background-color:'.$menu.';border-color:rgba(255,255,255,.4); }
+		.navbar-inverse { background-color:'.$menu.';border-color:rgba(0,0,0,.3); }
+        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a{ color:'.$enlaces.'; }
+        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a, a{ color:'.$texto.'; }
+        .site-footer { background-color: '.$footer.';color:'.$invFooter.';}         
+/* en caso de efectos de volumen */
+        .navbar-default, .navbar-inverse {
+            background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$footer.' 100%);
+            background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$footer.' 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$footer.'));
+            background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$footer.' 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$footer.'", GradientType=0);
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+            background-repeat: repeat-x;}				
+        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .active > a,
+        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
+            background-image: -webkit-linear-gradient(top, '.$footer.' 0%, '.$menu.' 100%);
+            background-image: -o-linear-gradient(top, '.$footer.' 0%, '.$menu.' 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, from('.$footer.'), to('.$menu.'));
+            background-image: linear-gradient(to bottom, '.$footer.' 0%, '.$menu.' 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$footer.'", endColorstr="'.$menu.'", GradientType=0);
+            background-repeat: repeat-x;
+            -webkit-box-shadow: inset 0 3px 9px #0000001a;
+            box-shadow: inset 0 3px 9px #0000001a;
+        }
+                        
+            
 		</style>';
 
 	echo $miestilo;
