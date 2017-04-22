@@ -82,7 +82,10 @@ endif;  // ekiline_admin_header_image
 // Creo una función para añadir un header personalizado
 
 function customHeader() {
-		
+        
+    
+     $customHeader = '';
+    		
 		/* Para el HOME:
 		 * en caso de tener una imagen de cabecera aparecer un header
 		 */ 
@@ -104,7 +107,7 @@ function customHeader() {
 			if ($rangeHead <= '95') {
 				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
 
-				$customHeader = '<header id="masthead" class="site-header container-fluid" role="banner">';
+				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
 					$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
 								
@@ -165,13 +168,14 @@ function customHeader() {
 		elseif ( is_single() || is_page() ){
 			
 			//extrae el id
-			$titulo = get_the_title($post->ID);
-			
+			//$titulo = get_the_title($post->ID);
+            $titulo = get_the_title();
+						
 			// y si tiene imagen destacada
 			if ( has_post_thumbnail() ) {
 
 				// obten la url de la imagen
-				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+				$url = wp_get_attachment_url( get_post_thumbnail_id() );
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
     			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';

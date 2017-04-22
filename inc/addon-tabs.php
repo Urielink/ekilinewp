@@ -25,7 +25,7 @@ function tabs_shortcode( $atts, $content = null ) {
 	preg_match_all("/$regex/is",$content,$match);
 	$content = $match[0];
 	
-	if ($title){$title = '<h2 class="text-center">'.$title.'</h2>';}
+	if ($title){$title = '<h3 class="text-center">'.$title.'</h3>';}
 	
    $return =  '<div class="tabs-module clearfix '.$class.'"><div class="container">'.$title;
 		$i = -1;

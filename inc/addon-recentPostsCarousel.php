@@ -55,9 +55,9 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
         <?php if ( $title ) echo $before_title . $title . $after_title; ?>
         
         
-<?php /* Insertando una lista sencilla con thumb */ ?>         
+<?php /* Insertando una lista sencilla con thumb        
         
-            <?php/** ul class="list-unstyled">
+            <ul class="list-unstyled">
                 <?php while( $r->have_posts() ) : $r->the_post(); ?>                
                 <li class="media">
                   <div class="media-left">
@@ -74,7 +74,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                   </div>
                 </li>  
                 <?php endwhile;?>                
-            </ul **/?>
+            </ul>
             
 <?php /* Insertando un carrusel */ ?>         
 
@@ -160,7 +160,8 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
     function form( $instance ) {
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
         $number = isset($instance['number']) ? absint($instance['number']) : 5;
-        $exclude = esc_attr( $instance['exclude'] );
+        // $exclude = esc_attr( $instance['exclude'] );
+        $exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
 ?>
 
         <p>

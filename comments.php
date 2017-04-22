@@ -86,7 +86,9 @@ if ( post_password_required() ) {
  * http://crunchify.com/how-to-remove-url-website-field-from-wordpress-comment-form/
  * 
  */
- 
+$req = get_option( 'require_name_email' );
+$aria_req = ( $req ? " aria-required='true'" : '' );
+
 $args = array(
 	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
@@ -105,19 +107,17 @@ $args = array(
       '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
       '" size="30"' . $aria_req . ' /></div>',
       
-	/** se comenta para que no aparezca
+	// se comenta para que no aparezca
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
       __( 'Website' ) . '</label>' .
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
-      '" size="30" /></div>'
-      
-	  **/
+      '" size="30" /></div>'      
 	  )),
 	  
     // las clases de manera independiente:
     'class_form'           => 'comment-form form',
-    'class_submit' => 'submit btn btn-default pull-right'  
+    'class_submit' => 'submit btn btn-default'  
 	
 );
 

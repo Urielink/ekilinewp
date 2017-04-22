@@ -196,7 +196,7 @@ function ekiline_insertar($atts, $content = null) {
 	extract(shortcode_atts(array('titulo'=>'','categoria'=>'','limite'=>'', 'class'=>'default-list', 'orden'=>'DES'), $atts));
 
 	// mi variable de titulo
-	if ($titulo){$titulo = '<h2 class="text-center">'.$titulo.'</h2>';}
+	if ($titulo){$titulo = '<h4 class="text-center">'.$titulo.'</h4>';}
 		
 	ob_start(); // abre 
 	
@@ -470,11 +470,13 @@ function logoTheme() {
 }
 
 
-function destacadoUrl() {    
-    if ( has_post_thumbnail() ) {
-        $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-        echo $url;        
-    }    
+function destacadoUrl() {
+    if ( is_single() ){    
+        if ( has_post_thumbnail() ) {
+            $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+            echo $url;        
+        }    
+    }
 }
 
 function destacadoImage() {

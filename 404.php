@@ -27,7 +27,7 @@ get_header(); ?>
 
 					<?php if ( ekiline_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'ekiline' ); ?></h2>
+						<h3 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'ekiline' ); ?></h3>
 						<ul>
 						<?php
 							wp_list_categories( array(
