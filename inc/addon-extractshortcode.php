@@ -24,7 +24,7 @@ function ekiline_topcontent($atts, $content = null) {
 add_shortcode('topcontent', 'ekiline_topcontent');
 
 
-/* 2) se crea la función para el template, en caso de existir el shortcode.*/
+/* 2) se crea la funcion para el template, en caso de existir el shortcode.*/
  
 if ( ! function_exists( 'topShortcode' ) ) {
 	function topShortcode() {

@@ -34,7 +34,7 @@ function ekiline_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'ekiline_body_classes' );
 
-// SEO en caso de necesitar etiquetas en las páginas:
+// SEO en caso de necesitar etiquetas en las paginas:
 // https://www.sitepoint.com/wordpress-pages-use-tags/
 
 // add tag support to pages
@@ -71,10 +71,10 @@ function getTags() {
 }
 
 
-// Optimización metas
+// Optimizacion metas
 
 function getDescription(){
-    // el dato que se mostrará
+    // el dato que se mostrara
     if ( is_single() || is_page() ) {
         
     global $wp_query;
@@ -99,7 +99,7 @@ function getDescription(){
 }
 
 
-/** si necesitaramos añadir campos en la edicion usamos metabox: 
+/** si necesitaramos agregar campos en la edicion usamos metabox: 
  *  https://developer.wordpress.org/reference/functions/add_meta_box/
  *  https://www.sitepoint.com/adding-custom-meta-boxes-to-wordpress/
  **/
@@ -107,10 +107,10 @@ function getDescription(){
 // En caso de necesitar limpiar o reemplazar caracteres especiales.
 
 function limpiarCaracteres($string) {
-	$string = str_replace(' ', '-', $string);
-	$intercambio = array('á' => 'a', 'Á' => 'A', 'à' => 'a', 'À' => 'A', 'ă' => 'a', 'Ă' => 'A', 'â' => 'a', 'Â' => 'A', 'å' => 'a', 'Å' => 'A', 'ã' => 'a', 'Ã' => 'A', 'ą' => 'a', 'Ą' => 'A', 'ā' => 'a', 'Ā' => 'A', 'ä' => 'ae', 'Ä' => 'AE', 'æ' => 'ae', 'Æ' => 'AE', 'ḃ' => 'b', 'Ḃ' => 'B', 'ć' => 'c', 'Ć' => 'C', 'ĉ' => 'c', 'Ĉ' => 'C', 'č' => 'c', 'Č' => 'C', 'ċ' => 'c', 'Ċ' => 'C', 'ç' => 'c', 'Ç' => 'C', 'ď' => 'd', 'Ď' => 'D', 'ḋ' => 'd', 'Ḋ' => 'D', 'đ' => 'd', 'Đ' => 'D', 'ð' => 'dh', 'Ð' => 'Dh', 'é' => 'e', 'É' => 'E', 'è' => 'e', 'È' => 'E', 'ĕ' => 'e', 'Ĕ' => 'E', 'ê' => 'e', 'Ê' => 'E', 'ě' => 'e', 'Ě' => 'E', 'ë' => 'e', 'Ë' => 'E', 'ė' => 'e', 'Ė' => 'E', 'ę' => 'e', 'Ę' => 'E', 'ē' => 'e', 'Ē' => 'E', 'ḟ' => 'f', 'Ḟ' => 'F', 'ƒ' => 'f', 'Ƒ' => 'F', 'ğ' => 'g', 'Ğ' => 'G', 'ĝ' => 'g', 'Ĝ' => 'G', 'ġ' => 'g', 'Ġ' => 'G', 'ģ' => 'g', 'Ģ' => 'G', 'ĥ' => 'h', 'Ĥ' => 'H', 'ħ' => 'h', 'Ħ' => 'H', 'í' => 'i', 'Í' => 'I', 'ì' => 'i', 'Ì' => 'I', 'î' => 'i', 'Î' => 'I', 'ï' => 'i', 'Ï' => 'I', 'ĩ' => 'i', 'Ĩ' => 'I', 'į' => 'i', 'Į' => 'I', 'ī' => 'i', 'Ī' => 'I', 'ĵ' => 'j', 'Ĵ' => 'J', 'ķ' => 'k', 'Ķ' => 'K', 'ĺ' => 'l', 'Ĺ' => 'L', 'ľ' => 'l', 'Ľ' => 'L', 'ļ' => 'l', 'Ļ' => 'L', 'ł' => 'l', 'Ł' => 'L', 'ṁ' => 'm', 'Ṁ' => 'M', 'ń' => 'n', 'Ń' => 'N', 'ň' => 'n', 'Ň' => 'N', 'ñ' => 'n', 'Ñ' => 'N', 'ņ' => 'n', 'Ņ' => 'N', 'ó' => 'o', 'Ó' => 'O', 'ò' => 'o', 'Ò' => 'O', 'ô' => 'o', 'Ô' => 'O', 'ő' => 'o', 'Ő' => 'O', 'õ' => 'o', 'Õ' => 'O', 'ø' => 'oe', 'Ø' => 'OE', 'ō' => 'o', 'Ō' => 'O', 'ơ' => 'o', 'Ơ' => 'O', 'ö' => 'oe', 'Ö' => 'OE', 'ṗ' => 'p', 'Ṗ' => 'P', 'ŕ' => 'r', 'Ŕ' => 'R', 'ř' => 'r', 'Ř' => 'R', 'ŗ' => 'r', 'Ŗ' => 'R', 'ś' => 's', 'Ś' => 'S', 'ŝ' => 's', 'Ŝ' => 'S', 'š' => 's', 'Š' => 'S', 'ṡ' => 's', 'Ṡ' => 'S', 'ş' => 's', 'Ş' => 'S', 'ș' => 's', 'Ș' => 'S', 'ß' => 'SS', 'ť' => 't', 'Ť' => 'T', 'ṫ' => 't', 'Ṫ' => 'T', 'ţ' => 't', 'Ţ' => 'T', 'ț' => 't', 'Ț' => 'T', 'ŧ' => 't', 'Ŧ' => 'T', 'ú' => 'u', 'Ú' => 'U', 'ù' => 'u', 'Ù' => 'U', 'ŭ' => 'u', 'Ŭ' => 'U', 'û' => 'u', 'Û' => 'U', 'ů' => 'u', 'Ů' => 'U', 'ű' => 'u', 'Ű' => 'U', 'ũ' => 'u', 'Ũ' => 'U', 'ų' => 'u', 'Ų' => 'U', 'ū' => 'u', 'Ū' => 'U', 'ư' => 'u', 'Ư' => 'U', 'ü' => 'ue', 'Ü' => 'UE', 'ẃ' => 'w', 'Ẃ' => 'W', 'ẁ' => 'w', 'Ẁ' => 'W', 'ŵ' => 'w', 'Ŵ' => 'W', 'ẅ' => 'w', 'Ẅ' => 'W', 'ý' => 'y', 'Ý' => 'Y', 'ỳ' => 'y', 'Ỳ' => 'Y', 'ŷ' => 'y', 'Ŷ' => 'Y', 'ÿ' => 'y', 'Ÿ' => 'Y', 'ź' => 'z', 'Ź' => 'Z', 'ž' => 'z', 'Ž' => 'Z', 'ż' => 'z', 'Ż' => 'Z', 'þ' => 'th', 'Þ' => 'Th', 'µ' => 'u', 'а' => 'a', 'А' => 'a', 'б' => 'b', 'Б' => 'b', 'в' => 'v', 'В' => 'v', 'г' => 'g', 'Г' => 'g', 'д' => 'd', 'Д' => 'd', 'е' => 'e', 'Е' => 'E', 'ё' => 'e', 'Ё' => 'E', 'ж' => 'zh', 'Ж' => 'zh', 'з' => 'z', 'З' => 'z', 'и' => 'i', 'И' => 'i', 'й' => 'j', 'Й' => 'j', 'к' => 'k', 'К' => 'k', 'л' => 'l', 'Л' => 'l', 'м' => 'm', 'М' => 'm', 'н' => 'n', 'Н' => 'n', 'о' => 'o', 'О' => 'o', 'п' => 'p', 'П' => 'p', 'р' => 'r', 'Р' => 'r', 'с' => 's', 'С' => 's', 'т' => 't', 'Т' => 't', 'у' => 'u', 'У' => 'u', 'ф' => 'f', 'Ф' => 'f', 'х' => 'h', 'Х' => 'h', 'ц' => 'c', 'Ц' => 'c', 'ч' => 'ch', 'Ч' => 'ch', 'ш' => 'sh', 'Ш' => 'sh', 'щ' => 'sch', 'Щ' => 'sch', 'ъ' => '', 'Ъ' => '', 'ы' => 'y', 'Ы' => 'y', 'ь' => '', 'Ь' => '', 'э' => 'e', 'Э' => 'e', 'ю' => 'ju', 'Ю' => 'ju', 'я' => 'ja', 'Я' => 'ja');
-	$string = str_replace(array_keys($intercambio), array_values($intercambio), $string);
-	return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
+    $string = str_replace(' ', '-', $string);
+    $intercambio = array('á' => 'a', 'Á' => 'A', 'à' => 'a', 'À' => 'A', 'ă' => 'a', 'Ă' => 'A', 'â' => 'a', 'Â' => 'A', 'å' => 'a', 'Å' => 'A', 'ã' => 'a', 'Ã' => 'A', 'ą' => 'a', 'Ą' => 'A', 'ā' => 'a', 'Ā' => 'A', 'ä' => 'ae', 'Ä' => 'AE', 'æ' => 'ae', 'Æ' => 'AE', 'ḃ' => 'b', 'Ḃ' => 'B', 'ć' => 'c', 'Ć' => 'C', 'ĉ' => 'c', 'Ĉ' => 'C', 'č' => 'c', 'Č' => 'C', 'ċ' => 'c', 'Ċ' => 'C', 'ç' => 'c', 'Ç' => 'C', 'ď' => 'd', 'Ď' => 'D', 'ḋ' => 'd', 'Ḋ' => 'D', 'đ' => 'd', 'Đ' => 'D', 'ð' => 'dh', 'Ð' => 'Dh', 'é' => 'e', 'É' => 'E', 'è' => 'e', 'È' => 'E', 'ĕ' => 'e', 'Ĕ' => 'E', 'ê' => 'e', 'Ê' => 'E', 'ě' => 'e', 'Ě' => 'E', 'ë' => 'e', 'Ë' => 'E', 'ė' => 'e', 'Ė' => 'E', 'ę' => 'e', 'Ę' => 'E', 'ē' => 'e', 'Ē' => 'E', 'ḟ' => 'f', 'Ḟ' => 'F', 'ƒ' => 'f', 'Ƒ' => 'F', 'ğ' => 'g', 'Ğ' => 'G', 'ĝ' => 'g', 'Ĝ' => 'G', 'ġ' => 'g', 'Ġ' => 'G', 'ģ' => 'g', 'Ģ' => 'G', 'ĥ' => 'h', 'Ĥ' => 'H', 'ħ' => 'h', 'Ħ' => 'H', 'í' => 'i', 'Í' => 'I', 'ì' => 'i', 'Ì' => 'I', 'î' => 'i', 'Î' => 'I', 'ï' => 'i', 'Ï' => 'I', 'ĩ' => 'i', 'Ĩ' => 'I', 'į' => 'i', 'Į' => 'I', 'ī' => 'i', 'Ī' => 'I', 'ĵ' => 'j', 'Ĵ' => 'J', 'ķ' => 'k', 'Ķ' => 'K', 'ĺ' => 'l', 'Ĺ' => 'L', 'ľ' => 'l', 'Ľ' => 'L', 'ļ' => 'l', 'Ļ' => 'L', 'ł' => 'l', 'Ł' => 'L', 'ṁ' => 'm', 'Ṁ' => 'M', 'ń' => 'n', 'Ń' => 'N', 'ň' => 'n', 'Ň' => 'N', 'ñ' => 'n', 'Ñ' => 'N', 'ņ' => 'n', 'Ņ' => 'N', 'ó' => 'o', 'Ó' => 'O', 'ò' => 'o', 'Ò' => 'O', 'ô' => 'o', 'Ô' => 'O', 'ő' => 'o', 'Ő' => 'O', 'õ' => 'o', 'Õ' => 'O', 'ø' => 'oe', 'Ø' => 'OE', 'ō' => 'o', 'Ō' => 'O', 'ơ' => 'o', 'Ơ' => 'O', 'ö' => 'oe', 'Ö' => 'OE', 'ṗ' => 'p', 'Ṗ' => 'P', 'ŕ' => 'r', 'Ŕ' => 'R', 'ř' => 'r', 'Ř' => 'R', 'ŗ' => 'r', 'Ŗ' => 'R', 'ś' => 's', 'Ś' => 'S', 'ŝ' => 's', 'Ŝ' => 'S', 'š' => 's', 'Š' => 'S', 'ṡ' => 's', 'Ṡ' => 'S', 'ş' => 's', 'Ş' => 'S', 'ș' => 's', 'Ș' => 'S', 'ß' => 'SS', 'ť' => 't', 'Ť' => 'T', 'ṫ' => 't', 'Ṫ' => 'T', 'ţ' => 't', 'Ţ' => 'T', 'ț' => 't', 'Ț' => 'T', 'ŧ' => 't', 'Ŧ' => 'T', 'ú' => 'u', 'Ú' => 'U', 'ù' => 'u', 'Ù' => 'U', 'ŭ' => 'u', 'Ŭ' => 'U', 'û' => 'u', 'Û' => 'U', 'ů' => 'u', 'Ů' => 'U', 'ű' => 'u', 'Ű' => 'U', 'ũ' => 'u', 'Ũ' => 'U', 'ų' => 'u', 'Ų' => 'U', 'ū' => 'u', 'Ū' => 'U', 'ư' => 'u', 'Ư' => 'U', 'ü' => 'ue', 'Ü' => 'UE', 'ẃ' => 'w', 'Ẃ' => 'W', 'ẁ' => 'w', 'Ẁ' => 'W', 'ŵ' => 'w', 'Ŵ' => 'W', 'ẅ' => 'w', 'Ẅ' => 'W', 'ý' => 'y', 'Ý' => 'Y', 'ỳ' => 'y', 'Ỳ' => 'Y', 'ŷ' => 'y', 'Ŷ' => 'Y', 'ÿ' => 'y', 'Ÿ' => 'Y', 'ź' => 'z', 'Ź' => 'Z', 'ž' => 'z', 'Ž' => 'Z', 'ż' => 'z', 'Ż' => 'Z', 'þ' => 'th', 'Þ' => 'Th', 'µ' => 'u', 'а' => 'a', 'А' => 'a', 'б' => 'b', 'Б' => 'b', 'в' => 'v', 'В' => 'v', 'г' => 'g', 'Г' => 'g', 'д' => 'd', 'Д' => 'd', 'е' => 'e', 'Е' => 'E', 'ё' => 'e', 'Ё' => 'E', 'ж' => 'zh', 'Ж' => 'zh', 'з' => 'z', 'З' => 'z', 'и' => 'i', 'И' => 'i', 'й' => 'j', 'Й' => 'j', 'к' => 'k', 'К' => 'k', 'л' => 'l', 'Л' => 'l', 'м' => 'm', 'М' => 'm', 'н' => 'n', 'Н' => 'n', 'о' => 'o', 'О' => 'o', 'п' => 'p', 'П' => 'p', 'р' => 'r', 'Р' => 'r', 'с' => 's', 'С' => 's', 'т' => 't', 'Т' => 't', 'у' => 'u', 'У' => 'u', 'ф' => 'f', 'Ф' => 'f', 'х' => 'h', 'Х' => 'h', 'ц' => 'c', 'Ц' => 'c', 'ч' => 'ch', 'Ч' => 'ch', 'ш' => 'sh', 'Ш' => 'sh', 'щ' => 'sch', 'Щ' => 'sch', 'ъ' => '', 'Ъ' => '', 'ы' => 'y', 'Ы' => 'y', 'ь' => '', 'Ь' => '', 'э' => 'e', 'Э' => 'e', 'ю' => 'ju', 'Ю' => 'ju', 'я' => 'ja', 'Я' => 'ja');
+    $string = str_replace(array_keys($intercambio), array_values($intercambio), $string);
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string);
 }
 
 //columna por default mide 1 columna
@@ -129,7 +129,7 @@ function ekiline_bloque($atts, $content = null) {
 }
 add_shortcode('bloque', 'ekiline_bloque');
 
-//Contenedor es necesario si se requieren dividir la información en secciones.
+//Contenedor es necesario si se requieren dividir la informacion en secciones.
 
 function ekiline_contenedor($atts, $content = null) {
 	extract(shortcode_atts(array('bgimage' => 'none','txtcolor' => '','class' => '','type' => 'row'), $atts));
@@ -137,7 +137,7 @@ function ekiline_contenedor($atts, $content = null) {
 }
 add_shortcode('contenedor', 'ekiline_contenedor');
 
-// acordeon, este debe tener un título y la descricpión se insertará en un div
+// acordeon, este debe tener un titulo y la descricpion se insertara en un div
 
 function ekiline_acordeon($atts, $content = null) {
 	extract(shortcode_atts(array('titulo' => '','bgcolor'=>'#17B2CE','txtcolor'=>'','ancho'=>'normal'), $atts));
@@ -148,7 +148,7 @@ function ekiline_acordeon($atts, $content = null) {
 add_shortcode('acordeon', 'ekiline_acordeon');
 
 
-// Cover, este debe tener un título, como el contenido puede variar este se debe estar en un div a parte.
+// Cover, este debe tener un titulo, como el contenido puede variar este se debe estar en un div a parte.
 
 function ekiline_cover($atts, $content = null) {
 	extract(shortcode_atts(array('title' => '','bgcolor'=>'#17B2CE','txtcolor'=>'#FFFFFF','bgimage'=>'none'), $atts));
@@ -172,7 +172,7 @@ function ekiline_cover($atts, $content = null) {
           <div class="inner cover">'.do_shortcode($content).'</div>
           <!--div class="cover-footer">
             <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              <p>Cover footer.</p>
             </div>
           </div-->
         </div>
@@ -187,7 +187,7 @@ add_shortcode('covermodule', 'ekiline_cover');
 /** Importar un listado de entradas de alguna categoria, se genera un loop. 
  * https://css-tricks.com/snippets/wordpress/run-loop-on-posts-of-specific-category/ 
  * http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
- * Especial atención en el uso de ob_start();
+ * Especial atencion en el uso de ob_start();
  * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
 **/
 
@@ -230,7 +230,7 @@ function ekiline_insertar($atts, $content = null) {
 					
 				else if ($class == 'blocklist'){
 							
-					/* cambiar el modo de como se muestra el boton leer más	
+					/* cambiar el modo de como se muestra el boton leer mas	
 					 * https://codex.wordpress.org/Customizing_the_Read_More */
 																	
 					echo $titulo.'<div class="clearfix container '.$class.'">';	
@@ -251,7 +251,7 @@ function ekiline_insertar($atts, $content = null) {
 				
 				else if ($class == 'carousel'){
 					
-				// Limpiar las comas de las categorias para ejecutar carrusel en caso de ser más de una.	
+				// Limpiar las comas de las categorias para ejecutar carrusel en caso de ser mas de una.	
 					$categoria = limpiarCaracteres($categoria);					
 				
 					echo $titulo.'<div id="carousel-module-00'.$categoria.'" class="'.$class.' slide clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';	
@@ -294,7 +294,7 @@ function ekiline_insertar($atts, $content = null) {
 			} //.if $nuevoLoop
 						
 	
-			wp_reset_postdata(); // resetea la petición
+			wp_reset_postdata(); // resetea la peticion
 		
 		
     $insertarItem = ob_get_clean(); // cierra
@@ -349,14 +349,14 @@ function ekiline_iframe($atts, $content = null) {
 add_shortcode('iframe', 'ekiline_iframe');
 
 
-// Elementos del formulario de búsqueda
+// Elementos del formulario de busqueda
 
 function my_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
     <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
     <div class="input-group">
     <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '"/>
-    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search' ) .'" /></span>
+    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
     </div>
     </form>';
 
@@ -367,7 +367,7 @@ add_filter( 'get_search_form', 'my_search_form' );
 
 
 
-/* Para que la información interna tenga una mejor distribución,
+/* Para que la informacion interna tenga una mejor distribucion,
  * no siempre el fullwidth es necesario  */
 
 function mainContainer() {
@@ -379,7 +379,7 @@ function mainContainer() {
 
 
 /**
- * Una vez personalizados los colores creamos una funcion para añadiros al header 
+ * Una vez personalizados los colores creamos una funcion para agregaros al header 
  * (https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head).
  * 
  **/
@@ -393,7 +393,7 @@ function cssColors() {
 	$menu = get_option('menu_color');
 	$footer = get_option('footer_color');
 	
-	// si las opciones no están customizadas utiliza los valores por default.
+	// si las opciones no estan customizadas utiliza los valores por default.
 	if ( $texto == '') : $texto = '#333333'; else : $texto ; endif;
 	if ( $enlaces == '') : $enlaces = '#337ab7'; else : $enlaces ; endif;
 	if ( $modulos == '') : $modulos = '#eeeeee'; else : $modulos ; endif;
@@ -448,7 +448,7 @@ function cssColors() {
 add_action('wp_head','cssColors');
 
 /**
- *  Si el usuario desea añadir un logotipo en el navbar-brand:
+ *  Si el usuario desea agregar un logotipo en el navbar-brand:
  **/
  
 function logoTheme() {
@@ -492,7 +492,7 @@ function destacadoImage() {
     }
 }
 
-/*Arreglo para que el ancho del sitio web se genere solo en una página, en este caso el home*/
+/*Arreglo para que el ancho del sitio web se genere solo en una pagina, en este caso el home*/
 function wideSite() {
     if ( is_front_page() || is_home() ){
     	echo get_theme_mod( 'ekiline_anchoHome', 'container' );
@@ -513,7 +513,7 @@ function custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function customExcerptBtn( $more ) {
-    return '<p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer más', 'ekiline' ) . '</a></p>';
+    return '<p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer mas', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'customExcerptBtn' );
 
@@ -595,7 +595,7 @@ function miniDate() {
  	echo '<div class="mini-fecha"><span class="dia">'.get_the_date('j').'</span><span class="mes">'.get_the_date('M').'</span></div>';
 }
 
-/* Eliminar párrafos vacíos en shortcodes.
+/* Eliminar parrafos vacios en shortcodes.
  * http://mattpierce.info/2015/10/fixing-shortcodes-and-paragraph-tags-in-wordpress/
  * https://gist.github.com/maxxscho/2058547
  */
@@ -617,7 +617,7 @@ add_filter('the_content', 'shortcode_empty_paragraph_fix');
 
 
 /**
- * OPTIMIZACIÓN: 
+ * OPTIMIZACIoN: 
  *	Include para google analytics
  * @ https://developers.google.com/analytics/devguides/collection/gajs/
  * https://digwp.com/2012/06/add-google-analytics-wordpress/
@@ -643,7 +643,7 @@ function google_analytics_tracking_code(){
 add_action('wp_footer', 'google_analytics_tracking_code', 100);	
 	
 
-/* Función para eliminar los comentarios que aparecen en los adjuntos (attachments)
+/* Funcion para eliminar los comentarios que aparecen en los adjuntos (attachments)
  */
 
 function filter_media_comment_status( $open, $post_id ) {
@@ -655,7 +655,7 @@ function filter_media_comment_status( $open, $post_id ) {
 }
 add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
 
-/* Añadir Feeds RSS con un shortcode
+/* agregar Feeds RSS con un shortcode
  * [rss feed="url" num="5"]
  */
  

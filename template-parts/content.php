@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
 	<?php /* En caso de tener imagen destacada (thumbnail):
-	       * Se añade un div para dividir la información */ ?>
+	       * Se Agrega un div para dividir la informacion */ ?>
 
 	<?php if ( has_post_thumbnail() ) { $thumbCss = 'col-md-8'; ?>
 	

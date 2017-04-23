@@ -10,9 +10,9 @@
 
 
 /**
- * Optimizar los scripts con async, esta función solo requiere el manejador
- * y se sobreescribirá el link con el atributo dado. Por algun extraña razón no permite 
- * el añadir el atribto con el código de wordpress, como el caso de los scripts de IE.
+ * Optimizar los scripts con async, esta funcion solo requiere el manejador
+ * y se sobreescribira el link con el atributo dado. Por algun extraña razon no permite 
+ * el agregar el atribto con el codigo de wordpress, como el caso de los scripts de IE.
  * //'ie10-vpbugwkrnd',
  * //'html5shiv',
  * //'respond',

@@ -171,7 +171,7 @@ function ekiline_widgets_init() {
         'after_title'   => '</label>',
     ) );     
     
-// Añadimos widgets en el contenido ya sea página o entrada
+// Añadimos widgets en el contenido ya sea pagina o entrada
     register_sidebar( array(
         'name'          => esc_html__( 'In content top widgets', 'ekiline' ),
         'id'            => 'content-w1',
@@ -192,7 +192,7 @@ function ekiline_widgets_init() {
         'after_title'   => '</h4>',
     ) );
     		   
-// Añadimos widgets en la parte superior de la página fuera del contenido
+// Añadimos widgets en la parte superior de la pagina fuera del contenido
 	register_sidebar( array(
 		'name'          => esc_html__( 'Top Page', 'ekiline' ),
 		'id'            => 'toppage-w1',
@@ -228,7 +228,7 @@ function ekiline_scripts() {
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	/* Javascript : Desactivar Jquery para enviarlo al fondo (http://wordpress.stackexchange.com/questions/173601/enqueue-core-jquery-in-the-footer)
-	 * en caso contrario, solo añade esta linea y el script se ubucará en el <head>.
+	 * en caso contrario, solo Agrega esta linea y el script se ubucara en el <head>.
 	 *  wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20151113', true  );		
 	 * Mas info: 
 	 *	https://developer.wordpress.org/reference/functions/wp_enqueue_script/
@@ -238,7 +238,7 @@ function ekiline_scripts() {
     // wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
     // wp_enqueue_script( 'jquery' );	
         	
-    /* ABR 22 2017 hay otro método para hacer que jquery se vaya al fondo sin de-registrarlo y aplica solo si no eres administrador 
+    /* ABR 22 2017 hay otro metodo para hacer que jquery se vaya al fondo sin de-registrarlo y aplica solo si no eres administrador 
      * http://stackoverflow.com/questions/35663927/wordpress-jquery-on-footer */
         
     if( !is_admin() ){
@@ -300,13 +300,13 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * Añadir navwalker, para el menu de bootstrap.
+ * agregar navwalker, para el menu de bootstrap.
  * https://github.com/twittem/wp-bootstrap-navwalker
  */
 require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
 /**
- * Añadir personalizaciones extra.
+ * agregar personalizaciones extra.
  */
 require get_template_directory() . '/inc/custom-sidebars.php'; 
  require get_template_directory() . '/inc/custom-navbars.php'; 

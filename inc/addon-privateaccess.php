@@ -9,10 +9,10 @@
 
 //Hacer un formulario de ingreso con shortcode.
 // una version sencilla: https://wordpress.org/support/topic/front-end-login-using-php
-// Una versión extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
-// Una versión mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
-// La versión Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
-// Para verificar el código: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400
+// Una version extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
+// Una version mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
+// La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
+// Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400
 
 function ekiline_loginfrontend($atts, $content = null) {
 	
@@ -26,10 +26,10 @@ function ekiline_loginfrontend($atts, $content = null) {
 			'echo' => true,
 		    'redirect' => home_url(),   
 			'form_id' => 'loginform',
-			'label_username' => __( 'Username' ),
-			'label_password' => __( 'Password' ),
-			'label_remember' => __( 'Remember Me' ),
-			'label_log_in' => __( 'Log In' ),
+			'label_username' => __( 'Username','ekiline' ),
+			'label_password' => __( 'Password','ekiline' ),
+			'label_remember' => __( 'Remember Me','ekiline' ),
+			'label_log_in' => __( 'Log In','ekiline' ),
 			'id_username' => 'user',
 			'id_password' => 'pass',
 			'id_remember' => 'rememberme',
@@ -124,12 +124,12 @@ add_shortcode('loginform', 'ekiline_loginfrontend');
 /**
  * Hacer un formulario de solicitud o registro  con shortcode; 2 situaciones:
  * 1 se debe crear la funcion que valide la informacion y genere el correo.
- * Esta varía por el uso de un plugin que envia una notificación al dueño del portal.
- * 2 se genera el formulario que se insertará con el shortcode, este llama la funcion
+ * Esta varia por el uso de un plugin que envia una notificacion al dueño del portal.
+ * 2 se genera el formulario que se insertara con el shortcode, este llama la funcion
  * de las validaciones.
  */
 
-// 1) Inicia función proceso de de registro 
+// 1) Inicia funcion proceso de de registro 
  
 function registration_process_hook() {
 	if (isset($_POST['adduser']) && isset($_POST['add-nonce']) && wp_verify_nonce($_POST['add-nonce'], 'add-user')) {
@@ -184,7 +184,7 @@ function registration_process_hook() {
 }
 add_action('process_customer_registration_form', 'registration_process_hook'); 
  
-// Finaliza 1) función proceso de de registro  
+// Finaliza 1) funcion proceso de de registro  
 
 
 // 2) Inicia Shortcode que crea el formulario en el tema.
@@ -260,7 +260,7 @@ function redirect() {
 add_action( 'wp', 'redirect' );
 
 
-// si el usuario queda logeado añade un botón para cerrar la sesión, directo en el menu.
+// si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
 // https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
 
 function add_loginout_link( $items, $args ) {
@@ -271,7 +271,7 @@ function add_loginout_link( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
 
-// descartar la página de ingreso de las busquedas
+// descartar la pagina de ingreso de las busquedas
 // http://wordpress.stackexchange.com/questions/142811/exclude-pages-from-wordpress-search-result-page
 
 function exclude_pages_search_when_logged_in($query) {

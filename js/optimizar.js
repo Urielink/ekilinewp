@@ -9,7 +9,7 @@
 	jQuery(document).ready(function($) {
 
 
-	//  Optimización, estilos dinámicos después de la carga
+	//  Optimizacion, estilos dinamicos despues de la carga
 		// setTimeout(function () {						
 
 		function miCss(optimizarCSS){
@@ -22,7 +22,7 @@
 			var $cssinline = $head.find("style[id='ekiline-inline']:last");
 			var linkCss = "<link rel='stylesheet' href='"+ optimizarCSS +"' type='text/css' media='screen'>";
 				
-	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+	        // En caso de de encontrar una etiqueta de estilo o link o nada inserta el otro estilo css, 
 	        	
 			if ($cssinline.length){ 
 					$cssinline.before(linkCss); 

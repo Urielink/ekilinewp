@@ -82,7 +82,7 @@ if ( post_password_required() ) {
 /* personalizar el formulario: 
  * https://developer.wordpress.org/reference/functions/comment_form/
  * https://premium.wpmudev.org/blog/customizing-wordpress-comment-form/?npp=b&utm_expid=3606929-84.YoGL0StOSa-tkbGo-lVlvw.1&utm_referrer=https%3A%2F%2Fwww.google.com.mx%2F
- * Algunas características se pueden eliminar desde las funciones:
+ * Algunas caracteristicas se pueden eliminar desde las funciones:
  * http://crunchify.com/how-to-remove-url-website-field-from-wordpress-comment-form/
  * 
  */
@@ -90,19 +90,19 @@ $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
 
 $args = array(
-	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
+	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'ekiline' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
   	'fields' => apply_filters( 'comment_form_default_fields', array(
 
     'author' =>
       '<div class="comment-form-author">' .
-      '<label for="author">' . __( 'Name' ) . '</label> ' .
+      '<label for="author">' . __( 'Name','ekiline' ) . '</label> ' .
       ( $req ? '<span class="required">*</span>' : '' ) .
       '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
       '" size="30"' . $aria_req . ' /></div>',
 
     'email' =>
-      '<div class="comment-form-email"><label for="email">' . __( 'Email' ) . '</label> ' .
+      '<div class="comment-form-email"><label for="email">' . __( 'Email','ekiline' ) . '</label> ' .
       ( $req ? '<span class="required">*</span>' : '' ) .
       '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
       '" size="30"' . $aria_req . ' /></div>',
@@ -110,7 +110,7 @@ $args = array(
 	// se comenta para que no aparezca
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
-      __( 'Website' ) . '</label>' .
+      __( 'Website','ekiline' ) . '</label>' .
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
       '" size="30" /></div>'      
 	  )),

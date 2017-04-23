@@ -16,7 +16,7 @@ function breadcrumb() {
 		echo '<ol id="crumbs" class="breadcrumb">';
 		if (!is_home()) {
 			echo '<li><a href="';
-			echo get_option('home');
+			echo home_url();
 			echo '">';
 			echo esc_html__('Home', 'ekiline');
 			echo "</a>&nbsp;</li>";

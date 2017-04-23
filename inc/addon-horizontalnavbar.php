@@ -19,10 +19,10 @@ class HorizontalNavbarWidget extends WP_Widget {
         // Instantiate the parent object
         //parent::__construct( false, 'Vertical Menu Navigation' );
         $widget_ops = array(
-            'description' => __( 'Add navbar custom menu to your page.' ),
+            'description' => __( 'Add navbar custom menu to your page.','ekiline' ),
             'customize_selective_refresh' => true,
         );
-        parent::__construct( false, __('Navbar Menu Navigation'), $widget_ops );        
+        parent::__construct( false, __('Navbar Menu Navigation','ekiline'), $widget_ops );        
     }
 
     function widget( $args, $instance ) {
@@ -42,7 +42,7 @@ class HorizontalNavbarWidget extends WP_Widget {
 
             echo $args['before_title'] . $instance['title'] . $args['after_title'];
         
-        // Añadir logo
+        // agregar logo
         
 	    if ( get_theme_mod( 'ekiline_logo_max' ) && !get_theme_mod( 'ekiline_logo_min' ) ) {
 	        $identidad = '<img class="img-responsive" src="' . get_theme_mod( 'ekiline_logo_max' ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '"/>';
@@ -135,17 +135,17 @@ class HorizontalNavbarWidget extends WP_Widget {
                 $url = admin_url( 'nav-menus.php' );
             }
             ?>
-            <?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
+            <?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.','ekiline' ), esc_attr( $url ) ); ?>
         </p>
         <div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ) ?></label>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','ekiline' ) ?></label>
                 <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+                <label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:','ekiline' ); ?></label>
                 <select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
-                    <option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+                    <option value="0"><?php _e( '&mdash; Select &mdash;','ekiline' ); ?></option>
                     <?php foreach ( $menus as $menu ) : ?>
                         <option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
                             <?php echo esc_html( $menu->name ); ?>

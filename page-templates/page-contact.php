@@ -2,9 +2,9 @@
 /**
  * Template Name: Contacto
  * 
- * Esta página de contacto, utiliza el motor de wp por default.
+ * Esta pagina de contacto, utiliza el motor de wp por default.
  * Solo se debe elegir el template.
- * El texto en la edición aparece de manera independiente al formulario.
+ * El texto en la edicion aparece de manera independiente al formulario.
  * 
  * @package ekiline
  */
@@ -18,17 +18,17 @@
 
     global $response;
 
-    if($type == "success") $response = "<div class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button>{$message}</div>";
-    else $response = "<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button>{$message}</div>";
+    if($type == "success") $response = "<div class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>x</span></button>{$message}</div>";
+    else $response = "<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>x</span></button>{$message}</div>";
 
   }
 
   //response messages
-  $not_human       = "Verificación incorrecta. Inténtalo nuevamente";
-  $missing_content = "Por favor incluye toda la información solicitada en los campos.";
-  $email_invalid   = "Correo electrónico inválido.";
-  $message_unsent  = "El mensaje no se ha enviado. Por favor inténtalo nuevamente.";
-  $message_sent    = "Gracias! tu mensaje se envió con éxito.";
+  $not_human       = "Verificacion incorrecta. Intentalo nuevamente";
+  $missing_content = "Por favor incluye toda la informacion solicitada en los campos.";
+  $email_invalid   = "Correo electronico invalido.";
+  $message_unsent  = "El mensaje no se ha enviado. Por favor intentalo nuevamente.";
+  $message_sent    = "Gracias! tu mensaje se envio con exito.";
 
   //user posted variables
   $name = $_POST['message_name'];
@@ -118,7 +118,7 @@
                         <input class="form-control" type="text" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>">
                       </div>
                       <div class="form-group">
-                        <label for="telefono">Teléfono: <span>*</span></label>
+                        <label for="telefono">Telefono: <span>*</span></label>
                         <input class="form-control" type="text" name="message_telefono" value="<?php echo esc_attr($_POST['message_telefono']); ?>">
                       </div>                  
                       <div class="form-group">

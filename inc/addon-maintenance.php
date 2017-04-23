@@ -29,7 +29,7 @@ function maintenace_mode() {
 		<link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_template_directory_uri() . '/css/ekiline-layout.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">	
-		<title><?php echo get_bloginfo( 'name' ).' | '.__( 'Estamos en mantenimiento', 'ekiline' ) ?></title>
+		<!--title><?php echo get_bloginfo( 'name' ).' | '.__( 'Estamos en mantenimiento', 'ekiline' ) ?></title-->
 		<?php cssColors(); ?>
 	</head>	
 	<body class="page-maintenance">	
@@ -42,10 +42,10 @@ function maintenace_mode() {
 							<img class="cover-header-brand" src="<?php echo get_theme_mod( 'ekiline_logo_min' ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"/>
 							<nav> 
 								<ul class="nav cover-header-nav">
-									<li><a href="https://www.google.com/search?q=<?php echo get_site_url(); ?>" target="_blank"><i class="fa fa-google"></i></a></li>
-									<li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="https://es-la.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li> 
+									<li><a href="#" target="_blank"><i class="fa fa-google"></i></a></li>
+									<li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li> 
 								</ul>
 							</nav>				
 						</div>
@@ -58,7 +58,7 @@ function maintenace_mode() {
 					
 					<div class="cover-footer">
 						<div class="inner">
-			                <?php printf( esc_html__( '© Copyright ' . date('Y') . ' %1$s', 'ekiline' ), esc_attr( get_bloginfo( 'name', 'display' )) );?>
+                            <?php printf( esc_html__( '&Copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
 			                <span class="sep"> | </span>
 			                <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
 			                <span class="sep"> | </span>

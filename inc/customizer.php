@@ -36,7 +36,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ) );
     $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekiline' ) );
     $colors[] = array( 'slug'=>'menu_color', 'default' => '#f8f8f8', 'label' => __( 'Color de menu', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de página', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de pagina', 'ekiline' ) );
     
     foreach($colors as $color)
     {
@@ -70,14 +70,14 @@ function ekiline_theme_customizer( $wp_customize ) {
     		'ekiline_inversemenu',
     		array(
     				'label'          => __( 'Textos claros en menu y footer', 'ekiline' ),
-    				'description'    => 'Habilita esta opción en caso de utilizar un menú y un footer oscuros.',
+    				'description'    => 'Habilita esta opcion en caso de utilizar un menu y un footer oscuros.',
     				'section'        => 'colors',
     				'settings'       => 'ekiline_inversemenu',
     				'type'           => 'checkbox'
     		)
     );    
 
-// añadir un controlador: https://codex.wordpress.org/Class_Reference/WP_Customize_Control  
+// agregar un controlador: https://codex.wordpress.org/Class_Reference/WP_Customize_Control  
 // https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
 // https://developer.wordpress.org/themes/advanced-topics/customizer-api/
 // http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
@@ -86,7 +86,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_max', array(
             'label'    => __( 'Logotipo horizontal', 'ekiline' ),
-            'description' => 'Esta es la imagen de tu marca que aparecerá en el menu.',
+            'description' => 'Esta es la imagen de tu marca que aparecera en el menu.',
             'section'  => 'title_tagline', // esta seccion corresponde a una predeterminada.
             'settings' => 'ekiline_logo_max',
             'priority' => 100,
@@ -96,7 +96,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 //     $wp_customize->add_section( 'ekiline_video_portada' , array(
 //             'title'       => __( 'Video de cabecera', 'ekiline' ),
 //             'priority'    => 90,
-//             'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptará como fondo en caso de que los dispositivos no puedan reproducir video.',
+//             'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
 //     ) );
     
 //     $wp_customize->add_setting( 'ekiline_video' );
@@ -113,7 +113,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
     		'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
-        	'description' => '<b>Debes tener seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptará como fondo en caso de que los dispositivos no puedan reproducir video.',
+        	'description' => '<b>Debes tener seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
     		'section'  => 'header_image',
     		'settings' => 'ekiline_video',
             'priority'    => 90,
@@ -130,7 +130,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     		'priority'    => 10,
     		'section'     => 'header_image',
     		'label'       => 'Altura de cabecera',
-    		'description' => 'Especifica la altura de la cabecera, esto solo afectará tu homepage.',
+    		'description' => 'Especifica la altura de la cabecera, esto solo afectara tu homepage.',
     		'input_attrs' => array(
     				'min'   => 30,
     				'max'   => 100,
@@ -142,14 +142,14 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_min', array(
     		'label'    => __( 'Logotipo header', 'ekiline' ),
-    		'description' => 'Añade tu logotipo si deseas que aparezca en el encabezado.',
+    		'description' => 'Agrega tu logotipo si deseas que aparezca en el encabezado.',
     		'section'  => 'header_image', 
     		'settings' => 'ekiline_logo_min',
     		'priority' => 100,
     ) ) );
     
 
-// ancho de la página
+// ancho de la pagina
     $wp_customize->add_section( 'ekiline_vista_section' , array(
             'title'       => __( 'Vista de tu sitio', 'ekiline' ),
             'priority'    => 50,
@@ -183,7 +183,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_anchoCategory',
             array(
                 'type' => 'radio',
-                'label' => 'Categorías o listados',
+                'label' => 'Categorias o listados',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
                     'container' => 'Ajustado',
@@ -201,7 +201,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_anchoSingle',
             array(
                 'type' => 'radio',
-                'label' => 'Páginas individuales',
+                'label' => 'Paginas individuales',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
                     'container' => 'Ajustado',
@@ -224,7 +224,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'label' => 'Sidebar izquierdo',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
-                    'on' => 'Estático',
+                    'on' => 'Estatico',
                     'off' => 'Plegable',
                 ),
             )
@@ -242,7 +242,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'label' => 'Sidebar derecho',
                 'section' => 'ekiline_vista_section',
                 'choices' => array(
-                    'on' => 'Estático',
+                    'on' => 'Estatico',
                     'off' => 'Plegable',
                 ),
             )
@@ -273,15 +273,15 @@ function ekiline_theme_customizer( $wp_customize ) {
         );   
         
 
-    // Optimización, códigos de seguimiento
+    // Optimizacion, codigos de seguimiento
    
     $wp_customize->add_section( 'ekiline_tracking_section' , array(
-            'title'       => __( 'Optimización', 'ekiline' ),
+            'title'       => __( 'Optimizacion', 'ekiline' ),
             'priority'    => 150,
-            'description' => __( 'Añade los códigos de seguimiento que te ayudarán a optimizar y dar seguimiento a este sitio web.', 'ekiline' )
+            'description' => __( 'Agrega los codigos de seguimiento que te ayudaran a optimizar y dar seguimiento a este sitio web.', 'ekiline' )
     ) );
 
-    // Código de analytics  
+    // Codigo de analytics  
     $wp_customize->add_setting( 
         'ekiline_analytics', array(
             'default' => ''
@@ -291,7 +291,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         'ekiline_analytics',
             array(
                 'label'          => __( 'Trackeo de Google', 'ekiline' ),
-                'description'    => 'Inserta el código de Google analytics, solo tu identificador (UA-XXXXX-XX)',
+                'description'    => 'Inserta el codigo de Google analytics, solo tu identificador (UA-XXXXX-XX)',
                 'section'        => 'ekiline_tracking_section',
                 'settings'       => 'ekiline_analytics',
                 'type'           => 'text'
@@ -303,7 +303,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_section( 'ekiline_services' , array(
     		'title'       => __( 'Servicios extra', 'ekiline' ),
     		'priority'    => 160,
-    		'description' => __( 'Características añadidas para tu sitio.', 'ekiline' )
+    		'description' => __( 'Caracteristicas agregadas para tu sitio.', 'ekiline' )
     ) );
     
     // Poner en mantenimiento

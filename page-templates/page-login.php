@@ -33,7 +33,7 @@
             // In case of a login error.
             if ( isset( $_GET['login'] ) && $_GET['login'] == 'failed' ) : ?>
     	            <div class="aa_error">
-    		            <p><?php _e( 'FAILED: Try again!', 'AA' ); ?></p>
+    		            <p><?php _e( 'FAILED: Try again!','ekiline' ); ?></p>
     	            </div>
             <?php 
                 endif;
@@ -43,18 +43,18 @@
                 <div class="aa_logout"> 
                     
                     <?php 
-                        _e( 'Hello', 'AA' ); 
+                        _e( 'Hello','ekiline' ); 
                         echo $user_login; 
                     ?>
                     
                     </br>
                     
-                    <?php _e( 'You are already logged in.', 'AA' ); ?>
+                    <?php _e( 'You are already logged in.','ekiline' ); ?>
 
                 </div>
 
                 <a id="wp-submit" href="<?php echo wp_logout_url(); ?>" title="Logout">
-                    <?php _e( 'Logout', 'AA' ); ?>
+                    <?php _e( 'Logout','ekiline' ); ?>
                 </a>
 
             <?php 
@@ -67,10 +67,10 @@
 //                        'redirect'       => home_url( '/wp-admin/' ), 
                           'redirect'       => home_url(), 
                         'form_id'        => 'loginform',
-                        'label_username' => __( 'Username' ),
-                        'label_password' => __( 'Password' ),
-                        'label_remember' => __( 'Remember Me' ),
-                        'label_log_in'   => __( 'Log In' ),
+                        'label_username' => __( 'Username','ekiline' ),
+                        'label_password' => __( 'Password','ekiline' ),
+                        'label_remember' => __( 'Remember Me','ekiline' ),
+                        'label_log_in'   => __( 'Log In','ekiline' ),
                         'id_username'    => 'user_login',
                         'id_password'    => 'user_pass',
                         'id_remember'    => 'rememberme',

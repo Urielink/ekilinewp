@@ -18,17 +18,17 @@ msgstr ""
 # @ _ekiline
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found."
-msgstr "¡Lo sentimos! La página que buscas no se puede encontrar."
+msgstr "¡Lo sentimos! La pagina que buscas no se puede encontrar."
 
 # @ _ekiline
 #: 404.php:21
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
-msgstr "Parece que no encontramos nada en esta ubicación. Prueba con los links que aparecen abajo o haz una búsqueda."
+msgstr "Parece que no encontramos nada en esta ubicacion. Prueba con los links que aparecen abajo o haz una busqueda."
 
 # @ _ekiline
 #: 404.php:29
 msgid "Most Used Categories"
-msgstr "Categorías más usadas"
+msgstr "Categorias mas usadas"
 
 # @ _ekiline
 #. translators: %1$s: smiley
@@ -49,7 +49,7 @@ msgstr[1] "%1$s pensaminetos en &ldquo;%2$s&rdquo;"
 # @ _ekiline
 #: comments.php:40 comments.php:61
 msgid "Comment navigation"
-msgstr "Navegación de comentarios"
+msgstr "Navegacion de comentarios"
 
 # @ _ekiline
 #: comments.php:43 comments.php:64
@@ -64,7 +64,7 @@ msgstr "Comentarios nuevos"
 # @ _ekiline
 #: comments.php:77
 msgid "Comments are closed."
-msgstr "Los comentarios están cerrados."
+msgstr "Los comentarios estan cerrados."
 
 # @ _ekiline
 #: footer.php:18
@@ -86,7 +86,7 @@ msgstr "Tema: %1$s por %2$s."
 # @ _ekiline
 #: functions.php:47 header.php:38
 msgid "Primary Menu"
-msgstr "Menú primario (Primary Menu)"
+msgstr "Menu primario (Primary Menu)"
 
 # @ _ekiline
 #: functions.php:102
@@ -168,23 +168,23 @@ msgstr "No se ha encontrado"
 #: template-parts/content-none.php:20
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr "Listo para publicar tu primer post? <a href=\"%1$s\">Inicia aquí</a>."
+msgstr "Listo para publicar tu primer post? <a href=\"%1$s\">Inicia aqui</a>."
 
 # @ _ekiline
 #: template-parts/content-none.php:24
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
-msgstr "Lo sentimos, nada se ha encontrado con tus términos. Intenta con otras palabras."
+msgstr "Lo sentimos, nada se ha encontrado con tus terminos. Intenta con otras palabras."
 
 # @ _ekiline
 #: template-parts/content-none.php:29
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
-msgstr "Parece que no encontramos esto. Quizá un búsqueda más profunda ayude."
+msgstr "Parece que no encontramos esto. Quiza un busqueda mas profunda ayude."
 
 # @ _ekiline
 #: template-parts/content-page.php:21 template-parts/content-single.php:25
 #: template-parts/content.php:34
 msgid "Pages:"
-msgstr "Páginas:"
+msgstr "Paginas:"
 
 # @ _ekiline
 #. translators: %s: Name of current post.
@@ -221,19 +221,19 @@ msgstr "http://automattic.com/"
 #. Login addon of the plugin/theme
 #: inc/addon-privateaccess.php:42
 msgid "Invalid username and/or password."
-msgstr "Nombre de usuario ó contraseña inválidos."
+msgstr "Nombre de usuario o contraseña invalidos."
 
 # @ _ekiline
 #. Login addon of the plugin/theme
 #: inc/addon-privateaccess.php:44
 msgid "Username and/or Password is empty."
-msgstr "Nombre de usuario ó contraseña están vacíos."
+msgstr "Nombre de usuario o contraseña estan vacios."
 
 # @ _ekiline
 #. Login addon of the plugin/theme
 #: inc/addon-privateaccess.php:46
 msgid "You are logged out."
-msgstr "Estás fuera del sistema."
+msgstr "Estas fuera del sistema."
 
 # @ _ekiline
 #. Register addon of the plugin/theme
@@ -257,13 +257,13 @@ msgstr "Lo sentimos, ese nombre de usuario ya existe."
 #. Register addon of the plugin/theme
 #: inc/addon-privateaccess.php:112
 msgid "You must enter a valid email address."
-msgstr "Debe introducir un correo electrónico válido."
+msgstr "Debe introducir un correo electronico valido."
 
 # @ _ekiline
 #. Register addon of the plugin/theme
 #: inc/addon-privateaccess.php:114
 msgid "Sorry, that email address is already used!"
-msgstr "Lo sentimos, ese correo electrónico ya está en uso"
+msgstr "Lo sentimos, ese correo electronico ya esta en uso"
 
 # @ _ekiline
 #. Register addon of the plugin/theme
@@ -275,7 +275,7 @@ msgstr "Gracias por registrarse "
 #. Register addon of the plugin/theme
 #: inc/addon-privateaccess.php:128
 msgid "Please check your email for recieve your login password (Be sure to check your spam folder)."
-msgstr "Por favor revisa tu correo para obtener tu contraseña. (Asegúrate de revisar la bandeja de spam)"
+msgstr "Por favor revisa tu correo para obtener tu contraseña. (Asegurate de revisar la bandeja de spam)"
 
 # @ _ekiline
 #. Register addon of the plugin/theme
@@ -287,7 +287,7 @@ msgstr "Nombre de usuario"
 #. Register addon of the plugin/theme
 #: inc/addon-privateaccess.php:169
 msgid "E-mail"
-msgstr "Correo Electrónico"
+msgstr "Correo Electronico"
 
 # @ _ekiline
 #. Register addon of the plugin/theme

@@ -79,7 +79,7 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     }
 endif;  // ekiline_admin_header_image
 
-// Creo una función para añadir un header personalizado
+// Creo una funcion para agregar un header personalizado
 
 function customHeader() {
         
@@ -95,14 +95,14 @@ function customHeader() {
 			// Variables
 			$siteName = get_bloginfo( 'name', 'display' );
 			$siteDescription = get_bloginfo( 'description', 'display'  );
-			// Estilo de imagen de fondo: invocamos la imagen del editor de página y lo añadimos como css.
-			// En combinación con un range
+			// Estilo de imagen de fondo: invocamos la imagen del editor de pagina y lo añadimos como css.
+			// En combinacion con un range
 			$rangeHead = get_theme_mod('ekiline_range_header');
 			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
 						
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
 			
-			//Estructura con condición:
+			//Estructura con condicion:
 			
 			if ($rangeHead <= '95') {
 				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
@@ -139,10 +139,10 @@ function customHeader() {
 							            <div class="inner">'.$coverLogo.'											
 											<nav> 
 												<ul class="nav cover-header-nav">
-													<li><a href="https://www.google.com/search?q=ekiline.com" target="_blank"><i class="fa fa-google"></i></a></li>
-													<li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="https://es-la.facebook.com/ekiline/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="https://twitter.com/ekilinemx/" target="_blank"><i class="fa fa-twitter"></i></a></li> 
+													<li><a href="#" target="_blank" title="https://www.google.com/search?q=ekiline.com"><i class="fa fa-google"></i></a></li>
+													<li><a href="#" target="_blank" title="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+													<li><a href="#" target="_blank" title="https://es-la.facebook.com/ekiline/"><i class="fa fa-facebook"></i></a></li>
+													<li><a href="#" target="_blank" title="https://twitter.com/ekilinemx/"><i class="fa fa-twitter"></i></a></li> 
 												</ul>
 											</nav>				
     									</div>
@@ -152,7 +152,7 @@ function customHeader() {
 										<p class="cover-description">'. $siteDescription.'</p>
 					    			  </div>
 							          <!--div class="cover-footer">
-							            <div class="inner"><p>Algún contenido</p></div>
+							            <div class="inner"><p>Algun contenido</p></div>
 							          </div-->
 							        </div>
 							      </div>
@@ -186,7 +186,7 @@ function customHeader() {
 			
 		}
 		
-		/* Para las categorías :
+		/* Para las categorias :
 		 * en caso de tener una imagen convertirla en un header
 		 * archivo complementario: *addon-categoryfield.php
 		*/

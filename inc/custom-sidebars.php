@@ -14,7 +14,7 @@ $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
 $rightOn = get_theme_mod('ekiline_sidebarRight','on');
 
 
-/* Función especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos específicos
+/* Funcion especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos especificos
  * Se inyecta una CSS en el body
  * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
  * https://developer.wordpress.org/reference/functions/body_class/
@@ -70,7 +70,7 @@ function sideOn() {
     echo $sideon;
 }
 
-/* Estos 2 fragmentos añaden una clase a cada sidebar
+/* Estos 2 fragmentos Agregan una clase a cada sidebar
  * afectan a sidebar.php y sidebar-right.php 
  */
 
@@ -107,7 +107,7 @@ function rightSideButton(){
     if ( $sideRight && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
 
-// PRUEBA: si se elige que los sidebars se oculten o muestren añade un boton al menu nav.
+// PRUEBA: si se elige que los sidebars se oculten o muestren Agrega un boton al menu nav.
 // function add_sidebar_action( $items, $args ) {
     // global $leftOn, $rightOn;    
         // if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a></li>'; endif;

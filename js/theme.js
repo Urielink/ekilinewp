@@ -11,7 +11,7 @@
 		var apareceItem = '.entry-title';
 		var textoLoco = '#carrusel-homeslide .carousel-caption h1';
 		
-		// Carrusel: impedir que avance automáticamente
+		// Carrusel: impedir que avance automaticamente
 		
 		$( desfaseItem ).carousel({
 		    interval: false
@@ -44,7 +44,7 @@
 	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
 	            var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-	            // Si está en el lugar fade in 
+	            // Si esta en el lugar fade in 
 	            if( bottom_of_window > bottom_of_object ){
 	                $(this).animate({'opacity':'1'},500);
 	            }            
@@ -53,7 +53,7 @@
 
 	    }); 
 	    
-	    // Hacer un texto a desproporción
+	    // Hacer un texto a desproporcion
 	    var size = ['16px', '24px', '32px', '40px', '44px'];
 	    var weight = ['100', '300', '700', '900'];
 	    $(textoLoco).each(function(){

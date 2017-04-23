@@ -64,7 +64,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 #third.affix{height:auto;width:inherit;left:auto;right:auto;}
 
 /* En caso de habilitar sidebars ocultos, 
- * se necesita un envoltorio y un botón que ejecute el mostrar y ocultar */
+ * se necesita un envoltorio y un boton que ejecute el mostrar y ocultar */
 
 #wrapper, 
 .toggle-sidebars #content {
@@ -92,7 +92,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 	}
 
 	
-/* División para el contenido, originalmente deberia medir al 100% 
+/* Division para el contenido, originalmente deberia medir al 100% 
  * Sin embargo al utilizar bootstrap se puede condicionar el intercambio de clases
  * col-md-6 a col-md-9
  * Experimento: manipular el css directo.
@@ -123,7 +123,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 }
 
 
-/* Ajuste en elementos cuando están activos */
+/* Ajuste en elementos cuando estan activos */
 	#wrapper.active-sidebar-left, 
 	.toggle-sidebars.left-on #content.active-sidebar-left {
 		padding-left: 300px;
@@ -186,7 +186,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 
 /* Sidebar en caso de necesitar el menu de bootstrap */
 
-/* División para el menu */
+/* Division para el menu */
 	
 .sidebar-nav {
 	display: block;
@@ -304,7 +304,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 }
 
 
-/* Carousel con thumbs versión de multiplos de 4*/
+/* Carousel con thumbs version de multiplos de 4*/
 
 .carousel-thumbs {
     height: auto;
@@ -342,7 +342,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 	padding: 10px;
 }
 
-/* Regla general: posición de objetos */
+/* Regla general: posicion de objetos */
 	.single-thumb .carousel-inner .active.left,
 	.single-thumb .carousel-inner .active.right{ 
 			left: 0%;
@@ -420,13 +420,13 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 		.single-thumb.x6 .carousel-inner .prev { left: -16.66666667%; }
 		.single-thumb.x6 .carousel-inner .next { left:  16.66666667%; }	
 	
-/* Regla general: posición de objetos, después del clic */	
+/* Regla general: posicion de objetos, despues del clic */	
 	.single-thumb .carousel-inner .next.left { left:  0%;opacity: 0; }
 	.single-thumb .carousel-inner .prev.right { left: 0%;opacity: 0; }		
 	
 	
 
-/* Personalización de controles de carrusel */
+/* Personalizacion de controles de carrusel */
 .carousel-control {
     font-size: 6px;
     height: 70%;

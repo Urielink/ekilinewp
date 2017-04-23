@@ -18,7 +18,7 @@
 */
 
 function tabs_shortcode( $atts, $content = null ) {
-	// 1. reemplazamos el random matemático para que la ejecución sea con el nombre del tab.	
+	// 1. reemplazamos el random matematico para que la ejecucion sea con el nombre del tab.	
 	// $unique = mt_rand();
 	extract( shortcode_atts( array( 'class' => '', 'title' => '' ), $atts ) );
 	$regex = '\\[(\\[?)(tabcontent)\\b([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)(?:(\\/)\\]|\\](?:([^\\[]*+(?:\\[(?!\\/\\2\\])[^\\[]*+)*+)\\[\\/\\2\\])?)(\\]?)';

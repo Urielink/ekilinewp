@@ -1,5 +1,5 @@
 /*
- * Arreglos jQuery, exclusivos para caracterísitcas del tema
+ * Arreglos jQuery, exclusivos para caracterisitcas del tema
  */
 
 	jQuery(document).ready(function($){
@@ -43,7 +43,7 @@
 		  }
 		  next.children(':first-child').clone().appendTo($(this));
 		  
-		  // variante: 1 = 2thumbs, 2 = 4thumbs y así sucesivamente… también se modifica en el css
+		  // variante: 1 = 2thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
 		  
 		  for (var i=0;i<0;i++) { 
 		    next=next.next();
@@ -64,7 +64,7 @@
 			  }
 			  next.children(':first-child').clone().appendTo($(this));
 			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y así sucesivamente… también se modifica en el css
+			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
 			  
 			  for (var i=0;i<1;i++) { 
 			    next=next.next();
@@ -85,7 +85,7 @@
 			  }
 			  next.children(':first-child').clone().appendTo($(this));
 			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y así sucesivamente… también se modifica en el css
+			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
 			  
 			  for (var i=0;i<2;i++) { 
 			    next=next.next();
@@ -107,7 +107,7 @@
 			  }
 			  next.children(':first-child').clone().appendTo($(this));
 			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y así sucesivamente… también se modifica en el css
+			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
 			  
 			  for (var i=0;i<4;i++) { 
 			    next=next.next();
@@ -145,20 +145,20 @@
 					var dataHeight = $(this).attr('data-height') || null;
 					
 						if (dataWidth == null || dataHeight == null){
-							// pero si no está especificado, dejar las ventanas al 100%
+							// pero si no esta especificado, dejar las ventanas al 100%
 							dataWidth = '100' || dataHeight == '100';
 						}
 					
 					// por el tipo de clase CSS determino el recurso a utilizar
 					var dataSrc = $(this).attr('data-src') || null;
 					
-			        // si hay titulo en el botón genero un modal con titulo 
+			        // si hay titulo en el boton genero un modal con titulo 
 					var attrTittle = $(this).attr('title') || null;
 			
 			
 					// Declaro mis espacios para insertar el tipo de elemento
 			
-			            var contenidoModal = ''; // acorde al tipo de contenido este campo se añade.
+			            var contenidoModal = ''; // acorde al tipo de contenido este campo se Agrega.
 			            	
 						var modalHtml = '<div class="modal fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
 			
@@ -168,7 +168,7 @@
 						var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>';
 				
 			
-			    	// Precarga la ventana que contendrá la información
+			    	// Precarga la ventana que contendra la informacion
 				        $( 'body' ).append(modalHtml);
 				        
 				    	// Precarga el espacio del titulo
@@ -177,13 +177,13 @@
 				    	// Precarga el espacio del footer
 				        $('#' + hrefToid + ' .modal-content').append( modalFooter );	        	
 				        
-				    	// Si hay titulo, añade un H4 en el espacio del titulo
+				    	// Si hay titulo, Agrega un H4 en el espacio del titulo
 				        if ( attrTittle != null ){
 				            $('#' + hrefToid + ' .modal-content .modal-header').append( '<h4 class="modal-title">' + attrTittle +'</div>' );	        	
 				        }
 				        
 				        
-			    	// Si el link tiene alguna de las clases, añade el contenido	        
+			    	// Si el link tiene alguna de las clases, Agrega el contenido	        
 				            	
 						if ( linkClass == '.modal-iframe' ){
 			

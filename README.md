@@ -1,11 +1,11 @@
 Hola! Soy Ekiline, un tema desarrollado para wordpress basado en bootstrap framework.
 
-Mi diseñador y desarrollaodor es @Urielink, ha puesto todo su entusiasmo y esfuerzo para hacer más fácil el porceso de personalizar un sitio que utiliza wordpress.
+Mi diseñador y desarrollaodor es @Urielink, ha puesto todo su entusiasmo y esfuerzo para hacer mas facil el porceso de personalizar un sitio que utiliza wordpress.
 
-Conmigo podrás armar un sitio muy sencillo o muy robusto sin necesidad de llenar tu instalación de wordpress de plugins.
+Conmigo podras armar un sitio muy sencillo o muy robusto sin necesidad de llenar tu instalacion de wordpress de plugins.
 
-Y además podrás hacer combinaciones de elementos basados en Bootstrap 3.7 para hacer páginas web adecuadas a lo que necesites.
+Y ademas podras hacer combinaciones de elementos basados en Bootstrap 3.7 para hacer paginas web adecuadas a lo que necesites.
 
 Cuento con todo lo necesario para que inicies un desarrollo de wordpress.
 
-Pero aún estoy en desarrollo, si gustas ser notificado suscríbete o sígueme.
+Pero aun estoy en desarrollo, si gustas ser notificado suscribete o sigueme.

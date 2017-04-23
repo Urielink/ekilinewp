@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
             
-	<?php // en caso de tener imagen destacada: añade este div, y la clase en el div de la entrada. ?>
+	<?php // en caso de tener imagen destacada: Agrega este div, y la clase en el div de la entrada. ?>
 	<?php if ( has_post_thumbnail() ) { $thumbCss = 'class="col-md-9"'; ?>
 	    <div class="cat-thumb col-xs-3">
 	    	<?php the_post_thumbnail( 'large', array( 'class' => 'img-responsive' ));?>
