@@ -8,13 +8,12 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: Ekiline
-Tags:bootstrap, jquery, custom widgets.
+Tags: boostrap-grid, seo-ready, analytics-ready, left-sidebar, right-sidebar, toggle-sidebars, custom-background, custom-colors, custom-header, custom-menu, featured-images, content-widgets, aside-widgets, top-widgets, footer-widgets, full-width, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
 Ekiline is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
-Ekiline is distributed under the terms of the GNU GPL v2 or later.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 */
@@ -27,10 +26,36 @@ embed,iframe,object{max-width:100%;margin:0 auto;position:relative;display:block
 img{max-width:100%;height:auto;}
 .widget{ overflow:hidden;}
 
-/* Alineaciones (wordpress)*/
+/* Alineaciones (wordpress)
 .alignleft{display:inline;float:left;margin-right:1.5em;}
 .alignright{display:inline;float:right;margin-left:1.5em;}
 .aligncenter{clear:both;display:block;margin-left:auto;margin-right:auto;}
+*/
+
+/* ------------------------------------------------
+ * WordPress Core
+ * ----------------------------------------------*/
+.alignnone{margin:5px 20px 20px 0;}
+.aligncenter,div.aligncenter{display:block;margin:5px auto 5px auto;}
+.alignright{float:right;margin:5px 0 20px 20px;}
+.alignleft{float:left;margin:5px 20px 20px 0;}
+a img.alignright{float:right;margin:5px 0 20px 20px;}
+a img.alignnone{margin:5px 20px 20px 0;}
+a img.alignleft{float:left;margin:5px 20px 20px 0;}
+a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
+.gallery-caption {display: block;}
+.wp-caption{background:#fff;border:1px solid #f0f0f0;max-width:96%;padding:5px 3px 10px;text-align:center;}
+.wp-caption.alignnone{margin:5px 20px 20px 0;}
+.wp-caption.alignleft{margin:5px 20px 20px 0;}
+.wp-caption.alignright{margin:5px 0 20px 20px;}
+.wp-caption img{border:0 none;height:auto;margin:0;max-width:98.5%;padding:0;width:auto;}
+.wp-caption p.wp-caption-text{font-size:11px;line-height:17px;margin:0;padding:0 4px 5px;}
+/* Text meant only for screen readers. */
+.screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute !important;white-space:nowrap;height:1px;width:1px;overflow:hidden;}
+.screen-reader-text:focus{background-color:#f1f1f1;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,0.6);clip:auto !important;color:#21759b;display:block;font-size:14px;font-size:0.875rem;font-weight:bold;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000;/* Above WP toolbar. */}
+.sticky {display: block;}
+.bypostauthor {display: block;}
+
 
 /* ------------------------------------------------
  * Bootstrap CSS ajustes. (Sobrescribir)

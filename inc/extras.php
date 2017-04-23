@@ -469,7 +469,7 @@ function logoTheme() {
 
 }
 
-
+/**
 function destacadoUrl() {
     if ( is_single() ){    
         if ( has_post_thumbnail() ) {
@@ -477,7 +477,7 @@ function destacadoUrl() {
             echo $url;        
         }    
     }
-}
+}**/
 
 function destacadoImage() {
     if ( has_post_thumbnail() ) {  

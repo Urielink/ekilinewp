@@ -11,12 +11,20 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     
-	<?php // en caso de tener imagen destacada: añade este div, y la clase en el div de la entrada. ?>
-	<?php if ( has_post_thumbnail() ) { $thumbCss = 'class="col-md-9"'; ?>
-	    <div class="cat-thumb col-md-3" style="min-height:120px;background:url('<?php destacadoUrl(); ?>') transparent no-repeat scroll center center / cover ;"></div>
-	<?php } else { $thumbCss = 'class="col-md-12"'; } ?>
+	<?php /* En caso de tener imagen destacada (thumbnail):
+	       * Se añade un div para dividir la información */ ?>
+
+	<?php if ( has_post_thumbnail() ) { $thumbCss = 'col-md-8'; ?>
 	
-    <div <?php echo $thumbCss;?>>
+	    <div class="cat-thumb col-md-4 pull-right">
+	        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+	            <?php the_post_thumbnail(); ?>
+	        </a>
+	    </div>
+	    
+	<?php } else { $thumbCss = 'col-md-12'; } ?>
+	
+    <div class="<?php echo $thumbCss;?>">
     	<header class="entry-header">
     				  	
 		  	<?php miniDate();?>
@@ -24,13 +32,16 @@
     		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
     
     		<?php if ( 'post' === get_post_type() ) : ?>
+    		    
     		<div class="entry-meta">
     			<?php ekiline_posted_on(); ?>
     		</div><!-- .entry-meta -->
+
     		<?php endif; ?>
     	</header><!-- .entry-header -->
     
     	<div class="entry-content row">
+
     	     <?php the_excerpt(); ?> 
     	    
     		<?php /**
@@ -47,6 +58,7 @@
     				'after'  => '</div>',
     			) );
     		?>
+    		
     	</div><!-- .entry-content -->
     
     	<footer class="entry-footer row">
