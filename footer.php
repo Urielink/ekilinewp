@@ -33,7 +33,7 @@
             
     		<small class="site-info col-xs-12 text-center">
 
-                <?php printf( esc_html__( '&Copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
+                <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
                 <span class="sep"> | </span>
                 <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
                 <span class="sep"> | </span>
