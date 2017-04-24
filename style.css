@@ -24,7 +24,7 @@ body{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;}
 /* Objetos incorporados (wordpress)*/
 embed,iframe,object{max-width:100%;margin:0 auto;position:relative;display:block;}
 img{max-width:100%;height:auto;}
-.widget{ overflow:hidden;}
+./*widget{ overflow:hidden;}*/
 
 /* Alineaciones (wordpress)
 .alignleft{display:inline;float:left;margin-right:1.5em;}

@@ -3,60 +3,88 @@
  * Custom functions that act independently of the theme templates
  *
  * Eventually, some of the functionality here could be replaced by core features
+ * Ejercicicio base: http://wp-snippets.com/breadcrumbs-without-plugin/
+ * Ejercicicio enriquecido: http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
+ * Ajuste de meuestreo en categoria https://wordpress.stackexchange.com/questions/129609/how-to-show-only-one-category-in-breadcrumb-navigation
  *
  * @package ekiline
  */
 
-// Breadcrumb
 
 function breadcrumb() {
-	
-	if( !is_front_page() ){
-		
-		echo '<ol id="crumbs" class="breadcrumb">';
-		if (!is_home()) {
-			echo '<li><a href="';
-			echo home_url();
-			echo '">';
-			echo esc_html__('Home', 'ekiline');
-			echo "</a>&nbsp;</li>";
-			if (is_category() || is_single()) {
-				echo '<li>';
-				the_category(' </li><li> ');
-				if (is_single()) {
-					echo "</li><li>";
-					the_title();
-					echo '</li>';
-				}
-			} elseif (is_page()) {
-				echo '<li>';
-				echo the_title();
-				echo '</li>';
-			}
-		}
-		elseif (is_tag()) {
-			single_tag_title();
-		}
-		elseif (is_day()) {
-			echo"<li>Archive for "; the_time('F jS, Y'); echo'</li>';
-		}
-		elseif (is_month()) {
-			echo"<li>Archive for "; the_time('F, Y'); echo'</li>';
-		}
-		elseif (is_year()) {
-			echo"<li>Archive for "; the_time('Y'); echo'</li>';
-		}
-		elseif (is_author()) {
-			echo"<li>Author Archive"; echo'</li>';
-		}
-		elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-			echo "<li>Blog Archives"; echo'</li>';
-		}
-		elseif (is_search()) {
-			echo"<li>Search Results"; echo'</li>';
-		}
-		echo '</ol>';
-	
-	}
-	
+            
+    if ( !is_home() || !is_front_page() ) {
+            
+    echo '<ul class="breadcrumb">';
+        
+        echo '<li><a href="'. home_url() .'"> Home </a></li>';
+
+        if ( is_category() || is_single() ) {
+            
+            if( is_category() ) {
+                echo '<li>';
+                    single_term_title();
+                echo '</li>';
+                                
+            } elseif (is_single() ) {
+                
+                echo '<li>';
+                // se debe hacer un llamado en particular para mostrar solo la primer categoria del array (por ello se usa array_shift).
+                $cats = get_the_category( get_the_ID() );
+                $cat = array_shift($cats);
+                echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
+                echo '</li>';
+
+                the_title('<li>','</li>');
+            }            
+            
+        } elseif ( is_page() ) {
+            
+            echo '<li>';
+              the_title();
+            echo '</li>';
+            
+        }
+        elseif (is_tag()) {        
+             echo '<li>'; 
+               single_tag_title(); 
+             echo '</li>';
+        }
+        elseif (is_day()) {
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+              the_time( get_option( 'date_format' ) );
+            echo '</li>';
+        }
+        elseif (is_month()) {
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+              the_time('F, Y'); 
+            echo '</li>';
+        }
+        elseif (is_year()) {
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+              the_time('Y'); 
+            echo'</li>';
+        }
+        elseif (is_author()) {            
+            global $author;
+            $author = get_userdata($author);         
+            echo '<li>'. __( 'Entradas de ', 'ekiline' ), sprintf($author->display_name) .'</li>';
+        }
+        elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) {
+            echo '<li>'. __( 'Archivo', 'ekiline' ); 
+            echo '</li>';
+        }
+        elseif (is_search()) {
+            echo '<li>'. __( 'Resultados ', 'ekiline' ); 
+            echo '</li>';
+        }
+        elseif (is_404()) {
+            echo '<li>'. __( 'Error ', 'ekiline' ) .'</li>';
+        }
+        
+    echo '</ul>';
+
+    }    
+    
+
 }

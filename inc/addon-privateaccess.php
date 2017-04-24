@@ -237,14 +237,14 @@ add_shortcode('registerform', 'ekiline_registerfrontend');
 
 // Deshabilitar la barra de Administracion para el suscriptor:
 // https://developer.wordpress.org/reference/functions/is_user_logged_in/
-
+/**
 	function remove_admin_bar() {
 		if (!current_user_can('administrator') && !is_admin()) {
 		  show_admin_bar(false);
 		}
 	}  
 	add_action('after_setup_theme', 'remove_admin_bar');
-
+**/
 // redirigir la pagina de acceso al home que debe ser.
 
 function redirect() {

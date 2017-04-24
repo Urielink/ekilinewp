@@ -104,7 +104,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                       <div class="caption">
                         <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                         <p><?php the_excerpt(); ?></p>
-                        <small><?php the_time( 'D M Y'); ?></small>                        
+                        <small><?php the_time( get_option( 'date_format' ) ); ?></small>                        
                       </div>
                     </div>
                 </div> <!-- // fin de .item -->  

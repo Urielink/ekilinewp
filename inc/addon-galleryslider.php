@@ -3,6 +3,12 @@
  * Custom functions that act independently of the theme templates
  *
  * Eventually, some of the functionality here could be replaced by core features
+ * Algunos ejemplos del overide: 
+ *  https://gist.github.com/carlesjove/8474049
+ *  https://gist.github.com/mojaray2k/3ac0ba994ee4f3a6a398
+ *  http://stackoverflow.com/questions/19802157/change-wordpress-default-gallery-output
+ *   https://wordpress.stackexchange.com/questions/4343/how-to-customise-the-output-of-the-wp-image-gallery-shortcode-from-a-plugin
+ *   https://gist.github.com/radiovisual/9070765
  *
  * @package ekiline
  */
@@ -10,6 +16,7 @@
 // Carousel, si se detrmina que es un slider se Agregan los marcos, flechas y jscript por cada carrusel, si se quieren colocar varios, se deben nombrar diferente.
 
 add_filter( 'post_gallery', 'my_post_gallery', 10, 2 );
+
 function my_post_gallery( $output, $attr) {
     global $post, $wp_locale;
     static $instance = 0;

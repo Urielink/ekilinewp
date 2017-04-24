@@ -26,11 +26,14 @@ function ekiline_customize_preview_js() {
 add_action( 'customize_preview_init', 'ekiline_customize_preview_js' );
 
 
-/** Personalizar el tema desde las opciones, logo, fondo, etc **/
+/** Personalizar el tema desde las opciones, logo, fondo, etc 
+ *  Los controladores deben complementarse de callbacks para sanitizar el dato.
+ *  muestra: https://github.com/WPTRT/code-examples/blob/master/customizer/sanitization-callbacks.php
+ **/
 
 function ekiline_theme_customizer( $wp_customize ) {
     
-// colores  
+// colores  v1, 23 abril, no se sanitiza mi array.
     $colors = array();
     $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekiline' ) );
     $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ) );
@@ -45,7 +48,8 @@ function ekiline_theme_customizer( $wp_customize ) {
         		$color['slug'], array( 
         				'default' => $color['default'], 
         				'type' => 'option', 
-        				'capability' => 'edit_theme_options' )
+        				'capability' => 'edit_theme_options',
+        				'sanitize_callback' => 'sanitize_hex_color' )
         		);
 
         // CONTROLS
@@ -59,11 +63,13 @@ function ekiline_theme_customizer( $wp_customize ) {
         		)
         );
     }
+
     
     // Invertir el menu
     $wp_customize->add_setting(
     		'ekiline_inversemenu', array(
-    				'default' => ''
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
     		) );
     
     $wp_customize->add_control(
@@ -82,7 +88,11 @@ function ekiline_theme_customizer( $wp_customize ) {
 // https://developer.wordpress.org/themes/advanced-topics/customizer-api/
 // http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
 
-    $wp_customize->add_setting( 'ekiline_logo_max' );
+    $wp_customize->add_setting( 
+            'ekiline_logo_max', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_image'
+            ) );
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_max', array(
             'label'    => __( 'Logotipo horizontal', 'ekiline' ),
@@ -109,7 +119,11 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     // video
     
-    $wp_customize->add_setting( 'ekiline_video' );
+    $wp_customize->add_setting( 
+            'ekiline_video', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_video'
+            ) );
     
     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
     		'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
@@ -123,6 +137,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_setting( 'ekiline_range_header', array( 
 			'default' => '30',
+			'sanitize_callback'  => 'ekiline_sanitize_number_range'
     ) );
 
     $wp_customize->add_control( 'ekiline_range_header', array(
@@ -138,7 +153,10 @@ function ekiline_theme_customizer( $wp_customize ) {
     		),
 	) );    
     
-    $wp_customize->add_setting( 'ekiline_logo_min' );
+    $wp_customize->add_setting( 'ekiline_logo_min', array( 
+            'default' => '',
+            'sanitize_callback'  => 'ekiline_sanitize_image'
+    ) );
     
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_min', array(
     		'label'    => __( 'Logotipo header', 'ekiline' ),
@@ -159,6 +177,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_anchoHome', array(
                     'default' => 'container',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -177,6 +196,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_anchoCategory', array(
                     'default' => 'container',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -195,6 +215,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_anchoSingle', array(
                     'default' => 'container',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -215,6 +236,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_sidebarLeft', array(
                     'default' => 'on',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -233,6 +255,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_sidebarRight', array(
                     'default' => 'on',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -253,6 +276,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         $wp_customize->add_setting(
             'ekiline_topmenuSettings', array(
                     'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
@@ -284,7 +308,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     // Codigo de analytics  
     $wp_customize->add_setting( 
         'ekiline_analytics', array(
-            'default' => ''
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
     $wp_customize->add_control(
@@ -309,7 +334,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     // Poner en mantenimiento
     $wp_customize->add_setting(
     		'ekiline_maintenance', array(
-    				'default' => ''
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
     		) );
     
     $wp_customize->add_control(
@@ -326,3 +352,96 @@ function ekiline_theme_customizer( $wp_customize ) {
         
 }
 add_action('customize_register', 'ekiline_theme_customizer');
+
+/* Scripts de saneado */
+
+function ekiline_sanitize_checkbox( $checked ) {
+    // Boolean check.
+    return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
+function ekiline_sanitize_html( $html ) {
+    return wp_filter_post_kses( $html );
+}
+
+function ekiline_sanitize_image( $image, $setting ) {
+
+    /*
+     * Array of valid image file types.
+     *
+     * The array includes image mime types that are included in wp_get_mime_types()
+     */
+    $mimes = array(
+        'jpg|jpeg|jpe' => 'image/jpeg',
+        'gif'          => 'image/gif',
+        'png'          => 'image/png',
+        'bmp'          => 'image/bmp',
+        'tif|tiff'     => 'image/tiff',
+        'ico'          => 'image/x-icon'
+    );
+
+    // Return an array with file extension and mime_type.
+    $file = wp_check_filetype( $image, $mimes );
+
+    // If $image has a valid mime_type, return it; otherwise, return the default.
+    return ( $file['ext'] ? $image : $setting->default );
+}
+
+function ekiline_sanitize_video( $video, $setting ) {
+
+    $mimes = array(
+        'asf|asx'       => 'video/x-ms-asf',
+        'wmv'           => 'video/x-ms-wmv',
+        'wmx'           => 'video/x-ms-wmx',
+        'wm'            => 'video/x-ms-wm',
+        'avi'           => 'video/avi',
+        'divx'          => 'video/divx',
+        'flv'           => 'video/x-flv',
+        'mov|qt'        => 'video/quicktime',
+        'mpeg|mpg|mpe'  => 'video/mpeg',
+        'mp4|m4v'       => 'video/mp4',
+        'ogv'           => 'video/ogg',
+        'webm'          => 'video/webm',
+        'mkv'           => 'video/x-matroska'
+    );
+
+    $file = wp_check_filetype( $video, $mimes );
+
+    return ( $file['ext'] ? $video : $setting->default );
+}
+
+
+function ekiline_sanitize_number_range( $number, $setting ) {
+    
+    // Ensure input is an absolute integer.
+    $number = absint( $number );
+    
+    // Get the input attributes associated with the setting.
+    $atts = $setting->manager->get_control( $setting->id )->input_attrs;
+    
+    // Get minimum number in the range.
+    $min = ( isset( $atts['min'] ) ? $atts['min'] : $number );
+    
+    // Get maximum number in the range.
+    $max = ( isset( $atts['max'] ) ? $atts['max'] : $number );
+    
+    // Get step.
+    $step = ( isset( $atts['step'] ) ? $atts['step'] : 1 );
+    
+    // If the number is within the valid range, return it; otherwise, return the default
+    return ( $min <= $number && $number <= $max && is_int( $number / $step ) ? $number : $setting->default );
+}
+
+function ekiline_sanitize_select( $input, $setting ) {
+    
+    // Ensure input is a slug.
+    $input = sanitize_key( $input );
+    
+    // Get list of choices from the control associated with the setting.
+    $choices = $setting->manager->get_control( $setting->id )->choices;
+    
+    // If the input is a valid key, return it; otherwise, return the default.
+    return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+}
+
+
