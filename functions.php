@@ -44,8 +44,8 @@ function ekiline_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-        'primary' => esc_html__( 'Primary Menu', 'ekiline' ),
         'top' => esc_html__( 'Top Menu', 'ekiline' ),
+        'primary' => esc_html__( 'Primary Menu', 'ekiline' ),
 	) );
 
 	/*
@@ -77,6 +77,9 @@ function ekiline_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	
+    // Add theme support for selective refresh for widgets.
+    add_theme_support( 'customize-selective-refresh-widgets' );
 }
 endif; // ekiline_setup
 add_action( 'after_setup_theme', 'ekiline_setup' );
@@ -92,12 +95,6 @@ function ekiline_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'ekiline_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'ekiline_content_width', 0 );
-
-/**
- * Permite que los short-codes se añadan en los widgets
- */
-add_filter('widget_text', 'do_shortcode');
-
 
 /**
  * Register widget area.
@@ -272,6 +269,11 @@ function ekiline_scripts() {
 	
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
+
+/**
+ * Permite que los short-codes se añadan en los widgets
+ */
+add_filter('widget_text', 'do_shortcode');
 
 
 /**
