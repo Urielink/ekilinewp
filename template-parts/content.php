@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
     
 	<?php /* En caso de tener imagen destacada (thumbnail):
 	       * Se Agrega un div para dividir la informacion */ ?>
@@ -40,7 +40,7 @@
     		<?php endif; ?>
     	</header><!-- .entry-header -->
     
-    	<div class="entry-content row">
+    	<div class="entry-content">
 
     	     <?php the_excerpt(); ?> 
     	    
@@ -61,7 +61,7 @@
     		
     	</div><!-- .entry-content -->
     
-    	<footer class="entry-footer row">
+    	<footer class="entry-footer">
     		<?php ekiline_entry_footer(); ?>
     	</footer><!-- .entry-footer -->
 	</div>

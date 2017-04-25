@@ -27,7 +27,7 @@
 
 	<?php endif; ?>
 
-	<div class="entry-content row">
+	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -37,7 +37,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer row">
+	<footer class="entry-footer">
 		<?php
 			edit_post_link(
 				sprintf(
