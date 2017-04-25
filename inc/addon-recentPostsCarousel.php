@@ -99,14 +99,17 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                         if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;                                                
                         ?>                                              
                 <div class="item <?php echo $countclass; ?>">
+                    
                     <div class="thumbnail">
                       <?php the_post_thumbnail('medium');?>
-                      <div class="caption">
-                        <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                        <p><?php the_excerpt(); ?></p>
-                        <small><?php the_time( get_option( 'date_format' ) ); ?></small>                        
-                      </div>
                     </div>
+
+                    <div class="caption">
+                      <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                      <p><?php the_excerpt(); ?></p>
+                      <small><?php the_time( get_option( 'date_format' ) ); ?></small>                        
+                    </div>
+                      
                 </div> <!-- // fin de .item -->  
                 <?php endwhile;?>   
 
