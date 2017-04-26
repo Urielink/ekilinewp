@@ -52,7 +52,7 @@
                 ?>
 
                 <a href="<?php echo $next_attachment_url; ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment"><?php
-                    $attachment_size = apply_filters( 'underscoresme_attachment_size', array( 1200, 1200 ) ); // Filterable image size.
+                    $attachment_size = apply_filters( 'ekiline_attachment_size', array( 1200, 1200 ) ); // Filterable image size.
                     echo wp_get_attachment_image( $post->ID, $attachment_size );
                 ?></a>
             </div><!-- .attachment -->
@@ -67,7 +67,7 @@
 
         <?php the_content(); ?>
         
-        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'underscoresme' ), 'after' => '</div>' ) ); ?>
+        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ekiline' ), 'after' => '</div>' ) ); ?>
 
 
 	</div><!-- .entry-content -->
@@ -92,8 +92,8 @@
 
         <nav id="image-navigation" aria-label="...">
           <ul class="pager">
-            <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'underscoresme' ) ); ?></li>
-            <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'underscoresme' ) ); ?></li>
+            <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'ekiline' ) ); ?></li>
+            <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'ekiline' ) ); ?></li>
           </ul>
         </nav><!-- #image-navigation -->	    
 	    
