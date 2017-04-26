@@ -58,6 +58,7 @@ function getTags() {
 	
 	if( is_single() || is_page() || is_home() ) :
 		$tags = get_the_tags($post->ID);
+		$keywords = '';
 		if($tags) :
 			foreach($tags as $tag) :
 				$sep = (empty($keywords)) ? '' : ', ';

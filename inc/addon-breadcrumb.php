@@ -12,6 +12,12 @@
 
 
 function breadcrumb() {
+
+//variables para los attachments        
+$attachPost = get_post( get_the_ID() );
+$attachUrl = get_permalink( $attachPost->post_parent );
+$attachParent = get_the_title( $attachPost->post_parent );
+    
             
     if ( !is_home() || !is_front_page() ) {
             
@@ -27,18 +33,32 @@ function breadcrumb() {
                 echo '</li>';
                                 
             } elseif (is_single() ) {
+                    
+                if ( is_attachment() ){
+                    
+                    // si es un adjunto, muestra el titulo de donde viene
+                    echo '<li><a href="'.$attachUrl.'" title="Volver a  '.$attachParent.'" rel="gallery">'.$attachParent.'</a></li>';                
+                                    
+                } else {
+                        
+                    // si no es un adjunto, entonces muestra la categoría del post
+                    echo '<li>';
+                    // se debe hacer un llamado en particular para mostrar solo la primer categoria del array (por ello se usa array_shift).
+                    $cats = get_the_category( get_the_ID() );
+                    $cat = array_shift($cats);
+                    echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
+                    echo '</li>';
+                                        
+                }
                 
-                echo '<li>';
-                // se debe hacer un llamado en particular para mostrar solo la primer categoria del array (por ello se usa array_shift).
-                $cats = get_the_category( get_the_ID() );
-                $cat = array_shift($cats);
-                echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
-                echo '</li>';
-
                 the_title('<li>','</li>');
             }            
             
         } elseif ( is_page() ) {
+                
+            if (is_attachment()){                
+                echo '<li><a href="'.$attachUrl.'" title="Volver a '.$attachParent.'" rel="gallery">'.$attachParent.'</a></li>';                
+            }            
             
             echo '<li>';
               the_title();
@@ -83,7 +103,7 @@ function breadcrumb() {
         }
         
     echo '</ul>';
-
+            
     }    
     
 
