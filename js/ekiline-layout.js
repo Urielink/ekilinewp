@@ -32,92 +32,85 @@
 			        e.preventDefault();
 			        $("#content").toggleClass("active-sidebar-right");
 			});			  
-		  
-		  
-		// Carrusel de varios thumbs con avance de uno a uno por 2 thumbs
 
-		$('.single-thumb.x2 .item').each(function(){
-		  var next = $(this).next();
-		  if (!next.length) {
-		    next = $(this).siblings(':first');
-		  }
-		  next.children(':first-child').clone().appendTo($(this));
-		  
-		  // variante: 1 = 2thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
-		  
-		  for (var i=0;i<0;i++) { 
-		    next=next.next();
-		    if (!next.length) {
-		    	next = $(this).siblings(':first');
-		  	}
-		    
-		    next.children(':first-child').clone().appendTo($(this));
-		  }
-		});	
-					
-		// Carrusel de varios thumbs con avance de uno a uno por 3 thumbs
 
-			$('.single-thumb.x3 .item').each(function(){
-			  var next = $(this).next();
-			  if (!next.length) {
-			    next = $(this).siblings(':first');
-			  }
-			  next.children(':first-child').clone().appendTo($(this));
-			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
-			  
-			  for (var i=0;i<1;i++) { 
-			    next=next.next();
-			    if (!next.length) {
-			    	next = $(this).siblings(':first');
-			  	}
-			    
-			    next.children(':first-child').clone().appendTo($(this));
-			  }
-			});	
+			/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+			 * 
+			 *	Carrusel multiple 
+			 * 
+			 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
 			
-		// Carrusel de varios thumbs con avance de uno a uno por 4 thumbs
-
-			$('.single-thumb.x4 .item').each(function(){
-			  var next = $(this).next();
-			  if (!next.length) {
-			    next = $(this).siblings(':first');
-			  }
-			  next.children(':first-child').clone().appendTo($(this));
-			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
-			  
-			  for (var i=0;i<2;i++) { 
-			    next=next.next();
-			    if (!next.length) {
-			    	next = $(this).siblings(':first');
-			  	}
-			    
-			    next.children(':first-child').clone().appendTo($(this));
-			  }
-			});					
-						
-
-		// Carrusel de varios thumbs con avance de uno a uno por 6 thumbs
 			
-			$('.single-thumb.x6 .item').each(function(){
-			  var next = $(this).next();
-			  if (!next.length) {
-			    next = $(this).siblings(':first');
-			  }
-			  next.children(':first-child').clone().appendTo($(this));
-			  
-			  // variante: 1 = 3thumbs, 2 = 4thumbs y asi sucesivamente… tambien se modifica en el css
-			  
-			  for (var i=0;i<4;i++) { 
-			    next=next.next();
-			    if (!next.length) {
-			    	next = $(this).siblings(':first');
-			  	}
-			    
-			    next.children(':first-child').clone().appendTo($(this));
-			  }
-			});	
+            $('.carousel-multiple .item').each(function(){
+                
+                var cThumb = $(this).children();
+                                                             
+                  // Busca la clase que corresponda para determinar una variable de conteo y también que añada una clase al contenedor
+                  
+                    if ( cThumb.hasClass( 'col-sm-6' ) ){
+    
+                      $('.carousel-multiple').addClass('x2');                         
+                      var slot = 0;
+                        console.log('son 2 objetos de 6');
+    
+                    } else if ( cThumb.hasClass( 'col-sm-4' ) ){
+    
+                      $('.carousel-multiple').addClass('x3');                
+                      var slot = 2/2;
+                        console.log('son 3 objetos de 4');
+    
+                    } else if ( cThumb.hasClass( 'col-sm-3' ) ){
+    
+                      $('.carousel-multiple').addClass('x4');                
+                      var slot = 2;
+                    console.log('son 4 objetos de 3');
+    
+                    } else if ( cThumb.hasClass( 'col-sm-2' ) ){
+    
+                      $('.carousel-multiple').addClass('x6');                
+                      var slot = 2+2;
+                        console.log('son 6 objetos de 2');
+    
+                    }
+
+                  // por cada objeto cuenta el priemro y clonalo para hacer el recorrido
+                  // ejercicio original: http://www.bootply.com/4eSuqiPRo2
+                  var next = $(this).next();
+                  
+                  if (!next.length) {
+                    next = $(this).siblings(':first');
+                  }
+                  
+                  next.children(':first-child').clone().appendTo( $(this) );    
+                  
+                  // aquí meto mi variable 'slot'.
+                  for (var i=0;i<slot;i++) { 
+                      
+                    next=next.next();
+                    if (!next.length) {
+                        next = $(this).siblings(':first');
+                    }
+                    
+                    next.children(':first-child').clone().appendTo( $(this) );
+                  }			
+            }); 
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+			 * 
+			 *	ModalBox 
+			 * 
+			 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
+
 			
 			var ekilinemodals = {			
 				

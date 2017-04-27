@@ -11,11 +11,6 @@
 		var apareceItem = '.entry-title';
 		var textoLoco = '#carrusel-homeslide .carousel-caption h1';
 		
-		// Carrusel: impedir que avance automaticamente
-		
-		$( desfaseItem ).carousel({
-		    interval: false
-		});		
 		
 			
 	    //desfasa la imagen de fondo
@@ -79,6 +74,11 @@
 	        $('#primary').removeClass('col-md-offset-3')
 	    });
 */
+		
+		// Carrusel: impedir que avance automaticamente
+		
+        $('.carousel').carousel({ interval: false });     
+		
 
 	    if ( $('#masthead').length ) {
 	    	
@@ -93,8 +93,8 @@
 
 	    } else {
 	    	
-	    	console.log ('no header');
-	    	console.log ( $('.top-navbar.navbar-affix').height() );
+//	    	console.log ('no header');
+//	    	console.log ( $('.top-navbar.navbar-affix').height() );
 
 	    	$('.top-navbar.navbar-affix').affix({
 		        offset: {

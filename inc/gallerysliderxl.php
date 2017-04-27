@@ -25,7 +25,9 @@ function ekiline_gallery( $output,$attr ) {
         if ( empty( $attr['orderby'] ) ) {
             $attr['orderby'] = 'post__in';
         }
+        
         $attr['include'] = $attr['ids'];
+        
     }
  
     /**
@@ -44,27 +46,30 @@ function ekiline_gallery( $output,$attr ) {
      * @param int    $instance Unique numeric ID of this gallery shortcode instance.
      *
      */
-
-//    Esta linea se va          
-//    $output = apply_filters( 'post_gallery', '', $attr, $instance );
     
     if ( $output != '' ) {
         return $output;
     }
  
-    $html5 = current_theme_supports( 'html5', 'gallery' );
     $atts = shortcode_atts( array(
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post ? $post->ID : 0,
-        'itemtag'    => $html5 ? 'figure'     : 'dl',
-        'icontag'    => $html5 ? 'div'        : 'dt',
-        'captiontag' => $html5 ? 'figcaption' : 'dd',
+        'itemtag'    => 'figure',
+        'icontag'    => 'div',
+        'captiontag' => 'figcaption',
         'columns'    => 3,
         'size'       => 'thumbnail',
         'include'    => '',
         'exclude'    => '',
-        'link'       => ''
+        'link'       => '',
+        //agregado
+        'carousel'   => '',
+        'name'       => 'default',
+        'align'      => 'text-center',
+        'indicators' => 'false',
+        'speed'      => '3000',
+        'transition' => ''
     ), $attr, 'gallery' );
  
     $id = intval( $atts['id'] );
@@ -112,57 +117,86 @@ function ekiline_gallery( $output,$attr ) {
     $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
     $float = is_rtl() ? 'right' : 'left';
  
-    $selector = "gallery-{$instance}";
- 
-    $gallery_style = '';
- 
-    /**
-     * Filters whether to print default gallery styles.
-     *
-     * @since 3.1.0
-     *
-     * @param bool $print Whether to print default gallery styles.
-     *                    Defaults to false if the theme supports HTML5 galleries.
-     *                    Otherwise, defaults to true.
-     */
-    if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
-        $gallery_style = "
-        <style type='text/css'>
-            #{$selector} {
-                margin: auto;
-            }
-            #{$selector} .gallery-item {
-                float: {$float};
-                margin-top: 10px;
-                text-align: center;
-                width: {$itemwidth}%;
-            }
-            #{$selector} img {
-                border: 2px solid #cfcfcf;
-            }
-            #{$selector} .gallery-caption {
-                margin-left: 0;
-            }
-            /* see gallery_shortcode() in wp-includes/media.php */
-        </style>\n\t\t";
-    }
- 
+    $selector = "gallery-{$instance}-".$atts['name'];
+  
+    
+    /** Variables de carrusel p1: las clases CSS y variables de objetos **/
+     
+    $itemcol = '';
+    $carousel = 'row';
+    $carouselitem = 'item';
+    $alignitems = $atts['align'];
+    $indicators = '';
+    $transition = '';
+                    
+    if ( empty( $atts['carousel'] ) ) {
+                
+        if ($columns == '1') : $itemcol = 'col-sm-12';
+        elseif ($columns == '2') : $itemcol = 'col-sm-6';
+        elseif ($columns == '3') : $itemcol = 'col-sm-4';
+        elseif ($columns == '4') : $itemcol = 'col-sm-3';
+        elseif ($columns == '5') : $itemcol = 'col-sm-1a5';
+        elseif ($columns == '6') : $itemcol = 'col-sm-2';
+        elseif ($columns == '7') : $itemcol = 'col-sm-1a7';
+        elseif ($columns == '8') : $itemcol = 'col-sm-1a8';
+        elseif ($columns == '9') : $itemcol = 'col-sm-1a9'; endif;
+        
+    } elseif ( ! empty( $atts['carousel'] ) ) {
+            
+        $carousel = 'carousel slide';
+        $indicators = $atts['indicators'];
+        $speed = ' data-interval="'.$atts['speed'].'"';
+        $transition = $atts['transition'];
+        $first = true;  // bandera
+                        
+        if ( $columns > '1' ){
+            $carousel = 'carousel slide carousel-multiple';
+        }         
+                
+        if ($columns == '1') : $itemcol = '';
+        elseif ($columns == '2') : $itemcol = 'col-sm-6';
+        elseif ($columns == '3' || $columns == '9') : $itemcol = 'col-sm-4';
+        elseif ($columns == '4' || $columns == '7' || $columns == '8') : $itemcol = 'col-sm-3';
+        elseif ($columns == '5' || $columns == '6') : $itemcol = 'col-sm-2';
+        endif;
+        
+    }     
+    
+         
+    /** Fin de Variables de carrusel p1 **/
+    
+    
     $size_class = sanitize_html_class( $atts['size'] );
-    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$transition}'".$speed.">";
  
-    /**
-     * Filters the default gallery shortcode CSS styles.
-     *
-     * @since 2.5.0
-     *
-     * @param string $gallery_style Default CSS styles and opening HTML div container
-     *                              for the gallery shortcode output.
-     */
-    $output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
- 
+    $output = $gallery_div; 
+
+    /** Variables de carrusel p2: los controles y el div interno **/
+    
+    if ( ! empty( $atts['carousel'] ) ) {
+            
+        if ($indicators == 'true'){
+            
+            $control = '';
+            
+            foreach ( $_attachments as $key => $val ) {
+                if ( $key == 0 ) : $activo = 'class="active"';  else : $activo=''; endif;            
+                $control .= '<li data-target="#'. $selector .'" data-slide-to="'. $key .'" '. $activo .'></li>';
+            }                
+            
+            $output .= '<ol class="carousel-indicators">'.$control.'</ol>';        
+        }
+        
+        $output .= '<div class="carousel-inner" role="listbox">';
+
+    }    
+      
+    /** FIN de variables de carrusel p2 **/
+              
     $i = 0;
+                            
     foreach ( $attachments as $id => $attachment ) {
- 
+             
         $attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
         if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
             $image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
@@ -176,31 +210,137 @@ function ekiline_gallery( $output,$attr ) {
         $orientation = '';
         if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
             $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-        }
-        $output .= "<{$itemtag} class='gallery-item'>";
-        $output .= "
-            <{$icontag} class='gallery-icon {$orientation}'>
-                $image_output
-            </{$icontag}>";
-        if ( $captiontag && trim($attachment->post_excerpt) ) {
-            $output .= "
-                <{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
-                " . wptexturize($attachment->post_excerpt) . "
-                </{$captiontag}>";
-        }
-        $output .= "</{$itemtag}>";
-        if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
-            $output .= '<br style="clear: both" />';
+        }  
+         
+    /** Variables de carrusel p3 la : clase CSS active **/    
+        if ( ! empty( $atts['carousel'] ) ) {                
+            if ( $first ) : $carouselitem = 'item active'; $first = false;
+            else :  $carouselitem = 'item'; endif;                               
+        }                  
+    /** FIN Variables de carrusel p3 **/
+                
+        $output .= "<div class='{$carouselitem}'><{$itemtag} class='gallery-item {$itemcol} {$alignitems}'>";
+        
+            $output .= "<{$icontag} class='gallery-icon {$orientation}'>
+                            $image_output
+                        </{$icontag}>";
+                
+            if ( $captiontag && trim($attachment->post_excerpt) ) {
+                                
+            $output .= "<{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
+                        " . wptexturize($attachment->post_excerpt) . "
+                        </{$captiontag}>";                        
+            }
+        
+        $output .= "</{$itemtag}></div>";
+        
+        if ( empty( $atts['carousel'] ) && $columns > 1 && ++$i % $columns == 0 ) {
+            $output .= '<div class="clearfix middle"></div>';
         }
     }
  
-    if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
-        $output .= "
-            <br style='clear: both' />";
+    if ( empty( $atts['carousel'] ) && $columns > 0 && $i % $columns !== 0 ) {
+        $output .= '<div class="clearfix last"></div>';
     }
+    
+    if ( ! empty( $atts['carousel'] ) ) {
+        $output .= '</div>'; /* <-- .carousel-inner" */
+        
+        $output .= '<a class="left carousel-control" href="#'.$selector.'" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span></a>
+                    <a class="right carousel-control" href="#'.$selector.'" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span></a>';        
+    }
+    
  
-    $output .= "
-        </div>\n";
- 
+    $output .= "</div>\n"; /* <-- $output = $gallery_div; */
+         
     return $output;
 }
+
+
+
+/** 
+* Añadimos funciones de personalizacion en la admnistracion de la galeria
+* http://wordpress.stackexchange.com/questions/179357/custom-wordpress-gallery-option
+* https://wordpress.org/support/topic/how-to-add-fields-to-gallery-settings
+* http://wordpress.stackexchange.com/questions/182821/add-custom-fields-to-wp-native-gallery-settings
+**/
+
+add_action('print_media_templates', function(){
+  ?>
+ 
+  <script type="text/html" id="tmpl-ekiline-gallery-setting">
+    <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
+    <h2><?php _e('ekiline Settings','ekiline'); ?></h2>
+            
+    <label class="setting">
+        <span><?php _e('Transform to carousel','ekiline'); ?></span>
+        <input type="checkbox" data-setting="carousel">
+    </label>  
+    
+    <label class="setting">
+        <span><?php _e('Carousel name','ekiline'); ?></span>
+        <input type="text" value="" data-setting="name" placeholder="default">
+    </label>
+    
+    <label class="setting">
+      <span><?php _e('Carousel text caption align','ekiline'); ?></span>
+      <select data-setting="align">
+        <option value="text-center"> <?php _e('Center','ekiline'); ?> </option>
+        <option value="text-left"> <?php _e('Left','ekiline'); ?> </option>
+        <option value="text-right"> <?php _e('Right','ekiline'); ?> </option>
+      </select>
+    </label>
+
+    <label class="setting">
+      <span><?php _e('Carousel transition','ekiline'); ?></span>
+      <select data-setting="transition">
+        <option value="none"> <?php _e('None','ekiline'); ?> </option>
+        <option value="carousel-fade"> <?php _e('Fade','ekiline'); ?> </option>
+        <option value="carousel-vertical"> <?php _e('Vertical','ekiline'); ?> </option>
+      </select>
+    </label>
+
+    <label class="setting">
+        <span><?php _e('Show indicators','ekiline'); ?></span>
+        <input type="checkbox" data-setting="indicators">
+    </label>  
+    
+    <label class="setting">
+        <span><?php _e('Speed','ekiline'); ?></span>
+        <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
+    </label>
+      
+    </div>
+  </script>
+
+  <script>
+
+    jQuery(document).ready(function(){
+
+      _.extend(wp.media.gallery.defaults, {
+        carousel: false,
+        name: 'default',
+        align: 'text-center',
+        transition: 'none',
+        indicators: false,
+        speed: '3000'
+           
+      });
+
+      wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
+        template: function(view){
+          return wp.media.template('gallery-settings')(view)
+               + wp.media.template('ekiline-gallery-setting')(view);
+        }
+      });
+
+    });
+
+  </script>
+  <?php
+
+});

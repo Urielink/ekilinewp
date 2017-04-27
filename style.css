@@ -135,7 +135,7 @@ body{margin-bottom:60px;}
 .mini-fecha .dia{width:100%;padding:0px;margin:0px;font-weight:900;font-size:28px;display:inline-block;}
 .mini-fecha .mes{width:100%;padding:0px;margin:0px;display:inline-block;}
 
-/*Modo wireframe*/
+/*Modo wireframe */
 [class*='col-']{border:1px solid #ddd;}
 
 .col-xs-1::before { content: 'col-xs-1';}
