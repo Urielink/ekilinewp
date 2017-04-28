@@ -120,7 +120,12 @@
 				 * 
 				 *	ModalBox para diferente contenido
 				 * 
-				 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
+				 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+				
+				//Abr 28 2017 añadir un atributo a los links, para ejecutar los modals.
+		        $( linkClass ).each(function(){        	
+                  $(this).attr('data-toggle','modal');
+                });				
 
 		        $( linkClass ).on('click',function(){
 
@@ -151,9 +156,10 @@
 			
 					// Declaro mis espacios para insertar el tipo de elemento
 			
-			            var contenidoModal = ''; // acorde al tipo de contenido este campo se Agrega.
-			            	
-						var modalHtml = '<div class="modal fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
+			            var contenidoModal = ''; // acorde al tipo de contenido este campo se Agrega. 
+			            
+			            //Abr 28 2017: añado una clase extra al modal para poder maniobrar las medidas por tipo de contenido y le añado un sufijo "linkClass.substr(1)"
+						var modalHtml = '<div class="modal window-'+ linkClass.substr(7) +' fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
 			
 						var modalTitle = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>';
 			
@@ -179,14 +185,14 @@
 			    	// Si el link tiene alguna de las clases, Agrega el contenido	        
 				            	
 						if ( linkClass == '.modal-iframe' ){
-			
+							
 				            contenidoModal = '<iframe frameborder="0" scrolling="yes" allowtransparency="true" src="' + dataSrc + '" width="100%" height="100%"></iframe>';
 			
 				            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 			
 						} else if ( linkClass == '.modal-image' ){
 			
-							dataWidth = '60';
+							dataWidth = '';
 			
 					        contenidoModal = '<img class="img-responsive" src="' + dataSrc + '"/>';
 			
@@ -198,6 +204,8 @@
 			
 						} else if ( linkClass == '.modal-text' ){
 			
+							dataWidth = '20';
+							
 				            $('#' + hrefToid + ' .modal-content .modal-body').text( dataSrc );
 			
 						}  
@@ -220,18 +228,63 @@
 					           });
 					           
 					         $(this).find('.modal-content').css({
-					                  'border-radius':'0',
 					                  'padding':'0'
 					          }); 
 					           
 					         $(this).find('.modal-body').css({
-					                  'padding':'0',
-					                  // modal body hereda la altura de la ventana
-					                  'height': $(window).height() * 0.81
-					           });		           
+					                  'padding':'0'
+					         });
+					         
+				         //Abr 27, después de añadir la clase auxiliar, le pedimos que ajuste las medidas. 
+					         $('.window-iframe').find('.modal-body').css({
+				                  // modal body hereda la altura de la ventana
+				                  'height': $(window).height() * 0.88
+					         });		
 					           
-					           
-					    }); 			
+					    }); 	
+					    
+					    // función para ajustar los modals respecto al contenido interno
+					    // https://codepen.io/dimbslmh/full/mKfCc
+					    function setModalMaxHeight(element) {
+					    	  this.$element     = $(element);  
+					    	  this.$content     = this.$element.find('.modal-content');
+					    	  var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
+					    	  var dialogMargin  = $(window).width() < 768 ? 20 : 60;
+					    	  var contentHeight = $(window).height() - (dialogMargin + borderWidth);
+					    	  var headerHeight  = this.$element.find('.modal-header').outerHeight() || 0;
+					    	  var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
+					    	  var maxHeight     = contentHeight - (headerHeight + footerHeight);
+
+					    	  this.$content.css({
+					    	      'overflow': 'hidden'
+					    	  });
+					    	  
+					    	  this.$element
+					    	    .find('.modal-body').css({
+					    	      'max-height': maxHeight,
+					    	      'overflow-y': 'auto'
+					    	  });
+					    	}
+
+					    	$('.modal').on('show.bs.modal', function() {
+					    	  $(this).show();
+					    	  setModalMaxHeight(this);
+					    	});
+
+					    	$(window).resize(function() {
+					    	  if ($('.modal.in').length != 0) {
+					    	    setModalMaxHeight($('.modal.in'));
+					    	  }
+					    	});					    
+					    
+					    
+					    
+					    
+					    
+					    
+					    
+					    
+					    
 			
 			
 			
