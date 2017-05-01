@@ -8,12 +8,12 @@
  * Corroborando los problemas que da: 
  *   -https://wordpress.stackexchange.com/questions/43558/how-to-manually-fix-the-wordpress-gallery-code-using-php-in-functions-php
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
-add_filter('post_gallery', 'ekiline_gallery', 10, 2);
+add_filter('post_gallery', 'ekilinewp_gallery', 10, 2);
  
-function ekiline_gallery( $output,$attr ) {
+function ekilinewp_gallery( $output,$attr ) {
     
     $post = get_post();
  
@@ -272,45 +272,45 @@ function ekiline_gallery( $output,$attr ) {
 add_action('print_media_templates', function(){
   ?>
  
-  <script type="text/html" id="tmpl-ekiline-gallery-setting">
+  <script type="text/html" id="tmpl-ekilinewp-gallery-setting">
     <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
-    <h2><?php _e('ekiline Settings','ekiline'); ?></h2>
+    <h2><?php _e('ekilinewp Settings','ekilinewp'); ?></h2>
             
     <label class="setting">
-        <span><?php _e('Transform to carousel','ekiline'); ?></span>
+        <span><?php _e('Transform to carousel','ekilinewp'); ?></span>
         <input type="checkbox" data-setting="carousel">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Carousel name','ekiline'); ?></span>
+        <span><?php _e('Carousel name','ekilinewp'); ?></span>
         <input type="text" value="" data-setting="name" placeholder="default">
     </label>
     
     <label class="setting">
-      <span><?php _e('Carousel text caption align','ekiline'); ?></span>
+      <span><?php _e('Carousel text caption align','ekilinewp'); ?></span>
       <select data-setting="align">
-        <option value="text-center"> <?php _e('Center','ekiline'); ?> </option>
-        <option value="text-left"> <?php _e('Left','ekiline'); ?> </option>
-        <option value="text-right"> <?php _e('Right','ekiline'); ?> </option>
+        <option value="text-center"> <?php _e('Center','ekilinewp'); ?> </option>
+        <option value="text-left"> <?php _e('Left','ekilinewp'); ?> </option>
+        <option value="text-right"> <?php _e('Right','ekilinewp'); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-      <span><?php _e('Carousel transition','ekiline'); ?></span>
+      <span><?php _e('Carousel transition','ekilinewp'); ?></span>
       <select data-setting="transition">
-        <option value="none"> <?php _e('None','ekiline'); ?> </option>
-        <option value="carousel-fade"> <?php _e('Fade','ekiline'); ?> </option>
-        <option value="carousel-vertical"> <?php _e('Vertical','ekiline'); ?> </option>
+        <option value="none"> <?php _e('None','ekilinewp'); ?> </option>
+        <option value="carousel-fade"> <?php _e('Fade','ekilinewp'); ?> </option>
+        <option value="carousel-vertical"> <?php _e('Vertical','ekilinewp'); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-        <span><?php _e('Show indicators','ekiline'); ?></span>
+        <span><?php _e('Show indicators','ekilinewp'); ?></span>
         <input type="checkbox" data-setting="indicators">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Speed','ekiline'); ?></span>
+        <span><?php _e('Speed','ekilinewp'); ?></span>
         <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
     </label>
       
@@ -334,7 +334,7 @@ add_action('print_media_templates', function(){
       wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
         template: function(view){
           return wp.media.template('gallery-settings')(view)
-               + wp.media.template('ekiline-gallery-setting')(view);
+               + wp.media.template('ekilinewp-gallery-setting')(view);
         }
       });
 

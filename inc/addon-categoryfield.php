@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 /**
@@ -24,32 +24,32 @@ function extra_category_fields( $tag ) {    //check for existing featured ID
 ?>
 
 <tr class="form-field">
-<th scope="row" valign="top"><label for="cat_Image_url"><?php _e('Imagen de categoria','ekiline'); ?></label></th>
+<th scope="row" valign="top"><label for="cat_Image_url"><?php _e('Imagen de categoria','ekilinewp'); ?></label></th>
 <td>
 <input type="text" name="Cat_meta[img]" id="Cat_meta[img]" size="3" style="width:60%;" value="<?php echo $cat_meta['img'] ? $cat_meta['img'] : ''; ?>"><br />
-            <span class="description"><?php _e('Solo introduce la url de tu imagen','ekiline'); ?></span>
+            <span class="description"><?php _e('Solo introduce la url de tu imagen','ekilinewp'); ?></span>
         </td>
 </tr>
 <?php /**
 <tr class="form-field">
-<th scope="row" valign="top"><label for="extra1"><?php _e('extra field','ekiline'); ?></label></th>
+<th scope="row" valign="top"><label for="extra1"><?php _e('extra field','ekilinewp'); ?></label></th>
 <td>
 <input type="text" name="Cat_meta[extra1]" id="Cat_meta[extra1]" size="25" style="width:60%;" value="<?php echo $cat_meta['extra1'] ? $cat_meta['extra1'] : ''; ?>"><br />
-            <span class="description"><?php _e('extra field','ekiline'); ?></span>
+            <span class="description"><?php _e('extra field','ekilinewp'); ?></span>
         </td>
 </tr>
 <tr class="form-field">
-<th scope="row" valign="top"><label for="extra2"><?php _e('extra field','ekiline'); ?></label></th>
+<th scope="row" valign="top"><label for="extra2"><?php _e('extra field','ekilinewp'); ?></label></th>
 <td>
 <input type="text" name="Cat_meta[extra2]" id="Cat_meta[extra2]" size="25" style="width:60%;" value="<?php echo $cat_meta['extra2'] ? $cat_meta['extra2'] : ''; ?>"><br />
-            <span class="description"><?php _e('extra field','ekiline'); ?></span>
+            <span class="description"><?php _e('extra field','ekilinewp'); ?></span>
         </td>
 </tr>
 <tr class="form-field">
-<th scope="row" valign="top"><label for="extra3"><?php _e('extra field','ekiline'); ?></label></th>
+<th scope="row" valign="top"><label for="extra3"><?php _e('extra field','ekilinewp'); ?></label></th>
 <td>
             <textarea name="Cat_meta[extra3]" id="Cat_meta[extra3]" style="width:60%;"><?php echo $cat_meta['extra3'] ? $cat_meta['extra3'] : ''; ?></textarea><br />
-            <span class="description"><?php _e('extra field','ekiline'); ?></span>
+            <span class="description"><?php _e('extra field','ekilinewp'); ?></span>
         </td>
 </tr>
 **/?>

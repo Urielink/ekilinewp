@@ -8,12 +8,12 @@
  * Corroborando los problemas que da: 
  *   -https://wordpress.stackexchange.com/questions/43558/how-to-manually-fix-the-wordpress-gallery-code-using-php-in-functions-php
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
-add_filter('post_gallery', 'ekiline_gallery', 10, 2);
+add_filter('post_gallery', 'ekilinewp_gallery', 10, 2);
  
-function ekiline_gallery( $output,$attr ) {
+function ekilinewp_gallery( $output,$attr ) {
     
     $post = get_post();
  

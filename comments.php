@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 /*
@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ekiline' ) ),
+					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ekilinewp' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -37,11 +37,11 @@ if ( post_password_required() ) {
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekiline' ); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekilinewp' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekiline' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'ekiline' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekilinewp' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'ekilinewp' ) ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-above -->
@@ -58,11 +58,11 @@ if ( post_password_required() ) {
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekiline' ); ?></h2>
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekilinewp' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekiline' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'ekiline' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekilinewp' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'ekilinewp' ) ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
@@ -74,7 +74,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'ekiline' ); ?></p>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'ekilinewp' ); ?></p>
 	<?php endif; ?>
 
 <?php 
@@ -90,19 +90,19 @@ $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
 
 $args = array(
-	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'ekiline' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
+	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'ekilinewp' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
   	'fields' => apply_filters( 'comment_form_default_fields', array(
 
     'author' =>
       '<div class="comment-form-author">' .
-      '<label for="author">' . __( 'Name','ekiline' ) . '</label> ' .
+      '<label for="author">' . __( 'Name','ekilinewp' ) . '</label> ' .
       ( $req ? '<span class="required">*</span>' : '' ) .
       '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
       '" size="30"' . $aria_req . ' /></div>',
 
     'email' =>
-      '<div class="comment-form-email"><label for="email">' . __( 'Email','ekiline' ) . '</label> ' .
+      '<div class="comment-form-email"><label for="email">' . __( 'Email','ekilinewp' ) . '</label> ' .
       ( $req ? '<span class="required">*</span>' : '' ) .
       '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
       '" size="30"' . $aria_req . ' /></div>',
@@ -110,7 +110,7 @@ $args = array(
 	// se comenta para que no aparezca
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
-      __( 'Website','ekiline' ) . '</label>' .
+      __( 'Website','ekilinewp' ) . '</label>' .
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
       '" size="30" /></div>'      
 	  )),

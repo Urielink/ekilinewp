@@ -10,7 +10,7 @@
  *   https://wordpress.stackexchange.com/questions/4343/how-to-customise-the-output-of-the-wp-image-gallery-shortcode-from-a-plugin
  *   https://gist.github.com/radiovisual/9070765
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 // Carousel, si se detrmina que es un slider se Agregan los marcos, flechas y jscript por cada carrusel, si se quieren colocar varios, se deben nombrar diferente.
@@ -220,10 +220,10 @@ add_action('print_media_templates', function(){
  
   <script type="text/html" id="tmpl-my-custom-gallery-setting">
     <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
-    <h2><?php _e('ekiline Settings','ekiline'); ?></h2>
+    <h2><?php _e('ekilinewp Settings','ekilinewp'); ?></h2>
     
     <!--label class="setting">
-      <span><?php _e('My setting','ekiline'); ?></span>
+      <span><?php _e('My setting','ekilinewp'); ?></span>
       <select data-setting="my_custom_attr">
         <option value="foo"> Foo </option>
         <option value="bar"> Bar </option>
@@ -232,22 +232,22 @@ add_action('print_media_templates', function(){
     </label>
 
     <label class="setting">
-        <span><?php _e('Text','ekiline'); ?></span>
+        <span><?php _e('Text','ekilinewp'); ?></span>
         <input type="text" value="" data-setting="ds_text" style="float:left;">
     </label>
 
     <label class="setting">
-        <span><?php _e('Textarea','ekiline'); ?></span>
+        <span><?php _e('Textarea','ekilinewp'); ?></span>
         <textarea value="" data-setting="ds_textarea" style="float:left;"></textarea>
     </label>
 
     <label class="setting">
-        <span><?php _e('Number','ekiline'); ?></span>
+        <span><?php _e('Number','ekilinewp'); ?></span>
         <input type="number" value="" data-setting="ds_number" style="float:left;" min="1" max="9">
     </label>
 
     <label class="setting">
-      <span><?php _e('Select','ekiline'); ?></span>
+      <span><?php _e('Select','ekilinewp'); ?></span>
       <select data-setting="ds_select">
         <option value="option1"> 'Option-1' </option>
         <option value="option2"> 'Option-2' </option>
@@ -255,45 +255,45 @@ add_action('print_media_templates', function(){
     </label>
 
     <label class="setting">
-        <span><?php _e('Bool','ekiline'); ?></span>
+        <span><?php _e('Bool','ekilinewp'); ?></span>
         <input type="checkbox" data-setting="ds_bool">
     </label-->  
         
     <label class="setting">
-        <span><?php _e('Transform to carousel','ekiline'); ?></span>
+        <span><?php _e('Transform to carousel','ekilinewp'); ?></span>
         <input type="checkbox" data-setting="carousel">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Carousel name','ekiline'); ?></span>
+        <span><?php _e('Carousel name','ekilinewp'); ?></span>
         <input type="text" value="" data-setting="name" placeholder="default">
     </label>
     
     <label class="setting">
-      <span><?php _e('Carousel text caption align','ekiline'); ?></span>
+      <span><?php _e('Carousel text caption align','ekilinewp'); ?></span>
       <select data-setting="align">
-        <option value="text-center"> <?php _e('Center','ekiline'); ?> </option>
-        <option value="text-left"> <?php _e('Left','ekiline'); ?> </option>
-        <option value="text-right"> <?php _e('Right','ekiline'); ?> </option>
+        <option value="text-center"> <?php _e('Center','ekilinewp'); ?> </option>
+        <option value="text-left"> <?php _e('Left','ekilinewp'); ?> </option>
+        <option value="text-right"> <?php _e('Right','ekilinewp'); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-      <span><?php _e('Carousel transition','ekiline'); ?></span>
+      <span><?php _e('Carousel transition','ekilinewp'); ?></span>
       <select data-setting="transition">
-        <option value="none"> <?php _e('None','ekiline'); ?> </option>
-        <option value="carousel-fade"> <?php _e('Fade','ekiline'); ?> </option>
-        <option value="carousel-vertical"> <?php _e('Vertical','ekiline'); ?> </option>
+        <option value="none"> <?php _e('None','ekilinewp'); ?> </option>
+        <option value="carousel-fade"> <?php _e('Fade','ekilinewp'); ?> </option>
+        <option value="carousel-vertical"> <?php _e('Vertical','ekilinewp'); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-        <span><?php _e('Show indicators','ekiline'); ?></span>
+        <span><?php _e('Show indicators','ekilinewp'); ?></span>
         <input type="checkbox" data-setting="indicators">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Speed','ekiline'); ?></span>
+        <span><?php _e('Speed','ekilinewp'); ?></span>
         <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
     </label>
 

@@ -1,4 +1,4 @@
-Hola! Soy Ekiline, un tema desarrollado para wordpress basado en bootstrap framework.
+Hola! Soy ekilinewp, un tema desarrollado para wordpress basado en bootstrap framework.
 
 Mi diseñador y desarrollaodor es @Urielink, ha puesto todo su entusiasmo y esfuerzo para hacer mas facil el porceso de personalizar un sitio que utiliza wordpress.
 

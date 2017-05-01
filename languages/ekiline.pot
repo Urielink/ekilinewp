@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: _ekiline 1.0.0\n"
+"Project-Id-Version: _ekilinewp 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-09-16 19:02:07+00:00\n"
 "MIME-Version: 1.0\n"
@@ -13,30 +13,30 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
 #: 404.php:17
-#@ _ekiline
+#@ _ekilinewp
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
 #: 404.php:21
-#@ _ekiline
+#@ _ekilinewp
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
 
 #: 404.php:29
-#@ _ekiline
+#@ _ekilinewp
 msgid "Most Used Categories"
 msgstr ""
 
 #. translators: %1$s: smiley
 #: 404.php:46
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
 #: comments.php:31
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
@@ -45,70 +45,70 @@ msgstr[1] ""
 
 #: comments.php:40
 #: comments.php:61
-#@ _ekiline
+#@ _ekilinewp
 msgid "Comment navigation"
 msgstr ""
 
 #: comments.php:43
 #: comments.php:64
-#@ _ekiline
+#@ _ekilinewp
 msgid "Older Comments"
 msgstr ""
 
 #: comments.php:44
 #: comments.php:65
-#@ _ekiline
+#@ _ekilinewp
 msgid "Newer Comments"
 msgstr ""
 
 #: comments.php:77
-#@ _ekiline
+#@ _ekilinewp
 msgid "Comments are closed."
 msgstr ""
 
 #: footer.php:18
-#@ _ekiline
+#@ _ekilinewp
 msgid "https://wordpress.org/"
 msgstr ""
 
 #: footer.php:18
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Proudly powered by %s"
 msgstr ""
 
 #: footer.php:20
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
 #: functions.php:47
 #: header.php:38
-#@ _ekiline
+#@ _ekilinewp
 msgid "Primary Menu"
 msgstr ""
 
 #: functions.php:102
-#@ _ekiline
+#@ _ekilinewp
 msgid "Sidebar"
 msgstr ""
 
 #: header.php:25
-#@ _ekiline
+#@ _ekilinewp
 msgid "Skip to content"
 msgstr ""
 
 #: inc/template-tags.php:28
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
 #: inc/template-tags.php:33
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
@@ -116,35 +116,35 @@ msgstr ""
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:50
 #: inc/template-tags.php:56
-#@ _ekiline
+#@ _ekilinewp
 msgid ", "
 msgstr ""
 
 #: inc/template-tags.php:52
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Posted in %1$s"
 msgstr ""
 
 #: inc/template-tags.php:58
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Tagged %1$s"
 msgstr ""
 
 #: inc/template-tags.php:64
-#@ _ekiline
+#@ _ekilinewp
 msgid "Leave a comment"
 msgstr ""
 
 #: inc/template-tags.php:64
-#@ _ekiline
+#@ _ekilinewp
 msgid "1 Comment"
 msgstr ""
 
 #: inc/template-tags.php:64
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "% Comments"
 msgstr ""
 
@@ -152,48 +152,48 @@ msgstr ""
 #: inc/template-tags.php:71
 #: template-parts/content-page.php:32
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Edit %s"
 msgstr ""
 
 #: search.php:18
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Search Results for: %s"
 msgstr ""
 
 #: template-parts/content-none.php:14
-#@ _ekiline
+#@ _ekilinewp
 msgid "Nothing Found"
 msgstr ""
 
 #: template-parts/content-none.php:20
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
 #: template-parts/content-none.php:24
-#@ _ekiline
+#@ _ekilinewp
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
 #: template-parts/content-none.php:29
-#@ _ekiline
+#@ _ekilinewp
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
 #: template-parts/content-page.php:21
 #: template-parts/content-single.php:25
 #: template-parts/content.php:34
-#@ _ekiline
+#@ _ekilinewp
 msgid "Pages:"
 msgstr ""
 
 #. translators: %s: Name of current post.
 #: template-parts/content.php:27
 #, php-format
-#@ _ekiline
+#@ _ekilinewp
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
 #. Theme Name of the plugin/theme
@@ -201,21 +201,21 @@ msgid "_s"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-#@ _ekiline
+#@ _ekilinewp
 msgid "http://underscores.me/"
 msgstr ""
 
 #. Description of the plugin/theme
-#@ _ekiline
+#@ _ekilinewp
 msgid "Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
 msgstr ""
 
 #. Author of the plugin/theme
-#@ _ekiline
+#@ _ekilinewp
 msgid "Automattic"
 msgstr ""
 
 #. Author URI of the plugin/theme
-#@ _ekiline
+#@ _ekilinewp
 msgid "http://automattic.com/"
 msgstr ""

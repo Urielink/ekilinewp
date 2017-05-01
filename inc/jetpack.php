@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.me/
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 /**
@@ -13,23 +13,23 @@
  * See: https://jetpack.me/support/infinite-scroll/
  * See: https://jetpack.me/support/responsive-videos/
  */
-function ekiline_jetpack_setup() {
+function ekilinewp_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'ekiline_infinite_scroll_render',
+		'render'    => 'ekilinewp_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
-} // end function ekiline_jetpack_setup
-add_action( 'after_setup_theme', 'ekiline_jetpack_setup' );
+} // end function ekilinewp_jetpack_setup
+add_action( 'after_setup_theme', 'ekilinewp_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function ekiline_infinite_scroll_render() {
+function ekilinewp_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
@@ -38,4 +38,4 @@ function ekiline_infinite_scroll_render() {
 		    get_template_part( 'template-parts/content', get_post_format() );
 		endif;
 	}
-} // end function ekiline_infinite_scroll_render
+} // end function ekilinewp_infinite_scroll_render

@@ -1,8 +1,8 @@
 <?php
 /**
- * ekiline Theme Customizer.
+ * ekilinewp Theme Customizer.
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 /**
@@ -10,20 +10,20 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function ekiline_customize_register( $wp_customize ) {
+function ekilinewp_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 }
-add_action( 'customize_register', 'ekiline_customize_register' );
+add_action( 'customize_register', 'ekilinewp_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function ekiline_customize_preview_js() {
-	wp_enqueue_script( 'ekiline_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
+function ekilinewp_customize_preview_js() {
+	wp_enqueue_script( 'ekilinewp_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
-add_action( 'customize_preview_init', 'ekiline_customize_preview_js' );
+add_action( 'customize_preview_init', 'ekilinewp_customize_preview_js' );
 
 
 /** Personalizar el tema desde las opciones, logo, fondo, etc 
@@ -31,15 +31,15 @@ add_action( 'customize_preview_init', 'ekiline_customize_preview_js' );
  *  muestra: https://github.com/WPTRT/code-examples/blob/master/customizer/sanitization-callbacks.php
  **/
 
-function ekiline_theme_customizer( $wp_customize ) {
+function ekilinewp_theme_customizer( $wp_customize ) {
     
 // colores  v1, 23 abril, no se sanitiza mi array.
     $colors = array();
-    $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'menu_color', 'default' => '#f8f8f8', 'label' => __( 'Color de menu', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de pagina', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekilinewp' ) );
+    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekilinewp' ) );
+    $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekilinewp' ) );
+    $colors[] = array( 'slug'=>'menu_color', 'default' => '#f8f8f8', 'label' => __( 'Color de menu', 'ekilinewp' ) );
+    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de pagina', 'ekilinewp' ) );
     
     foreach($colors as $color)
     {
@@ -67,18 +67,18 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     // Invertir el menu
     $wp_customize->add_setting(
-    		'ekiline_inversemenu', array(
+    		'ekilinewp_inversemenu', array(
     				'default' => '',
-    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+    				'sanitize_callback' => 'ekilinewp_sanitize_checkbox'
     		) );
     
     $wp_customize->add_control(
-    		'ekiline_inversemenu',
+    		'ekilinewp_inversemenu',
     		array(
-    				'label'          => __( 'Textos claros en menu y footer', 'ekiline' ),
+    				'label'          => __( 'Textos claros en menu y footer', 'ekilinewp' ),
     				'description'    => 'Habilita esta opcion en caso de utilizar un menu y un footer oscuros.',
     				'section'        => 'colors',
-    				'settings'       => 'ekiline_inversemenu',
+    				'settings'       => 'ekilinewp_inversemenu',
     				'type'           => 'checkbox'
     		)
     );    
@@ -89,58 +89,58 @@ function ekiline_theme_customizer( $wp_customize ) {
 // http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
 
     $wp_customize->add_setting( 
-            'ekiline_logo_max', array(
+            'ekilinewp_logo_max', array(
                     'default' => '',
-                    'sanitize_callback' => 'ekiline_sanitize_image'
+                    'sanitize_callback' => 'ekilinewp_sanitize_image'
             ) );
 
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_max', array(
-            'label'    => __( 'Logotipo horizontal', 'ekiline' ),
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekilinewp_logo_max', array(
+            'label'    => __( 'Logotipo horizontal', 'ekilinewp' ),
             'description' => 'Esta es la imagen de tu marca que aparecera en el menu.',
             'section'  => 'title_tagline', // esta seccion corresponde a una predeterminada.
-            'settings' => 'ekiline_logo_max',
+            'settings' => 'ekilinewp_logo_max',
             'priority' => 100,
     ) ) );
         
  // video
-//     $wp_customize->add_section( 'ekiline_video_portada' , array(
-//             'title'       => __( 'Video de cabecera', 'ekiline' ),
+//     $wp_customize->add_section( 'ekilinewp_video_portada' , array(
+//             'title'       => __( 'Video de cabecera', 'ekilinewp' ),
 //             'priority'    => 90,
 //             'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
 //     ) );
     
-//     $wp_customize->add_setting( 'ekiline_video' );
+//     $wp_customize->add_setting( 'ekilinewp_video' );
     
-//     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
-//             'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
-//             'section'  => 'ekiline_video_portada',
-//             'settings' => 'ekiline_video',
+//     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekilinewp_video', array(
+//             'label'    => __( 'Video MP4, WEBM u OGV', 'ekilinewp' ),
+//             'section'  => 'ekilinewp_video_portada',
+//             'settings' => 'ekilinewp_video',
 //     ) ) );  
 
     // video
     
     $wp_customize->add_setting( 
-            'ekiline_video', array(
+            'ekilinewp_video', array(
                     'default' => '',
-                    'sanitize_callback' => 'ekiline_sanitize_video'
+                    'sanitize_callback' => 'ekilinewp_sanitize_video'
             ) );
     
-    $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
-    		'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
+    $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekilinewp_video', array(
+    		'label'    => __( 'Video MP4, WEBM u OGV', 'ekilinewp' ),
         	'description' => '<b>Debes tener seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
     		'section'  => 'header_image',
-    		'settings' => 'ekiline_video',
+    		'settings' => 'ekilinewp_video',
             'priority'    => 90,
     ) ) );   
 
     // Controlador para estalecer la altura de la imagen de cabecera
     
-    $wp_customize->add_setting( 'ekiline_range_header', array( 
+    $wp_customize->add_setting( 'ekilinewp_range_header', array( 
 			'default' => '30',
-			'sanitize_callback'  => 'ekiline_sanitize_number_range'
+			'sanitize_callback'  => 'ekilinewp_sanitize_number_range'
     ) );
 
-    $wp_customize->add_control( 'ekiline_range_header', array(
+    $wp_customize->add_control( 'ekilinewp_range_header', array(
     		'type'        => 'range',
     		'priority'    => 10,
     		'section'     => 'header_image',
@@ -153,39 +153,39 @@ function ekiline_theme_customizer( $wp_customize ) {
     		),
 	) );    
     
-    $wp_customize->add_setting( 'ekiline_logo_min', array( 
+    $wp_customize->add_setting( 'ekilinewp_logo_min', array( 
             'default' => '',
-            'sanitize_callback'  => 'ekiline_sanitize_image'
+            'sanitize_callback'  => 'ekilinewp_sanitize_image'
     ) );
     
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekiline_logo_min', array(
-    		'label'    => __( 'Logotipo header', 'ekiline' ),
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ekilinewp_logo_min', array(
+    		'label'    => __( 'Logotipo header', 'ekilinewp' ),
     		'description' => 'Agrega tu logotipo si deseas que aparezca en el encabezado.',
     		'section'  => 'header_image', 
-    		'settings' => 'ekiline_logo_min',
+    		'settings' => 'ekilinewp_logo_min',
     		'priority' => 100,
     ) ) );
     
 
 // ancho de la pagina
-    $wp_customize->add_section( 'ekiline_vista_section' , array(
-            'title'       => __( 'Vista de tu sitio', 'ekiline' ),
+    $wp_customize->add_section( 'ekilinewp_vista_section' , array(
+            'title'       => __( 'Vista de tu sitio', 'ekilinewp' ),
             'priority'    => 50,
             'description' => 'Elige si quieres que el homepage, los listados o el articulo principal se desplieguen a todo lo ancho (fullwidth) o ajustada al centro.',
     ) );
     
         $wp_customize->add_setting(
-            'ekiline_anchoHome', array(
+            'ekilinewp_anchoHome', array(
                     'default' => 'container',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_anchoHome',
+            'ekilinewp_anchoHome',
             array(
                 'type' => 'radio',
                 'label' => 'Homepage',
-                'section' => 'ekiline_vista_section',
+                'section' => 'ekilinewp_vista_section',
                 'choices' => array(
                     'container' => 'Ajustado',
                     'container-fluid' => 'A todo lo ancho',
@@ -194,17 +194,17 @@ function ekiline_theme_customizer( $wp_customize ) {
         );      
         
         $wp_customize->add_setting(
-            'ekiline_anchoCategory', array(
+            'ekilinewp_anchoCategory', array(
                     'default' => 'container',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_anchoCategory',
+            'ekilinewp_anchoCategory',
             array(
                 'type' => 'radio',
                 'label' => 'Categorias o listados',
-                'section' => 'ekiline_vista_section',
+                'section' => 'ekilinewp_vista_section',
                 'choices' => array(
                     'container' => 'Ajustado',
                     'container-fluid' => 'A todo lo ancho',
@@ -213,17 +213,17 @@ function ekiline_theme_customizer( $wp_customize ) {
         ); 
         
         $wp_customize->add_setting(
-            'ekiline_anchoSingle', array(
+            'ekilinewp_anchoSingle', array(
                     'default' => 'container',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_anchoSingle',
+            'ekilinewp_anchoSingle',
             array(
                 'type' => 'radio',
                 'label' => 'Paginas individuales',
-                'section' => 'ekiline_vista_section',
+                'section' => 'ekilinewp_vista_section',
                 'choices' => array(
                     'container' => 'Ajustado',
                     'container-fluid' => 'A todo lo ancho',
@@ -234,17 +234,17 @@ function ekiline_theme_customizer( $wp_customize ) {
         // ocultar y mostrar sidebars
 
         $wp_customize->add_setting(
-            'ekiline_sidebarLeft', array(
+            'ekilinewp_sidebarLeft', array(
                     'default' => 'on',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_sidebarLeft',
+            'ekilinewp_sidebarLeft',
             array(
                 'type' => 'radio',
                 'label' => 'Sidebar izquierdo',
-                'section' => 'ekiline_vista_section',
+                'section' => 'ekilinewp_vista_section',
                 'choices' => array(
                     'on' => 'Estatico',
                     'off' => 'Plegable',
@@ -253,17 +253,17 @@ function ekiline_theme_customizer( $wp_customize ) {
         );     
         
         $wp_customize->add_setting(
-            'ekiline_sidebarRight', array(
+            'ekilinewp_sidebarRight', array(
                     'default' => 'on',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_sidebarRight',
+            'ekilinewp_sidebarRight',
             array(
                 'type' => 'radio',
                 'label' => 'Sidebar derecho',
-                'section' => 'ekiline_vista_section',
+                'section' => 'ekilinewp_vista_section',
                 'choices' => array(
                     'on' => 'Estatico',
                     'off' => 'Plegable',
@@ -274,17 +274,17 @@ function ekiline_theme_customizer( $wp_customize ) {
 	// Atributos especiales a los menus.
 
         $wp_customize->add_setting(
-            'ekiline_topmenuSettings', array(
+            'ekilinewp_topmenuSettings', array(
                     'default' => '0',
-                    'sanitize_callback' => 'ekiline_sanitize_select'
+                    'sanitize_callback' => 'ekilinewp_sanitize_select'
                 ) );
         
         $wp_customize->add_control(
-            'ekiline_topmenuSettings',
+            'ekilinewp_topmenuSettings',
             array(
                 'type' => 'select',
                 'label' => 'Top Menu extras',
-            	'description' => __( 'Puedes fijar el menu, o hacer que se estacione con el scroll (affix).', 'ekiline' ),
+            	'description' => __( 'Puedes fijar el menu, o hacer que se estacione con el scroll (affix).', 'ekilinewp' ),
             	'section' => 'menu_locations',
             	'priority'    => 100,
             	'choices' => array(
@@ -299,72 +299,72 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     // Optimizacion, codigos de seguimiento
    
-    $wp_customize->add_section( 'ekiline_tracking_section' , array(
-            'title'       => __( 'Optimizacion', 'ekiline' ),
+    $wp_customize->add_section( 'ekilinewp_tracking_section' , array(
+            'title'       => __( 'Optimizacion', 'ekilinewp' ),
             'priority'    => 150,
-            'description' => __( 'Agrega los codigos de seguimiento que te ayudaran a optimizar y dar seguimiento a este sitio web.', 'ekiline' )
+            'description' => __( 'Agrega los codigos de seguimiento que te ayudaran a optimizar y dar seguimiento a este sitio web.', 'ekilinewp' )
     ) );
 
     // Codigo de analytics  
     $wp_customize->add_setting( 
-        'ekiline_analytics', array(
+        'ekilinewp_analytics', array(
             'default' => '',
-            'sanitize_callback' => 'ekiline_sanitize_html'
+            'sanitize_callback' => 'ekilinewp_sanitize_html'
         ) );
     
     $wp_customize->add_control(
-        'ekiline_analytics',
+        'ekilinewp_analytics',
             array(
-                'label'          => __( 'Trackeo de Google', 'ekiline' ),
+                'label'          => __( 'Trackeo de Google', 'ekilinewp' ),
                 'description'    => 'Inserta el codigo de Google analytics, solo tu identificador (UA-XXXXX-XX)',
-                'section'        => 'ekiline_tracking_section',
-                'settings'       => 'ekiline_analytics',
+                'section'        => 'ekilinewp_tracking_section',
+                'settings'       => 'ekilinewp_analytics',
                 'type'           => 'text'
             )
         );      
     
     // Servicios varios
      
-    $wp_customize->add_section( 'ekiline_services' , array(
-    		'title'       => __( 'Servicios extra', 'ekiline' ),
+    $wp_customize->add_section( 'ekilinewp_services' , array(
+    		'title'       => __( 'Servicios extra', 'ekilinewp' ),
     		'priority'    => 160,
-    		'description' => __( 'Caracteristicas agregadas para tu sitio.', 'ekiline' )
+    		'description' => __( 'Caracteristicas agregadas para tu sitio.', 'ekilinewp' )
     ) );
     
     // Poner en mantenimiento
     $wp_customize->add_setting(
-    		'ekiline_maintenance', array(
+    		'ekilinewp_maintenance', array(
     				'default' => '',
-    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+    				'sanitize_callback' => 'ekilinewp_sanitize_checkbox'
     		) );
     
     $wp_customize->add_control(
-    		'ekiline_maintenance',
+    		'ekilinewp_maintenance',
     		array(
-    				'label'          => __( 'Poner mi sitio en mantenimiento', 'ekiline' ),
+    				'label'          => __( 'Poner mi sitio en mantenimiento', 'ekilinewp' ),
     				'description'    => 'Si es necesario ',
-    				'section'        => 'ekiline_services',
-    				'settings'       => 'ekiline_maintenance',
+    				'section'        => 'ekilinewp_services',
+    				'settings'       => 'ekilinewp_maintenance',
     				'type'           => 'checkbox',
     		)
     );    
 
         
 }
-add_action('customize_register', 'ekiline_theme_customizer');
+add_action('customize_register', 'ekilinewp_theme_customizer');
 
 /* Scripts de saneado */
 
-function ekiline_sanitize_checkbox( $checked ) {
+function ekilinewp_sanitize_checkbox( $checked ) {
     // Boolean check.
     return ( ( isset( $checked ) && true == $checked ) ? true : false );
 }
 
-function ekiline_sanitize_html( $html ) {
+function ekilinewp_sanitize_html( $html ) {
     return wp_filter_post_kses( $html );
 }
 
-function ekiline_sanitize_image( $image, $setting ) {
+function ekilinewp_sanitize_image( $image, $setting ) {
 
     /*
      * Array of valid image file types.
@@ -387,7 +387,7 @@ function ekiline_sanitize_image( $image, $setting ) {
     return ( $file['ext'] ? $image : $setting->default );
 }
 
-function ekiline_sanitize_video( $video, $setting ) {
+function ekilinewp_sanitize_video( $video, $setting ) {
 
     $mimes = array(
         'asf|asx'       => 'video/x-ms-asf',
@@ -411,7 +411,7 @@ function ekiline_sanitize_video( $video, $setting ) {
 }
 
 
-function ekiline_sanitize_number_range( $number, $setting ) {
+function ekilinewp_sanitize_number_range( $number, $setting ) {
     
     // Ensure input is an absolute integer.
     $number = absint( $number );
@@ -432,7 +432,7 @@ function ekiline_sanitize_number_range( $number, $setting ) {
     return ( $min <= $number && $number <= $max && is_int( $number / $step ) ? $number : $setting->default );
 }
 
-function ekiline_sanitize_select( $input, $setting ) {
+function ekilinewp_sanitize_select( $input, $setting ) {
     
     // Ensure input is a slug.
     $input = sanitize_key( $input );

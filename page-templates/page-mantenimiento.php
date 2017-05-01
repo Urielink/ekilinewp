@@ -2,7 +2,7 @@
 /**
  * Template Name: Mantenimiento
  * 
- * @package ekiline
+ * @package ekilinewp
  */
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
 	
 	          <div class="cover-footer">
 	            <div class="inner">
-                    <p><?php printf( esc_html__( '&copy; Copyright %1s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?></p>
+                    <p><?php printf( esc_html__( '&copy; Copyright %1s', 'ekilinewp' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?></p>
 	            </div>
 	          </div>
           

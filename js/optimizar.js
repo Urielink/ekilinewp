@@ -1,5 +1,5 @@
 /**
- * ekiline Theme scripts.
+ * ekilinewp Theme scripts.
  * (http://stackoverflow.com/questions/11159860/how-do-i-add-a-simple-jquery-script-to-wordpress)
  */
 	/** variables globales: 
@@ -18,8 +18,8 @@
 			var $head = $("head");
 			// var $ultimocss = $head.find("link[rel='stylesheet']:last");
 			// var $cssinline = $head.find("style:last");
-			var $ultimocss = $head.find("link[id='ekiline-style-css']:last");
-			var $cssinline = $head.find("style[id='ekiline-inline']:last");
+			var $ultimocss = $head.find("link[id='ekilinewp-style-css']:last");
+			var $cssinline = $head.find("style[id='ekilinewp-inline']:last");
 			var linkCss = "<link rel='stylesheet' href='"+ optimizarCSS +"' type='text/css' media='screen'>";
 				
 	        // En caso de de encontrar una etiqueta de estilo o link o nada inserta el otro estilo css, 

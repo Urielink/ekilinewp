@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 //Hacer un formulario de ingreso con shortcode.
@@ -14,7 +14,7 @@
 // La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
 // Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400
 
-function ekiline_loginfrontend($atts, $content = null) {
+function ekilinewp_loginfrontend($atts, $content = null) {
 	
 	extract(shortcode_atts(array('archivo' => ''), $atts));
 	
@@ -26,10 +26,10 @@ function ekiline_loginfrontend($atts, $content = null) {
 			'echo' => true,
 		    'redirect' => home_url(),   
 			'form_id' => 'loginform',
-			'label_username' => __( 'Username','ekiline' ),
-			'label_password' => __( 'Password','ekiline' ),
-			'label_remember' => __( 'Remember Me','ekiline' ),
-			'label_log_in' => __( 'Log In','ekiline' ),
+			'label_username' => __( 'Username','ekilinewp' ),
+			'label_password' => __( 'Password','ekilinewp' ),
+			'label_remember' => __( 'Remember Me','ekilinewp' ),
+			'label_log_in' => __( 'Log In','ekilinewp' ),
 			'id_username' => 'user',
 			'id_password' => 'pass',
 			'id_remember' => 'rememberme',
@@ -53,11 +53,11 @@ function ekiline_loginfrontend($atts, $content = null) {
 			$login  = (isset($_GET['login']) ) ? $_GET['login'] : 0;
 			
 		    if ( $login === "failed" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'Invalid username and/or password.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'Invalid username and/or password.', 'ekilinewp' ).'</p>';  
 		    } elseif ( $login === "empty" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'Username and/or Password is empty.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'Username and/or Password is empty.', 'ekilinewp' ).'</p>';  
 		    } elseif ( $login === "false" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'You are logged out.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'You are logged out.', 'ekilinewp' ).'</p>';  
 		    }
 		    
 		// imprime el formulario
@@ -99,7 +99,7 @@ function ekiline_loginfrontend($atts, $content = null) {
     		
 	}
 		
-add_shortcode('loginform', 'ekiline_loginfrontend');
+add_shortcode('loginform', 'ekilinewp_loginfrontend');
 
 // Validaciones del formulario:
 	
@@ -136,7 +136,7 @@ function registration_process_hook() {
 	
 		// die if the nonce fails
 		if ( !wp_verify_nonce($_POST['add-nonce'],'add-user') ) {
-			wp_die(esc_html__( 'Sorry! Security first.', 'ekiline' ));
+			wp_die(esc_html__( 'Sorry! Security first.', 'ekilinewp' ));
 		} else {
 			// auto generate a password
 //hayplugin			$user_pass = wp_generate_password();
@@ -149,13 +149,13 @@ function registration_process_hook() {
 			);
 			// setup some error checks
 			if ( !$userdata['user_login'] )
-				$error = esc_html__( 'A username is required for registration.', 'ekiline' );
+				$error = esc_html__( 'A username is required for registration.', 'ekilinewp' );
 			elseif ( username_exists($userdata['user_login']) )
-				$error = esc_html__( 'Sorry, that username already exists!', 'ekiline' );
+				$error = esc_html__( 'Sorry, that username already exists!', 'ekilinewp' );
 			elseif ( !is_email($userdata['user_email'], true) )
-				$error = esc_html__( 'You must enter a valid email address.', 'ekiline' );
+				$error = esc_html__( 'You must enter a valid email address.', 'ekilinewp' );
 			elseif ( email_exists($userdata['user_email']) )
-				$error = esc_html__( 'Sorry, that email address is already used!', 'ekiline' );
+				$error = esc_html__( 'Sorry, that email address is already used!', 'ekilinewp' );
 			// setup new users and send notification
 			else{
 				$new_user = wp_insert_user( $userdata );
@@ -168,7 +168,7 @@ function registration_process_hook() {
 	<!-- create and alert message to show successful registration -->
 	<?php
 		$user = get_user_by('id',$new_user);
-		echo '<p class="alert alert-success">'.esc_html__( 'Thank you for registering ', 'ekiline' ) . '<strong>' . $user->user_login . '</strong><br/>' . esc_html__( 'Please check your email for recieve your login password (Be sure to check your spam folder).', 'ekiline' ).'</p>';
+		echo '<p class="alert alert-success">'.esc_html__( 'Thank you for registering ', 'ekilinewp' ) . '<strong>' . $user->user_login . '</strong><br/>' . esc_html__( 'Please check your email for recieve your login password (Be sure to check your spam folder).', 'ekilinewp' ).'</p>';
 	?>
 	
 	<?php else : ?>
@@ -189,7 +189,7 @@ add_action('process_customer_registration_form', 'registration_process_hook');
 
 // 2) Inicia Shortcode que crea el formulario en el tema.
 
-function ekiline_registerfrontend($atts, $content = null) {
+function ekilinewp_registerfrontend($atts, $content = null) {
 	
 	extract(shortcode_atts(array('archivo' => ''), $atts));
 
@@ -203,17 +203,17 @@ function ekiline_registerfrontend($atts, $content = null) {
 
 	<form method="POST" id="adduser" class="form" action="">
 		<div class="form-group">
-			<label for="user_name"><?php echo esc_html__( 'Username', 'ekiline' ); ?></label>
+			<label for="user_name"><?php echo esc_html__( 'Username', 'ekilinewp' ); ?></label>
 			<input class="input form-control" name="user_name" type="text" id="user_name" value="" />
 		</div>
 		
 		<p class="form-group">
-			<label for="email"><?php echo esc_html__( 'E-mail', 'ekiline' ); ?></label>
+			<label for="email"><?php echo esc_html__( 'E-mail', 'ekilinewp' ); ?></label>
 			<input class="input form-control" name="email" type="text" id="email" value="" />
 		</p>
 		
 		<p class="form-group">
-			<input name="adduser" type="submit" id="addusersub" class="btn btn-default btn-block" value="<?php echo esc_html__( 'Request Acces', 'ekiline' ); ?>" />
+			<input name="adduser" type="submit" id="addusersub" class="btn btn-default btn-block" value="<?php echo esc_html__( 'Request Acces', 'ekilinewp' ); ?>" />
 			<?php wp_nonce_field( 'add-user', 'add-nonce' ) ?><!-- a little security to process on submission -->
 			<input name="action" type="hidden" id="action" value="adduser" />
 		</p>
@@ -227,7 +227,7 @@ function ekiline_registerfrontend($atts, $content = null) {
     		
 	}
 	
-add_shortcode('registerform', 'ekiline_registerfrontend');
+add_shortcode('registerform', 'ekilinewp_registerfrontend');
 
 // Finaliza 2) Shortcode que crea el formulario en el tema.
 
@@ -265,7 +265,7 @@ add_action( 'wp', 'redirect' );
 
 function add_loginout_link( $items, $args ) {
     if (is_user_logged_in() && $args->theme_location == 'top') {
-        $items .= '<li><a href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).'</a></li>';
+        $items .= '<li><a href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekilinewp' ).'</a></li>';
     }
     return $items;
 }

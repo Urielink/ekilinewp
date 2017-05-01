@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package ekiline
+ * @package ekilinewp
  *
  * Añadimos widgets en el footer para poder crear columnas
  *
@@ -33,11 +33,11 @@
             
     		<small class="site-info col-xs-12 text-center">
 
-                <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
+                <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekilinewp' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
                 <span class="sep"> | </span>
-                <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
+                <?php printf( esc_html__( 'Por %s', 'ekilinewp' ), '<a href="#autor">Autor</a>' ); ?>
                 <span class="sep"> | </span>
-                <?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>
+                <?php printf( esc_html__( 'Proudly powered by %s', 'ekilinewp' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>
                 
     		</small><!-- .site-info -->
 

@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekiline
+ * @package ekilinewp
  */
 
 /**
@@ -13,13 +13,13 @@
  * https://github.com/lowhow/Whitecoat/blob/master/whitecoat2/functions-theme.php
  */
  
-function ekiline_in_widget_form($t,$return,$instance){
+function ekilinewp_in_widget_form($t,$return,$instance){
     $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '', 'css_style' => '') );
     if ( !isset($instance['css_style']) )
         $instance['css_style'] = null;
     ?>
     <p>
-        <label for="<?php echo $t->get_field_id('css_style'); ?>"><?php _e('CSS custom class','ekiline') ?></label>
+        <label for="<?php echo $t->get_field_id('css_style'); ?>"><?php _e('CSS custom class','ekilinewp') ?></label>
 	    <input type="text" name="<?php echo $t->get_field_name('css_style'); ?>" id="<?php echo $t->get_field_id('css_style'); ?>" value="<?php echo $instance['css_style'];?>" />
     </p>
     <?php
@@ -27,12 +27,12 @@ function ekiline_in_widget_form($t,$return,$instance){
     return array($t,$return,$instance);
 }
 
-function ekiline_in_widget_form_update($instance, $new_instance, $old_instance){
+function ekilinewp_in_widget_form_update($instance, $new_instance, $old_instance){
     $instance['css_style'] = strip_tags($new_instance['css_style']);
     return $instance;
 }
 
-function ekiline_dynamic_sidebar_params($params){
+function ekilinewp_dynamic_sidebar_params($params){
     global $wp_registered_widgets;
     $widget_id = $params[0]['widget_id'];
     $widget_obj = $wp_registered_widgets[$widget_id];
@@ -57,8 +57,8 @@ function ekiline_dynamic_sidebar_params($params){
 // register widget callbacks and update functions
 
 //Add input fields(priority 5, 3 parameters)
-add_action('in_widget_form', 'ekiline_in_widget_form',5,3);
+add_action('in_widget_form', 'ekilinewp_in_widget_form',5,3);
 //Callback function for options update (priority 5, 3 parameters)
-add_filter('widget_update_callback', 'ekiline_in_widget_form_update',5,3);
+add_filter('widget_update_callback', 'ekilinewp_in_widget_form_update',5,3);
 //add class names (default priority, one parameter)
-add_filter('dynamic_sidebar_params', 'ekiline_dynamic_sidebar_params');
+add_filter('dynamic_sidebar_params', 'ekilinewp_dynamic_sidebar_params');
