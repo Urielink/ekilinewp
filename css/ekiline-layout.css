@@ -19,7 +19,8 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 }*/
 
 /* Animaciones en objetos */
-.navbar,.navbar .navbar-brand,.navbar-nav li a,a,#carrusel-brochures .carousel-caption{-webkit-transition:all 0.7s ease-in-out;-moz-transition:all 0.7s ease-in-out;-ms-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-in-out;transition:all 0.7s ease-in-out;}
+.navbar,.navbar .navbar-brand,.navbar-nav li a,a{-webkit-transition:all 0.7s ease-in-out;-moz-transition:all 0.7s ease-in-out;-ms-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-in-out;transition:all 0.7s ease-in-out;}
+.toggle-sidebars #page,.toggle-sidebars #primary,.toggle-sidebars #secondary,.toggle-sidebars #third{-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}
 
 
 /* Modulo: Modal */
@@ -61,130 +62,75 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 .navbar-toggle.active .icon-bar:nth-child(4){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-6px;}
 
 #primary{ position: relative;z-index:1;}
-/* En caso de fijar el sidebar a la izquierda */
-#secondary.affix{height:auto;width:inherit;left:auto;right:auto;}
-/* En caso de fijar el sidebar a la derecha */
-#third.affix{height:auto;width:inherit;left:auto;right:auto;}
+	/* En caso de fijar el sidebar a la izquierda */
+	#secondary.affix{height:auto;width:inherit;left:auto;right:auto;}
+	/* En caso de fijar el sidebar a la derecha */
+	#third.affix{height:auto;width:inherit;left:auto;right:auto;}
 
-/* En caso de habilitar sidebars ocultos, 
- * se necesita un envoltorio y un boton que ejecute el mostrar y ocultar */
+/* En caso de toggle sidebars */
 
-#wrapper, 
-.toggle-sidebars #content {
-	transition: all .4s ease 0s;
-	height: 100%;
+/* El envoltorio */
+.toggle-sidebars #content { height: 100%;}
+
+/* El contenido (#primary), 
+ * originalmente puede medir el 100%, sin utilizar bootstrap
+ * Utilizando bootstrap se puede asignar una clase de columna y este respetará el ancho de la misma
+ * en caso de no necesitarlo entonces se usa esta operación sencilla. **
+.toggle-sidebars #primary{padding-left:0;margin-left:0;width:100%;height:auto;}
+.toggle-sidebars.left-on #primary{width:75%;}
+.toggle-sidebars.right-on #primary{width:75%;}
+.toggle-sidebars.right-on.left-on #primary{width:100%;}
+**/
+
+/*Posiciones Sidebar izquierdo, Sidebar derecho*/
+.toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third{position:fixed;top:0px;height:100%;z-index:1020;overflow:auto;}
+
+/* Sidebar izquierdo */
+.toggle-sidebars.left-on #content { padding-left: 0px; }
+.toggle-sidebars.left-on #secondary {
+    background: #222;
+    left: 0px;
+    margin-left: -300px;
+    width: 300px;
 }
 
-#wrapper.add-aside-left, 
-.toggle-sidebars.left-on #content.add-aside-left {
-	padding-left: 0px;
+/* Sidebar izquierdo activado */
+.toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0px;}
+.toggle-sidebars.left-on.active-sidebar-left #page.container-fluid{padding-left:300px;}
+.toggle-sidebars.left-on.active-sidebar-left #content #secondary{left:300px;}
+
+/* Sidebar derecho */
+.toggle-sidebars.right-on #content { padding-right: 0px; }
+.toggle-sidebars.right-on #third {
+    background: #222;
+    right: 0px;
+    margin-right: -300px;
+    width: 300px;
 }
+    
+/*Sidebar derecho activado*/
+.toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0px;}
+.toggle-sidebars.right-on.active-sidebar-right #page.container-fluid{padding-right:300px;}
+.toggle-sidebars.right-on.active-sidebar-right #content #third{right:300px;}
+    
+ /* Botones de sidebars */
+ .sidebar-toggle{padding:9px 10px;background-color:#f8f8f8;border:1px solid #DDDDDD;}
+ .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;background-color:#888888;margin:2px 0;}
+ .btn-sbleft{position:fixed;top:10px;left:10px;z-index:3000;}
+ .btn-sbright{position:fixed;top:10px;right:10px;z-index:3000;}
 
-	#sidebar-left, 
-	.toggle-sidebars.left-on #secondary {
-		left: 0px;
-		top: 0px;
-		margin-left: -300px;
-		width: 300px;
-		background: #222;
-		position: fixed;
-		height: 100%;
-		z-index: 1020;
-		transition: all .4s ease 0s;
-		overflow: auto;
-	}
+ .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
+ .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
+ .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
+ .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
 
-	
-/* Division para el contenido, originalmente deberia medir al 100% 
- * Sin embargo al utilizar bootstrap se puede condicionar el intercambio de clases
- * col-md-6 a col-md-9
- * Experimento: manipular el css directo.
+/** .active-sidebar-left .btn-sbleft{position:absolute;left:auto;right:0;}
+.active-sidebar-right .btn-sbright{position:absolute;right:auto;left:0;}**/
+ .active-sidebar-left .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
+ .active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
+ .active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
+ .active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
 
-
-#page-content-wrapper, 
-.toggle-sidebars #primary {
-	padding-left: 0;
-	margin-left: 0;
-	width: 100%;
-	height: auto;
-}
- */
-
-/*#page-content-wrapper, 
-.toggle-sidebars.left-on #primary {
-	width: 75%;
-}*/
-
-/*#page-content-wrapper, 
-.toggle-sidebars.right-on #primary {
-	width: 75%;
-}*/
-
-#page-content-wrapper, 
-.toggle-sidebars.right-on.left-on #primary {
-	width: 100%;
-}
-
-
-/* Ajuste en elementos cuando estan activos */
-	#wrapper.active-sidebar-left, 
-	.toggle-sidebars.left-on #content.active-sidebar-left {
-		padding-left: 300px;
-	}
-	#wrapper.active-sidebar-left #sidebar-left, 
-	.toggle-sidebars.left-on #content.active-sidebar-left #secondary {
-		left: 300px;
-	}
-
-/* En caso de requerir otro sidebar a la derecha */
-	
-	#wrapper.add-aside-right, 
-	.toggle-sidebars.right-on #content.add-aside-right {
-		padding-right: 10px;
-		}
-			
-	#sidebar-right, 
-	.toggle-sidebars.right-on #third {
-		margin-right: -80%;
-		right: 10px;
-		top:0px;
-		width: 80%;
-		background: #ddd;
-		position: fixed;
-		height: 100%;
-		z-index: 1020;
-		transition: all .4s ease 0s;
-		box-shadow:0px 0px 19px rgba(0, 0, 0, 0.5);
-	}
-		
-	/*Sidebar activado*/
-	#wrapper.active-sidebar-right, 
-	.toggle-sidebars.right-on #content.active-sidebar-right {
-		padding-right: 80%;
-	}
-	#wrapper.active-sidebar-right #sidebar-right, 
-	.toggle-sidebars.right-on #content.active-sidebar-right #third {
-		right: 80%;
-	}
-	
-/* Botones de sidebar */	
-
-.sidebar-toggle{padding:9px 10px;background-color:#f8f8f8;border:1px solid #DDDDDD;}
-.sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;background-color:#888888;margin:2px 0;}
-.btn-sbleft{position:fixed;top:10px;left:10px;z-index:3000;}
-.btn-sbright{position:fixed;top:10px;right:10px;z-index:3000;}
-
-.btn-sbleft .icon-bar:nth-child(1) {-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
-.btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
-.btn-sbright .icon-bar:nth-child(1) {-webkit-transform:rotate(330deg);-moz-transform:rotate(330deg);-o-transform:rotate(330deg);transform:rotate(330deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
-.btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-330deg);-moz-transform:rotate(-330deg);-o-transform:rotate(-330deg);transform:rotate(-330deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
-
-.active-sidebar-left .btn-sbleft{position:absolute;left:auto;right:0;}
-.active-sidebar-right .btn-sbright{position:absolute;right:auto;left:0;}
-.active-sidebar-left .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
-.active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
-.active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
-.active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
 
 
 /* Sidebar en caso de necesitar el menu de bootstrap */
@@ -599,15 +545,11 @@ html, body { height: 100%; }
 	/*.site-footer::after {content:'screen and (max-width: 480px)';background-color:aqua;padding:10px;}*/
 	.entry-content p > img{ max-width:100%; }
 
-	/* SideBars plegables */	
-	#wrapper.active-sidebar-left #sidebar-left, .toggle-sidebars.left-on #content.active-sidebar-left #secondary {
-	    margin-left: 0px;
-	    left:0px;
-	    width: 100%;
-	}
-	#wrapper.active-sidebar-left, .toggle-sidebars.left-on #content.active-sidebar-left {
-	    padding-left: 0%;
-	}	
+/* En caso de toggle sidebars */
+ .toggle-sidebars.left-on.active-sidebar-left #content #secondary{margin-left:0px;left:0px;width:100%;}
+ .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
+ .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;}
+ .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
 	
 }
 

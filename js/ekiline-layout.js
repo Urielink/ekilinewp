@@ -9,30 +9,27 @@
 			    $(this).toggleClass('active');
 		  });		
 
-		// Sidebar izquierdo mostrar ocultar
-			$("#show-sidebar-left").on('click',function(e) {
-			        e.preventDefault();
-			        $("#content").toggleClass("active-sidebar-left");
-			});	
-
-		// Sidebar izquierdo mostrar ocultar al hover
-		/**			$( "#sidebar-left" )
-					  .mouseover(function() {
-					    $("#wrapper").toggleClass("active-sidebar-left");
-					    $('#sidebar-left #navbar a').toggleClass("disabled");
-					  })
-					  .mouseout(function() {
-					    $("#wrapper").toggleClass("active-sidebar-left");
-					    $('#sidebar-left #navbar a').toggleClass("disabled");
-					  });
-		**/					
-
-		// Sidebar derecho mostrar ocultar
-			$("#show-sidebar-right").on('click',function(e) {
-			        e.preventDefault();
-			        $("#content").toggleClass("active-sidebar-right");
-			});			  
-
+			/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+			 * 
+			 *	Sidebars ocultar mostrar 
+			 * 
+			 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
+		  
+	  
+		    if ( $( 'body.toggle-sidebars' ).length ) {
+		        
+		        // Sidebar izquierdo mostrar ocultar
+		            $("#show-sidebar-left").on('click',function(e) {
+		                e.preventDefault();
+		                $(".toggle-sidebars").toggleClass("active-sidebar-left");
+		            });     
+		    
+		        // Sidebar derecho mostrar ocultar
+		            $("#show-sidebar-right").on('click',function(e) {
+		                e.preventDefault();
+		                $(".toggle-sidebars").toggleClass("active-sidebar-right");
+		            });         
+		    }
 
 			/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 			 * 
