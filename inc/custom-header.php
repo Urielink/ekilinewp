@@ -82,7 +82,6 @@ endif;  // ekiline_admin_header_image
 // Creo una funcion para agregar un header personalizado
 
 function customHeader() {
-        
     
      $customHeader = '';
     		
@@ -125,7 +124,9 @@ function customHeader() {
 			
 				</header><!-- #masthead -->'; 
 			
-			} else {				
+			} else {
+			    				
+				$coverLogo = '';
 				
 				// Si la altura es mayor, la imagen hereda la estructura de cover.
 				if ( get_theme_mod( 'ekiline_logo_min' ) ) {
@@ -220,3 +221,14 @@ function customHeader() {
 	echo $customHeader;
 	
 }
+
+/* Agrego una clase al body para saber que se utiliza cover o jumbotron */
+add_filter( 'body_class', function( $classes ) {
+    $rangeHead = get_theme_mod('ekiline_range_header');
+    if ($rangeHead <= '95') {
+        return array_merge( $classes, array( 'head-jumbotron' ) );                    
+    } else {
+        return array_merge( $classes, array( 'head-cover' ) );                    
+    }
+} );
+
