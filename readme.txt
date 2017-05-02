@@ -1,22 +1,27 @@
 === ekilinewp ===
 
 Contributors: automattic
-Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-image-header, featured-images, footer-widgets, full-width-template, microformats, theme-options, translation-ready, blog, e-commerce, entertainment, food-and-drink, news, portfolio, photography
 
 Requires at least: 4.0
-Tested up to: 4.2.2
+Tested up to: 4.7
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GNU General Public License v2 or later
+License URI: LICENSE
 
-A starter theme called ekilinewp, or underscores.
+A starter theme called ekilinewp, based in underscores.
 
 == Description ==
 
-Hi. I'm a starter theme called ekilinewp, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Hi! Im ekilinewp, a theme for wordpress based in underscores.
+Mi developer and designer is @Urielink, It has done all its enthusiasm and effort to make easier the process of personalizing a site that uses wordpress.
+With me you can build a very simple or very robust site without needing to fill your wordpress installation of plugins.
+And you can also make combinations of elements based on Bootstrap 3.7 to make web pages suitable to what you need.
+I have everything you need to start a wordpress development.
+But I'm still in development, if you like to be notified subscribe or follow me.
 
 == Installation ==
-	
+
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
@@ -29,16 +34,11 @@ ekilinewp includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
-= 1.0 - May 12 2015 =
+= 1.0 - May 01 2017 =
 * Initial release
 
 == Credits ==
 
-* Based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-* normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2015 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
-
-== Revisar compatibilidad de lenguaje ==
-
-* https://wordpress.org/plugins/sublanguage/screenshots/
-* 4.6 de 5 se ve sencillo y su documentacion asi como el panel viene completo https://github.com/maximeschoeni/sublanguage#installation (probar 1o)
-
+* Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+* normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
+* Bootstrap v3.3.7 http://getbootstrap.com, Copyright 2011-2016 Twitter, Inc., Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
