@@ -90,7 +90,10 @@ $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
 
 $args = array(
-	'comment_field' => '<div class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'ekiline' ) . '</label><textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
+	'comment_field' => '<div class="comment-form-comment">' .
+	'<label for="comment">' . _x( 'Comment', 'noun', 'ekiline' ) . '</label>' .
+	( $req ? '<span class="required">*</span>' : '' ) .
+	'<textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
   	'fields' => apply_filters( 'comment_form_default_fields', array(
 
@@ -111,6 +114,7 @@ $args = array(
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
       __( 'Website','ekiline' ) . '</label>' .
+      ( $req ? '<span class="required">*</span>' : '' ) .            
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
       '" size="30" /></div>'      
 	  )),
@@ -124,5 +128,4 @@ $args = array(
  // comment_form();
 	comment_form( $args );
 ?>
-
 </div><!-- #comments -->
