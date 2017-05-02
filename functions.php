@@ -1,13 +1,13 @@
 <?php
 /**
- * ekilinewp functions and definitions.
+ * ekiline functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
-if ( ! function_exists( 'ekilinewp_setup' ) ) :
+if ( ! function_exists( 'ekiline_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -15,14 +15,14 @@ if ( ! function_exists( 'ekilinewp_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function ekilinewp_setup() {
+function ekiline_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on ekilinewp, use a find and replace
-	 * to change 'ekilinewp' to the name of your theme in all the template files.
+	 * If you're building a theme based on ekiline, use a find and replace
+	 * to change 'ekiline' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'ekilinewp', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ekiline', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -44,8 +44,8 @@ function ekilinewp_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-        'top' => esc_html__( 'Top Menu', 'ekilinewp' ),
-        'primary' => esc_html__( 'Primary Menu', 'ekilinewp' ),
+        'top' => esc_html__( 'Top Menu', 'ekiline' ),
+        'primary' => esc_html__( 'Primary Menu', 'ekiline' ),
 	) );
 
 	/*
@@ -73,7 +73,7 @@ function ekilinewp_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'ekilinewp_custom_background_args', array(
+	add_theme_support( 'custom-background', apply_filters( 'ekiline_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
@@ -81,8 +81,8 @@ function ekilinewp_setup() {
     // Add theme support for selective refresh for widgets.
     add_theme_support( 'customize-selective-refresh-widgets' );
 }
-endif; // ekilinewp_setup
-add_action( 'after_setup_theme', 'ekilinewp_setup' );
+endif; // ekiline_setup
+add_action( 'after_setup_theme', 'ekiline_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -91,21 +91,21 @@ add_action( 'after_setup_theme', 'ekilinewp_setup' );
  *
  * @global int $content_width
  */
-function ekilinewp_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'ekilinewp_content_width', 640 );
+function ekiline_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'ekiline_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'ekilinewp_content_width', 0 );
+add_action( 'after_setup_theme', 'ekiline_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function ekilinewp_widgets_init() {
+function ekiline_widgets_init() {
 	
 // **Sidebar por deafult
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar left', 'ekilinewp' ),
+		'name'          => esc_html__( 'Sidebar left', 'ekiline' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -116,7 +116,7 @@ function ekilinewp_widgets_init() {
 	
 // Un nuevo sidebar
     register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar right', 'ekilinewp' ),
+        'name'          => esc_html__( 'Sidebar right', 'ekiline' ),
         'id'            => 'sidebar-2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -127,7 +127,7 @@ function ekilinewp_widgets_init() {
 		
 // Añadimos widgets en el footer
     register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widgets', 'ekilinewp' ),
+        'name'          => esc_html__( 'Footer Widgets', 'ekiline' ),
         'id'            => 'footer-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -138,7 +138,7 @@ function ekilinewp_widgets_init() {
 
 // Añadimos widgets dentro de posiciones prestablecidas para cada menu
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (top location)', 'ekilinewp' ),
+        'name'          => esc_html__( 'Widget in menu (top location)', 'ekiline' ),
         'id'            => 'navwidget-nw1',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -148,7 +148,7 @@ function ekilinewp_widgets_init() {
     ) );     
 
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (primary location)', 'ekilinewp' ),
+        'name'          => esc_html__( 'Widget in menu (primary location)', 'ekiline' ),
         'id'            => 'navwidget-nw2',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -159,7 +159,7 @@ function ekilinewp_widgets_init() {
 
 // Añadimos widgets dentro de widgets
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in horizontal navbar widget', 'ekilinewp' ),
+        'name'          => esc_html__( 'Widget in horizontal navbar widget', 'ekiline' ),
         'id'            => 'navwidget-nw3',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -170,7 +170,7 @@ function ekilinewp_widgets_init() {
     
 // Añadimos widgets en el contenido ya sea pagina o entrada
     register_sidebar( array(
-        'name'          => esc_html__( 'In content top widgets', 'ekilinewp' ),
+        'name'          => esc_html__( 'In content top widgets', 'ekiline' ),
         'id'            => 'content-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -180,7 +180,7 @@ function ekilinewp_widgets_init() {
     ) );
 
         register_sidebar( array(
-        'name'          => esc_html__( 'In content bottom widgets', 'ekilinewp' ),
+        'name'          => esc_html__( 'In content bottom widgets', 'ekiline' ),
         'id'            => 'content-w2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -191,7 +191,7 @@ function ekilinewp_widgets_init() {
     		   
 // Añadimos widgets en la parte superior de la pagina fuera del contenido
 	register_sidebar( array(
-		'name'          => esc_html__( 'Top Page', 'ekilinewp' ),
+		'name'          => esc_html__( 'Top Page', 'ekiline' ),
 		'id'            => 'toppage-w1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -201,14 +201,14 @@ function ekilinewp_widgets_init() {
 	) );				   
 			   	
 }
-add_action( 'widgets_init', 'ekilinewp_widgets_init' );
+add_action( 'widgets_init', 'ekiline_widgets_init' );
 
 
 /**
  * Enqueue scripts and styles.
  */
   
-function ekilinewp_scripts() {
+function ekiline_scripts() {
 	
 	// // Extra CSS
 	wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
@@ -219,10 +219,10 @@ function ekilinewp_scripts() {
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 	// Llamar google fonts desde url.
 	// wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
-    // metodo ekilinewp, no modificar.
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekilinewp-layout.css', array(), '1.0', 'all' );	
+    // metodo ekiline, no modificar.
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	// U_ style: CSS (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
-	wp_enqueue_style( 'ekilinewp-style', get_stylesheet_uri() );	
+	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	/* Javascript : Desactivar Jquery para enviarlo al fondo (http://wordpress.stackexchange.com/questions/173601/enqueue-core-jquery-in-the-footer)
 	 * en caso contrario, solo Agrega esta linea y el script se ubucara en el <head>.
@@ -250,9 +250,9 @@ function ekilinewp_scripts() {
 	// Javascript : Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
 	// Cuando los scripts dependen de JQuery se debe mencionar en el array
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true  );
-    wp_enqueue_script( 'ekilinewp-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
+    wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array('jquery'), '20170327', true  );
-    wp_enqueue_script( 'ekilinewp-layout', get_template_directory_uri() . '/js/ekilinewp-layout.js', array('jquery'), '20151226', true  );
+    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );
     
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
@@ -268,7 +268,7 @@ function ekilinewp_scripts() {
 	}		
 	
 }
-add_action( 'wp_enqueue_scripts', 'ekilinewp_scripts', 0 );
+add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
 /**
  * Permite que los short-codes se añadan en los widgets

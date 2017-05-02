@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 
@@ -43,9 +43,9 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'wp-embed',
 		'wp-emoji-release',
 		// 'bootstrap-script',
-		'ekilinewp-swipe',
+		'ekiline-swipe',
 		'lazy-load',
-		'ekilinewp-layout',
+		'ekiline-layout',
 		'theme-scripts',
 		'optimizar'
 	);
@@ -107,7 +107,7 @@ function optimizar_carga() {
 			//asigno el css por cada archivo interno
 				'css1' => get_template_directory_uri() . '/css/bootstrap.min.css',
 				'css2' => get_template_directory_uri() . '/css/font-awesome.min.css',
-				'css3' => get_template_directory_uri() . '/css/ekilinewp-layout.css',
+				'css3' => get_template_directory_uri() . '/css/ekiline-layout.css',
 				'css4' => '//fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic',
 				'css5' => get_stylesheet_uri(),
 		)

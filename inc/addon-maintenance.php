@@ -3,14 +3,14 @@
  * Poner el sitio en modo de mantenimineto, ejercicio original:
  * https://www.nosegraze.com/maintenance-screen-wordpress/
  * 
- * @package ekilinewp
+ * @package ekiline
  */
 
 /** Poner en modo de mantenimineto **/
 
 function maintenace_mode() {
 
-	if( true === get_theme_mod('ekilinewp_maintenance') ){
+	if( true === get_theme_mod('ekiline_maintenance') ){
 		
 		global $pagenow;
 		if ( $pagenow !== 'wp-login.php' && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
@@ -27,9 +27,9 @@ function maintenace_mode() {
 		<meta name="description" content="<?php getDescription(); ?>" />
 		<link href="<?php echo get_template_directory_uri() . '/css/bootstrap.min.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">	
-		<link href="<?php echo get_template_directory_uri() . '/css/ekilinewp-layout.css'; ?>" rel="stylesheet" type="text/css">	
+		<link href="<?php echo get_template_directory_uri() . '/css/ekiline-layout.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">	
-		<!--title><?php echo get_bloginfo( 'name' ).' | '.__( 'Estamos en mantenimiento', 'ekilinewp' ) ?></title-->
+		<!--title><?php echo get_bloginfo( 'name' ).' | '.__( 'Estamos en mantenimiento', 'ekiline' ) ?></title-->
 		<?php cssColors(); ?>
 	</head>	
 	<body class="page-maintenance">	
@@ -39,7 +39,7 @@ function maintenace_mode() {
 				<div class="cover-container">
 					<div class="cover-header clearfix">
 						<div class="inner">
-							<img class="cover-header-brand" src="<?php echo get_theme_mod( 'ekilinewp_logo_min' ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"/>
+							<img class="cover-header-brand" src="<?php echo get_theme_mod( 'ekiline_logo_min' ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"/>
 							<nav> 
 								<ul class="nav cover-header-nav">
 									<li><a href="#" target="_blank"><i class="fa fa-google"></i></a></li>
@@ -53,16 +53,16 @@ function maintenace_mode() {
 					
 					<div class="inner cover">
 					<h1 class="cover-title"><?php echo get_bloginfo( 'name' ); ?></h1>
-					<p><mark class="cover-description"><?php echo __( 'Estamos en mantenimiento, muchas gracias por tu paciencia', 'ekilinewp' ) ?></mark></p>
+					<p><mark class="cover-description"><?php echo __( 'Estamos en mantenimiento, muchas gracias por tu paciencia', 'ekiline' ) ?></mark></p>
 					</div>
 					
 					<div class="cover-footer">
 						<div class="inner">
-                            <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekilinewp' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
+                            <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
 			                <span class="sep"> | </span>
-			                <?php printf( esc_html__( 'Por %s', 'ekilinewp' ), '<a href="#autor">Autor</a>' ); ?>
+			                <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
 			                <span class="sep"> | </span>
-			                <?php printf( esc_html__( 'Proudly powered by %s', 'ekilinewp' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>						
+			                <?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>						
 						</div>
 					</div>
 				</div>

@@ -109,7 +109,7 @@
 			 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
 
 			
-			var ekilinewpmodals = {			
+			var ekilinemodals = {			
 				
 			multipleModals: function ( linkClass ) {
 				
@@ -298,10 +298,10 @@
 			};
 		        
 		      // invocar los 4 tipos de modalbox que existen
-			ekilinewpmodals.multipleModals( '.modal-iframe' );
-			ekilinewpmodals.multipleModals( '.modal-image' );
-			ekilinewpmodals.multipleModals( '.modal-include' );
-			ekilinewpmodals.multipleModals( '.modal-text' );     
+			ekilinemodals.multipleModals( '.modal-iframe' );
+			ekilinemodals.multipleModals( '.modal-image' );
+			ekilinemodals.multipleModals( '.modal-include' );
+			ekilinemodals.multipleModals( '.modal-text' );     
 
 			
 				

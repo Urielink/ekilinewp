@@ -5,7 +5,7 @@
  * Eventually, some of the functionality here could be replaced by core features
  * Info: https://developer.wordpress.org/reference/functions/add_editor_style/
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 /**

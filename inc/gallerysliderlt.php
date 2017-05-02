@@ -11,7 +11,7 @@
  *   xxhttps://wordpress.stackexchange.com/questions/4343/how-to-customise-the-output-of-the-wp-image-gallery-shortcode-from-a-plugin
  *   https://gist.github.com/radiovisual/9070765
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 add_filter('post_gallery', 'my_post_gallery', 10, 2);

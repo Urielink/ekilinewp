@@ -7,7 +7,7 @@
  * Ejercicicio enriquecido: http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
  * Ajuste de meuestreo en categoria https://wordpress.stackexchange.com/questions/129609/how-to-show-only-one-category-in-breadcrumb-navigation
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 
@@ -46,7 +46,7 @@ $attachParent = get_the_title( $attachPost->post_parent );
                     // se debe hacer un llamado en particular para mostrar solo la primer categoria del array (por ello se usa array_shift).
                     $cats = get_the_category( get_the_ID() );
                     $cat = array_shift($cats);
-                    echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekilinewp' ), $cat->name ) ) . '">'. $cat->name .'</a>';
+                    echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
                     echo '</li>';
                                         
                 }
@@ -71,35 +71,35 @@ $attachParent = get_the_title( $attachPost->post_parent );
              echo '</li>';
         }
         elseif (is_day()) {
-            echo '<li>'. __( 'Archivo de ', 'ekilinewp' ); 
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
               the_time( get_option( 'date_format' ) );
             echo '</li>';
         }
         elseif (is_month()) {
-            echo '<li>'. __( 'Archivo de ', 'ekilinewp' ); 
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
               the_time('F, Y'); 
             echo '</li>';
         }
         elseif (is_year()) {
-            echo '<li>'. __( 'Archivo de ', 'ekilinewp' ); 
+            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
               the_time('Y'); 
             echo'</li>';
         }
         elseif (is_author()) {            
             global $author;
             $author = get_userdata($author);         
-            echo '<li>'. __( 'Entradas de ', 'ekilinewp' ), sprintf($author->display_name) .'</li>';
+            echo '<li>'. __( 'Entradas de ', 'ekiline' ), sprintf($author->display_name) .'</li>';
         }
         elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) {
-            echo '<li>'. __( 'Archivo', 'ekilinewp' ); 
+            echo '<li>'. __( 'Archivo', 'ekiline' ); 
             echo '</li>';
         }
         elseif (is_search()) {
-            echo '<li>'. __( 'Resultados ', 'ekilinewp' ); 
+            echo '<li>'. __( 'Resultados ', 'ekiline' ); 
             echo '</li>';
         }
         elseif (is_404()) {
-            echo '<li>'. __( 'Error ', 'ekilinewp' ) .'</li>';
+            echo '<li>'. __( 'Error ', 'ekiline' ) .'</li>';
         }
         
     echo '</ul>';

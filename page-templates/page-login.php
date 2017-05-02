@@ -2,7 +2,7 @@
 /**
  * Template Name: Login
  * 
- * @package ekilinewp
+ * @package ekiline
  *
  * https://ahmadawais.com/create-front-end-login-page-wordpress/
  * http://wordpress.stackexchange.com/questions/16004/redirect-user-to-original-url-after-login
@@ -33,7 +33,7 @@
             // In case of a login error.
             if ( isset( $_GET['login'] ) && $_GET['login'] == 'failed' ) : ?>
     	            <div class="aa_error">
-    		            <p><?php _e( 'FAILED: Try again!','ekilinewp' ); ?></p>
+    		            <p><?php _e( 'FAILED: Try again!','ekiline' ); ?></p>
     	            </div>
             <?php 
                 endif;
@@ -43,18 +43,18 @@
                 <div class="aa_logout"> 
                     
                     <?php 
-                        _e( 'Hello','ekilinewp' ); 
+                        _e( 'Hello','ekiline' ); 
                         echo $user_login; 
                     ?>
                     
                     </br>
                     
-                    <?php _e( 'You are already logged in.','ekilinewp' ); ?>
+                    <?php _e( 'You are already logged in.','ekiline' ); ?>
 
                 </div>
 
                 <a id="wp-submit" href="<?php echo wp_logout_url(); ?>" title="Logout">
-                    <?php _e( 'Logout','ekilinewp' ); ?>
+                    <?php _e( 'Logout','ekiline' ); ?>
                 </a>
 
             <?php 
@@ -67,10 +67,10 @@
 //                        'redirect'       => home_url( '/wp-admin/' ), 
                           'redirect'       => home_url(), 
                         'form_id'        => 'loginform',
-                        'label_username' => __( 'Username','ekilinewp' ),
-                        'label_password' => __( 'Password','ekilinewp' ),
-                        'label_remember' => __( 'Remember Me','ekilinewp' ),
-                        'label_log_in'   => __( 'Log In','ekilinewp' ),
+                        'label_username' => __( 'Username','ekiline' ),
+                        'label_password' => __( 'Password','ekiline' ),
+                        'label_remember' => __( 'Remember Me','ekiline' ),
+                        'label_log_in'   => __( 'Log In','ekiline' ),
                         'id_username'    => 'user_login',
                         'id_password'    => 'user_pass',
                         'id_remember'    => 'rememberme',

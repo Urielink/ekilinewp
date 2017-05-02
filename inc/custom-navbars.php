@@ -2,7 +2,7 @@
 /**
  * Script para modificar los menus preestablecidos.
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 
@@ -11,12 +11,12 @@
 function topNavbar(){
 
 	// TOP aciones de menu
-	$navSet = get_theme_mod('ekilinewp_topmenuSettings');
+	$navSet = get_theme_mod('ekiline_topmenuSettings');
 	if ($navSet == '0') { $navAction = ' navbar-static-top'; }
 	else if ($navSet == '1') { $navAction = ' navbar-fixed-top'; }
 	else if ($navSet == '2') { $navAction = ' navbar-fixed-bottom'; }
 	else if ($navSet == '3') { $navAction = ' navbar-affix'; }	
-	if( true === get_theme_mod('ekilinewp_inversemenu') ){$inverseMenu = 'navbar-inverse'; } else { $inverseMenu = 'navbar-default';}
+	if( true === get_theme_mod('ekiline_inversemenu') ){$inverseMenu = 'navbar-inverse'; } else { $inverseMenu = 'navbar-default';}
 	
 		
 	if ( has_nav_menu( 'top' ) ) : ?>
@@ -24,7 +24,7 @@ function topNavbar(){
 	    <div class="container">
 	        <div class="navbar-header">
 	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
-	                <span class="sr-only"><?php _e('Toggle navigation','ekilinewp') ?> </span>
+	                <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
@@ -67,14 +67,14 @@ function topNavbar(){
 
 function primaryNavbar(){
 
-if( true === get_theme_mod('ekilinewp_inversemenu') ){ $inverseMenu = 'navbar-inverse'; } else { $inverseMenu = 'navbar-default';}
+if( true === get_theme_mod('ekiline_inversemenu') ){ $inverseMenu = 'navbar-inverse'; } else { $inverseMenu = 'navbar-default';}
 	
 if ( has_nav_menu( 'primary' ) ) : ?>
         <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar" role="navigation">
             <div class="navbar-header">
                 <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">
-                    <span class="sr-only"><?php _e('Toggle navigation','ekilinewp') ?> </span>
+                    <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

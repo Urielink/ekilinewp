@@ -6,7 +6,7 @@
  * Solo se debe elegir el template.
  * El texto en la edicion aparece de manera independiente al formulario.
  * 
- * @package ekilinewp
+ * @package ekiline
  */
 
   //response generation function

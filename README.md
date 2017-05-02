@@ -1,4 +1,4 @@
-=== ekilinewp ===
+=== ekiline ===
 
 Contributors: automattic
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-image-header, featured-images, footer-widgets, full-width-template, microformats, theme-options, translation-ready, blog, e-commerce, entertainment, food-and-drink, news, portfolio, photography
@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-A starter theme called ekilinewp, based in underscores.
+A starter theme called ekiline, based in underscores.
 
 == Description ==
 
-Hi! Im ekilinewp, a theme for wordpress based in underscores.
+Hi! Im ekiline, a theme for wordpress based in underscores.
 Mi developer and designer is @Urielink, It has done all its enthusiasm and effort to make easier the process of personalizing a site that uses wordpress.
 With me you can build a very simple or very robust site without needing to fill your wordpress installation of plugins.
 And you can also make combinations of elements based on Bootstrap 3.7 to make web pages suitable to what you need.
@@ -30,7 +30,7 @@ But I'm still in development, if you like to be notified subscribe or follow me.
 
 = Does this theme support any plugins? =
 
-ekilinewp includes support for Infinite Scroll in Jetpack.
+ekiline includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

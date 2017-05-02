@@ -4,11 +4,11 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 /* Hacer que un shortcode se coloque en la parte superior:
- * 1) se registra el shortcode: function ekilinewp_topcontent.
+ * 1) se registra el shortcode: function ekiline_topcontent.
  * referencias:
  * http://wordpress.stackexchange.com/questions/168789/get-shortcode-from-the-content-and-display-it-in-other-place-in-sidebar-for-ex
  * wordpress > get shortcode and parse out of content -plugin
@@ -17,11 +17,11 @@
  * https://developer.wordpress.org/reference/functions/has_shortcode/
  */
  
-function ekilinewp_topcontent($atts, $content = null) {
+function ekiline_topcontent($atts, $content = null) {
 	extract(shortcode_atts(array('name' => 'default'), $atts));	
 	return do_shortcode($content);
 }
-add_shortcode('topcontent', 'ekilinewp_topcontent');
+add_shortcode('topcontent', 'ekiline_topcontent');
 
 
 /* 2) se crea la funcion para el template, en caso de existir el shortcode.*/

@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 ?>
@@ -52,7 +52,7 @@
                 ?>
 
                 <a href="<?php echo $next_attachment_url; ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment"><?php
-                    $attachment_size = apply_filters( 'ekilinewp_attachment_size', array( 1200, 1200 ) ); // Filterable image size.
+                    $attachment_size = apply_filters( 'ekiline_attachment_size', array( 1200, 1200 ) ); // Filterable image size.
                     echo wp_get_attachment_image( $post->ID, $attachment_size );
                 ?></a>
             </div><!-- .attachment -->
@@ -67,7 +67,7 @@
 
         <?php the_content(); ?>
         
-        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ekilinewp' ), 'after' => '</div>' ) ); ?>
+        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ekiline' ), 'after' => '</div>' ) ); ?>
 
 
 	</div><!-- .entry-content -->
@@ -77,7 +77,7 @@
         <p class="entry-meta">
             <?php
                 $metadata = wp_get_attachment_metadata();
-                printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekilinewp' ),
+                printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekiline' ),
                     esc_attr( get_the_date( 'c' ) ),
                     esc_html( get_the_date() ),
                     wp_get_attachment_url(),
@@ -92,8 +92,8 @@
 
         <nav id="image-navigation" aria-label="...">
           <ul class="pager">
-            <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'ekilinewp' ) ); ?></li>
-            <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'ekilinewp' ) ); ?></li>
+            <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'ekiline' ) ); ?></li>
+            <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'ekiline' ) ); ?></li>
           </ul>
         </nav><!-- #image-navigation -->	    
 	    
@@ -101,7 +101,7 @@
 			edit_post_link(
 				sprintf(
 					/* translators: %s: Name of current post */
-					esc_html__( 'Edit this image %s', 'ekilinewp' ),
+					esc_html__( 'Edit this image %s', 'ekiline' ),
 					the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
 				),
                 '<span class="edit-link btn btn-default">',

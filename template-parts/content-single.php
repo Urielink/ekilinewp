@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 ?>
@@ -22,7 +22,7 @@
         <?php //***ELIMINAR?? the_title( '<h1 class="entry-title text-center">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php // ekilinewp_posted_on(); ?>
+			<?php // ekiline_posted_on(); ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
@@ -30,14 +30,14 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekilinewp' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekiline' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php ekilinewp_entry_footer(); ?>
+		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
 

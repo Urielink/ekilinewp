@@ -2,7 +2,7 @@
 /**
  * Template Name: Registro
  * 
- * @package ekilinewp
+ * @package ekiline
  *
  * https://codex.wordpress.org/Customizing_the_Registration_Form
  * http://advent.squareonemd.co.uk/create-your-own-registration-form-in-wordpress/

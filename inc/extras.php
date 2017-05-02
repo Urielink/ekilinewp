@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function ekilinewp_body_classes( $classes ) {
+function ekiline_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -32,7 +32,7 @@ function ekilinewp_body_classes( $classes ) {
 		
 	return $classes;
 }
-add_filter( 'body_class', 'ekilinewp_body_classes' );
+add_filter( 'body_class', 'ekiline_body_classes' );
 
 // SEO en caso de necesitar etiquetas en las paginas:
 // https://www.sitepoint.com/wordpress-pages-use-tags/
@@ -135,42 +135,42 @@ function limpiarCaracteres($name) {
 
 //columna por default mide 1 columna
 
-function ekilinewp_columna($atts, $content = null) {
+function ekiline_columna($atts, $content = null) {
 	extract(shortcode_atts(array('sangria' => '','ancho' => '12','bgcolor' => 'inherit','txtcolor' => ''), $atts));
 	return '<div class="columna col-sm-offset-'.$sangria.' col-sm-'.$ancho.'" style="background-color:'.$bgcolor.';color:'.$txtcolor.';">' . do_shortcode($content) . '</div>';
 }
-add_shortcode('columna', 'ekilinewp_columna');
+add_shortcode('columna', 'ekiline_columna');
 
 //bloquecon texto centrado, por default mide 6columns y tiene fondo negro.
 
-function ekilinewp_bloque($atts, $content = null) {
+function ekiline_bloque($atts, $content = null) {
 	extract(shortcode_atts(array('ancho' => '6','bgcolor' => '#000000','txtcolor' => '','bgimage' => 'none'), $atts));
 	return '<div class="bloque col-sm-'.$ancho.'" style="background-color:'.$bgcolor.';color:'.$txtcolor.';background-image:url('.$bgimage.');"><div class="inblock">' . do_shortcode($content) . '</div></div>';
 }
-add_shortcode('bloque', 'ekilinewp_bloque');
+add_shortcode('bloque', 'ekiline_bloque');
 
 //Contenedor es necesario si se requieren dividir la informacion en secciones.
 
-function ekilinewp_contenedor($atts, $content = null) {
+function ekiline_contenedor($atts, $content = null) {
 	extract(shortcode_atts(array('bgimage' => 'none','txtcolor' => '','class' => '','type' => 'row'), $atts));
 	return '<div class="'.$type.' seccion '.$class.'" style="background-image:url('.$bgimage.');color:'.$texto.';">' . do_shortcode($content) . '</div>';
 }
-add_shortcode('contenedor', 'ekilinewp_contenedor');
+add_shortcode('contenedor', 'ekiline_contenedor');
 
 // acordeon, este debe tener un titulo y la descricpion se insertara en un div
 
-function ekilinewp_acordeon($atts, $content = null) {
+function ekiline_acordeon($atts, $content = null) {
 	extract(shortcode_atts(array('titulo' => '','bgcolor'=>'#17B2CE','txtcolor'=>'','ancho'=>'normal'), $atts));
 	$titleBtn = limpiarCaracteres($titulo);
 	return '<a class="btn btn-block btn-info" data-toggle="collapse" href="#'.$titleBtn.'" aria-expanded="false" aria-controls="'.$titleBtn.'">'.$titulo.'</a>
 			<div class="'.$ancho.' acordeon collapse" id="'.$titleBtn.'"><div style="background-color:'.$bgcolor.';color:'.$txtcolor.';padding:15px;overflow:hidden;">'.do_shortcode($content).'</div></div>';
 }
-add_shortcode('acordeon', 'ekilinewp_acordeon');
+add_shortcode('acordeon', 'ekiline_acordeon');
 
 
 // Cover, este debe tener un titulo, como el contenido puede variar este se debe estar en un div a parte.
 
-function ekilinewp_cover($atts, $content = null) {
+function ekiline_cover($atts, $content = null) {
 	extract(shortcode_atts(array('title' => '','bgcolor'=>'#17B2CE','txtcolor'=>'#FFFFFF','bgimage'=>'none'), $atts));
 	$titleBtn = limpiarCaracteres($titulo);
 	return '	
@@ -200,7 +200,7 @@ function ekilinewp_cover($atts, $content = null) {
     </div>		
 	';
 }
-add_shortcode('covermodule', 'ekilinewp_cover');
+add_shortcode('covermodule', 'ekiline_cover');
 
 
 
@@ -211,7 +211,7 @@ add_shortcode('covermodule', 'ekilinewp_cover');
  * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
 **/
 
-function ekilinewp_insertar($atts, $content = null) {
+function ekiline_insertar($atts, $content = null) {
 	
 	extract(shortcode_atts(array('titulo'=>'','categoria'=>'','limite'=>'', 'class'=>'default-list', 'orden'=>'DES'), $atts));
 
@@ -322,13 +322,13 @@ function ekilinewp_insertar($atts, $content = null) {
     return $insertarItem;		
 
 }
-add_shortcode('insertar', 'ekilinewp_insertar');
+add_shortcode('insertar', 'ekiline_insertar');
 
 
 
 //Hacer un include con un shortcode.
 /**
-function ekilinewp_include($atts, $content = null) {
+function ekiline_include($atts, $content = null) {
     
 	extract( shortcode_atts( array( 'archivo' => '' ), $atts) );
 
@@ -344,11 +344,11 @@ function ekilinewp_include($atts, $content = null) {
     		
 	}
 	
-add_shortcode('include', 'ekilinewp_include');
+add_shortcode('include', 'ekiline_include');
 **/
 
 //Hacer un iFrame con un shortcode.
-function ekilinewp_iframe($atts, $content = null) {
+function ekiline_iframe($atts, $content = null) {
 	extract(shortcode_atts(array('archivo' => '', 'proporcion' => 'regular'), $atts));
 
 	if ($proporcion == 'widescreen') {
@@ -369,17 +369,17 @@ function ekilinewp_iframe($atts, $content = null) {
     return $insertarIframe;		
     		
 	}
-add_shortcode('iframe', 'ekilinewp_iframe');
+add_shortcode('iframe', 'ekiline_iframe');
 
 
 // Elementos del formulario de busqueda
 
 function my_search_form( $form ) {
     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
-    <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekilinewp' ) . '</label>
+    <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
     <div class="input-group">
-    <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for: %s', 'ekilinewp' ) . '"/>
-    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekilinewp' ) .'" /></span>
+    <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '"/>
+    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
     </div>
     </form>';
 
@@ -422,14 +422,14 @@ function cssColors() {
 	if ( $modulos == '') : $modulos = '#eeeeee'; else : $modulos ; endif;
 	if ( $menu == '') : $menu = '#f8f8f8'; else : $menu ; endif;
 	if ( $footer == '') : $footer = $menu; else : $footer ; endif;
-	if( true === get_theme_mod('ekilinewp_inversemenu') ){
+	if( true === get_theme_mod('ekiline_inversemenu') ){
 	     $invFooter = '#ffffff;';
     } else {
          $invFooter = $texto ;
     }
 	
 	
-	$miestilo = '<style id="ekilinewp-inline" type="text/css" media="all"> 
+	$miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
 		/**body{font-family: "Open Sans", Arial, Helvetica, sans-serif;	}
 		h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family: "Raleway", Arial, Helvetica, sans-serif;}**/
 		body,.mini-fecha .dia{ color:'.$texto.'; }
@@ -476,7 +476,7 @@ add_action('wp_head','cssColors');
  
 function logoTheme() {
 	//variables de logotipo
-	$logoHor = get_theme_mod( 'ekilinewp_logo_max' );
+	$logoHor = get_theme_mod( 'ekiline_logo_max' );
 	$logoIcono = get_site_icon_url();
 	
     if ( $logoHor && !$logoIcono ) {
@@ -518,13 +518,13 @@ function destacadoImage() {
 /*Arreglo para que el ancho del sitio web se genere solo en una pagina, en este caso el home*/
 function wideSite() {
     if ( is_front_page() || is_home() ){
-    	echo get_theme_mod( 'ekilinewp_anchoHome', 'container' );
+    	echo get_theme_mod( 'ekiline_anchoHome', 'container' );
     }
 	elseif ( is_single() || is_page() || is_search() || is_404() ){
-    	echo get_theme_mod( 'ekilinewp_anchoSingle', 'container' );
+    	echo get_theme_mod( 'ekiline_anchoSingle', 'container' );
     }        
 	elseif ( is_archive() || is_category() ){
-    	echo get_theme_mod( 'ekilinewp_anchoCategory', 'container' );
+    	echo get_theme_mod( 'ekiline_anchoCategory', 'container' );
     }    
         
 }
@@ -536,7 +536,7 @@ function custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function customExcerptBtn( $more ) {
-    return '<p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer mas', 'ekilinewp' ) . '</a></p>';
+    return '<p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer mas', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'customExcerptBtn' );
 
@@ -598,12 +598,12 @@ if ( ! function_exists ( 'topWidgets' ) ) {
  function videoHeader() {
 
 
-    if ( ! empty( get_theme_mod('ekilinewp_video') ) ) {
+    if ( ! empty( get_theme_mod('ekiline_video') ) ) {
          
         echo	'<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
         		'<div class="embed-responsive embed-responsive-4by3">
         		  <video autoplay loop poster="'. get_header_image() .'" id="bgvid" style="background-image: url('. get_header_image() .');">
-            	   <source src="'. get_theme_mod('ekilinewp_video')  .'" type="video/mp4">
+            	   <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
         		  </video></div>';
                     
 	}       
@@ -648,7 +648,7 @@ add_filter('the_content', 'shortcode_empty_paragraph_fix');
 
 function google_analytics_tracking_code(){
 		
-	$gacode = get_theme_mod('ekilinewp_analytics','');
+	$gacode = get_theme_mod('ekiline_analytics','');
 
 	if ( $gacode != '' ) {
 		

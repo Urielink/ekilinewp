@@ -13,34 +13,34 @@
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  * @link https://make.wordpress.org/themes/2012/04/06/updating-custom-backgrounds-and-custom-headers-for-wordpress-3-4/
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses ekilinewp_header_style()
+ * @uses ekiline_header_style()
  */
-function ekilinewp_custom_header_setup() {
+function ekiline_custom_header_setup() {
 	add_theme_support( 'custom-header', 
-	apply_filters( 'ekilinewp_custom_header_args', array(
+	apply_filters( 'ekiline_custom_header_args', array(
 		'default-image'          => get_template_directory_uri() . '/screenshot.png',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'ekilinewp_header_style',
+		'wp-head-callback'       => 'ekiline_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'ekilinewp_custom_header_setup' );
+add_action( 'after_setup_theme', 'ekiline_custom_header_setup' );
 
-if ( ! function_exists( 'ekilinewp_header_style' ) ) :
+if ( ! function_exists( 'ekiline_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see ekilinewp_custom_header_setup().
+ * @see ekiline_custom_header_setup().
  */
-    function ekilinewp_header_style() {
+    function ekiline_header_style() {
     	$header_text_color = get_header_textcolor();
     
     	/*
@@ -77,7 +77,7 @@ if ( ! function_exists( 'ekilinewp_header_style' ) ) :
     	</style>
     	<?php
     }
-endif;  // ekilinewp_admin_header_image
+endif;  // ekiline_admin_header_image
 
 // Creo una funcion para agregar un header personalizado
 
@@ -97,7 +97,7 @@ function customHeader() {
 			$siteDescription = get_bloginfo( 'description', 'display'  );
 			// Estilo de imagen de fondo: invocamos la imagen del editor de pagina y lo añadimos como css.
 			// En combinacion con un range
-			$rangeHead = get_theme_mod('ekilinewp_range_header');
+			$rangeHead = get_theme_mod('ekiline_range_header');
 			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
 						
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
@@ -128,8 +128,8 @@ function customHeader() {
 			} else {				
 				
 				// Si la altura es mayor, la imagen hereda la estructura de cover.
-				if ( get_theme_mod( 'ekilinewp_logo_min' ) ) {
-					$coverLogo = '<img class="cover-header-brand" src="' . get_theme_mod( 'ekilinewp_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
+				if ( get_theme_mod( 'ekiline_logo_min' ) ) {
+					$coverLogo = '<img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
 				} 
 												
 				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
@@ -139,10 +139,10 @@ function customHeader() {
 							            <div class="inner">'.$coverLogo.'											
 											<nav> 
 												<ul class="nav cover-header-nav">
-													<li><a href="#" target="_blank" title="https://www.google.com/search?q=ekilinewp.com"><i class="fa fa-google"></i></a></li>
+													<li><a href="#" target="_blank" title="https://www.google.com/search?q=ekiline.com"><i class="fa fa-google"></i></a></li>
 													<li><a href="#" target="_blank" title="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="#" target="_blank" title="https://es-la.facebook.com/ekilinewp/"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="#" target="_blank" title="https://twitter.com/ekilinewpmx/"><i class="fa fa-twitter"></i></a></li> 
+													<li><a href="#" target="_blank" title="https://es-la.facebook.com/ekiline/"><i class="fa fa-facebook"></i></a></li>
+													<li><a href="#" target="_blank" title="https://twitter.com/ekilinemx/"><i class="fa fa-twitter"></i></a></li> 
 												</ul>
 											</nav>				
     									</div>

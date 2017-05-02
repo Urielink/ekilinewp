@@ -13,7 +13,7 @@
 	[/tabs]
 *
 * 
-* @package ekilinewp
+* @package ekiline
 *
 */
 

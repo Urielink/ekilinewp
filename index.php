@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 get_header(); ?>

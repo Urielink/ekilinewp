@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ekilinewp
+ * @package ekiline
  */
 
 ?>
@@ -31,7 +31,7 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekilinewp' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekiline' ),
 				'after'  => '</div>',
 			) );
 		?>
@@ -42,7 +42,7 @@
 			edit_post_link(
 				sprintf(
 					/* translators: %s: Name of current post */
-					esc_html__( 'Edit %s', 'ekilinewp' ),
+					esc_html__( 'Edit %s', 'ekiline' ),
 					the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
 				),
                 '<span class="edit-link btn btn-default">',
