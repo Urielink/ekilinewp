@@ -29,8 +29,8 @@
 <?php customHeader(); // header personalizado ?>
 
 <div id="page" class="site <?php wideSite(); ?>">
-
-<?php primaryNavbar(); // menu principal ?>		
+    
+<?php primaryNavbar(); // menu principal ?>     
 
 	<div id="content" class="site-content">
 	

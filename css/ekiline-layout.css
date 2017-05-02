@@ -96,7 +96,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 
 /* Sidebar izquierdo activado */
 .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0px;}
-.toggle-sidebars.left-on.active-sidebar-left #page.container-fluid{padding-left:300px;}
+/*.toggle-sidebars.left-on.active-sidebar-left #page.container-fluid{padding-left:300px;}*/
 .toggle-sidebars.left-on.active-sidebar-left #content #secondary{left:300px;}
 
 /* Sidebar derecho */
@@ -110,7 +110,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
     
 /*Sidebar derecho activado*/
 .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0px;}
-.toggle-sidebars.right-on.active-sidebar-right #page.container-fluid{padding-right:300px;}
+/*.toggle-sidebars.right-on.active-sidebar-right #page.container-fluid{padding-right:300px;}*/
 .toggle-sidebars.right-on.active-sidebar-right #content #third{right:300px;}
     
  /* Botones de sidebars */
@@ -420,6 +420,9 @@ html, body { height: 100%; }
  	background:#FFFFFF;
  	z-index:1000; 	
  }*/
+
+
+
 
 /*columnas auxiliares*/
 
