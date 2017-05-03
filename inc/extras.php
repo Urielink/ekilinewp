@@ -593,23 +593,6 @@ if ( ! function_exists ( 'topWidgets' ) ) {
 }
 
 
-// widgets dinamicos: video
-
- function videoHeader() {
-
-
-    if ( ! empty( get_theme_mod('ekiline_video') ) ) {
-         
-        echo	'<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
-        		'<div class="embed-responsive embed-responsive-4by3">
-        		  <video autoplay loop poster="'. get_header_image() .'" id="bgvid" style="background-image: url('. get_header_image() .');">
-            	   <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
-        		  </video></div>';
-                    
-	}       
-
-}
-
 
 // Formatear la fecha
 function miniDate() {	    

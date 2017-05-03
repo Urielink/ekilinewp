@@ -103,7 +103,7 @@ function customHeader() {
 			
 			//Estructura con condicion:
 			
-			if ($rangeHead <= '95') {
+			if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
 				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
@@ -158,7 +158,68 @@ function customHeader() {
 							        </div>
 							      </div>
 							    </header>';	
-			}			
+			}
+			
+            if ( ! empty( get_theme_mod('ekiline_video') ) ) {
+                 
+                $customHeader = '<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
+                                '<header class="video-container" style="background-image: url('. get_header_image() .');background-size:cover;">
+                                    <div class="video-text">
+                                        '.$coverLogo.'
+                                        <h1 class="site-title">'.$siteName.'</h1>
+                                        <p class="site-description">'. $siteDescription.'</p>
+                                    </div>                                                                
+                                    <div class="video-media embed-responsive embed-responsive-16by9">
+                                        <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
+                                            <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
+                                        </video>
+                                        <button id="vidpause" class="btn btn-default">'. __( 'Pause', 'ekiline' ) .'</button>
+                                    </div>
+                                 </header>';
+                // https://developer.wordpress.org/reference/functions/wp_add_inline_script/
+                // https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
+                // https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
+                // https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
+                
+                function myscript() { 
+                
+                echo '<script type="text/javascript">
+                    var vid = document.getElementById("bgvid"),
+                    pauseButton = document.getElementById("vidpause");
+                    if (window.matchMedia("(prefers-reduced-motion)").matches) {
+                        vid.removeAttribute("autoplay");
+                        vid.pause();
+                        pauseButton.innerHTML = "'. __( 'Pause', 'ekiline' ) .'";
+                    }
+                    
+                    function vidFade() {
+                        vid.classList.add("stopfade");
+                    }
+                    vid.addEventListener("ended", function() {
+                        // only functional if "loop" is removed 
+                         vid.pause();
+                        // to capture IE10
+                        vidFade();
+                    });
+                    pauseButton.addEventListener("click", function() {
+                        vid.classList.toggle("stopfade");
+                        if (vid.paused) {
+                    vid.play();
+                            pauseButton.innerHTML = "'. __( 'Pause', 'ekiline' ) .'";
+                        } else {
+                            vid.pause();
+                            pauseButton.innerHTML = "'. __( 'Play', 'ekiline' ) .'";
+                        }
+                    })                    
+                    
+                </script>';
+                
+                }
+                add_action( 'wp_footer', 'myscript', 110 );
+                                 
+                                 
+            }       
+									
 				
 		}
 
@@ -224,11 +285,21 @@ function customHeader() {
 
 /* Agrego una clase al body para saber que se utiliza cover o jumbotron */
 add_filter( 'body_class', function( $classes ) {
+    
     $rangeHead = get_theme_mod('ekiline_range_header');
-    if ($rangeHead <= '95') {
+    
+    if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+        
         return array_merge( $classes, array( 'head-jumbotron' ) );                    
-    } else {
+        
+    } elseif ( empty( get_theme_mod('ekiline_video') ) ) {
+        
         return array_merge( $classes, array( 'head-cover' ) );                    
+        
+    } elseif ( ! empty( get_theme_mod('ekiline_video') ) ) {
+        
+        return array_merge( $classes, array( 'head-video' ) );                    
+        
     }
-} );
+});
 

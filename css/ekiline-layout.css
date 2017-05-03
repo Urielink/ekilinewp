@@ -421,7 +421,28 @@ html, body { height: 100%; }
  	z-index:1000; 	
  }*/
 
-
+/* header con video */
+.video-container{
+	position:relative;	
+}
+.video-container .video-text {
+	position: absolute;
+    left: 0;
+    right: 0;
+    margin: 20% auto 0;
+    max-width: 1024px;
+    z-index: 1;
+}
+.video-container .video-media{}
+#vidpause{
+	position: absolute;
+	right:20px;
+	bottom:20px
+}
+video#bgvid {
+    transition: 1s opacity;
+}
+.stopfade { opacity: .5; }
 
 
 /*columnas auxiliares*/
@@ -553,7 +574,8 @@ html, body { height: 100%; }
  .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
  .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;}
  .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
-	
+/* El video */	
+    #bgvid, #vidpause { display: none;}
 }
 
 /*--------------------------------------------------------------------------------
