@@ -65,6 +65,7 @@ function ekiline_gallery( $output,$attr ) {
         'link'       => '',
         //agregado
         'carousel'   => '',
+        'showlink'   => '',
         'name'       => 'default',
         'align'      => 'text-center',
         'indicators' => 'false',
@@ -127,8 +128,10 @@ function ekiline_gallery( $output,$attr ) {
     $carouselitem = 'item';
     $alignitems = $atts['align'];
     $indicators = '';
+    $speed = '';
     $transition = '';
-                    
+    $showlink = '';
+                        
     if ( empty( $atts['carousel'] ) ) {
                 
         if ($columns == '1') : $itemcol = 'col-sm-12';
@@ -162,12 +165,16 @@ function ekiline_gallery( $output,$attr ) {
         
     }     
     
-         
+    /** Si desean ver las imagenes como lightbox **/
+    if ( ! empty( $atts['showlink'] ) ) {
+        $showlink = 'modal-gallery';
+    }         
+    
     /** Fin de Variables de carrusel p1 **/
     
     
     $size_class = sanitize_html_class( $atts['size'] );
-    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$transition}'".$speed.">";
+    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition}'".$speed.">";
  
     $output = $gallery_div; 
 
@@ -280,6 +287,11 @@ add_action('print_media_templates', function(){
         <span><?php _e('Transform to carousel','ekiline'); ?></span>
         <input type="checkbox" data-setting="carousel">
     </label>  
+    
+    <label class="setting">
+        <span><?php _e('Open linked media on modal window','ekiline'); ?></span>
+        <input type="checkbox" data-setting="showlink">
+    </label>      
     
     <label class="setting">
         <span><?php _e('Carousel name','ekiline'); ?></span>

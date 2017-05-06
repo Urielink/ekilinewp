@@ -270,6 +270,92 @@ jQuery(document).ready(function($){
 	ekilinemodals.multipleModals( '.modal-include' );
 	ekilinemodals.multipleModals( '.modal-text' );     
 
+	
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	ModalBox para galeria de imagenes
+	 *  http://stackoverflow.com/questions/5557641/how-can-i-reset-div-to-its-original-state-after-it-has-been-modified-by-java
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+	
+	    // agrega parametros de bootstrap
+	    $( '.modal-gallery a' ).attr({'data-toggle' : 'modal','data-target' : '#carouselModal' });    
+	        
+	    $('.modal-gallery a').on('click',function(){
+	        
+	        var src = $(this).attr('href');
+	        var altTitle = $(this).find('img').attr('alt');
+	        var img = '<img src="' + src + '" class="img-responsive"/>';
+	        
+	        var index = $(this).parent('div').index();   
+	        
+	        var modalgallery = '';
+	        modalgallery += '<div class="modal fade" role="dialog" id="carouselModal">\
+	                            <div class="modal-dialog">\
+	                            <div class="modal-content">\
+	                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button>\
+	                            <h4>'+ altTitle +'</h4></div>\
+	                            <div class="modal-body">';
+	        modalgallery += img;                
+	        modalgallery += '</div><div class="modal-footer"><ul class="pager">';
+	        modalgallery += '<li class="next"><a class="controls next" href="'+ (index+2) + '">next &raquo;</a></li>';
+	        modalgallery += '<li class="previous"><a class="controls previous" href="' + (index) + '">&laquo; prev</a></li>';
+	        modalgallery += '<ul></div></div></div></div>';
+	        
+	        $( modalgallery ).modal('show');
+	        
+	        // Ejecuta el control
+	        $(document).on('shown.bs.modal', function(){
+	            $('a.controls').trigger('click');
+	        });
+	        
+	        // Borrar registro del modal
+	        $(document).on('hidden.bs.modal', function(){
+	          $( '.modal, .modal-backdrop' ).remove();
+	        });             
+	        
+	   });  
+	   
+	        
+	         
+		$(document).on('click', 'a.controls', function(){
+		    
+		    var index = $(this).attr('href');
+		    var src = $('.modal-gallery div:nth-child('+ index +') a').attr('href');             
+		    var altHeading = $('.modal-gallery div:nth-child('+ index +') a img').attr('alt');
+		    
+		    $('.modal-body img').attr('src', src);
+		    $('.modal-header h4').html(altHeading);
+		    
+		    var newPrevIndex = parseInt(index) - 1; 
+		    var newNextIndex = parseInt(newPrevIndex) + 2; 
+		    
+		    if($(this).hasClass('previous')){               
+		        $(this).attr('href', newPrevIndex); 
+		        $('a.next').attr('href', newNextIndex);
+		    }else{
+		        $(this).attr('href', newNextIndex); 
+		        $('a.previous').attr('href', newPrevIndex);
+		    }
+		    
+		    var total = $('.modal-gallery div').length + 1; 
+		    //hide next button
+		    if(total === newNextIndex){
+		        $('a.next').hide();
+		    }else{
+		        $('a.next').show();
+		    }            
+		    //hide previous button
+		    if(newPrevIndex === 0){
+		        $('a.previous').hide();
+		    }else{
+		        $('a.previous').show();
+		    }
+		    
+		    return false;
+		    
+		});    	
+	
 
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
