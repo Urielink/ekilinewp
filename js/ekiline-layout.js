@@ -274,88 +274,117 @@ jQuery(document).ready(function($){
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	ModalBox para galeria de imagenes
-	 *  http://stackoverflow.com/questions/5557641/how-can-i-reset-div-to-its-original-state-after-it-has-been-modified-by-java
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
 	
+	$('.modal-gallery').each(function() {
+	    // necesito diferenciar el objeto en cada caso
+	    var getId = $(this).attr('id');
+	    var rename = '#'+ getId + '.modal-gallery';
+	    //console.log( rename );
+		
 	    // agrega parametros de bootstrap
-	    $( '.modal-gallery a' ).attr({'data-toggle' : 'modal','data-target' : '#carouselModal' });    
+	    $( rename + ' a:not(.carousel-control)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
 	        
-	    $('.modal-gallery a').on('click',function(){
+	    $( rename + ' a:not(.carousel-control)' ).on('click',function(){
 	        
-	        var src = $(this).attr('href');
-	        var altTitle = $(this).find('img').attr('alt');
-	        var img = '<img src="' + src + '" class="img-responsive"/>';
-	        
-	        var index = $(this).parent('div').index();   
-	        
+	        var gallery = $( rename ).html();
+	                
 	        var modalgallery = '';
-	        modalgallery += '<div class="modal fade" role="dialog" id="carouselModal">\
+	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal">\
 	                            <div class="modal-dialog">\
 	                            <div class="modal-content">\
-	                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button>\
-	                            <h4>'+ altTitle +'</h4></div>\
 	                            <div class="modal-body">';
-	        modalgallery += img;                
-	        modalgallery += '</div><div class="modal-footer"><ul class="pager">';
-	        modalgallery += '<li class="next"><a class="controls next" href="'+ (index+2) + '">next &raquo;</a></li>';
-	        modalgallery += '<li class="previous"><a class="controls previous" href="' + (index) + '">&laquo; prev</a></li>';
-	        modalgallery += '<ul></div></div></div></div>';
+	                            
+	        //carrusel                            
+	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel">\
+	        	<button type="button" class="close" data-dismiss="modal">&times;</button>\
+	                          <ol class="carousel-indicators"></ol>\
+	                          <div class="carousel-inner" role="listbox">'+ gallery +'</div>\
+	                          <a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev">\
+	                            <span class="glyphicon glyphicon-chevron-left"></span>\
+	                          </a>\
+	                          <a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next">\
+	                            <span class="glyphicon glyphicon-chevron-right"></span>\
+	                          </a>\
+	                        </div>';                  
+	                     
+	        modalgallery += '</div></div></div></div>';
+	        
 	        
 	        $( modalgallery ).modal('show');
 	        
-	        // Ejecuta el control
-	        $(document).on('shown.bs.modal', function(){
-	            $('a.controls').trigger('click');
-	        });
+	        // saber a que elemento le dio click        
+	        var nc = $(this).index( rename + ' a' );        
+	        // console.log(nc);
+	
+	        
+	        // Ejecuta las variables para activarse
+	        $('body').on('shown.bs.modal', function(){  
+	        	
+	            $('.carousel').carousel({ swipe: 100 });	    	    
+
+	                      
+	            // busco cada item y limpio las clases reemplazandola por item.
+	            $(this).find('#galleryModal .item').removeClass().addClass('item');
+	            
+	            // busco el link original y guardo la dirección en una variable para cuando elacen la imagen pequeña, se muestre la grande
+		            $(this).find('#galleryModal figure a img').each(function(){
+		            	//console.log(this);
+			            var url = $(this).parent('a').attr('href');
+			            //console.log(url);
+			            var img = '<img src="'+url+'" />';
+			            // console.log(img);
+			            $(this).replaceWith(img);
+		            });
+		        
+		        // Busco el rengón de texto y le añado la clase carousel-caption
+	            $(this).find('#galleryModal .item .gallery-caption').addClass('carousel-caption');
+	            
+	            
+	            // busco elmentos que no necesito y los elimino
+	            $(this).find('#galleryModal .clearfix').remove();
+	            $(this).find('#galleryModal figure').removeClass().addClass('text-center');
+	            $(this).find('#galleryModal figure img').unwrap();
+	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
+	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
+	
+	            // busca los slides para hacer un índice.
+	            var slides = $('body').find('#galleryModal').find('.item');
+	            //console.log(slides);
+	                        
+	            // saca el total de elmentos que existen.
+	            var ns = slides.length;
+	            //console.log('hay ' + ns);
+	            
+	            // limpio los contadores del carrusel (se queda un registro)
+	            $(this).find('#galleryModal .carousel-indicators li').remove();            
+	            // creo el loop de contadores            
+	            for (var i=0; i<ns; i++) {
+	                // console.log('intento ' + i);
+	                $(this).find('#galleryModal .carousel-indicators').append('<li data-target="#carousel-modal" data-slide-to="'+i+'"></li>');
+	            }            
+	            
+	            // al primer slide activalo
+	            //slides.first().addClass('active');
+	            // al primer indicador activalo
+	            //$(this).find('#galleryModal .carousel-indicators li').first().addClass('active');
+	            
+	            // de acuerdo al elmento que dio clic, habilitalo.
+	            $( slides.eq( nc ) ).addClass('active');
+	            $(this).find('#galleryModal .carousel-indicators li').eq( nc ).addClass('active');
+	                     
+	        }); // fin de activacion
 	        
 	        // Borrar registro del modal
-	        $(document).on('hidden.bs.modal', function(){
+	        $('body').on('hidden.bs.modal', function(){
 	          $( '.modal, .modal-backdrop' ).remove();
 	        });             
 	        
 	   });  
-	   
-	        
-	         
-		$(document).on('click', 'a.controls', function(){
-		    
-		    var index = $(this).attr('href');
-		    var src = $('.modal-gallery div:nth-child('+ index +') a').attr('href');             
-		    var altHeading = $('.modal-gallery div:nth-child('+ index +') a img').attr('alt');
-		    
-		    $('.modal-body img').attr('src', src);
-		    $('.modal-header h4').html(altHeading);
-		    
-		    var newPrevIndex = parseInt(index) - 1; 
-		    var newNextIndex = parseInt(newPrevIndex) + 2; 
-		    
-		    if($(this).hasClass('previous')){               
-		        $(this).attr('href', newPrevIndex); 
-		        $('a.next').attr('href', newNextIndex);
-		    }else{
-		        $(this).attr('href', newNextIndex); 
-		        $('a.previous').attr('href', newPrevIndex);
-		    }
-		    
-		    var total = $('.modal-gallery div').length + 1; 
-		    //hide next button
-		    if(total === newNextIndex){
-		        $('a.next').hide();
-		    }else{
-		        $('a.next').show();
-		    }            
-		    //hide previous button
-		    if(newPrevIndex === 0){
-		        $('a.previous').hide();
-		    }else{
-		        $('a.previous').show();
-		    }
-		    
-		    return false;
-		    
-		});    	
-	
+		
+	});
+		
 
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 

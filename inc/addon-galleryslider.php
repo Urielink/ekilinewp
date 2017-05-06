@@ -130,7 +130,6 @@ function ekiline_gallery( $output,$attr ) {
     $indicators = '';
     $speed = '';
     $transition = '';
-    $showlink = '';
                         
     if ( empty( $atts['carousel'] ) ) {
                 
@@ -168,6 +167,8 @@ function ekiline_gallery( $output,$attr ) {
     /** Si desean ver las imagenes como lightbox **/
     if ( ! empty( $atts['showlink'] ) ) {
         $showlink = 'modal-gallery';
+    } else {
+        $showlink = '';
     }         
     
     /** Fin de Variables de carrusel p1 **/
@@ -335,6 +336,7 @@ add_action('print_media_templates', function(){
 
       _.extend(wp.media.gallery.defaults, {
         carousel: false,
+        showlink: false,
         name: 'default',
         align: 'text-center',
         transition: 'none',
