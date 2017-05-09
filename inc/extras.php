@@ -649,18 +649,6 @@ function google_analytics_tracking_code(){
 add_action('wp_footer', 'google_analytics_tracking_code', 100);	
 	
 
-/* Funcion para eliminar los comentarios que aparecen en los adjuntos (attachments)
- */
-
-function filter_media_comment_status( $open, $post_id ) {
-	$post = get_post( $post_id );
-	if( $post->post_type == 'attachment' ) {
-		return false;
-	}
-	return $open;
-}
-add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
-
 /* agregar Feeds RSS con un shortcode
  * [rss feed="url" num="5"]
  *
@@ -681,19 +669,36 @@ function readRss($atts) {
 add_shortcode('rss', 'readRss'); 
 **/
 
+
 /* Funcion especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos especificos
  * Se inyecta una CSS en el body
  * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
  * https://developer.wordpress.org/reference/functions/body_class/
  */
-
+ 
 /** En caso de necesitar el modo wireframe.**/
+
 if( true === get_theme_mod('ekiline_wireframe') ){
+    
     add_filter( 'body_class', function( $classes ) {
         return array_merge( $classes, array( 'wf-ekiline' ) );
     } );
 }
 
+/* Funcion para eliminar los comentarios que aparecen en los adjuntos (media)*/
+ 
+if( true === get_theme_mod('ekiline_mediacomment') ){
+         
+     function filter_media_comment_status( $open, $post_id ) {
+        $post = get_post( $post_id );
+        if( $post->post_type == 'attachment' ) {
+            return false;
+        }
+        return $open;
+    }
+    add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
+
+}
 
 /*	
  * Todos los componentes que no formen parte del template, es decir, 

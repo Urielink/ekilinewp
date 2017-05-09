@@ -284,22 +284,22 @@ function customHeader() {
 }
 
 /* Agrego una clase al body para saber que se utiliza cover o jumbotron */
-add_filter( 'body_class', function( $classes ) {
-    
-    $rangeHead = get_theme_mod('ekiline_range_header');
-    
-    if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
-        
-        return array_merge( $classes, array( 'head-jumbotron' ) );                    
-        
-    } elseif ( empty( get_theme_mod('ekiline_video') ) ) {
-        
-        return array_merge( $classes, array( 'head-cover' ) );                    
-        
-    } elseif ( ! empty( get_theme_mod('ekiline_video') ) ) {
-        
-        return array_merge( $classes, array( 'head-video' ) );                    
-        
-    }
-});
 
+    add_filter( 'body_class', function( $classes ) {
+        
+        $rangeHead = get_theme_mod('ekiline_range_header');
+        
+        if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
+            
+            return array_merge( $classes, array( 'head-jumbotron' ) );                    
+            
+        } elseif ( empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
+            
+            return array_merge( $classes, array( 'head-cover' ) );                    
+            
+        } elseif ( ! empty( get_theme_mod('ekiline_video') ) && is_front_page()) {
+            
+            return array_merge( $classes, array( 'head-video' ) );                    
+            
+        }
+    });

@@ -365,7 +365,26 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'settings'       => 'ekiline_wireframe',
                     'type'           => 'checkbox',
             )
-    );        
+    );   
+    
+
+    // Cancelar los comentarios en las imagenes
+    $wp_customize->add_setting(
+            'ekiline_mediacomment', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) );
+    
+    $wp_customize->add_control(
+            'ekiline_mediacomment',
+            array(
+                    'label'          => __( 'Cancelar los comentarios en los medios', 'ekiline' ),
+                    'description'    => 'Cancela los comentarios de las páginas que se generan por cada imagen o video o archivo de tu biblioteca de medios.',
+                    'section'        => 'ekiline_services',
+                    'settings'       => 'ekiline_mediacomment',
+                    'type'           => 'checkbox',
+            )
+    );            
         
 }
 add_action('customize_register', 'ekiline_theme_customizer');
