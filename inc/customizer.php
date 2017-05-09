@@ -342,13 +342,30 @@ function ekiline_theme_customizer( $wp_customize ) {
     		'ekiline_maintenance',
     		array(
     				'label'          => __( 'Poner mi sitio en mantenimiento', 'ekiline' ),
-    				'description'    => 'Si es necesario ',
+    				'description'    => __( 'Muestra una pantalla de mantenimiento a tus usuarios.', 'ekiline' ),
     				'section'        => 'ekiline_services',
     				'settings'       => 'ekiline_maintenance',
     				'type'           => 'checkbox',
     		)
     );    
 
+    // Poner en modo wireframe
+    $wp_customize->add_setting(
+            'ekiline_wireframe', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) );
+    
+    $wp_customize->add_control(
+            'ekiline_wireframe',
+            array(
+                    'label'          => __( 'Demarcar los modulos', 'ekiline' ),
+                    'description'    => 'Muestra lineas de division para apoyarte al personalizar tu sitio',
+                    'section'        => 'ekiline_services',
+                    'settings'       => 'ekiline_wireframe',
+                    'type'           => 'checkbox',
+            )
+    );        
         
 }
 add_action('customize_register', 'ekiline_theme_customizer');

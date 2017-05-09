@@ -681,6 +681,20 @@ function readRss($atts) {
 add_shortcode('rss', 'readRss'); 
 **/
 
+/* Funcion especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos especificos
+ * Se inyecta una CSS en el body
+ * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
+ * https://developer.wordpress.org/reference/functions/body_class/
+ */
+
+/** En caso de necesitar el modo wireframe.**/
+if( true === get_theme_mod('ekiline_wireframe') ){
+    add_filter( 'body_class', function( $classes ) {
+        return array_merge( $classes, array( 'wf-ekiline' ) );
+    } );
+}
+
+
 /*	
  * Todos los componentes que no formen parte del template, es decir, 
  * fueran metodos o funciones para complementar plugins se recomienda manejarlas
