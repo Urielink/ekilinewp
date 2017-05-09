@@ -102,22 +102,6 @@ function ekiline_theme_customizer( $wp_customize ) {
             'priority' => 100,
     ) ) );
         
- // video
-//     $wp_customize->add_section( 'ekiline_video_portada' , array(
-//             'title'       => __( 'Video de cabecera', 'ekiline' ),
-//             'priority'    => 90,
-//             'description' => '<b>Debes tener una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
-//     ) );
-    
-//     $wp_customize->add_setting( 'ekiline_video' );
-    
-//     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
-//             'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
-//             'section'  => 'ekiline_video_portada',
-//             'settings' => 'ekiline_video',
-//     ) ) );  
-
-    // video
     
     $wp_customize->add_setting( 
             'ekiline_video', array(
@@ -127,7 +111,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
     		'label'    => __( 'Video MP4, WEBM u OGV', 'ekiline' ),
-        	'description' => '<b>Debes tener seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
+        	'description' => '<b>Debes seleccionar una imagen de cabecera</b>.<br/>Elige un archivo de video <b>MP4, WEBM u OGV</b> de tu biblioteca. La imagen de cabecera se adaptara como fondo en caso de que los dispositivos no puedan reproducir video.',
     		'section'  => 'header_image',
     		'settings' => 'ekiline_video',
             'priority'    => 90,
@@ -165,6 +149,21 @@ function ekiline_theme_customizer( $wp_customize ) {
     		'settings' => 'ekiline_logo_min',
     		'priority' => 100,
     ) ) );
+    
+// mensaje de cabecera     
+    $wp_customize->add_setting( 'ekiline_headertext', array( 
+            'default' => '',
+            'sanitize_callback'  => 'ekiline_sanitize_html'
+    ) );
+    
+    $wp_customize->add_control( 'ekiline_headertext', array(
+            'type'        => 'textarea',
+            'label'    => __( 'Mensaje de cabecera', 'ekiline' ),
+            'description' => 'Personaliza el mensaje de tu encabezado. De manera predeterminada se toma el nombre y descripicion de tu sitio',
+            'section'  => 'header_image', 
+            'settings' => 'ekiline_headertext',
+            'priority' => 100,
+    ) );    
     
 
 // ancho de la pagina
@@ -379,7 +378,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_mediacomment',
             array(
                     'label'          => __( 'Cancelar los comentarios en los medios', 'ekiline' ),
-                    'description'    => 'Cancela los comentarios de las páginas que se generan por cada imagen o video o archivo de tu biblioteca de medios.',
+                    'description'    => 'Cancela los comentarios que se generan por cada imagen o video o archivo de tu biblioteca de medios.',
                     'section'        => 'ekiline_services',
                     'settings'       => 'ekiline_mediacomment',
                     'type'           => 'checkbox',

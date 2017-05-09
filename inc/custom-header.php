@@ -100,39 +100,38 @@ function customHeader() {
 			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
 						
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
-			
+
+            $coverLogo = get_theme_mod( 'ekiline_logo_min' );
+            if ( $coverLogo ){
+                $coverLogo = '<a href="'.esc_url( home_url( '/' ) ).'" rel="home"><img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+            }
+            
+            $headerText = get_theme_mod( 'ekiline_headertext' );
+            						
 			//Estructura con condicion:
 			
-			if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+			if ( $rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
 				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
 					$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
-								
-						if ( is_front_page() && is_home() ) : 
-							$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';
-						else :
-							$customHeader .= '<p class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></p>';
-						endif;	
+
+                        $customHeader .= $coverLogo;
+
+                        if ( !$headerText ){																																						
+    						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
+                            $customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
+						} else {
+						    $customHeader .= $headerText;
+						}
 						
-						if ( $siteDescription || is_customize_preview() ) :
-							$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
-						endif;
-													
 					$customHeader .= '</div><!-- .site-branding -->
 			
 				</header><!-- #masthead -->'; 
 			
 			} else {
-			    				
-				$coverLogo = '';
-				
-				// Si la altura es mayor, la imagen hereda la estructura de cover.
-				if ( get_theme_mod( 'ekiline_logo_min' ) ) {
-					$coverLogo = '<img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
-				} 
-												
+			    																				
 				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
@@ -148,11 +147,17 @@ function customHeader() {
 											</nav>				
     									</div>
 							          </div>
-							          <div class="inner cover">
-										<h1 class="cover-title">'.$siteName.'</h1>
-										<p class="cover-description">'. $siteDescription.'</p>
-					    			  </div>
-							          <!--div class="cover-footer">
+							          <div class="inner cover">';
+
+                                    if ( !$headerText ){                                                                                                                                                        
+                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
+                                    } else {
+                                        $customHeader .= $headerText;
+                                    }
+
+				$customHeader .=    '</div>
+				                      <!--div class="cover-footer">
 							            <div class="inner"><p>Algun contenido</p></div>
 							          </div-->
 							        </div>
@@ -165,10 +170,16 @@ function customHeader() {
                 $customHeader = '<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
                                 '<header class="video-container" style="background-image: url('. get_header_image() .');background-size:cover;">
                                     <div class="video-text">
-                                        '.$coverLogo.'
-                                        <h1 class="site-title">'.$siteName.'</h1>
-                                        <p class="site-description">'. $siteDescription.'</p>
-                                    </div>                                                                
+                                        '.$coverLogo;
+
+                                    if ( !$headerText ){                                                                                                                                                        
+                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
+                                    } else {
+                                        $customHeader .= $headerText;
+                                    }
+                                        
+                $customHeader .= '</div>                                                                
                                     <div class="video-media embed-responsive embed-responsive-16by9">
                                         <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
                                             <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
