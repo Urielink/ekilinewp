@@ -153,6 +153,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 // mensaje de cabecera     
     $wp_customize->add_setting( 'ekiline_headertext', array( 
             'default' => '',
+            //'transport' => 'none',
             'sanitize_callback'  => 'ekiline_sanitize_html'
     ) );
     
