@@ -209,6 +209,7 @@ add_shortcode('covermodule', 'ekiline_cover');
  * http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
  * Especial atencion en el uso de ob_start();
  * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
+ * https://developer.wordpress.org/reference/functions/query_posts/
 **/
 
 function ekiline_insertar($atts, $content = null) {
@@ -220,10 +221,13 @@ function ekiline_insertar($atts, $content = null) {
 		
 	ob_start(); // abre 
 	
-			// invoca las cotegorias necesarias WP_Query()
+			// 9may 2017: hay que declarar las variables invoca las cotegorias necesarias WP_Query()
+			$query_string = '';
 			$nuevoLoop = new WP_Query($query_string . '&cat='.$categoria.'&posts_per_page='.$limite.'&order='.$orden );
 			// obtiene la cuenta de los posts
 			$post_counter = 0; 
+            $count = '';                               
+			
 				
 								
 			if ( $nuevoLoop->have_posts() ) {
@@ -249,6 +253,8 @@ function ekiline_insertar($atts, $content = null) {
 				} 
 					
 				else if ($class == 'blocklist'){
+				        
+				    
 							
 					/* cambiar el modo de como se muestra el boton leer mas	
 					 * https://codex.wordpress.org/Customizing_the_Read_More */

@@ -19,7 +19,7 @@ $attachUrl = get_permalink( $attachPost->post_parent );
 $attachParent = get_the_title( $attachPost->post_parent );
     
             
-    if ( !is_home() || !is_front_page() ) {
+    if ( !is_home() && !is_front_page() ) {
             
     echo '<ul class="breadcrumb">';
         
