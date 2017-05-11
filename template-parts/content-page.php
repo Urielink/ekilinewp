@@ -14,7 +14,6 @@
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
 	<header class="entry-header">
-	  	<?php miniDate();?>
 
         <?php if ( !has_post_thumbnail() ) {
             // si no tiene imagen destacada solo pon el titulo

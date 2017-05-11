@@ -6,6 +6,28 @@
  */
 
 
+/**
+ *  Adding logo image to navbar-brand:
+ **/
+ 
+function logoTheme() {
+    //variables de logotipo
+    $logoHor = get_theme_mod( 'ekiline_logo_max' );
+    $logoIcono = get_site_icon_url();
+    
+    if ( $logoHor && !$logoIcono ) {
+        echo '<img class="img-responsive" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>';
+    } elseif ( !$logoHor && $logoIcono ) {
+        echo '<img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' );
+    } elseif ( $logoHor && $logoIcono ) {
+        echo '<img class="img-responsive hidden-xs" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
+        <span class="visible-xs"><img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' ) . '</span>';
+    } else {
+        echo get_bloginfo( 'name' );
+    } 
+
+}
+
 // menu en la parte superior top
  
 function topNavbar(){

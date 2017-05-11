@@ -7,6 +7,70 @@
  * @package ekiline
  */
 
+// SEO en caso de necesitar etiquetas en las paginas:
+// https://www.sitepoint.com/wordpress-pages-use-tags/
+
+// add tag support to pages
+function tags_support_all() {
+    register_taxonomy_for_object_type('post_tag', 'page');
+}
+add_action('init', 'tags_support_all');
+
+
+// ensure all tags are included in queries
+function tags_support_query($wp_query) {
+    if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+}
+add_action('pre_get_posts', 'tags_support_query');
+
+
+// SEO extraer las etiquetas como keywords
+
+function getTags() {        
+    global $post;
+    
+    if( is_single() || is_page() || is_home() ) :
+        $tags = get_the_tags($post->ID);
+        $keywords = '';
+        if($tags) :
+            foreach($tags as $tag) :
+                $sep = (empty($keywords)) ? '' : ', ';
+                $keywords .= $sep . $tag->name;
+            endforeach;
+    
+            echo $keywords;
+    
+        endif;
+    endif;
+}
+
+
+// Optimizacion metas
+
+function getDescription(){
+    // el dato que se mostrara
+    if ( is_single() || is_page() ) {
+        
+    global $wp_query;
+    $postid = $wp_query->post->ID;
+    $stdDesc = get_post_meta($postid, 'metaDescripcion', true);
+    wp_reset_query();
+            
+       if ( ! empty( $stdDesc ) ){
+           // Si utilizan nuestro custom field
+           echo $stdDesc;
+       } else {
+           echo single_post_title(); 
+       }
+     
+    } elseif ( is_archive() ) {
+        // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
+     echo single_cat_title();
+    } else {
+     echo bloginfo('name'). ' - ' .bloginfo('description');
+    }
+    
+}
 
 
 /**
@@ -114,4 +178,33 @@ function optimizar_carga() {
 	);
 }
 add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
+
+
+/**
+ * OPTIMIZACIoN: 
+ *  Include para google analytics
+ * @ https://developers.google.com/analytics/devguides/collection/gajs/
+ * https://digwp.com/2012/06/add-google-analytics-wordpress/
+**/
+
+function google_analytics_tracking_code(){
+        
+    $gacode = get_theme_mod('ekiline_analytics','');
+
+    if ( $gacode != '' ) {
+        
+    echo "<script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', '" . $gacode . "', 'auto');
+        ga('send', 'pageview');
+         </script>
+         <script async defer src='https://www.google-analytics.com/analytics.js'></script>
+         ";     
+
+    }
+}
+// Usar 'wp_head' 'wp_footer' para situar el script 
+add_action('wp_footer', 'google_analytics_tracking_code', 100); 
+    
+
 

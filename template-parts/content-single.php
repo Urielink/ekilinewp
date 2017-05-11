@@ -12,8 +12,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 
-        <?php miniDate();?>
-
         <?php if ( !has_post_thumbnail() ) {
             // si no tiene imagen destacada solo pon el titulo
             the_title( '<h1 class="entry-title text-center">', '</h1>' ); 

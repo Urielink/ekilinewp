@@ -270,10 +270,9 @@ function ekiline_scripts() {
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
 /**
- * Permite que los short-codes se añadan en los widgets
+ * Allow short-codes work in widgets
  */
 add_filter('widget_text', 'do_shortcode');
-
 
 /**
  * Implement the Custom Header feature.
@@ -301,29 +300,41 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * agregar navwalker, para el menu de bootstrap.
- * https://github.com/twittem/wp-bootstrap-navwalker
+ * Navwalker, for bootstrap menus.
+ * @link https://github.com/twittem/wp-bootstrap-navwalker
  */
 require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
 /**
- * agregar personalizaciones extra.
+ * Ekiline overide items
  */
-require get_template_directory() . '/inc/custom-sidebars.php'; 
- require get_template_directory() . '/inc/custom-navbars.php'; 
+// theme frontend addons
+require get_template_directory() . '/inc/custom-sidebars.php';
+require get_template_directory() . '/inc/custom-navbars.php';
 require get_template_directory() . '/inc/addon-breadcrumb.php';
+
+// theme custom widgets
 require get_template_directory() . '/inc/addon-verticalnavbar.php';
 require get_template_directory() . '/inc/addon-horizontalnavbar.php';
-require get_template_directory() . '/inc/addon-categoryfield.php';
-require get_template_directory() . '/inc/addon-galleryslider.php';
 require get_template_directory() . '/inc/addon-recentPostsCarousel.php';
-require get_template_directory() . '/inc/addon-tabs.php';
-require get_template_directory() . '/inc/addon-widgetoptions.php';
-require get_template_directory() . '/inc/addon-extractshortcode.php';
 require get_template_directory() . '/inc/addon-sublanguage.php';
-// require get_template_directory() . '/inc/addon-optimize.php';
+require get_template_directory() . '/inc/addon-imageWidget.php';
+require get_template_directory() . '/inc/addon-widgetoptions.php';
+
+// theme custom shortcodes
+require get_template_directory() . '/inc/addon-galleryslider.php';
+require get_template_directory() . '/inc/addon-tabs.php';
+require get_template_directory() . '/inc/addon-insertposts.php';
+require get_template_directory() . '/inc/addon-shortcodes.php';
+require get_template_directory() . '/inc/addon-extractshortcode.php';
+
+// theme customizer services
+require get_template_directory() . '/inc/addon-optimize.php';
 // require get_template_directory() . '/inc/addon-minify.php';
 // require get_template_directory() . '/inc/addon-privateaccess.php';
-require get_template_directory() . '/inc/addon-maintenance.php';
+// require get_template_directory() . '/inc/addon-maintenance.php';
+
+// theme admin extend options
+require get_template_directory() . '/inc/addon-categoryfield.php';
 require get_template_directory() . '/inc/addon-editor.php';
 

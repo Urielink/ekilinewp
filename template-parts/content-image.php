@@ -14,7 +14,6 @@
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
 	<header class="entry-header">
-	  	<?php miniDate();?>
 	  	
 		<?php the_title( '<h1 class="entry-title text-center">', '</h1>' ); ?>
 		
