@@ -309,32 +309,32 @@ require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
  * Ekiline overide items
  */
 // theme frontend addons
-require get_template_directory() . '/inc/custom-sidebars.php';
-require get_template_directory() . '/inc/custom-navbars.php';
-require get_template_directory() . '/inc/addon-breadcrumb.php';
+require get_template_directory() . '/inc/themeSidebars.php';
+require get_template_directory() . '/inc/themeNavbars.php';
+require get_template_directory() . '/inc/themeBreadcrumb.php';
 
 // theme custom widgets
-require get_template_directory() . '/inc/addon-verticalnavbar.php';
-require get_template_directory() . '/inc/addon-horizontalnavbar.php';
-require get_template_directory() . '/inc/addon-recentPostsCarousel.php';
-require get_template_directory() . '/inc/addon-sublanguage.php';
-require get_template_directory() . '/inc/addon-imageWidget.php';
-require get_template_directory() . '/inc/addon-widgetoptions.php';
+require get_template_directory() . '/inc/widgetNavVer.php';
+require get_template_directory() . '/inc/widgetNavHor.php';
+require get_template_directory() . '/inc/widgetRecentPostsCarousel.php';
+require get_template_directory() . '/inc/widgetSublanguage.php';
+require get_template_directory() . '/inc/widgetImage.php';
+require get_template_directory() . '/inc/widgetOptions.php';
 
 // theme custom shortcodes
-require get_template_directory() . '/inc/addon-galleryslider.php';
-require get_template_directory() . '/inc/addon-tabs.php';
-require get_template_directory() . '/inc/addon-insertposts.php';
-require get_template_directory() . '/inc/addon-shortcodes.php';
-require get_template_directory() . '/inc/addon-extractshortcode.php';
+require get_template_directory() . '/inc/shortcodeAll.php';
+require get_template_directory() . '/inc/shortcodeGalleryslider.php';
+require get_template_directory() . '/inc/shortcodeTabs.php';
+require get_template_directory() . '/inc/shortcodeInsertposts.php';
+require get_template_directory() . '/inc/shortcodeExtract.php';
 
 // theme customizer services
-require get_template_directory() . '/inc/addon-optimize.php';
-// require get_template_directory() . '/inc/addon-minify.php';
-// require get_template_directory() . '/inc/addon-privateaccess.php';
-// require get_template_directory() . '/inc/addon-maintenance.php';
+require get_template_directory() . '/inc/serviceOptimize.php';
+// require get_template_directory() . '/inc/serviceMinify.php';
+// require get_template_directory() . '/inc/serviceAccess.php';
+// require get_template_directory() . '/inc/serviceMaintenance.php';
 
 // theme admin extend options
-require get_template_directory() . '/inc/addon-categoryfield.php';
-require get_template_directory() . '/inc/addon-editor.php';
+require get_template_directory() . '/inc/adminCategoryfield.php';
+require get_template_directory() . '/inc/adminEditor.php';
 
