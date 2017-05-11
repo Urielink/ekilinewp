@@ -82,8 +82,8 @@
 
 	    if ( $('#masthead').length ) {
 	    	
-	    	console.log ('si header');
-	    	console.log ( $('#masthead').height() );
+	    	//console.log ('si header');
+	    	//console.log ( $('#masthead').height() );
 	    	
 	    	$('.top-navbar.navbar-affix').affix({
 		        offset: {

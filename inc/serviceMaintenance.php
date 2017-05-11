@@ -9,8 +9,6 @@
 /** Poner en modo de mantenimineto **/
 
 function maintenace_mode() {
-
-	if( true === get_theme_mod('ekiline_maintenance') ){
 		
 		global $pagenow;
 		if ( $pagenow !== 'wp-login.php' && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
@@ -75,6 +73,7 @@ function maintenace_mode() {
 <?php die();
 		}
 	}
+// if customizer checked
+if( true === get_theme_mod('ekiline_maintenance') ){
+    add_action( 'wp_loaded', 'maintenace_mode' );
 }
-
-add_action( 'wp_loaded', 'maintenace_mode' );

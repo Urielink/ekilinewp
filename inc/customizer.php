@@ -321,7 +321,25 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'settings'       => 'ekiline_analytics',
                 'type'           => 'text'
             )
-        );      
+        );   
+        
+    // Minificar el codigo
+    $wp_customize->add_setting(
+            'ekiline_minify', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) );
+    
+    $wp_customize->add_control(
+            'ekiline_minify',
+            array(
+                    'label'          => __( 'Optimizar el código HTML', 'ekiline' ),
+                    'description'    => __( 'Minifica el código para optimizar tu sitio.', 'ekiline' ),
+                    'section'        => 'ekiline_tracking_section',
+                    'settings'       => 'ekiline_minify',
+                    'type'           => 'checkbox',
+            )
+    );               
     
     // Servicios varios
      

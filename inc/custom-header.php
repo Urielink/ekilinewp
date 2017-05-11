@@ -302,15 +302,20 @@ function customHeader() {
         
         if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
             
-            return array_merge( $classes, array( 'head-jumbotron' ) );                    
+            $classes[] = 'head-jumbotron';
+                        
+        } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
             
-        } elseif ( empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
-            
-            return array_merge( $classes, array( 'head-cover' ) );                    
+            $classes[] = 'head-cover';
             
         } elseif ( ! empty( get_theme_mod('ekiline_video') ) && is_front_page()) {
             
-            return array_merge( $classes, array( 'head-video' ) );                    
+            $classes[] = 'head-video';
             
         }
+        
+        return $classes;
+        
     });
+    
+    

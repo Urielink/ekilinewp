@@ -330,9 +330,9 @@ require get_template_directory() . '/inc/shortcodeExtract.php';
 
 // theme customizer services
 require get_template_directory() . '/inc/serviceOptimize.php';
-// require get_template_directory() . '/inc/serviceMinify.php';
+require get_template_directory() . '/inc/serviceMaintenance.php';
+require get_template_directory() . '/inc/serviceMinify.php';
 // require get_template_directory() . '/inc/serviceAccess.php';
-// require get_template_directory() . '/inc/serviceMaintenance.php';
 
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';

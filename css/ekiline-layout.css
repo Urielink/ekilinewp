@@ -222,7 +222,7 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
 
 html,body{height:100%;}
 /*En caso de existir cover,quitar margen al menu*/
-.head-cover .navbar{margin-bottom:0px;}
+.head-cover .navbar, .head-video .navbar{margin-bottom:0px;}
 .cover-wrapper{display:table;width:100%;height:100%;min-height:100%;-webkit-box-shadow:inset 0 0 100px rgba(0,0,0,.5);box-shadow:inset 0 0 100px rgba(0,0,0,.5);position:relative;margin-bottom:0px;background-position:center center;background-repeat:no-repeat;background-size:cover;}
 .cover-wrapper-inner{display:table-cell;vertical-align:middle;}
 .cover-container{margin-right:auto;margin-left:auto;width:80%;}
