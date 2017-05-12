@@ -51,6 +51,7 @@ add_filter( 'body_class', 'ekiline_body_classes' );
 function cssColors() {
         
 // Color values at theme install.       
+    $bgcolor = '#'.get_background_color();
     $texto = get_option('text_color');
     $enlaces = get_option('links_color');
     $modulos = get_option('module_color');
@@ -67,14 +68,15 @@ function cssColors() {
     
     // Inline CSS defined for theme.
     $miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
-        body,.mini-fecha .dia{ color:'.$texto.'; }
+        body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$modulos.'; }
-        .mini-fecha .dia{ background-color:'.$modulos.'; }
-        .mini-fecha .mes, .page-maintenance{ background-color:'.$texto.'; }
+        .navbar-inverse .navbar-text, .cover h1, .cover h2, .cover h3, .cover p{ color:'.$bgcolor.'; }
+        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$menu.';}
+        .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }
         .navbar-inverse { background-color:'.$menu.'; }
-        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a{ color:'.$enlaces.'; }
-        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a, a{ color:'.$texto.'; }
+        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
+        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a{ color:'.$enlaces.'; }
         .site-footer { background-color: '.$footer.';color:'.$invFooter.';}         
         .navbar-default, .navbar-inverse {
             background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$footer.' 100%);
@@ -89,6 +91,7 @@ function cssColors() {
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$footer.'), to('.$menu.'));
             background-image: linear-gradient(to bottom, '.$footer.' 0%, '.$menu.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$footer.'", endColorstr="'.$menu.'", GradientType=0);}
+        .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         </style>';
 
     echo $miestilo;
@@ -149,7 +152,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 // Excerpt Button 
 function customExcerptBtn( $more ) {
-    return '<p><a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer mas', 'ekiline' ) . '</a></p>';
+    return '<p><a class="read-more btn btn-default" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Leer mas', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'customExcerptBtn' );
 

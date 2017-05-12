@@ -599,89 +599,27 @@ a img.aligncenter {
  * LAYOUT ekiline CSS, tus estilos van aqui.
  * ----------------------------------------------*/
 
-.navbar-brand img {
-	margin-top: -5px;
-}
-.navbar-nav > li > a {
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-.navbar-text {
-	margin-top: 25px;
-	margin-bottom: 25px;
-}
-.navbar-inverse .navbar-text {
-	color: #e0c8ec;
-}
+#page { padding-bottom: 20px; }
 
-/* TIP: Sticky footer
- html{position:relative;height:auto;min-height:100%;}
- body{margin-bottom:60px;}
- .site-footer{position:absolute;bottom:0;width:100%;height:60px;}
- */
+
 
 /* ------------------------------------------------
  * Elementos generados por SHORTCODES.
  * ----------------------------------------------*/
 
-/* shortcode:[bloque]*/
-.bloque {
-	margin-bottom: 20px;
-	background-attachment: fixed;
-}
-/* shortcode:[columna]*/
-.columna {
-	margin-bottom: 20px
-}
-/* Layout para [insert] tipo bloques */
-.bloques {
-}
-.bloques article {
-	width: 25%;
-	float: left;
-	min-height: 250px;
-	background-color: #333;
-	padding: 20px;
-	position: relative;
-	color: #FFFFFF;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-.bloques article:nth-child(1) {
-	width: 50%;
-	min-height: 500px;
-}
-.bloques article .entry-header {
-	position: absolute;
-	bottom: 0px;
-	left: 0;
-	right: 0;
-	background: rgba(35,40,45,.7);
-	padding: 20px;
-}
-.bloques article .entry-header p {
-	font-size: 12px;
-}
-.bloques article .entry-header h4 {
-	margin: 0px;
-	padding: 0px;
-}
-.bloques article .entry-header a {
-	color: #FFFFFF;
-	font-size: 14px;
-	line-height: 110%;
-	display: inline-block;
-	letter-spacing: .1em;
-	font-weight: 600;
-	color: #fff;
-}
+.insert-default{}
+
+.insert-blocklist{}
+.insert-blocklist .cat-thumb{height:240px;overflow:hidden;}
+.insert-blocklist .cat-thumb a{}
+.insert-blocklist .cat-thumb a img{margin:0 auto;width:100%;}
+
+.insert-carousel{}
 
 /* ------------------------------------------------
  * Elementos generados dentro de WIDGETS.
  * ----------------------------------------------*/
-.widget-cover, .widget-cover .textwidget, .widget-cover .cover-wrapper {
-	height: 100%;
-}
+
 
 /* El idioma (inc/addon-sublanguage.php #23)*/
 .lang a {
@@ -710,29 +648,9 @@ a img.aligncenter {
  * Elementos auxiliares dentro de el layout:
  * ----------------------------------------------*/
 
-/*Mini Fecha (inc/extras.php #558)*/
 
-.mini-fecha {
-	color: #fff;
-	width: 50px;
-	text-align: center;
-	float: left;
-	margin-right: 10px;
-}
-.mini-fecha .dia {
-	width: 100%;
-	padding: 0px;
-	margin: 0px;
-	font-weight: 900;
-	font-size: 28px;
-	display: inline-block;
-}
-.mini-fecha .mes {
-	width: 100%;
-	padding: 0px;
-	margin: 0px;
-	display: inline-block;
-}
+
+
 
 /* CSS RESPONSIVO: Desktop First Method (personaliza tus estilos )
  -------------------------------------------------- */

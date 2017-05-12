@@ -161,7 +161,7 @@ foreach ( $filters as $filter ) {
  *	https://codex.wordpress.org/Function_Reference/wp_localize_script
  *	https://pippinsplugins.com/use-wp_localize_script-it-is-awesome/	
  *  requiere de: optimizar.js
-**/
+
 
 function optimizar_carga() {
 	
@@ -178,7 +178,7 @@ function optimizar_carga() {
 	);
 }
 add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
-
+**/
 
 /**
  * OPTIMIZACIoN: 

@@ -157,9 +157,9 @@ function customHeader() {
                                     }
 
 				$customHeader .=    '</div>
-				                      <!--div class="cover-footer">
+				                      <div class="cover-footer">
 							            <div class="inner"><p>Algun contenido</p></div>
-							          </div-->
+							          </div>
 							        </div>
 							      </div>
 							    </header>';	
@@ -252,7 +252,7 @@ function customHeader() {
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
     			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
-    			$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
+    			$customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
     			$customHeader .= '</div></header>';
 			}
 				
@@ -282,7 +282,7 @@ function customHeader() {
 		
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				$customHeader .= '<div class="site-branding jumbotron categoria" style="background-image: url(' . $url . ');">';
-				$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
+				$customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
 				$customHeader .= '</div></header>';
 			}
 		

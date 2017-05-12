@@ -29,7 +29,27 @@ jQuery(document).ready(function($){
 			$(".toggle-sidebars").toggleClass("active-sidebar-right");
 		});         
 	}
+	
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Dependiendo el contenido, añadir css para crear sticky footer 
+	 * 
+	 * 	html{position:relative;height:auto;min-height:100%;}
+	 *	body{margin-bottom:60px;}
+	 *	.site-footer{position:absolute;bottom:0;width:100%;height:60px;}
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
+	
+	if ( !$('body').hasClass('head-cover') ){
+		
+		var sticky = $( 'footer.site-footer' ).height();
 
+		$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
+		$('body').css('margin-bottom', sticky + 'px');
+		$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','height': sticky + 'px' });
+		
+	} 
+	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	Carrusel multiple 
