@@ -56,45 +56,58 @@ function cssColors() {
     $enlaces = get_option('links_color');
     $modulos = get_option('module_color');
     $menu = get_option('menu_color');
+    $mgradient = get_option('menu_gradient');
     $footer = get_option('footer_color');
+    $inverse = get_theme_mod('ekiline_inversemenu');
     
     // If values are not set by user, set this.
-    if ( $texto == '') : $texto = '#333333'; else : $texto ; endif;
-    if ( $enlaces == '') : $enlaces = '#337ab7'; else : $enlaces ; endif;
-    if ( $modulos == '') : $modulos = '#eeeeee'; else : $modulos ; endif;
-    if ( $menu == '') : $menu = '#f8f8f8'; else : $menu ; endif;
-    if ( $footer == '') : $footer = $menu; else : $footer ; endif;
-    if ( true === get_theme_mod('ekiline_inversemenu') ) : $invFooter = '#ffffff;' ; else : $invFooter = $texto ; endif;
+    if ( !$texto ) : $texto = '#333333'; endif;
+    if ( !$enlaces ) : $enlaces = '#337ab7'; endif;
+    if ( !$modulos ) : $modulos = '#eeeeee'; endif;
+    if ( !$footer ) : $footer = '#eeeeee'; endif;
+    if ( $inverse ) : $inverse = '#ffffff;' ; endif;
     
     // Inline CSS defined for theme.
-    $miestilo = '<style id="ekiline-inline" type="text/css" media="all"> 
+    $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$modulos.'; }
         .navbar-inverse .navbar-text, .cover h1, .cover h2, .cover h3, .cover p{ color:'.$bgcolor.'; }
-        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$menu.';}
+        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$modulos.';}
         .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }
         .navbar-inverse { background-color:'.$menu.'; }
         .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
         .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a{ color:'.$enlaces.'; }
-        .site-footer { background-color: '.$footer.';color:'.$invFooter.';}         
+        .site-footer { background-color: '.$footer.';color:'.$inverse.';}         
+        .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
+        .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
+        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
+        ';
+        
+    if ( $mgradient != '' ){
+        $miestilo .= '
         .navbar-default, .navbar-inverse {
-            background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$footer.' 100%);
-            background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$footer.' 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$footer.'));
-            background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$footer.' 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$footer.'", GradientType=0);}              
+            background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
+            background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$mgradient.'));
+            background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$mgradient.' 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);}              
         .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .active > a,
         .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
-            background-image: -webkit-linear-gradient(top, '.$footer.' 0%, '.$menu.' 100%);
-            background-image: -o-linear-gradient(top, '.$footer.' 0%, '.$menu.' 100%);
-            background-image: -webkit-gradient(linear, left top, left bottom, from('.$footer.'), to('.$menu.'));
-            background-image: linear-gradient(to bottom, '.$footer.' 0%, '.$menu.' 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$footer.'", endColorstr="'.$menu.'", GradientType=0);}
-        .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
-        </style>';
+            background-image: -webkit-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
+            background-image: -o-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, from('.$mgradient.'), to('.$menu.'));
+            background-image: linear-gradient(to bottom, '.$mgradient.' 0%, '.$menu.' 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
+    } else {
+        $miestilo .= '.navbar-default, .navbar-inverse {background-color:'.$menu.';}
+        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.1)}
+        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.3)}
+        ';
+                
+    }        
 
-    echo $miestilo;
+    echo '<style id="ekiline-inline" type="text/css" media="all">'.$miestilo.'</style>';
 
 }
 add_action('wp_head','cssColors');

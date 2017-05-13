@@ -35,11 +35,12 @@ function ekiline_theme_customizer( $wp_customize ) {
     
 // colores  v1, 23 abril, no se sanitiza mi array.
     $colors = array();
-    $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'menu_color', 'default' => '#f8f8f8', 'label' => __( 'Color de menu', 'ekiline' ) );
-    $colors[] = array( 'slug'=>'footer_color', 'default' => '#f8f8f8', 'label' => __( 'Color de pie de pagina', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Color de texto', 'ekiline' ), 'description' => '' );
+    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Color de links', 'ekiline' ), 'description' => '' );
+    $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Color de menu', 'ekiline' ), 'description' => __( 'Elige un color como base, el segundo es opcional para crear un degradado', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'menu_gradient', 'default' => '', 'label' => '', 'description' => '' );
+    $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Color de modulos', 'ekiline' ), 'description' => '' );
+    $colors[] = array( 'slug'=>'footer_color', 'default' => '#eeeeee', 'label' => __( 'Color de pie de pagina', 'ekiline' ), 'description' => '' );
     
     foreach($colors as $color)
     {
@@ -57,6 +58,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         		new WP_Customize_Color_Control( 
         				$wp_customize, $color['slug'], 
         				array( 'label' => $color['label'], 
+                				'description' => $color['description'], 
         						'section' => 'colors', 
         						'settings' => $color['slug'] 
         				)
@@ -75,8 +77,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
     		'ekiline_inversemenu',
     		array(
-    				'label'          => __( 'Textos claros en menu y footer', 'ekiline' ),
-    				'description'    => 'Habilita esta opcion en caso de utilizar un menu y un footer oscuros.',
+    				'label'          => __( 'Invertir menu', 'ekiline' ),
+    				'description'    => 'Cambia el contraste del menu a oscuro.',
     				'section'        => 'colors',
     				'settings'       => 'ekiline_inversemenu',
     				'type'           => 'checkbox'
@@ -333,8 +335,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
             'ekiline_minify',
             array(
-                    'label'          => __( 'Optimizar el código HTML', 'ekiline' ),
-                    'description'    => __( 'Minifica el código para optimizar tu sitio.', 'ekiline' ),
+                    'label'          => __( 'Optimizar el codigo HTML', 'ekiline' ),
+                    'description'    => __( 'Minifica el codigo para optimizar tu sitio.', 'ekiline' ),
                     'section'        => 'ekiline_tracking_section',
                     'settings'       => 'ekiline_minify',
                     'type'           => 'checkbox',
