@@ -1,6 +1,18 @@
 @import url('css/bootstrap.min.css');
 @import url('style.css');
 
+/*Anular algunos comportaminetos de bootstrap que impiden buen flujo de trabajo en el editor*/
+
+.btn{
+ -ms-touch-action: inherit;
+touch-action: inherit;
+cursor: inherit;
+-webkit-user-select: inherit;
+-moz-user-select: inherit;
+-ms-user-select: inherit;
+user-select: inherit; 
+}
+
 body#tinymce.wp-editor {
 	margin: 0px 15px;
 }
