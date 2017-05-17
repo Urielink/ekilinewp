@@ -15,9 +15,9 @@ function breadcrumb() {
 
 //variables para los attachments        
 $attachPost = get_post( get_the_ID() );
-$attachUrl = get_permalink( $attachPost->post_parent );
-$attachParent = get_the_title( $attachPost->post_parent );
-    
+$attachUrl = '';
+$attachParent = '';
+
             
     if ( !is_home() && !is_front_page() ) {
             
@@ -36,6 +36,8 @@ $attachParent = get_the_title( $attachPost->post_parent );
                     
                 if ( is_attachment() ){
                     
+                    $attachUrl = get_permalink( $attachPost->post_parent );
+                    $attachParent = get_the_title( $attachPost->post_parent );
                     // si es un adjunto, muestra el titulo de donde viene
                     echo '<li><a href="'.$attachUrl.'" title="Volver a  '.$attachParent.'" rel="gallery">'.$attachParent.'</a></li>';                
                                     
@@ -56,7 +58,11 @@ $attachParent = get_the_title( $attachPost->post_parent );
             
         } elseif ( is_page() ) {
                 
-            if (is_attachment()){                
+            if (is_attachment()){
+                
+                $attachUrl = get_permalink( $attachPost->post_parent );
+                $attachParent = get_the_title( $attachPost->post_parent );
+
                 echo '<li><a href="'.$attachUrl.'" title="Volver a '.$attachParent.'" rel="gallery">'.$attachParent.'</a></li>';                
             }            
             
