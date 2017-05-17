@@ -131,21 +131,25 @@ function customHeader() {
 				</header><!-- #masthead -->'; 
 			
 			} else {
-			    																				
+			           
+			    // para el menu de redes sociales    
+                $fbSocial = get_theme_mod('ekiline_fbProf','');
+                $twSocial = get_theme_mod('ekiline_twProf','');
+                $gpSocial = get_theme_mod('ekiline_gpProf','');
+                $inSocial = get_theme_mod('ekiline_inProf','');
+                $menuItems = '';
+                    
+                if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
+                if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
+                if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
+                if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;                
+                if ($menuItems) : $menuItems = '<nav><ul class="nav cover-header-nav">'. $menuItems .'</ul></nav>';endif;
+                            			    																				
 				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">'.$coverLogo.'											
-											<nav> 
-												<ul class="nav cover-header-nav">
-													<li><a href="#" target="_blank" title="https://www.google.com/search?q=ekiline.com"><i class="fa fa-google"></i></a></li>
-													<li><a href="#" target="_blank" title="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="#" target="_blank" title="https://es-la.facebook.com/ekiline/"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="#" target="_blank" title="https://twitter.com/ekilinemx/"><i class="fa fa-twitter"></i></a></li> 
-												</ul>
-											</nav>				
-    									</div>
+							            <div class="inner">'. $coverLogo . $menuItems .'</div>
 							          </div>
 							          <div class="inner cover">';
 

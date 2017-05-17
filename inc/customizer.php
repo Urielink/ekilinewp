@@ -155,7 +155,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 // mensaje de cabecera     
     $wp_customize->add_setting( 'ekiline_headertext', array( 
             'default' => '',
-            //'transport' => 'none',
+            'transport' => 'none',
             'sanitize_callback'  => 'ekiline_sanitize_html'
     ) );
     
@@ -311,6 +311,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_analytics', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -329,6 +330,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_wmtools', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -347,6 +349,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_wmbing', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -447,7 +450,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     // Ekiline social
          
     $wp_customize->add_section( 'ekiline_social' , array(
-            'title'       => __( 'Informacion social', 'ekiline' ),
+            'title'       => __( 'Redes sociales', 'ekiline' ),
             'priority'    => 170,
             'description' => __( 'Llena cada campo para habilitar prestaciones basicas para la difución de tu sitio', 'ekiline' )
     ) );
@@ -456,6 +459,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_fbProf', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -474,6 +478,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_twProf', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -492,6 +497,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_gpProf', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     
@@ -510,6 +516,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting( 
         'ekiline_inProf', array(
             'default' => '',
+            'transport' => 'none',
             'sanitize_callback' => 'ekiline_sanitize_html'
         ) );
     

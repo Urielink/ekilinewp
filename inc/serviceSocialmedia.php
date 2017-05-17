@@ -132,3 +132,56 @@ function registerSocial() {
 }
 
 add_action( 'wp_head', 'registerSocial', 1);
+
+
+// function menuSocial(){
+//     
+    // $fbSocial = get_theme_mod('ekiline_fbProf','');
+    // $twSocial = get_theme_mod('ekiline_twProf','');
+    // $gpSocial = get_theme_mod('ekiline_gpProf','');
+    // $inSocial = get_theme_mod('ekiline_inProf','');
+    // $menuItems = '';
+//         
+    // if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
+    // if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
+    // if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
+    // if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
+//                 
+    // echo $menuItems;
+// 
+    // // $redes = array( 
+                // // $fbSocial => array('link' => $fbSocial, 'title' => 'Facebook', 'class' => 'fa fa-facebook') , 
+                // // $twSocial => array('link' => $twSocial, 'title' => 'Twitter', 'class' => 'fa fa-twitter') , 
+                // // $gpSocial => array('link' => $gpSocial, 'title' => 'Google Plus', 'class' => 'fa fa-google') , 
+                // // $inSocial => array('link' => $inSocial, 'title' => 'Linkedin', 'class' => 'fa fa-linkedin') 
+                // // );
+        // // foreach ($redes as $red) {
+            // // if ( $red['link'] ){
+                // // $menuItems .= '<li><a href="'.$red['link'].'" target="_blank" title="'.$red['title'].'"><i class="'.$red['class'].'"></i></a></li>';
+            // // }
+        // // }       
+//                 
+// }
+
+//Crear un shortcode para las redes sociales
+
+function ekiline_medialinks($atts, $content = null) {
+    
+    extract(shortcode_atts(array('type' => 'menu'), $atts));
+    
+    $fbSocial = get_theme_mod('ekiline_fbProf','');
+    $twSocial = get_theme_mod('ekiline_twProf','');
+    $gpSocial = get_theme_mod('ekiline_gpProf','');
+    $inSocial = get_theme_mod('ekiline_inProf','');
+    $menuItems = '';
+        
+    if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
+                    
+    return '<ul class="list-inline">'. $menuItems .'</ul>';
+}
+add_shortcode('medialinks', 'ekiline_medialinks');    
+    
+    
