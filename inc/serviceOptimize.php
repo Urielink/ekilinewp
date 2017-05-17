@@ -60,14 +60,16 @@ function getDescription(){
            // Si utilizan nuestro custom field
            echo $stdDesc;
        } else {
-           echo single_post_title(); 
+           echo strip_tags( get_the_excerpt() ); 
        }
      
-    } elseif ( is_archive() ) {
-        // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
-     echo single_cat_title();
-    } else {
-     echo bloginfo('name'). ' - ' .bloginfo('description');
+    } 
+    elseif ( is_archive() ) {
+    // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
+        echo single_cat_title();
+    } 
+    else {
+        echo bloginfo('description');
     }
     
 }
@@ -214,123 +216,13 @@ add_action('wp_footer', 'google_analytics_tracking_code', 100);
  * @link https://wordpress.stackexchange.com/questions/237100/how-to-add-meta-tag-to-wordpress-posts-filter
 **/
 
-function registerMetas() {
-    
+function registerSite() {
+
 //Indice en Google y Bing
     $sconsole = get_theme_mod('ekiline_wmtools','');
     $wmbing = get_theme_mod('ekiline_wmbing','');
-//Indice en Facebook, Twitter GooglePlus y Linkedin
-    $fbSocial = get_theme_mod('ekiline_fbProf','');
-    $twSocial = get_theme_mod('ekiline_twProf','');
-    $gpSocial = get_theme_mod('ekiline_gpProf','');
-    $inSocial = get_theme_mod('ekiline_inProf','');
-// arreglos para extraer la información
-    $metaTitle = '';
-    $metaDescription = '';
-    $metaImages = '';
-    $metaType = '';
-    $currentUrl = '';
-    $blogInfo = '';
-
-if ( is_front_page() || is_home() ){
-    $metaTitle = get_bloginfo( 'name' );
-    $metaDescription = get_bloginfo('description');
-    $metaImages = get_site_icon_url();
-    $metaType = 'website';
-    $currentUrl = get_home_url();
-    $blogInfo = get_bloginfo( 'name' );
-}
-elseif ( is_single() || is_page() ){
-        
-    // personalizar la metadescripcion
-    global $wp_query;
-    $stdDesc = get_post_meta( $wp_query->post->ID, 'metaDescripcion', true);    
-    wp_reset_query();
-    
-    if ( ! empty( $stdDesc ) ) {
-        $metaDescription = $stdDesc; } 
-    else {
-        $metaDescription = strip_tags( get_the_excerpt() );
-    }
-    
-    // personalizar la imagen
-    if ( has_post_thumbnail() ) {            
-        $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );            
-    } else {
-        
-        global $post, $posts;
-        
-        $image_url = '';
-        ob_start();
-            preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-            $image_url = $matches [1] [0];
-        ob_end_clean();
-                                
-        //En caso de no existir una u otra
-        if( empty($image_url) ){
-            $metaImages = get_site_icon_url();
-        } else {
-            $metaImages = $image_url;
-        }            
-    
-    }
-               
-    $metaTitle = get_the_title();
-    $metaType = 'article';
-    $currentUrl = get_permalink();
-    $blogInfo = get_bloginfo( 'name' );    
-}
-elseif ( is_category() ){
-            
-    $cat_id = get_query_var('cat');
-    $cat_data = get_option("category_$cat_id");
-    
-    if ( $cat_data['img'] ) {
-        $metaImages = $cat_data['img'];
-    } else {
-        $metaImages = get_site_icon_url();
-    }
-    
-    global $wp;
-    $currentUrl = home_url(add_query_arg(array(),$wp->request));
-    
-    
-    $metaTitle = single_cat_title("", false);
-    $metaDescription = strip_tags( category_description() );
-    $metaType = 'website';
-    $blogInfo = get_bloginfo( 'name' );
-}
-
     if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'; }
     if ( $wmbing != '' ) { echo '<meta name="msvalidate.01" content="'. $wmbing .'" />'; }
-       
-    if ( $gpSocial != '' ) {
-        echo '
-            <meta itemprop="name" content="'.$metaTitle.'">
-            <meta itemprop="description" content="'.$metaDescription.'">
-            <meta itemprop="image" content="'.$metaImages.'">
-            ';
-    }
-    if ($twSocial != '') {
-        echo '
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:site" content="'.$twSocial.'">
-            <meta name="twitter:title" content="'.$metaTitle.'">
-            <meta name="twitter:description" content="'.$metaDescription.'">
-            <meta name="twitter:creator" content="'.$twSocial.'">
-            <meta name="twitter:image" content="'.$metaImages.'">
-            ';
-    }
-    if ($fbSocial != '') {
-        echo '
-            <meta property="og:title" content="'.$metaTitle.'"/>
-            <meta property="og:type" content="'.$metaType.'"/>
-            <meta property="og:url" content="'.$currentUrl.'"/>
-            <meta property="og:image" content="'.$metaImages.'"/>
-            <meta property="og:description" content="'.$metaDescription.'"/>
-            <meta property="og:site_name" content="'.$blogInfo.'"/>
-            ';
-    }   
 }
 
-add_action( 'wp_head', 'registerMetas', 0);
+add_action( 'wp_head', 'registerSite', 0);

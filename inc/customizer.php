@@ -516,7 +516,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
         'ekiline_inProf',
             array(
-                'label'          => __( 'Cuenta de twitter', 'ekiline' ),
+                'label'          => __( 'Cuenta de linkedin', 'ekiline' ),
                 'description'    => 'Escribe la dirección url de tu cuenta',
                 'section'        => 'ekiline_social',
                 'settings'       => 'ekiline_inProf',
