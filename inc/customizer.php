@@ -325,6 +325,44 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
         );   
         
+    // Codigo de wmtools 
+    $wp_customize->add_setting( 
+        'ekiline_wmtools', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_wmtools',
+            array(
+                'label'          => __( 'Search console code', 'ekiline' ),
+                'description'    => 'Add google site verification content value',
+                'section'        => 'ekiline_tracking_section',
+                'settings'       => 'ekiline_wmtools',
+                'type'           => 'text'
+            )
+        );       
+        
+    // Codigo de bing 
+    $wp_customize->add_setting( 
+        'ekiline_wmbing', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_wmbing',
+            array(
+                'label'          => __( 'Bing web master tools', 'ekiline' ),
+                'description'    => 'Add msvalidate content value',
+                'section'        => 'ekiline_tracking_section',
+                'settings'       => 'ekiline_wmbing',
+                'type'           => 'text'
+            )
+        );              
+        
+            
+        
     // Minificar el codigo
     $wp_customize->add_setting(
             'ekiline_minify', array(
@@ -343,10 +381,10 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
     );               
     
-    // Servicios varios
-     
+    // Servicios Ekiline
+         
     $wp_customize->add_section( 'ekiline_services' , array(
-    		'title'       => __( 'Servicios extra', 'ekiline' ),
+    		'title'       => __( 'Servicios varios', 'ekiline' ),
     		'priority'    => 160,
     		'description' => __( 'Caracteristicas agregadas para tu sitio.', 'ekiline' )
     ) );
@@ -404,7 +442,87 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'settings'       => 'ekiline_mediacomment',
                     'type'           => 'checkbox',
             )
-    );            
+    );  
+    
+    // Ekiline social
+         
+    $wp_customize->add_section( 'ekiline_social' , array(
+            'title'       => __( 'Informacion social', 'ekiline' ),
+            'priority'    => 170,
+            'description' => __( 'Llena cada campo para habilitar prestaciones basicas para la difución de tu sitio', 'ekiline' )
+    ) );
+
+    // Facebook 
+    $wp_customize->add_setting( 
+        'ekiline_fbProf', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_fbProf',
+            array(
+                'label'          => __( 'Url de facebook', 'ekiline' ),
+                'description'    => 'Escribe la dirección url de tu cuenta',
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_fbProf',
+                'type'           => 'text'
+            )
+        );                    
+                
+    // Twitter 
+    $wp_customize->add_setting( 
+        'ekiline_twProf', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_twProf',
+            array(
+                'label'          => __( 'Cuenta de twitter', 'ekiline' ),
+                'description'    => 'Escribe la dirección url de tu cuenta',
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_twProf',
+                'type'           => 'text'
+            )
+        );      
+
+    // Google plus 
+    $wp_customize->add_setting( 
+        'ekiline_gpProf', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_gpProf',
+            array(
+                'label'          => __( 'Cuenta de google+', 'ekiline' ),
+                'description'    => 'Escribe la dirección url de tu cuenta',
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_gpProf',
+                'type'           => 'text'
+            )
+        );            
+                               
+    // Linkedin 
+    $wp_customize->add_setting( 
+        'ekiline_inProf', array(
+            'default' => '',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) );
+    
+    $wp_customize->add_control(
+        'ekiline_inProf',
+            array(
+                'label'          => __( 'Cuenta de twitter', 'ekiline' ),
+                'description'    => 'Escribe la dirección url de tu cuenta',
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_inProf',
+                'type'           => 'text'
+            )
+        );              
         
 }
 add_action('customize_register', 'ekiline_theme_customizer');
