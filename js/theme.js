@@ -57,7 +57,14 @@
 			miCss('/css/ekiline-layout.css');
 			miCss('/style.css');
 			//en caso de explorer
-			if(/*@cc_on!@*/false){miCss('style.css');}		
+			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+			
+			
+		// El preload
+	    setTimeout(function(){
+	        $('#loadMask').fadeOut(500);
+	    }, 600);			          
+			
 		
 /*		
 		var desfaseItem = '.carousel';

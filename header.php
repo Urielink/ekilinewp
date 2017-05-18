@@ -21,6 +21,10 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>	
+    
+    <div id="loadMask">
+        <small class="loadtext"><noscript>No tienes habilitado javascript</noscript><i class="fa fa-spinner loadicon"></i> <br/>Cargando...</small>
+    </div>
 
 <?php topWidgets(); // en caso de widgets en la parte superior  ?>  
 <?php topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
