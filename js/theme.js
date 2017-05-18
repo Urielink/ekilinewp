@@ -4,6 +4,61 @@
  */
 
 	jQuery(document).ready(function($){
+
+//		// Encapsulo el script de fuentes y le pido que lo invoque después de un segundo al cargar este archivo
+//		setTimeout(function () {
+//			
+//			// parametros
+//			WebFontConfig = {
+//			  google: { families: [ 'Assistant:200,400,700' ] }
+//			};		 
+//			
+//			// insertar script de fuentes
+//			var sf = document.createElement("script");
+//			sf.type = "text/javascript";
+//			sf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+//			$("head").append(sf);
+//			
+//			// insertar estilo css para hacer el cambio en las fuentes
+//			var styleFont = $('<style type="text/css" media="all">body{font-family: "Assistant", sans-serif !important;font-weight:400;}h1,h2,h3,h4,h5,h6{font-family: "Assistant", sans-serif !important;font-weight:200;}</style>');
+//			$('html > head').append(styleFont);		
+//	
+//		}, 500);
+
+		
+	
+	/**  Optimización, estilos dinámicos después de la carga
+	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
+	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
+	 */
+		
+		function miCss(archivoCss){
+
+			var templateUrl = thepath.themePath;
+			
+			var $head = $("head");
+			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			var $cssinline = $head.find("style:last");
+			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
+	
+	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+	        	
+			if ($cssinline.length){ 
+					$cssinline.before(linkCss); 
+				} else if ($ultimocss.length){ 
+					$ultimocss.before(linkCss); 
+				} else { 
+					$head.append(linkCss); 
+				}
+		}
+		
+			miCss('/css/bootstrap.min.css');
+			miCss('/css/font-awesome.min.css');
+			miCss('/css/ekiline-layout.css');
+			miCss('/style.css');
+			//en caso de explorer
+			if(/*@cc_on!@*/false){miCss('style.css');}		
+		
 /*		
 		var desfaseItem = '.carousel';
 		var desfaseItem = '.destacado-estilo';
