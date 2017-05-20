@@ -105,7 +105,7 @@ function ekiline_widgets_init() {
 	
 // **Sidebar por deafult
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar left', 'ekiline' ),
+		'name'          => esc_html__( 'Left sidebar', 'ekiline' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -116,7 +116,7 @@ function ekiline_widgets_init() {
 	
 // Un nuevo sidebar
     register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar right', 'ekiline' ),
+        'name'          => esc_html__( 'Right sidebar', 'ekiline' ),
         'id'            => 'sidebar-2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -127,7 +127,7 @@ function ekiline_widgets_init() {
 		
 // Añadimos widgets en el footer
     register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widgets', 'ekiline' ),
+        'name'          => esc_html__( 'Footer widgets', 'ekiline' ),
         'id'            => 'footer-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -138,7 +138,7 @@ function ekiline_widgets_init() {
 
 // Añadimos widgets dentro de posiciones prestablecidas para cada menu
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (top location)', 'ekiline' ),
+        'name'          => esc_html__( 'Inside top menu', 'ekiline' ),
         'id'            => 'navwidget-nw1',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -148,7 +148,7 @@ function ekiline_widgets_init() {
     ) );     
 
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (primary location)', 'ekiline' ),
+        'name'          => esc_html__( 'Inside primary menu', 'ekiline' ),
         'id'            => 'navwidget-nw2',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -159,7 +159,7 @@ function ekiline_widgets_init() {
 
 // Añadimos widgets dentro de widgets
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in horizontal navbar widget', 'ekiline' ),
+        'name'          => esc_html__( 'Inside horizontal navbar widget', 'ekiline' ),
         'id'            => 'navwidget-nw3',
         'description'   => '',
         'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
@@ -170,7 +170,7 @@ function ekiline_widgets_init() {
     
 // Añadimos widgets en el contenido ya sea pagina o entrada
     register_sidebar( array(
-        'name'          => esc_html__( 'In content top widgets', 'ekiline' ),
+        'name'          => esc_html__( 'In page at top of content', 'ekiline' ),
         'id'            => 'content-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -180,7 +180,7 @@ function ekiline_widgets_init() {
     ) );
 
         register_sidebar( array(
-        'name'          => esc_html__( 'In content bottom widgets', 'ekiline' ),
+        'name'          => esc_html__( 'In page on bottom of content', 'ekiline' ),
         'id'            => 'content-w2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -191,7 +191,7 @@ function ekiline_widgets_init() {
     		   
 // Añadimos widgets en la parte superior de la pagina fuera del contenido
 	register_sidebar( array(
-		'name'          => esc_html__( 'Top Page', 'ekiline' ),
+		'name'          => esc_html__( 'Out of page at top first over any content', 'ekiline' ),
 		'id'            => 'toppage-w1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',

@@ -47,7 +47,7 @@ if ( is_attachment() ) {
                     // se debe hacer un llamado en particular para mostrar solo la primer categoria del array (por ello se usa array_shift).
                     $cats = get_the_category( get_the_ID() );
                     $cat = array_shift($cats);
-                    echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Ver todo en %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
+                    echo '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'Watch all in %s', 'ekiline' ), $cat->name ) ) . '">'. $cat->name .'</a>';
                     echo '</li>';
                                         
                 }
@@ -73,31 +73,31 @@ if ( is_attachment() ) {
              echo '</li>';
         }
         elseif (is_day()) {
-            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+            echo '<li>'. __( 'Archive from ', 'ekiline' ); 
               the_time( get_option( 'date_format' ) );
             echo '</li>';
         }
         elseif (is_month()) {
-            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+            echo '<li>'. __( 'Archive from ', 'ekiline' ); 
               the_time('F, Y'); 
             echo '</li>';
         }
         elseif (is_year()) {
-            echo '<li>'. __( 'Archivo de ', 'ekiline' ); 
+            echo '<li>'. __( 'Archive from ', 'ekiline' ); 
               the_time('Y'); 
             echo'</li>';
         }
         elseif (is_author()) {            
             global $author;
             $author = get_userdata($author);         
-            echo '<li>'. __( 'Entradas de ', 'ekiline' ), sprintf($author->display_name) .'</li>';
+            echo '<li>'. __( 'Entries from ', 'ekiline' ), sprintf($author->display_name) .'</li>';
         }
         elseif ( isset($_GET['paged']) && !empty($_GET['paged']) ) {
-            echo '<li>'. __( 'Archivo', 'ekiline' ); 
+            echo '<li>'. __( 'Archive ', 'ekiline' ); 
             echo '</li>';
         }
         elseif (is_search()) {
-            echo '<li>'. __( 'Resultados ', 'ekiline' ); 
+            echo '<li>'. __( 'Results ', 'ekiline' ); 
             echo '</li>';
         }
         elseif (is_404()) {

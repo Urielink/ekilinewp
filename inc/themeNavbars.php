@@ -46,7 +46,7 @@ function topNavbar(){
 	    <div class="container">
 	        <div class="navbar-header">
 	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
-	                <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
+	                <span class="sr-only">Toggle navigation</span>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
@@ -96,7 +96,7 @@ if ( has_nav_menu( 'primary' ) ) : ?>
             <div class="navbar-header">
                 <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">
-                    <span class="sr-only"><?php _e('Toggle navigation','ekiline') ?> </span>
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

@@ -27,7 +27,6 @@ function maintenace_mode() {
 		<link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_template_directory_uri() . '/css/ekiline-layout.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">	
-		<!--title><?php echo get_bloginfo( 'name' ).' | '.__( 'Estamos en mantenimiento', 'ekiline' ) ?></title-->
 		<?php cssColors(); ?>
 	</head>	
 	<body class="page-maintenance">	
@@ -51,14 +50,14 @@ function maintenace_mode() {
 					
 					<div class="inner cover">
 					<h1 class="cover-title"><?php echo get_bloginfo( 'name' ); ?></h1>
-					<p><mark class="cover-description"><?php echo __( 'Estamos en mantenimiento, muchas gracias por tu paciencia', 'ekiline' ) ?></mark></p>
+					<p><mark class="cover-description"><?php echo __( 'We are over maintenance, sorry.', 'ekiline' ) ?></mark></p>
 					</div>
 					
 					<div class="cover-footer">
 						<div class="inner">
                             <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
 			                <span class="sep"> | </span>
-			                <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
+			                <?php printf( esc_html__( 'By %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
 			                <span class="sep"> | </span>
 			                <?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>						
 						</div>

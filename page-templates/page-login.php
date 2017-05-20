@@ -33,7 +33,7 @@
             // In case of a login error.
             if ( isset( $_GET['login'] ) && $_GET['login'] == 'failed' ) : ?>
     	            <div class="aa_error">
-    		            <p><?php _e( 'FAILED: Try again!','ekiline' ); ?></p>
+    		            <p><?php __( 'FAILED: Try again!','ekiline' ); ?></p>
     	            </div>
             <?php 
                 endif;
@@ -43,18 +43,18 @@
                 <div class="aa_logout"> 
                     
                     <?php 
-                        _e( 'Hello','ekiline' ); 
+                        __( 'Hello','ekiline' ); 
                         echo $user_login; 
                     ?>
                     
                     </br>
                     
-                    <?php _e( 'You are already logged in.','ekiline' ); ?>
+                    <?php __( 'You are already logged in','ekiline' ); ?>
 
                 </div>
 
                 <a id="wp-submit" href="<?php echo wp_logout_url(); ?>" title="Logout">
-                    <?php _e( 'Logout','ekiline' ); ?>
+                    <?php __( 'Exit','ekiline' ); ?>
                 </a>
 
             <?php 
@@ -69,8 +69,8 @@
                         'form_id'        => 'loginform',
                         'label_username' => __( 'Username','ekiline' ),
                         'label_password' => __( 'Password','ekiline' ),
-                        'label_remember' => __( 'Remember Me','ekiline' ),
-                        'label_log_in'   => __( 'Log In','ekiline' ),
+                        'label_remember' => __( 'Remember me','ekiline' ),
+                        'label_log_in'   => __( 'Log in','ekiline' ),
                         'id_username'    => 'user_login',
                         'id_password'    => 'user_pass',
                         'id_remember'    => 'rememberme',

@@ -19,10 +19,10 @@ class HorizontalNavbarWidget extends WP_Widget {
         // Instantiate the parent object
         //parent::__construct( false, 'Vertical Menu Navigation' );
         $widget_ops = array(
-            'description' => __( 'Add navbar custom menu to your page.','ekiline' ),
+            'description' => __( 'Add a custom bootstrap menu','ekiline' ),
             'customize_selective_refresh' => true,
         );
-        parent::__construct( false, __('Navbar Menu Navigation','ekiline'), $widget_ops );        
+        parent::__construct( false, __( 'Navbar menu navigation','ekiline' ), $widget_ops );        
     }
 
     function widget( $args, $instance ) {
@@ -61,7 +61,7 @@ class HorizontalNavbarWidget extends WP_Widget {
 		        		<div class="navbar-header">
 	                        <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
 	                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.widget-hm">
-	                            <span class="sr-only">'. esc_html__('Toggle navigation','ekiline') .'</span>
+	                            <span class="sr-only">Toggle navigation</span>
 	                            <span class="icon-bar"></span>
 	                            <span class="icon-bar"></span>
 	                            <span class="icon-bar"></span>
@@ -139,13 +139,13 @@ class HorizontalNavbarWidget extends WP_Widget {
         </p>
         <div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
             <p>
-                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:','ekiline' ) ?></label>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php __( 'Title:','ekiline' ) ?></label>
                 <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:','ekiline' ); ?></label>
+                <label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php __( 'Select Menu:','ekiline' ); ?></label>
                 <select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
-                    <option value="0"><?php _e( '&mdash; Select &mdash;','ekiline' ); ?></option>
+                    <option value="0"><?php __( '&mdash; Select &mdash;','ekiline' ); ?></option>
                     <?php foreach ( $menus as $menu ) : ?>
                         <option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
                             <?php echo esc_html( $menu->name ); ?>

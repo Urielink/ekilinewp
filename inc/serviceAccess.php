@@ -28,8 +28,8 @@ function ekiline_loginfrontend($atts, $content = null) {
 			'form_id' => 'loginform',
 			'label_username' => __( 'Username','ekiline' ),
 			'label_password' => __( 'Password','ekiline' ),
-			'label_remember' => __( 'Remember Me','ekiline' ),
-			'label_log_in' => __( 'Log In','ekiline' ),
+			'label_remember' => __( 'Remember me','ekiline' ),
+			'label_log_in' => __( 'Log in','ekiline' ),
 			'id_username' => 'user',
 			'id_password' => 'pass',
 			'id_remember' => 'rememberme',
@@ -53,11 +53,11 @@ function ekiline_loginfrontend($atts, $content = null) {
 			$login  = (isset($_GET['login']) ) ? $_GET['login'] : 0;
 			
 		    if ( $login === "failed" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'Invalid username and/or password.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'Invalid username or password', 'ekiline' ).'</p>';  
 		    } elseif ( $login === "empty" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'Username and/or Password is empty.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'Username or Password is empty', 'ekiline' ).'</p>';  
 		    } elseif ( $login === "false" ) {  
-		        echo '<p class="alert alert-warning">'.esc_html__( 'You are logged out.', 'ekiline' ).'</p>';  
+		        echo '<p class="alert alert-warning">'.esc_html__( 'You are logged out', 'ekiline' ).'</p>';  
 		    }
 		    
 		// imprime el formulario
@@ -136,7 +136,7 @@ function registration_process_hook() {
 	
 		// die if the nonce fails
 		if ( !wp_verify_nonce($_POST['add-nonce'],'add-user') ) {
-			wp_die(esc_html__( 'Sorry! Security first.', 'ekiline' ));
+			wp_die(esc_html__( 'Sorry! Security first', 'ekiline' ));
 		} else {
 			// auto generate a password
 //hayplugin			$user_pass = wp_generate_password();
@@ -149,11 +149,11 @@ function registration_process_hook() {
 			);
 			// setup some error checks
 			if ( !$userdata['user_login'] )
-				$error = esc_html__( 'A username is required for registration.', 'ekiline' );
+				$error = esc_html__( 'A username is required for registration', 'ekiline' );
 			elseif ( username_exists($userdata['user_login']) )
 				$error = esc_html__( 'Sorry, that username already exists!', 'ekiline' );
 			elseif ( !is_email($userdata['user_email'], true) )
-				$error = esc_html__( 'You must enter a valid email address.', 'ekiline' );
+				$error = esc_html__( 'You must enter a valid email address', 'ekiline' );
 			elseif ( email_exists($userdata['user_email']) )
 				$error = esc_html__( 'Sorry, that email address is already used!', 'ekiline' );
 			// setup new users and send notification
@@ -168,7 +168,7 @@ function registration_process_hook() {
 	<!-- create and alert message to show successful registration -->
 	<?php
 		$user = get_user_by('id',$new_user);
-		echo '<p class="alert alert-success">'.esc_html__( 'Thank you for registering ', 'ekiline' ) . '<strong>' . $user->user_login . '</strong><br/>' . esc_html__( 'Please check your email for recieve your login password (Be sure to check your spam folder).', 'ekiline' ).'</p>';
+		echo '<p class="alert alert-success">'.esc_html__( 'Thank you for registering', 'ekiline' ) . '<strong>' . $user->user_login . '</strong><br/>' . esc_html__( 'Please check your email for recieve your login password (Be sure to check your spam folder).', 'ekiline' ).'</p>';
 	?>
 	
 	<?php else : ?>
@@ -213,7 +213,7 @@ function ekiline_registerfrontend($atts, $content = null) {
 		</p>
 		
 		<p class="form-group">
-			<input name="adduser" type="submit" id="addusersub" class="btn btn-default btn-block" value="<?php echo esc_html__( 'Request Acces', 'ekiline' ); ?>" />
+			<input name="adduser" type="submit" id="addusersub" class="btn btn-default btn-block" value="<?php echo esc_html__( 'Request acces', 'ekiline' ); ?>" />
 			<?php wp_nonce_field( 'add-user', 'add-nonce' ) ?><!-- a little security to process on submission -->
 			<input name="action" type="hidden" id="action" value="adduser" />
 		</p>
