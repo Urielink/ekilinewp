@@ -162,7 +162,7 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Inside horizontal navbar widget', 'ekiline' ),
         'id'            => 'navwidget-nw3',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-text">',
         'after_widget'  => '</div></div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',

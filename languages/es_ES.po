@@ -219,7 +219,7 @@ msgid "Urielink in Bixnia "
 msgstr "Urielink in Bixnia"
 
 # @ ekiline
-#: carpeta/archivo.php:29
+#: inc/custom-header.php
 msgid "Pause"
 msgstr "Pausa"
 
@@ -227,7 +227,7 @@ msgid "Play"
 msgstr "Reproducir"
 
 # @ ekiline
-#: carpeta/archivo.php:29
+#: inc/customizer.php
 msgid "Text color"
 msgstr "Color del texto"
 
@@ -600,12 +600,12 @@ msgid "Out of page at top first over any content"
 msgstr "Fuera de la página en primer lugar sobre cualquier contenido"
 
 # @ ekiline
-#: carpeta/archivo.php:29
+#: inc/adminCategoryfield.php
 msgid "Category image"
 msgstr "Imagen de la categoría"
 
 msgid "Add url image"
-msgstr "Añadir el URL de la imagen."
+msgstr "Añadir el URL de la imagen"
 
 # @ ekiline
 #: carpeta/archivo.php:29

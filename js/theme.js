@@ -30,6 +30,8 @@
 	/**  Optimización, estilos dinámicos después de la carga
 	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
 	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
+	 *  
+	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
 	 */
 		
 		function miCss(archivoCss){
@@ -37,19 +39,25 @@
 			var templateUrl = thepath.themePath;
 			
 			var $head = $("head");
-			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			var $wpcss = $head.find("style[id='ekiline-inline']"); 
 			var $cssinline = $head.find("style:last");
+			var $ultimocss = $head.find("link[rel='stylesheet']:last");
 			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
 	
 	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-	        	
-			if ($cssinline.length){ 
+
+
+			if ($wpcss.length){ 
+					$wpcss.before(linkCss); 
+				} else if ($cssinline.length){ 
 					$cssinline.before(linkCss); 
 				} else if ($ultimocss.length){ 
 					$ultimocss.before(linkCss); 
 				} else { 
 					$head.append(linkCss); 
 				}
+
+			
 		}
 		
 			miCss('/css/bootstrap.min.css');

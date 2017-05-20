@@ -37,7 +37,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $colors = array();
     $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Text color', 'ekiline' ), 'description' => '' );
     $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Links color', 'ekiline' ), 'description' => '' );
-    $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Menu color', 'ekiline' ), 'description' => __( 'Choose a base colour, add second color for make a gradient', 'ekiline' ) );
+    $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Menu color', 'ekiline' ), 'description' => __( 'Choose a base color, add second color for make a gradient', 'ekiline' ) );
     $colors[] = array( 'slug'=>'menu_gradient', 'default' => '', 'label' => '', 'description' => '' );
     $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Module colors', 'ekiline' ), 'description' => '' );
     $colors[] = array( 'slug'=>'footer_color', 'default' => '#eeeeee', 'label' => __( 'Footer colors', 'ekiline' ), 'description' => '' );
@@ -77,8 +77,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
     		'ekiline_inversemenu',
     		array(
-    				'label'          => __( 'Invertir menu', 'ekiline' ),
-    				'description'    => __( 'Change menu from light to dark', 'ekiline' ),
+    				'label'          => __( 'Inverse menu', 'ekiline' ),
+    				'description'    => __( 'Change menu from lighten to darken', 'ekiline' ),
     				'section'        => 'colors',
     				'settings'       => 'ekiline_inversemenu',
     				'type'           => 'checkbox'
@@ -112,8 +112,8 @@ function ekiline_theme_customizer( $wp_customize ) {
             ) );
     
     $wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, 'ekiline_video', array(
-    		'label'    => __( 'Add video to header', 'ekiline' ),
-        	'description' => __( 'Allowed formats: MP4, WEBM or OGV, your header image conserves as video background', 'ekiline' ),
+    		'label'    => __( 'Upload video to header', 'ekiline' ),
+        	'description' => __( 'Recommended formats: MP4, WEBM or OGV, your header image conserves as video background or replacement', 'ekiline' ),
     		'section'  => 'header_image',
     		'settings' => 'ekiline_video',
             'priority'    => 90,
@@ -286,7 +286,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             array(
                 'type' => 'select',
                 'label' => __( 'Top menu settings', 'ekiline' ),
-            	'description' => __( 'Add behaviors for your menu, fix to top, fix to bootom or affix with scroll', 'ekiline' ),
+            	'description' => __( 'Add behaviors for your menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
             	'section' => 'menu_locations',
             	'priority'    => 100,
             	'choices' => array(

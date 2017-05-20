@@ -117,7 +117,6 @@ code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-
  
 .sidebar-nav{display:block;float:left;width:100%;list-style:none;margin:0;padding:0;border:0px;}
 .sidebar-nav .navbar-header{float:none;}
-.sidebar-nav .navbar-brand{width:100%;}
 .sidebar-nav .navbar-collapse{padding-left:0px;padding-right:0px;}
 .sidebar-nav .navbar-collapse.in{overflow-y:visible;}
 .sidebar-nav .navbar-nav{width:100%;margin:0px 0px;}

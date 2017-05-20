@@ -282,48 +282,48 @@ add_action('print_media_templates', function(){
  
   <script type="text/html" id="tmpl-ekiline-gallery-setting">
     <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
-    <h2><?php __( 'Ekiline settings','ekiline' ); ?></h2>
+    <h2><?php echo __( 'Ekiline settings','ekiline' ); ?></h2>
             
     <label class="setting">
-        <span><?php __( 'Transform to carousel','ekiline' ); ?></span>
+        <span><?php echo __( 'Transform to carousel','ekiline' ); ?></span>
         <input type="checkbox" data-setting="carousel">
     </label>  
     
     <label class="setting">
-        <span><?php __( 'Open linked media on modal window','ekiline' ); ?></span>
+        <span><?php echo __( 'Open linked media on modal window','ekiline' ); ?></span>
         <input type="checkbox" data-setting="showlink">
     </label>      
     
     <label class="setting">
-        <span><?php __( 'Carousel name (for customize)','ekiline' ); ?></span>
+        <span><?php echo __( 'Carousel name (for customize)','ekiline' ); ?></span>
         <input type="text" value="" data-setting="name" placeholder="default">
     </label>
     
     <label class="setting">
-      <span><?php __( 'Carousel text caption align','ekiline' ); ?></span>
+      <span><?php echo __( 'Carousel text caption align','ekiline' ); ?></span>
       <select data-setting="align">
-        <option value="text-center"> <?php __( 'Center','ekiline' ); ?> </option>
-        <option value="text-left"> <?php __( 'Left','ekiline' ); ?> </option>
-        <option value="text-right"> <?php __( 'Right','ekiline' ); ?> </option>
+        <option value="text-center"> <?php echo __( 'Center','ekiline' ); ?> </option>
+        <option value="text-left"> <?php echo __( 'Left','ekiline' ); ?> </option>
+        <option value="text-right"> <?php echo __( 'Right','ekiline' ); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-      <span><?php __( 'Carousel transition','ekiline' ); ?></span>
+      <span><?php echo __( 'Carousel transition','ekiline' ); ?></span>
       <select data-setting="transition">
-        <option value="none"> <?php __( 'Default','ekiline' ); ?> </option>
-        <option value="carousel-fade"> <?php __( 'Fade','ekiline' ); ?> </option>
-        <option value="carousel-vertical"> <?php __( 'Vertical','ekiline' ); ?> </option>
+        <option value="none"> <?php echo __( 'Default','ekiline' ); ?> </option>
+        <option value="carousel-fade"> <?php echo __( 'Fade','ekiline' ); ?> </option>
+        <option value="carousel-vertical"> <?php echo __( 'Vertical','ekiline' ); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-        <span><?php __( 'Show indicators','ekiline' ); ?></span>
+        <span><?php echo __( 'Show indicators','ekiline' ); ?></span>
         <input type="checkbox" data-setting="indicators">
     </label>  
     
     <label class="setting">
-        <span><?php __( 'Speed','ekiline' ); ?></span>
+        <span><?php echo __( 'Speed','ekiline' ); ?></span>
         <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
     </label>
       
