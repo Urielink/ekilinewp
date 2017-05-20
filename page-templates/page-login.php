@@ -33,7 +33,7 @@
             // In case of a login error.
             if ( isset( $_GET['login'] ) && $_GET['login'] == 'failed' ) : ?>
     	            <div class="aa_error">
-    		            <p><?php __( 'FAILED: Try again!','ekiline' ); ?></p>
+    		            <p><?php echo __( 'FAILED: Try again!','ekiline' ); ?></p>
     	            </div>
             <?php 
                 endif;
@@ -49,12 +49,12 @@
                     
                     </br>
                     
-                    <?php __( 'You are already logged in','ekiline' ); ?>
+                    <?php echo __( 'You are already logged in','ekiline' ); ?>
 
                 </div>
 
                 <a id="wp-submit" href="<?php echo wp_logout_url(); ?>" title="Logout">
-                    <?php __( 'Exit','ekiline' ); ?>
+                    <?php echo __( 'Exit','ekiline' ); ?>
                 </a>
 
             <?php 

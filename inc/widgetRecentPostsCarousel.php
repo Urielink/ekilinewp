@@ -168,16 +168,16 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
 ?>
 
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php __( 'Title:','ekiline' ); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo __( 'Title:','ekiline' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-        <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php __( 'Number of posts to show:','ekiline' ); ?></label>
+        <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php echo __( 'Number of posts to show:','ekiline' ); ?></label>
         <input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
         
         <p>
-            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php __( 'Exclude categories:','ekiline' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
+            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php echo __( 'Exclude categories:','ekiline' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
             <br />
-            <small><?php __( 'Category IDs, separated by commas','ekiline' ); ?></small>
+            <small><?php echo __( 'Category IDs, separated by commas','ekiline' ); ?></small>
         </p>
         
 <?php
