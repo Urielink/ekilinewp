@@ -2,42 +2,42 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: _ekiline 1.0.0\n"
+"Project-Id-Version: ekiline 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2017-05-20 04:21-0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-05-20 05:31-0500\n"
+"PO-Revision-Date: 2017-05-20 07:19-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
 
-# @ _ekiline
+# @ ekiline
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "¡Oops! Esta página no la hemos encontrado."
 
-# @ _ekiline
+# @ ekiline
 #: 404.php:21
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr "Parece que no encontramos nada en esta ubicación. Prueba con los links que aparecen abajo o haz una búsqueda."
 
-# @ _ekiline
+# @ ekiline
 #: 404.php:29
 msgid "Most Used Categories"
 msgstr "Categorías más usadas"
 
-# @ _ekiline
+# @ ekiline
 #. translators: %1$s: smiley
 #: 404.php:46
 #, php-format
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Intenta buscar en nuestro archivo mensual. %1$s"
 
-# @ _ekiline
+# @ ekiline
 #: comments.php:31
 #, php-format
 msgctxt "comments title"
@@ -46,147 +46,147 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "Una idea en &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s pensamientos en &ldquo;%2$s&rdquo;"
 
-# @ _ekiline
+# @ ekiline
 #: comments.php:40 comments.php:61
 msgid "Comment navigation"
 msgstr "Navegación de comentarios"
 
-# @ _ekiline
+# @ ekiline
 #: comments.php:43 comments.php:64
 msgid "Older Comments"
 msgstr "Comentarios anteriores"
 
-# @ _ekiline
+# @ ekiline
 #: comments.php:44 comments.php:65
 msgid "Newer Comments"
 msgstr "Comentarios nuevos"
 
-# @ _ekiline
+# @ ekiline
 #: comments.php:77
 msgid "Comments are closed."
 msgstr "Los comentarios están cerrados."
 
-# @ _ekiline
+# @ ekiline
 #: footer.php:18
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
-# @ _ekiline
+# @ ekiline
 #: footer.php:18
 #, php-format
 msgid "Proudly powered by %s"
 msgstr "Desarrollado con %s"
 
-# @ _ekiline
+# @ ekiline
 #: footer.php:20
 #, php-format
 msgid "Theme: %1$s by %2$s."
 msgstr "Tema: %1$s por %2$s."
 
-# @ _ekiline
+# @ ekiline
 #: functions.php:47 header.php:38
 msgid "Primary Menu"
 msgstr "Menú primario (Primary Menu)"
 
-# @ _ekiline
+# @ ekiline
 #: functions.php:102
 msgid "Sidebar"
 msgstr "Sidebar"
 
-# @ _ekiline
+# @ ekiline
 #: header.php:25
 msgid "Skip to content"
 msgstr "Ir al contenido"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:28
 #, php-format
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr "Publicado en %s"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:33
 #, php-format
 msgctxt "post author"
 msgid "by %s"
 msgstr "por %s"
 
-# @ _ekiline
+# @ ekiline
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:50 inc/template-tags.php:56
 msgid ", "
 msgstr ","
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:52
 #, php-format
 msgid "Posted in %1$s"
 msgstr "Publicado en %1$s"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:58
 #, php-format
 msgid "Tagged %1$s"
 msgstr "Etiquetado %1$s"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:64
 msgid "Leave a comment"
 msgstr "Deja un comentario"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:64
 msgid "1 Comment"
 msgstr "1 Comentario"
 
-# @ _ekiline
+# @ ekiline
 #: inc/template-tags.php:64
 #, php-format
 msgid "% Comments"
 msgstr "% Comentarios"
 
-# @ _ekiline
+# @ ekiline
 #. translators: %s: Name of current post
 #: inc/template-tags.php:71 template-parts/content-page.php:32
 #, php-format
 msgid "Edit %s"
 msgstr "Editar %s"
 
-# @ _ekiline
+# @ ekiline
 #: search.php:18
 #, php-format
 msgid "Search Results for: %s"
 msgstr "Buscar en este sitio: %s"
 
-# @ _ekiline
+# @ ekiline
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
 msgstr "No se ha encontrado"
 
-# @ _ekiline
+# @ ekiline
 #: template-parts/content-none.php:20
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "Listo para publicar tu primer post? <a href=\"%1$s\">Inicia aquí</a>."
 
-# @ _ekiline
+# @ ekiline
 #: template-parts/content-none.php:24
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr "Lo sentimos, nada se ha encontrado con tus términos. Intenta con otras palabras."
 
-# @ _ekiline
+# @ ekiline
 #: template-parts/content-none.php:29
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr "Parece que no encontramos esto. Quizá un búsqueda más profunda ayude."
 
-# @ _ekiline
+# @ ekiline
 #: template-parts/content-page.php:21 template-parts/content-single.php:25
 #: template-parts/content.php:34
 msgid "Pages:"
 msgstr "Páginas:"
 
-# @ _ekiline
+# @ ekiline
 #. translators: %s: Name of current post.
 #: template-parts/content.php:27
 #, php-format
@@ -197,22 +197,22 @@ msgstr "Continuar leyendo %s <span class=\"meta-nav\">&rarr;</span>"
 msgid "Ekiline"
 msgstr "Ekiline"
 
-# @ _ekiline
+# @ ekiline
 #. Theme URI of the plugin/theme
 msgid "http://ekiline.com/"
 msgstr "http://ekiline.com/"
 
-# @ _ekiline
+# @ ekiline
 #. Description of the plugin/theme
 msgid "Hi. I'm a theme called <code>Ekiline</code>, based on <em>Underscores</em> and <em>Bootstrap</em>. "
 msgstr "Hola soy el tema llamado <code>Ekiline</code>, basado en <em>Underscores</em> y <em>Bootstrap</em>."
 
-# @ _ekiline
+# @ ekiline
 #. Author of the plugin/theme
 msgid "Urielink in Bixnia "
 msgstr "Urielink in Bixnia"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Pause"
 msgstr "Pausa"
@@ -220,7 +220,7 @@ msgstr "Pausa"
 msgid "Play"
 msgstr "Reproducir"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Text color"
 msgstr "Color del texto"
@@ -240,7 +240,7 @@ msgstr "Color de módulos"
 msgid "Footer colors"
 msgstr "Color de footer"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Inverse menu"
 msgstr "Invertir menu"
@@ -278,7 +278,7 @@ msgstr "Mensaje de cabecera"
 msgid "Customize the text in your heading image"
 msgstr "Personaliza el mensaje en tu cabecera"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Site view"
 msgstr "Vista del sitio"
@@ -286,7 +286,7 @@ msgstr "Vista del sitio"
 msgid "Allow fullwidth or center the content of your website by content type: homepage, categories or single content"
 msgstr "Elige si quieres que el home, los listados o el articulo principal se desplieguen a todo lo ancho (fullwidth) o ajustada al centro"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Homepage"
 msgstr "Página principal"
@@ -303,7 +303,7 @@ msgstr "Centrado"
 msgid "Fullwidth"
 msgstr "A todo lo ancho"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Left sidebar"
 msgstr "Barra lateral izquierda"
@@ -311,7 +311,7 @@ msgstr "Barra lateral izquierda"
 msgid "Right sidebar"
 msgstr "Barra lateral derecha"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Top menu settings"
 msgstr "Configuración del menú superior"
@@ -328,7 +328,7 @@ msgstr "Fijo inferior"
 msgid "Fix to scroll"
 msgstr "Fijo al scroll"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Site Optimization"
 msgstr "Optimización del sitio"
@@ -351,7 +351,7 @@ msgstr "Inserta tu código de verificación, solo el content: value "
 msgid "Add msvalidate content: value "
 msgstr "Inserta tu código de verificación, solo el content: value "
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Optimize HTML"
 msgstr "Optimizar HTML"
@@ -359,7 +359,7 @@ msgstr "Optimizar HTML"
 msgid "Minify HTML output for site speed"
 msgstr "Para velocidad de carga, minifica el código HTML"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Other services"
 msgstr "Otros servicios"
@@ -385,7 +385,7 @@ msgstr "Cancelar comentarios en archivos adjuntos"
 msgid "Yo can do this each attachment in media library or hiding all with this option"
 msgstr "Puedes hacer esto cada archivo adjunto en la biblioteca de medios o ocultar todo con esta opción"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Social media"
 msgstr "Redes sociales"
@@ -417,17 +417,17 @@ msgstr "Linkedin"
 msgid "Add your Linkedin page url"
 msgstr "Dirección (URL) de la página de Linkedin"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Search Results for:"
 msgstr "Buscar resultados para:"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Read more"
 msgstr "Leer mas"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Username"
 msgstr "Nombre de usuario"
@@ -441,7 +441,7 @@ msgstr "Recuérdame"
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Invalid username or password"
 msgstr "Usuario o contraseña incorrectos"
@@ -473,7 +473,7 @@ msgstr "Gracias por registrarte!"
 msgid "Please check your email for receive your login password (Be sure to check your spam folder)"
 msgstr "Compruebe su correo electrónico para recibir su contraseña de acceso (Asegúrese de revisar su carpeta de spam)"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "E-mail"
 msgstr "Correo electrónico"
@@ -484,12 +484,12 @@ msgstr "Solicitar acceso"
 msgid "Exit"
 msgstr "Salir"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "We are over maintenance, sorry."
 msgstr "Estamos más de mantenimiento, lo sentimos."
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Watch all in %s"
 msgstr "Todas las publicaciones en %s"
@@ -509,7 +509,7 @@ msgstr "Resultados "
 msgid "Error "
 msgstr "Error "
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Add a custom bootstrap menu"
 msgstr "Añade un menú bootstrap personalizado"
@@ -526,7 +526,7 @@ msgstr "Agregue una barra de navegación vertical a su barra lateral"
 msgid "Navbar vertical navigation"
 msgstr "Navegación Vertical"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "The most recent posts on your site in carousel format"
 msgstr "Los mensajes más recientes en su sitio en formato carrusel"
@@ -540,7 +540,7 @@ msgstr "Publicaciones recientes"
 msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 msgstr "Publicado <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> a las <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> en <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "&larr; Previous"
 msgstr "&larr; Anterior"
@@ -551,7 +551,7 @@ msgstr "Siguiente &rarr;"
 msgid "Edit this image %s"
 msgstr "Editar esta imagen %s"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Comment"
 msgstr "Comentario"
@@ -565,12 +565,12 @@ msgstr "E-mail"
 msgid "Website"
 msgstr "Página Web"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Top Menu"
 msgstr "Menú Superior"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Footer widgets"
 msgstr "Widgets del pie de página"
@@ -593,7 +593,7 @@ msgstr "En la página al final del contenido"
 msgid "Out of page at top first over any content"
 msgstr "Fuera de la página en primer lugar sobre cualquier contenido"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Category image"
 msgstr "Imagen de la categoría"
@@ -601,7 +601,7 @@ msgstr "Imagen de la categoría"
 msgid "Add url image"
 msgstr "Añadir el URL de la imagen."
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Ekiline settings"
 msgstr "Ekiline extras"
@@ -645,7 +645,7 @@ msgstr "Mostrar indicadores"
 msgid "Speed"
 msgstr "Velocidad de transiciones"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Title:"
 msgstr "Titulo:"
@@ -656,12 +656,12 @@ msgstr "Seleccionar Menú:"
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; Seleccionar &mdash;"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "CSS custom class"
 msgstr "Clase personalizada CSS"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Number of posts to show:"
 msgstr "Número de publicaciones para mostrar:"
@@ -672,7 +672,7 @@ msgstr "Excluir categorías"
 msgid "Category IDs, separated by commas"
 msgstr "ID's de categoría, separado por comas."
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Hello"
 msgstr "Hola"
@@ -680,7 +680,7 @@ msgstr "Hola"
 msgid "You are already logged in"
 msgstr "Ya se ha autentificado"
 
-# @ _ekiline
+# @ ekiline
 #: carpeta/archivo.php:29
 msgid "Comments are closed"
 msgstr "Los comentarios están cerrados"
