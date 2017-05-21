@@ -251,8 +251,13 @@ function customHeader() {
 			// y si tiene imagen destacada
 			if ( has_post_thumbnail() ) {
 
-				// obten la url de la imagen
-				$url = wp_get_attachment_url( get_post_thumbnail_id() );
+				// obten la url de la imagen función estándard
+				//$url = wp_get_attachment_url( get_post_thumbnail_id() );
+				
+				// extracción de url a medida
+                  $medium_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
+                  $url = $medium_image_url[0];
+                								
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
     			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';

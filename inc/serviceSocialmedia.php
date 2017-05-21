@@ -165,7 +165,7 @@ add_action( 'wp_head', 'registerSocial', 1);
 
 //Crear un shortcode para las redes sociales
 
-function ekiline_medialinks($atts, $content = null) {
+function ekiline_socialmenu($atts, $content = null) {
     
     extract(shortcode_atts(array('type' => 'menu'), $atts));
     
@@ -182,6 +182,6 @@ function ekiline_medialinks($atts, $content = null) {
                     
     return '<ul class="list-inline">'. $menuItems .'</ul>';
 }
-add_shortcode('medialinks', 'ekiline_medialinks');    
+add_shortcode('socialmenu', 'ekiline_socialmenu');    
     
     

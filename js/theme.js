@@ -144,6 +144,13 @@
 	        $('#primary').removeClass('col-md-offset-3')
 	    });
 */
+
+		// Lazyload para imagenes
+		$('img').lazyload({ 
+			threshold : 200,
+		    //placeholder : 'apple-touch-icon.png',
+		    effect : "fadeIn" 
+		});	    
 		
 		// Carrusel: impedir que avance automaticamente
 		
@@ -174,13 +181,11 @@
 	    	
 	    }
 	    
-	    
-	    
 
 	    // Carrusel con swipe
 	    $('.carousel').carousel({
 	    	  swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
-	    	});	    	    
+	    	});	    
 	    
 
 	}); 			

@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
     
 	<?php /* En caso de tener imagen destacada (thumbnail):
 	       * Se Agrega un div para dividir la informacion */ ?>
@@ -18,7 +18,7 @@
 	
 	    <div class="cat-thumb col-md-4 pull-right">
 	        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-	            <?php the_post_thumbnail(); ?>
+	            <?php the_post_thumbnail( 'medium' ); ?>
 	        </a>
 	    </div>
 	    

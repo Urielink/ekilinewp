@@ -13,7 +13,7 @@
         
         <div class="cat-thumb">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail( medium, array( 'class' => 'img-responsive'));?>    
+                <?php the_post_thumbnail( 'medium', array( 'class' => 'img-responsive'));?>    
             </a>
         </div>
         
