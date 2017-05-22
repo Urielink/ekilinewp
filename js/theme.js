@@ -146,11 +146,11 @@
 */
 
 		// Lazyload para imagenes
-		$('img').lazyload({ 
-			threshold : 200,
-		    //placeholder : 'apple-touch-icon.png',
-		    effect : "fadeIn" 
-		});	    
+//		$('img').lazyload({ 
+//			threshold : 200,
+//		    //placeholder : 'apple-touch-icon.png',
+//		    effect : "fadeIn" 
+//		});	    
 		
 		// Carrusel: impedir que avance automaticamente
 		
