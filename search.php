@@ -33,7 +33,9 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
+        <nav id="page-navigation">
             <?php ekiline_posts_navigation()?>
+        </nav>
 
 		<?php else : ?>
 

@@ -161,8 +161,10 @@ function customHeader() {
                                     }
 
 				$customHeader .=    '</div>
-				                      <div class="cover-footer">
-							            <div class="inner"><p>Algun contenido</p></div>
+				                      <div class="cover-footer text-right">
+							            <div class="inner">
+							             <small>&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
+							            </div>
 							          </div>
 							        </div>
 							      </div>

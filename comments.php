@@ -20,12 +20,17 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-
+<div id="comments" class="comments-area well well-sm">
+    
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+	    
+    <button class="btn btn-default btn-block" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?></button>    
+    
+    <div id="comments-activity" class="collapse">
+	    
+		<h4 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ekiline' ) ),
@@ -33,8 +38,8 @@ if ( post_password_required() ) {
 					'<span>' . get_the_title() . '</span>'
 				);
 			?>
-		</h2>
-
+		</h4>
+		
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
 			<h2 class="screen-reader-text"><?php echo esc_html__( 'Comment navigation', 'ekiline' ); ?></h2>
@@ -67,7 +72,8 @@ if ( post_password_required() ) {
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
 		<?php endif; // Check for comment navigation. ?>
-
+		
+    </div><!-- #comments-activity -->
 	<?php endif; // Check for have_comments(). ?>
 
 	<?php
@@ -116,7 +122,7 @@ $args = array(
       __( 'Website','ekiline' ) . '</label>' .
       ( $req ? '<span class="required">*</span>' : '' ) .            
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
-      '" size="30" /></div>'      
+      '" size="30" /></div><br/>'      
 	  )),
 	  
     // las clases de manera independiente:

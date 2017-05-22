@@ -299,3 +299,29 @@ function optimizar_carga() {
 }
 add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
 **/
+
+
+/**
+ * Website design author for good relationships ;)
+ */
+
+function ekiline_theme_author() {
+    
+    $authname = get_theme_mod('ekiline_author','');
+    
+    $authname = wp_kses( $authname, array( 
+        'a' => array(
+            'href' => array(),
+            'title' => array(),
+            'target' => array()
+        ),
+        'br' => array(),
+        'em' => array(),
+        'strong' => array(),
+    ) );      
+    
+    if ($authname){
+        printf( esc_html__( 'By %s', 'ekiline' ), $authname );
+    }    
+}
+

@@ -210,7 +210,7 @@ add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
  *
  **/
 
-function getPrevNext(){
+function ekiline_pages_navigation(){
     
     $thePages = '';
     $pagelist = get_pages('sort_column=menu_order&sort_order=asc');
@@ -234,7 +234,10 @@ function getPrevNext(){
         $thePages .= "</li>";      
     }
     
-    echo '<ul class="pager">'.$thePages.'</ul>';
+    $thePages = '<ul class="pager">'.$thePages.'</ul>';
+    
+    echo $thePages;
+    
 } 
 
 /**
@@ -333,5 +336,3 @@ function limpiarCaracteres($text) {
 
     return $alias;
 }
-
-

@@ -37,7 +37,7 @@
 	<footer class="entry-footer">
 
         <nav id="page-navigation">
-            <?php getPrevNext(); ?>         
+            <?php ekiline_pages_navigation(); ?>         
         </nav><!-- #page-navigation -->        
 
 		<?php

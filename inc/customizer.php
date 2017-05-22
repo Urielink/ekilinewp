@@ -102,8 +102,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'section'  => 'title_tagline', // esta seccion corresponde a una predeterminada.
             'settings' => 'ekiline_logo_max',
             'priority' => 100,
-    ) ) );
-        
+    ) ) );    
     
     $wp_customize->add_setting( 
             'ekiline_video', array(
