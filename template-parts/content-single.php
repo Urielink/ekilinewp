@@ -10,19 +10,14 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
-	<header class="entry-header">
+	<header class="page-header">
 
-        <?php if ( !has_post_thumbnail() ) {
-            // si no tiene imagen destacada solo pon el titulo
-            the_title( '<h1 class="entry-title text-center">', '</h1>' ); 
-        }?>
-        
-        <?php //***ELIMINAR?? the_title( '<h1 class="entry-title text-center">', '</h1>' ); ?>
+        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
-			<?php // ekiline_posted_on(); ?>
+			<?php ekiline_posted_on(); ?>
 		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
+	</header><!-- .page-header -->
 
 	<div class="entry-content">
 		<?php the_content(); ?>

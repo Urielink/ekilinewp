@@ -36,8 +36,9 @@
 <?php primaryNavbar(); // menu principal ?>     
 
 	<div id="content" class="site-content">
+	    
+<?php breadcrumb(); ?>
 	
 		<div id="primary" class="content-area<?php sideOn(); ?>"><!-- // termina en footer.php -->
 				
-		<?php breadcrumb(); ?>
 	

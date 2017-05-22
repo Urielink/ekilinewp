@@ -13,11 +13,11 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-	<header class="entry-header">
+	<header class="page-header">
 	  	
-		<?php the_title( '<h1 class="entry-title text-center">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		
-	</header><!-- .entry-header -->
+	</header><!-- .page-header -->
 
 	<?php endif; ?>
 
@@ -89,7 +89,7 @@
         </p><!-- .entry-meta -->
 
 
-        <nav id="image-navigation" aria-label="...">
+        <nav id="image-navigation">
           <ul class="pager">
             <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'ekiline' ) ); ?></li>
             <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'ekiline' ) ); ?></li>

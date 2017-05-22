@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         
-	<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ));?>
+	<?php the_post_thumbnail( 'full', array( 'class' => 'img-responsive img-thumbnail' ));?>
     
     <div class="carousel-caption">
     		

@@ -79,12 +79,14 @@ if ( is_attachment() ) {
         }
         elseif (is_month()) {
             echo '<li>'. __( 'Archive from ', 'ekiline' ); 
-              the_time('F, Y'); 
+              // the_time('F, Y'); 
+              the_time( get_option( 'F, Y' ) );
             echo '</li>';
         }
         elseif (is_year()) {
             echo '<li>'. __( 'Archive from ', 'ekiline' ); 
-              the_time('Y'); 
+              // the_time('Y'); 
+              the_time( get_option( 'Y' ) );
             echo'</li>';
         }
         elseif (is_author()) {            

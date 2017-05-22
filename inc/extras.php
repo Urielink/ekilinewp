@@ -172,7 +172,7 @@ function customExcerptBtn( $more ) {
 add_filter( 'excerpt_more', 'customExcerptBtn' );
 
 /** 
- * Remove [shortcode] items in excerpt: 
+ * Theming: Excerpt override and Remove [shortcode] items in excerpt: 
  *	https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
  *	http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
  *	**https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
@@ -203,6 +203,39 @@ function wp_trim_excerpt_do_shortcode($text) {
 }
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
+
+/**
+ * Theming: Next and prevoius links
+ * @link https://codex.wordpress.org/Next_and_Previous_Links
+ *
+ **/
+
+function getPrevNext(){
+    
+    $thePages = '';
+    $pagelist = get_pages('sort_column=menu_order&sort_order=asc');
+    $pages = array();
+    foreach ($pagelist as $page) {
+       $pages[] += $page->ID;
+    }
+
+    $current = array_search(get_the_ID(), $pages);
+    $prevID = (isset($pages[$current-1])) ? $pages[$current-1] : '';
+    $nextID = (isset($pages[$current+1])) ? $pages[$current+1] : '';
+    
+    if (!empty($prevID)) {
+        $thePages .= '<li class="previous">';
+        $thePages .= '<a href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
+        $thePages .= "</li>";
+    }
+    if (!empty($nextID)) {
+        $thePages .= '<li class="next">';
+        $thePages .= '<a href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
+        $thePages .= "</li>";      
+    }
+    
+    echo '<ul class="pager">'.$thePages.'</ul>';
+} 
 
 /**
  * Widgets: Set top widgets (header.php #25)

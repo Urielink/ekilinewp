@@ -14,16 +14,16 @@
 	<?php // en caso de tener imagen destacada: Agrega este div, y la clase en el div de la entrada. ?>
 	<?php if ( has_post_thumbnail() ) { $thumbCss = 'class="col-md-9"'; ?>
 	    <div class="cat-thumb col-xs-3">
-	    	<?php the_post_thumbnail( 'large', array( 'class' => 'img-responsive' ));?>
+	    	<?php the_post_thumbnail( 'large', array( 'class' => 'img-responsive img-thumbnail' ));?>
 	    </div>
 	<?php } else { $thumbCss = 'class="col-md-12"'; } ?>
 	
     <div <?php echo $thumbCss;?>>
-    	<header class="entry-header">
+    	<header class="page-header">
     		
     		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
     
-    	</header><!-- .entry-header -->
+    	</header><!-- .page-header -->
     
     	<div class="entry-content">
     	     <?php the_excerpt(); ?> 

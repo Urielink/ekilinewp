@@ -13,15 +13,15 @@
         
         <div class="cat-thumb">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail( 'medium', array( 'class' => 'img-responsive'));?>    
+                <?php the_post_thumbnail( 'medium', array( 'class' => 'img-responsive img-thumbnail'));?>    
             </a>
         </div>
         
-        <header class="entry-header">
+        <header class="page-header">
                 		
 		<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
     
-    	</header><!-- .entry-header -->
+    	</header><!-- .page-header -->
     
     	<div class="entry-content">
     	    

@@ -13,16 +13,13 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-	<header class="entry-header">
+	<header class="page-header">
 
-        <?php if ( !has_post_thumbnail() ) {
-            // si no tiene imagen destacada solo pon el titulo
-            the_title( '<h1 class="entry-title text-center">', '</h1>' ); 
-        }?>
+        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	  	
-		<?php //**ELIMINAR?? the_title( '<h1 class="entry-title text-center">', '</h1>' ); ?>
-		
-	</header><!-- .entry-header -->
+	  	<?php ekiline_posted_on() ?>
+	  		  	
+	</header><!-- .page-header -->
 
 	<?php endif; ?>
 
@@ -33,10 +30,16 @@
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekiline' ),
 				'after'  => '</div>',
 			) );
-		?>
+		?>		          
+
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
+
+        <nav id="page-navigation">
+            <?php getPrevNext(); ?>         
+        </nav><!-- #page-navigation -->        
+
 		<?php
 			edit_post_link(
 				sprintf(
