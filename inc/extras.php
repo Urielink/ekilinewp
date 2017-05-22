@@ -72,7 +72,7 @@ function cssColors() {
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$modulos.'; }
         .navbar-inverse .navbar-text, .cover h1, .cover h2, .cover h3, .cover p{ color:'.$bgcolor.'; }
-        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$modulos.';}
+        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
         .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }
         .navbar-inverse { background-color:'.$menu.'; }
@@ -205,7 +205,7 @@ remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
 
 /**
- * Theming: Next and prevoius links
+ * Theming: Next and prevoius links for pages
  * @link https://codex.wordpress.org/Next_and_Previous_Links
  *
  **/
@@ -236,6 +236,46 @@ function getPrevNext(){
     
     echo '<ul class="pager">'.$thePages.'</ul>';
 } 
+
+/**
+ * Theming: Next and prevoius links for posts in archive or category
+ * @link https://codex.wordpress.org/Next_and_Previous_Links
+ * @link https://digwp.com/2016/10/wordpress-post-navigation-redux/
+ *
+ **/
+
+function ekiline_posts_navigation( $args = array() ) {
+    $navigation = '';
+ 
+    // Don't print empty markup if there's only one page.
+    if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
+        $args = wp_parse_args( $args, array(
+            'prev_text'          => __( 'Older posts' ),
+            'next_text'          => __( 'Newer posts' ),
+            'screen_reader_text' => __( 'Posts navigation' ),
+            'class'              => 'well'
+        ) );
+ 
+        $next_link = get_previous_posts_link( $args['next_text'] );
+        $prev_link = get_next_posts_link( $args['prev_text'] );
+ 
+        if ( $prev_link ) {
+            $navigation .= '<li>' . $prev_link . '</li>';
+        }
+ 
+        if ( $next_link ) {
+            $navigation .= '<li>' . $next_link . '</li>';
+        }
+        
+        $navigation = '<ul class="pager">'.$navigation.'</ul>';
+ 
+        $navigation = _navigation_markup( $navigation, 'posts-navigation', $args['screen_reader_text'] );
+    }
+ 
+    echo $navigation;
+}
+
+
 
 /**
  * Widgets: Set top widgets (header.php #25)

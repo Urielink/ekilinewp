@@ -33,7 +33,7 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php the_posts_navigation(); ?>
+            <?php ekiline_posts_navigation()?>
 
 		<?php else : ?>
 
