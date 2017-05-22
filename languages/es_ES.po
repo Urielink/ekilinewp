@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-05-20 08:08-0500\n"
+"PO-Revision-Date: 2017-05-21 23:59-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -690,3 +690,16 @@ msgstr "Ya se ha autentificado"
 #: carpeta/archivo.php:29
 msgid "Comments are closed"
 msgstr "Los comentarios están cerrados"
+
+# @ ekiline
+#: inc/extras
+msgid "Older posts"
+msgstr "Páginas anteriores"
+
+# @ ekiline
+msgid "Newer posts"
+msgstr "Páginas nuevas"
+
+# @ ekiline
+msgid "Posts navigation"
+msgstr "Páginas"
