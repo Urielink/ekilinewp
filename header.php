@@ -22,9 +22,13 @@
 </head>
 <body <?php body_class(); ?>>	
     
-    <div id="loadMask">
-        <small class="loadtext"><noscript>No tienes habilitado javascript</noscript><i class="fa fa-spinner loadicon"></i> <br/>Cargando...</small>
-    </div>
+<div id="page-load">
+    <small class="loadtext">
+        <noscript>No tienes habilitado javascript</noscript>
+        <img class="loadicon" src="<?php echo get_site_icon_url(); ?>" alt="<?php echo site_url() ?>" width="100" height="100"/>
+        <br/><?php echo __('Loading...','ekiline') ?>
+    </small>
+</div>
 
 <?php topWidgets(); // en caso de widgets en la parte superior  ?>  
 <?php topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  

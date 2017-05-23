@@ -272,7 +272,7 @@ function ekilineNoscript(){
     $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/bootstrap.min.css" media="all" />'."\n";
     $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/font-awesome.min.css" media="all" />'."\n";    
     $noScripts .= '<link rel="stylesheet" href="'. get_stylesheet_uri() . '" media="all" />'."\n";    
-    $noScripts .= '<style type="text/css">#loadMask{display:none;}</style>'."\n";
+    $noScripts .= '<style type="text/css">#page-load{display:none;}</style>'."\n";
     $noScripts .= '</noscript>'."\n";
     echo $noScripts;
 }

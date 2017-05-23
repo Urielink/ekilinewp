@@ -559,7 +559,7 @@ a img.aligncenter {
 #page { padding-bottom: 20px; }
 
 /** MODULO: Loader con spin **/
-#loadMask {
+#page-load {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -573,7 +573,19 @@ a img.aligncenter {
  .loadtext{line-height:100%;position:absolute;top:46%;left:0;right:0;width:auto;height:auto;}
  .loadicon{margin:0px;padding:10px;font-size:2em;-webkit-animation:spin 4s linear infinite;-moz-animation:spin 4s linear infinite;animation:spin 4s linear infinite;}
 
+/*Si usa portada a todo lo ancho, aplicar el estilo a las páginas internas*/
 
+.site-branding.jumbo {
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 350px;
+	width: 100%;
+	display: table;
+}
+.site-branding.jumbo .inner {
+	display: table-cell;
+	vertical-align: middle;
+}
 
 /* ------------------------------------------------
  * Elementos generados por SHORTCODES.

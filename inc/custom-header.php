@@ -83,20 +83,19 @@ endif;  // ekiline_admin_header_image
 
 function customHeader() {
     
-     $customHeader = '';
-    		
+    // Variables
+    $customHeader = '';
+    $siteName = get_bloginfo( 'name', 'display' );
+    $siteDescription = get_bloginfo( 'description', 'display'  );
+    // Estilo de imagen de fondo: invocamos la imagen del editor de pagina y lo añadimos como css en combinacion con un range
+    $rangeHead = get_theme_mod('ekiline_range_header');
+ 		
 		/* Para el HOME:
 		 * en caso de tener una imagen de cabecera aparecer un header
 		 */ 
 
 		if ( is_front_page() && get_header_image() ){
 
-			// Variables
-			$siteName = get_bloginfo( 'name', 'display' );
-			$siteDescription = get_bloginfo( 'description', 'display'  );
-			// Estilo de imagen de fondo: invocamos la imagen del editor de pagina y lo añadimos como css.
-			// En combinacion con un range
-			$rangeHead = get_theme_mod('ekiline_range_header');
 			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
 						
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
@@ -260,13 +259,24 @@ function customHeader() {
                   $medium_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
                   $url = $medium_image_url[0];
                 								
+            // si la imagen de fondo es full, los encabezados en las internas también
+                if ( $rangeHead >= '95' ) {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header">';
+                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
+                    $customHeader .= '</div></header>';
+                    
+                } else {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header container-fluid">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
+                    $customHeader .= '</div></header>';
+                    
+                }
 
-				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
-    			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
-    			$customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
-    			$customHeader .= '</div></header>';
 			}
-				
 			
 		}
 		
@@ -291,10 +301,24 @@ function customHeader() {
 				// obten la url de la imagen
 				$url = $cat_data['img'];
 		
-				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
-				$customHeader .= '<div class="site-branding jumbotron categoria" style="background-image: url(' . $url . ');">';
-				$customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
-				$customHeader .= '</div></header>';
+            // si la imagen de fondo es full, los encabezados en las internas también
+                if ( $rangeHead >= '95' ) {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header">';
+                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
+                    $customHeader .= '</div></header>';
+                    
+                } else {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header container-fluid">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
+                    $customHeader .= '</div></header>';
+                    
+                }
+								
+				
 			}
 		
 				
