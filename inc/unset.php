@@ -325,3 +325,48 @@ function ekiline_theme_author() {
     }    
 }
 
+//Hacer un iFrame con un shortcode.
+function ekiline_iframe($atts, $content = null) {
+    extract(shortcode_atts(array('archivo' => '', 'proporcion' => 'regular'), $atts));
+
+    if ($proporcion == 'widescreen') {
+        $proporcion = '16by9';
+    } elseif ($proporcion == 'regular'){
+        $proporcion = '4by3';
+    }
+
+    
+    ob_start(); // abre         
+
+        echo '<div class="embed-responsive embed-responsive-'.$proporcion.'">
+                <iframe class="embed-responsive-item" src="'.$archivo.'"></iframe>
+              </div>';      
+        
+    $insertarIframe = ob_get_clean(); // cierra
+ 
+    return $insertarIframe;     
+            
+    }
+add_shortcode('iframe', 'ekiline_iframe');
+
+
+//Hacer un include con un shortcode.
+/**
+function ekiline_include($atts, $content = null) {
+    
+    extract( shortcode_atts( array( 'archivo' => '' ), $atts) );
+
+    $path = $_SERVER['DOCUMENT_ROOT'].'/'.$archivo;
+    
+    ob_start(); // abre         
+
+    echo include( $path );
+    
+    $insertarInclude = ob_get_clean(); // cierra
+ 
+    return $insertarInclude;        
+            
+    }
+    
+add_shortcode('include', 'ekiline_include');
+**/

@@ -79,50 +79,23 @@ function ekiline_cover($atts, $content = null) {
 add_shortcode('covermodule', 'ekiline_cover');
 
 
-//Hacer un include con un shortcode.
-/**
-function ekiline_include($atts, $content = null) {
+/* Extender el Shortcode [Embed]
+ * https://developer.wordpress.org/reference/classes/wp_embed/run_shortcode/
+ * https://wordpress.stackexchange.com/questions/134228/how-to-overwrite-youtube-embed
+ * https://wordpress.stackexchange.com/questions/13810/adding-a-filter-to-a-shortcode
+ * https://wordpress.stackexchange.com/questions/112294/filter-specific-shortcode-output
+ * https://wordpress.stackexchange.com/questions/99978/how-add-class-youtube-and-type-html-to-oembed-code
+ */
+
+function ekiline_embed_override($html, $url, $atts, $post_id) {
     
-    extract( shortcode_atts( array( 'archivo' => '' ), $atts) );
-
-    $path = $_SERVER['DOCUMENT_ROOT'].'/'.$archivo;
-    
-    ob_start(); // abre         
-
-    echo include( $path );
-    
-    $insertarInclude = ob_get_clean(); // cierra
- 
-    return $insertarInclude;        
-            
-    }
-    
-add_shortcode('include', 'ekiline_include');
-**/
-
-//Hacer un iFrame con un shortcode.
-function ekiline_iframe($atts, $content = null) {
-    extract(shortcode_atts(array('archivo' => '', 'proporcion' => 'regular'), $atts));
-
-    if ($proporcion == 'widescreen') {
-        $proporcion = '16by9';
-    } elseif ($proporcion == 'regular'){
-        $proporcion = '4by3';
-    }
-
-    
-    ob_start(); // abre         
-
-        echo '<div class="embed-responsive embed-responsive-'.$proporcion.'">
-                <iframe class="embed-responsive-item" src="'.$archivo.'"></iframe>
-              </div>';      
+    extract( shortcode_atts(array( 'responsive' => '4by3',), $atts) );    
         
-    $insertarIframe = ob_get_clean(); // cierra
- 
-    return $insertarIframe;     
-            
-    }
-add_shortcode('iframe', 'ekiline_iframe');
+    return '<div class="embed-responsive embed-responsive-'.$responsive.'">' . $html . '</div>';
+}
+add_filter('embed_oembed_html', 'ekiline_embed_override', 99, 4);
+add_filter('wp_video_shortcode', 'ekiline_embed_override', 99, 4);
+
 
 /* agregar Feeds RSS con un shortcode
  * [rss feed="url" num="5"]
