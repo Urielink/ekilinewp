@@ -327,8 +327,6 @@ require get_template_directory() . '/inc/themeBreadcrumb.php';
 require get_template_directory() . '/inc/widgetNavVer.php';
 require get_template_directory() . '/inc/widgetNavHor.php';
 require get_template_directory() . '/inc/widgetRecentPostsCarousel.php';
-require get_template_directory() . '/inc/widgetSublanguage.php';
-//require get_template_directory() . '/inc/widgetImage.php';
 require get_template_directory() . '/inc/widgetOptions.php';
 
 // theme custom shortcodes
@@ -336,7 +334,6 @@ require get_template_directory() . '/inc/shortcodeAll.php';
 require get_template_directory() . '/inc/shortcodeGalleryslider.php';
 require get_template_directory() . '/inc/shortcodeTabs.php';
 require get_template_directory() . '/inc/shortcodeInsertposts.php';
-// require get_template_directory() . '/inc/shortcodeExtract.php';
 
 // theme customizer services
 require get_template_directory() . '/inc/serviceOptimize.php';
