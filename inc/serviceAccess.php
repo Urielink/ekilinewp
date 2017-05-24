@@ -14,10 +14,8 @@
 // La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
 // Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400
 
-function ekiline_loginfrontend($atts, $content = null) {
-	
-	extract(shortcode_atts(array('archivo' => ''), $atts));
-	
+function ekiline_loginfrontend() {
+		
 	ob_start(); // abre 		
 
 		// argumentos de formulario de acceso.
@@ -39,7 +37,8 @@ function ekiline_loginfrontend($atts, $content = null) {
 			'value_remember' => false, // Set this to true to default the "Remember me" checkbox to checked 
 		   );
 		   
-		$args = wp_parse_args( $args, apply_filters( 'login_form_defaults', $defaults ) );
+//23mayo		$args = wp_parse_args( $args, apply_filters( 'login_form_defaults', $defaults ) );
+        $args = wp_parse_args( apply_filters( 'login_form_defaults', $args ) );
 		
 		$login_form_top = apply_filters( 'login_form_top', '', $args );
 		$login_form_middle = apply_filters( 'login_form_middle', '', $args );
@@ -132,6 +131,10 @@ add_shortcode('loginform', 'ekiline_loginfrontend');
 // 1) Inicia funcion proceso de de registro 
  
 function registration_process_hook() {
+    
+    $new_user = null;
+    $error = null;
+    
 	if (isset($_POST['adduser']) && isset($_POST['add-nonce']) && wp_verify_nonce($_POST['add-nonce'], 'add-user')) {
 	
 		// die if the nonce fails
@@ -139,10 +142,10 @@ function registration_process_hook() {
 			wp_die(esc_html__( 'Sorry! Security first', 'ekiline' ));
 		} else {
 			// auto generate a password
-//hayplugin			$user_pass = wp_generate_password();
+            $user_pass = wp_generate_password();
 			// setup new user
 			$userdata = array(
-//hayplugin				'user_pass' => $user_pass,
+                'user_pass' => $user_pass,
 				'user_login' => esc_attr( $_POST['user_name'] ),
 				'user_email' => esc_attr( $_POST['email'] ),
 				'role' => get_option( 'default_role' ),
@@ -159,7 +162,7 @@ function registration_process_hook() {
 			// setup new users and send notification
 			else{
 				$new_user = wp_insert_user( $userdata );
-//hayplugin				wp_new_user_notification($new_user, $user_pass);
+                wp_new_user_notification($new_user, $user_pass);
 			}
 		}
 	}
@@ -189,12 +192,8 @@ add_action('process_customer_registration_form', 'registration_process_hook');
 
 // 2) Inicia Shortcode que crea el formulario en el tema.
 
-function ekiline_registerfrontend($atts, $content = null) {
-	
-	extract(shortcode_atts(array('archivo' => ''), $atts));
-
-
-	
+function ekiline_registerfrontend() {
+		
 	ob_start(); // abre 		?>
 	
 	<div class="col-md-6 col-md-offset-3">
@@ -247,17 +246,17 @@ add_shortcode('registerform', 'ekiline_registerfrontend');
 **/
 // redirigir la pagina de acceso al home que debe ser.
 
-function redirect() {
-  // se ha creado un acceso a un apartado de registro.
-  if ( !is_user_logged_in() && !is_page(array('Acceso','Registro')) ) {
-      wp_redirect( home_url('/acceso') );
-      die();
-  } else if ( is_user_logged_in() && is_page(array('Acceso','Registro')) ) {
-      wp_redirect( home_url() );
-      die();
-  }    
-}
-add_action( 'wp', 'redirect' );
+// function redirect() {
+  // // se ha creado un acceso a un apartado de registro.
+  // if ( !is_user_logged_in() && !is_page(array('Acceso','Registro')) ) {
+      // wp_redirect( home_url('/acceso') );
+      // die();
+  // } else if ( is_user_logged_in() && is_page(array('Acceso','Registro')) ) {
+      // wp_redirect( home_url() );
+      // die();
+  // }    
+// }
+// add_action( 'wp', 'redirect' );
 
 
 // si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.

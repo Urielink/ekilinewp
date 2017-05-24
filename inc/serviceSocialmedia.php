@@ -69,7 +69,7 @@ function registerSocial() {
             // si no hay, entonces la imagen que esté en el post
             else : preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches); endif;
              
-            $image_url = $matches [1] [0];
+            $image_url = $matches [1] [0] = ''; // 23 mayo
             ob_end_clean();                            
                                             
             //En caso de no existir una u otra

@@ -370,3 +370,71 @@ function ekiline_include($atts, $content = null) {
     
 add_shortcode('include', 'ekiline_include');
 **/
+
+
+//columna por default mide 1 columna
+
+function ekiline_columna($atts, $content = null) {
+    extract(shortcode_atts(array('sangria' => '','ancho' => '12','bgcolor' => 'inherit','txtcolor' => ''), $atts));
+    return '<div class="columna col-sm-offset-'.$sangria.' col-sm-'.$ancho.'" style="background-color:'.$bgcolor.';color:'.$txtcolor.';">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('columna', 'ekiline_columna');
+
+//bloquecon texto centrado, por default mide 6columns y tiene fondo negro.
+
+function ekiline_bloque($atts, $content = null) {
+    extract(shortcode_atts(array('ancho' => '6','bgcolor' => '#000000','txtcolor' => '','bgimage' => 'none'), $atts));
+    return '<div class="bloque col-sm-'.$ancho.'" style="background-color:'.$bgcolor.';color:'.$txtcolor.';background-image:url('.$bgimage.');"><div class="inblock">' . do_shortcode($content) . '</div></div>';
+}
+add_shortcode('bloque', 'ekiline_bloque');
+
+//Contenedor es necesario si se requieren dividir la informacion en secciones.
+
+function ekiline_contenedor($atts, $content = null) {
+    extract(shortcode_atts(array('bgimage' => 'none','txtcolor' => '','class' => '','type' => 'row'), $atts));
+    return '<div class="'.$type.' seccion '.$class.'" style="background-image:url('.$bgimage.');color:'.$texto.';">' . do_shortcode($content) . '</div>';
+}
+add_shortcode('contenedor', 'ekiline_contenedor');
+
+
+/* agregar Feeds RSS con un shortcode
+ * [rss feed="url" num="5"]
+ *
+ 
+//This file is needed to be able to use the wp_rss() function.
+
+include_once(ABSPATH.WPINC.'/rss.php');
+
+function readRss($atts) {
+    extract(shortcode_atts(array(
+    "feed" => 'http://',
+      "num" => '1',
+    ), $atts));
+
+    return wp_rss($feed, $num);
+}
+
+add_shortcode('rss', 'readRss'); 
+**/
+
+
+// Cover, este debe tener un titulo, como el contenido puede variar este se debe estar en un div a parte.
+
+function ekiline_cover($atts, $content = null) {
+    extract(shortcode_atts(array('title' => '','bgcolor'=>'#17B2CE','txtcolor'=>'#FFFFFF','bgimage'=>''), $atts));
+    $titleBtn = limpiarCaracteres($title);
+    if ( $bgimage ) { $bgimage='background-image:url('.$bgimage.')'; }
+    return '    
+    <div id="mod-cover" class="cover-wrapper" style="background-color:'.$bgcolor.';color:'.$txtcolor.';'.$bgimage.'">
+      <div class="cover-wrapper-inner">
+        <div class="cover-container">
+          <div class="inner cover">
+            <h3>'.$title.'</h3>
+            '.do_shortcode($content).'
+          </div>
+        </div>
+      </div>
+    </div>      
+    ';
+}
+add_shortcode('mod_cover', 'ekiline_cover');
