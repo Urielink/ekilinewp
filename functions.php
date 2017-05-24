@@ -343,7 +343,7 @@ require get_template_directory() . '/inc/serviceOptimize.php';
 require get_template_directory() . '/inc/serviceMaintenance.php';
 require get_template_directory() . '/inc/serviceMinify.php';
 require get_template_directory() . '/inc/serviceSocialmedia.php';
-// require get_template_directory() . '/inc/serviceAccess.php';
+require get_template_directory() . '/inc/serviceAccess.php';
 
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';
