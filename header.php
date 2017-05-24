@@ -31,7 +31,6 @@
 </div>
 
 <?php topWidgets(); // en caso de widgets en la parte superior  ?>  
-<?php // topShortcode(); // de un shortcode que requiera mostrarse en la parte superior  ?>  
 <?php topNavbar(); // en caso de un menu superior ?>  
 <?php customHeader(); // header personalizado ?>
 
