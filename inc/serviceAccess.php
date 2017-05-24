@@ -104,160 +104,28 @@ function ekiline_loginfrontend() {
     }
  
     		
-	}
+}
 		
 add_shortcode('loginform', 'ekiline_loginfrontend');
 
 // Validaciones del formulario:
 	
-	function login_failed() {  
-	    $login_page  = home_url( '/acceso' );  
-	    wp_redirect( $login_page . '?login=failed' );  
-	    exit;  
-	}  
-	add_action( 'wp_login_failed', 'login_failed' );  
-	  
-	function verify_username_password( $user, $username, $password ) {  
-	    $login_page  = home_url( '/acceso' );  
-	    if( $username == "" || $password == "" ) {  
-	        wp_redirect( $login_page . "?login=empty" );  
-	        exit;  
-	    }  
-	}  
-	add_filter( 'authenticate', 'verify_username_password', 1, 3);
+	// function login_failed() {  
+	    // $login_page  = home_url( '/acceso' );  
+	    // wp_redirect( $login_page . '?login=failed' );  
+	    // exit;  
+	// }  
+	// add_action( 'wp_login_failed', 'login_failed' );  
+// 	  
+	// function verify_username_password( $user, $username, $password ) {  
+	    // $login_page  = home_url( '/acceso' );  
+	    // if( $username == "" || $password == "" ) {  
+	        // wp_redirect( $login_page . "?login=empty" );  
+	        // exit;  
+	    // }  
+	// }  
+	// add_filter( 'authenticate', 'verify_username_password', 1, 3);
 	
-	
-/* Oficial https://codex.wordpress.org/Customizing_the_Registration_Form
- * Otro // https://www.wp-code.uk/wordpress-custom-registration-form-with-bootstrap/
- * Otro // https://gist.github.com/bryan-rojas-liquor/40ff5590436a2bdd7a74c1d62f050091
- */
- 
- 
- /**
- * Hacer un formulario de solicitud o registro  con shortcode; 2 situaciones:
- * 1 se debe crear la funcion que valide la informacion y genere el correo.
- * Esta varia por el uso de un plugin que envia una notificacion al dueño del portal.
- * 2 se genera el formulario que se insertara con el shortcode, este llama la funcion
- * de las validaciones.
- */
-
-// 1) Inicia funcion proceso de de registro 
- 
-function registration_process_hook() {
-    
-    // $new_user = null;
-    // $error = null;
-    
-    if (isset($_POST['adduser']) && isset($_POST['add-nonce']) && wp_verify_nonce($_POST['add-nonce'], 'add-user')) {
-    
-        // die if the nonce fails
-        if ( !wp_verify_nonce($_POST['add-nonce'],'add-user') ) {
-            wp_die(esc_html__( 'Sorry! Security first', 'ekiline' ));
-        } else {
-            // auto generate a password
-            $user_pass = wp_generate_password();
-            // setup new user
-            $userdata = array(
-                'user_pass' => $user_pass,
-                'user_login' => esc_attr( $_POST['user_name'] ),
-                'user_email' => esc_attr( $_POST['email'] ),
-                'role' => get_option( 'default_role' ),
-            );
-            // setup some error checks
-            if ( !$userdata['user_login'] )
-                $error = esc_html__( 'A username is required for registration', 'ekiline' );
-            elseif ( username_exists($userdata['user_login']) )
-                $error = esc_html__( 'Sorry, that username already exists!', 'ekiline' );
-//24 May    elseif ( !is_email($userdata['user_email'], true) )
-            elseif ( !is_email($userdata['user_email']) )
-                $error = esc_html__( 'You must enter a valid email address', 'ekiline' );
-            elseif ( email_exists($userdata['user_email']) )
-                $error = esc_html__( 'Sorry, that email address is already used!', 'ekiline' );
-            // setup new users and send notification
-            else{
-                $new_user = wp_insert_user( $userdata );
-//24 May        wp_new_user_notification($new_user,$user_pass);
-                wp_new_user_notification($new_user && $user_pass);
-            }
-        }
-    }
-    if ( isset($new_user) ) : ?>
-        <p class="alert alert-success"> <!-- create and alert message to show successful registration -->
-    <?php
-        $user = get_user_by('id',$new_user);
-        echo esc_html__( 'Thank you for registering', 'ekiline' ) . '<strong>' . $user->user_login . '</strong><br/>' . esc_html__( 'Please check your email for recieve your login password (Be sure to check your spam folder).', 'ekiline' );
-    ?>
-        </p>
-    <?php else : ?>
-    
-        <?php if ( isset($error) ) : ?>
-            <p class="alert alert-warning"><!-- echo errors if users fails -->
-                <?php echo $error; ?>
-            </p>
-        <?php endif; ?>
-    
-    <?php endif;
-
-}
-add_action('process_customer_registration_form', 'registration_process_hook'); 
- 
-// Finaliza 1) funcion proceso de de registro  
-
-
-// 2) Inicia Shortcode que crea el formulario en el tema.
-
-function ekiline_registerfrontend() {
-        
-    ob_start(); // abre         ?>
-            
-    <?php do_action ('process_customer_registration_form'); ?>
-
-    <form method="POST" id="adduser" class="form" action="">
-        <div class="form-group">
-            <label for="user_name"><?php echo esc_html__( 'Username', 'ekiline' ); ?></label>
-            <input class="input form-control" name="user_name" type="text" id="user_name" value="" />
-        </div>
-        
-        <p class="form-group">
-            <label for="email"><?php echo esc_html__( 'E-mail', 'ekiline' ); ?></label>
-            <input class="input form-control" name="email" type="text" id="email" value="" />
-        </p>
-        
-        <p class="form-group">
-            <input name="adduser" type="submit" id="addusersub" class="btn btn-default btn-block" value="<?php echo esc_html__( 'Request acces', 'ekiline' ); ?>" />
-            <?php wp_nonce_field( 'add-user', 'add-nonce' ) ?><!-- a little security to process on submission -->
-            <input name="action" type="hidden" id="action" value="adduser" />
-        </p>
-    </form>
-    <p class="text-center"><a class="btn btn-link" href="<?php echo home_url(); ?>">Ingresar al sitio</a></p>
-    
-<?php  $insertarRegistro = ob_get_clean(); // cierra
- 
-    return $insertarRegistro;       
-            
-    }
-    
-add_shortcode('registerform', 'ekiline_registerfrontend');
-
-// Finaliza 2) Shortcode que crea el formulario en el tema.
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
 
 // si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
 // https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
