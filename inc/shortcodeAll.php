@@ -8,6 +8,7 @@
  */
 
 // acordeon, este debe tener un titulo y la descricpion se insertara en un div
+// acordion or callapse single, needs a title
 
 function ekiline_collapse_single($atts, $content = null) {
     extract(shortcode_atts(array( 'title' => ''), $atts));
@@ -20,7 +21,8 @@ function ekiline_collapse_single($atts, $content = null) {
 add_shortcode('mod_collapse', 'ekiline_collapse_single');
 
 
-/* Extender el Shortcode [Embed]
+/* Extender el Shortcode [Embed] para añadir comportamineto responsivo a videos de youtube
+ * Extend shortcode [Embed] por youtube linked video
  * https://developer.wordpress.org/reference/classes/wp_embed/run_shortcode/
  * https://wordpress.stackexchange.com/questions/134228/how-to-overwrite-youtube-embed
  * https://wordpress.stackexchange.com/questions/13810/adding-a-filter-to-a-shortcode
@@ -40,6 +42,7 @@ add_filter('embed_oembed_html', 'ekiline_embed_override', 99, 4);
 
 
 /* Eliminar parrafos vacios en shortcodes.
+ * Clear all empty paragraphs in shortcodes.
  * http://mattpierce.info/2015/10/fixing-shortcodes-and-paragraph-tags-in-wordpress/
  * https://gist.github.com/maxxscho/2058547
  */

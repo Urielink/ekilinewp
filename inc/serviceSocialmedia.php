@@ -170,7 +170,7 @@ function ekiline_socialmenu($atts, $content = null) {
     if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
     if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
                     
-    return '<ul class="list-inline">'. $menuItems .'</ul>';
+    return '<ul class="list-inline no-margin">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
     

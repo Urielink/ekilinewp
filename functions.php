@@ -139,8 +139,8 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Inside top menu', 'ekiline' ),
         'id'            => 'navwidget-nw1',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
-        'after_widget'  => '</div></div>',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
+        'after_widget'  => '</div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',
     ) );     
@@ -149,8 +149,8 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Inside primary menu', 'ekiline' ),
         'id'            => 'navwidget-nw2',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
-        'after_widget'  => '</div></div>',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
+        'after_widget'  => '</div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',
     ) );     

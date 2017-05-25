@@ -2,85 +2,85 @@
 /**
  * Custom functions that act independently of the theme templates
  *
- * Importar un listado de entradas de alguna categoria, se genera un loop. 
+ * Ekiline: Importar un listado de entradas de alguna categoria, se genera un loop. 
+ * Ekiline: Insert a list of posts everywhere, it generates a loop
  * https://css-tricks.com/snippets/wordpress/run-loop-on-posts-of-specific-category/ 
  * http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
  * Especial atencion en el uso de ob_start();
  * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
  * https://developer.wordpress.org/reference/functions/query_posts/
+ * https://codex.wordpress.org/Shortcode_API
  *
  * @package ekiline
  */
 
  
 
-function ekiline_insertar($atts, $content = null) {
+function ekiline_addpostlist($atts, $content = null) {
     
-    extract(shortcode_atts(array('catid'=>'','limit'=>'', 'format'=>'default', 'sort'=>'DES'), $atts));
+    extract(shortcode_atts(array('catid'=>'','limit'=>'5', 'format'=>'default', 'sort'=>'DES'), $atts));
+    
+    // Por el formato es que cambia el tipo de contenido (default, block or carousel).
+    // Content type changes with format value
         
     ob_start(); // abre 
     
-            // 9may 2017: hay que declarar las variables invoca las cotegorias necesarias WP_Query()
+            //Declarar las variables invoca las cotegorias necesarias WP_Query()
             $query_string = '';
             $nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
             // obtiene la cuenta de los posts
+            // count posts
             $post_counter = 0; 
-            $count = '';                               
-            
-                
+            $count = '';   
                                 
-            if ( $nuevoLoop->have_posts() ) {
+            if ( $nuevoLoop->have_posts() ) {              
                     
-                if ($format == 'default'){              
+                if ($format == 'default'){         
                 
-                    echo '<div class="clearfix insert-'.$format.'">';   
+                    echo '<div class="clearfix modpostlist-'.$format.'">';   
                     
                         while ( $nuevoLoop->have_posts() ) {
                               $nuevoLoop->the_post(); 
-                                    // $post_counter++;  
-                                        // trae la parte del template para personalizar
-                                        get_template_part( 'template-parts/content', 'insert' );
-                                        // por cada 3 posts mete un hr
-                                    /** if ($post_counter == 1):{ echo '<hr>'; } 
-                                            // resetea el contador
-                                            $post_counter = 0; 
-                                        endif; **/
+                                    $post_counter++;  
+                                    
+                                        // trae la parte del template - get template part 
+                                        get_template_part( 'template-parts/content', get_post_format() );
+                                        
+                                        // por cada 3 posts agrega un elemento (Puedes prescindir de esto) -  Add an HR
+                                        if ($post_counter == 2):{ echo '<hr>'; } 
+                                                // resetea el contador
+                                                $post_counter = 0; 
+                                        endif; 
                                 }
                             
                     echo '</div>';
                 
-            } 
-                    
-            else if ($format == 'blocklist'){
-                            
-                    /* cambiar el modo de como se muestra el boton leer mas 
-                     * https://codex.wordpress.org/Customizing_the_Read_More */
-                                                                    
-                    echo '<div class="clearfix insert-'.$format.'">'; 
-                    
-                        while( $nuevoLoop->have_posts() ) : $nuevoLoop->the_post();                                 
+                } else if ($format == 'block'){
+                                                                                                    
+                        echo '<div class="clearfix modpostlist-'.$format.'">'; 
                         
-                            $count++;                               
+                            while( $nuevoLoop->have_posts() ) : $nuevoLoop->the_post();                                 
                             
-                            get_template_part( 'template-parts/content', 'blocklist' );
-                            
-                            // por cada 3 posts mete una división
-                            if ($count == 3) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
-                            
-                        endwhile;
-                            
-                    echo '</div>';
-                
-            }               
-                
-                else if ($format == 'carousel'){
+                                $count++;                               
+                                
+                                get_template_part( 'template-parts/content', 'block' );
+                                
+                                // por cada 3 posts agrega un divisor, necesario para mantener alineaciones
+                                if ($count == 3) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
+                                
+                            endwhile;
+                                
+                        echo '</div>';
                     
-                // Limpiar las comas de las categorias para ejecutar carrusel en caso de ser mas de una.    
+                } else if ($format == 'carousel'){
+                    
+                // Limpiar las comas de las categorias para asignar un ID general.    
+                // Clean ids commas to asign an id    
                     $catid = ekiline_cleanspchar($catid);                 
                 
-                    echo '<div id="carousel-module-00'.$catid.'" class="insert-'.$format.' carousel slide clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
+                    echo '<div id="carousel-module-00'.$catid.'" class="modpostlist-'.$format.' carousel slide carousel-fade clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
                 
-                // Indicadores  
+                // Indicadores  Bootstrap
                     echo '<ol class="carousel-indicators">';
                         while( $nuevoLoop->have_posts() ) : $nuevoLoop->the_post();
                             $count = $nuevoLoop->current_post + 0;
@@ -111,10 +111,10 @@ function ekiline_insertar($atts, $content = null) {
                             <span class="sr-only">Next</span>
                           </a>
                           </div>';                                      
-                    
                         
                 }
 
+                
             } //.if $nuevoLoop
                         
     
@@ -126,6 +126,6 @@ function ekiline_insertar($atts, $content = null) {
     return $insertarItem;       
 
 }
-add_shortcode('insertar', 'ekiline_insertar');
+add_shortcode('mod_postlist', 'ekiline_addpostlist');
 
  

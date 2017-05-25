@@ -18,16 +18,16 @@
         </div>
         
         <header class="page-header">
-                		
-		<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+                        
+        <?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
     
-    	</header><!-- .page-header -->
+        </header><!-- .page-header -->
     
-    	<div class="entry-content">
-    	    
-    	     <?php the_excerpt(); ?> 
-    	              
-    	</div><!-- .entry-content -->
+        <div class="entry-content">
+            
+             <?php the_excerpt(); ?> 
+                      
+        </div><!-- .entry-content -->
 
 </article><!-- #post-## -->
 

@@ -555,6 +555,11 @@ a img.aligncenter {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
 }
 
+.carousel-inner > .item {
+    min-height: 400px;
+}
+
+
 /* ------------------------------------------------
  * LAYOUT ekiline CSS, tus estilos van aqui.
  * ----------------------------------------------*/
@@ -593,15 +598,14 @@ a img.aligncenter {
 /* ------------------------------------------------
  * Elementos generados por SHORTCODES.
  * ----------------------------------------------*/
-
-.insert-default{}
-
-.insert-blocklist{}
-.insert-blocklist .cat-thumb{height:240px;overflow:hidden;}
-.insert-blocklist .cat-thumb a{}
-.insert-blocklist .cat-thumb a img{margin:0 auto;width:100%;}
-
-.insert-carousel{}
+/*[mod_postlist]*/
+.modpostlist-default{}
+.modpostlist-block{}
+.modpostlist-carousel .carousel-inner > .item .link-image {
+    height: 400px;
+    overflow: hidden;
+    display: block;
+}
 
 /* ------------------------------------------------
  * Elementos generados dentro de WIDGETS.
