@@ -730,3 +730,7 @@ msgstr "Visible"
 # @ ekiline
 msgid "Toggle"
 msgstr "Plegable"
+
+# @ ekiline
+msgid "Javascript is disabled"
+msgstr "No tienes habilitado javascript"

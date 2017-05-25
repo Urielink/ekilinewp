@@ -16,19 +16,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<meta name="description" content="<?php getDescription(); ?>" />
-<meta name="keywords" content="<?php getTags(); ?> " />
+<meta name="description" content="<?php ekiline_description(); ?>" />
+<meta name="keywords" content="<?php ekiline_keywords(); ?> " />
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>	
     
-<div id="page-load">
-    <small class="loadtext">
-        <noscript>No tienes habilitado javascript</noscript>
-        <img class="loadicon" src="<?php echo get_site_icon_url(); ?>" alt="<?php echo site_url() ?>" width="100" height="100"/>
-        <br/><?php echo __('Loading...','ekiline') ?>
-    </small>
-</div>
+    <div id="pageLoad">
+        <small class="loadtext">
+            <noscript><?php echo __('Javascript is disabled','ekiline') ?></noscript>
+            <img class="loadicon" src="<?php echo get_site_icon_url(); ?>" alt="<?php echo site_url() ?>" width="100" height="100"/>
+            <br/><?php echo __('Loading...','ekiline') ?>
+        </small>
+    </div>
 
 <?php topWidgets(); ?>  
 <?php topNavbar(); ?>  

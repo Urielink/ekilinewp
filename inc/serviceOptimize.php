@@ -69,7 +69,7 @@ add_action('pre_get_posts', 'tags_support_query');
 
 // SEO extraer las etiquetas como keywords
 
-function getTags() {        
+function ekiline_keywords() {        
     global $post;
     
     if( is_single() || is_page() || is_home() ) :
@@ -90,7 +90,7 @@ function getTags() {
 
 // Optimizacion metas
 
-function getDescription(){
+function ekiline_description(){
     // el dato que se mostrara
     if ( is_single() || is_page() ) {
         

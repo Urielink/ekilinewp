@@ -99,7 +99,7 @@ function ekiline_csscolors() {
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
         #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
-        #page-load {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}                
+        #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}                
         ';
         
     if ( $mgradient != '' ){

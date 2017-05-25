@@ -70,7 +70,7 @@
 			
 		// El preload
 	    setTimeout(function(){
-	        $('#page-load').fadeOut(500);
+	        $('#pageLoad').fadeOut(500);
 	    }, 600);			          
 			
 		

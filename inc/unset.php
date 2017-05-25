@@ -476,3 +476,15 @@ add_shortcode('mod_cover', 'ekiline_cover');
     }  
     add_filter( 'authenticate', 'verify_username_password', 1, 3);
     
+
+// PRUEBA: si se elige que los sidebars se oculten o muestren Agrega un boton al menu nav.
+// function add_sidebar_action( $items, $args ) {
+    // global $leftOn, $rightOn;    
+        // if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Left sidebar', 'ekiline' ).'</a></li>'; endif;
+        // if ($rightOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Right sidebar', 'ekiline' ).'</a></li>'; endif;    
+    // return $items;    
+// }
+// add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
+
+
+    
