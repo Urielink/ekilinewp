@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-05-25 09:04-0500\n"
+"PO-Revision-Date: 2017-05-25 17:34-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -742,3 +742,7 @@ msgstr "Urls relativas"
 # @ ekiline
 msgid "Recommended for sites developed in the local environment and need to be migrated"
 msgstr "Recomendado para sitios que se desarrollan en el ambiente local y requieren ser migrados"
+
+# @ ekiline
+msgid "Default Header Image"
+msgstr "Imagen por defecto del encabezado"
