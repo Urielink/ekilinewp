@@ -6,6 +6,32 @@
  *
  * @package ekiline
  */
+ 
+ /**
+ * Clean special characters for more ekiline addons or customs.
+ *
+ * @param filter $text .
+ * @return text without special characters.
+ */
+ 
+function limpiarCaracteres($text) {
+
+    setlocale(LC_ALL, 'en_US.UTF8');
+    $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+    $alias = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $text);
+    $alias = strtolower(trim($alias, '-'));
+    $alias = preg_replace("/[\/_|+ -]+/", "-", $alias);
+
+
+    while (substr($alias, -1, 1) == "-") {
+        $alias = substr($alias, 0, -1);
+    }
+    while (substr($alias, 0, 1) == "-") {
+        $alias = substr($alias, 1, 100);
+    }
+
+    return $alias;
+}
 
 /**
  * Adds custom classes to the array of body classes.
@@ -310,28 +336,4 @@ if( true === get_theme_mod('ekiline_mediacomment') ){
 }
 
 
-/**
- * Clean special characters for more ekiline addons or customs.
- *
- * @param filter $text .
- * @return text without special characters.
- */
- 
-function limpiarCaracteres($text) {
 
-    setlocale(LC_ALL, 'en_US.UTF8');
-    $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
-    $alias = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $text);
-    $alias = strtolower(trim($alias, '-'));
-    $alias = preg_replace("/[\/_|+ -]+/", "-", $alias);
-
-
-    while (substr($alias, -1, 1) == "-") {
-        $alias = substr($alias, 0, -1);
-    }
-    while (substr($alias, 0, 1) == "-") {
-        $alias = substr($alias, 1, 100);
-    }
-
-    return $alias;
-}

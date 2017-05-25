@@ -438,3 +438,41 @@ function ekiline_cover($atts, $content = null) {
     ';
 }
 add_shortcode('mod_cover', 'ekiline_cover');
+
+
+
+// Validaciones del formulario:
+    
+    function login_failed() {  
+        // $login_page  = home_url( '/acceso' );  
+        // wp_redirect( $login_page . '?login=failed' );  
+        // exit;  
+        if ( shortcode_exists( 'loginform' ) ) {
+            global $wp;
+            $current_url = home_url(add_query_arg(array(),$wp->request));       
+            $login_page  = $current_url;  
+            wp_redirect( $login_page . '?login=failed' );  
+            exit;  
+        }       
+        
+    }  
+    add_action( 'wp_login_failed', 'login_failed' );  
+      
+    function verify_username_password( $user, $username, $password ) {
+        // $login_page  = home_url( '/acceso' );  
+        // if( $username == "" || $password == "" ) {  
+            // wp_redirect( $login_page . "?login=empty" );  
+            // exit;  
+        // }  
+        if ( shortcode_exists( 'loginform' ) ) {
+            global $wp;          
+            $current_url = home_url(add_query_arg(array(),$wp->request));       
+            $login_page  = $current_url;  
+            if( $username == "" || $password == "" ) {  
+                wp_redirect( $login_page . "?login=empty" );  
+                exit;  
+            }  
+        }
+    }  
+    add_filter( 'authenticate', 'verify_username_password', 1, 3);
+    

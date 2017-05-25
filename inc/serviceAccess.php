@@ -92,40 +92,24 @@ function ekiline_loginfrontend() {
   	$insertarLogin = ob_get_clean(); // cierra
   	
   	if (!is_user_logged_in()){
-  	    
+  	          	    
         return $insertarLogin;      
         
   	} else {
   	    // https://codex.wordpress.org/wp_get_current_user
         $current_user = wp_get_current_user();
     	
-    	return 'Hola ' . $current_user->user_login . "\n" . '¿Deseas <a href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).'</a>?';
+    	return '<div class="well">
+            	   <h4>'. esc_html__( 'Hi ', 'ekiline' ) . $current_user->user_login .'</h4>
+                   <p>'. esc_html__( 'Thank you for visit this website.', 'ekiline' ) .'</p>
+      	           <a class="btn btn-danger" href="'. wp_logout_url(home_url()) .'">'. esc_html__( 'Exit', 'ekiline' ) .'</a>
+	           </div>';
     	  
     }
- 
     		
 }
 		
 add_shortcode('loginform', 'ekiline_loginfrontend');
-
-// Validaciones del formulario:
-	
-	// function login_failed() {  
-	    // $login_page  = home_url( '/acceso' );  
-	    // wp_redirect( $login_page . '?login=failed' );  
-	    // exit;  
-	// }  
-	// add_action( 'wp_login_failed', 'login_failed' );  
-// 	  
-	// function verify_username_password( $user, $username, $password ) {  
-	    // $login_page  = home_url( '/acceso' );  
-	    // if( $username == "" || $password == "" ) {  
-	        // wp_redirect( $login_page . "?login=empty" );  
-	        // exit;  
-	    // }  
-	// }  
-	// add_filter( 'authenticate', 'verify_username_password', 1, 3);
-	
 
 // si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
 // https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
