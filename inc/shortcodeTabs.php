@@ -34,7 +34,7 @@ function tabs_shortcode( $atts, $content = null ) {
                 			preg_match('/\[tabcontent ([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)/',$c,$matchattr);
                 			$attr = shortcode_parse_atts($matchattr[1]);
                 			//Filtramos los caracteres y añadimos un contador.
-                			$unique_id = limpiarCaracteres($attr['title']).'-'.$i;
+                			$unique_id = ekiline_cleanspchar($attr['title']).'-'.$i;
                 			$return .= '<li '.(($i==0) ? 'class="active"' : '').'><a href="#'.$unique_id.'" data-toggle="tab">'.$attr['title'].'</a></li>';
                 			$content[$i] = str_replace('[tabcontent ','[tabcontent '.(($i==0) ? 'class="active"' : '').' id="'.$unique_id.'" ',$content[$i]);
                 		}

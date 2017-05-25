@@ -76,7 +76,7 @@ function ekiline_insertar($atts, $content = null) {
                 else if ($format == 'carousel'){
                     
                 // Limpiar las comas de las categorias para ejecutar carrusel en caso de ser mas de una.    
-                    $catid = limpiarCaracteres($catid);                 
+                    $catid = ekiline_cleanspchar($catid);                 
                 
                     echo '<div id="carousel-module-00'.$catid.'" class="insert-'.$format.' carousel slide clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
                 

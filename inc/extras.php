@@ -14,7 +14,7 @@
  * @return text without special characters.
  */
  
-function limpiarCaracteres($text) {
+function ekiline_cleanspchar($text) {
 
     setlocale(LC_ALL, 'en_US.UTF8');
     $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
@@ -57,7 +57,7 @@ function ekiline_body_classes( $classes ) {
 		$classes[] = $post->post_type . '-' . $post->post_name;
 	}
 	
-	// Theming: Ekiline services, Wireframe mode active, show bootstrp divs
+	// Theming: Ekiline services, Wireframe mode active, show bootstrap divs
 	if( true === get_theme_mod('ekiline_wireframe') ){
         $classes[] = 'wf-ekiline';
 	}
@@ -68,7 +68,7 @@ add_filter( 'body_class', 'ekiline_body_classes' );
 
 
 /**
- * Customizer: Add theme colours (customizer.php #36).
+ * Customizer: Add theme colors (customizer.php #36).
  *
  * @param array $classes Classes for the body element.
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
