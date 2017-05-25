@@ -85,7 +85,7 @@ function ekiline_loginfrontend() {
 				
 				return $form;
 				
-		echo '<p class="text-center"><a class="btn btn-link" href="'.home_url('/registro').'">Registrarse</a></p>';
+		echo '<p class="text-center"><a class="btn btn-link" href="'.home_url('/wp-login.php?action=register').'">Registrarse</a></p>';
 				    		
 		    			
 

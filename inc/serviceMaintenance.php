@@ -27,7 +27,7 @@ function maintenace_mode() {
 		<link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_template_directory_uri() . '/css/ekiline-layout.css'; ?>" rel="stylesheet" type="text/css">	
 		<link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">	
-		<?php cssColors(); ?>
+		<?php ekiline_csscolors(); ?>
 	</head>	
 	<body class="page-maintenance">	
 

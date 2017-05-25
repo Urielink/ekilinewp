@@ -60,7 +60,7 @@ function mainContainer() {
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
  */
  
-function cssColors() {
+function ekiline_csscolors() {
         
 // Color values at theme install.       
     $texto = get_option('text_color');
@@ -114,7 +114,7 @@ function cssColors() {
     echo $miestilo;
 
 }
-add_action('wp_head','cssColors');
+add_action('wp_head','ekiline_csscolors');
 
 
 

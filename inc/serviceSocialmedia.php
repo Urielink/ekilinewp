@@ -18,13 +18,21 @@ function registerSocial() {
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
+    // jugar con urls https://wordpress.stackexchange.com/questions/29512/permalink-for-category-pages-and-posts
+    $currentUrl = '';
     
 // arreglos para extraer la información
     $metaTitle = '';
     $metaDescription = '';
     $metaImages = get_site_icon_url();
     $metaType = 'website';
-    $currentUrl = home_url(add_query_arg(array(),$wp->request));
+        if (is_page() || is_single()){
+            $currentUrl = get_permalink();
+        } elseif ( is_archive() ){
+            $currentUrl = get_queried_object(); 
+            $currentUrl = get_term_link( $currentUrl, $currentUrl->taxonomy ); 
+            //$currentUrl = home_url( add_query_arg(array(),$wp->request) );
+        }
     $blogInfo = '';
 
     if ( is_front_page() || is_home() ){

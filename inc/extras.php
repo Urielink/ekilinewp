@@ -7,11 +7,8 @@
  * @package ekiline
  */
  
- /**
+/**
  * Clean special characters for more ekiline addons or customs.
- *
- * @param filter $text .
- * @return text without special characters.
  */
  
 function ekiline_cleanspchar($text) {
@@ -21,7 +18,6 @@ function ekiline_cleanspchar($text) {
     $alias = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $text);
     $alias = strtolower(trim($alias, '-'));
     $alias = preg_replace("/[\/_|+ -]+/", "-", $alias);
-
 
     while (substr($alias, -1, 1) == "-") {
         $alias = substr($alias, 0, -1);
@@ -34,13 +30,10 @@ function ekiline_cleanspchar($text) {
 }
 
 /**
- * Adds custom classes to the array of body classes.
- *
- * @param array $classes Classes for the body element.
- * @return array
+ * Add custom css class to the array of body classes.
  */
  
-function ekiline_body_classes( $classes ) {
+function ekiline_body_css( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -64,17 +57,15 @@ function ekiline_body_classes( $classes ) {
 		
 	return $classes;
 }
-add_filter( 'body_class', 'ekiline_body_classes' );
+add_filter( 'body_class', 'ekiline_body_css' );
 
 
 /**
  * Customizer: Add theme colors (customizer.php #36).
- *
- * @param array $classes Classes for the body element.
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
+ * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
  */
  
-function cssColors() {
+function ekiline_csscolors() {
         
 // Color values at theme install.       
     $bgcolor = '#'.get_background_color();
@@ -108,8 +99,7 @@ function cssColors() {
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
         #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
-        #page-load {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}
-                
+        #page-load {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}                
         ';
         
     if ( $mgradient != '' ){
@@ -138,15 +128,15 @@ function cssColors() {
     echo '<style id="ekiline-inline" type="text/css" media="all">'.$miestilo.'</style>';
 
 }
-add_action('wp_head','cssColors');
+add_action('wp_head','ekiline_csscolors');
 
 
 /**
  * Customizer: Set CSS class width on #page
  **/
 
-
-function wideSite() {
+function ekiline_pagewidth() {
+    
     if ( is_front_page() || is_home() ){
         echo get_theme_mod( 'ekiline_anchoHome', 'container' );
     }
@@ -163,7 +153,7 @@ function wideSite() {
  * Theming: Override search form HTML
  **/
  
-function my_search_form( $form ) {
+function ekiline_search_form( $form ) {
     
     $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
                 <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
@@ -176,26 +166,26 @@ function my_search_form( $form ) {
     return $form;
 }
 
-add_filter( 'get_search_form', 'my_search_form' );
+add_filter( 'get_search_form', 'ekiline_search_form' );
 
 
 /**
  * Theming: Excerpt override
- * @link https://codex.wordpress.org/Function_Reference/the_excerpt
+ * https://codex.wordpress.org/Function_Reference/the_excerpt
  *
  **/
 
 // Excerpt lenght 
-function custom_excerpt_length( $length ) {
+function ekiline_excerpt_length( $length ) {
     return 20;
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
 // Excerpt Button 
-function customExcerptBtn( $more ) {
+function ekiline_excerpt_button( $more ) {
     return '<p><a class="read-more btn btn-default" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
-add_filter( 'excerpt_more', 'customExcerptBtn' );
+add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 
 /** 
  * Theming: Excerpt override and Remove [shortcode] items in excerpt: 
@@ -309,6 +299,7 @@ function ekiline_posts_navigation( $args = array() ) {
  **/
 
 if ( ! function_exists ( 'topWidgets' ) ) {
+    
 	function topWidgets(){
 		if ( is_active_sidebar( 'toppage-w1' ) ) {
 		    return '<div class="row top-widgets">'.dynamic_sidebar( 'toppage-w1' ).'</div>';
@@ -319,8 +310,6 @@ if ( ! function_exists ( 'topWidgets' ) ) {
 /**
  * Customizer: Disable all media comments (customizer.php#371).
  **/
-
-/* Funcion para eliminar los comentarios que aparecen en los adjuntos (media)*/
  
 if( true === get_theme_mod('ekiline_mediacomment') ){
          

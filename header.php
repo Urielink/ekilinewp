@@ -30,13 +30,13 @@
     </small>
 </div>
 
-<?php topWidgets(); // en caso de widgets en la parte superior  ?>  
-<?php topNavbar(); // en caso de un menu superior ?>  
-<?php customHeader(); // header personalizado ?>
+<?php topWidgets(); ?>  
+<?php topNavbar(); ?>  
+<?php customHeader(); ?>
 
-<div id="page" class="site <?php wideSite(); ?>">
+<div id="page" class="site <?php ekiline_pagewidth(); ?>">
     
-<?php primaryNavbar(); // menu principal ?>     
+<?php primaryNavbar(); ?>     
 
 	<div id="content" class="site-content">
 	    

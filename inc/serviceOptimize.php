@@ -7,7 +7,7 @@
  * @package ekiline
  */
 
-/* Usar urls relativas */
+/* Usar urls relativas al desplegar ciertos contenidos */
 
 function rw_relative_urls() {
     if ( is_feed() || get_query_var( 'sitemap' ) )
@@ -35,6 +35,19 @@ function rw_relative_urls() {
 }
 
 add_action( 'template_redirect', 'rw_relative_urls' );
+
+/** 
+ * Usar urls para trabajar en el sitio:
+ * https://www.webhostinghero.com/how-to-insert-relative-image-urls-in-wordpress/
+ */
+
+function switch_to_relative_url($html, $id, $caption, $title, $align, $url, $size, $alt) {
+    $imageurl = wp_get_attachment_image_src($id, $size);
+    $relativeurl = wp_make_link_relative($imageurl[0]);   
+    $html = str_replace($imageurl[0],$relativeurl,$html);      
+    return $html;
+}
+add_filter('image_send_to_editor','switch_to_relative_url',10,8);
 
  
 // SEO en caso de necesitar etiquetas en las paginas:
