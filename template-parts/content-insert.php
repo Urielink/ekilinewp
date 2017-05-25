@@ -5,13 +5,15 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package ekiline
+ *
+ * En caso de tener imagen destacada o thumbanil dividir el contenido
+ * If post have a thumbnail divide content
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
-            
-	<?php // en caso de tener imagen destacada: Agrega este div, y la clase en el div de la entrada. ?>
+            	
 	<?php if ( has_post_thumbnail() ) { $thumbCss = 'class="col-md-9"'; ?>
 	    <div class="cat-thumb col-xs-3">
 	    	<?php the_post_thumbnail( 'large', array( 'class' => 'img-responsive img-thumbnail' ));?>

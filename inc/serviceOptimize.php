@@ -7,52 +7,12 @@
  * @package ekiline
  */
 
-/* Usar urls relativas al desplegar ciertos contenidos */
-
-function rw_relative_urls() {
-    if ( is_feed() || get_query_var( 'sitemap' ) )
-        return;
-
-    $filters = array(
-        'post_link',
-        'post_type_link',
-        'page_link',
-        'attachment_link',
-        'get_shortlink',
-        'post_type_archive_link',
-        'get_pagenum_link',
-        'get_comments_pagenum_link',
-        'term_link',
-        'search_link',
-        'day_link',
-        'month_link',
-        'year_link',
-    );
-    foreach ( $filters as $filter )
-    {
-        add_filter( $filter, 'wp_make_link_relative' );
-    }
-}
-
-add_action( 'template_redirect', 'rw_relative_urls' );
-
-/** 
- * Usar urls para trabajar en el sitio:
- * https://www.webhostinghero.com/how-to-insert-relative-image-urls-in-wordpress/
+/**
+ * Utilizar keywords en caso de necesitar etiquetas en las paginas:
+ * https://www.sitepoint.com/wordpress-pages-use-tags/
  */
 
-function switch_to_relative_url($html, $id, $caption, $title, $align, $url, $size, $alt) {
-    $imageurl = wp_get_attachment_image_src($id, $size);
-    $relativeurl = wp_make_link_relative($imageurl[0]);   
-    $html = str_replace($imageurl[0],$relativeurl,$html);      
-    return $html;
-}
-add_filter('image_send_to_editor','switch_to_relative_url',10,8);
-
- 
-// SEO en caso de necesitar etiquetas en las paginas:
-// https://www.sitepoint.com/wordpress-pages-use-tags/
-
+// Permitir el uso de etiquetas en pages
 // add tag support to pages
 function tags_support_all() {
     register_taxonomy_for_object_type('post_tag', 'page');
@@ -60,6 +20,7 @@ function tags_support_all() {
 add_action('init', 'tags_support_all');
 
 
+// Incluir todas
 // ensure all tags are included in queries
 function tags_support_query($wp_query) {
     if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
@@ -67,7 +28,7 @@ function tags_support_query($wp_query) {
 add_action('pre_get_posts', 'tags_support_query');
 
 
-// SEO extraer las etiquetas como keywords
+// Extraer las etiquetas como keywords
 
 function ekiline_keywords() {        
     global $post;
@@ -88,10 +49,11 @@ function ekiline_keywords() {
 }
 
 
-// Optimizacion metas
+// Optimización de la meta descripción con custom field
+// Meta description , allow custom term by wp customfield
 
 function ekiline_description(){
-    // el dato que se mostrara
+
     if ( is_single() || is_page() ) {
         
     global $wp_query;
@@ -101,6 +63,7 @@ function ekiline_description(){
             
        if ( ! empty( $stdDesc ) ){
            // Si utilizan nuestro custom field
+           // here is our custom field
            echo $stdDesc;
        } else {
            echo strip_tags( get_the_excerpt() ); 
@@ -121,10 +84,8 @@ function ekiline_description(){
 /**
  * Optimizar los scripts con async, esta funcion solo requiere el manejador
  * y se sobreescribira el link con el atributo dado. Por algun extraña razon no permite 
- * el agregar el atribto con el codigo de wordpress, como el caso de los scripts de IE.
- * //'ie10-vpbugwkrnd',
- * //'html5shiv',
- * //'respond',
+ * el agregar el atributo con el codigo de wordpress, como el caso de los scripts de IE.
+ * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
  **/
 
 function wsds_defer_scripts( $tag, $handle, $src ) {
@@ -169,9 +130,9 @@ add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
 /**
- * OPTIMIZACIoN: 
- *  Include para google analytics
- * @link https://developers.google.com/analytics/devguides/collection/gajs/
+ * OPTIMIZACIoN: Registrar google analytics (customizer.php)
+ * Add google analyitcs script
+ * https://developers.google.com/analytics/devguides/collection/gajs/
  * https://digwp.com/2012/06/add-google-analytics-wordpress/
 **/
 
@@ -192,14 +153,14 @@ function google_analytics_tracking_code(){
     }
 }
 // Usar 'wp_head' 'wp_footer' para situar el script 
+// If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
     
 
 
 /**
- * OPTIMIZACIoN: 
- *  Include para registrar páginas
- * @link https://wordpress.stackexchange.com/questions/237100/how-to-add-meta-tag-to-wordpress-posts-filter
+ * OPTIMIZACIoN: Registrar páginas (customizer.php)
+ * https://wordpress.stackexchange.com/questions/237100/how-to-add-meta-tag-to-wordpress-posts-filter
 **/
 
 function registerSite() {

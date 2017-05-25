@@ -85,7 +85,8 @@ if ( post_password_required() ) {
 
 <?php 
 
-/* personalizar el formulario: 
+/* Personalizar el formulario, con verificador de campos y alertas (theme.js)
+ * Custom form, add js verification and alerts with bootstrap modals (theme.js)
  * https://developer.wordpress.org/reference/functions/comment_form/
  * https://premium.wpmudev.org/blog/customizing-wordpress-comment-form/?npp=b&utm_expid=3606929-84.YoGL0StOSa-tkbGo-lVlvw.1&utm_referrer=https%3A%2F%2Fwww.google.com.mx%2F
  * Algunas caracteristicas se pueden eliminar desde las funciones:
@@ -116,7 +117,6 @@ $args = array(
       '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
       '" size="30"' . $aria_req . ' /></div>',
       
-	// se comenta para que no aparezca
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
       __( 'Website','ekiline' ) . '</label>' .

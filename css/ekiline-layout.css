@@ -233,10 +233,10 @@ html,body{height:100%;}
  */
 .cover-header{position:absolute;top:0;width:inherit;}
 .cover-header-brand{float:left;width:200px;height:auto;background:#FFFFFF;margin-top:-30px;}
-.cover-header-nav > li{float:right;margin-left:20px;}
-.cover-header-nav > li + li{margin-left:20px;}
-.cover-header-nav > li > a{padding-right:0;padding-left:0;font-size:20px;font-weight:bold;border-bottom:2px solid transparent;}
-.cover-header-nav > li > a:hover,.cover-header-nav > li > a:focus{border-bottom-color:#fff;background-color:transparent !important;}
+.cover-header-nav > ul li{float:right;margin-left:20px;}
+.cover-header-nav > ul li + li{margin-left:20px;}
+.cover-header-nav > ul li > a{padding-right:0;padding-left:0;font-size:20px;font-weight:bold;border-bottom:2px solid transparent;}
+.cover-header-nav > ul li > a:hover,.cover-header-nav > li > a:focus{border-bottom-color:#fff;background-color:transparent !important;}
 
 /* cover body */
 .cover{padding:0 50px;}

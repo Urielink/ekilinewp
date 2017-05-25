@@ -118,7 +118,7 @@ add_action('wp_head','ekiline_csscolors');
 
 
 
-/** para llamar las imagenes destacadas
+/** para llamar las imagenes destacadas **/
 function destacadoUrl() {
     if ( is_single() ){    
         if ( has_post_thumbnail() ) {
@@ -126,7 +126,7 @@ function destacadoUrl() {
             echo $url;        
         }    
     }
-}**/
+}
 
 function destacadoImage() {
     if ( has_post_thumbnail() ) {  
@@ -142,7 +142,7 @@ function destacadoImage() {
 }
 
 // widgets dinamicos: Ejemplo en caso de tener varios en un espacio
-/**
+
 function footerWidgets() {
         
     if ( is_active_sidebar( 'footer-w1' ) || is_active_sidebar( 'footer-w2' ) || is_active_sidebar( 'footer-w3' ) ) {
@@ -150,7 +150,7 @@ function footerWidgets() {
     }
 
 }
-**/
+
 
 
 // Formatear la fecha
@@ -281,7 +281,7 @@ foreach ( $filters as $filter ) {
  *  https://codex.wordpress.org/Function_Reference/wp_localize_script
  *  https://pippinsplugins.com/use-wp_localize_script-it-is-awesome/    
  *  requiere de: optimizar.js
-
+**/
 
 function optimizar_carga() {
     
@@ -298,7 +298,7 @@ function optimizar_carga() {
     );
 }
 add_action('wp_enqueue_scripts', 'optimizar_carga', 10);
-**/
+
 
 
 /**
@@ -351,7 +351,7 @@ add_shortcode('iframe', 'ekiline_iframe');
 
 
 //Hacer un include con un shortcode.
-/**
+
 function ekiline_include($atts, $content = null) {
     
     extract( shortcode_atts( array( 'archivo' => '' ), $atts) );
@@ -369,7 +369,7 @@ function ekiline_include($atts, $content = null) {
     }
     
 add_shortcode('include', 'ekiline_include');
-**/
+
 
 
 //columna por default mide 1 columna
@@ -399,7 +399,7 @@ add_shortcode('contenedor', 'ekiline_contenedor');
 
 /* agregar Feeds RSS con un shortcode
  * [rss feed="url" num="5"]
- *
+ */
  
 //This file is needed to be able to use the wp_rss() function.
 
@@ -415,7 +415,6 @@ function readRss($atts) {
 }
 
 add_shortcode('rss', 'readRss'); 
-**/
 
 
 // Cover, este debe tener un titulo, como el contenido puede variar este se debe estar en un div a parte.
@@ -478,13 +477,136 @@ add_shortcode('mod_cover', 'ekiline_cover');
     
 
 // PRUEBA: si se elige que los sidebars se oculten o muestren Agrega un boton al menu nav.
-// function add_sidebar_action( $items, $args ) {
-    // global $leftOn, $rightOn;    
-        // if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Left sidebar', 'ekiline' ).'</a></li>'; endif;
-        // if ($rightOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Right sidebar', 'ekiline' ).'</a></li>'; endif;    
-    // return $items;    
-// }
-// add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
+function add_sidebar_action( $items, $args ) {
+    global $leftOn, $rightOn;    
+        if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Left sidebar', 'ekiline' ).'</a></li>'; endif;
+        if ($rightOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Right sidebar', 'ekiline' ).'</a></li>'; endif;    
+    return $items;    
+}
+add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
+
+/**
+ * Registers an editor stylesheet for the current theme.
+ */
+function wpdocs_theme_add_editor_styles() {
+    $font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
+    add_editor_style( $font_url );
+}
+add_action( 'after_setup_theme', 'wpdocs_theme_add_editor_styles' ); 
+
+    // descartar la pagina de ingreso de las busquedas
+// http://wordpress.stackexchange.com/questions/142811/exclude-pages-from-wordpress-search-result-page
+
+function exclude_pages_search_when_logged_in($query) {
+    if ( $query->is_search && is_user_logged_in() )
+        $query->set( 'post__not_in', array( 49 ) ); 
+    return $query;
+}
+add_filter( 'pre_get_posts', 'exclude_pages_search_when_logged_in' );
 
 
+
+/***** URLS relativas es un desmadre *****/
+
+    $wp_customize->add_setting(
+            'ekiline_relativeurl', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
     
+    $wp_customize->add_control(
+            'ekiline_relativeurl', array(
+                    'label'          => __( 'Relative urls', 'ekiline' ),
+                    'description'    => __( 'Recommended for sites developed in the local environment and need to be migrated', 'ekiline' ),
+                    'section'        => 'ekiline_services',
+                    'settings'       => 'ekiline_relativeurl',
+                    'type'           => 'checkbox',
+            )
+    );     
+
+// if( true === get_theme_mod('ekiline_relativeurl') ){ echo 'relativas' ;}
+
+
+    /** 
+     * Usar urls relativas en imagenes para trabajar en el sitio:
+     * https://www.webhostinghero.com/how-to-insert-relative-image-urls-in-wordpress/
+     */
+    // para imagenes
+    function switch_to_relative_url($html, $id, $caption, $title, $align, $url, $size, $alt) {
+        $imageurl = wp_get_attachment_image_src($id, $size);
+        $relativeurl = wp_make_link_relative($imageurl[0]);   
+        $html = str_replace($imageurl[0],$relativeurl,$html);      
+        return $html;
+    }
+    add_filter('image_send_to_editor','switch_to_relative_url',10,8);
+    
+    
+    // para posts (no pages)
+    function internal_link_to_relative(  $url, $post, $leavename ) {
+    
+        if ( $post->post_type == 'post' ) {
+            $url = wp_make_link_relative($url);
+        }                        
+        return $url;
+    }
+    add_filter( 'post_link', 'internal_link_to_relative', 10, 3 );              
+    
+    // para acortar la información en el HTML
+    function rw_relative_urls() {
+        if ( is_feed() || get_query_var( 'sitemap' ) )
+            return;
+    
+        $filters = array(
+            'post_link',
+            'post_type_link',
+            'page_link',
+            'attachment_link',
+            'get_shortlink',
+            'post_type_archive_link',
+            'get_pagenum_link',
+            'get_comments_pagenum_link',
+            'term_link',
+            'search_link',
+            'day_link',
+            'month_link',
+            'year_link',
+        );
+        foreach ( $filters as $filter )
+        {
+            add_filter( $filter, 'wp_make_link_relative' );
+        }
+    }
+    add_action( 'template_redirect', 'rw_relative_urls' );
+
+ 
+
+function menuSocial(){
+    
+    $fbSocial = get_theme_mod('ekiline_fbProf','');
+    $twSocial = get_theme_mod('ekiline_twProf','');
+    $gpSocial = get_theme_mod('ekiline_gpProf','');
+    $inSocial = get_theme_mod('ekiline_inProf','');
+    $menuItems = '';
+        
+    if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
+                
+    echo $menuItems;
+
+    // $redes = array( 
+                // $fbSocial => array('link' => $fbSocial, 'title' => 'Facebook', 'class' => 'fa fa-facebook') , 
+                // $twSocial => array('link' => $twSocial, 'title' => 'Twitter', 'class' => 'fa fa-twitter') , 
+                // $gpSocial => array('link' => $gpSocial, 'title' => 'Google Plus', 'class' => 'fa fa-google') , 
+                // $inSocial => array('link' => $inSocial, 'title' => 'Linkedin', 'class' => 'fa fa-linkedin') 
+                // );
+        // foreach ($redes as $red) {
+            // if ( $red['link'] ){
+                // $menuItems .= '<li><a href="'.$red['link'].'" target="_blank" title="'.$red['title'].'"><i class="'.$red['class'].'"></i></a></li>';
+            // }
+        // }       
+                
+}
+ 

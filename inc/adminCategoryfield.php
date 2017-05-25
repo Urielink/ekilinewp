@@ -8,17 +8,20 @@
  */
 
 /**
- * Extend Category 
+ * Extender campos en categorías y agregar imagen
+ * Extend Category to grab an image
  *
  * Adds add extra fields to category
  * https://en.bainternet.info/wordpress-category-extra-fields/
  */
 
+//declarar accion para el campo extra
 //add extra fields to category edit form hook
 add_action ( 'edit_category_form_fields', 'extra_category_fields');
 
-//add extra fields to category edit form callback function
-function extra_category_fields( $tag ) {    //check for existing featured ID
+function extra_category_fields( $tag ) {
+    // revisar la existencia del ID
+    // check for existing featured ID
     $t_id = $tag->term_id;
     $cat_meta = get_option( "category_$t_id");
 ?>
@@ -34,9 +37,10 @@ function extra_category_fields( $tag ) {    //check for existing featured ID
 <?php
 }
 
+// guardar el dato de nuestro campo
 // save extra category extra fields hook
 add_action ( 'edited_category', 'save_extra_category_fileds');
-   // save extra category extra fields callback function
+
 function save_extra_category_fileds( $term_id ) {
     if ( isset( $_POST['Cat_meta'] ) ) {
         $t_id = $term_id;
@@ -47,7 +51,7 @@ function save_extra_category_fileds( $term_id ) {
                 $cat_meta[$key] = $_POST['Cat_meta'][$key];
             }
         }
-        //save the option array
+
         update_option( "category_$t_id", $cat_meta );
     }
 }

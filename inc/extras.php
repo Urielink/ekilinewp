@@ -8,6 +8,7 @@
  */
  
 /**
+ * Limpiar los caracteres especiales para otras funciones del tema
  * Clean special characters for more ekiline addons or customs.
  */
  
@@ -30,6 +31,7 @@ function ekiline_cleanspchar($text) {
 }
 
 /**
+ * Agregar otras clases css al body para conocer el tipo de contenido.
  * Add custom css class to the array of body classes.
  */
  
@@ -61,13 +63,13 @@ add_filter( 'body_class', 'ekiline_body_css' );
 
 
 /**
- * Customizer: Add theme colors (customizer.php #36).
+ * Customizer: Add theme colors (customizer.php).
  * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
  */
  
 function ekiline_csscolors() {
         
-// Color values at theme install.       
+// Variables de color        
     $bgcolor = '#'.get_background_color();
     $texto = get_option('text_color');
     $enlaces = get_option('links_color');
@@ -77,14 +79,14 @@ function ekiline_csscolors() {
     $footer = get_option('footer_color');
     $inverse = get_theme_mod('ekiline_inversemenu');
     
-    // If values are not set by user, set this.
+    // Si no existen colores, añadir estos
     if ( !$texto ) : $texto = '#333333'; endif;
     if ( !$enlaces ) : $enlaces = '#337ab7'; endif;
     if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
     
-    // Inline CSS defined for theme.
+    // Estilos en linea
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$modulos.'; }
@@ -132,7 +134,9 @@ add_action('wp_head','ekiline_csscolors');
 
 
 /**
- * Customizer: Set CSS class width on #page
+ * Customizer: 
+ * Establecer el ancho en cada pagina
+ * Set CSS class width on #page
  **/
 
 function ekiline_pagewidth() {
@@ -150,7 +154,9 @@ function ekiline_pagewidth() {
 }
 
 /**
- * Theming: Override search form HTML
+ * Theming: 
+ * Personalizar el formulario de busqueda
+ * Override search form HTML
  **/
  
 function ekiline_search_form( $form ) {
@@ -170,7 +176,9 @@ add_filter( 'get_search_form', 'ekiline_search_form' );
 
 
 /**
- * Theming: Excerpt override
+ * Theming: 
+ * Modificar el extracto
+ * Excerpt override
  * https://codex.wordpress.org/Function_Reference/the_excerpt
  *
  **/
@@ -188,10 +196,12 @@ function ekiline_excerpt_button( $more ) {
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 
 /** 
- * Theming: Excerpt override and Remove [shortcode] items in excerpt: 
- *	https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
- *	http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
- *	**https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
+ * Theming: 
+ * Remover los shortcodes existentes en el extracto
+ * Excerpt override and Remove [shortcode] items in excerpt: 
+ * https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
+ * http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
+ * **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
  **/
 
 function wp_trim_excerpt_do_shortcode($text) {
@@ -221,7 +231,9 @@ remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
 
 /**
- * Theming: Next and prevoius links for pages
+ * Theming: 
+ * Paginacion para pages aplica solo en internas
+ * Next and prevoius links for pages
  * @link https://codex.wordpress.org/Next_and_Previous_Links
  *
  **/
@@ -252,12 +264,15 @@ function ekiline_pages_navigation(){
     
     $thePages = '<ul class="pager">'.$thePages.'</ul>';
     
-    echo $thePages;
-    
+    if (!is_front_page()){
+        echo $thePages;
+    }
 } 
 
 /**
- * Theming: Next and prevoius links for posts in archive or category
+ * Theming: 
+ * Paginacion para entradas o singles
+ * Next and prevoius links for posts in archive or category
  * @link https://codex.wordpress.org/Next_and_Previous_Links
  * @link https://digwp.com/2016/10/wordpress-post-navigation-redux/
  *

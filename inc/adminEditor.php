@@ -10,19 +10,11 @@
 
 /**
  * Añadir estilos css al editor de wordpress (no requiere una función):
+ * Add styles to wordpress admin editor
  */
 
-// add_editor_style('editor-style.css'); 
 add_editor_style('editor-style.css'); 
 
-/**
- * Registers an editor stylesheet for the current theme.
- */
-// function wpdocs_theme_add_editor_styles() {
-    // $font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
-    // add_editor_style( $font_url );
-// }
-// add_action( 'after_setup_theme', 'wpdocs_theme_add_editor_styles' ); 
 
 /**
  * Añadir los tipos de estilo que se requieren para trabajar con bootstrap:
@@ -30,6 +22,7 @@ add_editor_style('editor-style.css');
  */
  
 //Registro mi menu de estilos 
+//Register Ekiline styles 
 
 function ekiline_bootstrap_styles($buttons) {
     array_unshift($buttons, 'styleselect');
@@ -39,20 +32,22 @@ add_filter('mce_buttons_2', 'ekiline_bootstrap_styles');
 
 /*
 * Genero mi callback
+* Add my callback
 */
 
 function ekiline_mce_before( $init_array ) {  
 
-// Define the style_formats array
-/*
-* Each array child is a format with it's own settings
-* Notice that each array has title, block, classes, and wrapper arguments
-* Title is the label which will be visible in Formats menu
-* Block defines whether it is a span, div, selector, or inline style
-* Classes allows you to define CSS classes
-* Wrapper whether or not to add a new block-level element around any selected elements
-* Auxiliar: https://github.com/bostondv/bootstrap-tinymce-styles/blob/master/bootstrap-tinymce-styles.php
-*/
+/**
+ * La definición de estilos se agrega con arreglos, cada arreglo equivale a un objeto y este puede anidarse
+ * Define the style_formats array
+ * Each array child is a format with it's own settings
+ * Notice that each array has title, block, classes, and wrapper arguments
+ * Title is the label which will be visible in Formats menu
+ * Block defines whether it is a span, div, selector, or inline style
+ * Classes allows you to define CSS classes
+ * Wrapper whether or not to add a new block-level element around any selected elements
+ * Auxiliar: https://github.com/bostondv/bootstrap-tinymce-styles/blob/master/bootstrap-tinymce-styles.php
+ */
 
     $style_formats = array(      
     
@@ -443,6 +438,7 @@ function ekiline_mce_before( $init_array ) {
     
     );  
     
+    // Insertar los arreglos
     // Insert the array, JSON ENCODED, into 'style_formats'
     
     $init_array['style_formats'] = json_encode( $style_formats );  
@@ -450,6 +446,7 @@ function ekiline_mce_before( $init_array ) {
     return $init_array;  
   
 } 
+// Se agrega el filtro para sobreescribir las ordenes en el editor TinyMCE
 // Attach callback to 'tiny_mce_before_init' 
 add_filter( 'tiny_mce_before_init', 'ekiline_mce_before' ); 
 

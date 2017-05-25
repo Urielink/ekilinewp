@@ -1,12 +1,11 @@
 <?php
 /**
- * Poner el sitio en modo de mantenimineto, ejercicio original:
+ * Poner el sitio en modo de mantenimineto, ejercicio original
+ * Put site on maintenance mode, original resource:
  * https://www.nosegraze.com/maintenance-screen-wordpress/
  * 
  * @package ekiline
  */
-
-/** Poner en modo de mantenimineto **/
 
 function maintenace_mode() {
 		

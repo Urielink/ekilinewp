@@ -4,15 +4,16 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekiline
+ * Hacer un formulario de ingreso con shortcode.
+ * Login shortcode
+ * una version sencilla: https://wordpress.org/support/topic/front-end-login-using-php
+ * Una version extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
+ * Una version mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
+ * La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
+ * Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400 
+ *
+ * @package ekiline 
  */
-
-//Hacer un formulario de ingreso con shortcode.
-// una version sencilla: https://wordpress.org/support/topic/front-end-login-using-php
-// Una version extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
-// Una version mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
-// La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
-// Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400
 
 function ekiline_loginfrontend() {
 		
@@ -36,8 +37,7 @@ function ekiline_loginfrontend() {
 			'value_username' => '',
 			'value_remember' => false, // Set this to true to default the "Remember me" checkbox to checked 
 		   );
-		   
-//23mayo		$args = wp_parse_args( $args, apply_filters( 'login_form_defaults', $defaults ) );
+
         $args = wp_parse_args( apply_filters( 'login_form_defaults', $args ) );
 		
 		$login_form_top = apply_filters( 'login_form_top', '', $args );
@@ -58,7 +58,7 @@ function ekiline_loginfrontend() {
 		    }
 		    
 		// imprime el formulario
-		//	wp_login_form( $args );	/*Si se quieren personalizar los campos */	
+
 			$form = '
 				<form name="' . $args['form_id'] . '" id="' . $args['form_id'] . '" action="' . esc_url( site_url( 'wp-login.php', 'login_post' ) ) . '" method="post">
 					' . $login_form_top . '
@@ -86,8 +86,6 @@ function ekiline_loginfrontend() {
 				return $form;
 				
 		echo '<p class="text-center"><a class="btn btn-link" href="'.home_url('/wp-login.php?action=register').'">Registrarse</a></p>';
-				    		
-		    			
 
   	$insertarLogin = ob_get_clean(); // cierra
   	
@@ -96,6 +94,7 @@ function ekiline_loginfrontend() {
         return $insertarLogin;      
         
   	} else {
+  	    
   	    // https://codex.wordpress.org/wp_get_current_user
         $current_user = wp_get_current_user();
     	
@@ -103,8 +102,7 @@ function ekiline_loginfrontend() {
             	   <h4>'. esc_html__( 'Hi ', 'ekiline' ) . $current_user->user_login .'</h4>
                    <p>'. esc_html__( 'Thank you for visit this website.', 'ekiline' ) .'</p>
       	           <a class="btn btn-danger" href="'. wp_logout_url(home_url()) .'">'. esc_html__( 'Exit', 'ekiline' ) .'</a>
-	           </div>';
-    	  
+	           </div>';    	  
     }
     		
 }
@@ -112,6 +110,7 @@ function ekiline_loginfrontend() {
 add_shortcode('loginform', 'ekiline_loginfrontend');
 
 // si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
+// If user is logedin add a link to menu
 // https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
 
 function add_loginout_link( $items, $args ) {
@@ -122,12 +121,3 @@ function add_loginout_link( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
 
-// descartar la pagina de ingreso de las busquedas
-// http://wordpress.stackexchange.com/questions/142811/exclude-pages-from-wordpress-search-result-page
-
-function exclude_pages_search_when_logged_in($query) {
-    if ( $query->is_search && is_user_logged_in() )
-        $query->set( 'post__not_in', array( 49 ) ); 
-    return $query;
-}
-add_filter( 'pre_get_posts', 'exclude_pages_search_when_logged_in' );

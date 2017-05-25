@@ -203,8 +203,8 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
 
 
 /**
- * Enqueue scripts and styles.
- * Ekiline add css by other methods
+ * Ingreso de CSS y JS, para fines de optimización cargamos estilos y js de manera asincrona.
+ * Enqueue scripts and styles (ekiline add css by other methods)
  * Add CSS and JS https://codex.wordpress.org/Function_Reference/wp_enqueue_script
  * CSS with condition: https://developer.wordpress.org/reference/functions/wp_style_add_data/
  */
@@ -220,6 +220,7 @@ function ekiline_scripts() {
 	// wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	        	
 /**
+ * Enviar Jquery al final
  * Get Jquery to the bottom 
  * http://stackoverflow.com/questions/35663927/wordpress-jquery-on-footer 
  */
@@ -237,15 +238,17 @@ function ekiline_scripts() {
  * Javascript :
  * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
  * When scripts depend by JQuery has to be mentioned
+ * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: JS and PHP working together
+ * https://codex.wordpress.org/Function_Reference/wp_localize_script
  */
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array('jquery'), '20170327', true  );
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
-    /* Localize: JS and PHP working together */
         $translation_array = array( 'themePath' => get_stylesheet_directory_uri() );
-        wp_localize_script( 'theme-scripts', 'thepath', $translation_array );
+        wp_localize_script( 'theme-scripts', 'thepath', $translation_array ); // Localize
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
@@ -263,9 +266,8 @@ function ekiline_scripts() {
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
 /**
- * Localize: (#247 continues)
- * Add css & scripts
- * https://codex.wordpress.org/Function_Reference/wp_localize_script
+ * Agregar estilos CSS en cajo de que no esté habilitado JS
+ * Add CSS styles for disabled js
  */
 
 function ekilineNoscript(){
@@ -281,6 +283,7 @@ add_action( 'wp_head', 'ekilineNoscript', 9);
 
 
 /**
+ * Permitir que los shortcodes funcionen en los widgets
  * Allow short-codes work in widgets
  */
 add_filter('widget_text', 'do_shortcode');
@@ -317,6 +320,7 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
 /**
+ * Sobreescritura y elementos de Ekiline
  * Ekiline overide items
  */
 // theme frontend addons

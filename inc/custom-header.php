@@ -80,6 +80,10 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
 endif;  // ekiline_admin_header_image
 
 /**
+ * Header de Ekiline, se habilita con la existencia de una imagen, 
+ * y permite establecer un formato de portada completa o de altura variable.
+ * trabaja en conjunto con customizer.php
+ *
  * Ekiline theming: Advanced header fucntion.
  * Works by choosing an image, and setting it in customizer. 
  */
@@ -90,33 +94,36 @@ function customHeader() {
     $customHeader = '';
     $siteName = get_bloginfo( 'name', 'display' );
     $siteDescription = get_bloginfo( 'description', 'display'  );
-    // Background image and size
+    // Tamaño de imagen 
+    // Background image size
     $rangeHead = get_theme_mod('ekiline_range_header');
  		
 /**
+ * Imagen para frontpage, singles y categories
  * Heading image for frontpage, singles or categories
  */ 
 		if ( is_front_page() && get_header_image() ){
 		        
-            // Variables / Values
-            // reset range to 30
+            // Variables - Values
+            // reset range a 30
 			if ($rangeHead == '0') {
 			     $rangeHead = '30'; 
             }
             						
-			// add background image
+			// agregar background image
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
 			
-            // add brand image
+            // agregar brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
                 $coverLogo = '<a href="'.esc_url( home_url( '/' ) ).'" rel="home"><img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
-            // Custom message
+            // Mensaje personalizado
             $headerText = get_theme_mod( 'ekiline_headertext', '' );
             
-            // AllowHTML on output
+            // Permitir el uso de HTML a la vista
+            // Alllow html on output
             $headerText = wp_kses( $headerText, array( 
                 'a' => array(
                     'href' => array(),
@@ -126,6 +133,7 @@ function customHeader() {
                 'br' => array(),
             ) );               
             						
+            // Establece la altura de la imagen en formato jumbotron           
 			// Set the range for height value and format image as bootstrap jumbotron			
 			if ( $rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
 
@@ -148,28 +156,22 @@ function customHeader() {
 			
 			} else {
 			     
+                // Si range es 100 el formato debe ser cover                         
                 // If image range is biggest (100) format image as bootstrap cover   			           
-			    // Variables / Values for socialmedia menu in cover, works with user social media accounts   
-			    
-                $fbSocial = get_theme_mod('ekiline_fbProf','');
-                $twSocial = get_theme_mod('ekiline_twProf','');
-                $gpSocial = get_theme_mod('ekiline_gpProf','');
-                $inSocial = get_theme_mod('ekiline_inProf','');
-                $menuItems = '';
-                    
-                if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
-                if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
-                if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
-                if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;                
-                if ($menuItems) : $menuItems = '<nav><ul class="nav cover-header-nav">'. $menuItems .'</ul></nav>';endif;
+                // Variables para los menus de socialmedia, se habilitan al ser llenados sus campos  
+			    // Values for socialmedia menu in cover, works with user social media accounts   
+			    // do_shortcode("[socialmenu]") es un widget que se puede utilizar en cualquier parte del sitio
+			    // do_shortcode("[socialmenu]") is a widget that can use in any space
                 
-                // Set cover HTML   
+                // Formato Cover HTML - Set cover HTML   
                             			    																				
 				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">'. $coverLogo . $menuItems .'</div>
+							            <div class="inner">'. $coverLogo .'
+							              <nav class="nav cover-header-nav">'. do_shortcode("[socialmenu]") .'</nav>
+							            </div>
 							          </div>
 							          <div class="inner cover">';
 
@@ -191,7 +193,7 @@ function customHeader() {
 							    </header>';	
 			}
 			
-			// Set video in header 
+			// Agregar video - Set video in header 
 			
             if ( ! empty( get_theme_mod('ekiline_video') ) ) {
                  
@@ -217,6 +219,7 @@ function customHeader() {
                                  </header>';
                                  
                 /**
+                 * Agregar script para el video 
                  * Add inline script
                  * https://developer.wordpress.org/reference/functions/wp_add_inline_script/
                  * https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
@@ -268,19 +271,17 @@ function customHeader() {
 		} elseif ( is_single() || is_page() ){
 		    
             /**
+             * Imagenes para el resto de las páginas
              * Heading image for pages and singles
              */ 
-			
-			//Get id
+
             $titulo = get_the_title();
 						
-			// If has pstothumbnail get url
 			if ( has_post_thumbnail() ) {
 
                   $medium_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
                   $url = $medium_image_url[0];
                 								
-            // format as homepage 
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
@@ -302,25 +303,21 @@ function customHeader() {
 		} elseif ( is_category() ){
 		    
             /**
+             * Imagenes para categories
              * Heading image for categories
              * addon-categoryfield.php
              */ 
 
-				
-			// Get the title
 			$titulo = single_cat_title("", false);			
-			//get ID and data from DB
 			$cat_id = get_query_var('cat');
 			$cat_data = get_option("category_$cat_id");
-			
-				
-			// if has image
+							
+			// si tiene imagen
 			if ( $cat_data['img'] ) {
 		
-				// get url
+				// dame la url
 				$url = $cat_data['img'];
-		
-            // format as homepage
+
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
@@ -348,7 +345,8 @@ function customHeader() {
 	
 }
 
-/* Help CSS, add css class to body for know type of heading */
+/* Agregar css al body para saber el tipo de header 
+ * Help CSS, add css class to body for know type of heading */
 
 add_filter( 'body_class', function( $classes ) {
     

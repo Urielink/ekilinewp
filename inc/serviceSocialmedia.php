@@ -3,6 +3,7 @@
  * Custom functions that act independently of the theme templates
  *
  * Eventually, some of the functionality here could be replaced by core features
+ *     // Jugar con urls https://wordpress.stackexchange.com/questions/29512/permalink-for-category-pages-and-posts
  *
  * @package ekiline
  */
@@ -13,25 +14,27 @@ function registerSocial() {
 //Globales
     global $wp;
     
-//Indice en Facebook, Twitter GooglePlus y Linkedin
+//Indice en Facebook, Twitter GooglePlus y Linkedin (customizer.php)
+//Get social media accounts (customizer.php)
     $fbSocial = get_theme_mod('ekiline_fbProf','');
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
-    // jugar con urls https://wordpress.stackexchange.com/questions/29512/permalink-for-category-pages-and-posts
     $currentUrl = '';
     
-// arreglos para extraer la información
+// Arreglos para extraer la informacion en cada caso
+// Get the info for each kind of tag
     $metaTitle = '';
     $metaDescription = '';
     $metaImages = get_site_icon_url();
     $metaType = 'website';
         if (is_page() || is_single()){
             $currentUrl = get_permalink();
-        } elseif ( is_archive() ){
+        } elseif ( is_category() ){
             $currentUrl = get_queried_object(); 
             $currentUrl = get_term_link( $currentUrl, $currentUrl->taxonomy ); 
-            //$currentUrl = home_url( add_query_arg(array(),$wp->request) );
+        } elseif ( is_archive() ) {
+            $currentUrl = home_url( add_query_arg(array(),$wp->request) );
         }
     $blogInfo = '';
 
@@ -44,7 +47,8 @@ function registerSocial() {
     }
     elseif ( is_single() || is_page() ){
             
-        // personalizar la metadescripcion
+        // personalizar la metadescripcion 
+        // custom meta
         global $wp_query;
         $stdDesc = get_post_meta( $wp_query->post->ID, 'metaDescripcion', true);    
         wp_reset_query();
@@ -56,28 +60,34 @@ function registerSocial() {
         }
         
         // La imagen
+        // The image
         if ( has_post_thumbnail() ) {
-            // si tiene imagen destacada            
+            // si tiene imagen destacada     
+            // if has post_thumbnail       
             $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );           
         }     
         elseif ( is_attachment() ) {
-            // o si es una attachment            
+            // o si es un attachment            
             $metaImages = wp_get_attachment_url();                            
         } 
         else {
-            // si no, entonces busca en el contenido del post
-            
+            // si no, entonces busca en el contenido del post incluido si es una galería            
+            // if no image get the first from post
             global $post, $posts;
             
             $image_url = '';
             
             ob_start();
-            // verificar si existe una galeria y tomar la primera imagen que encuentre
-            if ( get_post_gallery() ) : preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);         
-            // si no hay, entonces la imagen que esté en el post
-            else : preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches); endif;
+                // verificar si existe una galeria y tomar la primera imagen que encuentre
+                // verify if has gallery
+                if ( get_post_gallery() ) {
+                    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);    
+                } else {
+                    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+                }
              
-            $image_url = $matches [1] [0] = ''; // 23 mayo
+            $image_url = $matches [1] [0] = ''; // Necesita declararse el indice
+            
             ob_end_clean();                            
                                             
             //En caso de no existir una u otra
@@ -142,36 +152,8 @@ function registerSocial() {
 add_action( 'wp_head', 'registerSocial', 1);
 
 
-// function menuSocial(){
-//     
-    // $fbSocial = get_theme_mod('ekiline_fbProf','');
-    // $twSocial = get_theme_mod('ekiline_twProf','');
-    // $gpSocial = get_theme_mod('ekiline_gpProf','');
-    // $inSocial = get_theme_mod('ekiline_inProf','');
-    // $menuItems = '';
-//         
-    // if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
-    // if ($twSocial) : $menuItems .= '<li><a href="'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
-    // if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
-    // if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
-//                 
-    // echo $menuItems;
-// 
-    // // $redes = array( 
-                // // $fbSocial => array('link' => $fbSocial, 'title' => 'Facebook', 'class' => 'fa fa-facebook') , 
-                // // $twSocial => array('link' => $twSocial, 'title' => 'Twitter', 'class' => 'fa fa-twitter') , 
-                // // $gpSocial => array('link' => $gpSocial, 'title' => 'Google Plus', 'class' => 'fa fa-google') , 
-                // // $inSocial => array('link' => $inSocial, 'title' => 'Linkedin', 'class' => 'fa fa-linkedin') 
-                // // );
-        // // foreach ($redes as $red) {
-            // // if ( $red['link'] ){
-                // // $menuItems .= '<li><a href="'.$red['link'].'" target="_blank" title="'.$red['title'].'"><i class="'.$red['class'].'"></i></a></li>';
-            // // }
-        // // }       
-//                 
-// }
-
-//Crear un shortcode para las redes sociales
+//Crear un shortcode para crear un menu de redes sociales [socialmenu]
+// Add a shortcode for link this
 
 function ekiline_socialmenu($atts, $content = null) {
     
