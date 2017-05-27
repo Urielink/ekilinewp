@@ -24,7 +24,7 @@
 function ekiline_custom_header_setup() {
 	add_theme_support( 'custom-header', 
     	apply_filters( 'ekiline_custom_header_args', array(
-            'default-image'          => get_parent_theme_file_uri('/screenshot.png'),
+            'default-image'          => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
     		'default-text-color'     => '000000',
     		'width'                  => 1024,
     		'height'                 => 768,
@@ -35,8 +35,8 @@ function ekiline_custom_header_setup() {
     );
     register_default_headers( array(
         'default-image' => array(
-            'url'           => '%s/screenshot.png',
-            'thumbnail_url' => '%s/screenshot.png',
+            'url'           => '%s/img/ekiline-pattern.png',
+            'thumbnail_url' => '%s/img/ekiline-pattern.png',
             'description'   => __( 'Default Header Image', 'ekiline' ),
         ),
     ) );   

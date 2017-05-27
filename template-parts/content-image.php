@@ -74,7 +74,8 @@
 	<footer class="entry-footer">
 
         <p class="entry-meta">
-            <?php
+            <?php if (!is_tag()){
+                
                 $metadata = wp_get_attachment_metadata();
                 printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekiline' ),
                     esc_attr( get_the_date( 'c' ) ),
@@ -85,7 +86,8 @@
                     get_permalink( $post->post_parent ),
                     get_the_title( $post->post_parent )
                 );
-            ?>
+                
+            } ?>
         </p><!-- .entry-meta -->
 
 

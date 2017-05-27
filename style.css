@@ -612,28 +612,6 @@ a img.aligncenter {
  * ----------------------------------------------*/
 
 
-/* El idioma (inc/addon-sublanguage.php #23)*/
-.lang a {
-	padding: 6px;
-	color: #DDD;
-}
-.lang a:hover {
-	color: #1CAE52;
-}
-.lang.active a {
-	color: #1CAE52;
-	background-color: rgba(0,0,0,0.37);
-}
-.lang.en a {
-	background: url('img/en-us.png') no-repeat left center;
-	padding-left: 24px;
-	background-size: 20px auto;
-}
-.lang.es a {
-	background: url('img/es-mx.png') no-repeat left center;
-	padding-left: 24px;
-	background-size: 20px auto;
-}
 
 /* ------------------------------------------------
  * Elementos auxiliares dentro de el layout:

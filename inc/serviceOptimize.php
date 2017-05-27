@@ -33,10 +33,13 @@ add_action('pre_get_posts', 'tags_support_query');
 function ekiline_keywords() {        
     global $post;
     
-    if( is_single() || is_page() || is_home() ) :
+    if( is_single() || is_page() || is_home() ) {
+    
         $tags = get_the_tags($post->ID);
         $keywords = '';
-        if($tags) :
+        
+        if($tags) {
+            
             foreach($tags as $tag) :
                 $sep = (empty($keywords)) ? '' : ', ';
                 $keywords .= $sep . $tag->name;
@@ -44,8 +47,11 @@ function ekiline_keywords() {
     
             echo $keywords;
     
-        endif;
-    endif;
+        }
+        
+    } elseif ( is_tag() ){
+            echo single_tag_title();
+    }
 }
 
 
