@@ -23,14 +23,23 @@
  */
 function ekiline_custom_header_setup() {
 	add_theme_support( 'custom-header', 
-	apply_filters( 'ekiline_custom_header_args', array(
-		'default-image'          => get_template_directory_uri() . '/screenshot.png',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'ekiline_header_style',
-	) ) );
+    	apply_filters( 'ekiline_custom_header_args', array(
+            'default-image'          => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
+    		'default-text-color'     => '000000',
+    		'width'                  => 1024,
+    		'height'                 => 768,
+    		'flex-height'            => true,
+    		'wp-head-callback'       => 'ekiline_header_style',
+    	   )
+        ) 
+    );
+    register_default_headers( array(
+        'default-image' => array(
+            'url'           => '%s/img/ekiline-pattern.png',
+            'thumbnail_url' => '%s/img/ekiline-pattern.png',
+            'description'   => __( 'Default Header Image', 'ekiline' ),
+        ),
+    ) );   
 }
 add_action( 'after_setup_theme', 'ekiline_custom_header_setup' );
 
@@ -79,138 +88,262 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     }
 endif;  // ekiline_admin_header_image
 
-// Creo una funcion para agregar un header personalizado
-
+/**
+ * Header de Ekiline, se habilita con la existencia de una imagen, 
+ * y permite establecer un formato de portada completa o de altura variable.
+ * trabaja en conjunto con customizer.php
+ *
+ * Ekiline theming: Advanced header fucntion.
+ * Works by choosing an image, and setting it in customizer. 
+ */
+ 
 function customHeader() {
-        
     
-     $customHeader = '';
-    		
-		/* Para el HOME:
-		 * en caso de tener una imagen de cabecera aparecer un header
-		 */ 
-
+    // Variables
+    $customHeader = '';
+    $siteName = get_bloginfo( 'name', 'display' );
+    $siteDescription = get_bloginfo( 'description', 'display'  );
+    // Tamaño de imagen 
+    // Background image size
+    $rangeHead = get_theme_mod('ekiline_range_header');
+ 		
+/**
+ * Imagen para frontpage, singles y categories
+ * Heading image for frontpage, singles or categories
+ */ 
 		if ( is_front_page() && get_header_image() ){
-
-			// Variables
-			$siteName = get_bloginfo( 'name', 'display' );
-			$siteDescription = get_bloginfo( 'description', 'display'  );
-			// Estilo de imagen de fondo: invocamos la imagen del editor de pagina y lo añadimos como css.
-			// En combinacion con un range
-			$rangeHead = get_theme_mod('ekiline_range_header');
-			if ($rangeHead == '0') : $rangeHead = '30'; endif ;
-						
+		        
+            // Variables - Values
+            // reset range a 30
+			if ($rangeHead == '0') {
+			     $rangeHead = '30'; 
+            }
+            						
+			// agregar background image
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
 			
-			//Estructura con condicion:
-			
-			if ($rangeHead <= '95') {
-				// Si la altura es menor a 95, la imagen hereda la estructura de jumbotron.
+            // agregar brand image
+            $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
+            if ( $coverLogo ){
+                $coverLogo = '<a href="'.esc_url( home_url( '/' ) ).'" rel="home"><img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+            }
+            
+            // Mensaje personalizado
+            $headerText = get_theme_mod( 'ekiline_headertext', '' );
+            
+            // Permitir el uso de HTML a la vista
+            // Alllow html on output
+            $headerText = wp_kses( $headerText, array( 
+                'a' => array(
+                    'href' => array(),
+                    'title' => array(),
+                    'target' => array()
+                ),
+                'br' => array(),
+            ) );               
+            						
+            // Establece la altura de la imagen en formato jumbotron           
+			// Set the range for height value and format image as bootstrap jumbotron			
+			if ( $rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
 					$customHeader .= '<div class="site-branding jumbotron"'.$headerStyle.'>';
-								
-						if ( is_front_page() && is_home() ) : 
-							$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';
-						else :
-							$customHeader .= '<p class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></p>';
-						endif;	
+
+                        $customHeader .= $coverLogo;
+
+                        if ( !$headerText ){																																						
+    						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
+                            $customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
+						} else {
+						    $customHeader .= $headerText;
+						}
 						
-						if ( $siteDescription || is_customize_preview() ) :
-							$customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
-						endif;
-													
 					$customHeader .= '</div><!-- .site-branding -->
 			
 				</header><!-- #masthead -->'; 
 			
-			} else {				
-				
-				// Si la altura es mayor, la imagen hereda la estructura de cover.
-				if ( get_theme_mod( 'ekiline_logo_min' ) ) {
-					$coverLogo = '<img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
-				} 
-												
+			} else {
+			     
+                // Si range es 100 el formato debe ser cover                         
+                // If image range is biggest (100) format image as bootstrap cover   			           
+                // Variables para los menus de socialmedia, se habilitan al ser llenados sus campos  
+			    // Values for socialmedia menu in cover, works with user social media accounts   
+			    // do_shortcode("[socialmenu]") es un widget que se puede utilizar en cualquier parte del sitio
+			    // do_shortcode("[socialmenu]") is a widget that can use in any space
+                
+                // Formato Cover HTML - Set cover HTML   
+                            			    																				
 				$customHeader = '<header id="masthead"  class="cover-wrapper" style="background-image:url(' . get_header_image() . ');">
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">'.$coverLogo.'											
-											<nav> 
-												<ul class="nav cover-header-nav">
-													<li><a href="#" target="_blank" title="https://www.google.com/search?q=ekiline.com"><i class="fa fa-google"></i></a></li>
-													<li><a href="#" target="_blank" title="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
-													<li><a href="#" target="_blank" title="https://es-la.facebook.com/ekiline/"><i class="fa fa-facebook"></i></a></li>
-													<li><a href="#" target="_blank" title="https://twitter.com/ekilinemx/"><i class="fa fa-twitter"></i></a></li> 
-												</ul>
-											</nav>				
-    									</div>
+							            <div class="inner">'. $coverLogo .'
+							              <nav class="nav cover-header-nav">'. do_shortcode("[socialmenu]") .'</nav>
+							            </div>
 							          </div>
-							          <div class="inner cover">
-										<h1 class="cover-title">'.$siteName.'</h1>
-										<p class="cover-description">'. $siteDescription.'</p>
-					    			  </div>
-							          <!--div class="cover-footer">
-							            <div class="inner"><p>Algun contenido</p></div>
-							          </div-->
+							          <div class="inner cover">';
+
+                                    if ( !$headerText ){                                                                                                                                                        
+                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
+                                    } else {
+                                        $customHeader .= $headerText;
+                                    }
+
+				$customHeader .=    '</div>
+				                      <div class="cover-footer text-right">
+							            <div class="inner">
+							             <small>&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
+							            </div>
+							          </div>
 							        </div>
 							      </div>
 							    </header>';	
-			}			
-				
-		}
-
-		/* Para las internas :
-		 * en caso de tener una imagen destacada convertirla en un header
-		 */		
-		
-		elseif ( is_single() || is_page() ){
+			}
 			
-			//extrae el id
-			//$titulo = get_the_title($post->ID);
+			// Agregar video - Set video in header 
+			
+            if ( ! empty( get_theme_mod('ekiline_video') ) ) {
+                 
+                $customHeader = '<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
+                                '<header class="video-container" style="background-image: url('. get_header_image() .');background-size:cover;">
+                                    <div class="video-text">
+                                        '.$coverLogo;
+
+                                    if ( !$headerText ){                                                                                                                                                        
+                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
+                                    } else {
+                                        $customHeader .= $headerText;
+                                    }
+                                        
+                $customHeader .= '</div>                                                                
+                                    <div class="video-media embed-responsive embed-responsive-16by9">
+                                        <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
+                                            <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
+                                        </video>
+                                        <button id="vidpause" class="btn btn-default">'. __( 'Pause', 'ekiline' ) .'</button>
+                                    </div>
+                                 </header>';
+                                 
+                /**
+                 * Agregar script para el video 
+                 * Add inline script
+                 * https://developer.wordpress.org/reference/functions/wp_add_inline_script/
+                 * https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
+                 * https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
+                 * https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
+                 */                                                                   
+                                
+                function ekiline_headervideo() { 
+                
+                    echo '<script type="text/javascript">
+                        var vid = document.getElementById("bgvid"),
+                        pauseButton = document.getElementById("vidpause");
+                        if (window.matchMedia("(prefers-reduced-motion)").matches) {
+                            vid.removeAttribute("autoplay");
+                            vid.pause();
+                            pauseButton.innerHTML = "'. __( 'Pause', 'ekiline' ) .'";
+                        }
+                        
+                        function vidFade() {
+                            vid.classList.add("stopfade");
+                        }
+                        vid.addEventListener("ended", function() {
+                            // only functional if "loop" is removed 
+                             vid.pause();
+                            // to capture IE10
+                            vidFade();
+                        });
+                        pauseButton.addEventListener("click", function() {
+                            vid.classList.toggle("stopfade");
+                            if (vid.paused) {
+                        vid.play();
+                                pauseButton.innerHTML = "'. __( 'Pause', 'ekiline' ) .'";
+                            } else {
+                                vid.pause();
+                                pauseButton.innerHTML = "'. __( 'Play', 'ekiline' ) .'";
+                            }
+                        })                    
+                        
+                    </script>';
+                    
+                    }
+                    
+                add_action( 'wp_footer', 'ekiline_headervideo', 110 );
+                                 
+                                 
+            }       
+									
+				
+		} elseif ( is_single() || is_page() ){
+		    
+            /**
+             * Imagenes para el resto de las páginas
+             * Heading image for pages and singles
+             */ 
+
             $titulo = get_the_title();
 						
-			// y si tiene imagen destacada
 			if ( has_post_thumbnail() ) {
 
-				// obten la url de la imagen
-				$url = wp_get_attachment_url( get_post_thumbnail_id() );
+                  $medium_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
+                  $url = $medium_image_url[0];
+                								
+                if ( $rangeHead >= '95' ) {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header">';
+                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
+                    $customHeader .= '</div></header>';
+                    
+                } else {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header container-fluid">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
+                    $customHeader .= '</div></header>';
+                    
+                }
 
-				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
-    			$customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
-    			$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
-    			$customHeader .= '</div></header>';
 			}
-				
 			
-		}
-		
-		/* Para las categorias :
-		 * en caso de tener una imagen convertirla en un header
-		 * archivo complementario: *addon-categoryfield.php
-		*/
-		
-		elseif ( is_category() ){
-				
-			// invocamos al titulo para insertar en header.
+		} elseif ( is_category() ){
+		    
+            /**
+             * Imagenes para categories
+             * Heading image for categories
+             * addon-categoryfield.php
+             */ 
+
 			$titulo = single_cat_title("", false);			
-			//Llamamos el ID
 			$cat_id = get_query_var('cat');
-			//llamamos ese dato desde la BD
 			$cat_data = get_option("category_$cat_id");
-			
-				
-			// y si tiene imagen destacada
+							
+			// si tiene imagen
 			if ( $cat_data['img'] ) {
 		
-				// obten la url de la imagen
+				// dame la url
 				$url = $cat_data['img'];
-		
-				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
-				$customHeader .= '<div class="site-branding jumbotron categoria" style="background-image: url(' . $url . ');">';
-				$customHeader .= '<h1 class="site-title" >'.$titulo.'</h1>';
-				$customHeader .= '</div></header>';
+
+                if ( $rangeHead >= '95' ) {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header">';
+                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
+                    $customHeader .= '</div></header>';
+                    
+                } else {
+                    
+                    $customHeader .= '<header id="masthead" class="site-header container-fluid">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<h1 class="entry-title" >'.$titulo.'</h1>';
+                    $customHeader .= '</div></header>';
+                    
+                }
+								
+				
 			}
 		
 				
@@ -220,3 +353,30 @@ function customHeader() {
 	echo $customHeader;
 	
 }
+
+/* Agregar css al body para saber el tipo de header 
+ * Help CSS, add css class to body for know type of heading */
+
+add_filter( 'body_class', function( $classes ) {
+    
+    $rangeHead = get_theme_mod('ekiline_range_header');
+    
+    if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
+        
+        $classes[] = 'head-jumbotron';
+                    
+    } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
+        
+        $classes[] = 'head-cover';
+        
+    } elseif ( ! empty( get_theme_mod('ekiline_video') ) && is_front_page()) {
+        
+        $classes[] = 'head-video';
+        
+    }
+    
+    return $classes;
+    
+});
+    
+    

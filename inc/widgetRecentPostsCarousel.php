@@ -15,8 +15,8 @@
 class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
 
     function __construct() {
-        $widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( 'The most recent posts on your site in carousel format','ekiline') );
-        parent::__construct(false, __('Recent Posts Carousel','ekiline'), $widget_ops);
+        $widget_ops = array('classname' => 'widget_recent_entries', 'description' => __( 'The most recent posts on your site in carousel format','ekiline' ) );
+        parent::__construct(false, __( 'Recent posts carousel','ekiline' ), $widget_ops);
         $this->alt_option_name = 'widget_recent_entries';
 
         add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -41,7 +41,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
         ob_start();
         extract($args);
 
-        $title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts','ekiline') : $instance['title'], $instance, $this->id_base);
+        $title = apply_filters('widget_title', empty($instance['title']) ? __( 'Recent posts','ekiline' ) : $instance['title'], $instance, $this->id_base);
         if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
             $number = 10;
         $exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
@@ -168,16 +168,16 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
 ?>
 
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','ekiline'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php echo __( 'Title:','ekiline' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-        <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:','ekiline'); ?></label>
+        <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php echo __( 'Number of posts to show:','ekiline' ); ?></label>
         <input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
         
         <p>
-            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude Category(s):','ekiline' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
+            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php echo __( 'Exclude categories:','ekiline' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
             <br />
-            <small><?php _e( 'Category IDs, separated by commas.','ekiline' ); ?></small>
+            <small><?php echo __( 'Category IDs, separated by commas','ekiline' ); ?></small>
         </p>
         
 <?php

@@ -1,4 +1,4 @@
-=== ekiline ===
+=== Ekiline ===
 
 Contributors: automattic
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-image-header, featured-images, footer-widgets, full-width-template, microformats, theme-options, translation-ready, blog, e-commerce, entertainment, food-and-drink, news, portfolio, photography
@@ -42,3 +42,4 @@ ekiline includes support for Infinite Scroll in Jetpack.
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Bootstrap v3.3.7 http://getbootstrap.com, Copyright 2011-2016 Twitter, Inc., Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* Wordpress tools: https://codex.wordpress.org/Theme_Unit_Test

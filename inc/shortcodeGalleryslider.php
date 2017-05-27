@@ -3,7 +3,10 @@
  * Custom functions that act independently of the theme templates
  *
  * Eventually, some of the functionality here could be replaced by core features
+ * Sobreescribir la galeria de wordpress para permitir añadir elmentos de bootstrap
+ * Add bootstrap elements to gallery
  * Algunos ejemplos del overide: 
+ * Some example to override gallery.
  * Oficial: https://developer.wordpress.org/reference/functions/gallery_shortcode/
  * Corroborando los problemas que da: 
  *   -https://wordpress.stackexchange.com/questions/43558/how-to-manually-fix-the-wordpress-gallery-code-using-php-in-functions-php
@@ -65,6 +68,7 @@ function ekiline_gallery( $output,$attr ) {
         'link'       => '',
         //agregado
         'carousel'   => '',
+        'showlink'   => '',
         'name'       => 'default',
         'align'      => 'text-center',
         'indicators' => 'false',
@@ -127,8 +131,9 @@ function ekiline_gallery( $output,$attr ) {
     $carouselitem = 'item';
     $alignitems = $atts['align'];
     $indicators = '';
+    $speed = '';
     $transition = '';
-                    
+                        
     if ( empty( $atts['carousel'] ) ) {
                 
         if ($columns == '1') : $itemcol = 'col-sm-12';
@@ -162,12 +167,18 @@ function ekiline_gallery( $output,$attr ) {
         
     }     
     
-         
+    /** Si desean ver las imagenes como lightbox **/
+    if ( ! empty( $atts['showlink'] ) ) {
+        $showlink = 'modal-gallery';
+    } else {
+        $showlink = '';
+    }         
+    
     /** Fin de Variables de carrusel p1 **/
     
     
     $size_class = sanitize_html_class( $atts['size'] );
-    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$transition}'".$speed.">";
+    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition}'".$speed.">";
  
     $output = $gallery_div; 
 
@@ -264,6 +275,7 @@ function ekiline_gallery( $output,$attr ) {
 
 /** 
 * Añadimos funciones de personalizacion en la admnistracion de la galeria
+* Add options menu in gallery admin panel
 * http://wordpress.stackexchange.com/questions/179357/custom-wordpress-gallery-option
 * https://wordpress.org/support/topic/how-to-add-fields-to-gallery-settings
 * http://wordpress.stackexchange.com/questions/182821/add-custom-fields-to-wp-native-gallery-settings
@@ -274,43 +286,48 @@ add_action('print_media_templates', function(){
  
   <script type="text/html" id="tmpl-ekiline-gallery-setting">
     <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
-    <h2><?php _e('ekiline Settings','ekiline'); ?></h2>
+    <h2><?php echo __( 'Ekiline settings','ekiline' ); ?></h2>
             
     <label class="setting">
-        <span><?php _e('Transform to carousel','ekiline'); ?></span>
+        <span><?php echo __( 'Transform to carousel','ekiline' ); ?></span>
         <input type="checkbox" data-setting="carousel">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Carousel name','ekiline'); ?></span>
+        <span><?php echo __( 'Open linked media on modal window','ekiline' ); ?></span>
+        <input type="checkbox" data-setting="showlink">
+    </label>      
+    
+    <label class="setting">
+        <span><?php echo __( 'Carousel name (for customize)','ekiline' ); ?></span>
         <input type="text" value="" data-setting="name" placeholder="default">
     </label>
     
     <label class="setting">
-      <span><?php _e('Carousel text caption align','ekiline'); ?></span>
+      <span><?php echo __( 'Carousel text caption align','ekiline' ); ?></span>
       <select data-setting="align">
-        <option value="text-center"> <?php _e('Center','ekiline'); ?> </option>
-        <option value="text-left"> <?php _e('Left','ekiline'); ?> </option>
-        <option value="text-right"> <?php _e('Right','ekiline'); ?> </option>
+        <option value="text-center"> <?php echo __( 'Center','ekiline' ); ?> </option>
+        <option value="text-left"> <?php echo __( 'Left','ekiline' ); ?> </option>
+        <option value="text-right"> <?php echo __( 'Right','ekiline' ); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-      <span><?php _e('Carousel transition','ekiline'); ?></span>
+      <span><?php echo __( 'Carousel transition','ekiline' ); ?></span>
       <select data-setting="transition">
-        <option value="none"> <?php _e('None','ekiline'); ?> </option>
-        <option value="carousel-fade"> <?php _e('Fade','ekiline'); ?> </option>
-        <option value="carousel-vertical"> <?php _e('Vertical','ekiline'); ?> </option>
+        <option value="none"> <?php echo __( 'Default','ekiline' ); ?> </option>
+        <option value="carousel-fade"> <?php echo __( 'Fade','ekiline' ); ?> </option>
+        <option value="carousel-vertical"> <?php echo __( 'Vertical','ekiline' ); ?> </option>
       </select>
     </label>
 
     <label class="setting">
-        <span><?php _e('Show indicators','ekiline'); ?></span>
+        <span><?php echo __( 'Show indicators','ekiline' ); ?></span>
         <input type="checkbox" data-setting="indicators">
     </label>  
     
     <label class="setting">
-        <span><?php _e('Speed','ekiline'); ?></span>
+        <span><?php echo __( 'Speed','ekiline' ); ?></span>
         <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
     </label>
       
@@ -323,6 +340,7 @@ add_action('print_media_templates', function(){
 
       _.extend(wp.media.gallery.defaults, {
         carousel: false,
+        showlink: false,
         name: 'default',
         align: 'text-center',
         transition: 'none',

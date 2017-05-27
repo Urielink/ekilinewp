@@ -37,7 +37,6 @@ function ekiline_setup() {
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
-	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
@@ -86,11 +85,10 @@ add_action( 'after_setup_theme', 'ekiline_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
- *
  * Priority 0 to make it available to lower priority callbacks.
- *
  * @global int $content_width
  */
+ 
 function ekiline_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'ekiline_content_width', 640 );
 }
@@ -98,14 +96,14 @@ add_action( 'after_setup_theme', 'ekiline_content_width', 0 );
 
 /**
  * Register widget area.
- *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+ 
 function ekiline_widgets_init() {
 	
-// **Sidebar por deafult
+// Default sidebar
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar left', 'ekiline' ),
+		'name'          => esc_html__( 'Left sidebar', 'ekiline' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -114,9 +112,9 @@ function ekiline_widgets_init() {
 		'after_title'   => '</h3>',
 	) );
 	
-// Un nuevo sidebar
+// Right sidebar
     register_sidebar( array(
-        'name'          => esc_html__( 'Sidebar right', 'ekiline' ),
+        'name'          => esc_html__( 'Right sidebar', 'ekiline' ),
         'id'            => 'sidebar-2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -125,9 +123,9 @@ function ekiline_widgets_init() {
         'after_title'   => '</h3>',
     ) );
 		
-// Añadimos widgets en el footer
+// Footer widgets
     register_sidebar( array(
-        'name'          => esc_html__( 'Footer Widgets', 'ekiline' ),
+        'name'          => esc_html__( 'Footer widgets', 'ekiline' ),
         'id'            => 'footer-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -136,41 +134,41 @@ function ekiline_widgets_init() {
         'after_title'   => '</h3>',
     ) );
 
-// Añadimos widgets dentro de posiciones prestablecidas para cada menu
+// Widget positions for each menu
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (top location)', 'ekiline' ),
+        'name'          => esc_html__( 'Inside top menu', 'ekiline' ),
         'id'            => 'navwidget-nw1',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
-        'after_widget'  => '</div></div>',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
+        'after_widget'  => '</div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',
     ) );     
 
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in menu (primary location)', 'ekiline' ),
+        'name'          => esc_html__( 'Inside primary menu', 'ekiline' ),
         'id'            => 'navwidget-nw2',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
-        'after_widget'  => '</div></div>',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
+        'after_widget'  => '</div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',
     ) );     
 
-// Añadimos widgets dentro de widgets
+// Widgets in widgets
     register_sidebar( array(
-        'name'          => esc_html__( 'Widget in horizontal navbar widget', 'ekiline' ),
+        'name'          => esc_html__( 'Inside horizontal navbar widget', 'ekiline' ),
         'id'            => 'navwidget-nw3',
         'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-form">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-text">',
         'after_widget'  => '</div></div>',
         'before_title'  => '<label>',
         'after_title'   => '</label>',
     ) );     
     
-// Añadimos widgets en el contenido ya sea pagina o entrada
+// Widget in content
     register_sidebar( array(
-        'name'          => esc_html__( 'In content top widgets', 'ekiline' ),
+        'name'          => esc_html__( 'In page at top of content', 'ekiline' ),
         'id'            => 'content-w1',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -180,7 +178,7 @@ function ekiline_widgets_init() {
     ) );
 
         register_sidebar( array(
-        'name'          => esc_html__( 'In content bottom widgets', 'ekiline' ),
+        'name'          => esc_html__( 'In page on bottom of content', 'ekiline' ),
         'id'            => 'content-w2',
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -189,9 +187,9 @@ function ekiline_widgets_init() {
         'after_title'   => '</h4>',
     ) );
     		   
-// Añadimos widgets en la parte superior de la pagina fuera del contenido
+// Widgets at top of content
 	register_sidebar( array(
-		'name'          => esc_html__( 'Top Page', 'ekiline' ),
+		'name'          => esc_html__( 'Out of page at top first over any content', 'ekiline' ),
 		'id'            => 'toppage-w1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -205,38 +203,27 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
 
 
 /**
- * Enqueue scripts and styles.
+ * Ingreso de CSS y JS, para fines de optimización cargamos estilos y js de manera asincrona.
+ * Enqueue scripts and styles (ekiline add css by other methods)
+ * Add CSS and JS https://codex.wordpress.org/Function_Reference/wp_enqueue_script
+ * CSS with condition: https://developer.wordpress.org/reference/functions/wp_style_add_data/
  */
   
 function ekiline_scripts() {
 	
-	// // Extra CSS
-	wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
-    wp_enqueue_style( 'bootstrap-theme', get_template_directory_uri() . '/css/bootstrap-theme.css', array(), '3.3.7', 'all' );
-		// Css con condicion: https://developer.wordpress.org/reference/functions/wp_style_add_data/
+    // wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
-	// Llamar google fonts desde url.
+	// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 	// wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,300,700,300italic,400italic,700italic|Open+Sans:400,400italic,300italic,300,700,700italic', array(), '0.0.0', 'all' );
-    // metodo ekiline, no modificar.
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
-	// U_ style: CSS (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
-	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
-	
-	/* Javascript : Desactivar Jquery para enviarlo al fondo (http://wordpress.stackexchange.com/questions/173601/enqueue-core-jquery-in-the-footer)
-	 * en caso contrario, solo Agrega esta linea y el script se ubucara en el <head>.
-	 *  wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20151113', true  );		
-	 * Mas info: 
-	 *	https://developer.wordpress.org/reference/functions/wp_enqueue_script/
-	 *	https://www.godaddy.com/garage/webpro/wordpress/3-ways-to-insert-javascript-into-wordpress-pages-or-posts/
-	 */	 
-	// wp_deregister_script( 'jquery' );
-    // wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    // wp_enqueue_script( 'jquery' );	
-        	
-    /* ABR 22 2017 hay otro metodo para hacer que jquery se vaya al fondo sin de-registrarlo y aplica solo si no eres administrador 
-     * http://stackoverflow.com/questions/35663927/wordpress-jquery-on-footer */
+	// wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
+	// wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
+	        	
+/**
+ * Enviar Jquery al final
+ * Get Jquery to the bottom 
+ * http://stackoverflow.com/questions/35663927/wordpress-jquery-on-footer 
+ */
         
     if( !is_admin() ){
         wp_dequeue_script('jquery');
@@ -246,15 +233,23 @@ function ekiline_scripts() {
         wp_enqueue_script('jquery-core', false, array(), false, true);
         wp_enqueue_script('jquery-migrate', false, array(), false, true);          
      }        	
-        	
-	// Javascript : Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
-	// Cuando los scripts dependen de JQuery se debe mencionar en el array
+     
+/**
+ * Javascript :
+ * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
+ * When scripts depend by JQuery has to be mentioned
+ * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: JS and PHP working together
+ * https://codex.wordpress.org/Function_Reference/wp_localize_script
+ */
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array('jquery'), '20170327', true  );
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
-    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );
-    
+    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
+        $translation_array = array( 'themePath' => get_stylesheet_directory_uri() );
+        wp_localize_script( 'theme-scripts', 'thepath', $translation_array ); // Localize
+            
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
 		wp_script_add_data( 'ie10-vpbugwkrnd', 'conditional', 'gte IE 8' );
@@ -271,10 +266,27 @@ function ekiline_scripts() {
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
 /**
- * Permite que los short-codes se añadan en los widgets
+ * Agregar estilos CSS en cajo de que no esté habilitado JS
+ * Add CSS styles for disabled js
+ */
+
+function ekilineNoscript(){
+    $noScripts = '<noscript>'."\n";
+    $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/bootstrap.min.css" media="all" />'."\n";
+    $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/font-awesome.min.css" media="all" />'."\n";    
+    $noScripts .= '<link rel="stylesheet" href="'. get_stylesheet_uri() . '" media="all" />'."\n";    
+    $noScripts .= '<style type="text/css">#pageLoad{display:none;}</style>'."\n";
+    $noScripts .= '</noscript>'."\n";
+    echo $noScripts;
+}
+add_action( 'wp_head', 'ekilineNoscript', 9);
+
+
+/**
+ * Permitir que los shortcodes funcionen en los widgets
+ * Allow short-codes work in widgets
  */
 add_filter('widget_text', 'do_shortcode');
-
 
 /**
  * Implement the Custom Header feature.
@@ -302,30 +314,40 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
- * agregar navwalker, para el menu de bootstrap.
+ * Navwalker, for bootstrap menus.
  * https://github.com/twittem/wp-bootstrap-navwalker
  */
 require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
 /**
- * agregar personalizaciones extra.
+ * Sobreescritura y elementos de Ekiline
+ * Ekiline overide items
  */
-require get_template_directory() . '/inc/custom-sidebars.php'; 
- require get_template_directory() . '/inc/custom-navbars.php'; 
-require get_template_directory() . '/inc/addon-breadcrumb.php';
-require get_template_directory() . '/inc/addon-verticalnavbar.php';
-require get_template_directory() . '/inc/addon-horizontalnavbar.php';
-require get_template_directory() . '/inc/addon-categoryfield.php';
-//require get_template_directory() . '/inc/addon-galleryslider.php';
-require get_template_directory() . '/inc/gallerysliderxl.php';
-require get_template_directory() . '/inc/addon-recentPostsCarousel.php';
-require get_template_directory() . '/inc/addon-tabs.php';
-require get_template_directory() . '/inc/addon-widgetoptions.php';
-require get_template_directory() . '/inc/addon-extractshortcode.php';
-require get_template_directory() . '/inc/addon-sublanguage.php';
-// require get_template_directory() . '/inc/addon-optimize.php';
-// require get_template_directory() . '/inc/addon-minify.php';
-// require get_template_directory() . '/inc/addon-privateaccess.php';
-require get_template_directory() . '/inc/addon-maintenance.php';
-require get_template_directory() . '/inc/addon-editor.php';
+// theme frontend addons
+require get_template_directory() . '/inc/themeSidebars.php';
+require get_template_directory() . '/inc/themeNavbars.php';
+require get_template_directory() . '/inc/themeBreadcrumb.php';
+
+// theme custom widgets
+require get_template_directory() . '/inc/widgetNavVer.php';
+require get_template_directory() . '/inc/widgetNavHor.php';
+require get_template_directory() . '/inc/widgetRecentPostsCarousel.php';
+require get_template_directory() . '/inc/widgetOptions.php';
+
+// theme custom shortcodes
+require get_template_directory() . '/inc/shortcodeAll.php';
+require get_template_directory() . '/inc/shortcodeGalleryslider.php';
+require get_template_directory() . '/inc/shortcodeTabs.php';
+require get_template_directory() . '/inc/shortcodeInsertposts.php';
+
+// theme customizer services
+require get_template_directory() . '/inc/serviceOptimize.php';
+require get_template_directory() . '/inc/serviceMaintenance.php';
+require get_template_directory() . '/inc/serviceMinify.php';
+require get_template_directory() . '/inc/serviceSocialmedia.php';
+require get_template_directory() . '/inc/serviceAccess.php';
+
+// theme admin extend options
+require get_template_directory() . '/inc/adminCategoryfield.php';
+require get_template_directory() . '/inc/adminEditor.php';
 

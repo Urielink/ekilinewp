@@ -1,21 +1,22 @@
 <?php
 /**
  * Script para las acciones de los sidebars
- *
+ * Sidebars activity
+ * 
  * @package ekiline
  */
 
-// Global, sidebar activas
+// Variable, sidebar static
 $sideLeft = is_active_sidebar( 'sidebar-1' );
 $sideRight = is_active_sidebar( 'sidebar-2' ); 
 
-// Global, sidebar plegable
+// Variable, sidebar toggle
 $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
 $rightOn = get_theme_mod('ekiline_sidebarRight','on');
 
 
-/* Funcion especial, condicionar el uso de clases CSS de acuerdo a formatos o contenidos especificos
- * Se inyecta una CSS en el body
+/* Agrega clase css para habilitar sidebars
+ * Add css to enable or disable Ekiline sidebars
  * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
  * https://developer.wordpress.org/reference/functions/body_class/
  */
@@ -39,6 +40,7 @@ add_filter( 'body_class', function( $classes ) {
 
 /* En caso de estar activos los sidebars, cambia la clase del contenedor principal y los sidebars.
  * Este fragmento afecta a la container: index.php, single.php, search.php, page.php, archive.php, 404.php 
+ * If sidebars active, change width of each column (index.php, single.php, search.php, page.php, archive.php, 404.php )
  */
 
 function sideOn() {
@@ -72,6 +74,7 @@ function sideOn() {
 
 /* Estos 2 fragmentos Agregan una clase a cada sidebar
  * afectan a sidebar.php y sidebar-right.php 
+ * Add class to each sidebar (sidebar.php, sidebar-right.php)
  */
 
 function leftSideOn() {    
@@ -95,6 +98,7 @@ function rightSideOn() {
 
 /* Añadimos los botones a los sidebars, 
  * afectan a sidebar.php y sidebar-right.php 
+ * Add buttons to hide/show sidebars (sidebar.php y sidebar-right.php)
  */
  
 function leftSideButton(){
@@ -106,14 +110,3 @@ function rightSideButton(){
     global $sideRight,$rightOn;    
     if ( $sideRight && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
-
-// PRUEBA: si se elige que los sidebars se oculten o muestren Agrega un boton al menu nav.
-// function add_sidebar_action( $items, $args ) {
-    // global $leftOn, $rightOn;    
-        // if ($leftOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-left">'.esc_html__( 'Sidebar Left', 'ekiline' ).'</a></li>'; endif;
-        // if ($rightOn == 'off') : $items .= '<li><a href="#" id="show-sidebar-right">'.esc_html__( 'Sidebar Right', 'ekiline' ).'</a></li>'; endif;    
-    // return $items;    
-// }
-// add_filter( 'wp_nav_menu_items', 'add_sidebar_action', 10, 2 );
-
-

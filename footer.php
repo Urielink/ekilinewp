@@ -31,15 +31,18 @@
 
             <?php dynamic_sidebar( 'footer-w1' ); ?>
             
-    		<small class="site-info col-xs-12 text-center">
+    		<h6 class="site-info text-right no-margin">
 
                 <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
-                <span class="sep"> | </span>
-                <?php printf( esc_html__( 'Por %s', 'ekiline' ), '<a href="#autor">Autor</a>' ); ?>
-                <span class="sep"> | </span>
-                <?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>
                 
-    		</small><!-- .site-info -->
+                <br/>
+                
+                <small>
+                    <?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?>
+                    <?php printf( esc_html__( 'By %s', 'ekiline' ), '<a href="'.__('http://ekiline.com','ekiline').'" target="_blank">Ekiline</a>' ); ?>
+                </small>
+                
+    		</h6><!-- .site-info -->
 
 		</div>
 		

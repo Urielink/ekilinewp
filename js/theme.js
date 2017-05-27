@@ -4,6 +4,76 @@
  */
 
 	jQuery(document).ready(function($){
+
+//		// Encapsulo el script de fuentes y le pido que lo invoque después de un segundo al cargar este archivo
+//		setTimeout(function () {
+//			
+//			// parametros
+//			WebFontConfig = {
+//			  google: { families: [ 'Assistant:200,400,700' ] }
+//			};		 
+//			
+//			// insertar script de fuentes
+//			var sf = document.createElement("script");
+//			sf.type = "text/javascript";
+//			sf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
+//			$("head").append(sf);
+//			
+//			// insertar estilo css para hacer el cambio en las fuentes
+//			var styleFont = $('<style type="text/css" media="all">body{font-family: "Assistant", sans-serif !important;font-weight:400;}h1,h2,h3,h4,h5,h6{font-family: "Assistant", sans-serif !important;font-weight:200;}</style>');
+//			$('html > head').append(styleFont);		
+//	
+//		}, 500);
+
+		
+	
+	/**  Optimización, estilos dinámicos después de la carga
+	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
+	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
+	 *  
+	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
+	 */
+		
+		function miCss(archivoCss){
+
+			var templateUrl = thepath.themePath;
+			
+			var $head = $("head");
+			var $wpcss = $head.find("style[id='ekiline-inline']"); 
+			var $cssinline = $head.find("style:last");
+			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
+	
+	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+
+
+			if ($wpcss.length){ 
+					$wpcss.before(linkCss); 
+				} else if ($cssinline.length){ 
+					$cssinline.before(linkCss); 
+				} else if ($ultimocss.length){ 
+					$ultimocss.before(linkCss); 
+				} else { 
+					$head.append(linkCss); 
+				}
+
+			
+		}
+		
+			miCss('/css/bootstrap.min.css');
+			miCss('/css/font-awesome.min.css');
+			miCss('/css/ekiline-layout.css');
+			miCss('/style.css');
+			//en caso de explorer
+			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+			
+			
+		// El preload
+	    setTimeout(function(){
+	        $('#pageLoad').fadeOut(500);
+	    }, 600);			          
+			
+		
 /*		
 		var desfaseItem = '.carousel';
 		var desfaseItem = '.destacado-estilo';
@@ -74,6 +144,13 @@
 	        $('#primary').removeClass('col-md-offset-3')
 	    });
 */
+
+		// Lazyload para imagenes
+//		$('img').lazyload({ 
+//			threshold : 200,
+//		    //placeholder : 'apple-touch-icon.png',
+//		    effect : "fadeIn" 
+//		});	    
 		
 		// Carrusel: impedir que avance automaticamente
 		
@@ -82,8 +159,8 @@
 
 	    if ( $('#masthead').length ) {
 	    	
-	    	console.log ('si header');
-	    	console.log ( $('#masthead').height() );
+	    	//console.log ('si header');
+	    	//console.log ( $('#masthead').height() );
 	    	
 	    	$('.top-navbar.navbar-affix').affix({
 		        offset: {
@@ -104,13 +181,70 @@
 	    	
 	    }
 	    
-	    
-	    
 
 	    // Carrusel con swipe
 	    $('.carousel').carousel({
 	    	  swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
-	    	});	    	    
+	    	});	  
+	    
+
+
+
+		/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+		 * 
+		 *	Alerta en el formulario de comentarios
+		 *	Ejercicio original: http://stackoverflow.com/questions/33440243/wordpress-change-comment-error-message
+		 * 
+		 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
+					
+			    /**
+			     *  Modal de validaciones.
+			     *  1) la estructura de la caja (base bootstrap)
+			     *  2) el arreglo para ver las alertas
+			     *  3) el arreglo para ver el submit
+			     *  4) eliminar el rastro de los modals (este normalmente se acumula si se invoca.)
+			     * 
+			     */        
+			           
+			        var modalAbre = '<div class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">\
+			                                <button type="button" class="close" data-dismiss="modal">&times;</button>';
+			        var msjlAlerta = '<h4 class="text-center">¡Ups! olvidaste un dato</h4><p class="text-center">Por favor llena todos los campos.</p>';  
+			        var msjConfirma = '<h4 class="text-center">¡Gracias por tu mensaje!</h4><p class="text-center">Lo revisaremos.</p>';  
+			        var modalCierra = '</div></div></div></div>';             
+			  
+			        
+			        $('#commentform').submit(function() {
+			            
+			            // modal + mensaje
+			            var modalbox = modalAbre + msjlAlerta + modalCierra; 
+		            	var valEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;	            	
+			            
+			            // si no estan llenos suelta la alerta
+			            if ( $.trim( $("#comment").val() ) === "" || $.trim( $("#author").val() ) === "" || $.trim($("#email").val() ) === "" || valEmail.test( $("#email").val() ) === false || $.trim($("#url").val()) === "" ) {
+			            	
+	            			$( modalbox ).modal('show');
+	            			
+			                return false;
+			                		            
+			        	} else {
+
+				            // modal + mensaje
+				            var modalbox = modalAbre + msjConfirma + modalCierra;    
+				            // el formulario ok suelta la confirmación          
+				            $( modalbox ).modal("show");   
+				            // cuando el usuario cierre la ventana, envialo a la otra página. 
+				            // $( 'body' ).on('hidden.bs.modal', function(){
+				              // window.location.href = 'gracias.html';    
+				            // });             		            
+			            }
+			            
+			        });		           
+			        
+			        // Borrar registro del modal
+			        $( 'body' ).on('hidden.bs.modal', function(){
+			          $( '.modal, .modal-backdrop' ).remove();
+			        });         	    
+	    
 	    
 
 	}); 			

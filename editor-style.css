@@ -1,8 +1,73 @@
 @import url('css/bootstrap.min.css');
 @import url('style.css');
 
-body#tinymce.wp-editor {
-	margin: 0px 15px;
-}
- 
-body#tinymce.wp-editor a {}
+/**
+ * Anular algunos comportaminetos de bootstrap que impiden buen flujo de trabajo en el editor
+ * Disable bootstrap behaviors for correct work in editor
+ **/
+.btn{-ms-touch-action:inherit;touch-action:inherit;cursor:inherit;-webkit-user-select:inherit;-moz-user-select:inherit;-ms-user-select:inherit;user-select:inherit;}
+body#tinymce.wp-editor{margin:0px 15px;} 
+/*.embed-responsive{position:inherit;display:inherit;height:auto;padding:0;overflow:inherit;}
+.embed-responsive-4by3,.embed-responsive-16by9{padding-bottom: 0px;}*/
+/*Modo wireframe **/
+#tinymce.wp-editor [class*='col-']{border:1px solid #ddd;}
+
+#tinymce.wp-editor .col-xs-1::before { content: 'col-xs-1';}
+#tinymce.wp-editor .col-xs-2::before { content: 'col-xs-2';}
+#tinymce.wp-editor .col-xs-3::before { content: 'col-xs-3';}
+#tinymce.wp-editor .col-xs-4::before { content: 'col-xs-4';}
+#tinymce.wp-editor .col-xs-5::before { content: 'col-xs-5';}
+#tinymce.wp-editor .col-xs-6::before { content: 'col-xs-6';}
+#tinymce.wp-editor .col-xs-7::before { content: 'col-xs-7';}
+#tinymce.wp-editor .col-xs-8::before { content: 'col-xs-8';}
+#tinymce.wp-editor .col-xs-9::before { content: 'col-xs-9';}
+#tinymce.wp-editor .col-xs-10::before { content: 'col-xs-10';}
+#tinymce.wp-editor .col-xs-11::before { content: 'col-xs-11';}
+#tinymce.wp-editor .col-xs-12::before { content: 'col-xs-12';}
+
+#tinymce.wp-editor .col-sm-1::before { content: 'col-sm-1';}
+#tinymce.wp-editor .col-sm-2::before { content: 'col-sm-2';}
+#tinymce.wp-editor .col-sm-3::before { content: 'col-sm-3';}
+#tinymce.wp-editor .col-sm-4::before { content: 'col-sm-4';}
+#tinymce.wp-editor .col-sm-5::before { content: 'col-sm-5';}
+#tinymce.wp-editor .col-sm-6::before { content: 'col-sm-6';}
+#tinymce.wp-editor .col-sm-7::before { content: 'col-sm-7';}
+#tinymce.wp-editor .col-sm-8::before { content: 'col-sm-8';}
+#tinymce.wp-editor .col-sm-9::before { content: 'col-sm-9';}
+#tinymce.wp-editor .col-sm-10::before { content: 'col-sm-10';}
+#tinymce.wp-editor .col-sm-11::before { content: 'col-sm-11';}
+#tinymce.wp-editor .col-sm-12::before { content: 'col-sm-12';}
+
+#tinymce.wp-editor .col-md-1::before { content: 'col-md-1';}
+#tinymce.wp-editor .col-md-2::before { content: 'col-md-2';}
+#tinymce.wp-editor .col-md-3::before { content: 'col-md-3';}
+#tinymce.wp-editor .col-md-4::before { content: 'col-md-4';}
+#tinymce.wp-editor .col-md-5::before { content: 'col-md-5';}
+#tinymce.wp-editor .col-md-6::before { content: 'col-md-6';}
+#tinymce.wp-editor .col-md-7::before { content: 'col-md-7';}
+#tinymce.wp-editor .col-md-8::before { content: 'col-md-8';}
+#tinymce.wp-editor .col-md-9::before { content: 'col-md-9';}
+#tinymce.wp-editor .col-md-10::before { content: 'col-md-10';}
+#tinymce.wp-editor .col-md-11::before { content: 'col-md-11';}
+#tinymce.wp-editor .col-md-12::before { content: 'col-md-12';}
+
+#tinymce.wp-editor .col-lg-1::before { content: 'col-lg-1';}
+#tinymce.wp-editor .col-lg-2::before { content: 'col-lg-2';}
+#tinymce.wp-editor .col-lg-3::before { content: 'col-lg-3';}
+#tinymce.wp-editor .col-lg-4::before { content: 'col-lg-4';}
+#tinymce.wp-editor .col-lg-5::before { content: 'col-lg-5';}
+#tinymce.wp-editor .col-lg-6::before { content: 'col-lg-6';}
+#tinymce.wp-editor .col-lg-7::before { content: 'col-lg-7';}
+#tinymce.wp-editor .col-lg-8::before { content: 'col-lg-8';}
+#tinymce.wp-editor .col-lg-9::before { content: 'col-lg-9';}
+#tinymce.wp-editor .col-lg-10::before { content: 'col-lg-10';}
+#tinymce.wp-editor .col-lg-11::before { content: 'col-lg-11';}
+#tinymce.wp-editor .col-lg-12::before { content: 'col-lg-12';}
+
+#tinymce.wp-editor [class*="col-"]::before{background:#ffdede;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;margin-left:-15px;margin-right:-15px;}
+
+#tinymce.wp-editor .container{border:1px dashed #ddd;}
+#tinymce.wp-editor .container::before { content: 'container';}
+#tinymce.wp-editor .row{border:1px dotted #ddd;}
+#tinymce.wp-editor .row::before { content: 'row';}
+#tinymce.wp-editor .container::before,#tinymce.wp-editor .row::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;}

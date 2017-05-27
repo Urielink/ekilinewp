@@ -23,10 +23,16 @@ function ekiline_posted_on() {
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
+	
+	//ekiline, mejor elazamos al mes
+    $archive_year  = get_the_time('Y');
+    $archive_month = get_the_time('m');
+    $timelink = get_month_link( $archive_year, $archive_month );    
 
 	$posted_on = sprintf(
 		esc_html_x( 'Posted on %s', 'post date', 'ekiline' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		//'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+        '<a href="' . esc_url( $timelink ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
@@ -49,30 +55,30 @@ function ekiline_entry_footer() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'ekiline' ) );
 		if ( $categories_list && ekiline_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ekiline' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ekiline' ) . '</span> ', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'ekiline' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</span> ', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
 		comments_popup_link( esc_html__( 'Leave a comment', 'ekiline' ), esc_html__( '1 Comment', 'ekiline' ), esc_html__( '% Comments', 'ekiline' ) );
-		echo '</span>';
+		echo '</span> ';
 	}
 
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
 			esc_html__( 'Edit %s', 'ekiline' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			the_title( '<span class="screen-reader-text">"', '"</span> ', false )
 		),
 		'<span class="edit-link">',
-		'</span>'
+		'</span> '
 	);
 }
 endif;

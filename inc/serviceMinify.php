@@ -1,8 +1,12 @@
 <?php
+/**
+ * Minificar el código
+ * Minify html output
+ * https://gist.github.com/anonymous/ebac093f8195e07492cb351ef3c25b50#file-function-minify-html-php
+ * 
+ * @package ekiline
+ */
 
-/**=============================================================================================
- * FUNCTION -> MINIFY HTML OUTPUT
- *============================================================================================*/
 
 class WP_HTML_Compression {
     protected $compress_css = true;
@@ -89,4 +93,7 @@ function wp_html_compression_finish($html) {
 function wp_html_compression_start() {
     ob_start('wp_html_compression_finish');
 }
-add_action('get_header', 'wp_html_compression_start');
+// if customizer checked and is not admin
+if( true === get_theme_mod('ekiline_minify') && !is_admin() && !current_user_can('administrator') ){
+    add_action('get_header', 'wp_html_compression_start');
+}

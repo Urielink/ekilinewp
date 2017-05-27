@@ -16,7 +16,7 @@ get_header(); ?>
 	
 		<?php dynamic_sidebar( 'content-w1' ); ?>
 
-		<main id="main" class="site-main<?php mainContainer(); ?>" role="main">
+		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 

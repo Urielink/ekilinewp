@@ -19,7 +19,7 @@ function ekiline_in_widget_form($t,$return,$instance){
         $instance['css_style'] = null;
     ?>
     <p>
-        <label for="<?php echo $t->get_field_id('css_style'); ?>"><?php _e('CSS custom class','ekiline') ?></label>
+        <label for="<?php echo $t->get_field_id('css_style'); ?>"><?php echo __( 'CSS custom class','ekiline' ) ?></label>
 	    <input type="text" name="<?php echo $t->get_field_name('css_style'); ?>" id="<?php echo $t->get_field_id('css_style'); ?>" value="<?php echo $instance['css_style'];?>" />
     </p>
     <?php

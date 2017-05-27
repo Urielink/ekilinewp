@@ -9,26 +9,10 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
     
-	<?php /* En caso de tener imagen destacada (thumbnail):
-	       * Se Agrega un div para dividir la informacion */ ?>
-
-	<?php if ( has_post_thumbnail() ) { $thumbCss = 'col-md-8'; ?>
-	
-	    <div class="cat-thumb col-md-4 pull-right">
-	        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-	            <?php the_post_thumbnail(); ?>
-	        </a>
-	    </div>
-	    
-	<?php } else { $thumbCss = 'col-md-12'; } ?>
-	
-    <div class="<?php echo $thumbCss;?>">
-    	<header class="entry-header">
-    				  	
-		  	<?php miniDate();?>
-    		
+    	<header class="page-header">
+    				  	    		
     		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
     
     		<?php if ( 'post' === get_post_type() ) : ?>
@@ -38,18 +22,28 @@
     		</div><!-- .entry-meta -->
 
     		<?php endif; ?>
-    	</header><!-- .entry-header -->
+    	</header><!-- .page-header -->
     
-    	<div class="entry-content">
+    	<div class="entry-content clearfix">
 
-    	     <?php the_excerpt(); ?> 
+            <?php if ( has_post_thumbnail() ) { ?>
+            
+                <div class="cat-thumb pull-right">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                        <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
+                    </a>
+                </div>
+                
+            <?php } ?>
     	    
-    		<?php /**
-    			the_content( sprintf(
+    	    
+    		<?php
+    		// or use the_content()
+    			the_excerpt( sprintf(
     				// translators: %s: Name of current post. //
     				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'ekiline' ), array( 'span' => array( 'class' => array() ) ) ),
     				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-    			) ); **/
+    			) );
     		?>
           
     		<?php
@@ -61,8 +55,8 @@
     		
     	</div><!-- .entry-content -->
     
-    	<footer class="entry-footer">
+    	<footer class="entry-footer page-footer">
     		<?php ekiline_entry_footer(); ?>
     	</footer><!-- .entry-footer -->
-	</div>
+
 </article><!-- #post-## -->

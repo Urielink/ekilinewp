@@ -20,12 +20,17 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-
+<div id="comments" class="comments-area well well-sm">
+    
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+	    
+    <button class="btn btn-default btn-block" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?></button>    
+    
+    <div id="comments-activity" class="collapse">
+	    
+		<h4 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ekiline' ) ),
@@ -33,11 +38,11 @@ if ( post_password_required() ) {
 					'<span>' . get_the_title() . '</span>'
 				);
 			?>
-		</h2>
-
+		</h4>
+		
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekiline' ); ?></h2>
+			<h2 class="screen-reader-text"><?php echo esc_html__( 'Comment navigation', 'ekiline' ); ?></h2>
 			<div class="nav-links">
 
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekiline' ) ); ?></div>
@@ -58,7 +63,7 @@ if ( post_password_required() ) {
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'ekiline' ); ?></h2>
+			<h2 class="screen-reader-text"><?php echo esc_html__( 'Comment navigation', 'ekiline' ); ?></h2>
 			<div class="nav-links">
 
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Older Comments', 'ekiline' ) ); ?></div>
@@ -67,19 +72,21 @@ if ( post_password_required() ) {
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
 		<?php endif; // Check for comment navigation. ?>
-
+		
+    </div><!-- #comments-activity -->
 	<?php endif; // Check for have_comments(). ?>
 
 	<?php
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'ekiline' ); ?></p>
+		<p class="no-comments"><?php echo esc_html__( 'Comments are closed', 'ekiline' ); ?></p>
 	<?php endif; ?>
 
 <?php 
 
-/* personalizar el formulario: 
+/* Personalizar el formulario, con verificador de campos y alertas (theme.js)
+ * Custom form, add js verification and alerts with bootstrap modals (theme.js)
  * https://developer.wordpress.org/reference/functions/comment_form/
  * https://premium.wpmudev.org/blog/customizing-wordpress-comment-form/?npp=b&utm_expid=3606929-84.YoGL0StOSa-tkbGo-lVlvw.1&utm_referrer=https%3A%2F%2Fwww.google.com.mx%2F
  * Algunas caracteristicas se pueden eliminar desde las funciones:
@@ -91,7 +98,7 @@ $aria_req = ( $req ? " aria-required='true'" : '' );
 
 $args = array(
 	'comment_field' => '<div class="comment-form-comment">' .
-	'<label for="comment">' . _x( 'Comment', 'noun', 'ekiline' ) . '</label>' .
+	'<label for="comment">' . __( 'Comment', 'ekiline' ) . '</label>' .
 	( $req ? '<span class="required">*</span>' : '' ) .
 	'<textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
@@ -110,13 +117,12 @@ $args = array(
       '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
       '" size="30"' . $aria_req . ' /></div>',
       
-	// se comenta para que no aparezca
     'url' =>
       '<div class="comment-form-url"><label for="url">' .
       __( 'Website','ekiline' ) . '</label>' .
       ( $req ? '<span class="required">*</span>' : '' ) .            
       '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
-      '" size="30" /></div>'      
+      '" size="30" /></div><br/>'      
 	  )),
 	  
     // las clases de manera independiente:
