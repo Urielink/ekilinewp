@@ -23,10 +23,16 @@ function ekiline_posted_on() {
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
+	
+	//ekiline, mejor elazamos al mes
+    $archive_year  = get_the_time('Y');
+    $archive_month = get_the_time('m');
+    $timelink = get_month_link( $archive_year, $archive_month );    
 
 	$posted_on = sprintf(
 		esc_html_x( 'Posted on %s', 'post date', 'ekiline' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		//'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+        '<a href="' . esc_url( $timelink ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(

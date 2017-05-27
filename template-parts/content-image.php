@@ -21,7 +21,7 @@
 
 	<?php endif; ?>
 
-	<div class="entry-content">
+	<div class="entry-content clearfix">
 
         <div class="entry-attachment">
             <div class="attachment">
@@ -74,20 +74,31 @@
 	<footer class="entry-footer">
 
         <p class="entry-meta">
-            <?php if (!is_tag()){
+            <?php 
+
+                $metadata = wp_get_attachment_metadata();                
+                $metaWidth = '';
+                $metaHeight = '';                
+                $messageMeta = __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekiline' );
+                                        
+                if ( wp_attachment_is_image() ){                
+                    $metaWidth = $metadata['width'];
+                    $metaHeight = $metadata['height'];
+                    $messageMeta = __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekiline' );                
+                }
                 
-                $metadata = wp_get_attachment_metadata();
-                printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'ekiline' ),
+                printf( $messageMeta,
                     esc_attr( get_the_date( 'c' ) ),
                     esc_html( get_the_date() ),
                     wp_get_attachment_url(),
-                    $metadata['width'],
-                    $metadata['height'],
+                    $metaWidth,
+                    $metaHeight,
                     get_permalink( $post->post_parent ),
                     get_the_title( $post->post_parent )
                 );
                 
-            } ?>
+            ?>
+            
         </p><!-- .entry-meta -->
 
 

@@ -23,7 +23,7 @@
     
         </header><!-- .page-header -->
     
-        <div class="entry-content">
+        <div class="entry-content clearfix">
             
              <?php the_excerpt(); ?> 
                       
