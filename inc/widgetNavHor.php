@@ -19,10 +19,10 @@ class HorizontalNavbarWidget extends WP_Widget {
         // Instantiate the parent object
         //parent::__construct( false, 'Vertical Menu Navigation' );
         $widget_ops = array(
-            'description' => __( 'Add a custom bootstrap menu','ekiline' ),
+            'description' => __( 'Add a bootstrap navbar','ekiline' ),
             'customize_selective_refresh' => true,
         );
-        parent::__construct( false, __( 'Navbar menu navigation','ekiline' ), $widget_ops );        
+        parent::__construct( false, __( 'Bootstrap navbar menu','ekiline' ), $widget_ops );        
     }
 
     function widget( $args, $instance ) {
@@ -59,9 +59,9 @@ class HorizontalNavbarWidget extends WP_Widget {
             // 'container_class'   => 'collapse navbar-collapse widget-hm',
             'container_id'      => 'navbar-collapse-in',
             'menu_class'        => 'nav navbar-nav',
-            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
             'menu_id'           => 'widget-menu',
-            'walker'            => new wp_bootstrap_navwalker()
+            'walker'            => new WP_Bootstrap_Navwalker()
         );
 
         wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );

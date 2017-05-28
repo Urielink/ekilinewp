@@ -98,7 +98,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                         // marcar el post 0 como el principal, para generar una clase CSS active
                         if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;                                                
                         ?>                                              
-                <div class="item <?php echo $countclass; ?>">
+                <div class="item text-center <?php echo $countclass; ?>">
                     
                     <div class="thumbnail">
                       <?php the_post_thumbnail('medium');?>
@@ -115,7 +115,6 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
 
               </div> <!-- // fin de .carousel-inner -->
               
-            <?php /*** desactivar controles
               <!-- Left and right controls -->
               <a class="left carousel-control" href="#widgetCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -124,7 +123,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
               <a class="right carousel-control" href="#widgetCarousel" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-              </a>***/ ?>
+              </a>
               
             </div> <!-- // fin de .widget-carousel --> 
             

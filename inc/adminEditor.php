@@ -434,7 +434,21 @@ function ekiline_mce_before( $init_array ) {
                 ),
             ),
         ),        
-                     
+        array(
+            'title' => __( 'Ekiline extra', 'ekiline' ),
+            'items' => array(
+                array(
+                    'title'     => __( 'Iframe modal', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'modal-iframe',
+                ),
+                array(
+                    'title'     => __( 'Image modal', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'modal-image',
+                ),
+            ),
+        ),                        
     
     );  
     

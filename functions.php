@@ -315,9 +315,9 @@ require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Navwalker, for bootstrap menus.
- * https://github.com/twittem/wp-bootstrap-navwalker
+ * https://github.com/wp-bootstrap/wp-bootstrap-navwalker
  */
-require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
+require get_template_directory() . '/inc/wp-bootstrap-navwalker.php';
 
 /**
  * Sobreescritura y elementos de Ekiline

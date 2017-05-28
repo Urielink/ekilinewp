@@ -19,10 +19,10 @@ class VerticalMenuWidget extends WP_Widget {
         // Instantiate the parent object
         //parent::__construct( false, 'Vertical Menu Navigation' );
         $widget_ops = array(
-            'description' => __( 'Add a vertical navbar to your sidebar.','ekiline' ),
+            'description' => __( 'Add a vertical navigation bootstrap styled','ekiline' ),
             'customize_selective_refresh' => true,
         );
-        parent::__construct( false, __( 'Navbar vertical navigation','ekiline' ), $widget_ops );        
+        parent::__construct( false, __( 'Bootstrap vertical navigation','ekiline' ), $widget_ops );        
     }
 
     function widget( $args, $instance ) {
@@ -42,10 +42,7 @@ class VerticalMenuWidget extends WP_Widget {
         // variable contenedora
                 
         echo '<nav id="site-navigation-vertical"  class="navbar navbar-default sidebar-nav" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.vertical-menu">
-                            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                        </button>';
+                    <div class="navbar-header">';
                         
                         if ( !empty($instance['title']) ) echo '<a class="navbar-brand">'. $instance['title'] .'</a>';   
                         
@@ -54,12 +51,12 @@ class VerticalMenuWidget extends WP_Widget {
         $nav_menu_args = array(
             'menu'        => $nav_menu,
             'container'         => 'div',
-            'container_class'   => 'collapse navbar-collapse vertical-menu',
-            'container_id'      => 'navbar-collapse-in',
+            'container_class'   => 'vertical-menu',
+            'container_id'      => '',
             'menu_class'        => 'nav navbar-nav',
-            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
             'menu_id'           => 'main-menu',
-            'walker'            => new wp_bootstrap_navwalker()            
+            'walker'            => new WP_Bootstrap_Navwalker()           
         );
 
         wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );

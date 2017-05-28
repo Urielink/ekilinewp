@@ -105,6 +105,46 @@ jQuery(document).ready(function($){
 	        next.children(':first-child').clone().appendTo( $(this) );
 	      }			
 	}); 
+	
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Preparar los ModalBox por tipo de enlace
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+	
+
+	$('.modal-image').each(function() {
+	    // necesito extraer el src y copiarlo en otro atributo
+	    var getSrc = $(this).attr('href');
+	    // añadirlo como dato paralelo
+	    $(this).attr('data-src', getSrc );	 
+	    
+	    // y por último modificar el src, convertirlo a un #id, basado en la último parte de la url.	    
+	    
+	    // var urlRest = getSrc.substring(0, getSrc.lastIndexOf("/") + 1);
+	    var urlLast = getSrc.substring(getSrc.lastIndexOf("/") + 1, getSrc.length);	    
+	    // limpiar los caracteres
+	    var setId = urlLast.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+	    // reemplazar el src
+	    $(this).attr('href', '#'+setId );		
+	});
+	
+	$('.modal-iframe').each(function() {
+	    // necesito extraer el src y copiarlo en otro atributo
+	    var getSrc = $(this).attr('href');
+	    // añadirlo como dato paralelo
+	    $(this).attr('data-src', getSrc );	 
+	    
+	    // Segmentar la url implica muchos riezgos ajenos al usuario 
+	    // Y por el uso de rewrite, hay que verificar que las url no contengan "/" al final
+	    var cSlash = getSrc.replace(/\/$/, '');
+
+	    // solo se limpiarán los caracteres
+	    var setId = getSrc.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+	    // reemplazar el src
+	    $(this).attr('href', '#'+setId );		
+	});	
+	
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -136,9 +176,11 @@ jQuery(document).ready(function($){
 				var dataWidth = $(this).attr('data-width') || null;
 				var dataHeight = $(this).attr('data-height') || null;
 				
-					if (dataWidth == null || dataHeight == null){
-						// pero si no esta especificado, dejar las ventanas al 100%
-						dataWidth = '100' || dataHeight == '100';
+				// pero si no esta especificado, dejar las ventanas al 100%
+					if (dataWidth == null){
+						dataWidth = '100';
+					} else if (dataHeight == null){
+						dataHeight == '100';
 					}
 				
 				// por el tipo de clase CSS determino el recurso a utilizar
@@ -192,19 +234,7 @@ jQuery(document).ready(function($){
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
-					} else if ( linkClass == '.modal-include' ){
-		
-			            $('#' + hrefToid + ' .modal-content .modal-body').load( dataSrc );
-		
-					} else if ( linkClass == '.modal-text' ){
-		
-						dataWidth = '20';
-						
-			            $('#' + hrefToid + ' .modal-content .modal-body').text( dataSrc );
-		
-					}  
-		
-		
+					} 
 		
 					// Personalizo la medidas de las ventanas modal depende de si existe width, height en el boton.
 					 
@@ -231,9 +261,10 @@ jQuery(document).ready(function($){
 				         
 			         //Abr 27, después de añadir la clase auxiliar, le pedimos que ajuste las medidas. 
 				         $('.window-iframe').find('.modal-body').css({
-			                  // modal body hereda la altura de la ventana
-			                  'height': $(window).height() * 0.88
-				         });		
+			                  // modal body hereda la altura de la ventana (el .8 es por un desfase extraño)
+			                  // 'height': $(window).height() * 0.88
+			                   'height': dataHeight * $(window).height() / 100 * 0.8
+				         });	
 				           
 				    }); 	
 				    
@@ -284,11 +315,9 @@ jQuery(document).ready(function($){
 
 	};
         
-      // invocar los 4 tipos de modalbox que existen
+      // invocar los 2 tipos de modalbox que existen
 	ekilinemodals.multipleModals( '.modal-iframe' );
 	ekilinemodals.multipleModals( '.modal-image' );
-	ekilinemodals.multipleModals( '.modal-include' );
-	ekilinemodals.multipleModals( '.modal-text' );     
 
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 

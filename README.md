@@ -42,4 +42,6 @@ ekiline includes support for Infinite Scroll in Jetpack.
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Bootstrap v3.3.7 http://getbootstrap.com, Copyright 2011-2016 Twitter, Inc., Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* Dimox breadcrumb licensed under [MIT] http://dimox.net/wordpress-breadcrumbs-without-a-plugin 
+* Bootstrap Navwalker [GPLv3 or later] https://github.com/twittem/wp-bootstrap-navwalker
 * Wordpress tools: https://codex.wordpress.org/Theme_Unit_Test

@@ -73,17 +73,18 @@ function topNavbar(){
 	        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
 				<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
 	        
-    	        <?php wp_nav_menu( array(
-    	                'menu'              => 'top',
-    	                'theme_location'    => 'top',
-    	                'depth'             => 2,
-    	                'container'         => '',
-    	                'menu_class'        => 'nav navbar-nav navbar-right',
-    	                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-    	                'menu_id'           => 'top-menu',
-    	                'walker'            => new wp_bootstrap_navwalker()
+    	        <?php wp_nav_menu( 
+                        array(
+        	                'menu'              => 'top',
+        	                'theme_location'    => 'top',
+        	                'depth'             => 2,
+        	                'container'         => '',
+        	                'menu_class'        => 'nav navbar-nav navbar-right',
+        	                'menu_id'           => 'top-menu',
+                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+        	                'walker'            => new WP_Bootstrap_Navwalker()
     	                )
-    	        ); ?>
+    	              ); ?>
     	
     			<?php dynamic_sidebar( 'navwidget-nw1' ); ?>     
 	        
@@ -133,10 +134,11 @@ function primaryNavbar(){
                             'container_class'   => 'collapse navbar-collapse primary',
                             'container_id'      => 'navbar-collapse-in',
                         'menu_class'        => 'nav navbar-nav',
-                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                         'menu_id'           => 'main-menu',
-                        'walker'            => new wp_bootstrap_navwalker())
-                ); ?>                           
+                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'            => new WP_Bootstrap_Navwalker()
+                        )
+                      ); ?>                           
                 
         		<?php dynamic_sidebar( 'navwidget-nw2' ); ?>     
         

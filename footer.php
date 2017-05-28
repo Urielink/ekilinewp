@@ -31,8 +31,8 @@
 
             <?php dynamic_sidebar( 'footer-w1' ); ?>
             
-    		<h6 class="site-info text-right no-margin">
-
+            <div class="site-info text-right no-margin clearfix">
+    
                 <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
                 
                 <br/>
@@ -42,8 +42,8 @@
                     <?php printf( esc_html__( 'By %s', 'ekiline' ), '<a href="'.__('http://ekiline.com','ekiline').'" target="_blank">Ekiline</a>' ); ?>
                 </small>
                 
-    		</h6><!-- .site-info -->
-
+            </div><!-- .site-info -->       
+        
 		</div>
 		
 	</footer><!-- #colophon -->

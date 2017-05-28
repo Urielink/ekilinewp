@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-05-26 23:04-0500\n"
+"PO-Revision-Date: 2017-05-27 19:19-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -517,20 +517,20 @@ msgstr "Error "
 
 # @ ekiline
 #: carpeta/archivo.php:29
-msgid "Add a custom bootstrap menu"
-msgstr "Añade un menú bootstrap personalizado"
+msgid "Add a bootstrap navbar"
+msgstr "Añade un menú bootstrap"
 
-msgid "Navbar menu navigation"
-msgstr "Navegación por menú de Navbar"
+msgid "Bootstrap navbar menu"
+msgstr "Menú navbar de bootstrap"
 
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "No hay menús creados todavía. <a href=\"%s\">Crear alguno</a>."
 
-msgid "Add a vertical navbar to your sidebar"
-msgstr "Agregue una barra de navegación vertical a su barra lateral"
+msgid "Add a vertical navigation bootstrap styled"
+msgstr "Agregue uns navegación vertical con los estilos de bootstrap"
 
-msgid "Navbar vertical navigation"
-msgstr "Navegación Vertical"
+msgid "Bootstrap vertical navigation"
+msgstr "Navegación vertical de bootstrap"
 
 # @ ekiline
 #: carpeta/archivo.php:29
@@ -639,6 +639,7 @@ msgstr "Derecha"
 msgid "Carousel transition"
 msgstr "tiempo de transición del carrusel"
 
+# borrar
 msgid "Default"
 msgstr "Por Defecto"
 
@@ -775,3 +776,179 @@ msgstr "Página %s"
 
 msgid "Comment page %s"
 msgstr "Comentarios"
+
+# @ ekiline
+#: adminEditor.php
+msgid "Columns"
+msgstr "Columnas"
+
+msgid "Columns container"
+msgstr "Contenedor de columnas"
+
+msgid "2 columns"
+msgstr "2 columnas"
+
+msgid "3 columns"
+msgstr "3 columans"
+
+msgid "4 columns"
+msgstr "4 columnas"
+
+msgid "6 columns"
+msgstr "6 columnas"
+
+msgid "Typography"
+msgstr "Tipografía"
+
+msgid "Lead Text"
+msgstr "Destacar (Lead)"
+
+msgid "Highlight"
+msgstr "Remarcar <mark>"
+
+msgid "Insert"
+msgstr "Insertar <ins>"
+
+msgid "Abbreviation"
+msgstr "Abreviatura <abbr>"
+
+msgid "Initialism"
+msgstr "Siglas"
+
+msgid "Cite"
+msgstr "Cita <cite>"
+
+msgid "User Input"
+msgstr "Entrada de usuario <kbd>"
+
+msgid "Variable"
+msgstr "Variable <var>"
+
+msgid "Sample Output"
+msgstr "Muestra salida <samp>"
+
+msgid "Address"
+msgstr "Dirección <address>"
+
+msgid "Code Block"
+msgstr "Bloque de código <pre>"
+
+msgid "Colors"
+msgstr "Colores (Bootstrap)"
+
+msgid "Muted"
+msgstr "Muted (inactivo o blanco)"
+
+msgid "Primary"
+msgstr "Primary (Azúl)"
+
+msgid "Success"
+msgstr "Success (Verde)"
+
+msgid "Info"
+msgstr "Info (Cyan)"
+
+msgid "Warning"
+msgstr "Warning (Amarilo)"
+
+msgid "Danger"
+msgstr "Danger (Rojo)"
+
+msgid "Background Primary"
+msgstr "Fondo Azul"
+
+msgid "Background Success"
+msgstr "Fondo Verde"
+
+msgid "Background Info"
+msgstr "Fondo Cyan"
+
+msgid "Background Warning"
+msgstr "Fondo Amarillo"
+
+msgid "Background Danger"
+msgstr "Fondo Rojo"
+
+msgid "Utilities"
+msgstr "Utilidades"
+
+msgid "Pull Left"
+msgstr "Halar a la Izquierda"
+
+msgid "Pull Right"
+msgstr "Halar a la Derecha"
+
+msgid "Clearfix"
+msgstr "Forzar ajuste (Clearfix)"
+
+msgid "Center Block"
+msgstr "Centrar en bloque (Center Block)"
+
+msgid "Lists"
+msgstr "Listas"
+
+msgid "Unstyled List"
+msgstr "Lista sin estilo (unstyled)"
+
+msgid "Inline List"
+msgstr "Lista en linea (Inline)"
+
+msgid "Buttons"
+msgstr "Botones"
+
+msgid "Link"
+msgstr "Enlace (Link)"
+
+msgid "Large"
+msgstr "Grande"
+
+msgid "Small"
+msgstr "Pequeño"
+
+msgid "Extra Small"
+msgstr "Extra Pequeño"
+
+msgid "Block"
+msgstr "En bloque"
+
+msgid "Disabled"
+msgstr "Desactivado"
+
+msgid "Alerts"
+msgstr "Alertas"
+
+msgid "Labels"
+msgstr "Etiquetas"
+
+msgid "Other"
+msgstr "Otros"
+
+msgid "Reverse Blockquote"
+msgstr "Cita invertida"
+
+msgid "Centered Blockquote"
+msgstr "Cita centrada"
+
+msgid "Blockquote Footer"
+msgstr "Cita al pié"
+
+msgid "Well"
+msgstr "Enmarcar (well)"
+
+msgid "Large Well"
+msgstr "Enmarcar en grande (large well)"
+
+msgid "Small Well"
+msgstr "Enmarcar pequeño (Small Well)"
+
+msgid "Badge"
+msgstr "Insignia (Badge)"
+
+msgid "Rounded Image"
+msgstr "Imagen redondeada"
+
+msgid "Circle Image"
+msgstr "Imagen en círculo"
+
+msgid "Thumbnail Image"
+msgstr "Imagen miniatura"
