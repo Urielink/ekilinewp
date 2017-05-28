@@ -8,6 +8,7 @@
  */
 
 /**
+ * Extender funciones de widget, añadir CSS por cada item
  * Extend widget functions
  * http://wordpress.stackexchange.com/questions/134539/how-to-add-custom-fields-to-settings-in-widget-options-for-all-registered-widget
  * https://github.com/lowhow/Whitecoat/blob/master/whitecoat2/functions-theme.php
@@ -62,3 +63,4 @@ add_action('in_widget_form', 'ekiline_in_widget_form',5,3);
 add_filter('widget_update_callback', 'ekiline_in_widget_form_update',5,3);
 //add class names (default priority, one parameter)
 add_filter('dynamic_sidebar_params', 'ekiline_dynamic_sidebar_params');
+
