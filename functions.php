@@ -210,7 +210,10 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
  */
   
 function ekiline_scripts() {
-	
+        
+    $gfont = get_theme_mod('ekiline_gfont','');
+    if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
+    	
     // wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
@@ -266,7 +269,7 @@ function ekiline_scripts() {
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 
 /**
- * Agregar estilos CSS en cajo de que no esté habilitado JS
+ * Agregar estilos CSS en caso de que no esté habilitado JS
  * Add CSS styles for disabled js
  */
 

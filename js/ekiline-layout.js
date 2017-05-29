@@ -433,28 +433,5 @@ jQuery(document).ready(function($){
 	   });  
 		
 	});
-
-	
-	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-	 * 
-	 *	Agregar clases en items del core de wordpress
-	 *	Widgets que no requieren ser sobreescritos (overide)
-	 * 
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
-			
-		$( '.widget_rss ul' ).addClass( 'list-group' );		
-		$( '.widget_rss ul li' ).addClass( 'list-group-item' );		
-		//$( '.widget_meta ul, .widget_recent_entries ul, .widget_archive ul, .widget_categories ul, .widget_nav_menu ul, .widget_pages ul' ).addClass( 'nav' );
-		//$( '.widget_recent_comments ul#recentcomments' ).css( 'list-style', 'none').css( 'padding-left', '0' );
-		//$( '.widget_recent_comments ul#recentcomments li' ).css( 'padding', '5px 15px');		
-		$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
-		$( 'table#wp-calendar' ).addClass( 'table table-striped');
-		$( '.widget_text select, .widget_archive select, .widget_categories select' ).addClass( 'form-control');
-		$( '.widget_recent_comments ul' ).addClass('list-group');
-		$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		
-		$( '.widget_recent_entries ul' ).addClass( 'media-list');		
-		$( '.widget_recent_entries ul li' ).addClass( 'media');		
-		$( '.widget_recent_entries ul li .post-date' ).addClass( 'badge');		
-
 			
 }); 			

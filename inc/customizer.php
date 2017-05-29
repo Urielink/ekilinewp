@@ -549,7 +549,35 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'settings'       => 'ekiline_inProf',
                 'type'           => 'text'
         )
-    );              
+    );          
+    
+    // Design sources
+   
+    $wp_customize->add_section( 
+        'ekiline_dtools_section' , array(
+            'title'       => __( 'Design sources', 'ekiline' ),
+            'priority'    => 180,
+            'description' => __( 'Tools to complement the design of your site', 'ekiline' )
+        ) 
+    );
+
+    $wp_customize->add_setting( 
+        'ekiline_gfont', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_gfont', array(
+                'label'          => __( 'Google fonts', 'ekiline' ),
+                'description'    => __( 'Review and choose one or more <a href="https://fonts.google.com/" target="_blank">google fonts</a> sample, then add the src="XXX" code', 'ekiline' ),
+                'section'        => 'ekiline_dtools_section',
+                'settings'       => 'ekiline_gfont',
+                'type'           => 'text'
+        )
+    );          
         
 }
 add_action('customize_register', 'ekiline_theme_customizer');
