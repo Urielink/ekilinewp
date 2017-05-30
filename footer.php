@@ -29,7 +29,7 @@
 	    <!--widgets-->
 	    <div class="container">
 
-            <?php dynamic_sidebar( 'footer-w1' ); ?>
+            <div class="row"><?php dynamic_sidebar( 'footer-w1' ); ?></div>
             
             <div class="site-info text-right no-margin clearfix">
     

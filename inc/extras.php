@@ -90,7 +90,7 @@ function ekiline_csscolors() {
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$modulos.'; }
-        .navbar-inverse .navbar-text, .cover h1, .cover h2, .cover h3, .cover p{ color:'.$bgcolor.'; }
+        .navbar-inverse .navbar-text, .xcover h1, .xcover h2, .xcover h3, .xcover p{ color:'.$bgcolor.'; }
         .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
         .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }

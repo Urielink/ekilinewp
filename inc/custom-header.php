@@ -78,7 +78,8 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     	?>
     		.site-title a,
     		.site-description,
-    		.cover-title {
+    		.site-branding.jumbotron,
+    		.inner.cover {
     			color: #<?php echo esc_attr( $header_text_color ); ?>;
     		}
     		.custom-header-image {}
@@ -140,6 +141,19 @@ function customHeader() {
                     'target' => array()
                 ),
                 'br' => array(),
+                'p' => array(
+                    'class' => array(),
+                ),
+                'strong' => array(),
+                'h1' => array(
+                    'class' => array(),
+                ),
+                'h2' => array(
+                    'class' => array(),
+                ),
+                'h3' => array(
+                    'class' => array(),
+                ),
             ) );               
             						
             // Establece la altura de la imagen en formato jumbotron           
