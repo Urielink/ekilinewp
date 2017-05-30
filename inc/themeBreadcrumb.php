@@ -129,7 +129,7 @@ function breadcrumb() {
         } elseif ( is_attachment() ) {
             if ($show_home_link) echo $sep;
             $parent = get_post($parent_id);
-            $cat = get_the_category($parent->ID); $cat = $cat[0];
+            $cat = get_the_category($parent->ID); $cat = $cat[0] = ''; // 29 mayo index error
             if ($cat) {
                 $cats = get_category_parents($cat, TRUE, $sep);
                 $cats = preg_replace('#<a([^>]+)>([^<]+)<\/a>#', $link_before . '<a$1' . $link_attr .'>' . $link_in_before . '$2' . $link_in_after .'</a>' . $link_after, $cats);

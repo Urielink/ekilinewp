@@ -118,7 +118,7 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'comment-reply',
 		'wp-embed',
 		'wp-emoji-release',
-		// 'bootstrap-script',
+		// 'bootstrap-script', Swipe compatibility
 		'ekiline-swipe',
 		'lazy-load',
 		'ekiline-layout',
@@ -133,6 +133,26 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
     return $tag;
 } 
 add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+
+
+// function load_styles( $tag, $handle, $src ) {
+//         
+    // $load_css = array( 
+        // 'bootstrap-337',
+        // 'ie10-viewport-bug-workaround',
+        // 'font-awesome',
+        // 'layout',
+        // 'ekiline-style'
+        // //'google-font'
+    // );
+// 
+    // if ( in_array( $handle, $load_css ) ) {
+       // return '<link id="' . $handle . '" href="' . $src . '" type="text/css" media="all" rel="stylesheet">' . "\n";
+    // }
+//     
+    // return $tag;
+// } 
+// add_filter( 'style_loader_tag', 'load_styles', 10, 3 );
 
 
 /**

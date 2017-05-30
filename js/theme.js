@@ -5,32 +5,11 @@
 
 	jQuery(document).ready(function($){
 
-//		// Encapsulo el script de fuentes y le pido que lo invoque después de un segundo al cargar este archivo
-//		setTimeout(function () {
-//			
-//			// parametros
-//			WebFontConfig = {
-//			  google: { families: [ 'Assistant:200,400,700' ] }
-//			};		 
-//			
-//			// insertar script de fuentes
-//			var sf = document.createElement("script");
-//			sf.type = "text/javascript";
-//			sf.src = "https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js";
-//			$("head").append(sf);
-//			
-//			// insertar estilo css para hacer el cambio en las fuentes
-//			var styleFont = $('<style type="text/css" media="all">body{font-family: "Assistant", sans-serif !important;font-weight:400;}h1,h2,h3,h4,h5,h6{font-family: "Assistant", sans-serif !important;font-weight:200;}</style>');
-//			$('html > head').append(styleFont);		
-//	
-//		}, 500);
-
-		
 	
-	/**  Optimización, estilos dinámicos después de la carga
+	/** RUTAS RELATIVAS AL TEMA
+	 *  Optimización, estilos dinámicos después de la carga
 	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
 	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
-	 *  
 	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
 	 */
 		
@@ -45,7 +24,6 @@
 			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
 	
 	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-
 
 			if ($wpcss.length){ 
 					$wpcss.before(linkCss); 
@@ -66,8 +44,41 @@
 			miCss('/style.css');
 			//en caso de explorer
 			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+
+
+	/**  RUTAS ABSOLUTAS EXTERNAS AL TEMA
+	 * Optimización, cargar scripts externos despúes de la carga informativa
+	 * Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
+	 */
+
+			function extCss(archivoCss){
+				
+				var $head = $("head");
+				var $wpcss = $head.find("style[id='ekiline-inline']"); 
+				var $cssinline = $head.find("style:last");
+				var $ultimocss = $head.find("link[rel='stylesheet']:last");
+				var linkCss = "<link rel='stylesheet' href='"+ archivoCss +"' type='text/css' media='screen'>";
+		
+		        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+
+				if ($wpcss.length){ 
+						$wpcss.before(linkCss); 
+					} else if ($cssinline.length){ 
+						$cssinline.before(linkCss); 
+					} else if ($ultimocss.length){ 
+						$ultimocss.before(linkCss); 
+					} else { 
+						$head.append(linkCss); 
+					}
+
+				
+			}
 			
+			var gfontUrl = gfpath.googlePath;
+			extCss( gfontUrl );		
+
 			
+		
 		// El preload
 	    setTimeout(function(){
 	        $('#pageLoad').fadeOut(500);
