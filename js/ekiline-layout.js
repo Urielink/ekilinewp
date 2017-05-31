@@ -177,10 +177,9 @@ jQuery(document).ready(function($){
 				var dataHeight = $(this).attr('data-height') || null;
 				
 				// pero si no esta especificado, dejar las ventanas al 100%
-					if (dataWidth == null){
+					if (dataWidth == null || dataHeight == null){
 						dataWidth = '100';
-					} else if (dataHeight == null){
-						dataHeight == '100';
+						dataHeight = '100';
 					}
 				
 				// por el tipo de clase CSS determino el recurso a utilizar
@@ -262,7 +261,6 @@ jQuery(document).ready(function($){
 			         //Abr 27, después de añadir la clase auxiliar, le pedimos que ajuste las medidas. 
 				         $('.window-iframe').find('.modal-body').css({
 			                  // modal body hereda la altura de la ventana (el .8 es por un desfase extraño)
-			                  // 'height': $(window).height() * 0.88
 			                   'height': dataHeight * $(window).height() / 100 * 0.8
 				         });	
 				           
