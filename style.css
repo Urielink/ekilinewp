@@ -29,6 +29,14 @@
 
  */
 
+/* La primera carga */
+
+/** MODULO: Loader con spin **/
+#pageLoad{width:100%;height:100%;position:fixed;text-align:center;z-index:5000;top:0;left:0;right:0;}
+ .loadtext{line-height:100%;position:absolute;top:46%;left:0;right:0;width:auto;height:auto;}
+ .loadicon{margin:0px;padding:10px;font-size:2em;-webkit-animation:spin 4s linear infinite;-moz-animation:spin 4s linear infinite;animation:spin 4s linear infinite;}
+
+
 /* Ajuste en lectura */
 body {
 	-webkit-hyphens: auto;
@@ -565,21 +573,6 @@ a img.aligncenter {
  * ----------------------------------------------*/
 
 #page { padding-bottom: 20px; }
-
-/** MODULO: Loader con spin **/
-#pageLoad {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    text-align: center;
-    z-index: 5000;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
- .loadtext{line-height:100%;position:absolute;top:46%;left:0;right:0;width:auto;height:auto;}
- .loadicon{margin:0px;padding:10px;font-size:2em;-webkit-animation:spin 4s linear infinite;-moz-animation:spin 4s linear infinite;animation:spin 4s linear infinite;}
 
 /*Si usa portada a todo lo ancho, aplicar el estilo a las páginas internas*/
 
