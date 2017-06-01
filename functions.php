@@ -189,7 +189,7 @@ function ekiline_widgets_init() {
     		   
 // Widgets at top of content
 	register_sidebar( array(
-		'name'          => esc_html__( 'Out of page at top first over any content', 'ekiline' ),
+		'name'          => esc_html__( 'Top first over all content', 'ekiline' ),
 		'id'            => 'toppage-w1',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
