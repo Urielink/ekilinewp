@@ -10,6 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
+    
 	<header class="page-header">
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
@@ -24,8 +25,9 @@
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer panel-footer text-muted clearfix">
 		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	
 </article><!-- #post-## -->
 

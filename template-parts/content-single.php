@@ -10,6 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
+    
 	<header class="page-header">
 
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
@@ -29,8 +30,9 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer panel-footer text-muted clearfix">
 		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	
 </article><!-- #post-## -->
 

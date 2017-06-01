@@ -277,6 +277,10 @@
 //		$( '.widget_recent_entries ul' ).addClass( 'media-list');		
 //		$( '.widget_recent_entries ul li' ).addClass( 'media');		
 //		$( '.widget_recent_entries ul li .post-date' ).addClass( 'badge');		
+		$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		
+		$( '.nav-links' ).addClass( 'pager');		
+		$( '.nav-links .nav-next' ).addClass( 'next');		
+		$( '.nav-links .nav-previous' ).addClass( 'previous');		
 			        
 	    
 

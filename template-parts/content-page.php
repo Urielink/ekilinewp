@@ -34,23 +34,22 @@
 
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-
-        <nav id="page-navigation">
-            <?php ekiline_pages_navigation(); ?>         
-        </nav><!-- #page-navigation -->        
-
+	<footer class="entry-footer panel-footer text-muted clearfix">
+	    
+       <?php ekiline_entry_footer(); ?>
+           
 		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					esc_html__( 'Edit %s', 'ekiline' ),
-					the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
-				),
-                '<span class="edit-link btn btn-default">',
-				'</span>'
-			);
+			// edit_post_link(
+				// sprintf(
+					// /* translators: %s: Name of current post */
+					// esc_html__( 'Edit %s', 'ekiline' ),
+					// the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
+				// ),
+                // '<span class="edit-link btn btn-default">',
+				// '</span>'
+			// );
 		?>
 	</footer><!-- .entry-footer -->
+	
 </article><!-- #post-## -->
 
