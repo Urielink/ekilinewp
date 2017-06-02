@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-01 20:27-0500\n"
+"PO-Revision-Date: 2017-06-01 20:53-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -966,3 +966,9 @@ msgstr "Fuentes de Google"
 
 msgid "Review and choose one or more <a href=\"https://fonts.google.com/\" target=\"_blank\">google fonts</a> sample, then add the src=\"XXX\" code"
 msgstr "Revisa y elige una o más tipografías de <a href=\"https://fonts.google.com/\" target=\"_blank\">google fonts</a>, luego solo agrega el código del enlace src=\"XXX\""
+
+msgid "Summary words limit"
+msgstr "Límite de palabras para el resumen"
+
+msgid "Assign a number of words for the summary of your articles, default value is 20"
+msgstr "Asigna un número de palabras para el resumen de tus artículos, el valor predeterminado es de 20"

@@ -56,7 +56,14 @@ function registerSocial() {
         if ( ! empty( $stdDesc ) ) {
             $metaDescription = $stdDesc; } 
         else {
-            $metaDescription = strip_tags( get_the_excerpt() );
+            // metodo 1 con el extracto
+            //$metaDescription = strip_tags( get_the_excerpt() );
+            // metodo 2 con el contenido escapado
+            // en promedio 24 palabras es un twitt.
+            $metaDescription = wp_trim_words( get_the_content(), 24, '...' );
+            // metodo 3 con el contenido escapado y limitado a número de caracteres 
+            // $metaDescription = wp_trim_words( get_the_content() );
+            // $metaDescription = mb_strimwidth( $metaDescription, 0, 180, '...');
         }
         
         // La imagen

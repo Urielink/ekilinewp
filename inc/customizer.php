@@ -579,6 +579,23 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );          
         
+    $wp_customize->add_setting( 
+        'ekiline_cutexcerpt', array(
+            'default' => '20',
+            //'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_cutexcerpt', array(
+                'label'          => __( 'Summary words limit', 'ekiline' ),
+                'description'    => __( 'Assign a number of words for the summary of your articles, default value is 20', 'ekiline' ),
+                'section'        => 'ekiline_dtools_section',
+                'settings'       => 'ekiline_cutexcerpt',
+                'type'           => 'number'
+        )
+    );                  
 }
 add_action('customize_register', 'ekiline_theme_customizer');
 

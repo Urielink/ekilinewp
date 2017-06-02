@@ -185,7 +185,12 @@ add_filter( 'get_search_form', 'ekiline_search_form' );
 
 // Excerpt lenght 
 function ekiline_excerpt_length( $length ) {
-    return 20;
+    
+    $cutexcerpt = get_theme_mod('ekiline_cutexcerpt','');
+    
+    if (!$cutexcerpt){ $cutexcerpt = 20; }
+    
+    return $cutexcerpt;
 }
 add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
