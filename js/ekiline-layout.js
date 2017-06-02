@@ -42,11 +42,11 @@ jQuery(document).ready(function($){
 	
 	if ( !$('body').hasClass('head-cover') ){
 		
-		var sticky = $( 'footer.site-footer > .container' ).height() + 40 ;
+		var sticky = $( 'footer.site-footer > .container' ).height() + 50 ;
 
 		$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
 		$('body').css('margin-bottom', sticky + 'px');
-		$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','height': sticky + 'px' });
+		$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
 		
 	} 
 	
