@@ -42,7 +42,7 @@ jQuery(document).ready(function($){
 	
 	if ( !$('body').hasClass('head-cover') ){
 		
-		var sticky = $( 'footer.site-footer' ).height();
+		var sticky = $( 'footer.site-footer > .container' ).height() + 40 ;
 
 		$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
 		$('body').css('margin-bottom', sticky + 'px');

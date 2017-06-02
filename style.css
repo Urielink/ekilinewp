@@ -45,7 +45,10 @@ body {
 	hyphens: auto;
 }
 
-/* Objetos incorporados (wordpress)*/
+/* ------------------------------------------------
+ * WordPress Core
+ * ----------------------------------------------*/
+
 embed, iframe, object {
 	max-width: 100%;
 	margin: 0 auto;
@@ -56,10 +59,6 @@ img {
 	max-width: 100%;
 	height: auto;
 }
-
-/* ------------------------------------------------
- * WordPress Core
- * ----------------------------------------------*/
 
 .alignnone {
 	margin: 5px 20px 20px 0;
@@ -196,7 +195,7 @@ a img.aligncenter {
 }
 
 /* ------------------------------------------------
- * Bootstrap CSS componentes de tema por default (Sobrescribir)
+ * Bootstrap CSS default theme (Sobrescribir)
  * ----------------------------------------------*/
 
 .btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
@@ -569,7 +568,7 @@ a img.aligncenter {
 
 
 /* ------------------------------------------------
- * LAYOUT ekiline CSS, tus estilos van aqui.
+ * LAYOUT Ekiline CSS, tus estilos van aqui.
  * ----------------------------------------------*/
 
 #page { padding-bottom: 20px; }
@@ -591,6 +590,7 @@ a img.aligncenter {
 /* ------------------------------------------------
  * Elementos generados por SHORTCODES.
  * ----------------------------------------------*/
+
 /*[mod_postlist]*/
 .modpostlist-default{}
 .modpostlist-block{}
@@ -603,7 +603,13 @@ a img.aligncenter {
 /* ------------------------------------------------
  * Elementos generados dentro de WIDGETS.
  * ----------------------------------------------*/
+/*Widget: Dropdown in navbar*/
+.navbar .widget > .dropdown-menu {
+    width: 300px;
+    padding: 15px;
+}
 
+ 
 
 
 /* ------------------------------------------------
@@ -663,6 +669,10 @@ a img.aligncenter {
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
+	/*Widget: Dropdown in navbar*/
+	.navbar .widget {width: 100%;}
+		.navbar-collapse.in {overflow-y: inherit;}		
+
 }
 
 @media only screen and (max-width: 480px) {}

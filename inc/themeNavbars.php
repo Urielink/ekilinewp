@@ -79,7 +79,7 @@ function topNavbar(){
         	                'theme_location'    => 'top',
         	                'depth'             => 2,
         	                'container'         => '',
-        	                'menu_class'        => 'nav navbar-nav navbar-right',
+        	                'menu_class'        => 'nav navbar-nav',
         	                'menu_id'           => 'top-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
         	                'walker'            => new WP_Bootstrap_Navwalker()

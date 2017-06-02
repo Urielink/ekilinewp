@@ -172,8 +172,8 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Dropdown in top menu', 'ekiline' ),
         'id'            => 'navwidget-nw1',
         'description'   => '',
-        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
-        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group dropdown">',
+        'before_title'  => '<button class="btn btn-default btn-block dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
         'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
         'after_widget'  => '</div></div>',
     ) );     
@@ -182,8 +182,8 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Dropdown in primary menu', 'ekiline' ),
         'id'            => 'navwidget-nw2',
         'description'   => '',
-        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
-        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group dropdown">',
+        'before_title'  => '<button class="btn btn-default btn-block dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
         'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
         'after_widget'  => '</div></div>',
     ) );     
@@ -193,8 +193,8 @@ function ekiline_widgets_init() {
         'name'          => esc_html__( 'Dropdown in single bootstrap navbar', 'ekiline' ),
         'id'            => 'navwidget-nw3',
         'description'   => '',
-        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
-        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group dropdown">',
+        'before_title'  => '<button class="btn btn-default btn-block dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
         'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
         'after_widget'  => '</div></div>',
     ) );     
