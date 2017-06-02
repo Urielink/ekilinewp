@@ -94,13 +94,14 @@ function ekiline_content_width() {
 }
 add_action( 'after_setup_theme', 'ekiline_content_width', 0 );
 
+
 /**
  * Register widget area.
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
- 
+  
 function ekiline_widgets_init() {
-	
+        	
 // Default sidebar
 	register_sidebar( array(
 		'name'          => esc_html__( 'Left sidebar', 'ekiline' ),
@@ -134,38 +135,6 @@ function ekiline_widgets_init() {
         'after_title'   => '</h3>',
     ) );
 
-// Widget positions for each menu
-    register_sidebar( array(
-        'name'          => esc_html__( 'Inside top menu', 'ekiline' ),
-        'id'            => 'navwidget-nw1',
-        'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<label>',
-        'after_title'   => '</label>',
-    ) );     
-
-    register_sidebar( array(
-        'name'          => esc_html__( 'Inside primary menu', 'ekiline' ),
-        'id'            => 'navwidget-nw2',
-        'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<label>',
-        'after_title'   => '</label>',
-    ) );     
-
-// Widgets in widgets
-    register_sidebar( array(
-        'name'          => esc_html__( 'Inside horizontal navbar widget', 'ekiline' ),
-        'id'            => 'navwidget-nw3',
-        'description'   => '',
-        'before_widget' => '<div id="%1$s" class="widget %2$s navbar-right"><div class="navbar-text">',
-        'after_widget'  => '</div></div>',
-        'before_title'  => '<label>',
-        'after_title'   => '</label>',
-    ) );     
-    
 // Widget in content
     register_sidebar( array(
         'name'          => esc_html__( 'In page at top of content', 'ekiline' ),
@@ -186,17 +155,49 @@ function ekiline_widgets_init() {
         'before_title'  => '<h4 class="widget-title">',
         'after_title'   => '</h4>',
     ) );
-    		   
+               
 // Widgets at top of content
-	register_sidebar( array(
-		'name'          => esc_html__( 'Top first over all content', 'ekiline' ),
-		'id'            => 'toppage-w1',
-		'description'   => '',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h5>',
-		'after_title'   => '</h5>',
-	) );				   
+    register_sidebar( array(
+        'name'          => esc_html__( 'Top first over all content', 'ekiline' ),
+        'id'            => 'toppage-w1',
+        'description'   => '',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h5>',
+        'after_title'   => '</h5>',
+    ) );   
+            
+// Widget positions for each menu
+    register_sidebar( array(
+        'name'          => esc_html__( 'Dropdown in top menu', 'ekiline' ),
+        'id'            => 'navwidget-nw1',
+        'description'   => '',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
+        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
+        'after_widget'  => '</div></div>',
+    ) );     
+
+    register_sidebar( array(
+        'name'          => esc_html__( 'Dropdown in primary menu', 'ekiline' ),
+        'id'            => 'navwidget-nw2',
+        'description'   => '',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
+        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
+        'after_widget'  => '</div></div>',
+    ) );     
+
+// Widgets in widgets
+    register_sidebar( array(
+        'name'          => esc_html__( 'Dropdown in single bootstrap navbar', 'ekiline' ),
+        'id'            => 'navwidget-nw3',
+        'description'   => '',
+        'before_widget' => '<div class="widget %2$s navbar-btn btn-group navbar-right dropdown">',
+        'before_title'  => '<button class="btn btn-default dropdown-toggle" type="button" id="%1$s" data-toggle="dropdown">',
+        'after_title'   => ' <span class="caret"></span></button><div class="dropdown-menu">',
+        'after_widget'  => '</div></div>',
+    ) );     
 			   	
 }
 add_action( 'widgets_init', 'ekiline_widgets_init' );
