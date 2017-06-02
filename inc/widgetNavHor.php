@@ -19,7 +19,7 @@ class HorizontalNavbarWidget extends WP_Widget {
         // Instantiate the parent object
         //parent::__construct( false, 'Vertical Menu Navigation' );
         $widget_ops = array(
-            'description' => __( 'Add a bootstrap navbar','ekiline' ),
+            'description' => __( 'Add a single bootstrap navbar','ekiline' ),
             'customize_selective_refresh' => true,
         );
         parent::__construct( false, __( 'Bootstrap navbar menu','ekiline' ), $widget_ops );        
