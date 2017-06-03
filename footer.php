@@ -34,6 +34,7 @@
             <div class="site-info text-right no-margin clearfix">
     
                 <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
+                <a class="btn btn-default" href="#top"><i class="glyphicon glyphicon-chevron-up"></i></a>    
                 
                 <br/>
                 
@@ -42,7 +43,7 @@
                     <?php printf( esc_html__( 'By %s', 'ekiline' ), '<a href="'.__('http://ekiline.com','ekiline').'" target="_blank">Ekiline</a>' ); ?>
                 </small>
                 
-            </div><!-- .site-info -->       
+            </div><!-- .site-info -->   
         
 		</div>
 		
