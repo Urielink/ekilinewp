@@ -68,20 +68,19 @@ function ekiline_mce_before( $init_array ) {
                 array(  
                     'title' => __('3 columns', 'ekiline'),  
                     'block' => 'div',  
-                    'classes' => 'col-sm-4'
+                    'classes' => 'col-sm-4',
                 ),
                 array(  
                     'title' => __('4 columns', 'ekiline'),  
                     'block' => 'div',  
-                    'classes' => 'col-sm-3'
+                    'classes' => 'col-sm-3',
                 ),
                 array(  
                     'title' => __('6 columns', 'ekiline'),  
                     'block' => 'div',  
-                    'classes' => 'col-sm-2'
-                ),
-
-            )                
+                    'classes' => 'col-sm-2',
+                ),              
+            ),            
         ), 
         
         array(
