@@ -226,6 +226,73 @@ function ekiline_scripts() {
     $gfont = get_theme_mod('ekiline_gfont','');
     if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
     
+/**
+ * Desactivar estilos y reactivarlos por js.
+ */    
+ $optimize = true;
+ 
+ if ($optimize != ''){
+
+    global $wp_styles; 
+  
+    if ( is_a( $wp_styles, 'WP_Styles' ) ) {
+        
+        //print_r( $wp_styles->queue );
+                
+        // echo json_encode( $wp_styles->queue );    
+        
+                
+        // foreach( $wp_styles->queue as $handle ){
+            // //wp_dequeue_style($handle);
+            // $id = $wp_styles->registered[$handle]->handle;
+            // $src = $wp_styles->registered[$handle]->src;
+            // $filename = basename($src);     
+        // }        
+        
+//4jun bueno!!
+            // $ret = array();
+            // foreach( $wp_styles->queue as $handle) {
+              // $ret[] = $wp_styles->registered[$handle]->src;              
+            // }
+            // echo json_encode( $ret ); 
+            
+        // $ret = array();
+        // foreach( $wp_styles->queue as $handle) {
+          // wp_dequeue_style($handle);
+          // $ret[] = array( $wp_styles->registered[$handle]->handle => $wp_styles->registered[$handle]->src );              
+        // }
+//                        
+        // echo json_encode( $ret ); 
+        //$parsear = json_encode( $ret ); 
+                                     
+$my_arr = array('my array',
+                'name' => 'Ronak',
+                'surname' => 'Gandhi',
+                'phone' => array(
+                            'home' => 12345,
+                            'office' => 67890
+                           ),
+                'hobbies' => array(
+                            'photography',
+                            'programming',
+                            'driving'
+                            ),
+);
+
+$my_json_str = json_encode($my_arr);
+              
+echo $my_json_str;                                     
+                                       
+        exit;        
+        
+                                
+        
+    } else {
+        print 'no styles enqueued';
+    }          
+    
+    
+ }
    	
 /**
  * Enviar Jquery al final
@@ -262,7 +329,9 @@ function ekiline_scripts() {
             // $translation_array = array( 'googlePath' => $gfont );
             // wp_localize_script( 'theme-scripts', 'gfpath', $translation_array ); // Localize
         // }
-
+        $translation_array = array( 'parsAll' => $parsear );
+        wp_localize_script( 'theme-scripts', 'eachcss', $translation_array ); // Localize
+        
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );

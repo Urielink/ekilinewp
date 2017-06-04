@@ -77,6 +77,39 @@
 			extCss( gfontUrl );		
 	 */
 
+
+//		var obj = eachcss.parsAll;
+//		console.log(eachcss);
+				
+		var obj = {
+		  "handler1": "rutahandler1",
+		  "handler2": "rutahandler2"
+		};		
+
+			$.each( obj, function( key, value ) {
+					// alert( key + ": " + value );
+			
+				var $head = $("head");
+				var $wpcss = $head.find("style[id='ekiline-inline']"); 
+				var $cssinline = $head.find("style:last");
+				var $ultimocss = $head.find("link[rel='stylesheet']:last");
+				var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+			
+			  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+			
+				if ($wpcss.length){ 
+						$wpcss.before(linkCss); 
+					} else if ($cssinline.length){ 
+						$cssinline.before(linkCss); 
+					} else if ($ultimocss.length){ 
+						$ultimocss.before(linkCss); 
+					} else { 
+						$head.append(linkCss); 
+					}		
+			
+				
+				
+			});		
 			
 		
 		// El preload
