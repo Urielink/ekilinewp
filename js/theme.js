@@ -18,7 +18,7 @@
 			
 			var obj = allCss;	
 			
-			console.log(allCss);
+			//console.log(allCss);
 			
 			// crear un estilo por cada ruta extríada.
 			
