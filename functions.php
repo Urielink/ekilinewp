@@ -216,29 +216,15 @@ function ekiline_scripts() {
  * This is wordpress method for enqueue styles
  */
     // wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
-	// wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
-		// wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
+	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
+		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
 	// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 	// wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	// wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
-// 	
-	// // Añadir googlefonts
+	
+	// Añadir googlefonts
     $gfont = get_theme_mod('ekiline_gfont','');
     // if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
-    
-    
-    // global $wp_styles; 
-    // $cssUrls = '';   
-    // $finalUrls = '';   
-    // foreach( $wp_styles->queue as $handle ){
-        // wp_dequeue_style($handle);
-        // $id = $wp_styles->registered[$handle]->handle;
-        // $src = $wp_styles->registered[$handle]->src;
-        // //$filename = basename($src);        
-        // $cssUrls .= '"' . $id . '":"' . $src . '",';
-        // $finalUrls = '{'.$cssUrls.'}';
-    // }
-        
     
    	
 /**
@@ -272,11 +258,11 @@ function ekiline_scripts() {
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
         $translation_array = array( 'themePath' => get_stylesheet_directory_uri() );
         wp_localize_script( 'theme-scripts', 'thepath', $translation_array ); // Localize
-        if ($gfont != '') {
+        if ($gfont != ''){
             $translation_array = array( 'googlePath' => $gfont );
             wp_localize_script( 'theme-scripts', 'gfpath', $translation_array ); // Localize
         }
-        
+
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
@@ -308,50 +294,6 @@ function ekilineNoscript(){
     echo $noScripts;
 }
 add_action( 'wp_head', 'ekilineNoscript', 9);
-
-/**
- * Extraer los valores de los estilos CSS
- * Deregister styles: https://stackoverflow.com/questions/31811583/how-to-get-js-and-css-files-and-replace-them
- */
-
-// function ekilineExCss(){
-    // // echo '<script>//mis estilos </script>';
-//     
-    // // global $wp_styles;    
-    // // if ( is_a( $wp_styles, 'WP_Styles' ) ) {
-        // // print_r( $wp_styles->queue );
-    // // } else {
-        // // print 'no styles enqueued';
-    // // }          
-//     
-    // global $wp_styles;    
-    // foreach( $wp_styles->queue as $handle ){
-        // //wp_dequeue_style($handle);
-        // $id = $wp_styles->registered[$handle]->handle;
-        // $src = $wp_styles->registered[$handle]->src;
-        // //$filename = basename($src);        
-        // echo '"' . $id . '":"' . $src . '",';
-    // }
-//             
-//           
-// }
-// add_action( 'wp_footer', 'ekilineExCss', 100);
-
-
-// function dequeue_all_styles() {
-    // global $wp_styles;
-// 
-    // foreach( $wp_styles->queue as $handle ){
-        // wp_dequeue_style($handle);
-        // $src = $wp_styles->registered[$handle]->src;
-        // $filename = basename($src);
-    // }
-// }
-// add_action( 'wp_print_styles', 'dequeue_all_styles', 100 );
-
-
-
-
 
 /**
  * Permitir que los shortcodes funcionen en los widgets
