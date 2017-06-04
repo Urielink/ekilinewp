@@ -280,10 +280,12 @@ $my_arr = array('my array',
 );
 
 $my_json_str = json_encode($my_arr);
+
+$params = array( 'my_arr' => $my_json_str, );
               
-echo $my_json_str;                                     
+//echo $my_json_str;                                     
                                        
-        exit;        
+//        exit;        
         
                                 
         
@@ -329,8 +331,8 @@ echo $my_json_str;
             // $translation_array = array( 'googlePath' => $gfont );
             // wp_localize_script( 'theme-scripts', 'gfpath', $translation_array ); // Localize
         // }
-        $translation_array = array( 'parsAll' => $parsear );
-        wp_localize_script( 'theme-scripts', 'eachcss', $translation_array ); // Localize
+        $translation_array = array( 'allPath' => $my_json_str );
+        wp_localize_script( 'theme-scripts', 'itempath', $params ); // Localize
         
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/

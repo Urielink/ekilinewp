@@ -78,14 +78,17 @@
 	 */
 
 
-//		var obj = eachcss.parsAll;
-//		console.log(eachcss);
+		//var obj = itempath.allPath;
+		var obj = $.parseJSON(itempath.allPath);
+		
+		console.log(itempath);
 				
-		var obj = {
-		  "handler1": "rutahandler1",
-		  "handler2": "rutahandler2"
-		};		
-
+//		var obj = {
+//		  "handler1": "rutahandler1",
+//		  "handler2": "rutahandler2"
+//		};	
+		
+		
 			$.each( obj, function( key, value ) {
 					// alert( key + ": " + value );
 			
