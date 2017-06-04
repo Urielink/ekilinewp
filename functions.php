@@ -237,11 +237,16 @@ if($arreglo!=''){
     $ret = array();
     foreach( $wp_styles->queue as $handle) {
       wp_dequeue_style($handle);
-      //$ret[] = $wp_styles->registered[$handle]->src ;              
-      $ret[] = $wp_styles->registered[$handle] ;              
+      $ret[] = $wp_styles->registered[$handle]->src ;              
+      //$ret[] = $wp_styles->registered[$handle] ;              
   }
     
-    echo json_encode( $ret ); 
+    //echo json_encode( $ret ); 
+        
+    $params = $ret;
+
+                
+        
     
 }        
     
@@ -275,7 +280,9 @@ if($arreglo!=''){
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
+            wp_localize_script('theme-scripts', 'allCss', $params);
 
+    
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
