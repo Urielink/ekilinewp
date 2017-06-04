@@ -372,21 +372,25 @@ function customHeader() {
  * Help CSS, add css class to body for know type of heading */
 
 add_filter( 'body_class', function( $classes ) {
+        
+    if ( get_header_image() && is_front_page() ){
     
-    $rangeHead = get_theme_mod('ekiline_range_header');
+        $rangeHead = get_theme_mod('ekiline_range_header');
+        
+        if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+            
+            $classes[] = 'head-jumbotron';
+                        
+        } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+            
+            $classes[] = 'head-cover';
+            
+        } elseif ( ! empty( get_theme_mod('ekiline_video') ) ) {
+            
+            $classes[] = 'head-video';
+            
+        }
     
-    if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
-        
-        $classes[] = 'head-jumbotron';
-                    
-    } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) && is_front_page() ) {
-        
-        $classes[] = 'head-cover';
-        
-    } elseif ( ! empty( get_theme_mod('ekiline_video') ) && is_front_page()) {
-        
-        $classes[] = 'head-video';
-        
     }
     
     return $classes;
