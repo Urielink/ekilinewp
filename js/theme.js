@@ -13,37 +13,37 @@
 	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
 	 */
 		
-//		function miCss(archivoCss){
-//
-//			var templateUrl = thepath.themePath;
-//			
-//			var $head = $("head");
-//			var $wpcss = $head.find("style[id='ekiline-inline']"); 
-//			var $cssinline = $head.find("style:last");
-//			var $ultimocss = $head.find("link[rel='stylesheet']:last");
-//			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
-//	
-//	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-//
-//			if ($wpcss.length){ 
-//					$wpcss.before(linkCss); 
-//				} else if ($cssinline.length){ 
-//					$cssinline.before(linkCss); 
-//				} else if ($ultimocss.length){ 
-//					$ultimocss.before(linkCss); 
-//				} else { 
-//					$head.append(linkCss); 
-//				}
-//
-//			
-//		}
-//		
-//			miCss('/css/bootstrap.min.css');
-//			miCss('/css/font-awesome.min.css');
-//			miCss('/css/ekiline-layout.css');
-//			miCss('/style.css');
-//			//en caso de explorer
-//			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+		function miCss(archivoCss){
+
+			var templateUrl = thepath.themePath;
+			
+			var $head = $("head");
+			var $wpcss = $head.find("style[id='ekiline-inline']"); 
+			var $cssinline = $head.find("style:last");
+			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			var linkCss = "<link rel='stylesheet' href='"+ templateUrl + archivoCss +"' type='text/css' media='screen'>";
+	
+	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+
+			if ($wpcss.length){ 
+					$wpcss.before(linkCss); 
+				} else if ($cssinline.length){ 
+					$cssinline.before(linkCss); 
+				} else if ($ultimocss.length){ 
+					$ultimocss.before(linkCss); 
+				} else { 
+					$head.append(linkCss); 
+				}
+
+			
+		}
+		
+			miCss('/css/bootstrap.min.css');
+			miCss('/css/font-awesome.min.css');
+			miCss('/css/ekiline-layout.css');
+			miCss('/style.css');
+			//en caso de explorer
+			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
 
 
 	/**  RUTAS ABSOLUTAS EXTERNAS AL TEMA
@@ -51,31 +51,31 @@
 	 * Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
 	 */
 
-//			function extCss(archivoCss){
-//				
-//				var $head = $("head");
-//				var $wpcss = $head.find("style[id='ekiline-inline']"); 
-//				var $cssinline = $head.find("style:last");
-//				var $ultimocss = $head.find("link[rel='stylesheet']:last");
-//				var linkCss = "<link rel='stylesheet' href='"+ archivoCss +"' type='text/css' media='screen'>";
-//		
-//		        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-//
-//				if ($wpcss.length){ 
-//						$wpcss.before(linkCss); 
-//					} else if ($cssinline.length){ 
-//						$cssinline.before(linkCss); 
-//					} else if ($ultimocss.length){ 
-//						$ultimocss.before(linkCss); 
-//					} else { 
-//						$head.append(linkCss); 
-//					}
-//
-//				
-//			}
-//			
-//			var gfontUrl = gfpath.googlePath;
-//			extCss( gfontUrl );		
+			function extCss(archivoCss){
+				
+				var $head = $("head");
+				var $wpcss = $head.find("style[id='ekiline-inline']"); 
+				var $cssinline = $head.find("style:last");
+				var $ultimocss = $head.find("link[rel='stylesheet']:last");
+				var linkCss = "<link rel='stylesheet' href='"+ archivoCss +"' type='text/css' media='screen'>";
+		
+		        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+
+				if ($wpcss.length){ 
+						$wpcss.before(linkCss); 
+					} else if ($cssinline.length){ 
+						$cssinline.before(linkCss); 
+					} else if ($ultimocss.length){ 
+						$ultimocss.before(linkCss); 
+					} else { 
+						$head.append(linkCss); 
+					}
+
+				
+			}
+			
+			var gfontUrl = gfpath.googlePath;
+			extCss( gfontUrl );		
 
 			
 		
@@ -287,38 +287,36 @@
 		 * experimento array de rutas
 		 * http://api.jquery.com/JQuery.each/
 		 */
-		var gfontUrl = csspath.stylePath;
+
 //		var obj = {
 //				  "handler1": "rutahandler1",
 //				  "handler2": "rutahandler2"
 //				};		
-		var obj = csspath ;
-		console.log(csspath);
 
-		$.each( obj, function( key, value ) {
-				// alert( key + ": " + value );
-
-			var $head = $("head");
-			var $wpcss = $head.find("style[id='ekiline-inline']"); 
-			var $cssinline = $head.find("style:last");
-			var $ultimocss = $head.find("link[rel='stylesheet']:last");
-			var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
-
-	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-
-			if ($wpcss.length){ 
-					$wpcss.before(linkCss); 
-				} else if ($cssinline.length){ 
-					$cssinline.before(linkCss); 
-				} else if ($ultimocss.length){ 
-					$ultimocss.before(linkCss); 
-				} else { 
-					$head.append(linkCss); 
-				}		
-		
-			
-			
-		});
+//		$.each( obj, function( key, value ) {
+//				// alert( key + ": " + value );
+//
+//			var $head = $("head");
+//			var $wpcss = $head.find("style[id='ekiline-inline']"); 
+//			var $cssinline = $head.find("style:last");
+//			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+//			var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+//
+//	        // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+//
+//			if ($wpcss.length){ 
+//					$wpcss.before(linkCss); 
+//				} else if ($cssinline.length){ 
+//					$cssinline.before(linkCss); 
+//				} else if ($ultimocss.length){ 
+//					$ultimocss.before(linkCss); 
+//				} else { 
+//					$head.append(linkCss); 
+//				}		
+//		
+//			
+//			
+//		});
 		
 			
 	    
