@@ -11,7 +11,6 @@
 	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
 	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
 	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
-	 */
 		
 		function miCss(archivoCss){
 
@@ -43,13 +42,13 @@
 			miCss('/css/ekiline-layout.css');
 			miCss('/style.css');
 			//en caso de explorer
-			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+			if(\/*@cc_on!@*\/false){ miCss('/style.css'); }		
+	 */
 
 
 	/**  RUTAS ABSOLUTAS EXTERNAS AL TEMA
 	 * Optimización, cargar scripts externos despúes de la carga informativa
 	 * Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
-	 */
 
 			function extCss(archivoCss){
 				
@@ -76,6 +75,7 @@
 			
 			var gfontUrl = gfpath.googlePath;
 			extCss( gfontUrl );		
+	 */
 
 			
 		
