@@ -215,37 +215,29 @@ function ekiline_scripts() {
  * Añadir los estilos como wordpress lo requiere, descomentar en caso de conflicto
  * This is wordpress method for enqueue styles
  */
+         
     wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
 	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
-	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
-	
+	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );		
 	// Añadir googlefonts
     $gfont = get_theme_mod('ekiline_gfont','');
     if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
-    
-
-$arreglo = 'ok';
-
-if($arreglo!=''){
-            
-    global $wp_styles; 
-    
-//4jun bueno!!
-    $ret = array();
-    foreach( $wp_styles->queue as $handle) {
-      wp_dequeue_style($handle);
-      //$ret[] = $wp_styles->registered[$handle]->src ;              
-      $ret[] = $wp_styles->registered[$handle] ;              
-  }
-    
-    echo json_encode( $ret ); 
-    
-}        
-    
    	
+   	
+    global $wp_styles;
+    $arreglo = '';
+        
+    foreach( $wp_styles->queue as $handle ){
+        $id = $wp_styles->registered[$handle]->handle;
+        $src = $wp_styles->registered[$handle]->src;
+        $arreglo .= '"' . $id . '":"' . $src . '",';
+        wp_dequeue_style($handle);
+    }
+        //echo $arreglo;
+       	   	
 /**
  * Enviar Jquery al final
  * Get Jquery to the bottom 
@@ -275,7 +267,6 @@ if($arreglo!=''){
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
-
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
@@ -307,6 +298,66 @@ function ekilineNoscript(){
     echo $noScripts;
 }
 add_action( 'wp_head', 'ekilineNoscript', 9);
+
+function ekiline_loadCSS() {
+    
+    global $arreglo;
+    $cssLoad = 'ok';
+    // $arreglo = '';
+    
+    if ($cssLoad!=''){
+        
+    // foreach( $wp_styles->queue as $handle ){
+        // $id = $wp_styles->registered[$handle]->handle;
+        // $src = $wp_styles->registered[$handle]->src;
+        // $arreglo .= '"' . $id . '":"' . $src . '",';
+    // }    
+    
+    echo $arreglo;
+    
+ ?>
+
+    <script type="text/javascript">
+    
+    jQuery(document).ready(function($){
+        
+             var obj = { <?php echo $arreglo; ?> };  
+        
+
+            $.each( obj, function( key, value ) {
+                     //alert( key + ": " + value );
+            
+                var $head = $("head");
+                var $wpcss = $head.find("style[id='ekiline-inline']"); 
+                var $cssinline = $head.find("style:last");
+                var $ultimocss = $head.find("link[rel='stylesheet']:last");
+                var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+            
+              // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+            
+                if ($wpcss.length){ 
+                        $wpcss.before(linkCss); 
+                    } else if ($cssinline.length){ 
+                        $cssinline.before(linkCss); 
+                    } else if ($ultimocss.length){ 
+                        $ultimocss.before(linkCss); 
+                    } else { 
+                        $head.append(linkCss); 
+                    }                       
+            });   
+            
+    });  
+        
+    </script> <?php
+    
+    } // $cssLoad
+    
+}
+    
+add_action( 'wp_footer', 'ekiline_loadCSS', 100 );
+
+
+
 
 /**
  * Permitir que los shortcodes funcionen en los widgets
