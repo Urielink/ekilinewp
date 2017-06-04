@@ -215,17 +215,91 @@ function ekiline_scripts() {
  * Añadir los estilos como wordpress lo requiere, descomentar en caso de conflicto
  * This is wordpress method for enqueue styles
  */
-    // wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
+    wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
-	// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
-	// wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
-	// wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
+	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	// Añadir googlefonts
     $gfont = get_theme_mod('ekiline_gfont','');
-    // if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
+    if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
     
+/**
+ * Desactivar estilos y reactivarlos por js.
+ */    
+ $optimize = true;
+ 
+ if ($optimize != ''){
+
+    global $wp_styles; 
+  
+    if ( is_a( $wp_styles, 'WP_Styles' ) ) {
+        
+        //print_r( $wp_styles->queue );
+                
+        // echo json_encode( $wp_styles->queue );    
+        
+                
+        // foreach( $wp_styles->queue as $handle ){
+            // //wp_dequeue_style($handle);
+            // $id = $wp_styles->registered[$handle]->handle;
+            // $src = $wp_styles->registered[$handle]->src;
+            // $filename = basename($src);     
+        // }        
+        
+//4jun bueno!!
+            // $ret = array();
+            // foreach( $wp_styles->queue as $handle) {
+              // $ret[] = $wp_styles->registered[$handle]->src;              
+            // }
+            // echo json_encode( $ret ); 
+            
+        // $ret = array();
+        // foreach( $wp_styles->queue as $handle) {
+          // wp_dequeue_style($handle);
+          // $ret[] = array( $wp_styles->registered[$handle]->handle => $wp_styles->registered[$handle]->src );              
+        // }
+//                        
+        // echo json_encode( $ret ); 
+        //$parsear = json_encode( $ret ); 
+                                     
+// $my_arr = array('my array',
+                // 'name' => 'Ronak',
+                // 'surname' => 'Gandhi',
+                // 'phone' => array(
+                            // 'home' => 12345,
+                            // 'office' => 67890
+                           // ),
+                // 'hobbies' => array(
+                            // 'photography',
+                            // 'programming',
+                            // 'driving'
+                            // ),
+// );
+
+$my_arr = array(
+                'name' => 'Ronak',
+                'surname' => 'Gandhi',
+);
+
+$my_json_str = json_encode($my_arr);
+
+$params = array( 'my_arr' => $my_json_str );
+              
+//echo $my_json_str;                                     
+                                       
+//        exit;        
+        
+                                
+        
+    } else {
+        print 'no styles enqueued';
+    }          
+    
+    
+ }
    	
 /**
  * Enviar Jquery al final
@@ -256,11 +330,15 @@ function ekiline_scripts() {
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
-        $translation_array = array( 'themePath' => get_stylesheet_directory_uri() );
-        wp_localize_script( 'theme-scripts', 'thepath', $translation_array ); // Localize
-        $translation_array = array( 'googlePath' => $gfont );
-        wp_localize_script( 'theme-scripts', 'gfpath', $translation_array ); // Localize
-
+        // $translation_array = array( 'themePath' => get_stylesheet_directory_uri() );
+        // wp_localize_script( 'theme-scripts', 'thepath', $translation_array ); // Localize
+        // if ($gfont != ''){
+            // $translation_array = array( 'googlePath' => $gfont );
+            // wp_localize_script( 'theme-scripts', 'gfpath', $translation_array ); // Localize
+        // }
+        $translation_array = array( 'allPath' => $my_json_str );
+        wp_localize_script( 'theme-scripts', 'itempath', $params ); // Localize
+        
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );

@@ -11,7 +11,6 @@
 	 * 	Busco el head, y tambien si existe un 'link' y guardo el estilo en una variable para insertarlo.
 	 *  apoyo: http://stackoverflow.com/questions/805384/how-to-apply-inline-and-or-external-css-loaded-dynamically-with-jquery
 	 *  Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
-	 */
 		
 		function miCss(archivoCss){
 
@@ -43,13 +42,13 @@
 			miCss('/css/ekiline-layout.css');
 			miCss('/style.css');
 			//en caso de explorer
-			if(/*@cc_on!@*/false){ miCss('/style.css'); }		
+			if(\/*@cc_on!@*\/false){ miCss('/style.css'); }		
+	 */
 
 
 	/**  RUTAS ABSOLUTAS EXTERNAS AL TEMA
 	 * Optimización, cargar scripts externos despúes de la carga informativa
 	 * Advertencia: Esta función se coordina con inc/extras.php, el orden de los scripts y este archivo.
-	 */
 
 			function extCss(archivoCss){
 				
@@ -76,7 +75,44 @@
 			
 			var gfontUrl = gfpath.googlePath;
 			extCss( gfontUrl );		
+	 */
 
+
+		//var obj = itempath.allPath;
+		var obj = $.parseJSON(itempath.allPath);
+		
+		console.log(itempath);
+				
+//		var obj = {
+//		  "handler1": "rutahandler1",
+//		  "handler2": "rutahandler2"
+//		};	
+		
+		
+			$.each( obj, function( key, value ) {
+					 alert( key + ": " + value );
+			
+				var $head = $("head");
+				var $wpcss = $head.find("style[id='ekiline-inline']"); 
+				var $cssinline = $head.find("style:last");
+				var $ultimocss = $head.find("link[rel='stylesheet']:last");
+				var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+			
+			  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+			
+				if ($wpcss.length){ 
+						$wpcss.before(linkCss); 
+					} else if ($cssinline.length){ 
+						$cssinline.before(linkCss); 
+					} else if ($ultimocss.length){ 
+						$ultimocss.before(linkCss); 
+					} else { 
+						$head.append(linkCss); 
+					}		
+			
+				
+				
+			});		
 			
 		
 		// El preload
