@@ -389,6 +389,23 @@ function ekiline_theme_customizer( $wp_customize ) {
     );              
         
     $wp_customize->add_setting(
+            'ekiline_loadcss', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_loadcss', array(
+                    'label'          => __( 'Optimize CSS style loading', 'ekiline' ),
+                    'description'    => __( 'Increase speed loading your styles after your information', 'ekiline' ),
+                    'section'        => 'ekiline_tracking_section',
+                    'settings'       => 'ekiline_loadcss',
+                    'type'           => 'checkbox',
+            )
+    );               
+    
+    $wp_customize->add_setting(
             'ekiline_minify', array(
                     'default' => '',
                     'sanitize_callback' => 'ekiline_sanitize_checkbox'
@@ -403,7 +420,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'settings'       => 'ekiline_minify',
                     'type'           => 'checkbox',
             )
-    );               
+    );                   
     
     // Ekiline Services
          

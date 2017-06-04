@@ -4,57 +4,50 @@
  */
 
 	jQuery(document).ready(function($){
+    	
+		/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+		 * 
+		 *	En caso de optimizar la carga de estilos
+		 *  Parsear la variable de estilos y crear cada css en el head.
+		 *  Revisar esto: http://larryullman.com/forums/index.php?/topic/3558-jquery-ajax-how-to-use-json-to-create-new-html-elements/
+		 * 
+		 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
 		
-		
-//var obj = [{"handle":"bootstrap-337","src":"http:\/\/localhost:8888\/wtdv\/wp-content\/themes\/ekiline\/css\/bootstrap.min.css","deps":[],"ver":"3.3.7","args":"all","extra":[]},{"handle":"ie10-viewport-bug-workaround","src":"http:\/\/localhost:8888\/wtdv\/wp-content\/themes\/ekiline\/css\/ie10-viewport-bug-workaround.css","deps":[],"ver":"1","args":"all","extra":{"conditional":"gte IE 8"}},{"handle":"font-awesome","src":"http:\/\/localhost:8888\/wtdv\/wp-content\/themes\/ekiline\/css\/font-awesome.min.css","deps":[],"ver":"4.7.0","args":"all","extra":[]},{"handle":"layout","src":"http:\/\/localhost:8888\/wtdv\/wp-content\/themes\/ekiline\/css\/ekiline-layout.css","deps":[],"ver":"1.0","args":"all","extra":[]},{"handle":"ekiline-style","src":"http:\/\/localhost:8888\/wtdv\/wp-content\/themes\/ekiline\/style.css","deps":[],"ver":false,"args":"all","extra":[]},{"handle":"google-font","src":"https:\/\/fonts.googleapis.com\/css?family=Lato","deps":[],"ver":"0.0.0","args":"all","extra":[]}] ;
-		
-var obj = allCss;
-
-console.log(allCss);
-
-//var obj = {
-//"handler1": "rutahandler1",
-//"handler2": "rutahandler2"
-//};	
-
-
-	$.each( obj, function( key, value ) {
-			 //alert( key + ": " + value );
+		// variable php
+		if ( allCss != null ){
+			
+			var obj = allCss;	
+			
+			console.log(allCss);
+			
+			// crear un estilo por cada ruta extríada.
+			
+			$.each( obj, function( key, value ) {
+					 //alert( key + ": " + value );
+			
+				var $head = $("head");
+				var $wpcss = $head.find("style[id='ekiline-inline']"); 
+				var $cssinline = $head.find("style:last");
+				var $ultimocss = $head.find("link[rel='stylesheet']:last");
+				var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+			
+			  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+			
+				if ($wpcss.length){ 
+						$wpcss.before(linkCss); 
+					} else if ($cssinline.length){ 
+						$cssinline.before(linkCss); 
+					} else if ($ultimocss.length){ 
+						$ultimocss.before(linkCss); 
+					} else { 
+						$head.append(linkCss); 
+					}		
+				
+			});			
+			
+		}
 	
-		var $head = $("head");
-		var $wpcss = $head.find("style[id='ekiline-inline']"); 
-		var $cssinline = $head.find("style:last");
-		var $ultimocss = $head.find("link[rel='stylesheet']:last");
-		var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
 	
-	  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
-	
-		if ($wpcss.length){ 
-				$wpcss.before(linkCss); 
-			} else if ($cssinline.length){ 
-				$cssinline.before(linkCss); 
-			} else if ($ultimocss.length){ 
-				$ultimocss.before(linkCss); 
-			} else { 
-				$head.append(linkCss); 
-			}		
-	
-		
-		
-	});			
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		// El preload
 	    setTimeout(function(){
 	        $('#pageLoad').fadeOut(500);

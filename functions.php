@@ -227,28 +227,31 @@ function ekiline_scripts() {
     if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
     
 
-$arreglo = 'ok';
-
-if($arreglo!=''){
+    // Optimizar carga de CSS
+    $params = null;
+    
+    if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
             
-    global $wp_styles; 
+            global $wp_styles; 
+            
+        //4jun bueno!!
+            $ret = array();
+            foreach( $wp_styles->queue as $handle) {
+              wp_dequeue_style($handle);
+              $ret[] = $wp_styles->registered[$handle]->src ;              
+              //$ret[] = $wp_styles->registered[$handle] ;              
+          }        
+            //echo json_encode( $ret );             
+            $params = $ret;   
     
-//4jun bueno!!
-    $ret = array();
-    foreach( $wp_styles->queue as $handle) {
-      wp_dequeue_style($handle);
-      $ret[] = $wp_styles->registered[$handle]->src ;              
-      //$ret[] = $wp_styles->registered[$handle] ;              
-  }
+    }    
     
-    //echo json_encode( $ret ); 
-        
-    $params = $ret;
+
+    
 
                 
-        
-    
-}        
+     
+
     
    	
 /**
@@ -280,7 +283,7 @@ if($arreglo!=''){
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
     wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
-            wp_localize_script('theme-scripts', 'allCss', $params);
+            wp_localize_script('theme-scripts', 'allCss', $params); 
 
     
             
