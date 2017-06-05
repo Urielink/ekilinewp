@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-04 12:04-0500\n"
+"PO-Revision-Date: 2017-06-04 22:30-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -978,3 +978,15 @@ msgstr "Optimizar la carga de estilos css"
 
 msgid "Increase speed loading your styles after your information"
 msgstr "Aumente la velocidad de carga de sus estilos después de su información"
+
+msgid "Use Font Awesome"
+msgstr "Utilizar Font Awesome"
+
+msgid "A collection of icons to enhance your designs"
+msgstr "Una colección de íconos muy útil para tus diseños"
+
+msgid "Use Bootstrap in editor"
+msgstr "Utilizar Bootstrap en el editor"
+
+msgid "Bootstrap design styles in edit control"
+msgstr "Los estilos de Bootstrap en el control de edición"

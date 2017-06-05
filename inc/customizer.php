@@ -641,8 +641,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control(
             'ekiline_bootstrapeditor', array(
-                    'label'          => __( 'Use Bootstrap', 'ekiline' ),
-                    'description'    => __( 'Disable styles in your edition panel' , 'ekiline' ),
+                    'label'          => __( 'Use Bootstrap in editor', 'ekiline' ),
+                    'description'    => __( 'Bootstrap design styles in edit control' , 'ekiline' ),
                     'section'        => 'ekiline_dtools_section',
                     'settings'       => 'ekiline_bootstrapeditor',
                     'type'           => 'checkbox',
