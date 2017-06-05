@@ -73,7 +73,7 @@ function ekiline_description(){
            echo $stdDesc;
        } else {
 //           echo strip_tags( get_the_excerpt() ); 
-            echo wp_trim_words( get_the_content(), 24, '...' );
+            echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
        }
      
     } 
