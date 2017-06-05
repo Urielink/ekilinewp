@@ -224,7 +224,7 @@ function ekiline_scripts() {
 	      wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
     }
 	
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.min.css', array(), '1.0', 'all' );	
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	// Añadir googlefonts
@@ -279,9 +279,9 @@ function ekiline_scripts() {
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array('jquery'), '20170327', true  );
-    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.min.js', array('jquery'), '20151226', true  );
+    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
-    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.min.js', array('jquery'), '20151113', true  );    
+    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
             wp_localize_script('theme-scripts', 'allCss', $params); 
 
     
