@@ -612,7 +612,43 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'settings'       => 'ekiline_cutexcerpt',
                 'type'           => 'number'
         )
-    );                  
+    );      
+
+
+    $wp_customize->add_setting(
+            'ekiline_fontawesome', array(
+                    'default' => true,
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_fontawesome', array(
+                    'label'          => __( 'Use Font Awesome', 'ekiline' ),
+                    'description'    => __( 'A collection of icons to enhance your designs' , 'ekiline' ),
+                    'section'        => 'ekiline_dtools_section',
+                    'settings'       => 'ekiline_fontawesome',
+                    'type'           => 'checkbox',
+            )
+    );     
+    
+    $wp_customize->add_setting(
+            'ekiline_bootstrapeditor', array(
+                    'default' => true,
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_bootstrapeditor', array(
+                    'label'          => __( 'Use Bootstrap', 'ekiline' ),
+                    'description'    => __( 'Disable styles in your edition panel' , 'ekiline' ),
+                    'section'        => 'ekiline_dtools_section',
+                    'settings'       => 'ekiline_bootstrapeditor',
+                    'type'           => 'checkbox',
+            )
+    );             
+                
 }
 add_action('customize_register', 'ekiline_theme_customizer');
 

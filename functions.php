@@ -218,13 +218,20 @@ function ekiline_scripts() {
     wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' );
+		
+    // Deshabilitar font awesome
+	if( true === get_theme_mod('ekiline_fontawesome') ) {
+	      wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
+    }
+	
 	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.min.css', array(), '1.0', 'all' );	
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
 	
 	// Añadir googlefonts
     $gfont = get_theme_mod('ekiline_gfont','');
-    if ($gfont != '') :  wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' ); endif;
+    if ($gfont != '') {
+          wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' );
+    }
     
 
     // Optimizar carga de CSS
@@ -246,14 +253,6 @@ function ekiline_scripts() {
     
     }    
     
-
-    
-
-                
-     
-
-    
-   	
 /**
  * Enviar Jquery al final
  * Get Jquery to the bottom 
@@ -310,7 +309,9 @@ add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 function ekilineNoscript(){
     $noScripts = '<noscript>'."\n";
     $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/bootstrap.min.css" media="all" />'."\n";
-    $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/font-awesome.min.css" media="all" />'."\n";    
+    if( true === get_theme_mod('ekiline_fontawesome') ) {
+        $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/font-awesome.min.css" media="all" />'."\n";  
+    }  
     $noScripts .= '<link rel="stylesheet" href="'. get_stylesheet_uri() . '" media="all" />'."\n";    
     $noScripts .= '<style type="text/css">#pageLoad{display:none;}</style>'."\n";
     $noScripts .= '</noscript>'."\n";
@@ -385,5 +386,7 @@ require get_template_directory() . '/inc/serviceAccess.php';
 
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';
+// Deshabilitar bootstrap
+if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
 require get_template_directory() . '/inc/adminEditor.php';
-
+}
