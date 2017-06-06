@@ -52,8 +52,8 @@ add_shortcode('moduletabs',  'tabs_shortcode');
 
 
 function tabcontent_shortcode( $atts, $content = null ) {
-	extract( shortcode_atts( array( 'title' => '', 'class' =>'' ), $atts ) );
-    	$return = '<div class="tab-pane '.$class.'">';
+    extract( shortcode_atts( array( 'title' => '', 'id' =>'', 'class' =>'' ), $atts ) );
+        $return = '<div class="tab-pane '.$class.'" id="'.$id.'">';
     	$return .= '<div class="panel-body">'.do_shortcode($content).'</div>';
     	$return .= '</div>';
 	return $return;

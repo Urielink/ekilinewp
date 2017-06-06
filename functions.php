@@ -375,7 +375,7 @@ require get_template_directory() . '/inc/widgetOptions.php';
 require get_template_directory() . '/inc/shortcodeAll.php';
 require get_template_directory() . '/inc/shortcodeGalleryslider.php';
 require get_template_directory() . '/inc/shortcodeTabs.php';
-require get_template_directory() . '/inc/shortcodeCollpase.php';
+require get_template_directory() . '/inc/shortcodeCollapse.php';
 require get_template_directory() . '/inc/shortcodeInsertposts.php';
 
 // theme customizer services
