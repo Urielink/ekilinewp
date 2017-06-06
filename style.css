@@ -590,13 +590,12 @@ a img.aligncenter {
  * Elementos generados por SHORTCODES.
  * ----------------------------------------------*/
 
-/*[mod_postlist]*/
+/*[modulecategoryposts]*/
 .modpostlist-default{}
 .modpostlist-block{}
-.modpostlist-carousel .carousel-inner > .item .link-image {
-    height: 400px;
-    overflow: hidden;
-    display: block;
+.modpostlist-carousel .carousel-inner > .item .link-image img{
+	margin: 0 auto;
+	width:100%;
 }
 
 /* ------------------------------------------------
