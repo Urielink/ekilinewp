@@ -71,9 +71,9 @@ add_shortcode('modulegroupcollapse',  'gcollpase_shortcode');
 
 
 function collpasecontent_shortcode( $atts, $content = null ) {
-    extract( shortcode_atts( array( 'title' => ''), $atts ) );
+    extract( shortcode_atts( array( 'title' => '', 'class' => ''), $atts ) );
 
-        $return = '<div class="panel-body">'.do_shortcode($content).'</div>';
+        $return = '<div class="panel-body '.$class.'">'.do_shortcode($content).'</div>';
 
     return $return;
 }
