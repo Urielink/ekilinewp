@@ -329,6 +329,8 @@ jQuery(document).ready(function($){
 	    var getId = $(this).attr('id');
 	    var rename = '#'+ getId + '.modal-gallery';
 	    //console.log( rename );
+        //Jun 5 ajuste cuando sea un carrusel
+	    var isCarousel = $(this).hasClass( 'carousel' );
 		
 	    // agrega parametros de bootstrap
 	    $( rename + ' a:not(.carousel-control)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
@@ -360,10 +362,13 @@ jQuery(document).ready(function($){
 	        
 	        
 	        $( modalgallery ).modal('show');
-	        
+	        	         
 	        // saber a que elemento le dio click        
 	        var nc = $(this).index( rename + ' a' );        
-	        // console.log(nc);
+	        //Jun 5 ajuste cuando sea un carrusel
+	        if (isCarousel){ nc = '0'; };
+         	
+	         console.log(nc);
 	
 	        
 	        // Ejecuta las variables para activarse
@@ -394,7 +399,14 @@ jQuery(document).ready(function($){
 	            $(this).find('#galleryModal figure').removeClass().addClass('text-center');
 	            $(this).find('#galleryModal figure img').unwrap();
 	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
-	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
+	            	$(this).find('#galleryModal figure img').unwrap();
+	    	        //Jun 5 ajuste cuando sea un carrusel
+	            	if (isCarousel){
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control').remove();
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner').unwrap();
+		            	$(this).find('#galleryModal .item > img').nextAll('img').remove();
+		            	$(this).find('#galleryModal .item > figcaption').nextAll('figcaption').remove();
+	            	}
 	
 	            // busca los slides para hacer un índice.
 	            var slides = $('body').find('#galleryModal').find('.item');

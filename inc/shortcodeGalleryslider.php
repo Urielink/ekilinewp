@@ -272,7 +272,6 @@ function ekiline_gallery( $output,$attr ) {
 }
 
 
-
 /** 
 * Añadimos funciones de personalizacion en la admnistracion de la galeria
 * Add options menu in gallery admin panel
@@ -287,17 +286,17 @@ add_action('print_media_templates', function(){
   <script type="text/html" id="tmpl-ekiline-gallery-setting">
     <div style="display:inline-block;margin-top:20px;border-top: 1px solid #C2C2C2;">
     <h2><?php echo __( 'Ekiline settings','ekiline' ); ?></h2>
-            
-    <label class="setting">
-        <span><?php echo __( 'Transform to carousel','ekiline' ); ?></span>
-        <input type="checkbox" data-setting="carousel">
-    </label>  
     
     <label class="setting">
         <span><?php echo __( 'Open linked media on modal window','ekiline' ); ?></span>
         <input type="checkbox" data-setting="showlink">
     </label>      
-    
+            
+    <label class="setting">
+        <span><?php echo __( 'Transform to carousel','ekiline' ); ?></span>
+        <input type="checkbox" data-setting="carousel">
+    </label>  
+        
     <label class="setting">
         <span><?php echo __( 'Carousel name (for customize)','ekiline' ); ?></span>
         <input type="text" value="" data-setting="name" placeholder="default">

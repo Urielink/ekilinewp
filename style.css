@@ -562,7 +562,7 @@ a img.aligncenter {
 }
 
 .carousel-inner > .item {
-    min-height: 400px;
+    min-height: 150px;
 }
 
 

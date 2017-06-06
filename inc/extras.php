@@ -31,6 +31,24 @@ function ekiline_cleanspchar($text) {
 }
 
 /**
+ * Creamos nuevos tamaños de imagen para varios elmentos.
+ * https://developer.wordpress.org/reference/functions/add_image_size/
+ */
+add_action( 'after_setup_theme', 'ekiline_theme_setup' );
+function ekiline_theme_setup() {
+    add_image_size( 'horizontal-slide', 960, 540, array( 'left', 'top' ) );
+    add_image_size( 'vertical-slide', 540, 960, array( 'center', 'top' ) );
+}
+ 
+add_filter( 'image_size_names_choose', 'ekiline_custom_sizes' );
+function ekiline_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'horizontal-slide' => __( 'Horizontal carousel', 'ekiline' ),
+        'vertical-slide' => __( 'Vertical carousel', 'ekiline'  )
+    ) );
+}
+
+/**
  * Agregar otras clases css al body para conocer el tipo de contenido.
  * Add custom css class to the array of body classes.
  */
@@ -101,7 +119,8 @@ function ekiline_csscolors() {
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
         #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
-        #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}                
+        #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
+        .carousel.slide, .breadcrumb{ background-color:'.$modulos.'; }
         ';
         
     if ( $mgradient != '' ){
