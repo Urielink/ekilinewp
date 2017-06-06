@@ -11,14 +11,14 @@
 // acordion or callapse single, needs a title
 
 function ekiline_collapse_single($atts, $content = null) {
-    extract(shortcode_atts(array( 'title' => ''), $atts));
+    extract(shortcode_atts(array( 'title' => '', 'class' => ''), $atts));
     $titleBtn = ekiline_cleanspchar($title);
     return '<a class="btn btn-default" data-toggle="collapse" href="#'.$titleBtn.'" aria-expanded="false" aria-controls="'.$titleBtn.'">'.$title.'</a>
-            <div class="acordeon collapse" id="'.$titleBtn.'">
-                <div class="well">'.do_shortcode($content).'</div>
+            <div class="acordeon collapse '.$class.'" id="'.$titleBtn.'">
+                '.do_shortcode($content).'
             </div>';
 }
-add_shortcode('mod_collapse', 'ekiline_collapse_single');
+add_shortcode('singlecollapse', 'ekiline_collapse_single');
 
 
 /* Extender el Shortcode [Embed] para añadir comportamineto responsivo a videos de youtube
