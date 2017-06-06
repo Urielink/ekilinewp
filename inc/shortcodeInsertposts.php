@@ -10,6 +10,7 @@
  * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
  * https://developer.wordpress.org/reference/functions/query_posts/
  * https://codex.wordpress.org/Shortcode_API
+ * https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
  *
  * @package ekiline
  */
@@ -27,7 +28,8 @@ function ekiline_addpostlist($atts, $content = null) {
     
             //Declarar las variables invoca las cotegorias necesarias WP_Query()
             $query_string = '';
-            $nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
+            //$nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
+            $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
             // obtiene la cuenta de los posts
             // count posts
             $post_counter = 0; 
@@ -126,6 +128,6 @@ function ekiline_addpostlist($atts, $content = null) {
     return $insertarItem;       
 
 }
-add_shortcode('mod_postlist', 'ekiline_addpostlist');
+add_shortcode('modulecategoryposts', 'ekiline_addpostlist');
 
  

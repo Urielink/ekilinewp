@@ -16,6 +16,10 @@
  */
 
 function ekiline_loginfrontend() {
+    
+	global $wp;
+    $current_url = home_url(add_query_arg(array(),$wp->request));
+    
 		
 	ob_start(); // abre 		
 
@@ -23,7 +27,8 @@ function ekiline_loginfrontend() {
 		
 		$args = array(  
 			'echo' => true,
-		    'redirect' => home_url(),   
+            'redirect' => $current_url,   
+		    //'redirect' => home_url(),   
 			'form_id' => 'loginform',
 			'label_username' => __( 'Username','ekiline' ),
 			'label_password' => __( 'Password','ekiline' ),

@@ -16,7 +16,7 @@
                 
         <a class="link-image" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark" style="background-image:url(<?php the_post_thumbnail_url() ;?>)">             
             
-        	<?php the_post_thumbnail( 'medium', array( 'class' => 'img-responsive img-thumbnail' ));?>
+        	<?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-responsive img-thumbnail' ));?>
         	
         </a>
         
