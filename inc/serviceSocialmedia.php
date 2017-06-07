@@ -176,7 +176,20 @@ add_action( 'wp_head', 'registerSocial', 1);
 
 function ekiline_socialmenu($atts, $content = null) {
     
-    extract(shortcode_atts(array('type' => 'menu'), $atts));
+    // extract(shortcode_atts(array('type' => 'menu'), $atts));
+    
+    // en caso de no habilitar font awesome
+    $fbIco = 'Facebook';
+    $ttIco = 'Twitter';
+    $gpIco = 'Google +';
+    $inIco = 'Linked In';
+        
+    if( true === get_theme_mod('ekiline_fontawesome') ) {
+        $fbIco = '<i class="fa fa-facebook"></i>';
+        $ttIco = '<i class="fa fa-twitter"></i>';
+        $gpIco = '<i class="fa fa-google-plus"></i>';
+        $inIco = '<i class="fa fa-linkedin"></i>';
+    }    
     
     $fbSocial = get_theme_mod('ekiline_fbProf','');
     $twSocial = get_theme_mod('ekiline_twProf','');
@@ -184,13 +197,51 @@ function ekiline_socialmenu($atts, $content = null) {
     $inSocial = get_theme_mod('ekiline_inProf','');
     $menuItems = '';
         
-    if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>'; endif;
-    if ($twSocial) : $menuItems .= '<li><a href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>'; endif;
-    if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus"><i class="fa fa-google"></i></a></li>'; endif;
-    if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>';endif;
+    if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
                     
     return '<ul class="list-inline no-margin">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
     
+//Crear un shortcode para crear un menu de compartir [socialsharemenu]
+
+function ekiline_socialsharing($atts, $content = null) {
+    
+    // extract(shortcode_atts(array('type' => 'menu'), $atts));
+                       
+    global $post;
+
+    $url = get_permalink($post->ID);
+    $url = esc_url($url);
+    
+    // en caso de no habilitar font awesome
+    $fbIco = 'Facebook';
+    $ttIco = 'Twitter';
+    $gpIco = 'Google +';
+    $inIco = 'Linked In';
+        
+    if( true === get_theme_mod('ekiline_fontawesome') ) {
+        $fbIco = '<i class="fa fa-facebook"></i>';
+        $ttIco = '<i class="fa fa-twitter"></i>';
+        $gpIco = '<i class="fa fa-google-plus"></i>';
+        $inIco = '<i class="fa fa-linkedin"></i>';
+    }
+    
+    $fbSocial = get_theme_mod('ekiline_fbProf','');
+    $twSocial = get_theme_mod('ekiline_twProf','');
+    $gpSocial = get_theme_mod('ekiline_gpProf','');
+    $inSocial = get_theme_mod('ekiline_inProf','');
+    $menuItems = '';
+        
+    if ($fbSocial) : $menuItems .= '<li><a href="http://www.facebook.com/sharer.php?u=' . $url . '" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a href="https://twitter.com/share?url=' . $url .'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a href="http://www.linkedin.com/shareArticle?url=' . $url.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
+                    
+    return '<div class="share-menu"><p>'. __('Share this on:','ekiline') .'</p><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
+}
+add_shortcode('socialsharemenu', 'ekiline_socialsharing');        
     
