@@ -46,6 +46,11 @@ function registerSocial() {
         $metaDescription = get_bloginfo('description');
         $blogInfo = get_bloginfo( 'name' );
         
+        if ( has_post_thumbnail() ) {
+            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );           
+        }     
+                
+        
     }
     elseif ( is_single() || is_page() ){
             
