@@ -200,3 +200,13 @@ function registerSite() {
 }
 
 add_action( 'wp_head', 'registerSite', 0);
+
+/* Agregar las metaetiquetas para los smartphones */
+
+function iosfeatures() {
+    echo '<meta name="apple-mobile-web-app-title" content="'.get_bloginfo( 'name' ).'">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">';    
+}
+add_action( 'wp_head', 'iosfeatures', 10);
+

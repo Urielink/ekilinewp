@@ -512,7 +512,26 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'settings'       => 'ekiline_fbProf',
                 'type'           => 'text'
         )
-    );                    
+    );     
+    
+    $wp_customize->add_setting( 
+        'ekiline_fbSharid', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_fbSharid',
+            array(
+                'description'    => __( 'Add your Facebook Share App ID','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_fbSharid',
+                'type'           => 'text'
+        )
+    );     
+                   
                 
     $wp_customize->add_setting( 
         'ekiline_twProf', array(

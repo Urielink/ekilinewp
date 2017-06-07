@@ -20,7 +20,9 @@ function registerSocial() {
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
+    $fbAppid = get_theme_mod('ekiline_fbSharid','');
     $currentUrl = '';
+    $metaSocial = '';
     
 // Arreglos para extraer la informacion en cada caso
 // Get the info for each kind of tag
@@ -128,14 +130,14 @@ function registerSocial() {
     }
        
     if ( $gpSocial != '' ) {
-        echo '
+        $metaSocial .= '
             <meta itemprop="name" content="'.$metaTitle.'">
             <meta itemprop="description" content="'.$metaDescription.'">
             <meta itemprop="image" content="'.$metaImages.'">
             ';
     }
     if ($twSocial != '') {
-        echo '
+        $metaSocial .= '
             <meta name="twitter:card" content="summary">
             <meta name="twitter:site" content="'.$twSocial.'">
             <meta name="twitter:title" content="'.$metaTitle.'">
@@ -145,7 +147,7 @@ function registerSocial() {
             ';
     }
     if ($fbSocial != '') {
-        echo '
+        $metaSocial .= '
             <meta property="og:title" content="'.$metaTitle.'"/>
             <meta property="og:type" content="'.$metaType.'"/>
             <meta property="og:url" content="'.$currentUrl.'"/>
@@ -153,7 +155,12 @@ function registerSocial() {
             <meta property="og:description" content="'.$metaDescription.'"/>
             <meta property="og:site_name" content="'.$blogInfo.'"/>
             ';
-    }   
+        if ( $fbAppid != '' ){
+            $metaSocial .= '<meta property="og:app_id" content="'.$fbAppid.'"/>';
+        }
+    }
+    
+    echo $metaSocial;   
 }
 
 add_action( 'wp_head', 'registerSocial', 1);
