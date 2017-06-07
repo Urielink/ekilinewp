@@ -197,10 +197,10 @@ function ekiline_socialmenu($atts, $content = null) {
     $inSocial = get_theme_mod('ekiline_inProf','');
     $menuItems = '';
         
-    if ($fbSocial) : $menuItems .= '<li><a href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
-    if ($twSocial) : $menuItems .= '<li><a href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
-    if ($gpSocial) : $menuItems .= '<li><a href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
-    if ($inSocial) : $menuItems .= '<li><a href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
+    if ($fbSocial) : $menuItems .= '<li><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a class="text-twitter" href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
                     
     return '<ul class="list-inline no-margin">'. $menuItems .'</ul>';
 }
@@ -236,10 +236,10 @@ function ekiline_socialsharing($atts, $content = null) {
     $inSocial = get_theme_mod('ekiline_inProf','');
     $menuItems = '';
         
-    if ($fbSocial) : $menuItems .= '<li><a href="http://www.facebook.com/sharer.php?u=' . $url . '" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
-    if ($twSocial) : $menuItems .= '<li><a href="https://twitter.com/share?url=' . $url .'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
-    if ($gpSocial) : $menuItems .= '<li><a href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
-    if ($inSocial) : $menuItems .= '<li><a href="http://www.linkedin.com/shareArticle?url=' . $url.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
+    if ($fbSocial) : $menuItems .= '<li><a class="bg-facebook" href="http://www.facebook.com/sharer.php?u=' . $url . '" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li><a class="bg-twitter" href="https://twitter.com/share?url=' . $url .'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li><a class="bg-google" href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li><a class="bg-linkedin" href="http://www.linkedin.com/shareArticle?url=' . $url.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
                     
     return '<div class="share-menu"><p>'. __('Share this on:','ekiline') .'</p><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
 }
