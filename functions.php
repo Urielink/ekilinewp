@@ -326,6 +326,14 @@ add_action( 'wp_head', 'ekilineNoscript', 9);
 add_filter('widget_text', 'do_shortcode');
 
 /**
+ * Declarar compatibilidad con woocommerce
+ */
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
