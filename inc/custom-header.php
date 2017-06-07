@@ -144,6 +144,12 @@ function customHeader() {
                 'p' => array(
                     'class' => array(),
                 ),
+                'span' => array(
+                    'class' => array(),
+                ),
+                'small' => array(
+                    'class' => array(),
+                ),                                                                
                 'strong' => array(),
                 'h1' => array(
                     'class' => array(),
