@@ -90,8 +90,11 @@ function ekiline_loginfrontend() {
 				
 				return $form;
 				
-		echo '<p class="text-center"><a class="btn btn-link" href="'.home_url('/wp-login.php?action=register').'">Registrarse</a></p>';
-
+        // en caso de que esté habilitada la opción de registro mostrar enlace
+        if ( get_option( 'users_can_register' ) ) {				
+		  echo '<p class="text-center"><a class="btn btn-link" href="'.site_url('/wp-login.php?action=register').'">Registrarse</a></p>';
+		  }
+		  
   	$insertarLogin = ob_get_clean(); // cierra
   	
   	if (!is_user_logged_in()){
