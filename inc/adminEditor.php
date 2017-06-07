@@ -450,6 +450,46 @@ function ekiline_mce_before( $init_array ) {
                     'selector'  => 'a',
                     'classes'   => 'modal-image',
                 ),
+                array(
+                    'title'     => __( 'Tooltip top', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'tooltip-top',
+                ),
+                array(
+                    'title'     => __( 'Tooltip right', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'tooltip-right',
+                ),
+                array(
+                    'title'     => __( 'Tooltip left', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'tooltip-left',
+                ),
+                array(
+                    'title'     => __( 'Tooltip bottom', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'tooltip-bottom',
+                ),
+                array(
+                    'title'     => __( 'Popover top', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'popover-top',
+                ),
+                array(
+                    'title'     => __( 'Popover right', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'popover-right',
+                ),
+                array(
+                    'title'     => __( 'Popover left', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'popover-left',
+                ),
+                array(
+                    'title'     => __( 'Popover bottom', 'ekiline' ),
+                    'selector'  => 'a',
+                    'classes'   => 'popover-bottom',
+                ),
             ),
         ),                        
     

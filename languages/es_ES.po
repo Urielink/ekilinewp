@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-06 21:40-0500\n"
+"PO-Revision-Date: 2017-06-07 15:15-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -351,10 +351,10 @@ msgstr "Inserta el código de Google Analytics, solo tu identificador ( UA-XXXXX
 msgid "Search Console"
 msgstr "Search Console"
 
-msgid "Add google site verification, only content: value "
+msgid "Add google site verification, only content=\"value\""
 msgstr "Inserta tu código de verificación, solo el content: value "
 
-msgid "Add msvalidate content: value "
+msgid "Add msvalidate content=\"value\""
 msgstr "Inserta tu código de verificación, solo el content: value "
 
 # @ ekiline
@@ -999,3 +999,27 @@ msgstr "Carrusel horizontal"
 
 msgid "Vertical carousel"
 msgstr "Carrusel vertical"
+
+msgid "Tooltip top"
+msgstr "Tooltip arriba"
+
+msgid "Tooltip right"
+msgstr "Tooltip derecho"
+
+msgid "Tooltip left"
+msgstr "Tooltip izquierdo"
+
+msgid "Tooltip bottom"
+msgstr "Tooltip debajo"
+
+msgid "Popover top"
+msgstr "Popover arriba"
+
+msgid "Popover right"
+msgstr "Popover derecho"
+
+msgid "Popover left"
+msgstr "Popover izquierdo"
+
+msgid "Popover bottom"
+msgstr "Popover debajo"

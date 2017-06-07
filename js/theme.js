@@ -74,6 +74,18 @@
 		    });	    		    	
 	    }
 	    
+	    // Tooltips
+        $('.tooltip-top').tooltip({ placement: 'top' }); 
+        $('.tooltip-right').tooltip({ placement: 'right' }); 
+        $('.tooltip-left').tooltip({ placement: 'left' }); 
+        $('.tooltip-bottom').tooltip({ placement: 'bottom' }); 
+        
+        //Pop overs
+        $('.popover-top').popover({ placement: 'top' });
+        $('.popover-right').popover({ placement: 'right' });
+        $('.popover-left').popover({ placement: 'left' });
+        $('.popover-bottom').popover({ placement: 'bottom' });
+	    
     	
 		/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * 
