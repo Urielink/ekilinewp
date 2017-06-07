@@ -100,6 +100,10 @@ function ekiline_mce_before( $init_array ) {
                     'inline'    => 'mark',
                 ),
                 array(
+                    'title'     => __( 'Delete', 'ekiline' ),
+                    'inline'    => 'del',
+                ),               
+                array(
                     'title'     => __( 'Insert', 'ekiline' ),
                     'inline'    => 'ins',
                 ),

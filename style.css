@@ -565,6 +565,11 @@ a img.aligncenter {
     min-height: 150px;
 }
 
+#carousel-modal .close{
+	position: relative;
+	margin: 0 5px -25px;
+	z-index: 1000;
+}
 
 /* ------------------------------------------------
  * LAYOUT Ekiline CSS, tus estilos van aqui.
