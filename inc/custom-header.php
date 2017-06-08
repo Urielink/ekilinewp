@@ -26,8 +26,8 @@ function ekiline_custom_header_setup() {
     	apply_filters( 'ekiline_custom_header_args', array(
             'default-image'          => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
     		'default-text-color'     => '000000',
-    		'width'                  => 1980,
-    		'height'                 => 1080,
+    		'width'                  => 1680,
+    		'height'                 => 1050,
     		'flex-height'            => true,
     		'wp-head-callback'       => 'ekiline_header_style',
     	   )
