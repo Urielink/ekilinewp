@@ -8,10 +8,6 @@
 // Si el widget está activo: https://codex.wordpress.org/Function_Reference/is_active_widget
 // is_active_sidebar(), is_active_widget(), is_dynamic_sidebar();
  
-// Variable, sidebar static
-$sideLeft = is_active_sidebar( 'sidebar-1' );
-$sideRight = is_active_sidebar( 'sidebar-2' ); 
-
 // Variable, sidebar toggle
 $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
 $rightOn = get_theme_mod('ekiline_sidebarRight','on');
@@ -48,38 +44,16 @@ add_filter( 'body_class', function( $classes ) {
 function sideOn() {
     
     //Llamo a mis variables
-    global $sideLeft, $sideRight, $leftOn, $rightOn;
+    global $leftOn, $rightOn;
     
     $sideon = '';
-            
-    // if ( $sideLeft && !$sideRight ) {
-        // // si el sidebar izquierdo existe y no el derecho        
-        // if ($leftOn == 'off') : $sideon = ' toggle-side1';  
-        // else : $sideon = ' col-sm-9 pull-right side1'; endif;
-//         
-    // } else if ( !$sideLeft && $sideRight ) {
-        // // si el sidebar derecho existe y no el izquierdo                
-        // if ($rightOn == 'off') : $sideon = ' toggle-side2';  
-        // else : $sideon = ' col-sm-9 side2'; endif;            
-//               
-    // } else if ( $sideLeft && $sideRight ) {
-        // // si ambos sidebars existen                
-        // if ($leftOn == 'off' && $rightOn == 'off' ) : $sideon = ' toggle-bothsides';  
-        // elseif ($leftOn == 'off' && $rightOn != 'off' ) : $sideon = ' col-sm-9 toggle-side1'; 
-        // elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 pull-right toggle-side2'; 
-        // else : $sideon = ' col-sm-6 col-sm-push-3 side1 side2'; endif;       
-//                                      
-    // } else if ( !$sideLeft && !$sideRight ) {
-        // // si ninguno                        
-         // $sideon = ' no-sidebars'; 
-    // }     
     
-    if ( is_active_sidebar( 'sidebar-1' ) ) {
+    if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
         
         if ($leftOn == 'off') : $sideon = ' toggle-side1';  
         else : $sideon = ' col-sm-9 pull-right side1'; endif;
         
-    } else if ( is_active_sidebar( 'sidebar-2' ) ) {
+    } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
         
         if ($rightOn == 'off') : $sideon = ' toggle-side2';  
         else : $sideon = ' col-sm-9 side2'; endif;            
@@ -106,15 +80,7 @@ function sideOn() {
 
 function leftSideOn() {    
     //Llamo a mis variables
-    global $sideLeft, $sideRight, $leftOn, $rightOn;
-                
-    // if ( $sideLeft && !$sideRight ) {
-        // echo ' col-sm-3 pull-left';
-    // } elseif ( $sideLeft && $sideRight ) {
-        // if ($leftOn != 'off' && $rightOn == 'off' ) : echo ' col-sm-3 pull-left';
-        // elseif ($leftOn == 'off' && $rightOn == 'off' ) : echo ' col-sm-3';
-        // else : echo ' col-sm-3 col-sm-pull-6'; endif;          
-    // }
+    global $leftOn, $rightOn;
     
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
         echo ' col-sm-3 pull-left';
@@ -128,9 +94,6 @@ function leftSideOn() {
 }
 
 function rightSideOn() {    
-    //Llamo a mis variables
-    global $sideRight;            
-//    if ( $sideRight ) : echo ' col-sm-3'; endif;     
     if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3'; endif;     
 
 }
@@ -141,11 +104,11 @@ function rightSideOn() {
  */
  
 function leftSideButton(){
-    global $sideLeft, $leftOn;
-    if ( $sideLeft && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
+    global $leftOn;
+    if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
 
 function rightSideButton(){
-    global $sideRight,$rightOn;    
-    if ( $sideRight && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
+    global $rightOn;    
+    if ( is_active_sidebar( 'sidebar-2' ) && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
