@@ -687,6 +687,13 @@ a img.aligncenter {
 	/*Widget: Dropdown in navbar*/
 	.navbar .widget {width: 100%;}
 		.navbar-collapse.in {overflow-y: inherit;}		
+		
+	/*Cover background image*/		
+	.cover-wrapper {
+		background-size: inherit;
+		background-position: 60% -10%;
+	}
+
 
 }
 
