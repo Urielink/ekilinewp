@@ -368,7 +368,15 @@ function customHeader() {
 		
 				
 		}		
-		
+
+        // en caso de existir woocommerce, no despliegues la imagen
+        // https://docs.woocommerce.com/document/conditional-tags/
+        //if ( class_exists( 'WooCommerce' ) ){
+            if ( get_post_type( get_the_ID() ) == 'product' ){
+                $customHeader = '';
+            } 
+        //}
+			
 	
 	echo $customHeader;
 	
