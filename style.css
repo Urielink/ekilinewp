@@ -127,6 +127,10 @@ a img.aligncenter {
 .wp-video{
 	margin:0 auto;
 }
+.wp-video .mejs-container{
+    max-width: 100%;
+}
+
 .screen-reader-text {
 	clip: rect(1px,1px,1px,1px);
 	position: absolute !important;
@@ -562,7 +566,7 @@ a img.aligncenter {
 }
 
 .carousel-inner > .item {
-    min-height: 150px;
+/*min-height: 150px;*/
 }
 
 #carousel-modal .close{
@@ -715,7 +719,17 @@ a img.aligncenter {
 
 }
 
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+	
+	.nav-tabs > li {
+	    float: none;
+	    text-align: center;
+	}
+	.nav-tabs > li > a{
+	    border: 1px solid #ddd;
+	}	
+	
+}
 
 /*--------------------------------------------------------------------------------
  * TERCER CAMBIO Smartphones verticales

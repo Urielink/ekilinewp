@@ -384,6 +384,10 @@ video#bgvid{transition:1s opacity;}
  .carousel-multiple.x2 .carousel-inner .active.left,.carousel-multiple.x3 .carousel-inner .active.left,.carousel-multiple.x4 .carousel-inner .active.left,.carousel-multiple.x6 .carousel-inner .active.left{-webkit-transform:translate3d(-100%,0,0);-moz-transform:translate3d(-100%,0,0);-ms-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);}
  .carousel-multiple.x2 .carousel-inner .active.right,.carousel-multiple.x3 .carousel-inner .active.right,.carousel-multiple.x4 .carousel-inner .active.right,.carousel-multiple.x6 .carousel-inner .active.right{-webkit-transform:translate3d(100%,0,0);-moz-transform:translate3d(100%,0,0);-ms-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);} 
 
+/*columnas auxiliares (intermedias)*/
+.col-sm-1a5,.col-xs-1a5,.col-sm-1a7,.col-xs-1a7,.col-sm-1a8,.col-xs-1a8,.col-sm-1a9,.col-xs-1a9{width:100%;*width:100%;}
+
+
 }
 
 @media only screen and (max-width : 480px) {
