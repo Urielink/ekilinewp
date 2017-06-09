@@ -614,6 +614,15 @@ a img.aligncenter {
 .text-google{color:#dd4b39;}
 .text-linkedin{color:#007bb5;}
 
+/*[modulecategoryposts]*/
+.modpostlist-carousel .carousel-inner .no-thumb .carousel-caption{
+	position: relative;
+	left: auto;
+	right: auto;
+	margin: 0px auto;
+	width: 80%;
+}
+
 
 /* ------------------------------------------------
  * Elementos generados dentro de WIDGETS.
@@ -693,6 +702,15 @@ a img.aligncenter {
 		background-size: inherit;
 		background-position: 60% -10%;
 	}
+	
+	/*[modulecategoryposts]*/
+	.modpostlist-carousel .carousel-inner .carousel-caption{
+		position: relative;
+		left: auto;
+		right: auto;
+		margin: 0 auto;
+		width: 80%;
+	}	
 
 
 }
