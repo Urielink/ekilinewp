@@ -348,7 +348,7 @@ video#bgvid{transition:1s opacity;}
 	
 /** Ejecutar el menu responsivo antes: https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint **/
 	.overtake .navbar-header{float:none;}
-	.overtake .navbar-left,.navbar-right{float:none !important;}
+	.overtake .navbar-left{float:none !important;}
 	.overtake .navbar-toggle{display:block;}
 	.overtake .navbar-collapse{border-top:1px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);}
 	.overtake .navbar-fixed-top{top:0;border-width:0 0 1px;}

@@ -694,10 +694,10 @@ a img.aligncenter {
 	.navbar-nav {
 		margin: 0px -15px;
 	}
-	.navbar-nav > li > a {
+/*	.navbar-nav > li > a {
 		padding-top: 10px;
 		padding-bottom: 10px;
-	}
+}*/
 		
 	.cover-header-brand{
 		margin: 120% 0px 0px;
@@ -715,11 +715,7 @@ a img.aligncenter {
 	.cover {
 		padding-top: 80px ;
 	}
-	
-	/*Widget: Dropdown in navbar*/
-	.navbar .widget {width: 100%;}
-		.navbar-collapse.in {overflow-y: inherit;}		
-		
+			
 	/*Cover background image*/		
 	.cover-wrapper {
 		background-size: inherit;
@@ -746,6 +742,15 @@ a img.aligncenter {
 	.nav-tabs > li > a{
 	    border: 1px solid #ddd;
 	}	
+	.navbar-nav > li > a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	/*Widget: Dropdown in navbar*/
+	.navbar .widget {width: 100%;}
+		.navbar-collapse.in {overflow-y: inherit;}		
+	
+	
 	
 }
 
