@@ -59,7 +59,7 @@ function ekiline_addpostlist($atts, $content = null) {
                 
                 } else if ($format == 'block'){
                                                                                                     
-                        echo '<div class="clearfix modpostlist-'.$format.'">'; 
+                        echo '<div class="row clearfix modpostlist-'.$format.'">'; 
                         
                             while( $nuevoLoop->have_posts() ) : $nuevoLoop->the_post();                                 
                             
