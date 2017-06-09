@@ -595,6 +595,7 @@ a img.aligncenter {
 	vertical-align: middle;
 }
 
+
 /* ------------------------------------------------
  * Elementos generados por SHORTCODES.
  * ----------------------------------------------*/
@@ -697,6 +698,24 @@ a img.aligncenter {
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
+		
+	.cover-header-brand{
+		margin: 120% 0px 0px;
+		width: 100px;
+	}
+
+	.cover-header-nav > ul{
+		float: none;
+	}	
+		
+	.cover-header-nav > ul li{
+		float: none;
+		margin: 20px 0px;
+	}	
+	.cover {
+		padding-top: 80px ;
+	}
+	
 	/*Widget: Dropdown in navbar*/
 	.navbar .widget {width: 100%;}
 		.navbar-collapse.in {overflow-y: inherit;}		
@@ -704,7 +723,7 @@ a img.aligncenter {
 	/*Cover background image*/		
 	.cover-wrapper {
 		background-size: inherit;
-		background-position: 60% -10%;
+		background-position: 35% -22%;
 	}
 	
 	/*[modulecategoryposts]*/
@@ -715,7 +734,6 @@ a img.aligncenter {
 		margin: 0 auto;
 		width: 80%;
 	}	
-
 
 }
 

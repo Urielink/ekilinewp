@@ -126,7 +126,7 @@ function customHeader() {
             // agregar brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
-                $coverLogo = '<a href="'.esc_url( home_url( '/' ) ).'" rel="home"><img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+                $coverLogo = '<a class="cover-header-brand" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
             // Mensaje personalizado
@@ -198,8 +198,9 @@ function customHeader() {
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">'. $coverLogo .'
+							            <div class="inner">
 							              <nav class="nav cover-header-nav">'. do_shortcode("[socialmenu]") .'</nav>
+							              '. $coverLogo .'
 							            </div>
 							          </div>
 							          <div class="inner cover">';
