@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-06-09 22:23-0500\n"
+"PO-Revision-Date: 2017-06-10 16:41-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -496,7 +496,7 @@ msgstr "Salir"
 # @ ekiline
 #: carpeta/archivo.php:29
 msgid "We are over maintenance, sorry."
-msgstr "Estamos más de mantenimiento, lo sentimos."
+msgstr "En mantenimiento, gracias por su comprensión."
 
 # @ ekiline
 #: carpeta/archivo.php:29

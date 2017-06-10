@@ -318,7 +318,7 @@ video#bgvid{transition:1s opacity;}
  .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;}
  .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
 /* El video */	
-    #bgvid, #vidpause { display: none;}
+    .video-text { display: none;}
 }
 
 /*--------------------------------------------------------------------------------

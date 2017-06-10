@@ -80,9 +80,3 @@ function collpasecontent_shortcode( $atts, $content = null ) {
 
 add_shortcode('collpasecontent',  'collpasecontent_shortcode');
 
-
-/** Tabs para experimentar.
-    Usar regex: http://wordpress.stackexchange.com/questions/116288/getting-the-count-of-a-shortcode-that-is-nested.
-    O crer un modulo: http://wordpress.stackexchange.com/questions/121562/get-attributes-of-nested-shortcodes
-**/
-

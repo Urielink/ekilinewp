@@ -32,7 +32,8 @@ function ekiline_cleanspchar($text) {
 
 /**
  * Creamos nuevos tamaños de imagen para varios elmentos.
- * https://developer.wordpress.org/reference/functions/add_image_size/
+ * Add new image sizes
+ * @link https://developer.wordpress.org/reference/functions/add_image_size/
  */
 add_action( 'after_setup_theme', 'ekiline_theme_setup' );
 function ekiline_theme_setup() {
@@ -82,12 +83,12 @@ add_filter( 'body_class', 'ekiline_body_css' );
 
 /**
  * Customizer: Add theme colors (customizer.php).
- * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
+ * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
  */
  
 function ekiline_csscolors() {
         
-// Variables de color        
+// Variables de color // Color values
     $bgcolor = '#'.get_background_color();
     $texto = get_option('text_color');
     $enlaces = get_option('links_color');
@@ -97,20 +98,19 @@ function ekiline_csscolors() {
     $footer = get_option('footer_color');
     $inverse = get_theme_mod('ekiline_inversemenu');
     
-    // Si no existen colores, añadir estos
+    // Si no existen colores, añadir estos // add default value
     if ( !$texto ) : $texto = '#333333'; endif;
     if ( !$enlaces ) : $enlaces = '#337ab7'; endif;
     if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
     
-    // Estilos en linea
+    // Estilos en linea // inline styles
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
         .navbar-inverse .navbar-text, .xcover h1, .xcover h2, .xcover h3, .xcover p{ color:'.$bgcolor.'; }
         .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
-        .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }
         .navbar-inverse { background-color:'.$menu.'; }
         .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
@@ -125,7 +125,7 @@ function ekiline_csscolors() {
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
         .carousel.slide, .breadcrumb{ background-color:'.$modulos.'; }
         ';
-        
+    // En caso de utilizar dos colores en el menú // if uses 2nd menu color    
     if ( $mgradient != '' ){
         $miestilo .= '
         .navbar-default, .navbar-inverse {
@@ -201,7 +201,7 @@ add_filter( 'get_search_form', 'ekiline_search_form' );
  * Theming: 
  * Modificar el extracto
  * Excerpt override
- * https://codex.wordpress.org/Function_Reference/the_excerpt
+ * @link https://codex.wordpress.org/Function_Reference/the_excerpt
  *
  **/
 
@@ -226,9 +226,9 @@ add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
  * Theming: 
  * Remover los shortcodes existentes en el extracto
  * Excerpt override and Remove [shortcode] items in excerpt: 
- * https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
- * http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
- * **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
+ * @link https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
+ * @link http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
+ * @link **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
  **/
 
 function wp_trim_excerpt_do_shortcode($text) {
@@ -339,8 +339,8 @@ function ekiline_posts_navigation( $args = array() ) {
  * Theming: 
  * Paginacion para listados
  * Paginate links
- * https://codex.wordpress.org/Function_Reference/paginate_links
- * https://brinidesigner.com/wordpress-custom-pagination-for-bootstrap/
+ * @link https://codex.wordpress.org/Function_Reference/paginate_links
+ * @link https://brinidesigner.com/wordpress-custom-pagination-for-bootstrap/
  **/
 
 function ekiline_archive_pagination() {

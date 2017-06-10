@@ -6,11 +6,11 @@
  *
  * Hacer un formulario de ingreso con shortcode.
  * Login shortcode
- * una version sencilla: https://wordpress.org/support/topic/front-end-login-using-php
- * Una version extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
- * Una version mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
- * La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
- * Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400 
+ * @link una version sencilla: https://wordpress.org/support/topic/front-end-login-using-php
+ * @link Una version extesa:  http://www.codesynthesis.co.uk/tutorials/creating-a-custom-login-form-in-wordpress
+ * @link Una version mejor explicada http://www.wavesolution.net/wordpress-login-page-customization/
+ * @link La version Oficial: https://codex.wordpress.org/Customizing_the_Login_Form
+ * @link Para verificar el codigo: https://github.com/WordPress/WordPress/blob/4.0/wp-includes/general-template.php#L400 
  *
  * @package ekiline 
  */
@@ -117,9 +117,10 @@ function ekiline_loginfrontend() {
 		
 add_shortcode('loginform', 'ekiline_loginfrontend');
 
-// si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
-// If user is logedin add a link to menu
-// https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
+/* si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
+ * If user is logedin add a link to menu
+ * @link https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
+ */
 
 function add_loginout_link( $items, $args ) {
     if (is_user_logged_in() && $args->theme_location == 'top') {

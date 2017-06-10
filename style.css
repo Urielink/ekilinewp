@@ -212,6 +212,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
  .cover-wrapper{background-size:inherit;background-position:35% -5%;}
  /*[modulecategoryposts]*/
  .modpostlist-carousel .carousel-inner .carousel-caption{position:relative;left:auto;right:auto;margin:0 auto;width:80%;}
+ .navbar-collapse.in{overflow-y:inherit;}
 }
 
 @media only screen and (max-width:480px){.nav-tabs > li{float:none;text-align:center;}
@@ -219,7 +220,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
  .navbar-nav > li > a{padding-top:10px;padding-bottom:10px;}
  /*Widget:Dropdown in navbar*/
  .navbar .widget{width:100%;}
- .navbar-collapse.in{overflow-y:inherit;}}
+ }
 
 /* TERCER CAMBIO Smartphones verticales */
 
