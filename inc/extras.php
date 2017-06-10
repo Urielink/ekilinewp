@@ -115,6 +115,8 @@ function ekiline_csscolors() {
         .navbar-inverse { background-color:'.$menu.'; }
         .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
         .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
+        .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:'.$enlaces.';}
         .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
         .site-footer { background-color: '.$footer.';color:'.$inverse.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
