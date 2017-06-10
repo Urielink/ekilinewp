@@ -19,6 +19,7 @@ get_header(); ?>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
+				    
 					<p><?php echo esc_html__( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ekiline' ); ?></p>
 
 					<?php get_search_form(); ?>
@@ -27,7 +28,7 @@ get_header(); ?>
 
 					<?php if ( ekiline_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
 					<div class="widget widget_categories">
-						<h3 class="widget-title"><?php echo esc_html__( 'Most Used Categories', 'ekiline' ); ?></h3>
+						<h2 class="widget-title"><?php echo esc_html__( 'Most Used Categories', 'ekiline' ); ?></h2>
 						<ul>
 						<?php
 							wp_list_categories( array(

@@ -31,10 +31,10 @@
 
             <div class="row"><?php dynamic_sidebar( 'footer-w1' ); ?></div>
             
-            <div class="site-info text-right no-margin clearfix">
+            <div class="site-info no-margin clearfix">
     
                 <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?>
-                <a class="btn btn-default" href="#top"><i class="glyphicon glyphicon-chevron-up"></i></a>    
+                <a class="btn btn-default btn-sm pull-right" href="#top"><i class="glyphicon glyphicon-chevron-up"></i></a>    
                 
                 <br/>
                 

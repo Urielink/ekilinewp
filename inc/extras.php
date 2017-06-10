@@ -107,14 +107,15 @@ function ekiline_csscolors() {
     // Estilos en linea
     $miestilo = '
         body{ color:'.$texto.'; }
-        a:hover,a:focus,a:active{ color:'.$modulos.'; }
+        a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
         .navbar-inverse .navbar-text, .xcover h1, .xcover h2, .xcover h3, .xcover p{ color:'.$bgcolor.'; }
         .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
         .page-maintenance{ background-color:'.$texto.'; }
         .navbar-default { background-color:'.$menu.'; }
         .navbar-inverse { background-color:'.$menu.'; }
         .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
-        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a{ color:'.$enlaces.'; }
+        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
+        .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
         .site-footer { background-color: '.$footer.';color:'.$inverse.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
@@ -317,11 +318,11 @@ function ekiline_posts_navigation( $args = array() ) {
         $prev_link = get_next_posts_link( $args['prev_text'] );
  
         if ( $prev_link ) {
-            $navigation .= '<li>' . $prev_link . '</li>';
+            $navigation .= '<li class="previous">' . $prev_link . '</li>';
         }
  
         if ( $next_link ) {
-            $navigation .= '<li>' . $next_link . '</li>';
+            $navigation .= '<li class="next">' . $next_link . '</li>';
         }
         
         $navigation = '<ul class="pager">'.$navigation.'</ul>';

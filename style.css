@@ -565,9 +565,18 @@ a img.aligncenter {
 	box-shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
 }
 
-.carousel-inner > .item {
-/*min-height: 150px;*/
+/* Modificar el redondeo de los elementos en bootstrap */
+.carousel-indicators li, .popover-title, .popover, .tooltip-inner, .modal-content, .well-sm, .well-lg, .well, 
+.panel-group .panel, .panel, .progress, .alert, .thumbnail, .container .jumbotron, .container-fluid .jumbotron, 
+.label, .pager li > a, .pager li > span, .navbar, .navbar-toggle .icon-bar, .navbar-toggle, .nav-tabs-justified > li > a, 
+.nav-pills > li > a, .nav-tabs.nav-justified > li > a, .nav-tabs > li > a, .input-group-addon.input-lg,.input-group-addon.input-sm, .input-group-addon, .input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.img-rounded , .img-thumbnail, 
+code, kbd, pre,.form-control, .input-sm , .form-group-sm .form-control , .input-lg, .form-group-lg .form-control, 
+.btn, .btn-lg,.btn-group-lg > .btn, .btn-sm, .btn-group-sm > .btn, .btn-xs, .btn-group-xs > .btn, .dropdown-menu, .breadcrumb{
+	border-radius: 0px;
 }
+
 
 #carousel-modal .close{
 	position: relative;
@@ -594,6 +603,22 @@ a img.aligncenter {
 	display: table-cell;
 	vertical-align: middle;
 }
+.site-info{
+	padding: 10px 0;
+	border-top: 1px solid #DDD;
+}
+
+/* Botones de sidebars plegables*/
+.toggle-sidebars #secondary{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.toggle-sidebars #third{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.active-sidebar-left .btn-sbleft {}
+.active-sidebar-right .btn-sbright {}
 
 
 /* ------------------------------------------------
@@ -637,8 +662,18 @@ a img.aligncenter {
     width: 300px;
     padding: 15px;
 }
+/* widget_nav_menu */
+.widget_nav_menu ul{
+	padding-left:20px;
+}
+.widget_nav_menu ul li{
+	padding:4px 0px;
+}
+.widget_nav_menu ul li.current-menu-item {
+    background: #eee;
+    padding: 2px 8px;
+}
 
- 
 
 
 /* ------------------------------------------------
