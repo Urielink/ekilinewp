@@ -26,8 +26,8 @@ function ekiline_custom_header_setup() {
     	apply_filters( 'ekiline_custom_header_args', array(
             'default-image'          => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
     		'default-text-color'     => '000000',
-    		'width'                  => 1980,
-    		'height'                 => 1080,
+    		'width'                  => 1680,
+    		'height'                 => 1050,
     		'flex-height'            => true,
     		'wp-head-callback'       => 'ekiline_header_style',
     	   )
@@ -126,7 +126,7 @@ function customHeader() {
             // agregar brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
-                $coverLogo = '<a href="'.esc_url( home_url( '/' ) ).'" rel="home"><img class="cover-header-brand" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+                $coverLogo = '<a class="cover-header-brand" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
             // Mensaje personalizado
@@ -198,8 +198,9 @@ function customHeader() {
 							      <div class="cover-wrapper-inner">
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
-							            <div class="inner">'. $coverLogo .'
+							            <div class="inner">
 							              <nav class="nav cover-header-nav">'. do_shortcode("[socialmenu]") .'</nav>
+							              '. $coverLogo .'
 							            </div>
 							          </div>
 							          <div class="inner cover">';
@@ -368,7 +369,15 @@ function customHeader() {
 		
 				
 		}		
-		
+
+        // en caso de existir woocommerce, no despliegues la imagen
+        // https://docs.woocommerce.com/document/conditional-tags/
+        //if ( class_exists( 'WooCommerce' ) ){
+            if ( get_post_type( get_the_ID() ) == 'product' ){
+                $customHeader = '';
+            } 
+        //}
+			
 	
 	echo $customHeader;
 	

@@ -56,7 +56,7 @@
 	    // Carrusel con swipe, impedir que avance automaticamente	
 	    $('.carousel').carousel({
 	    	  interval: false,
-	    	  swipe: 30, // percent-per-second, default is 50. Pass false to disable swipe
+	    	  swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
 	    	});	  
                 
         // Affix: calcula la altura del header

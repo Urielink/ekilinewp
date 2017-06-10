@@ -7,10 +7,12 @@
  *
  * @package ekiline
  */
+ $thumbClass = '';
+ if ( !has_post_thumbnail() ){ $thumbClass = 'no-thumb'; }
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $thumbClass ); ?>>
     
     <?php if ( has_post_thumbnail() ){?>
                 

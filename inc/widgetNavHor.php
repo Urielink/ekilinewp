@@ -44,19 +44,19 @@ class HorizontalNavbarWidget extends WP_Widget {
         echo '<nav id="site-navigation-horizontal"  class="navbar navbar-default" role="navigation">
 	    			<div class="container-fluid">
 		        		<div class="navbar-header">
-	                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.widget-hm">
+	                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.'.$this->id.'">
 	                            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 	                        </button>';
 	                        
                             if ( !empty($instance['title']) ) echo '<div class="navbar-brand">'. $instance['title'] .'</div>';	 
 	                                               
                    echo '</div><!-- .navbar-header -->
-                        <div class="collapse navbar-collapse widget-hm">';        
+                        <div class="collapse navbar-collapse '.$this->id.'">';        
                 
         $nav_menu_args = array(
             'menu'        => $nav_menu,
             // 'container'         => 'div',
-            // 'container_class'   => 'collapse navbar-collapse widget-hm',
+            // 'container_class'   => 'collapse navbar-collapse',
             'container_id'      => 'navbar-collapse-in',
             'menu_class'        => 'nav navbar-nav',
             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
