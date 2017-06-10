@@ -1,6 +1,4 @@
-/*
- * Arreglos jQuery, exclusivos para caracterisitcas del tema
- */
+/* Arreglos exclusivos para caracterisitcas del tema; */
 
 jQuery(document).ready(function($){
 	
@@ -9,6 +7,13 @@ jQuery(document).ready(function($){
         $('#pageLoad').fadeOut(500);
     }, 600);			          
 
+	// Lazyload para imagenes
+	$("img").lazyload({ 
+		threshold : 200,
+	    //placeholder : 'apple-touch-icon.png',
+	    effect : "fadeIn" 
+	});
+   
 		
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -140,6 +145,36 @@ jQuery(document).ready(function($){
     $('.popover-left').popover({ placement: 'left' });
     $('.popover-bottom').popover({ placement: 'bottom' });
     
+    
+	// aparecer elementos por el movimiento del scroll		
+	
+	function itemFade(elItem){
+
+        // lo desaparecemos antes
+        $(elItem).css({'opacity':'0'});	
+
+		//hacemos la fucncion con el scroll
+		$(window).scroll( function(){
+
+	        // Por cada imagen
+	        $(elItem).each( function(i){
+	
+	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+	            var bottom_of_window = $(window).scrollTop() + $(window).height();
+	
+	            // Si esta en el lugar fade in
+	            if( bottom_of_window > bottom_of_object ){
+	                $(this).stop().animate({'opacity':'1'},300);
+	            } else {
+	                $(this).stop().animate({'opacity':'0'},300);
+	            }            
+	        });
+	        
+		});
+		
+	}
+
+	itemFade('img');    
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -482,7 +517,7 @@ jQuery(document).ready(function($){
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
-	         console.log(nc);
+	         //console.log(nc);
 	
 	        
 	        // Ejecuta las variables para activarse
@@ -559,5 +594,24 @@ jQuery(document).ready(function($){
 	}); // fin modal-gallery function
 	
 
+	//Scroll para analytics 
+	//https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+
+    var trackBottomScroll = 0;
+    
+    $(window).scroll(function() {
+        if(trackBottomScroll < 100 && ($(window).scrollTop() >= ($(document).height() - $(window).height()) / 100 * (trackBottomScroll + 10) )) {
+            trackBottomScroll += 10;
+
+        // en caso de ga undefined: http://stackoverflow.com/questions/18696998/ga-or-gaq-push-for-google-analytics-event-tracking
+        	if (typeof ga !== 'undefined') {
+	            ga('send', 'event', {
+	                'eventCategory': 'Interaccion',
+	                'eventAction': 'Scroll al ' + trackBottomScroll + '%',
+	                'eventLabel': location.href
+	                });
+        	}
+        }
+    });    
 			
 }); 			
