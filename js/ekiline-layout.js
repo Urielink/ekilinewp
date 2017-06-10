@@ -3,6 +3,12 @@
  */
 
 jQuery(document).ready(function($){
+	
+	// El preload
+    setTimeout(function(){
+        $('#pageLoad').fadeOut(500);
+    }, 600);			          
+
 		
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -100,10 +106,6 @@ jQuery(document).ready(function($){
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/	
 	
-	// El preload
-    setTimeout(function(){
-        $('#pageLoad').fadeOut(500);
-    }, 600);			          
             
     // Carrusel con swipe e impedir que avance automaticamente	
     $('.carousel').carousel({
