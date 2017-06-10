@@ -43,7 +43,7 @@ get_header(); ?>
 			<?php endwhile; ?>
 
         <nav id="page-navigation">
-            <?php ekiline_posts_navigation()?>
+            <?php ekiline_archive_pagination();?>
         </nav>
 
 		<?php else : ?>

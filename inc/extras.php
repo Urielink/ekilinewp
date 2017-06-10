@@ -332,6 +332,67 @@ function ekiline_posts_navigation( $args = array() ) {
     echo $navigation;
 }
 
+/**
+ * Theming: 
+ * Paginacion para listados
+ * Paginate links
+ * https://codex.wordpress.org/Function_Reference/paginate_links
+ * https://brinidesigner.com/wordpress-custom-pagination-for-bootstrap/
+ **/
+
+function ekiline_archive_pagination() {
+    
+    global $wp_query;
+    $big = 999999999;
+    $pagination = '';
+    
+    $pages = paginate_links(array(
+                'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+                'format' => '?page=%#%',
+                'current' => max(1, get_query_var('paged')),
+                'total' => $wp_query->max_num_pages,
+                'prev_next' => false,
+                'type' => 'array',
+                'prev_next' => TRUE,
+                'prev_text' => __( '&larr; Previous', 'ekiline' ),
+                'next_text' => __( 'Next &rarr;', 'ekiline' ),
+            ));
+            
+    if (is_array($pages)) {
+        
+        $current_page = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+        
+        $pagination .= '<ul class="pagination">';
+        
+        foreach ($pages as $i => $page) {
+            
+            if ($current_page == 1 && $i == 0) {
+                
+                $pagination .= "<li class='active'>$page</li>";
+                
+            } else {
+                
+                if ($current_page != 1 && $current_page == $i) {
+                    
+                    $pagination .= "<li class='active'>$page</li>";
+                    
+                } else {
+                    
+                    $pagination .= "<li>$page</li>";
+                    
+                }
+            }
+            
+        }
+        
+        $pagination .= '</ul>';
+        
+    }
+    
+    echo $pagination;
+   
+}
+
 
 /**
  * Widgets: Set top widgets (header.php #25)

@@ -608,7 +608,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
         'ekiline_gfont', array(
                 'label'          => __( 'Google fonts', 'ekiline' ),
-                'description'    => __( 'Review and choose one or more <a href="https://fonts.google.com/" target="_blank">google fonts</a> sample, then add the src="XXX" code', 'ekiline' ),
+                'description'    => __( 'Review and choose font type from https://fonts.google.com sample, then add the src="XXX" code', 'ekiline' ),
                 'section'        => 'ekiline_dtools_section',
                 'settings'       => 'ekiline_gfont',
                 'type'           => 'text'
