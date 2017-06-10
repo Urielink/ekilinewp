@@ -217,16 +217,15 @@ function ekiline_scripts() {
  */
     wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
-		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );
-		
-    // Deshabilitar font awesome
-	if( true === get_theme_mod('ekiline_fontawesome') ) {
-	      wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
-    }
-	
+		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );	
 	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline-layout.css', array(), '1.0', 'all' );	
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
-	
+        
+    // Condición para font awesome
+    if( true === get_theme_mod('ekiline_fontawesome') ) {
+          wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
+    }
+		
 	// Añadir googlefonts
     $gfont = get_theme_mod('ekiline_gfont','');
     if ($gfont != '') {
@@ -284,8 +283,6 @@ function ekiline_scripts() {
             wp_localize_script('ekiline-layout', 'allCss', $params); 
     // wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
             // wp_localize_script('theme-scripts', 'allCss', $params); 
-
-    
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
@@ -308,14 +305,19 @@ add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
  */
 
 function ekilineNoscript(){
+    $gfont = get_theme_mod('ekiline_gfont','');   
     $noScripts = '<noscript>'."\n";
     $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/bootstrap.min.css" media="all" />'."\n";
+    $noScripts .= '<link rel="stylesheet" href="'. get_stylesheet_uri() . '" media="all" />'."\n";    
+    //$noScripts .= '<style type="text/css">#pageLoad{display:none;}</style>'."\n";
     if( true === get_theme_mod('ekiline_fontawesome') ) {
         $noScripts .= '<link rel="stylesheet" href="'. get_template_directory_uri() . '/css/font-awesome.min.css" media="all" />'."\n";  
-    }  
-    $noScripts .= '<link rel="stylesheet" href="'. get_stylesheet_uri() . '" media="all" />'."\n";    
-    $noScripts .= '<style type="text/css">#pageLoad{display:none;}</style>'."\n";
+    }      
+    if ($gfont != '') {
+        $noScripts .= '<link rel="stylesheet" href="'. $gfont . '" media="all" />'."\n";  
+    }        
     $noScripts .= '</noscript>'."\n";
+    
     echo $noScripts;
 }
 add_action( 'wp_head', 'ekilineNoscript', 9);

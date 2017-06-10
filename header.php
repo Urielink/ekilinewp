@@ -24,8 +24,8 @@
     
     <div id="pageLoad">
         <small class="loadtext">
-            <noscript><?php echo __('Javascript is disabled','ekiline') ?></noscript>
             <?php if (get_site_icon_url()) : echo '<img class="loadicon" src="'. get_site_icon_url() .'" alt="'. site_url() .'" width="100" height="100"/>'; endif;?>
+            <br/><noscript><?php echo __('Javascript is disabled','ekiline') ?></noscript>
             <br/><?php echo __('Loading...','ekiline') ?>
         </small>
     </div>
