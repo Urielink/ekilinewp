@@ -1,4 +1,4 @@
-/* Arreglos exclusivos para caracterisitcas del tema; */
+/*ekiline for WordPress Theme, Copyright 2015-2017 Ricardo Uriel P. Lazcano. ekiline is distributed under the terms of the GNU GPL*/
 
 jQuery(document).ready(function($){
 	
@@ -6,13 +6,6 @@ jQuery(document).ready(function($){
     setTimeout(function(){
         $('#pageLoad').fadeOut(500);
     }, 600);			          
-
-	// Lazyload para imagenes
-	$("img").lazyload({ 
-		threshold : 200,
-	    //placeholder : 'apple-touch-icon.png',
-	    effect : "fadeIn" 
-	});
    
 		
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -144,37 +137,7 @@ jQuery(document).ready(function($){
     $('.popover-right').popover({ placement: 'right' });
     $('.popover-left').popover({ placement: 'left' });
     $('.popover-bottom').popover({ placement: 'bottom' });
-    
-    
-	// aparecer elementos por el movimiento del scroll		
-	
-	function itemFade(elItem){
-
-        // lo desaparecemos antes
-        $(elItem).css({'opacity':'0'});	
-
-		//hacemos la fucncion con el scroll
-		$(window).scroll( function(){
-
-	        // Por cada imagen
-	        $(elItem).each( function(i){
-	
-	            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
-	            var bottom_of_window = $(window).scrollTop() + $(window).height();
-	
-	            // Si esta en el lugar fade in
-	            if( bottom_of_window > bottom_of_object ){
-	                $(this).stop().animate({'opacity':'1'},300);
-	            } else {
-	                $(this).stop().animate({'opacity':'0'},300);
-	            }            
-	        });
-	        
-		});
-		
-	}
-
-	itemFade('img');    
+         
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -489,26 +452,9 @@ jQuery(document).ready(function($){
 	        var gallery = $( rename ).html();
 	                
 	        var modalgallery = '';
-	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal">\
-	                            <div class="modal-dialog">\
-	                            <div class="modal-content">\
-	                            <div class="modal-body">';
-	                            
-	        //carrusel                            
-	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel">\
-	        	<button type="button" class="close" data-dismiss="modal">&times;</button>\
-	                          <ol class="carousel-indicators"></ol>\
-	                          <div class="carousel-inner" role="listbox">'+ gallery +'</div>\
-	                          <a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev">\
-	                            <span class="glyphicon glyphicon-chevron-left"></span>\
-	                          </a>\
-	                          <a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next">\
-	                            <span class="glyphicon glyphicon-chevron-right"></span>\
-	                          </a>\
-	                        </div>';                  
-	                     
+	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">';	                            
+	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel"><button type="button" class="close" data-dismiss="modal">&times;</button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a></div>';                  
 	        modalgallery += '</div></div></div></div>';
-	        
 	        
 	        $( modalgallery ).modal('show');
 	        	         
@@ -594,24 +540,5 @@ jQuery(document).ready(function($){
 	}); // fin modal-gallery function
 	
 
-	//Scroll para analytics 
-	//https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-
-    var trackBottomScroll = 0;
-    
-    $(window).scroll(function() {
-        if(trackBottomScroll < 100 && ($(window).scrollTop() >= ($(document).height() - $(window).height()) / 100 * (trackBottomScroll + 10) )) {
-            trackBottomScroll += 10;
-
-        // en caso de ga undefined: http://stackoverflow.com/questions/18696998/ga-or-gaq-push-for-google-analytics-event-tracking
-        	if (typeof ga !== 'undefined') {
-	            ga('send', 'event', {
-	                'eventCategory': 'Interaccion',
-	                'eventAction': 'Scroll al ' + trackBottomScroll + '%',
-	                'eventLabel': location.href
-	                });
-        	}
-        }
-    });    
 			
 }); 			

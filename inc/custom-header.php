@@ -67,22 +67,13 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     		// Has the text been hidden?
     		if ( ! display_header_text() ) :
     	?>
-    		.site-title,
-    		.site-description {
-    			position: absolute;
-    			clip: rect(1px, 1px, 1px, 1px);
-    		}
+    		.site-title, .site-description { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
     	<?php
     		// If the user has set a custom color for the text use that.
     		else :
     	?>
-    		.site-title a,
-    		.site-description,
-    		.site-branding.jumbotron,
-    		.inner.cover {
-    			color: #<?php echo esc_attr( $header_text_color ); ?>;
-    		}
-    		.custom-header-image {}
+    		.site-title a, .site-description, .site-branding.jumbotron, .inner.cover { color: #<?php echo esc_attr( $header_text_color ); ?>; }
+    		
     	<?php endif; ?>
     	</style>
     	<?php
@@ -100,7 +91,7 @@ endif;  // ekiline_admin_header_image
  
 function customHeader() {
     
-    // Variables
+    // Variables 
     $customHeader = '';
     $siteName = get_bloginfo( 'name', 'display' );
     $siteDescription = get_bloginfo( 'description', 'display'  );
@@ -114,26 +105,24 @@ function customHeader() {
  */ 
 		if ( is_front_page() && get_header_image() ){
 		        
-            // Variables - Values
-            // reset range a 30
+            // Variables - Values // reset range 0 a 30
 			if ($rangeHead == '0') {
 			     $rangeHead = '30'; 
             }
             						
-			// agregar background image
+			// agregar background image // add background image
 			$headerStyle = 'style="background-image:url(' . get_header_image() . ');height:' . $rangeHead . 'vh;"';
 			
-            // agregar brand image
+            // agregar brand image // add brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
                 $coverLogo = '<a class="cover-header-brand" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
-            // Mensaje personalizado
+            // Mensaje personalizado // custom message
             $headerText = get_theme_mod( 'ekiline_headertext', '' );
             
-            // Permitir el uso de HTML a la vista
-            // Alllow html on output
+            // Permitir el uso de HTML a la vista // Alllow html on output
             $headerText = wp_kses( $headerText, array( 
                 'a' => array(
                     'href' => array(),
@@ -244,24 +233,25 @@ function customHeader() {
                                         <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
                                             <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
                                         </video>
-                                        <button id="vidpause" class="btn btn-default">'. __( 'Pause', 'ekiline' ) .'</button>
+                                        <button id="vidpause" class="btn btn-default btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
                                     </div>
                                  </header>';
                                  
                 /**
-                 * Agregar script para el video 
-                 * Add inline script
-                 * https://developer.wordpress.org/reference/functions/wp_add_inline_script/
-                 * https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
-                 * https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
-                 * https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
+                 * Agregar script para el video // Add inline script
+                 * @link https://developer.wordpress.org/reference/functions/wp_add_inline_script/
+                 * @link https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
+                 * @link https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
+                 * @link https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
                  */                                                                   
                                 
                 function ekiline_headervideo() { 
                 
                     echo '<script type="text/javascript">
-                        var vid = document.getElementById("bgvid"),
+                    
+                        var vid = document.getElementById("bgvid");
                         pauseButton = document.getElementById("vidpause");
+                        
                         if (window.matchMedia("(prefers-reduced-motion)").matches) {
                             vid.removeAttribute("autoplay");
                             vid.pause();
@@ -271,22 +261,22 @@ function customHeader() {
                         function vidFade() {
                             vid.classList.add("stopfade");
                         }
+                        
                         vid.addEventListener("ended", function() {
-                            // only functional if "loop" is removed 
-                             vid.pause();
-                            // to capture IE10
+                            vid.pause();
                             vidFade();
                         });
+                        
                         pauseButton.addEventListener("click", function() {
                             vid.classList.toggle("stopfade");
                             if (vid.paused) {
-                        vid.play();
+                                vid.play();
                                 pauseButton.innerHTML = "'. __( 'Pause', 'ekiline' ) .'";
                             } else {
                                 vid.pause();
                                 pauseButton.innerHTML = "'. __( 'Play', 'ekiline' ) .'";
                             }
-                        })                    
+                        });
                         
                     </script>';
                     
@@ -370,13 +360,16 @@ function customHeader() {
 				
 		}		
 
-        // en caso de existir woocommerce, no despliegues la imagen
-        // https://docs.woocommerce.com/document/conditional-tags/
-        //if ( class_exists( 'WooCommerce' ) ){
-            if ( get_post_type( get_the_ID() ) == 'product' ){
-                $customHeader = '';
-            } 
-        //}
+        /**
+         * Si utiliza woocommerce, no requiere header
+         * If is woocommerce post doesnt need a header image
+         * @link https://docs.woocommerce.com/document/conditional-tags/
+         * class_exists( 'WooCommerce' ), 
+         */ 
+                
+        if ( get_post_type( get_the_ID() ) == 'product' ){
+            $customHeader = '';
+        } 
 			
 	
 	echo $customHeader;

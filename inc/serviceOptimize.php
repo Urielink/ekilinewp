@@ -9,7 +9,7 @@
 
 /**
  * Utilizar keywords en caso de necesitar etiquetas en las paginas:
- * https://www.sitepoint.com/wordpress-pages-use-tags/
+ * @link https://www.sitepoint.com/wordpress-pages-use-tags/
  */
 
 // Permitir el uso de etiquetas en pages
@@ -72,7 +72,7 @@ function ekiline_description(){
            // here is our custom field
            echo $stdDesc;
        } else {
-//           echo strip_tags( get_the_excerpt() ); 
+           // echo strip_tags( get_the_excerpt() ); 
             echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
        }
      
@@ -119,7 +119,6 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'comment-reply',
 		'wp-embed',
 		'wp-emoji-release',
-		// 'bootstrap-script', Swipe compatibility
 		'ekiline-swipe',
 		'lazy-load',
 		'ekiline-layout',
@@ -136,31 +135,12 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
-// function load_styles( $tag, $handle, $src ) {
-//         
-    // $load_css = array( 
-        // 'bootstrap-337',
-        // 'ie10-viewport-bug-workaround',
-        // 'font-awesome',
-        // 'layout',
-        // 'ekiline-style'
-        // //'google-font'
-    // );
-// 
-    // if ( in_array( $handle, $load_css ) ) {
-       // return '<link id="' . $handle . '" href="' . $src . '" type="text/css" media="all" rel="stylesheet">' . "\n";
-    // }
-//     
-    // return $tag;
-// } 
-// add_filter( 'style_loader_tag', 'load_styles', 10, 3 );
-
 
 /**
  * OPTIMIZACIoN: Registrar google analytics (customizer.php)
  * Add google analyitcs script
- * https://developers.google.com/analytics/devguides/collection/gajs/
- * https://digwp.com/2012/06/add-google-analytics-wordpress/
+ * @link https://developers.google.com/analytics/devguides/collection/gajs/
+ * @link https://digwp.com/2012/06/add-google-analytics-wordpress/
 **/
 
 function google_analytics_tracking_code(){
@@ -170,9 +150,9 @@ function google_analytics_tracking_code(){
     if ( $gacode != '' ) {
         
     echo "<script>
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '" . $gacode . "', 'auto');
-        ga('send', 'pageview');
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', '" . $gacode . "', 'auto');
+            ga('send', 'pageview');
          </script>
          <script async defer src='https://www.google-analytics.com/analytics.js'></script>
          ";     

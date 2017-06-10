@@ -10,8 +10,8 @@
 /**
  * Extender funciones de widget, añadir CSS por cada item
  * Extend widget functions
- * http://wordpress.stackexchange.com/questions/134539/how-to-add-custom-fields-to-settings-in-widget-options-for-all-registered-widget
- * https://github.com/lowhow/Whitecoat/blob/master/whitecoat2/functions-theme.php
+ * @link http://wordpress.stackexchange.com/questions/134539/how-to-add-custom-fields-to-settings-in-widget-options-for-all-registered-widget
+ * @link https://github.com/lowhow/Whitecoat/blob/master/whitecoat2/functions-theme.php
  */
  
 function ekiline_in_widget_form($t,$return,$instance){

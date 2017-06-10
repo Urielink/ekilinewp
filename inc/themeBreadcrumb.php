@@ -3,9 +3,9 @@
  * Custom functions that act independently of the theme templates
  *
  * Eventually, some of the functionality here could be replaced by core features
- * Ejercicicio base: http://wp-snippets.com/breadcrumbs-without-plugin/
- * ***Ejercicicio enriquecido: http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
- * Ajuste de meuestreo en categoria https://wordpress.stackexchange.com/questions/129609/how-to-show-only-one-category-in-breadcrumb-navigation
+ * @link  Ejercicicio base: http://wp-snippets.com/breadcrumbs-without-plugin/
+ * @link  ***Ejercicicio enriquecido: http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
+ * @link  Ajuste de meuestreo en categoria https://wordpress.stackexchange.com/questions/129609/how-to-show-only-one-category-in-breadcrumb-navigation
  *
  * @package ekiline
  */

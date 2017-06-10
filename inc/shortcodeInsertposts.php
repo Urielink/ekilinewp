@@ -4,13 +4,13 @@
  *
  * Ekiline: Importar un listado de entradas de alguna categoria, se genera un loop. 
  * Ekiline: Insert a list of posts everywhere, it generates a loop
- * https://css-tricks.com/snippets/wordpress/run-loop-on-posts-of-specific-category/ 
- * http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
+ * @link https://css-tricks.com/snippets/wordpress/run-loop-on-posts-of-specific-category/ 
+ * @link http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
  * Especial atencion en el uso de ob_start();
- * http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
- * https://developer.wordpress.org/reference/functions/query_posts/
- * https://codex.wordpress.org/Shortcode_API
- * https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
+ * @link http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
+ * @link https://developer.wordpress.org/reference/functions/query_posts/
+ * @link https://codex.wordpress.org/Shortcode_API
+ * @link https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
  *
  * @package ekiline
  */

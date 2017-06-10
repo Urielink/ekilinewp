@@ -2,7 +2,7 @@
 /**
  * Minificar el código
  * Minify html output
- * https://gist.github.com/anonymous/ebac093f8195e07492cb351ef3c25b50#file-function-minify-html-php
+ * @link https://gist.github.com/anonymous/ebac093f8195e07492cb351ef3c25b50#file-function-minify-html-php
  * 
  * @package ekiline
  */

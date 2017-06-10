@@ -13,10 +13,11 @@ $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
 $rightOn = get_theme_mod('ekiline_sidebarRight','on');
 
 
-/* Agrega clase css para habilitar sidebars
+/**
+ * Agrega clase css para habilitar sidebars
  * Add css to enable or disable Ekiline sidebars
- * https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
- * https://developer.wordpress.org/reference/functions/body_class/
+ * @link  https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
+ * @link  https://developer.wordpress.org/reference/functions/body_class/
  */
 
 add_filter( 'body_class', function( $classes ) {
@@ -73,7 +74,8 @@ function sideOn() {
     echo $sideon;
 }
 
-/* Estos 2 fragmentos Agregan una clase a cada sidebar
+/*
+ * Estos 2 fragmentos Agregan una clase a cada sidebar
  * afectan a sidebar.php y sidebar-right.php 
  * Add class to each sidebar (sidebar.php, sidebar-right.php)
  */
