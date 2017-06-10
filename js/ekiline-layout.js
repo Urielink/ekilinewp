@@ -4,11 +4,48 @@
 
 jQuery(document).ready(function($){
 		
-	// animar el boton del menu.
-	$('.navbar-toggle').on('click', function () {
-		$(this).toggleClass('active');
-	});		
-
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	En caso de optimizar la carga de estilos
+	 *  Parsear la variable de estilos y crear cada css en el head.
+	 *  Revisar esto: http://larryullman.com/forums/index.php?/topic/3558-jquery-ajax-how-to-use-json-to-create-new-html-elements/
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+	
+	// variable php
+	if ( allCss != null ){
+		
+		var obj = allCss;	
+		
+		//console.log(allCss);
+		
+		// crear un estilo por cada ruta extríada.
+		
+		$.each( obj, function( key, value ) {
+				 //alert( key + ": " + value );
+		
+			var $head = $("head");
+			var $wpcss = $head.find("style[id='ekiline-inline']"); 
+			var $cssinline = $head.find("style:last");
+			var $ultimocss = $head.find("link[rel='stylesheet']:last");
+			var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+		
+		  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
+		
+			if ($wpcss.length){ 
+					$wpcss.before(linkCss); 
+				} else if ($cssinline.length){ 
+					$cssinline.before(linkCss); 
+				} else if ($ultimocss.length){ 
+					$ultimocss.before(linkCss); 
+				} else { 
+					$head.append(linkCss); 
+				}		
+			
+		});			
+		
+	}
+	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	Sidebars ocultar mostrar 
@@ -29,6 +66,12 @@ jQuery(document).ready(function($){
 			$(".toggle-sidebars").toggleClass("active-sidebar-right");
 		});         
 	}
+		
+	// animar el boton del menu.
+	$('.navbar-toggle').on('click', function () {
+		$(this).toggleClass('active');
+	});		
+	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -49,6 +92,75 @@ jQuery(document).ready(function($){
 		$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
 		
 	} 
+
+	
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Objetos de layout
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/	
+	
+	// El preload
+    setTimeout(function(){
+        $('#pageLoad').fadeOut(500);
+    }, 600);			          
+            
+    // Carrusel con swipe e impedir que avance automaticamente	
+    $('.carousel').carousel({
+    	  interval: false,
+    	  swipe: 40
+    	});	  
+            
+    // Affix: calcula la altura del header
+    if ( $('#masthead').length ) {	    	
+    	$('.top-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('#masthead').height()
+	        }
+	    });
+    } else {
+    	$('.top-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('.top-navbar').height()
+	        }
+	    });	    		    	
+    }
+    
+    // Tooltips
+    $('.tooltip-top').tooltip({ placement: 'top' }); 
+    $('.tooltip-right').tooltip({ placement: 'right' }); 
+    $('.tooltip-left').tooltip({ placement: 'left' }); 
+    $('.tooltip-bottom').tooltip({ placement: 'bottom' }); 
+    
+    //Pop overs
+    $('.popover-top').popover({ placement: 'top' });
+    $('.popover-right').popover({ placement: 'right' });
+    $('.popover-left').popover({ placement: 'left' });
+    $('.popover-bottom').popover({ placement: 'bottom' });
+    
+	
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Agregar clases en items del core de wordpress
+	 *	Widgets que no requieren ser sobreescritos (overide)
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+			
+	$( '.widget_rss ul' ).addClass( 'list-group' );		
+	$( '.widget_rss ul li' ).addClass( 'list-group-item' );		
+	$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
+	$( 'table#wp-calendar' ).addClass( 'table table-striped');
+	$( '.widget_text select, .widget_archive select, .widget_categories select' ).addClass( 'form-control');
+	$( '.widget_recent_comments ul' ).addClass('list-group');
+	$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		
+	$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		
+	$( '.nav-links' ).addClass( 'pager');		
+	$( '.nav-links .nav-next' ).addClass( 'next');		
+	$( '.nav-links .nav-previous' ).addClass( 'previous');		
+	
+	
+	
+	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -442,6 +554,8 @@ jQuery(document).ready(function($){
 	        
 	   });  
 		
-	});
+	}); // fin modal-gallery function
+	
+
 			
 }); 			

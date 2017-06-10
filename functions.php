@@ -281,8 +281,9 @@ function ekiline_scripts() {
     wp_enqueue_script( 'lazy-load', get_template_directory_uri() . '/js/jquery.lazyload.js', array('jquery'), '20170327', true  );
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline-layout.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
-    wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
-            wp_localize_script('theme-scripts', 'allCss', $params); 
+            wp_localize_script('ekiline-layout', 'allCss', $params); 
+    // wp_enqueue_script( 'theme-scripts', get_template_directory_uri() . '/js/theme.js', array('jquery'), '20151113', true  );    
+            // wp_localize_script('theme-scripts', 'allCss', $params); 
 
     
             
