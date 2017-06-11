@@ -30,14 +30,16 @@ function registerSocial() {
     $metaDescription = '';
     $metaImages = get_site_icon_url();
     $metaType = 'website';
-        if (is_page() || is_single()){
-            $currentUrl = get_permalink();
-        } elseif ( is_category() ){
-            $currentUrl = get_queried_object(); 
-            $currentUrl = get_term_link( $currentUrl, $currentUrl->taxonomy ); 
-        } elseif ( is_archive() ) {
-            $currentUrl = home_url( add_query_arg(array(),$wp->request) );
-        }
+    
+if ( is_page() || is_single() ){
+    $currentUrl = get_permalink();
+} elseif ( is_category() ){
+    $currentUrl = get_queried_object(); 
+    $currentUrl = get_term_link( $currentUrl, $currentUrl->taxonomy ); 
+} else {
+    $currentUrl = home_url( add_query_arg(array(),$wp->request) );
+}
+        
     $blogInfo = '';
 
     if ( is_front_page() || is_home() ){
@@ -75,41 +77,38 @@ function registerSocial() {
         
         // La imagen
         // The image
-        if ( has_post_thumbnail() ) {
-            // si tiene imagen destacada     
-            // if has post_thumbnail       
-            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );           
-        }     
-        elseif ( is_attachment() ) {
-            // o si es un attachment            
-            $metaImages = wp_get_attachment_url();                            
-        } 
-        else {
-            // si no, entonces busca en el contenido del post incluido si es una galería            
-            // if no image get the first from post
-            global $post, $posts;
+        if ( is_attachment() ) {
+            // si es un attachment
+            $metaImages = wp_get_attachment_url();        
             
+        } elseif ( has_post_thumbnail() ) {
+            // si tiene imagen destacada     
+            // if has post_thumbnail              
+            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );                   
+            
+        } else {
+            
+            global $post, $posts;
             $image_url = '';
             
             ob_start();
-                // verificar si existe una galeria y tomar la primera imagen que encuentre
-                // verify if has gallery
-                if ( get_post_gallery() ) {
-                    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);    
-                } else {
-                    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-                }
-             
-            $image_url = $matches [1] [0]; // Necesita declararse el indice
+            // verificar si existe una galeria y tomar la primera imagen que encuentre
+            // verify if has gallery
+            if ( get_post_gallery() ) {
+                preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);  
+            } else {
+                preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+            }     
+                
+            $image_url = $matches [1] [0]; // Necesita declararse el indice        
+            ob_end_clean();  
             
-            ob_end_clean();                            
-                                            
             //En caso de no existir una u otra
             if( ! empty($image_url) ){
-                $metaImages = $image_url;
-            }            
-        
-        }
+                $metaImages =  $image_url;            
+            }              
+            
+        } 
         
         if ( is_attachment() ) {
             $metaType = 'image';
@@ -212,10 +211,8 @@ function ekiline_socialsharing($atts, $content = null) {
     
     // extract(shortcode_atts(array('type' => 'menu'), $atts));
                        
-    global $post;
-
-    $url = get_permalink($post->ID);
-    $url = esc_url($url);
+    global $wp;
+    $url = home_url( add_query_arg(array(),$wp->request) );
     
     // en caso de no habilitar font awesome
     $fbIco = 'Facebook';
