@@ -67,12 +67,12 @@ if ( ! function_exists( 'ekiline_header_style' ) ) :
     		// Has the text been hidden?
     		if ( ! display_header_text() ) :
     	?>
-    		.site-title, .site-description { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
+    		.site-title, .site-description, .cover-title, .cover-description { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
     	<?php
     		// If the user has set a custom color for the text use that.
     		else :
     	?>
-    		.site-title a, .site-description, .site-branding.jumbotron, .inner.cover { color: #<?php echo esc_attr( $header_text_color ); ?>; }
+    		.site-title, .site-title a, .site-description, .cover-title, .cover-title a, .cover-description, .site-branding.jumbotron, .inner.cover, .video-text { color: #<?php echo esc_attr( $header_text_color ); ?>; }
     		
     	<?php endif; ?>
     	</style>

@@ -199,7 +199,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_section( 
         'ekiline_vista_section' , array(
             'title'       => __( 'Site view', 'ekiline' ),
-            'priority'    => 50,
+            'priority'    => 120,
             'description' => __( 'Allow fullwidth or center the content of your website by content type: homepage, categories or single content' , 'ekiline' ),
         ) 
     );
