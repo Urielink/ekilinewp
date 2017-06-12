@@ -104,21 +104,21 @@ function ekiline_csscolors() {
     if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
-    
+        
     // Estilos en linea // inline styles
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
         .navbar-inverse .navbar-text, .xcover h1, .xcover h2, .xcover h3, .xcover p{ color:'.$bgcolor.'; }
         .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
-        .navbar-default { background-color:'.$menu.'; }
-        .navbar-inverse { background-color:'.$menu.'; }
+        .navbar-default { background-color:'.$menu.';}
+        .navbar-inverse { background-color:'.$menu.';}
         .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
         .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
         .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,
         .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:'.$enlaces.';}
         .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
-        .site-footer { background-color: '.$footer.';color:'.$inverse.';}         
+        .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
         #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
@@ -133,7 +133,8 @@ function ekiline_csscolors() {
             background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$mgradient.'));
             background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$mgradient.' 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);}              
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);
+            border-color:'.$mgradient.';}              
         .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .active > a,
         .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
             background-image: -webkit-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
@@ -142,7 +143,7 @@ function ekiline_csscolors() {
             background-image: linear-gradient(to bottom, '.$mgradient.' 0%, '.$menu.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
     } else {
-        $miestilo .= '.navbar-default, .navbar-inverse {background-color:'.$menu.';}
+        $miestilo .= '.navbar-default, .navbar-inverse {background-color:'.$menu.';border-color:'.$menu.';}
         .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.1)}
         .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.3)}
         ';
