@@ -8,11 +8,6 @@
 // Si el widget está activo: https://codex.wordpress.org/Function_Reference/is_active_widget
 // is_active_sidebar(), is_active_widget(), is_dynamic_sidebar();
  
-// Variable, sidebar toggle
-$leftOn = get_theme_mod('ekiline_sidebarLeft','on');
-$rightOn = get_theme_mod('ekiline_sidebarRight','on');
-
-
 /**
  * Agrega clase css para habilitar sidebars
  * Add css to enable or disable Ekiline sidebars
@@ -23,7 +18,8 @@ $rightOn = get_theme_mod('ekiline_sidebarRight','on');
 add_filter( 'body_class', function( $classes ) {
     
     //Llamo a mis variables
-    global $leftOn, $rightOn;
+    $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
+    $rightOn = get_theme_mod('ekiline_sidebarRight','on');    
     
     if ( $leftOn == 'off' && $rightOn == 'on' ) {
         return array_merge( $classes, array( 'toggle-sidebars left-on' ) );
@@ -35,7 +31,7 @@ add_filter( 'body_class', function( $classes ) {
         return array_merge( $classes, array( 'static-sidebars' ) );
     }   
     
-} );
+});
 
 /* En caso de estar activos los sidebars, cambia la clase del contenedor principal y los sidebars.
  * Este fragmento afecta a la container: index.php, single.php, search.php, page.php, archive.php, 404.php 
@@ -45,8 +41,9 @@ add_filter( 'body_class', function( $classes ) {
 function sideOn() {
     
     //Llamo a mis variables
-    global $leftOn, $rightOn;
-    
+    $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
+    $rightOn = get_theme_mod('ekiline_sidebarRight','on');
+        
     $sideon = '';
     
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
@@ -82,7 +79,8 @@ function sideOn() {
 
 function leftSideOn() {    
     //Llamo a mis variables
-    global $leftOn, $rightOn;
+    $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
+    $rightOn = get_theme_mod('ekiline_sidebarRight','on');
     
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
         echo ' col-sm-3 pull-left';
@@ -91,13 +89,10 @@ function leftSideOn() {
         elseif ($leftOn == 'off' && $rightOn == 'off' ) : echo ' col-sm-3';
         else : echo ' col-sm-3 col-sm-pull-6'; endif;          
     }
-        
-    
 }
 
 function rightSideOn() {    
     if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3'; endif;     
-
 }
 
 /* Añadimos los botones a los sidebars, 
@@ -106,11 +101,11 @@ function rightSideOn() {
  */
  
 function leftSideButton(){
-    global $leftOn;
+    $leftOn = get_theme_mod('ekiline_sidebarLeft','on');    
     if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
 
 function rightSideButton(){
-    global $rightOn;    
+    $rightOn = get_theme_mod('ekiline_sidebarRight','on');        
     if ( is_active_sidebar( 'sidebar-2' ) && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
