@@ -328,6 +328,9 @@ add_filter('widget_text', 'do_shortcode');
 /**
  * Declarar compatibilidad con woocommerce
  * https://woocommerce.wordpress.com/2017/02/28/adding-support-for-woocommerce-2-7s-new-gallery-feature-to-your-theme/
+ * Eliminar los productos relacionados:
+ * https://docs.woocommerce.com/document/remove-related-posts-output/
+ * remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
  */
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
