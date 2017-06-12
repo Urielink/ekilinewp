@@ -190,7 +190,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 /* ------------------------------------------------
  * PLUGINS
  * ----------------------------------------------*/
-.woocommerce img,.woocommerce-page img{height:inherit !important;max-width:inherit !important;}
+.woocommerce img,.woocommerce-page img{height:inherit !important;}
 /* WooCommerce 3.0 Gallery */
 .woocommerce-product-gallery{position:relative;margin-bottom:3em}
 .woocommerce-product-gallery figure{margin:0}
