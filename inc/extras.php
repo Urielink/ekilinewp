@@ -223,6 +223,27 @@ function ekiline_excerpt_button( $more ) {
 }
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 
+
+/**
+ * Theming: Use a loader.
+ **/
+ 
+
+function ekiline_loader(){
+             
+    $loader = '<div id="pageLoad"><small class="loadtext">';
+            if (get_site_icon_url()) {
+                $loader .= '<img class="loadicon" src="'. get_site_icon_url() .'" alt="'. site_url() .'" width="100" height="100"/>'; 
+            }
+    $loader .= '<br/><noscript>'. __('Javascript is disabled','ekiline') .'</noscript>';
+    $loader .= '<br/>'. __('Loading...','ekiline') .'</small></div>';    
+    
+    if( true === get_theme_mod('ekiline_loader') ){
+        echo $loader;
+    }
+} 
+
+
 /** 
  * Theming: 
  * Remover los shortcodes existentes en el extracto

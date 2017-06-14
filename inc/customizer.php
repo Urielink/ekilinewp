@@ -666,7 +666,25 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'settings'       => 'ekiline_bootstrapeditor',
                     'type'           => 'checkbox',
             )
-    );             
+    ); 
+
+    $wp_customize->add_setting(
+            'ekiline_loader', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_loader', array(
+                    'label'          => __( 'Show loader', 'ekiline' ),
+                    'description'    => __( 'Display your brand before loading all page resources.' , 'ekiline' ),
+                    'section'        => 'ekiline_dtools_section',
+                    'settings'       => 'ekiline_loader',
+                    'type'           => 'checkbox',
+            )
+    );     
+                    
                 
 }
 add_action('customize_register', 'ekiline_theme_customizer');
