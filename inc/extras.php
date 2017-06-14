@@ -97,7 +97,9 @@ function ekiline_csscolors() {
     $mgradient = get_option('menu_gradient');
     $footer = get_option('footer_color');
     $inverse = get_theme_mod('ekiline_inversemenu');
-    
+    // custom rounded elements
+    $rangeLmnts = get_theme_mod('ekiline_range_lmnts');
+        
     // Si no existen colores, añadir estos // add default value
     if ( !$texto ) : $texto = '#333333'; endif;
     if ( !$enlaces ) : $enlaces = '#337ab7'; endif;
@@ -124,6 +126,10 @@ function ekiline_csscolors() {
         #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
         .carousel.slide, .breadcrumb{ background-color:'.$modulos.'; }
+        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-xs,.btn-group-xs > .btn,.dropdown-menu,.pagination{border-radius:'.$rangeLmnts.'px;}        
+        .panel-group .panel-heading,.nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
+        .pagination>li:first-child>a, .pagination>li:first-child>span{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
+        .pagination>li:last-child>a, .pagination>li:last-child>span{border-top-right-radius: '.$rangeLmnts.'px;border-bottom-right-radius: '.$rangeLmnts.'px}
         ';
     // En caso de utilizar dos colores en el menú // if uses 2nd menu color    
     if ( $mgradient != '' ){

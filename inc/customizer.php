@@ -614,6 +614,27 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'type'           => 'text'
         )
     );          
+    
+    $wp_customize->add_setting( 
+        'ekiline_range_lmnts', array( 
+                'default' => '0',
+                'sanitize_callback'  => 'ekiline_sanitize_number_range',
+        )
+    );
+
+    $wp_customize->add_control( 
+        'ekiline_range_lmnts', array(
+                'type'        => 'range',
+                'section'     => 'ekiline_dtools_section',
+                'label'       => __( 'Round items', 'ekiline' ),
+                'description' => __( 'The corners of elements such as buttons, navigations or panels will be rounded', 'ekiline' ),
+                'input_attrs' => array(
+                        'min'   => 0,
+                        'max'   => 15,
+                        'step'  => 1,
+                ),
+           ) 
+   );        
         
     $wp_customize->add_setting( 
         'ekiline_cutexcerpt', array(
@@ -631,7 +652,24 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'settings'       => 'ekiline_cutexcerpt',
                 'type'           => 'number'
         )
-    );      
+    ); 
+    
+    $wp_customize->add_setting(
+            'ekiline_loader', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_loader', array(
+                    'label'          => __( 'Show loader', 'ekiline' ),
+                    'description'    => __( 'Display your brand before loading all page resources.' , 'ekiline' ),
+                    'section'        => 'ekiline_dtools_section',
+                    'settings'       => 'ekiline_loader',
+                    'type'           => 'checkbox',
+            )
+    );     
 
 
     $wp_customize->add_setting(
@@ -667,24 +705,6 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'type'           => 'checkbox',
             )
     ); 
-
-    $wp_customize->add_setting(
-            'ekiline_loader', array(
-                    'default' => '',
-                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
-            ) 
-    );
-    
-    $wp_customize->add_control(
-            'ekiline_loader', array(
-                    'label'          => __( 'Show loader', 'ekiline' ),
-                    'description'    => __( 'Display your brand before loading all page resources.' , 'ekiline' ),
-                    'section'        => 'ekiline_dtools_section',
-                    'settings'       => 'ekiline_loader',
-                    'type'           => 'checkbox',
-            )
-    );     
-                    
                 
 }
 add_action('customize_register', 'ekiline_theme_customizer');
