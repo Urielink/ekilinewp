@@ -123,9 +123,10 @@ function ekiline_csscolors() {
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
-        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';}
+        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} .pager li>a, .pager li>span, .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
+        .page-header, .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} .panel-footer, hr, .modal-footer{border-top: 1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
-        .carousel.slide, .breadcrumb{ background-color:'.$modulos.'; }
+        .carousel.slide, .breadcrumb, .entry-footer.panel-footer, .bg-module { background-color:'.$modulos.'; }
         .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-xs,.btn-group-xs > .btn,.dropdown-menu,.pagination{border-radius:'.$rangeLmnts.'px;}        
         .panel-group .panel-heading,.nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
         .pagination>li:first-child>a, .pagination>li:first-child>span{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
@@ -134,7 +135,7 @@ function ekiline_csscolors() {
     // En caso de utilizar dos colores en el menú // if uses 2nd menu color    
     if ( $mgradient != '' ){
         $miestilo .= '
-        .navbar-default, .navbar-inverse {
+        .navbar-default, .navbar-inverse, .panel-default > .panel-heading {
             background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$mgradient.'));
@@ -149,7 +150,7 @@ function ekiline_csscolors() {
             background-image: linear-gradient(to bottom, '.$mgradient.' 0%, '.$menu.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
     } else {
-        $miestilo .= '.navbar-default, .navbar-inverse {background-color:'.$menu.';border-color:'.$menu.';}
+        $miestilo .= '.navbar-default, .navbar-inverse, .panel-default > .panel-heading {background-color:'.$menu.';border-color:'.$menu.';background-image: none;}
         .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.1)}
         .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.3)}
         ';
