@@ -391,7 +391,7 @@ require get_template_directory() . '/inc/shortcodeAll.php';
 require get_template_directory() . '/inc/shortcodeTabs.php';
 require get_template_directory() . '/inc/shortcodeCollapse.php';
 require get_template_directory() . '/inc/shortcodeInsertposts.php';
-if( true !== get_theme_mod('ekiline_carouseldisable') ) {
+if( false === get_theme_mod('ekiline_carouseldisable') ) {
     require get_template_directory() . '/inc/shortcodeGalleryslider.php';
 }
 
