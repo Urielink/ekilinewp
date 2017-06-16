@@ -388,10 +388,12 @@ require get_template_directory() . '/inc/widgetOptions.php';
 
 // theme custom shortcodes
 require get_template_directory() . '/inc/shortcodeAll.php';
-require get_template_directory() . '/inc/shortcodeGalleryslider.php';
 require get_template_directory() . '/inc/shortcodeTabs.php';
 require get_template_directory() . '/inc/shortcodeCollapse.php';
 require get_template_directory() . '/inc/shortcodeInsertposts.php';
+if( true === get_theme_mod('ekiline_carouseldisable') ) {
+    require get_template_directory() . '/inc/shortcodeGalleryslider.php';
+}
 
 // theme customizer services
 require get_template_directory() . '/inc/serviceOptimize.php';
@@ -404,5 +406,5 @@ require get_template_directory() . '/inc/serviceAccess.php';
 require get_template_directory() . '/inc/adminCategoryfield.php';
 // Deshabilitar bootstrap
 if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
-require get_template_directory() . '/inc/adminEditor.php';
+    require get_template_directory() . '/inc/adminEditor.php';
 }

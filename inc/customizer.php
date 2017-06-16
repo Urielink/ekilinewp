@@ -482,7 +482,24 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'type'           => 'checkbox',
             )
     );  
+
+    $wp_customize->add_setting(
+            'ekiline_carouseldisable', array(
+                    'default' => true,
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
     
+    $wp_customize->add_control(
+            'ekiline_carouseldisable', array(
+                    'label'          => __( 'Disable the use of carousels and ekiline galleries', 'ekiline' ),
+                    'description'    => __( 'This will remove formatting galleries and carousels to work with other plugins like jetpack' , 'ekiline' ),
+                    'section'        => 'ekiline_services',
+                    'settings'       => 'ekiline_carouseldisable',
+                    'type'           => 'checkbox',
+            )
+    );  
+        
   
     
     // Ekiline social media
