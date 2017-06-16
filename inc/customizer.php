@@ -485,7 +485,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     $wp_customize->add_setting(
             'ekiline_carouseldisable', array(
-                    'default' => true,
+                    'default' => '',
                     'sanitize_callback' => 'ekiline_sanitize_checkbox'
             ) 
     );
