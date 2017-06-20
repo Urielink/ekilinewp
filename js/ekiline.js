@@ -91,10 +91,11 @@ jQuery(document).ready(function($){
 		
 		var sticky = $( 'footer.site-footer > .container' ).height() + 50 ;
 
-		$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
-		$('body').css('margin-bottom', sticky + 'px');
-		$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
-		
+		if( sticky <= '100' ){
+			$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
+			$('body').css('margin-bottom', sticky + 'px');
+			$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
+		}		
 	} 
 
 	
