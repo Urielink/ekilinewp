@@ -34,11 +34,16 @@
 
 	</div><!-- .entry-content -->
 
+    <?php if ( !is_home() && ! is_front_page() ) : ?> 
+        
 	<footer class="entry-footer panel-footer text-muted clearfix">
 	    
        <?php ekiline_entry_footer(); ?>
            
 	</footer><!-- .entry-footer -->
+	
+    <?php endif; ?>
+	
 	
 </article><!-- #post-## -->
 
