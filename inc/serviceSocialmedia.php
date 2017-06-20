@@ -238,7 +238,7 @@ function ekiline_socialsharing($atts, $content = null) {
     if ($gpSocial) : $menuItems .= '<li><a class="bg-google" href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
     if ($inSocial) : $menuItems .= '<li><a class="bg-linkedin" href="http://www.linkedin.com/shareArticle?url=' . $url.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
                     
-    return '<div class="share-menu"><p>'. __('Share this on:','ekiline') .'</p><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
+    return '<div class="share-menu"><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
 }
 add_shortcode('socialsharemenu', 'ekiline_socialsharing');        
     
