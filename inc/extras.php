@@ -111,7 +111,6 @@ function ekiline_csscolors() {
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
-        .navbar-inverse .navbar-text, .xcover h1, .xcover h2, .xcover h3, .xcover p{ color:'.$bgcolor.'; }
         .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
         .navbar-default { background-color:'.$menu.';}
         .navbar-inverse { background-color:'.$menu.';}
