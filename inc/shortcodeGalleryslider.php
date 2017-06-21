@@ -133,6 +133,7 @@ function ekiline_gallery( $output,$attr ) {
     $indicators = '';
     $speed = '';
     $transition = '';
+    $captionCss = '';
                         
     if ( empty( $atts['carousel'] ) ) {
                 
@@ -236,11 +237,20 @@ function ekiline_gallery( $output,$attr ) {
                             $image_output
                         </{$icontag}>";
                 
-            if ( $captiontag && trim($attachment->post_excerpt) ) {
+            if ( $captiontag && trim($attachment->post_excerpt) || trim($attachment->post_title) ) {
+                
+                //en caso de tener título o descripcion y estar habilitado el carrusel
+                $captionTitle = '';
+                $captionText = '';                                
                                 
-            $output .= "<{$captiontag} class='wp-caption-text gallery-caption' id='$selector-$id'>
-                        " . wptexturize($attachment->post_excerpt) . "
-                        </{$captiontag}>";                        
+                if( (!empty( $atts['carousel'] )) ){ $captionCss = 'carousel-caption';}
+                if( $attachment->post_title && (!empty( $atts['carousel'] )) ){ $captionTitle = '<h2 class="'.$alignitems.'">' . wptexturize($attachment->post_title) . '</h2>';}
+                if( $attachment->post_excerpt ){ $captionText = '<p class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</p>';}
+                                                
+            $output .= "<{$captiontag} class='wp-caption-text gallery-caption $captionCss' id='$selector-$id'>
+                        " . $captionTitle . $captionText . "
+                        </{$captiontag}>";      
+                                          
             }
         
         $output .= "</{$itemtag}></div>";
