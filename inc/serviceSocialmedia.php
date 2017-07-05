@@ -20,6 +20,7 @@ function registerSocial() {
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
+    $ytSocial = get_theme_mod('ekiline_ytProf','');
     $fbAppid = get_theme_mod('ekiline_fbSharid','');
     $currentUrl = '';
     $metaSocial = '';
@@ -182,25 +183,29 @@ function ekiline_socialmenu($atts, $content = null) {
     $ttIco = 'Twitter';
     $gpIco = 'Google +';
     $inIco = 'Linked In';
-        
+    $ytIco = 'YouTube';
+            
     if( true === get_theme_mod('ekiline_fontawesome') ) {
         $fbIco = '<i class="fa fa-facebook"></i>';
         $ttIco = '<i class="fa fa-twitter"></i>';
         $gpIco = '<i class="fa fa-google-plus"></i>';
         $inIco = '<i class="fa fa-linkedin"></i>';
+        $ytIco = '<i class="fa fa-youtube-play"></i>';
     }    
     
     $fbSocial = get_theme_mod('ekiline_fbProf','');
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
+    $ytSocial = get_theme_mod('ekiline_ytProf','');
     $menuItems = '';
         
     if ($fbSocial) : $menuItems .= '<li><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
     if ($twSocial) : $menuItems .= '<li><a class="text-twitter" href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
     if ($gpSocial) : $menuItems .= '<li><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
     if ($inSocial) : $menuItems .= '<li><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
-                    
+    if ($ytSocial) : $menuItems .= '<li><a class="text-youtube" href="'.$ytSocial.'" target="_blank" title="YouTube">'.$ytIco.'</a></li>';endif;
+                        
     return '<ul class="list-inline no-margin">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
@@ -219,7 +224,7 @@ function ekiline_socialsharing($atts, $content = null) {
     $ttIco = 'Twitter';
     $gpIco = 'Google +';
     $inIco = 'Linked In';
-        
+            
     if( true === get_theme_mod('ekiline_fontawesome') ) {
         $fbIco = '<i class="fa fa-facebook"></i>';
         $ttIco = '<i class="fa fa-twitter"></i>';

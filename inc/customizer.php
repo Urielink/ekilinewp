@@ -605,6 +605,24 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );          
     
+    $wp_customize->add_setting( 
+        'ekiline_ytProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_ytProf', array(
+                'label'          => __( 'YouTube', 'ekiline' ),
+                'description'    => __( 'Add a YouTube page url','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_ytProf',
+                'type'           => 'text'
+        )
+    );          
+            
     // Design sources
    
     $wp_customize->add_section( 
