@@ -206,7 +206,7 @@ function ekiline_socialmenu($atts, $content = null) {
     if ($inSocial) : $menuItems .= '<li><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
     if ($ytSocial) : $menuItems .= '<li><a class="text-youtube" href="'.$ytSocial.'" target="_blank" title="YouTube">'.$ytIco.'</a></li>';endif;
                         
-    return '<ul class="list-inline no-margin">'. $menuItems .'</ul>';
+    return '<ul class="shortcode-socialmenu list-inline no-margin">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
     
@@ -243,7 +243,7 @@ function ekiline_socialsharing($atts, $content = null) {
     if ($gpSocial) : $menuItems .= '<li><a class="bg-google" href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
     if ($inSocial) : $menuItems .= '<li><a class="bg-linkedin" href="http://www.linkedin.com/shareArticle?url=' . $url.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
                     
-    return '<div class="share-menu"><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
+    return '<div class="shortcode-socialsharemenu"><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
 }
 add_shortcode('socialsharemenu', 'ekiline_socialsharing');        
     
