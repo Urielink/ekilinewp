@@ -150,8 +150,8 @@ function ekiline_csscolors() {
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
     } else {
         $miestilo .= '.navbar-default, .navbar-inverse, .panel-default > .panel-heading {background-color:'.$menu.';border-color:'.$menu.';background-image: none;}
-        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.1)}
-        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {background-color:rgba(0,0,0,.3)}
+        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.1)}
+        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.3)}
         ';
                 
     }        
