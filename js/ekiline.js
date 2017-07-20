@@ -127,19 +127,40 @@ jQuery(document).ready(function($){
 	    });	    		    	
     }
     
-    // Tooltips
-    $('.tooltip-top').tooltip({ placement: 'top' }); 
-    $('.tooltip-right').tooltip({ placement: 'right' }); 
-    $('.tooltip-left').tooltip({ placement: 'left' }); 
-    $('.tooltip-bottom').tooltip({ placement: 'bottom' }); 
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Tooltips y popovers
+	 *	Nota: Añadir variables para mostrar contenidos enriquecidos con HTML. 
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+        
+    // Tooltips, inicializar
+    $('.tooltip-default').tooltip();
     
-    //Pop overs
-    $('.popover-top').popover({ placement: 'top' });
-    $('.popover-right').popover({ placement: 'right' });
-    $('.popover-left').popover({ placement: 'left' });
-    $('.popover-bottom').popover({ placement: 'bottom' });
-         
-	
+    //PopOvers, inicializar
+    $('.popover-default').popover();
+             
+	    //PopOvers con contenido HTML:
+	    $('.popover-rich').popover({
+	        container: 'body',
+	        html: true,
+	        content: function () {
+	            var clone = $( $(this).attr('href') ).clone(true).removeClass('hide');
+	            return clone;
+	            console.log(clone);
+	          }
+		   	}).click(function(e) {
+		        e.preventDefault();
+	    });
+	    
+	    //PopOvers, ocultar el contenido HTML, esto depende del attr=Href, para que surta efecto.
+		$('.popover-rich').each(function(){
+			//extraigo el enlace del contenido
+		    var popHtml = $(this).attr('href');
+		    $(popHtml).addClass('hide');
+		});    
+    
+    
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	Agregar clases en items del core de wordpress

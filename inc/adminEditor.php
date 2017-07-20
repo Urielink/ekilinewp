@@ -47,6 +47,10 @@ function ekiline_mce_before( $init_array ) {
  * Classes allows you to define CSS classes
  * Wrapper whether or not to add a new block-level element around any selected elements
  * Auxiliar: https://github.com/bostondv/bootstrap-tinymce-styles/blob/master/bootstrap-tinymce-styles.php
+ * Permitir data-atts http://mawaha.com/allowing-data-attributes-in-wordpress-posts/ ,
+ * https://codex.wordpress.org/TinyMCE_Custom_Styles,
+ * http://www.lmhproductions.com/52/wordpress-tincymce-editor-removes-attributes/,
+ * **https://getunderskeleton.com/wordpress-custom-styles-dropdown/
  */
 
     $style_formats = array(      
@@ -451,45 +455,54 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'modal-image',
                 ),
                 array(
-                    'title'     => __( 'Tooltip top', 'ekiline' ),
+                    'title'     => __( 'Tooltip', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'tooltip-top',
+                    'classes'   => 'tooltip-default',
                 ),
                 array(
-                    'title'     => __( 'Tooltip right', 'ekiline' ),
+                    'title'     => __( 'Popover', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'tooltip-right',
+                    'classes'   => 'popover-default',
                 ),
                 array(
-                    'title'     => __( 'Tooltip left', 'ekiline' ),
+                    'title'     => __( 'Popover Rich', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'tooltip-left',
+                    'classes'   => 'popover-rich',
+                ),                                
+                array(
+                    'title'     => __( 'Show top', 'ekiline' ),
+                    'selector'  => 'a',
+                    'attributes' => array(
+                        'data-placement' => 'top'
+                    ),                                        
                 ),
                 array(
-                    'title'     => __( 'Tooltip bottom', 'ekiline' ),
+                    'title'     => __( 'Show right', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'tooltip-bottom',
+                    'attributes' => array(
+                        'data-placement' => 'right'
+                    ),                                        
                 ),
                 array(
-                    'title'     => __( 'Popover top', 'ekiline' ),
+                    'title'     => __( 'Show bottom', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'popover-top',
+                    'attributes' => array(
+                        'data-placement' => 'bottom'
+                    ),                                        
                 ),
                 array(
-                    'title'     => __( 'Popover right', 'ekiline' ),
+                    'title'     => __( 'Show left', 'ekiline' ),
                     'selector'  => 'a',
-                    'classes'   => 'popover-right',
+                    'attributes' => array(
+                        'data-placement' => 'left'
+                    ),                                        
                 ),
-                array(
-                    'title'     => __( 'Popover left', 'ekiline' ),
-                    'selector'  => 'a',
-                    'classes'   => 'popover-left',
-                ),
-                array(
-                    'title'     => __( 'Popover bottom', 'ekiline' ),
-                    'selector'  => 'a',
-                    'classes'   => 'popover-bottom',
-                ),
+                array(  
+                    'title' => __('Hide content', 'ekiline'),  
+                    'block' => 'div',  
+                    'classes' => 'hide-content',
+                ),                                
+                                                
             ),
         ),                        
     

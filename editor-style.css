@@ -71,3 +71,5 @@ body#tinymce.wp-editor{margin:0px 15px;}
 #tinymce.wp-editor .row{border:1px dotted #ddd;}
 #tinymce.wp-editor .row::before { content: 'row';}
 #tinymce.wp-editor .container::before,#tinymce.wp-editor .row::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;}
+
+#tinymce.wp-editor .hide-content{color:#ccc !important;}
