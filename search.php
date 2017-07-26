@@ -6,6 +6,7 @@
  *
  * @package ekiline
  */
+global $wp_query;
 
 get_header(); ?>
 	
@@ -17,6 +18,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'ekiline' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<p><?php printf( esc_html__( '%s results found.', 'ekiline' ), $wp_query->found_posts ); ?></p>
 			</header><!-- .page-header -->
 			
             <?php get_search_form(); ?>

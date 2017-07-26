@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-04 19:25-0500\n"
+"PO-Revision-Date: 2017-07-26 17:21-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -164,6 +164,9 @@ msgstr "Buscar en este sitio: %s"
 
 msgid "Search"
 msgstr "Buscar"
+
+msgid "%s results found."
+msgstr "%s resultados encontrados."
 
 # @ ekiline
 #: template-parts/content-none.php:14
