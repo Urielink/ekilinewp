@@ -6,7 +6,8 @@
  *
  * @package ekiline
  */
-global $wp_query;
+
+ // global $wp_query;
 
 get_header(); ?>
 	
