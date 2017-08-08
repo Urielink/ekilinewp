@@ -64,7 +64,7 @@ function ekiline_description(){
         
     global $wp_query;
     $postid = $wp_query->post->ID;
-    $stdDesc = get_post_meta($postid, 'metaDescripcion', true);
+    $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
     wp_reset_query();
             
        if ( ! empty( $stdDesc ) ){
@@ -86,6 +86,30 @@ function ekiline_description(){
     }
     
 }
+
+// Añadir css por página
+// Custom CSS by page
+
+function ekiline_postcss(){
+
+    if ( is_single() || is_page() ) {
+        
+    global $wp_query;
+    $postid = $wp_query->post->ID;
+    $myCss = get_post_meta($postid, 'custom_css_style', true);
+    wp_reset_query();
+            
+       if ( ! empty( $myCss ) ){
+           // Si utilizan nuestro custom field
+           // here is our custom field
+           echo '<style id="custom-css-'.$postid.'" type="text/css">'.$myCss.'</style>';
+       } 
+     
+    } 
+    
+}
+add_action( 'wp_head', 'ekiline_postcss', 99);
+
 
 
 /**
