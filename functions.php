@@ -131,8 +131,8 @@ function ekiline_widgets_init() {
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
     ) );
 
 // Widget in content
