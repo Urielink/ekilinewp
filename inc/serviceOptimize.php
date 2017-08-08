@@ -87,8 +87,11 @@ function ekiline_description(){
     
 }
 
-// Añadir css por página
-// Custom CSS by page
+/** 
+ * Añadir css por página.
+ * Custom CSS by page
+ * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
+ */
 
 function ekiline_postcss(){
 
@@ -102,7 +105,7 @@ function ekiline_postcss(){
        if ( ! empty( $myCss ) ){
            // Si utilizan nuestro custom field
            // here is our custom field
-           echo '<style id="custom-css-'.$postid.'" type="text/css">'.$myCss.'</style>';
+           echo '<style type="text/css" id="custom-css-'.$postid.'">'.$myCss.'</style>';
        } 
      
     } 
