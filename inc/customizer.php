@@ -654,7 +654,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'label'          => __( 'Pinterest', 'ekiline' ),
                 'description'    => __( 'Add a Pinterest page url','ekiline' ),
                 'section'        => 'ekiline_social',
-                'settings'       => 'ekiline_instaProf',
+                'settings'       => 'ekiline_pintProf',
                 'type'           => 'text'
         )
     );              
