@@ -240,7 +240,8 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
  .navbar-collapse.in{overflow-y:inherit;}
 }
 
-@media only screen and (max-width:480px){.nav-tabs > li{float:none;text-align:center;}
+@media only screen and (max-width:480px){
+ .nav-tabs > li{float:none;text-align:center;}
  .nav-tabs > li > a{border:1px solid #ddd;}
  .navbar-nav > li > a{padding-top:10px;padding-bottom:10px;}
  /*Widget:Dropdown in navbar*/
