@@ -622,6 +622,43 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'type'           => 'text'
         )
     );          
+
+    $wp_customize->add_setting( 
+        'ekiline_instProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_instProf', array(
+                'label'          => __( 'Instagram', 'ekiline' ),
+                'description'    => __( 'Add an Instagram page url','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_instProf',
+                'type'           => 'text'
+        )
+    );              
+
+    $wp_customize->add_setting( 
+        'ekiline_pintProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_pintProf', array(
+                'label'          => __( 'Pinterest', 'ekiline' ),
+                'description'    => __( 'Add a Pinterest page url','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_instaProf',
+                'type'           => 'text'
+        )
+    );              
+        
             
     // Design sources
    

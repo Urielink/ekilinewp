@@ -184,13 +184,17 @@ function ekiline_socialmenu($atts, $content = null) {
     $gpIco = 'Google +';
     $inIco = 'Linked In';
     $ytIco = 'YouTube';
-            
+    $instIco = 'Instagram';
+    $pintIco = 'Pinterest';
+                    
     if( true === get_theme_mod('ekiline_fontawesome') ) {
         $fbIco = '<i class="fa fa-facebook"></i>';
         $ttIco = '<i class="fa fa-twitter"></i>';
         $gpIco = '<i class="fa fa-google-plus"></i>';
         $inIco = '<i class="fa fa-linkedin"></i>';
         $ytIco = '<i class="fa fa-youtube-play"></i>';
+        $instIco = '<i class="fa fa-instagram"></i>';
+        $pintIco = '<i class="fa fa-pinterest"></i>';
     }    
     
     $fbSocial = get_theme_mod('ekiline_fbProf','');
@@ -198,6 +202,8 @@ function ekiline_socialmenu($atts, $content = null) {
     $gpSocial = get_theme_mod('ekiline_gpProf','');
     $inSocial = get_theme_mod('ekiline_inProf','');
     $ytSocial = get_theme_mod('ekiline_ytProf','');
+    $instSocial = get_theme_mod('ekiline_instProf','');
+    $pintSocial = get_theme_mod('ekiline_pintProf','');
     $menuItems = '';
         
     if ($fbSocial) : $menuItems .= '<li><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
@@ -205,7 +211,9 @@ function ekiline_socialmenu($atts, $content = null) {
     if ($gpSocial) : $menuItems .= '<li><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
     if ($inSocial) : $menuItems .= '<li><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
     if ($ytSocial) : $menuItems .= '<li><a class="text-youtube" href="'.$ytSocial.'" target="_blank" title="YouTube">'.$ytIco.'</a></li>';endif;
-                        
+    if ($instSocial) : $menuItems .= '<li><a class="text-instagram" href="'.$instSocial.'" target="_blank" title="Instagram">'.$instIco.'</a></li>';endif;
+    if ($pintSocial) : $menuItems .= '<li><a class="text-pinterest" href="'.$pintSocial.'" target="_blank" title="Pinterest">'.$pintIco.'</a></li>';endif;
+                            
     return '<ul class="shortcode-socialmenu list-inline no-margin">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
