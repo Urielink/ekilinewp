@@ -60,16 +60,31 @@ function ekiline_keywords() {
 
 function ekiline_description(){
 
-    if ( is_single() || is_page() ) {
-        
+// variables
     global $wp_query;
+     
+    if ( is_front_page() || is_home() ) {
+        
+    $postid = $wp_query->post->ID;
+    $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
+    wp_reset_query();
+            
+        if ( ! empty( $stdDesc ) ) {
+            echo $stdDesc; 
+        } elseif ( get_bloginfo('description') ) {
+            echo get_bloginfo('description');
+        } else {
+            echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
+        } 
+     
+    } elseif ( is_single() || is_page() ) {
+        
     $postid = $wp_query->post->ID;
     $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
     wp_reset_query();
             
        if ( ! empty( $stdDesc ) ){
-           // Si utilizan nuestro custom field
-           // here is our custom field
+           // Si utilizan nuestro custom field || here is our custom field
            echo $stdDesc;
        } else {
            // echo strip_tags( get_the_excerpt() ); 
