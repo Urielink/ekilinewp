@@ -43,10 +43,9 @@ if ( is_page() || is_single() ){
     $currentUrl = home_url( add_query_arg(array(),$wp->request) );
 }
         
-    if ( is_front_page() || is_home() ){
-        
-        $metaTitle = get_bloginfo( 'name' );
-        
+    
+    if ( is_single() || is_page() ){
+            
         // personalizar la metadescripcion 
         // custom meta
         global $wp_query;
@@ -55,53 +54,9 @@ if ( is_page() || is_single() ){
         
         if ( ! empty( $stdDesc ) ) {
             $metaDescription = $stdDesc; 
-        } elseif ( get_bloginfo('description') ) {
+        } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
             $metaDescription = get_bloginfo('description');
         } else {
-            $metaDescription = wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
-        }        
-        
-        
-        if ( get_header_image() ) {
-            $metaImages = get_header_image();           
-        } elseif ( has_post_thumbnail() ) {
-            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );           
-        } else {
-            
-            global $post, $posts;
-            $image_url = '';
-            
-            ob_start();
-            // verificar si existe una galeria y tomar la primera imagen que encuentre
-            // verify if has gallery
-            if ( get_post_gallery() ) {
-                preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);  
-            } else {
-                preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-            }     
-                
-            $image_url = $matches [1] [0]; // Necesita declararse el indice        
-            ob_end_clean();  
-            
-            //En caso de no existir una u otra
-            if( ! empty($image_url) ){
-                $metaImages =  $image_url;            
-            }              
-            
-        }     
-                
-        
-    } elseif ( is_single() || is_page() ){
-            
-        // personalizar la metadescripcion 
-        // custom meta
-        global $wp_query;
-        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_descripcion', true);    
-        wp_reset_query();
-        
-        if ( ! empty( $stdDesc ) ) {
-            $metaDescription = $stdDesc; } 
-        else {
             // metodo 1 con el extracto
             //$metaDescription = strip_tags( get_the_excerpt() );
             // metodo 2 con el contenido escapado
@@ -118,6 +73,8 @@ if ( is_page() || is_single() ){
             // si es un attachment
             $metaImages = wp_get_attachment_url();        
             
+        } elseif ( get_header_image() && is_front_page() || is_home() ) {
+            $metaImages = get_header_image();           
         } elseif ( has_post_thumbnail() ) {
             // si tiene imagen destacada     
             // if has post_thumbnail              
@@ -152,8 +109,13 @@ if ( is_page() || is_single() ){
         } else {
             $metaType = 'article';
         }
-                   
-        $metaTitle = get_the_title();        
+
+        if ( is_front_page() || is_home() ){
+            $metaTitle = get_bloginfo( 'name' );
+        } else {
+            $metaTitle = get_the_title();        
+        }
+                           
         
     } elseif ( is_archive() ){
                 
