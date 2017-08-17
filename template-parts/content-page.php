@@ -36,7 +36,7 @@
 
     <?php if ( !is_home() && ! is_front_page() ) : ?> 
         
-	<footer class="entry-footer panel-footer text-muted clearfix">
+	<footer class="entry-footer text-muted clearfix">
 	    
        <?php ekiline_entry_footer(); ?>
            

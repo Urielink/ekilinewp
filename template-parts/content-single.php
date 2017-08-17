@@ -30,7 +30,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer panel-footer text-muted clearfix">
+	<footer class="entry-footer text-muted clearfix">
 		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 	
