@@ -78,8 +78,7 @@ if ( is_page() || is_single() ){
         }     
                 
         
-    }
-    elseif ( is_single() || is_page() ){
+    } elseif ( is_single() || is_page() ){
             
         // personalizar la metadescripcion 
         // custom meta
@@ -143,8 +142,8 @@ if ( is_page() || is_single() ){
                    
         $metaTitle = get_the_title();        
         $blogInfo = get_bloginfo( 'name' );    
-    }
-    elseif ( is_archive() ){
+        
+    } elseif ( is_archive() ){
                 
         $cat_id = get_query_var('cat');
         $cat_data = get_option("category_$cat_id");
@@ -156,6 +155,7 @@ if ( is_page() || is_single() ){
         $metaTitle = single_cat_title("", false);
         $metaDescription = strip_tags( category_description() );
         $blogInfo = get_bloginfo( 'name' );
+        
     }
        
     if ( $gpSocial != '' ) {
