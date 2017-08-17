@@ -59,38 +59,23 @@ function ekiline_keywords() {
 // Meta description , allow custom term by wp customfield
 
 function ekiline_description(){
-
-// variables
-    global $wp_query;
-     
-    if ( is_front_page() || is_home() ) {
+    
+    if ( is_single() || is_page() ) {
         
-    $postid = $wp_query->post->ID;
-    $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
-    wp_reset_query();
+        global $wp_query;
+        $postid = $wp_query->post->ID;
+        $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
+        wp_reset_query();
             
         if ( ! empty( $stdDesc ) ) {
-            echo $stdDesc; 
-        } elseif ( get_bloginfo('description') ) {
+           //Si utilizan nuestro custom field || If use our custom field           
+             echo $stdDesc; 
+        } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
+            //Si es homepage utiliza la informacion del sitio en general 
             echo get_bloginfo('description');
         } else {
             echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
-        } 
-     
-    } elseif ( is_single() || is_page() ) {
-        
-    $postid = $wp_query->post->ID;
-    $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
-    wp_reset_query();
-            
-       if ( ! empty( $stdDesc ) ){
-           // Si utilizan nuestro custom field || here is our custom field
-           echo $stdDesc;
-       } else {
-           // echo strip_tags( get_the_excerpt() ); 
-            echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
-       }
-     
+        }      
     } 
     elseif ( is_archive() ) {
     // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
