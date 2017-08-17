@@ -32,6 +32,8 @@ function registerSocial() {
     $metaImages = get_site_icon_url();
     $metaType = 'website';
     
+// Obtener la Url de la página
+// Get current page Url
 if ( is_page() || is_single() ){
     $currentUrl = get_permalink();
 } elseif ( is_category() ){
@@ -41,13 +43,24 @@ if ( is_page() || is_single() ){
     $currentUrl = home_url( add_query_arg(array(),$wp->request) );
 }
         
-    $blogInfo = '';
-
     if ( is_front_page() || is_home() ){
         
         $metaTitle = get_bloginfo( 'name' );
-        $metaDescription = get_bloginfo('description');
-        $blogInfo = get_bloginfo( 'name' );
+        
+        // personalizar la metadescripcion 
+        // custom meta
+        global $wp_query;
+        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_descripcion', true);    
+        wp_reset_query();
+        
+        if ( ! empty( $stdDesc ) ) {
+            $metaDescription = $stdDesc; 
+        } elseif ( get_bloginfo('description') ) {
+            $metaDescription = get_bloginfo('description');
+        } else {
+            $metaDescription = wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
+        }        
+        
         
         if ( get_header_image() ) {
             $metaImages = get_header_image();           
@@ -141,7 +154,6 @@ if ( is_page() || is_single() ){
         }
                    
         $metaTitle = get_the_title();        
-        $blogInfo = get_bloginfo( 'name' );    
         
     } elseif ( is_archive() ){
                 
@@ -154,7 +166,6 @@ if ( is_page() || is_single() ){
         
         $metaTitle = single_cat_title("", false);
         $metaDescription = strip_tags( category_description() );
-        $blogInfo = get_bloginfo( 'name' );
         
     }
        
@@ -182,7 +193,7 @@ if ( is_page() || is_single() ){
             <meta property="og:url" content="'.$currentUrl.'"/>
             <meta property="og:image" content="'.$metaImages.'"/>
             <meta property="og:description" content="'.$metaDescription.'"/>
-            <meta property="og:site_name" content="'.$blogInfo.'"/>
+            <meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'"/>
             ';
         if ( $fbAppid != '' ){
             $metaSocial .= '<meta property="og:app_id" content="'.$fbAppid.'"/>';
