@@ -5,7 +5,7 @@
  * Eventually, some of the functionality here could be replaced by core features
  *     // Jugar con urls https://wordpress.stackexchange.com/questions/29512/permalink-for-category-pages-and-posts
  *
- * @package ekiline
+ * @package ekiline 
  */
 
 
