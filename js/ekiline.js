@@ -112,7 +112,7 @@ jQuery(document).ready(function($){
     	  swipe: 40
     	});	  
             
-    // Affix: calcula la altura del header
+    // Affix: calcula la altura del header para el top-navbar
     if ( $('#masthead').length ) {	    	
     	$('.top-navbar.navbar-affix').affix({
 	        offset: {
@@ -126,6 +126,21 @@ jQuery(document).ready(function($){
 	        }
 	    });	    		    	
     }
+    
+    // Affix: calcula la altura del header para el primary-navbar
+    if ( $('#masthead').length ) {	    	
+    	$('.primary-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('#masthead').height()
+	        }
+	    });
+    } else {
+    	$('.primary-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('.primary-navbar').height()
+	        }
+	    });	    		    	
+    }    
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 

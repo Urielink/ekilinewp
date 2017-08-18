@@ -104,6 +104,18 @@ function topNavbar(){
  **/
 
 function primaryNavbar(){
+        
+    $navSet = get_theme_mod('ekiline_primarymenuSettings');
+    
+    if ($navSet == '0') {
+        $navAction = ' navbar-static-top';
+    } else if ($navSet == '1') {
+        $navAction = ' navbar-fixed-top'; 
+    } else if ($navSet == '2') {
+        $navAction = ' navbar-fixed-bottom'; 
+    } else if ($navSet == '3') {
+        $navAction = ' navbar-affix'; 
+    }    
 
     if( true === get_theme_mod('ekiline_inversemenu') ){
          $inverseMenu = 'navbar-inverse'; 
@@ -113,7 +125,7 @@ function primaryNavbar(){
     	
     if ( has_nav_menu( 'primary' ) ) : ?>
     
-            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar" role="navigation">
+            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar<?php echo $navAction;?>" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">

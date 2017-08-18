@@ -139,7 +139,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 /* Logo en navbar || Brand in navbar */
 .navbar-brand>img{height:50px;max-width:220px;float:left;margin-top:-15px;}
 /* Fijar el menu || Affix */
-.navbar.affix,.navbar.affix-top{left:0;right:0;z-index:1000;}
+.navbar.affix,.navbar.affix-top{top:0;left:0;right:0;z-index:1000;}
 /* Jumbotron con imagen || Heading-image jumbotron*/
 .jumbotron{background-position:center center;background-repeat:no-repeat;background-size:cover;}
 .site-branding.jumbo{background-repeat:no-repeat;background-size:cover;height:350px;width:100%;display:table;background-attachment: fixed;background-position: center center;}
