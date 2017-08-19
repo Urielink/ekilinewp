@@ -145,7 +145,7 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 .jumbotron{background-position:center center;background-repeat:no-repeat;background-size:cover;}
 .site-branding.jumbo{background-repeat:no-repeat;background-size:cover;height:350px;width:100%;display:table;background-attachment: fixed;background-position: center center;}
 .site-branding.jumbo .inner{display:table-cell;vertical-align:middle;}
-.site-info{padding:10px 0;border-top:1px solid #DDD;}
+.site-info{padding:24px 0 10px;border-top:1px solid #444;}
 /* Botones de sidebars || sidebar buttons*/
 .toggle-sidebars #secondary{padding-top:30px;padding-bottom:30px;}
 .toggle-sidebars #third{padding-top:30px;padding-bottom:30px;}
@@ -230,6 +230,7 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 .navbar-inverse .navbar-brand{font-family:'Oswald',sans-serif;font-size:24px;color:#fff !important;}
 .cover-footer small{color:#fff;font-size:12px;}
 .btn-success{background-image:-webkit-linear-gradient(top,#85C12E 0%,#419641 100%);background-image:-o-linear-gradient(top,#85C12E 0%,#419641 100%);background-image:-webkit-gradient(linear,left top,left bottom,from(#85C12E),to(#419641));background-image:linear-gradient(to bottom,#85C12E 0%,#419641 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff85C12E',endColorstr='#ff419641',GradientType=0);filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);background-repeat:repeat-x;border-color:#3e8f3e;}
+.btn-circle{background:#1a1818;padding:20px;width:60px;height:60px;border-radius:30px;text-align:center;color:#FFF;}
 
 /*subrayar menu*/
 .navbar-nav > .active > a::after,.navbar-nav > .current-menu-ancestor > a::after,.navbar-nav > .current-post-ancestor > a::after,.navbar-nav > li:hover > a::after{content:"";width:80%;height:2px;position:absolute;left:0px;right:0px;margin:24px auto;background-color:#85C12E;}
@@ -243,8 +244,11 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 .cover-wrapper-inner::after{content:'';width:0;height:0;border-bottom:500px solid #000000;border-right:300px solid transparent;position:absolute;bottom:0px;}
 
 .inner.cover{position:relative;z-index:1;}
-.cover-header-nav > ul li > a{background:#000;padding-top:8px;width:50px;height:50px;display:block;border-radius:100px;text-align:center;color:#FFF;font-size:24px;}
-.cover-header-nav > ul li > a:hover{background:#000000;}
+.shortcode-socialmenu a{padding-top:10px;width:50px;height:50px;display:block;border-radius:30px;text-align:center;color:#FFF;font-size:23px !important;line-height:;}
+.shortcode-socialmenu a:hover{color:#fff;}
+.shortcode-socialmenu a.text-facebook{background: #3b5998;}
+.shortcode-socialmenu a.text-twitter{background: #55acee;}
+.shortcode-socialmenu a.text-instagram{background: #003569;}
 
 .cover h1{font-size:80px;line-height:100%;}
 .cover h1::before{content:'';width:242px;height:2px;background-color:#85c12e;position:absolute;margin-top:82px;}
@@ -256,8 +260,15 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 .home .gallery-item{padding:0px;}
 .home figcaption h2 {color:#FFFFFF;}
 
-.bg-black{background-color:#000;color:#FFFFFF;}
+.home .bg-black{background-color:#000;color:#FFFFFF;}
+.bg-black label, .bg-black span.wpcf7-not-valid-tip{font-weight:100;font-size:16px;}
 
+.site-info small{
+    float: left;
+}
+.site-info small, .site-info small a {
+    color: #404040;
+}
 
 /*--------------------------------------------------------------------------------
  * CSS RESPONSIVO || RESPONSIVE DESKTOP FIRST
