@@ -159,3 +159,87 @@ function primaryNavbar(){
             
     <?php endif;
 }
+
+function modalNavbar(){
+
+    $navSet = get_theme_mod('ekiline_modalNavSettings');
+        
+    if ($navSet == '0') {
+        $navAction = ' navbar-static-top';
+    } else if ($navSet == '1') {
+        $navAction = ' navbar-fixed-top'; 
+    } else if ($navSet == '2') {
+        $navAction = ' navbar-fixed-bottom'; 
+    } else if ($navSet == '3') {
+        $navAction = ' navbar-affix'; 
+    }    
+        
+    
+    if( true === get_theme_mod('ekiline_inversemenu') ){
+        $inverseMenu = 'navbar-inverse'; 
+    } else {
+        $inverseMenu = 'navbar-default';
+    }
+    
+        
+    if ( has_nav_menu( 'modal' ) ) : ?>
+    
+    <div id="site-navigation-modal"  class="navbar <?php echo $inverseMenu;?> modal-navbar<?php echo $navAction;?>" role="navigation">
+        
+        <div class="container">
+            
+            <div class="navbar-header">
+                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+            </div>
+            
+            <button type="button" class="navbar-toggle" data-toggle="modal" data-target="#navModal">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <?php dynamic_sidebar( 'navwidget-nw1' ); ?>     
+            
+            
+        </div><!-- .container -->      
+           
+    </div><!-- .site-navigation -->     
+
+    <div class="modal fade move-horizontal" id="navModal" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title text-center" id="navModalLabel"><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></h5>
+          </div>
+
+
+            <?php wp_nav_menu( 
+                    array(
+                        'menu'              => 'modal',
+                        'theme_location'    => 'modal',
+                        'depth'             => 2,
+                        'container'         => 'nav',
+                        'container_class'   => 'modal-body',
+                        'menu_class'        => 'nav navbar-nav',
+                        'menu_id'           => 'modal-menu',
+                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'            => new WP_Bootstrap_Navwalker()
+                    )
+                  ); ?>
+        
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+        
+    <?php endif;
+
+} 

@@ -45,6 +45,7 @@ function ekiline_setup() {
 	register_nav_menus( array(
         'top' => esc_html__( 'Top Menu', 'ekiline' ),
         'primary' => esc_html__( 'Primary Menu', 'ekiline' ),
+        'modal' => esc_html__( 'Modal Menu', 'ekiline' ),
 	) );
 
 	/*

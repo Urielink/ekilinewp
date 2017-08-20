@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-18 12:55-0500\n"
+"PO-Revision-Date: 2017-08-19 21:32-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -327,6 +327,9 @@ msgstr "Configuración del menú superior"
 
 msgid "Primary menu settings"
 msgstr "Configuración del menú principal"
+
+msgid "Modal menu settings"
+msgstr "Configuración del menú emergente"
 
 msgid "Add behaviors for this menu, fix to top, fix to bottom or affix with scroll"
 msgstr "Puedes fijar el menú en la parte superior, al fondo, o hacer que se estacione al scroll (affix)"

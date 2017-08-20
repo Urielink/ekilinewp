@@ -74,7 +74,13 @@ jQuery(document).ready(function($){
 	// animar el boton del menu.
 	$('.navbar-toggle').on('click', function () {
 		$(this).toggleClass('active');
-	});		
+	});
+	
+	//19 ago menú con modal
+    $('#navModal').on('hidden.bs.modal', function(){
+    	$('#site-navigation-modal .navbar-toggle').toggleClass('active');
+    });             
+	
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -142,6 +148,21 @@ jQuery(document).ready(function($){
 	    });	    		    	
     }    
     
+    // Affix: calcula la altura del header para el primary-navbar
+    if ( $('#masthead').length ) {	    	
+    	$('.modal-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('#masthead').height()
+	        }
+	    });
+    } else {
+    	$('.modal-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('.modal-navbar').height()
+	        }
+	    });	    		    	
+    }        
+    
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	Tooltips y popovers
@@ -162,7 +183,7 @@ jQuery(document).ready(function($){
 	        content: function () {
 	            var clone = $( $(this).attr('href') ).clone(true).removeClass('hide');
 	            return clone;
-	            console.log(clone);
+	            //console.log(clone);
 	          }
 		   	}).click(function(e) {
 		        e.preventDefault();
@@ -465,7 +486,7 @@ jQuery(document).ready(function($){
       // invocar los 2 tipos de modalbox que existen
 	ekilinemodals.multipleModals( '.modal-iframe' );
 	ekilinemodals.multipleModals( '.modal-image' );
-
+	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -569,7 +590,7 @@ jQuery(document).ready(function($){
 	        
 	        // Borrar registro del modal
 	        $('body').on('hidden.bs.modal', function(){
-	          $( '.modal, .modal-backdrop' ).remove();
+	          $( '#galleryModal.modal, .modal-backdrop' ).remove();
 	        });             
 	        
 	   });  
