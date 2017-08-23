@@ -152,12 +152,12 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
         'theme-scripts',
 		'google-analytics',
 		'optimizar',
-		'contact-form-7',
-		'wc-add-to-cart',
-		'woocommerce',
+        'contact-form-7',
+        'wc-add-to-cart',
+        'woocommerce',
         'wc-cart-fragments',
         'jquery-blockui',
-		'js-cookie'
+        'js-cookie'				
 	);
 
     if ( in_array( $handle, $defer_scripts ) ) {
