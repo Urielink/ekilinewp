@@ -294,6 +294,14 @@ function ekiline_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}		
 	
+    // Google analytics
+    // $gacode = get_theme_mod('ekiline_analytics','');
+    // if ( $gacode != '' ) {                
+        // wp_enqueue_script( 'google-analytics', '//www.google-analytics.com/analytics.js', array(), '1.0' );
+        // wp_add_inline_script( 'google-analytics', 'window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create", "'.$gacode.'" , "auto");ga("send", "pageview");' );        
+    // }
+    	
+	
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_scripts', 0 );
 

@@ -149,7 +149,8 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'ekiline-swipe',
 		'lazy-load',
 		'ekiline-layout',
-		'theme-scripts',
+        'theme-scripts',
+		'google-analytics',
 		'optimizar'
 	);
 
@@ -168,7 +169,8 @@ add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
  * Add google analyitcs script
  * @link https://developers.google.com/analytics/devguides/collection/gajs/
  * @link https://digwp.com/2012/06/add-google-analytics-wordpress/
-**/
+ **/
+ 
 
 function google_analytics_tracking_code(){
         
@@ -189,7 +191,6 @@ function google_analytics_tracking_code(){
 // Usar 'wp_head' 'wp_footer' para situar el script 
 // If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
-    
 
 
 /**
