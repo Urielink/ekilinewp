@@ -132,31 +132,25 @@ if ( is_page() || is_single() ){
     }
        
     if ( $gpSocial != '' ) {
-        $metaSocial .= '
-            <meta itemprop="name" content="'.$metaTitle.'">
-            <meta itemprop="description" content="'.$metaDescription.'">
-            <meta itemprop="image" content="'.$metaImages.'">
-            ';
+        $metaSocial .= '<meta itemprop="name" content="'.$metaTitle.'">'."\n";
+        $metaSocial .= '<meta itemprop="description" content="'.$metaDescription.'">'."\n";
+        $metaSocial .= '<meta itemprop="image" content="'.$metaImages.'">'."\n";
     }
     if ($twSocial != '') {
-        $metaSocial .= '
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:site" content="'.$twSocial.'">
-            <meta name="twitter:title" content="'.$metaTitle.'">
-            <meta name="twitter:description" content="'.$metaDescription.'">
-            <meta name="twitter:creator" content="'.$twSocial.'">
-            <meta name="twitter:image" content="'.$metaImages.'">
-            ';
+        $metaSocial .= '<meta name="twitter:card" content="summary">'."\n";
+        $metaSocial .= '<meta name="twitter:site" content="'.$twSocial.'">'."\n";
+        $metaSocial .= '<meta name="twitter:title" content="'.$metaTitle.'">'."\n";
+        $metaSocial .= '<meta name="twitter:description" content="'.$metaDescription.'">'."\n";
+        $metaSocial .= '<meta name="twitter:creator" content="'.$twSocial.'">'."\n";
+        $metaSocial .= '<meta name="twitter:image" content="'.$metaImages.'">'."\n";
     }
     if ($fbSocial != '') {
-        $metaSocial .= '
-            <meta property="og:title" content="'.$metaTitle.'"/>
-            <meta property="og:type" content="'.$metaType.'"/>
-            <meta property="og:url" content="'.$currentUrl.'"/>
-            <meta property="og:image" content="'.$metaImages.'"/>
-            <meta property="og:description" content="'.$metaDescription.'"/>
-            <meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'"/>
-            ';
+        $metaSocial .= '<meta property="og:title" content="'.$metaTitle.'"/>'."\n";
+        $metaSocial .= '<meta property="og:type" content="'.$metaType.'"/>'."\n";
+        $metaSocial .= '<meta property="og:url" content="'.$currentUrl.'"/>'."\n";
+        $metaSocial .= '<meta property="og:image" content="'.$metaImages.'"/>'."\n";
+        $metaSocial .= '<meta property="og:description" content="'.$metaDescription.'"/>'."\n";
+        $metaSocial .= '<meta property="og:site_name" content="'. get_bloginfo( 'name' ) .'"/>'."\n";
         if ( $fbAppid != '' ){
             $metaSocial .= '<meta property="og:app_id" content="'.$fbAppid.'"/>';
         }

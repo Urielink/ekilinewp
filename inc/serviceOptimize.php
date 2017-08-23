@@ -202,8 +202,8 @@ function registerSite() {
 //Indice en Google y Bing
     $sconsole = get_theme_mod('ekiline_wmtools','');
     $wmbing = get_theme_mod('ekiline_wmbing','');
-    if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'; }
-    if ( $wmbing != '' ) { echo '<meta name="msvalidate.01" content="'. $wmbing .'" />'; }
+    if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'."\n"; }
+    if ( $wmbing != '' ) { echo '<meta name="msvalidate.01" content="'. $wmbing .'" />'."\n"; }
 }
 
 add_action( 'wp_head', 'registerSite', 0);
@@ -211,9 +211,10 @@ add_action( 'wp_head', 'registerSite', 0);
 /* Agregar las metaetiquetas para los smartphones */
 
 function iosfeatures() {
-    echo '<meta name="apple-mobile-web-app-title" content="'.get_bloginfo( 'name' ).'">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">';    
+    $iosfeats = '<meta name="apple-mobile-web-app-title" content="'.get_bloginfo( 'name' ).'">'."\n";
+    $iosfeats .= '<meta name="apple-mobile-web-app-capable" content="yes">'."\n";
+    $iosfeats .= '<meta name="apple-mobile-web-app-status-bar-style" content="black">'."\n";    
+    echo $iosfeats;
 }
-add_action( 'wp_head', 'iosfeatures', 10);
+add_action( 'wp_head', 'iosfeatures', 2);
 
