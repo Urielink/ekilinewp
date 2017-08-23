@@ -156,7 +156,7 @@ function ekiline_csscolors() {
                 
     }        
 
-    echo '<style id="ekiline-inline" type="text/css" media="all">'.$miestilo.'</style>';
+    echo '<style id="ekiline-inline" type="text/css" media="all">'.$miestilo.'</style>'."\n";
 
 }
 add_action('wp_head','ekiline_csscolors');
