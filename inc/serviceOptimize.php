@@ -217,4 +217,3 @@ function iosfeatures() {
     echo $iosfeats;
 }
 add_action( 'wp_head', 'iosfeatures', 2);
-
