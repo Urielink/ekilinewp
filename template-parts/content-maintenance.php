@@ -22,6 +22,7 @@
         <link href="<?php echo get_template_directory_uri() . '/css/ekiline.min.css'; ?>" rel="stylesheet" type="text/css">  
         <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">  
         <?php ekiline_csscolors(); ?>
+        <?php echo '<style type="text/css" id="wp-custom-css">' . strip_tags( wp_get_custom_css() ) . "\n".'</style>'."\n";?>        
     </head> 
     <body class="page-maintenance"> 
         <header id="masthead"  class="cover-wrapper">
