@@ -410,7 +410,10 @@ if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
     require get_template_directory() . '/inc/adminEditor.php';
 }
 
- 
+/**
+ * investigación para optimizar la entrega de css de plugins
+ * que le pegan al performance.
+ **/ 
 // function deregister_my_styles() {
     // $deleteStyles = array('contact-form-7','woocommerce-layout','woocommerce-smallscreen','woocommerce-general','wc-gateway-ppec-frontend-cart' );
         // foreach($deleteStyles as $style) :
