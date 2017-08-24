@@ -409,3 +409,12 @@ require get_template_directory() . '/inc/adminCategoryfield.php';
 if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
     require get_template_directory() . '/inc/adminEditor.php';
 }
+
+ 
+// function deregister_my_styles() {
+    // $deleteStyles = array('contact-form-7','woocommerce-layout','woocommerce-smallscreen','woocommerce-general','wc-gateway-ppec-frontend-cart' );
+        // foreach($deleteStyles as $style) :
+            // wp_deregister_style( $style );
+        // endforeach;
+// }
+// add_action( 'wp_print_styles', 'deregister_my_styles', 100 );
