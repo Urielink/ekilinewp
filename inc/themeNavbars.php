@@ -206,7 +206,7 @@ function modalNavbar(){
            
     </div><!-- .site-navigation -->     
 
-    <div class="modal fade move-horizontal" id="navModal" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+    <div class="modal fade move-from-bottom" id="navModal" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
