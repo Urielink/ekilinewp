@@ -257,7 +257,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'container-fluid' => __( 'Fullwidth', 'ekiline' ),
                 ),
             )
-        );         
+        );                 
         
         // Hide or show sidebars
 
@@ -296,7 +296,31 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'off' => __( 'Toggle', 'ekiline' ),
                 ),
             )
-        );              
+        );        
+        
+    // List items
+    
+        $wp_customize->add_setting(
+            'ekiline_Columns', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+        
+        $wp_customize->add_control(
+            'ekiline_Columns', array(
+                'type' => 'select',
+                'label' => __( 'Columns', 'ekiline' ),
+                'description' => __( 'Show your lists in columns', 'ekiline' ),
+                'section' => 'ekiline_vista_section',
+                'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( '2 columnas', 'ekiline' ),
+                    '2' => __( '3 columnas', 'ekiline' ),
+                    '3' => __( '4 columnas', 'ekiline' ),   
+                ),
+            )
+        );                 
 
 	// Behaviors for top menu
 
@@ -787,7 +811,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
             'ekiline_loader', array(
                     'label'          => __( 'Show loader', 'ekiline' ),
-                    'description'    => __( 'Display your brand before loading all page resources.' , 'ekiline' ),
+                    'description'    => __( 'Display your brand before loading all page resources' , 'ekiline' ),
                     'section'        => 'ekiline_dtools_section',
                     'settings'       => 'ekiline_loader',
                     'type'           => 'checkbox',

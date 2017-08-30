@@ -198,9 +198,7 @@ function modalNavbar(){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
-            <?php dynamic_sidebar( 'navwidget-nw1' ); ?>     
-            
+                        
             
         </div><!-- .container -->      
            
