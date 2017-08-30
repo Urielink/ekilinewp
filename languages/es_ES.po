@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-29 22:24-0500\n"
+"PO-Revision-Date: 2017-08-30 18:14-0500\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -311,6 +311,9 @@ msgstr "Columna izquierda"
 
 msgid "Right sidebar"
 msgstr "Columna derecha"
+
+msgid "Show your lists in columns"
+msgstr "Muestra tus listados en columnas"
 
 # @ ekiline
 #: carpeta/archivo.php:29
