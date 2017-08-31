@@ -208,7 +208,7 @@ function ekiline_socialmenu($atts, $content = null) {
         
     if ($emSocial) : $menuItems .= '<li><a class="text-muted" href="mailto:'.$emSocial.'" target="_blank" title="Email">'.$emaIco.'</a></li>'; endif;
     if ($telSocial) : $menuItems .= '<li><a class="text-muted" href="tel:'.$telSocial.'" target="_blank" title="Telefono">'.$telIco.'</a></li>'; endif;
-    if ($whaSocial) : $menuItems .= '<li><a class="text-whatsapp" href="https://api.whatsapp.com/send?phone='.$whaSocial.'&text=hola,%20quiero%20Snowonder?" target="_blank" title="Enviar mensaje">'.$whaIco.'</a></li>'; endif;
+    if ($whaSocial) : $menuItems .= '<li><a class="text-whatsapp" href="https://api.whatsapp.com/send?phone='.$whaSocial.'&text=hola,%20quiero%20saber%20sobre%20Snowonder" target="_blank" title="Enviar mensaje">'.$whaIco.'</a></li>'; endif;
     if ($fbSocial) : $menuItems .= '<li><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
     if ($twSocial) : $menuItems .= '<li><a class="text-twitter" href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
     if ($gpSocial) : $menuItems .= '<li><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
