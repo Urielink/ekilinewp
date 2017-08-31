@@ -577,7 +577,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         
   
     
-    // Ekiline social media
+    // Ekiline social media and communication
          
     $wp_customize->add_section( 
         'ekiline_social' , array(
@@ -587,6 +587,67 @@ function ekiline_theme_customizer( $wp_customize ) {
         ) 
     );
 
+    // Email
+    $wp_customize->add_setting( 
+        'ekiline_emaProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_emaProf',
+            array(
+                'label'          => __( 'E-mail', 'ekiline' ),
+                'description'    => __( 'Add your email address','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_emaProf',
+                'type'           => 'text'
+        )
+    );            
+    
+    // Phone
+    $wp_customize->add_setting( 
+        'ekiline_telProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_telProf',
+            array(
+                'label'          => __( 'Phone Number', 'ekiline' ),
+                'description'    => __( 'Add a phone number to be contacted','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_telProf',
+                'type'           => 'text'
+        )
+    ); 
+        
+    // whatsapp
+    $wp_customize->add_setting( 
+        'ekiline_whaProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_whaProf',
+            array(
+                'label'          => __( 'WhatsApp', 'ekiline' ),
+                'description'    => __( 'Add a WhatsApp number to receive messages','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_whaProf',
+                'type'           => 'text'
+        )
+    );                 
+    
+    // facebook
     $wp_customize->add_setting( 
         'ekiline_fbProf', array(
             'default' => '',
@@ -624,7 +685,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );     
                    
-                
+    //twitter
     $wp_customize->add_setting( 
         'ekiline_twProf', array(
             'default' => '',
@@ -643,6 +704,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
     );      
 
+    //Ggoogle+
     $wp_customize->add_setting( 
         'ekiline_gpProf', array(
             'default' => '',
@@ -660,7 +722,8 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'type'           => 'text'
         )
     );            
-                               
+          
+    //linkedin                     
     $wp_customize->add_setting( 
         'ekiline_inProf', array(
             'default' => '',
@@ -679,6 +742,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );          
     
+    //youtube
     $wp_customize->add_setting( 
         'ekiline_ytProf', array(
             'default' => '',
@@ -697,6 +761,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );          
 
+    //instagram
     $wp_customize->add_setting( 
         'ekiline_instProf', array(
             'default' => '',
@@ -715,6 +780,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );              
 
+    //pinterest
     $wp_customize->add_setting( 
         'ekiline_pintProf', array(
             'default' => '',
