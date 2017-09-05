@@ -18,6 +18,7 @@
 		<div class="entry-meta">
 			<?php ekiline_posted_on(); ?>
 		</div><!-- .entry-meta -->
+		
 	</header><!-- .page-header -->
 
 	<div class="entry-content clearfix">
