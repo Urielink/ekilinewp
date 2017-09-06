@@ -182,6 +182,9 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 .modpostlist-block{}
 .modpostlist-carousel .carousel-inner > .item .link-image img{margin:0 auto;width:100%;}
 .modpostlist-carousel .carousel-inner .no-thumb .carousel-caption{position:relative;left:auto;right:auto;margin:0px auto;width:80%;}
+/*[embed responsive=false ]*/
+.embed-responsive.embed-responsive-false {height:inherit;}
+.embed-responsive p{margin:0px;}
 
 /* ------------------------------------------------
  * WIDGETS
