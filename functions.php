@@ -45,6 +45,7 @@ function ekiline_setup() {
 	register_nav_menus( array(
         'top' => esc_html__( 'Top Menu', 'ekiline' ),
         'primary' => esc_html__( 'Primary Menu', 'ekiline' ),
+        'modal' => esc_html__( 'Modal Menu', 'ekiline' ),
 	) );
 
 	/*
@@ -131,8 +132,8 @@ function ekiline_widgets_init() {
         'description'   => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
         'after_widget'  => '</section>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
+        'before_title'  => '<h5 class="widget-title">',
+        'after_title'   => '</h5>',
     ) );
 
 // Widget in content
@@ -396,11 +397,11 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 }
 
 // theme customizer services
+require get_template_directory() . '/inc/serviceSocialmedia.php';
 require get_template_directory() . '/inc/serviceOptimize.php';
+require get_template_directory() . '/inc/serviceAccess.php';
 require get_template_directory() . '/inc/serviceMaintenance.php';
 require get_template_directory() . '/inc/serviceMinify.php';
-require get_template_directory() . '/inc/serviceSocialmedia.php';
-require get_template_directory() . '/inc/serviceAccess.php';
 
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';
@@ -408,3 +409,15 @@ require get_template_directory() . '/inc/adminCategoryfield.php';
 if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
     require get_template_directory() . '/inc/adminEditor.php';
 }
+
+/**
+ * investigación para optimizar la entrega de css de plugins
+ * que le pegan al performance.
+ **/ 
+// function deregister_my_styles() {
+    // $deleteStyles = array('contact-form-7','woocommerce-layout','woocommerce-smallscreen','woocommerce-general','wc-gateway-ppec-frontend-cart' );
+        // foreach($deleteStyles as $style) :
+            // wp_deregister_style( $style );
+        // endforeach;
+// }
+// add_action( 'wp_print_styles', 'deregister_my_styles', 100 );

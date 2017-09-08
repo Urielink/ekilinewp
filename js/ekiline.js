@@ -74,7 +74,13 @@ jQuery(document).ready(function($){
 	// animar el boton del menu.
 	$('.navbar-toggle').on('click', function () {
 		$(this).toggleClass('active');
-	});		
+	});
+	
+	//19 ago menú con modal
+    $('#navModal').on('hidden.bs.modal', function(){
+    	$('#site-navigation-modal .navbar-toggle').toggleClass('active');
+    });             
+	
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -112,7 +118,7 @@ jQuery(document).ready(function($){
     	  swipe: 40
     	});	  
             
-    // Affix: calcula la altura del header
+    // Affix: calcula la altura del header para el top-navbar
     if ( $('#masthead').length ) {	    	
     	$('.top-navbar.navbar-affix').affix({
 	        offset: {
@@ -127,19 +133,70 @@ jQuery(document).ready(function($){
 	    });	    		    	
     }
     
-    // Tooltips
-    $('.tooltip-top').tooltip({ placement: 'top' }); 
-    $('.tooltip-right').tooltip({ placement: 'right' }); 
-    $('.tooltip-left').tooltip({ placement: 'left' }); 
-    $('.tooltip-bottom').tooltip({ placement: 'bottom' }); 
+    // Affix: calcula la altura del header para el primary-navbar
+    if ( $('#masthead').length ) {	    	
+    	$('.primary-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('#masthead').height()
+	        }
+	    });
+    } else {
+    	$('.primary-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('.primary-navbar').height()
+	        }
+	    });	    		    	
+    }    
     
-    //Pop overs
-    $('.popover-top').popover({ placement: 'top' });
-    $('.popover-right').popover({ placement: 'right' });
-    $('.popover-left').popover({ placement: 'left' });
-    $('.popover-bottom').popover({ placement: 'bottom' });
-         
-	
+    // Affix: calcula la altura del header para el primary-navbar
+    if ( $('#masthead').length ) {	    	
+    	$('.modal-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('#masthead').height()
+	        }
+	    });
+    } else {
+    	$('.modal-navbar.navbar-affix').affix({
+	        offset: {
+	          top: $('.modal-navbar').height()
+	        }
+	    });	    		    	
+    }        
+    
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Tooltips y popovers
+	 *	Nota: Añadir variables para mostrar contenidos enriquecidos con HTML. 
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+        
+    // Tooltips, inicializar
+    $('.tooltip-default').tooltip();
+    
+    //PopOvers, inicializar
+    $('.popover-default').popover();
+             
+	    //PopOvers con contenido HTML:
+	    $('.popover-rich').popover({
+	        container: 'body',
+	        html: true,
+	        content: function () {
+	            var clone = $( $(this).attr('href') ).clone(true).removeClass('hide');
+	            return clone;
+	            //console.log(clone);
+	          }
+		   	}).click(function(e) {
+		        e.preventDefault();
+	    });
+	    
+	    //PopOvers, ocultar el contenido HTML, esto depende del attr=Href, para que surta efecto.
+		$('.popover-rich').each(function(){
+			//extraigo el enlace del contenido
+		    var popHtml = $(this).attr('href');
+		    $(popHtml).addClass('hide');
+		});    
+    
+    
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
 	 *	Agregar clases en items del core de wordpress
@@ -429,7 +486,7 @@ jQuery(document).ready(function($){
       // invocar los 2 tipos de modalbox que existen
 	ekilinemodals.multipleModals( '.modal-iframe' );
 	ekilinemodals.multipleModals( '.modal-image' );
-
+	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -533,7 +590,7 @@ jQuery(document).ready(function($){
 	        
 	        // Borrar registro del modal
 	        $('body').on('hidden.bs.modal', function(){
-	          $( '.modal, .modal-backdrop' ).remove();
+	          $( '#galleryModal.modal, .modal-backdrop' ).remove();
 	        });             
 	        
 	   });  

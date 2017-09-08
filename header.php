@@ -26,6 +26,7 @@
 
 <?php topWidgets(); ?>  
 <?php topNavbar(); ?>  
+<?php modalNavbar(); ?>  
 <?php customHeader(); ?>
 
 <div id="page" class="site <?php ekiline_pagewidth(); ?>">

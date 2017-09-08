@@ -104,6 +104,18 @@ function topNavbar(){
  **/
 
 function primaryNavbar(){
+        
+    $navSet = get_theme_mod('ekiline_primarymenuSettings');
+    
+    if ($navSet == '0') {
+        $navAction = ' navbar-static-top';
+    } else if ($navSet == '1') {
+        $navAction = ' navbar-fixed-top'; 
+    } else if ($navSet == '2') {
+        $navAction = ' navbar-fixed-bottom'; 
+    } else if ($navSet == '3') {
+        $navAction = ' navbar-affix'; 
+    }    
 
     if( true === get_theme_mod('ekiline_inversemenu') ){
          $inverseMenu = 'navbar-inverse'; 
@@ -113,36 +125,119 @@ function primaryNavbar(){
     	
     if ( has_nav_menu( 'primary' ) ) : ?>
     
-            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-                </div><!-- .navbar-header -->
-                
-    
-                <!-- The WordPress Menu goes here -->
-                <?php wp_nav_menu( array(
-                        'menu'              => 'primary',
-                        'theme_location'    => 'primary',
-                        'depth'             => 2,
-                        'container'         => 'div',
-                            'container_class'   => 'collapse navbar-collapse primary',
-                            'container_id'      => 'navbar-collapse-in',
-                        'menu_class'        => 'nav navbar-nav',
-                        'menu_id'           => 'main-menu',
-                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                        'walker'            => new WP_Bootstrap_Navwalker()
-                        )
-                      ); ?>                           
-                
-        		<?php dynamic_sidebar( 'navwidget-nw2' ); ?>     
+            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar<?php echo $navAction;?>" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+                    </div><!-- .navbar-header -->
+                    
         
+                    <!-- The WordPress Menu goes here -->
+                    <?php wp_nav_menu( array(
+                            'menu'              => 'primary',
+                            'theme_location'    => 'primary',
+                            'depth'             => 2,
+                            'container'         => 'div',
+                                'container_class'   => 'collapse navbar-collapse primary',
+                                'container_id'      => 'navbar-collapse-in',
+                            'menu_class'        => 'nav navbar-nav navbar-right',
+                            'menu_id'           => 'main-menu',
+                            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                            'walker'            => new WP_Bootstrap_Navwalker()
+                            )
+                          ); ?>                           
+                    
+            		<?php dynamic_sidebar( 'navwidget-nw2' ); ?>     
+                </div>
             </nav><!-- .site-navigation -->		
             
     <?php endif;
 }
+
+function modalNavbar(){
+
+    $navSet = get_theme_mod('ekiline_modalNavSettings');
+        
+    if ($navSet == '0') {
+        $navAction = ' navbar-static-top';
+    } else if ($navSet == '1') {
+        $navAction = ' navbar-fixed-top'; 
+    } else if ($navSet == '2') {
+        $navAction = ' navbar-fixed-bottom'; 
+    } else if ($navSet == '3') {
+        $navAction = ' navbar-affix'; 
+    }    
+        
+    
+    if( true === get_theme_mod('ekiline_inversemenu') ){
+        $inverseMenu = 'navbar-inverse'; 
+    } else {
+        $inverseMenu = 'navbar-default';
+    }
+    
+        
+    if ( has_nav_menu( 'modal' ) ) : ?>
+    
+    <div id="site-navigation-modal"  class="navbar <?php echo $inverseMenu;?> modal-navbar<?php echo $navAction;?>" role="navigation">
+        
+        <div class="container">
+            
+            <div class="navbar-header">
+                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+            </div>
+            
+            <button type="button" class="navbar-toggle" data-toggle="modal" data-target="#navModal">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                        
+            
+        </div><!-- .container -->      
+           
+    </div><!-- .site-navigation -->     
+
+    <div class="modal fade move-from-bottom" id="navModal" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title text-center" id="navModalLabel"><?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></h5>
+          </div>
+
+
+            <?php wp_nav_menu( 
+                    array(
+                        'menu'              => 'modal',
+                        'theme_location'    => 'modal',
+                        'depth'             => 2,
+                        'container'         => 'nav',
+                        'container_class'   => 'modal-body',
+                        'menu_class'        => 'nav navbar-nav',
+                        'menu_id'           => 'modal-menu',
+                        'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+                        'walker'            => new WP_Bootstrap_Navwalker()
+                    )
+                  ); ?>
+        
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+        
+    <?php endif;
+
+} 

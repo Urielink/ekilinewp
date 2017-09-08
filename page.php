@@ -13,30 +13,30 @@
  */
 
 get_header(); ?>
-	
-		<?php dynamic_sidebar( 'content-w1' ); ?>
+    
+        <?php dynamic_sidebar( 'content-w1' ); ?>
 
-		<main id="main" class="site-main" role="main">
+        <main id="main" class="site-main" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+            <?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
-				
-				    <nav id="page-navigation">
+                <?php get_template_part( 'template-parts/content', 'page' ); ?>
+                
+                    <nav id="page-navigation">
                         <?php ekiline_pages_navigation(); ?>         
                     </nav><!-- #page-navigation -->        
 
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
+                <?php
+                    // If comments are open or we have at least one comment, load up the comment template.
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
+                ?>
 
-			<?php endwhile; // End of the loop. ?>
+            <?php endwhile; // End of the loop. ?>
 
-		</main><!-- #main -->
+        </main><!-- #main -->
 
-		<?php dynamic_sidebar( 'content-w2' ); ?>		
-		
+        <?php dynamic_sidebar( 'content-w2' ); ?>       
+        
 <?php get_footer(); ?>

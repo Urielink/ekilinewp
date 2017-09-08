@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ekiline
+ * @package ekiline 
  */
 
 /**
@@ -59,23 +59,23 @@ function ekiline_keywords() {
 // Meta description , allow custom term by wp customfield
 
 function ekiline_description(){
-
+    
     if ( is_single() || is_page() ) {
         
-    global $wp_query;
-    $postid = $wp_query->post->ID;
-    $stdDesc = get_post_meta($postid, 'metaDescripcion', true);
-    wp_reset_query();
+        global $wp_query;
+        $postid = $wp_query->post->ID;
+        $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
+        wp_reset_query();
             
-       if ( ! empty( $stdDesc ) ){
-           // Si utilizan nuestro custom field
-           // here is our custom field
-           echo $stdDesc;
-       } else {
-           // echo strip_tags( get_the_excerpt() ); 
+        if ( ! empty( $stdDesc ) ) {
+           //Si utilizan nuestro custom field || If use our custom field           
+             echo $stdDesc; 
+        } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
+            //Si es homepage utiliza la informacion del sitio en general 
+            echo get_bloginfo('description');
+        } else {
             echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
-       }
-     
+        }      
     } 
     elseif ( is_archive() ) {
     // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
@@ -86,6 +86,33 @@ function ekiline_description(){
     }
     
 }
+
+/** 
+ * Añadir css por página.
+ * Custom CSS by page
+ * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
+ */
+
+function ekiline_postcss(){
+
+    if ( is_single() || is_page() ) {
+        
+    global $wp_query;
+    $postid = $wp_query->post->ID;
+    $myCss = get_post_meta($postid, 'custom_css_style', true);
+    wp_reset_query();
+            
+       if ( ! empty( $myCss ) ){
+           // Si utilizan nuestro custom field
+           // here is our custom field
+           echo '<style type="text/css" id="custom-css-'.$postid.'">'.$myCss.'</style>';
+       } 
+     
+    } 
+    
+}
+add_action( 'wp_head', 'ekiline_postcss', 99);
+
 
 
 /**
@@ -122,8 +149,15 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		'ekiline-swipe',
 		'lazy-load',
 		'ekiline-layout',
-		'theme-scripts',
-		'optimizar'
+        'theme-scripts',
+		'google-analytics',
+		'optimizar',
+        'contact-form-7',
+        'wc-add-to-cart',
+        'woocommerce',
+        'wc-cart-fragments',
+        'jquery-blockui',
+        'js-cookie'				
 	);
 
     if ( in_array( $handle, $defer_scripts ) ) {
@@ -141,7 +175,8 @@ add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
  * Add google analyitcs script
  * @link https://developers.google.com/analytics/devguides/collection/gajs/
  * @link https://digwp.com/2012/06/add-google-analytics-wordpress/
-**/
+ **/
+ 
 
 function google_analytics_tracking_code(){
         
@@ -162,7 +197,6 @@ function google_analytics_tracking_code(){
 // Usar 'wp_head' 'wp_footer' para situar el script 
 // If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
-    
 
 
 /**
@@ -175,8 +209,8 @@ function registerSite() {
 //Indice en Google y Bing
     $sconsole = get_theme_mod('ekiline_wmtools','');
     $wmbing = get_theme_mod('ekiline_wmbing','');
-    if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'; }
-    if ( $wmbing != '' ) { echo '<meta name="msvalidate.01" content="'. $wmbing .'" />'; }
+    if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'."\n"; }
+    if ( $wmbing != '' ) { echo '<meta name="msvalidate.01" content="'. $wmbing .'" />'."\n"; }
 }
 
 add_action( 'wp_head', 'registerSite', 0);
@@ -184,9 +218,9 @@ add_action( 'wp_head', 'registerSite', 0);
 /* Agregar las metaetiquetas para los smartphones */
 
 function iosfeatures() {
-    echo '<meta name="apple-mobile-web-app-title" content="'.get_bloginfo( 'name' ).'">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">';    
+    $iosfeats = '<meta name="apple-mobile-web-app-title" content="'.get_bloginfo( 'name' ).'">'."\n";
+    $iosfeats .= '<meta name="apple-mobile-web-app-capable" content="yes">'."\n";
+    $iosfeats .= '<meta name="apple-mobile-web-app-status-bar-style" content="black">'."\n";    
+    echo $iosfeats;
 }
-add_action( 'wp_head', 'iosfeatures', 10);
-
+add_action( 'wp_head', 'iosfeatures', 2);

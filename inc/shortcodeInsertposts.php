@@ -58,6 +58,19 @@ function ekiline_addpostlist($atts, $content = null) {
                     echo '</div>';
                 
                 } else if ($format == 'block'){
+                            
+                       //update: 29 08 2017 columns
+                        $colSet = get_theme_mod('ekiline_Columns'); 
+                         if ($colSet == '1' ) {
+                             $colCount='2';
+                         } elseif ($colSet == '2' ) {
+                             $colCount='3';
+                         } elseif ($colSet == '3' ) {
+                             $colCount='4';
+                         } else {
+                             $colCount='3';
+                         }                       
+                    
                                                                                                     
                         echo '<div class="row clearfix modpostlist-'.$format.'">'; 
                         
@@ -68,8 +81,9 @@ function ekiline_addpostlist($atts, $content = null) {
                                 get_template_part( 'template-parts/content', 'block' );
                                 
                                 // por cada 3 posts agrega un divisor, necesario para mantener alineaciones
-                                if ($count == 3) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
-                                
+                                //if ($count == 3) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
+                                if ($count == $colCount ) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
+                                                                
                             endwhile;
                                 
                         echo '</div>';

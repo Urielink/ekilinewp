@@ -257,7 +257,7 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'container-fluid' => __( 'Fullwidth', 'ekiline' ),
                 ),
             )
-        );         
+        );                 
         
         // Hide or show sidebars
 
@@ -296,7 +296,31 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'off' => __( 'Toggle', 'ekiline' ),
                 ),
             )
-        );              
+        );        
+        
+    // List items
+    
+        $wp_customize->add_setting(
+            'ekiline_Columns', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+        
+        $wp_customize->add_control(
+            'ekiline_Columns', array(
+                'type' => 'select',
+                'label' => __( 'Columns', 'ekiline' ),
+                'description' => __( 'Show your lists in columns', 'ekiline' ),
+                'section' => 'ekiline_vista_section',
+                'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( '2 columnas', 'ekiline' ),
+                    '2' => __( '3 columnas', 'ekiline' ),
+                    '3' => __( '4 columnas', 'ekiline' ),   
+                ),
+            )
+        );                 
 
 	// Behaviors for top menu
 
@@ -311,7 +335,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_topmenuSettings', array(
                 'type' => 'select',
                 'label' => __( 'Top menu settings', 'ekiline' ),
-            	'description' => __( 'Add behaviors for your menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+            	'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
             	'section' => 'menu_locations',
             	'priority'    => 100,
             	'choices' => array(
@@ -322,6 +346,56 @@ function ekiline_theme_customizer( $wp_customize ) {
                 ),
             )
         );   
+        
+    // Behaviors for primary menu
+
+        $wp_customize->add_setting(
+            'ekiline_primarymenuSettings', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+        
+        $wp_customize->add_control(
+            'ekiline_primarymenuSettings', array(
+                'type' => 'select',
+                'label' => __( 'Primary menu settings', 'ekiline' ),
+                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+                'section' => 'menu_locations',
+                'priority'    => 100,
+                'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Fixed top', 'ekiline' ),
+                    '2' => __( 'Fixed bottom', 'ekiline' ),
+                    '3' => __( 'Fix to scroll', 'ekiline' ),
+                ),
+            )
+        );           
+        
+    // Behaviors for modal menu
+
+        $wp_customize->add_setting(
+            'ekiline_modalNavSettings', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+        
+        $wp_customize->add_control(
+            'ekiline_modalNavSettings', array(
+                'type' => 'select',
+                'label' => __( 'Modal menu settings', 'ekiline' ),
+                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+                'section' => 'menu_locations',
+                'priority'    => 100,
+                'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Fixed top', 'ekiline' ),
+                    '2' => __( 'Fixed bottom', 'ekiline' ),
+                    '3' => __( 'Fix to scroll', 'ekiline' ),
+                ),
+            )
+        );                   
         
 
     // Page optimization
@@ -503,7 +577,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         
   
     
-    // Ekiline social media
+    // Ekiline social media and communication
          
     $wp_customize->add_section( 
         'ekiline_social' , array(
@@ -513,6 +587,67 @@ function ekiline_theme_customizer( $wp_customize ) {
         ) 
     );
 
+    // Email
+    $wp_customize->add_setting( 
+        'ekiline_emaProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_emaProf',
+            array(
+                'label'          => __( 'E-mail', 'ekiline' ),
+                'description'    => __( 'Add your email address','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_emaProf',
+                'type'           => 'text'
+        )
+    );            
+    
+    // Phone
+    $wp_customize->add_setting( 
+        'ekiline_telProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_telProf',
+            array(
+                'label'          => __( 'Phone Number', 'ekiline' ),
+                'description'    => __( 'Add a phone number to be contacted','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_telProf',
+                'type'           => 'text'
+        )
+    ); 
+        
+    // whatsapp
+    $wp_customize->add_setting( 
+        'ekiline_whaProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_whaProf',
+            array(
+                'label'          => __( 'WhatsApp', 'ekiline' ),
+                'description'    => __( 'Add a WhatsApp number to receive messages','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_whaProf',
+                'type'           => 'text'
+        )
+    );                 
+    
+    // facebook
     $wp_customize->add_setting( 
         'ekiline_fbProf', array(
             'default' => '',
@@ -550,7 +685,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );     
                    
-                
+    //twitter
     $wp_customize->add_setting( 
         'ekiline_twProf', array(
             'default' => '',
@@ -569,6 +704,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
     );      
 
+    //Ggoogle+
     $wp_customize->add_setting( 
         'ekiline_gpProf', array(
             'default' => '',
@@ -586,7 +722,8 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'type'           => 'text'
         )
     );            
-                               
+          
+    //linkedin                     
     $wp_customize->add_setting( 
         'ekiline_inProf', array(
             'default' => '',
@@ -605,6 +742,7 @@ function ekiline_theme_customizer( $wp_customize ) {
         )
     );          
     
+    //youtube
     $wp_customize->add_setting( 
         'ekiline_ytProf', array(
             'default' => '',
@@ -622,6 +760,45 @@ function ekiline_theme_customizer( $wp_customize ) {
                 'type'           => 'text'
         )
     );          
+
+    //instagram
+    $wp_customize->add_setting( 
+        'ekiline_instProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_instProf', array(
+                'label'          => __( 'Instagram', 'ekiline' ),
+                'description'    => __( 'Add an Instagram page url','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_instProf',
+                'type'           => 'text'
+        )
+    );              
+
+    //pinterest
+    $wp_customize->add_setting( 
+        'ekiline_pintProf', array(
+            'default' => '',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_pintProf', array(
+                'label'          => __( 'Pinterest', 'ekiline' ),
+                'description'    => __( 'Add a Pinterest page url','ekiline' ),
+                'section'        => 'ekiline_social',
+                'settings'       => 'ekiline_pintProf',
+                'type'           => 'text'
+        )
+    );              
+        
             
     // Design sources
    
@@ -700,7 +877,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     $wp_customize->add_control(
             'ekiline_loader', array(
                     'label'          => __( 'Show loader', 'ekiline' ),
-                    'description'    => __( 'Display your brand before loading all page resources.' , 'ekiline' ),
+                    'description'    => __( 'Display your brand before loading all page resources' , 'ekiline' ),
                     'section'        => 'ekiline_dtools_section',
                     'settings'       => 'ekiline_loader',
                     'type'           => 'checkbox',

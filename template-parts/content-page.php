@@ -13,13 +13,15 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-	<header class="page-header">
+    <header class="page-header">
 
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	  	
-	  	<?php ekiline_posted_on() ?>
-	  		  	
-	</header><!-- .page-header -->
+        
+        <div class="entry-meta">
+            <?php ekiline_posted_on() ?>
+        </div><!-- .entry-meta -->
+                
+    </header><!-- .page-header -->
 
 	<?php endif; ?>
 
@@ -36,7 +38,7 @@
 
     <?php if ( !is_home() && ! is_front_page() ) : ?> 
         
-	<footer class="entry-footer panel-footer text-muted clearfix">
+	<footer class="entry-footer text-muted clearfix">
 	    
        <?php ekiline_entry_footer(); ?>
            

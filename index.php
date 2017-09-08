@@ -28,7 +28,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php $count = ''; while ( have_posts() ) : the_post(); $count++; ?>
 
 				<?php
 
@@ -37,12 +37,25 @@ get_header(); ?>
 					 * If you want to override this in a child theme, then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'template-parts/content', get_post_format() );
+					//get_template_part( 'template-parts/content', get_post_format() );
+
+                //update: 29 08 2017 columns
+                $colSet = get_theme_mod('ekiline_Columns'); 
+                if ($colSet == '1' ) : $colCount='2'; elseif ($colSet == '2' ) : $colCount='3'; elseif ($colSet == '3' ) : $colCount='4'; else : $colCount='3'; endif;                       
+                 
+                if ($colSet == '0') {                    
+                    get_template_part( 'template-parts/content', get_post_format() );                    
+                } else if ($colSet != '0' ) {                                            
+                    get_template_part( 'template-parts/content', 'block' );                     
+                } 	
+                
+                if ($count == $colCount ) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;									
+					
 				?>
 
 			<?php endwhile; ?>
 
-        <nav id="page-navigation">
+        <nav id="page-navigation" class="col-sm-12 text-center">
             <?php ekiline_archive_pagination();?>
         </nav>
 
