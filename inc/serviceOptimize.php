@@ -94,7 +94,8 @@ function ekiline_description(){
  */
 
 function ekiline_postcss(){
-
+    
+    // excluir si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ) {
         
     global $wp_query;

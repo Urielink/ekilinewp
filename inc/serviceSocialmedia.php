@@ -43,7 +43,7 @@ if ( is_page() || is_single() ){
     $currentUrl = home_url( add_query_arg(array(),$wp->request) );
 }
         
-    
+    // excluir si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ){
             
         // personalizar la metadescripcion 

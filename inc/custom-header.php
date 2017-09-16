@@ -361,13 +361,13 @@ function customHeader() {
 		}		
 
         /**
-         * Si utiliza woocommerce, no requiere header
-         * If is woocommerce post doesnt need a header image
+         * Si utiliza woocommerce, el producto no requiere imagen de cabecera, a menos que crees un homepage con imagen principal.
+         * If is woocommerce post doesnt need a header image, but if you want a store with frontpage params allow it.
          * @link https://docs.woocommerce.com/document/conditional-tags/
          * class_exists( 'WooCommerce' ), 
          */ 
                 
-        if ( get_post_type( get_the_ID() ) == 'product' ){
+        if ( get_post_type( get_the_ID() ) == 'product' && !is_front_page() ){
             $customHeader = '';
         } 
 			
