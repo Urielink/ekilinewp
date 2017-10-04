@@ -35,6 +35,7 @@ ekiline includes support for Infinite Scroll in Jetpack.
 == Changelog ==
 
 = 1.0 - May 01 2017 =
+= 2.0 - Oct 02 2017 =
 * Initial release
 
 == Credits ==
