@@ -118,50 +118,85 @@ jQuery(document).ready(function($){
     	  swipe: 40
     	});	  
             
+/** 11 de octubre Ya no sirve affix, hay que modificarlo   **/
+            
     // Affix: calcula la altura del header para el top-navbar
     if ( $('#masthead').length ) {	    	
-    	$('.top-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
+    	// $('.top-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('#masthead').height()
+	        // }
+	    // });
+	    
+	    console.log( $('#masthead').length );
+	    
+		$(window).on('scroll', function (event) {
+		    var scrollValue = $(window).scrollTop();
+		    var headHeight = $('#masthead').height();
+		    if (scrollValue > headHeight) {
+		        $('.top-navbar.navbar-affix').addClass('affix');
+		    } else{
+		        $('.top-navbar.navbar-affix').removeClass('affix');
+		    }
+		    
+	    console.log( scrollValue );
+	    console.log( headHeight );
+		    
+		    
+		});
     } else {
-    	$('.top-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.top-navbar').height()
-	        }
-	    });	    		    	
+    	// $('.top-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('.top-navbar').height()
+	        // }
+	    // });	    		    	
+		$(window).on('scroll', function (event) {
+			
+		    var scrollValue = $(window).scrollTop();
+		    var menuHeight = $('.top-navbar').height();
+		    
+		    if (scrollValue > menuHeight) {
+		        $('.top-navbar.navbar-affix').addClass('affix');
+		    } else{
+		        $('.top-navbar.navbar-affix').removeClass('affix');
+		    }
+		    
+	    console.log( 'sV ' + scrollValue );
+	    console.log( 'mH ' + menuHeight );
+		    
+		    
+		});	    	    
     }
     
-    // Affix: calcula la altura del header para el primary-navbar
-    if ( $('#masthead').length ) {	    	
-    	$('.primary-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
-    } else {
-    	$('.primary-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.primary-navbar').height()
-	        }
-	    });	    		    	
-    }    
-    
-    // Affix: calcula la altura del header para el primary-navbar
-    if ( $('#masthead').length ) {	    	
-    	$('.modal-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
-    } else {
-    	$('.modal-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.modal-navbar').height()
-	        }
-	    });	    		    	
-    }        
+    // // Affix: calcula la altura del header para el primary-navbar
+    // if ( $('#masthead').length ) {	    	
+    	// $('.primary-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('#masthead').height()
+	        // }
+	    // });
+    // } else {
+    	// $('.primary-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('.primary-navbar').height()
+	        // }
+	    // });	    		    	
+    // }    
+//     
+    // // Affix: calcula la altura del header para el primary-navbar
+    // if ( $('#masthead').length ) {	    	
+    	// $('.modal-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('#masthead').height()
+	        // }
+	    // });
+    // } else {
+    	// $('.modal-navbar.navbar-affix').affix({
+	        // offset: {
+	          // top: $('.modal-navbar').height()
+	        // }
+	    // });	    		    	
+    // }        
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 

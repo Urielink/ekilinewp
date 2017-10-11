@@ -216,10 +216,10 @@ function ekiline_scripts() {
  * Añadir los estilos como wordpress lo requiere, descomentar en caso de conflicto
  * This is wordpress method for enqueue styles
  */
-    wp_enqueue_style( 'bootstrap-337', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7', 'all' );
+    wp_enqueue_style( 'bootstrap-4', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '4', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );	
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.min.css', array(), '1.0', 'all' );	
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.css', array(), '1.0', 'all' );	
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
         
     // Condición para font awesome
@@ -276,9 +276,10 @@ function ekiline_scripts() {
  * Localize: JS and PHP working together
  * https://codex.wordpress.org/Function_Reference/wp_localize_script
  */
-	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true  );
+	wp_enqueue_script( 'popper-script', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1', true  );
+ 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
-    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline.min.js', array('jquery'), '20151226', true  );
+    wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline.js', array('jquery'), '20151226', true  );
     // Este bloque de scripts debe permanecer siempre junto
             wp_localize_script('ekiline-layout', 'allCss', $params); 
             
