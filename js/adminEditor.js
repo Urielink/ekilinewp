@@ -3,6 +3,10 @@
  *
  * Oct 11 2017, añadir tareas al tinymce:
  * https://wordpress.stackexchange.com/questions/235020/how-to-add-insert-edit-link-button-in-custom-popup-tinymce-window 
+ * Otro estudio:
+ * https://jamesdigioia.com/add-button-pop-wordpresss-tinymce-editor/
+ * Un tutorial:
+ * https://dobsondev.com/2015/10/16/custom-tinymce-buttons-in-wordpress/
  *
  */
 
