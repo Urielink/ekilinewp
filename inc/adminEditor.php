@@ -521,3 +521,34 @@ function ekiline_mce_before( $init_array ) {
 add_filter( 'tiny_mce_before_init', 'ekiline_mce_before' ); 
 
 
+/** Oct 11 2017, añadir tareas al tinymce:
+ * https://wordpress.stackexchange.com/questions/235020/how-to-add-insert-edit-link-button-in-custom-popup-tinymce-window 
+ **/
+ 
+/**
+ * Add a custom button to tinymce editor
+ */
+function custom_mce_buttons() {
+    // Check if WYSIWYG is enabled
+    if ( get_user_option( 'rich_editing' ) == 'true' ) {
+        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
+        add_filter( 'mce_buttons', 'register_mce_buttons' );
+    }
+}
+add_action('admin_head', 'custom_mce_buttons');
+
+
+// Add the path to the js file with the custom button function
+function custom_tinymce_plugin( $plugin_array ) {
+    // $plugin_array['custom_mce_button1'] = get_template_directory_uri() .'PATH_TO_THE_JS_FILE';
+    // $plugin_array['custom_mce_button2'] = get_template_directory_uri() .'PATH_TO_THE_OTHER_JS_FILE';
+    $plugin_array['custom_mce_button1'] = get_template_directory_uri() .'/js/adminEditor.js';
+    return $plugin_array;
+}
+
+// Register and add new button in the editor
+function register_mce_buttons( $buttons ) {
+    array_push( $buttons, 'custom_mce_button1' );
+    //array_push( $buttons, 'custom_mce_button2' );
+    return $buttons;
+}
