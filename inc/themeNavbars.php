@@ -68,7 +68,7 @@ function topNavbar(){
 	                <span class="icon-bar"></span>
 	            </button>
 	            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-	        </div>
+	        </div><!-- .navbar-header -->
 	        
 	        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
 				<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
@@ -146,7 +146,7 @@ function primaryNavbar(){
                             'container'         => 'div',
                                 'container_class'   => 'collapse navbar-collapse primary',
                                 'container_id'      => 'navbar-collapse-in',
-                            'menu_class'        => 'nav navbar-nav navbar-right',
+                            'menu_class'        => 'nav navbar-nav',
                             'menu_id'           => 'main-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                             'walker'            => new WP_Bootstrap_Navwalker()
@@ -154,7 +154,8 @@ function primaryNavbar(){
                           ); ?>                           
                     
             		<?php dynamic_sidebar( 'navwidget-nw2' ); ?>     
-                </div>
+            		
+                </div><!-- .container -->  
             </nav><!-- .site-navigation -->		
             
     <?php endif;
