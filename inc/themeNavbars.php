@@ -22,8 +22,8 @@ function logoTheme() {
     } elseif ( !$logoHor && $logoIcono ) {
         echo '<img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' );
     } elseif ( $logoHor && $logoIcono ) {
-        echo '<img class="img-responsive hidden-xs" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
-        <span class="visible-xs"><img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' ) . '</span>';
+        echo '<img class="img-responsive d-none d-sm-block" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
+        <span class="d-block d-sm-none"><img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' ) . '</span>';
     } else {
         echo get_bloginfo( 'name' );
     } 
@@ -40,38 +40,36 @@ function topNavbar(){
 	$navSet = get_theme_mod('ekiline_topmenuSettings');
 	
 	if ($navSet == '0') {
-	    $navAction = ' navbar-static-top';
+	    $navAction = ' static-top';
     } else if ($navSet == '1') {
-        $navAction = ' navbar-fixed-top'; 
+        $navAction = ' fixed-top'; 
     } else if ($navSet == '2') {
-        $navAction = ' navbar-fixed-bottom'; 
+        $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix'; 
+        $navAction = ' navbar-affix sticky-top'; 
     }	
     
 	if( true === get_theme_mod('ekiline_inversemenu') ){
-	    $inverseMenu = 'navbar-inverse'; 
+	    $inverseMenu = 'navbar-dark bg-dark'; 
     } else {
-        $inverseMenu = 'navbar-default';
+        $inverseMenu = 'navbar-light bg-light';
     }
 	
 		
 	if ( has_nav_menu( 'top' ) ) : ?>
 	
-	<nav id="site-navigation-top"  class="navbar <?php echo $inverseMenu;?> top-navbar<?php echo $navAction;?>" role="navigation">
+	<nav id="site-navigation-top"  class="navbar <?php echo $inverseMenu;?> navbar-expand-md top-navbar<?php echo $navAction;?>" role="navigation">
 	    <div class="container">
-	        <div class="navbar-header">
-	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.top">
-	                <span class="sr-only">Toggle navigation</span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	            </button>
-	            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-	        </div><!-- .navbar-header -->
+
+            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse.top">
+      			<span class="navbar-toggler-icon"></span>
+            </button>
+
 	        
 	        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
-				<p class="navbar-text hidden-xs"><?php echo get_bloginfo( 'description' ); ?></p>        	
+				<span class="navbar-text d-none d-sm-block"><?php echo get_bloginfo( 'description' ); ?></span>        	
 	        
     	        <?php wp_nav_menu( 
                         array(
@@ -79,7 +77,7 @@ function topNavbar(){
         	                'theme_location'    => 'top',
         	                'depth'             => 2,
         	                'container'         => '',
-        	                'menu_class'        => 'nav navbar-nav',
+        	                'menu_class'        => 'navbar-nav mr-auto',
         	                'menu_id'           => 'top-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
         	                'walker'            => new WP_Bootstrap_Navwalker()
@@ -107,20 +105,20 @@ function primaryNavbar(){
         
     $navSet = get_theme_mod('ekiline_primarymenuSettings');
     
-    if ($navSet == '0') {
-        $navAction = ' navbar-static-top';
+	if ($navSet == '0') {
+	    $navAction = ' static-top';
     } else if ($navSet == '1') {
-        $navAction = ' navbar-fixed-top'; 
+        $navAction = ' fixed-top'; 
     } else if ($navSet == '2') {
-        $navAction = ' navbar-fixed-bottom'; 
+        $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix'; 
-    }    
+        $navAction = ' navbar-affix sticky-top'; 
+    } 
 
     if( true === get_theme_mod('ekiline_inversemenu') ){
-         $inverseMenu = 'navbar-inverse'; 
+         $inverseMenu = 'navbar-dark bg-dark'; 
     } else {
-         $inverseMenu = 'navbar-default';
+         $inverseMenu = 'navbar-light bg-light';
     }
     	
     if ( has_nav_menu( 'primary' ) ) : ?>
@@ -165,21 +163,21 @@ function modalNavbar(){
 
     $navSet = get_theme_mod('ekiline_modalNavSettings');
         
-    if ($navSet == '0') {
-        $navAction = ' navbar-static-top';
+	if ($navSet == '0') {
+	    $navAction = ' static-top';
     } else if ($navSet == '1') {
-        $navAction = ' navbar-fixed-top'; 
+        $navAction = ' fixed-top'; 
     } else if ($navSet == '2') {
-        $navAction = ' navbar-fixed-bottom'; 
+        $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix'; 
-    }    
+        $navAction = ' navbar-affix sticky-top'; 
+    }
         
     
     if( true === get_theme_mod('ekiline_inversemenu') ){
-        $inverseMenu = 'navbar-inverse'; 
+        $inverseMenu = 'navbar-dark bg-dark'; 
     } else {
-        $inverseMenu = 'navbar-default';
+        $inverseMenu = 'navbar-light bg-light';
     }
     
         
