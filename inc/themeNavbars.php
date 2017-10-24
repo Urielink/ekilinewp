@@ -194,7 +194,8 @@ function modalNavbar(){
            
     </div><!-- .site-navigation -->     
 
-    <div id="navModal" class="modal fade move-from-bottom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+	<!-- tipos de animacion: .zoom, .newspaper, .move-horizontal, .move-from-bottom, .unfold-3d, .zoom-out-->
+    <div id="navModal" class="modal fade zoom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
