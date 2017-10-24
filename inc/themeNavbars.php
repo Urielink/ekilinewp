@@ -123,19 +123,15 @@ function primaryNavbar(){
     	
     if ( has_nav_menu( 'primary' ) ) : ?>
     
-            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> primary-navbar<?php echo $navAction;?>" role="navigation">
+            <nav id="site-navigation-primary"  class="navbar <?php echo $inverseMenu;?> navbar-expand-md primary-navbar<?php echo $navAction;?>" role="navigation">
                 <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.primary">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-                    </div><!-- .navbar-header -->
-                    
-        
+
+		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+		            
+		            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse.primary">
+		      			<span class="navbar-toggler-icon"></span>
+		            </button>
+                           
                     <!-- The WordPress Menu goes here -->
                     <?php wp_nav_menu( array(
                             'menu'              => 'primary',
@@ -144,7 +140,7 @@ function primaryNavbar(){
                             'container'         => 'div',
                                 'container_class'   => 'collapse navbar-collapse primary',
                                 'container_id'      => 'navbar-collapse-in',
-                            'menu_class'        => 'nav navbar-nav',
+                            'menu_class'        => 'navbar-nav mr-auto',
                             'menu_id'           => 'main-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                             'walker'            => new WP_Bootstrap_Navwalker()
@@ -186,24 +182,19 @@ function modalNavbar(){
     <div id="site-navigation-modal"  class="navbar <?php echo $inverseMenu;?> modal-navbar<?php echo $navAction;?>" role="navigation">
         
         <div class="container">
-            
-            <div class="navbar-header">
-                <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-            </div>
-            
-            <button type="button" class="navbar-toggle" data-toggle="modal" data-target="#navModal">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                        
+        	
+        	
+	        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+	        
+	        <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navModal">
+	  			<span class="navbar-toggler-icon"></span>
+	        </button>
             
         </div><!-- .container -->      
            
     </div><!-- .site-navigation -->     
 
-    <div class="modal fade move-from-bottom" id="navModal" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+    <div id="navModal" class="modal fade move-from-bottom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -221,7 +212,7 @@ function modalNavbar(){
                         'depth'             => 2,
                         'container'         => 'nav',
                         'container_class'   => 'modal-body',
-                        'menu_class'        => 'nav navbar-nav',
+                        'menu_class'        => 'navbar-nav mr-auto',
                         'menu_id'           => 'modal-menu',
                         'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                         'walker'            => new WP_Bootstrap_Navwalker()
