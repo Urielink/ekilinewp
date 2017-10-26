@@ -46,7 +46,7 @@ function topNavbar(){
     } else if ($navSet == '2') {
         $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix sticky-top'; 
+        $navAction = ' navbar-sticky'; 
     }	
     
 	if( true === get_theme_mod('ekiline_inversemenu') ){
@@ -112,7 +112,7 @@ function primaryNavbar(){
     } else if ($navSet == '2') {
         $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix sticky-top'; 
+        $navAction = ' navbar-sticky'; 
     } 
 
     if( true === get_theme_mod('ekiline_inversemenu') ){
@@ -166,7 +166,7 @@ function modalNavbar(){
     } else if ($navSet == '2') {
         $navAction = ' fixed-bottom'; 
     } else if ($navSet == '3') {
-        $navAction = ' navbar-affix sticky-top'; 
+        $navAction = ' navbar-sticky'; 
     }
         
     

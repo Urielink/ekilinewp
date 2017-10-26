@@ -118,85 +118,41 @@ jQuery(document).ready(function($){
     	  swipe: 40
     	});	  
             
-/** 11 de octubre Ya no sirve affix, hay que modificarlo   **/
+/** 11 de octubre B4: 
+ *  Ya no sirve affix como tal, se reemplaza por sticky en elementos que así sea necesario.   
+ * 	En el caso de Ekiline, se calcula la altura del header y se añade la clase fixed-top.
+ **/
             
-    // Affix: calcula la altura del header para el top-navbar
     if ( $('#masthead').length ) {	    	
-    	// $('.top-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('#masthead').height()
-	        // }
-	    // });
 	    
-	    console.log( $('#masthead').length );
-	    
-		$(window).on('scroll', function (event) {
-		    var scrollValue = $(window).scrollTop();
-		    var headHeight = $('#masthead').height();
-		    if (scrollValue > headHeight) {
-		        $('.top-navbar.navbar-affix').addClass('affix');
-		    } else{
-		        $('.top-navbar.navbar-affix').removeClass('affix');
-		    }
-		    
-	    console.log( scrollValue );
-	    console.log( headHeight );
-		    
-		    
-		});
-    } else {
-    	// $('.top-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('.top-navbar').height()
-	        // }
-	    // });	    		    	
 		$(window).on('scroll', function (event) {
 			
 		    var scrollValue = $(window).scrollTop();
-		    var menuHeight = $('.top-navbar').height();
+		    var headHeight = $('#masthead').height();
+		    
+		    if (scrollValue > headHeight) {
+		        $('.navbar.navbar-sticky').addClass('fixed-top');
+		    } else{
+		        $('.navbar.navbar-sticky').removeClass('fixed-top');
+		    }		    
+		    
+		});
+    } else {
+    	
+		$(window).on('scroll', function (event) {
+			
+		    var scrollValue = $(window).scrollTop();
+		    var menuHeight = $('.navbar').height();
 		    
 		    if (scrollValue > menuHeight) {
-		        $('.top-navbar.navbar-affix').addClass('affix');
+		        $('.navbar.navbar-sticky').addClass('fixed-top');
 		    } else{
-		        $('.top-navbar.navbar-affix').removeClass('affix');
+		        $('.navbar.navbar-sticky').removeClass('fixed-top');
 		    }
-		    
-	    console.log( 'sV ' + scrollValue );
-	    console.log( 'mH ' + menuHeight );
-		    
 		    
 		});	    	    
     }
-    
-    // // Affix: calcula la altura del header para el primary-navbar
-    // if ( $('#masthead').length ) {	    	
-    	// $('.primary-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('#masthead').height()
-	        // }
-	    // });
-    // } else {
-    	// $('.primary-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('.primary-navbar').height()
-	        // }
-	    // });	    		    	
-    // }    
-//     
-    // // Affix: calcula la altura del header para el primary-navbar
-    // if ( $('#masthead').length ) {	    	
-    	// $('.modal-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('#masthead').height()
-	        // }
-	    // });
-    // } else {
-    	// $('.modal-navbar.navbar-affix').affix({
-	        // offset: {
-	          // top: $('.modal-navbar').height()
-	        // }
-	    // });	    		    	
-    // }        
+
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
