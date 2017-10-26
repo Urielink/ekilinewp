@@ -22,6 +22,8 @@
 	
 	</div><!-- #content -->
 
+<?php breadcrumb(); ?>
+
 </div><!-- #page -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">

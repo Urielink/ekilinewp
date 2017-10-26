@@ -197,8 +197,8 @@ jQuery(document).ready(function($){
 			
 	$( '.widget_rss ul' ).addClass( 'list-group' );		
 	$( '.widget_rss ul li' ).addClass( 'list-group-item' );		
-	$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
-	$( 'table#wp-calendar' ).addClass( 'table table-striped');
+	//$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
+	$( 'table#wp-calendar' ).addClass( 'table responsive table-sm table-striped');
 	$( '.widget_text select, .widget_archive select, .widget_categories select' ).addClass( 'form-control');
 	$( '.widget_recent_comments ul' ).addClass('list-group');
 	$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		

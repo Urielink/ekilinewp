@@ -152,10 +152,13 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
  *------------------------------------------------------------------------------*/
 /* PRIMER CAMBIO Escritorio || Desktop */
 @media only screen and (max-width:1200px){}
-@media only screen and (max-width:992px){}
+@media only screen and (max-width:992px){
+	.container { max-width: 100%;}		
+}
 
 /* SEGUNDO CAMBIO Tablets y smartphones horizontales */
 @media only screen and (max-width:768px){
+		
  /*Ajustes en menu navbar || navbar fixes*/
  .navbar-brand{font-size:12px;}
 

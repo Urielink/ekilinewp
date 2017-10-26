@@ -49,7 +49,7 @@ function sideOn() {
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
         
         if ($leftOn == 'off') : $sideon = ' toggle-side1';  
-        else : $sideon = ' col-sm-9 pull-right side1'; endif;
+        else : $sideon = ' col-sm-9 order-sm-2 side1'; endif;
         
     } else if ( !is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
         
@@ -60,8 +60,8 @@ function sideOn() {
 
         if ($leftOn == 'off' && $rightOn == 'off' ) : $sideon = ' toggle-bothsides';  
         elseif ($leftOn == 'off' && $rightOn != 'off' ) : $sideon = ' col-sm-9 toggle-side1'; 
-        elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 pull-right toggle-side2'; 
-        else : $sideon = ' col-sm-6 col-sm-push-3 side1 side2'; endif;              
+        elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 toggle-side2'; 
+        else : $sideon = ' col-sm-6 order-sm-2 side1 side2'; endif;              
         
     } else if ( !is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
         // si ninguno                        
@@ -83,16 +83,16 @@ function leftSideOn() {
     $rightOn = get_theme_mod('ekiline_sidebarRight','on');
     
     if ( is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
-        echo ' col-sm-3 pull-left';
+        echo ' col-sm-3 order-sm-1';
     } elseif ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-        if ($leftOn != 'off' && $rightOn == 'off' ) : echo ' col-sm-3 pull-left';
+        if ($leftOn != 'off' && $rightOn == 'off' ) : echo ' col-sm-3 order-sm-1';
         elseif ($leftOn == 'off' && $rightOn == 'off' ) : echo ' col-sm-3';
-        else : echo ' col-sm-3 col-sm-pull-6'; endif;          
+        else : echo ' col-sm-3 order-sm-1'; endif;          
     }
 }
 
 function rightSideOn() {    
-    if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3'; endif;     
+    if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3 order-sm-3'; endif;     
 }
 
 /* Añadimos los botones a los sidebars, 
