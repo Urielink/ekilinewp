@@ -12,12 +12,19 @@
  * @package ekiline
  */
 
-get_header(); ?>
+get_header(); 
+
+//update: 29 08 2017 columns
+$colSet = get_theme_mod('ekiline_Columns'); 
+$cssCols = '';
+if ($colSet != '0') { $cssCols = ' row'; }
+
+?>
 
 		
 		<?php dynamic_sidebar( 'content-w1' ); ?>		
 
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main<?php echo $cssCols; ?>" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -39,8 +46,6 @@ get_header(); ?>
 					 */
 					//get_template_part( 'template-parts/content', get_post_format() );
 
-                //update: 29 08 2017 columns
-                $colSet = get_theme_mod('ekiline_Columns'); 
                 if ($colSet == '1' ) : $colCount='2'; elseif ($colSet == '2' ) : $colCount='3'; elseif ($colSet == '3' ) : $colCount='4'; else : $colCount='3'; endif;                       
                  
                 if ($colSet == '0') {                    

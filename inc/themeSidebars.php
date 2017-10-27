@@ -95,6 +95,13 @@ function rightSideOn() {
     if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3 order-sm-3'; endif;     
 }
 
+function cssSides() {    
+	if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) {
+        echo ' row';
+    }
+}
+
+
 /* Añadimos los botones a los sidebars, 
  * afectan a sidebar.php y sidebar-right.php 
  * Add buttons to hide/show sidebars (sidebar.php y sidebar-right.php)

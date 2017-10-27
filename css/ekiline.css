@@ -88,7 +88,7 @@ video#bgvid{transition:1s opacity;}
     
  /* Botones de sidebars */
  .sidebar-toggle{padding:9px 10px;}
- .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;}
+ .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#000;}
  .btn-sbleft{position:fixed;top:10px;left:10px;z-index:3000;}
  .btn-sbright{position:fixed;top:10px;right:10px;z-index:3000;}
 

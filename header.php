@@ -31,8 +31,10 @@
 
 <div id="page" class="site <?php ekiline_pagewidth(); ?>">
     
-<?php primaryNavbar(); ?>     
+<?php primaryNavbar(); ?>  
 
-	<div id="content" class="site-content row">
+<?php breadcrumb(); ?>
+   
+	<div id="content" class="site-content<?php cssSides(); ?>">
 	    	
 		<div id="primary" class="content-area<?php sideOn(); ?>"><!-- // termina en footer.php -->
