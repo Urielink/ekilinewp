@@ -259,7 +259,7 @@ function ekiline_mce_before( $init_array ) {
                 array(
                     'title'     => __( 'Default', 'ekiline' ),
                     'inline'    => 'a',
-                    'classes'   => 'btn btn-default',
+                    'classes'   => 'btn btn-secondary',
                 ),
                 array(
                     'title'     => __( 'Primary', 'ekiline' ),
@@ -304,7 +304,7 @@ function ekiline_mce_before( $init_array ) {
                 array(
                     'title'     => __( 'Extra Small', 'ekiline' ),
                     'selector'  => 'a,button,input',
-                    'classes'   => 'btn-xs',
+                    'classes'   => 'btn-sm',
                 ),
                 array(
                     'title'     => __( 'Block', 'ekiline' ),

@@ -360,7 +360,7 @@ jQuery(document).ready(function($){
 					var modalTitle = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>';
 		
 					// de momento el footer no se requiere, pero lo dejaremos solo como referencia.
-					var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>';
+					var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>';
 			
 		
 		    	// Precarga la ventana que contendra la informacion

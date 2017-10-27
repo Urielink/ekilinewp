@@ -126,7 +126,7 @@ function ekiline_csscolors() {
         .page-header, .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} hr, .modal-footer{border-top: 1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
         .breadcrumb, .bg-module { background-color:'.$modulos.'; }
-        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-xs,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
+        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-sm,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
         .panel-group .panel-heading,.nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
         .pagination>li:first-child>a, .pagination>li:first-child>span{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
         .pagination>li:last-child>a, .pagination>li:last-child>span{border-top-right-radius: '.$rangeLmnts.'px;border-bottom-right-radius: '.$rangeLmnts.'px}
@@ -194,7 +194,7 @@ function ekiline_search_form( $form ) {
                 <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
                 <div class="input-group">
                     <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for:', 'ekiline' ) . '"/>
-                    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
+                    <span class="input-group-btn"><input class="btn btn-secondary" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
                 </div>
             </form>';
 
@@ -225,7 +225,7 @@ add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
 // Excerpt Button 
 function ekiline_excerpt_button( $more ) {
-    return '<p><a class="read-more btn btn-default" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
+    return '<p><a class="read-more btn btn-secondary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 
@@ -307,17 +307,17 @@ function ekiline_pages_navigation(){
     $nextID = (isset($pages[$current+1])) ? $pages[$current+1] : '';
     
     if (!empty($prevID)) {
-        $thePages .= '<li class="previous">';
-        $thePages .= '<a href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
+        $thePages .= '<li class="previous page-item">';
+        $thePages .= '<a class="page-link" href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
         $thePages .= "</li>";
     }
     if (!empty($nextID)) {
-        $thePages .= '<li class="next">';
-        $thePages .= '<a href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
+        $thePages .= '<li class="next page-item">';
+        $thePages .= '<a class="page-link" href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
         $thePages .= "</li>";      
     }
     
-    $thePages = '<ul class="pager">'.$thePages.'</ul>';
+    $thePages = '<ul class="pagination pagination-sm justify-content-center">'.$thePages.'</ul>';
     
     if (!is_front_page()){
         echo $thePages;
@@ -396,20 +396,22 @@ function ekiline_archive_pagination() {
         $pagination .= '<ul class="pagination">';
         
         foreach ($pages as $i => $page) {
-            
+            //27 10 17 add CSS B4 pagination
+            $page = str_replace( 'page-numbers', 'page-link', $page );			
+			
             if ($current_page == 1 && $i == 0) {
                 
-                $pagination .= "<li class='active'>$page</li>";
+                $pagination .= "<li class='page-item active'>$page</li>";
                 
             } else {
                 
                 if ($current_page != 1 && $current_page == $i) {
                     
-                    $pagination .= "<li class='active'>$page</li>";
+                    $pagination .= "<li class='page-item active'>$page</li>";
                     
                 } else {
                     
-                    $pagination .= "<li>$page</li>";
+                    $pagination .= "<li class='page-item'>$page</li>";
                     
                 }
             }

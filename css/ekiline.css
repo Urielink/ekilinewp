@@ -117,7 +117,7 @@ video#bgvid{transition:1s opacity;}
 .sidebar-nav .navbar-nav .open .dropdown-menu{position:static;float:none;width:auto;margin-top:0;border:0;padding:0px;-webkit-box-shadow:none;box-shadow:none;border-radius:0px;}
 .sidebar-nav .navbar-nav .open .dropdown-menu .dropdown-header,
 .sidebar-nav .navbar-nav .open .dropdown-menu > li > a{padding:10px 15px 10px 15px;}
-.sidebar-nav .dropdown-menu .divider{height:1px;margin:1px 0;}
+.sidebar-nav .dropdown-menu .dropdown-divider{height:1px;margin:1px 0;}
 
 /* Carrusel en general
 -------------------------------------------------- */

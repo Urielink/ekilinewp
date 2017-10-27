@@ -17,7 +17,23 @@ get_header(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'single' ); ?>
 
-			<?php the_post_navigation(); ?>
+			<?php /** 10 27 2017 Custom pagination the_post_navigation(); 
+			 		* https://codex.wordpress.org/Next_and_Previous_Links 
+			 		* https://speckyboy.com/next-and-previous-links-on-wordpress-posts/ */?>
+
+			<nav id="page-navigation" aria-label="Post navigation">
+			  <ul class="pagination justify-content-center">
+			    <li class="page-item page-link">
+			    	<?php previous_post_link('%link', '%title', TRUE); ?>
+			    </li>
+			    <li class="page-item page-link">
+			    	<?php next_post_link('%link', '%title', TRUE); ?>
+			    </li>
+			    
+			  </ul>
+			</nav>
+
+			    
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template.

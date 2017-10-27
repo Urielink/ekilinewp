@@ -26,7 +26,7 @@ if ( post_password_required() ) {
 
 	<?php if ( have_comments() ) : ?>
 	    
-    <button class="btn btn-default btn-block" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?></button>    
+    <button class="btn btn-secondary btn-block" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?></button>    
     
     <div id="comments-activity" class="collapse">
 	    
@@ -127,7 +127,7 @@ $args = array(
 	  
     // las clases de manera independiente:
     'class_form'           => 'comment-form form',
-    'class_submit' => 'submit btn btn-default'  
+    'class_submit' => 'submit btn btn-secondary'  
 	
 );
 

@@ -108,7 +108,7 @@
 					esc_html__( 'Edit this image %s', 'ekiline' ),
 					the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
 				),
-                '<span class="edit-link btn btn-default">',
+                '<span class="edit-link btn btn-secondary">',
 				'</span>'
 			);
 		?>

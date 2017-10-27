@@ -233,7 +233,7 @@ function customHeader() {
                                         <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
                                             <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
                                         </video>
-                                        <button id="vidpause" class="btn btn-default btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
+                                        <button id="vidpause" class="btn btn-secondary btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
                                     </div>
                                  </header>';
                                  

@@ -13,7 +13,7 @@
 function ekiline_collapse_single($atts, $content = null) {
     extract(shortcode_atts(array( 'title' => '', 'class' => ''), $atts));
     $titleBtn = ekiline_cleanspchar($title);
-    return '<a class="btn btn-default" data-toggle="collapse" href="#'.$titleBtn.'" aria-expanded="false" aria-controls="'.$titleBtn.'">'.$title.'</a>
+    return '<a class="btn btn-secondary" data-toggle="collapse" href="#'.$titleBtn.'" aria-expanded="false" aria-controls="'.$titleBtn.'">'.$title.'</a>
             <div class="acordeon collapse '.$class.'" id="'.$titleBtn.'">
                 '.do_shortcode($content).'
             </div>';
