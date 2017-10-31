@@ -501,8 +501,8 @@ jQuery(document).ready(function($){
 	        var gallery = $( rename ).html();
 	        	                
 	        var modalgallery = '';
-	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">';	                            
-	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel"><button type="button" class="close" data-dismiss="modal">&times;</button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
+	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">';	                            
+	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
 	        modalgallery += '</div></div></div></div>';
 	        
 	        $( modalgallery ).modal('show');
@@ -517,7 +517,9 @@ jQuery(document).ready(function($){
 	        // Ejecuta las variables para activarse
 	        $('body').on('shown.bs.modal', function(){  
 	        	
-	            $('.carousel').carousel({ swipe: 100 });	    	    
+	            $('.carousel').carousel({ swipe: 100 });	
+	            // Oculto el preformato de la operación y luego la presento L505 : style="display:none;    	    
+	            $('.carousel').css('display','block');	    	    
 
 	                      
 	            // busco cada item y limpio las clases reemplazandola por item.
@@ -545,8 +547,8 @@ jQuery(document).ready(function($){
 	    	        //Jun 5 ajuste cuando sea un carrusel
 	            	if (isCarousel){
 	            		$(this).find('#carousel-modal .carousel-inner > div figure img').unwrap().unwrap().unwrap();// esto se hace cada que un envoltorio anida el objeto
-		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control-prev').remove();
-		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control-next').remove();
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-control-prev').remove();
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-control-next').remove();
 		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner').unwrap();
 		            	$(this).find('#galleryModal .carousel-item > img').nextAll('img').remove();
 		            	$(this).find('#galleryModal .carousel-item > figcaption').nextAll('figcaption').remove();
