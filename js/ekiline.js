@@ -483,7 +483,7 @@ jQuery(document).ready(function($){
 	 * 
 	 *	ModalBox para galeria de imagenes
 	 * 
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/				
 	
 	$('.modal-gallery').each(function() {
 	    // necesito diferenciar el objeto en cada caso
@@ -492,29 +492,28 @@ jQuery(document).ready(function($){
 	    //console.log( rename );
         //Jun 5 ajuste cuando sea un carrusel
 	    var isCarousel = $(this).hasClass( 'carousel' );
-		
+				
 	    // agrega parametros de bootstrap
-	    $( rename + ' a:not(.carousel-control)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
+	    $( rename + ' a:not(.carousel-control-prev,.carousel-control-next)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
 	        
-	    $( rename + ' a:not(.carousel-control)' ).on('click',function(){
+	    $( rename + ' a:not(.carousel-control-prev,.carousel-control-next)' ).on('click',function(){
 	        
 	        var gallery = $( rename ).html();
-	                
+	        	                
 	        var modalgallery = '';
 	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">';	                            
-	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel"><button type="button" class="close" data-dismiss="modal">&times;</button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a></div>';                  
+	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel"><button type="button" class="close" data-dismiss="modal">&times;</button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
 	        modalgallery += '</div></div></div></div>';
 	        
 	        $( modalgallery ).modal('show');
-	        	         
+	        	        	         
 	        // saber a que elemento le dio click        
 	        var nc = $(this).index( rename + ' a' );        
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
 	         //console.log(nc);
-	
-	        
+		        
 	        // Ejecuta las variables para activarse
 	        $('body').on('shown.bs.modal', function(){  
 	        	
@@ -522,7 +521,8 @@ jQuery(document).ready(function($){
 
 	                      
 	            // busco cada item y limpio las clases reemplazandola por item.
-	            $(this).find('#galleryModal .item').removeClass().addClass('item');
+	            $(this).find('#galleryModal .carousel-item').removeClass().addClass('carousel-item');
+	            
 	            
 	            // busco el link original y guardo la dirección en una variable para cuando elacen la imagen pequeña, se muestre la grande
 		            $(this).find('#galleryModal figure a img').each(function(){
@@ -535,25 +535,25 @@ jQuery(document).ready(function($){
 		            });
 		        
 		        // Busco el rengón de texto y le añado la clase carousel-caption
-	            $(this).find('#galleryModal .item .gallery-caption').addClass('carousel-caption');
+	            $(this).find('#galleryModal .carousel-item .gallery-caption').addClass('carousel-caption');
 	            
 	            
 	            // busco elmentos que no necesito y los elimino
-	            $(this).find('#galleryModal .clearfix').remove();
-	            $(this).find('#galleryModal figure').removeClass().addClass('text-center');
-	            $(this).find('#galleryModal figure img').unwrap();
-	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
-	            	$(this).find('#galleryModal figure img').unwrap();
+	            $(this).find('#galleryModal .w-100').remove();
+	            $(this).find('#galleryModal figure').removeClass().addClass('text-center carousel-item');
+
 	    	        //Jun 5 ajuste cuando sea un carrusel
 	            	if (isCarousel){
-		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control').remove();
+	            		$(this).find('#carousel-modal .carousel-inner > div figure img').unwrap().unwrap().unwrap();// esto se hace cada que un envoltorio anida el objeto
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control-prev').remove();
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control-next').remove();
 		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner').unwrap();
-		            	$(this).find('#galleryModal .item > img').nextAll('img').remove();
-		            	$(this).find('#galleryModal .item > figcaption').nextAll('figcaption').remove();
+		            	$(this).find('#galleryModal .carousel-item > img').nextAll('img').remove();
+		            	$(this).find('#galleryModal .carousel-item > figcaption').nextAll('figcaption').remove();
 	            	}
 	
 	            // busca los slides para hacer un índice.
-	            var slides = $('body').find('#galleryModal').find('.item');
+	            var slides = $('body').find('#galleryModal').find('.carousel-item');
 	            //console.log(slides);
 	                        
 	            // saca el total de elmentos que existen.
