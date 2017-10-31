@@ -184,7 +184,10 @@ jQuery(document).ready(function($){
 		$('.popover-rich').each(function(){
 			//extraigo el enlace del contenido
 		    var popHtml = $(this).attr('href');
-		    $(popHtml).addClass('hide');
+		    // Anteriormente el objeto podía tener una disposición oculta
+		    //$( popHtml ).css('display','none'); 
+		    // Ahora es mejor agregar un envoltorio
+		    $( popHtml ).wrap( '<div class="collapse"></div>' );
 		});    
     
     
