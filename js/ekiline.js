@@ -217,7 +217,7 @@ jQuery(document).ready(function($){
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
 						
-	$('.carousel-multiple .item').each(function(){
+	$('.carousel-multiple .carousel-item').each(function(){
 	    
 	    var cThumb = $(this).children();
 	                                                 

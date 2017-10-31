@@ -226,12 +226,17 @@ function ekiline_gallery( $output,$attr ) {
          
     /** Variables de carrusel p3 la : clase CSS active **/    
         if ( ! empty( $atts['carousel'] ) ) {                
-            if ( $first ) : $carouselitem = 'item active'; $first = false;
-            else :  $carouselitem = 'item'; endif;                               
+            if ( $first ) : $carouselitem = 'carousel-item active'; $first = false;
+            else :  $carouselitem = 'carousel-item'; endif;                               
         }                  
     /** FIN Variables de carrusel p3 **/
-                
-        $output .= "<div class='{$carouselitem}'><{$itemtag} class='gallery-item {$itemcol} {$alignitems}'>";
+              
+        /** A.Si no hay carrusel, entonces es una galeria con grid**/  
+        if ( !empty( $atts['carousel'] ) ) {
+            $output .= "<div class='{$carouselitem}'>";
+        }
+
+        $output .= "<{$itemtag} class='gallery-item {$itemcol} {$alignitems}'>";
         
             $output .= "<{$icontag} class='gallery-icon {$orientation}'>
                             $image_output
@@ -253,26 +258,33 @@ function ekiline_gallery( $output,$attr ) {
                                           
             }
         
-        $output .= "</{$itemtag}></div>";
+        $output .= "</{$itemtag}>";
+		
+        /** A.Si no hay carrusel, entonces es una galeria con grid**/  
+        if ( !empty( $atts['carousel'] ) ) {
+            $output .= "</div>";
+        }
         
         if ( empty( $atts['carousel'] ) && $columns > 1 && ++$i % $columns == 0 ) {
-            $output .= '<div class="clearfix middle"></div>';
+            $output .= '<div class="w-100"></div>';
         }
     }
  
     if ( empty( $atts['carousel'] ) && $columns > 0 && $i % $columns !== 0 ) {
-        $output .= '<div class="clearfix last"></div>';
+        $output .= '<div class="w-100 last"></div>';
     }
     
     if ( ! empty( $atts['carousel'] ) ) {
         $output .= '</div>'; /* <-- .carousel-inner" */
-        
-        $output .= '<a class="left carousel-control" href="#'.$selector.'" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span></a>
-                    <a class="right carousel-control" href="#'.$selector.'" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span></a>';        
+        					
+        $output .= '<a class="carousel-control-prev" href="#'.$selector.'" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span></a>
+					<a class="carousel-control-next" href="#'.$selector.'" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span></a>';  					
+					
+					      
     }
     
  
