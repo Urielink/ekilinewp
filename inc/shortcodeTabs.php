@@ -35,7 +35,7 @@ function tabs_shortcode( $atts, $content = null ) {
                 			$attr = shortcode_parse_atts($matchattr[1]);
                 			//Filtramos los caracteres y añadimos un contador.
                 			$unique_id = ekiline_cleanspchar($attr['title']).'-'.$i;
-                			$return .= '<li '.(($i==0) ? 'class="active"' : '').'><a href="#'.$unique_id.'" data-toggle="tab">'.$attr['title'].'</a></li>';
+                			$return .= '<li class="nav-item"><a '.(($i==0) ? 'class="nav-link active"' : 'class="nav-link"').' href="#'.$unique_id.'" data-toggle="tab">'.$attr['title'].'</a></li>';
                 			$content[$i] = str_replace('[tabcontent ','[tabcontent '.(($i==0) ? 'class="active"' : '').' id="'.$unique_id.'" ',$content[$i]);
                 		}
 		$return .= '</ul>';
@@ -54,7 +54,7 @@ add_shortcode('moduletabs',  'tabs_shortcode');
 function tabcontent_shortcode( $atts, $content = null ) {
     extract( shortcode_atts( array( 'title' => '', 'id' =>'', 'class' =>'' ), $atts ) );
         $return = '<div class="tab-pane '.$class.'" id="'.$id.'">';
-    	$return .= '<div class="panel-body">'.do_shortcode($content).'</div>';
+    	$return .= '<div class="card-body">'.do_shortcode($content).'</div>';
     	$return .= '</div>';
 	return $return;
 }

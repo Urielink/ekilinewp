@@ -210,7 +210,10 @@ jQuery(document).ready(function($){
 	$( '.nav-links .nav-next' ).addClass( 'next');		
 	$( '.nav-links .nav-previous' ).addClass( 'previous');		
 	
-	
+	// Videos embedados responsivos
+    if ( $('.embed-responsive').length ) {	
+         $('.embed-responsive').find('iframe').addClass('embed-responsive-item'); 
+    }	
 	
 	
 	
