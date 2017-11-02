@@ -54,6 +54,7 @@ class HorizontalNavbarWidget extends WP_Widget {
                         <div class="collapse navbar-collapse '.$this->id.'">';        
                 
         $nav_menu_args = array(
+	        'depth'             => 2,
             'menu'        => $nav_menu,
             // 'container'         => 'div',
             // 'container_class'   => 'collapse navbar-collapse',

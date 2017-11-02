@@ -108,15 +108,14 @@ video#bgvid{transition:1s opacity;}
 
 /* Division para el menu */
  
-.sidebar-nav{display:block;float:left;width:100%;list-style:none;margin:0;padding:0;border:0px;}
-.sidebar-nav .navbar-header{float:none;}
+.sidebar-nav{display:block;padding:0;}
 .sidebar-nav .navbar-collapse{padding-left:0px;padding-right:0px;}
 .sidebar-nav .navbar-collapse.in{overflow-y:visible;}
 .sidebar-nav .navbar-nav{width:100%;margin:0px 0px;}
 .sidebar-nav .navbar-nav > li{float:none;}
-.sidebar-nav .navbar-nav .open .dropdown-menu{position:static;float:none;width:auto;margin-top:0;border:0;padding:0px;-webkit-box-shadow:none;box-shadow:none;border-radius:0px;}
-.sidebar-nav .navbar-nav .open .dropdown-menu .dropdown-header,
-.sidebar-nav .navbar-nav .open .dropdown-menu > li > a{padding:10px 15px 10px 15px;}
+.sidebar-nav .navbar-nav .show .dropdown-menu{margin-top:0;border:none;padding:0px;}
+.sidebar-nav .navbar-nav .show .dropdown-menu .dropdown-header{padding:0px;}
+.sidebar-nav .navbar-nav .show .dropdown-menu > li > a{padding:10px 15px 10px 15px;white-space: normal;}
 .sidebar-nav .dropdown-menu .dropdown-divider{height:1px;margin:1px 0;}
 
 /* Carrusel en general

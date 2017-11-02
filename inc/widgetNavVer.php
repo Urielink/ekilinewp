@@ -39,23 +39,24 @@ class VerticalMenuWidget extends WP_Widget {
 
         echo $args['before_widget'];
 
-        // variable contenedora
                 
-        echo '<nav id="site-navigation-vertical"  class="navbar navbar-default sidebar-nav" role="navigation">
-                    <div class="navbar-header">';
+        // En caso de titulo de widget
+		if ( !empty($instance['title']) ) echo '<h4>'. $instance['title'] .'</h4>';   
+		
+        // variable contenedora
+        echo '<nav id="site-navigation-vertical"  class="navbar navbar-default sidebar-nav" role="navigation">';
+                
                         
-                        if ( !empty($instance['title']) ) echo '<a class="navbar-brand">'. $instance['title'] .'</a>';   
-                        
-               echo '</div><!-- .navbar-header -->';
                                         
         $nav_menu_args = array(
-            'menu'        => $nav_menu,
+	        'depth'             => 2,
+            'menu'        		=> $nav_menu,
             'container'         => 'div',
             'container_class'   => 'vertical-menu',
             'container_id'      => '',
             'menu_class'        => 'nav navbar-nav',
-            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
             'menu_id'           => 'main-menu',
+            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
             'walker'            => new WP_Bootstrap_Navwalker()           
         );
 
