@@ -41,36 +41,34 @@ class HorizontalNavbarWidget extends WP_Widget {
                 
         // variable contenedora
                 
-        echo '<nav id="site-navigation-horizontal"  class="navbar navbar-default" role="navigation">
-	    			<div class="container-fluid">
-		        		<div class="navbar-header">
-	                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse.'.$this->id.'">
-	                            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-	                        </button>';
-	                        
-                            if ( !empty($instance['title']) ) echo '<div class="navbar-brand">'. $instance['title'] .'</div>';	 
+        echo '<nav id="site-navigation-horizontal"  class="navbar navbar-expand-md navbar-light bg-light" role="navigation">';
+        
+			echo '<div class="container-fluid">';	 
+		                       
+				if ( !empty($instance['title']) ) echo '<div class="navbar-brand">'. $instance['title'] .'</div>';
 	                                               
-                   echo '</div><!-- .navbar-header -->
-                        <div class="collapse navbar-collapse '.$this->id.'">';        
+		       	  	echo '<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse.'.$this->id.'"><span class="navbar-toggler-icon"></span></button>';
+		                   
+		           		echo '<div class="collapse navbar-collapse '.$this->id.'">';        
                 
-        $nav_menu_args = array(
-	        'depth'             => 2,
-            'menu'        => $nav_menu,
-            // 'container'         => 'div',
-            // 'container_class'   => 'collapse navbar-collapse',
-            'container_id'      => 'navbar-collapse-in',
-            'menu_class'        => 'nav navbar-nav',
-            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-            'menu_id'           => 'widget-menu',
-            'walker'            => new WP_Bootstrap_Navwalker()
-        );
-
-        wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );
+		        $nav_menu_args = array(
+			        'depth'             => 2,
+		            'menu'        => $nav_menu,
+		            // 'container'         => 'div',
+		            // 'container_class'   => 'collapse navbar-collapse',
+		            'container_id'      => 'navbar-collapse-in',
+		            'menu_class'        => 'nav navbar-nav',
+		            'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+		            'menu_id'           => 'widget-menu',
+		            'walker'            => new WP_Bootstrap_Navwalker()
+		        );
+		
+		        wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ) );
+		        
+		        // widget en navbar 
+		        dynamic_sidebar( 'navwidget-nw3' );
         
-        // widget en navbar 
-        dynamic_sidebar( 'navwidget-nw3' );
-        
-        // cierre de etiquetas
+        // cierre de etiquetas #site-navigation-horizontal,.container-fluid, .collapse navbar-collapse
         echo '</div></div></nav>';        
                 
         echo $args['after_widget'];
