@@ -22,17 +22,11 @@ get_header(); ?>
 			 		* https://speckyboy.com/next-and-previous-links-on-wordpress-posts/ */?>
 
 			<nav id="page-navigation" aria-label="Post navigation">
-			  <ul class="pagination justify-content-center">
-			    <li class="page-item page-link">
-			    	<?php previous_post_link('%link', '%title', TRUE); ?>
-			    </li>
-			    <li class="page-item page-link">
-			    	<?php next_post_link('%link', '%title', TRUE); ?>
-			    </li>
-			    
+			  <ul class="pagination justify-content-center">			    
+		    	<?php previous_post_link('<li class="page-item page-link">'.'%link'.'</li>', '<span class="fa fa-angle-left"></span> %title', TRUE); ?>			    			    
+		    	<?php next_post_link('<li class="page-item page-link">'.'%link'.'</li>', '%title <span class="fa fa-angle-right"></span>', TRUE); ?>
 			  </ul>
 			</nav>
-
 			    
 
 			<?php

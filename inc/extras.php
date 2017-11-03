@@ -122,11 +122,11 @@ function ekiline_csscolors() {
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
-        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} .pager li>a, .pager li>span, .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
+        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
         .page-header, .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} hr, .modal-footer{border-top: 1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
         .breadcrumb, .bg-module { background-color:'.$modulos.'; }
-        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-sm,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
+        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-sm,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
         .panel-group .panel-heading,.nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
         .pagination>li:first-child>a, .pagination>li:first-child>span{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
         .pagination>li:last-child>a, .pagination>li:last-child>span{border-top-right-radius: '.$rangeLmnts.'px;border-bottom-right-radius: '.$rangeLmnts.'px}
@@ -194,7 +194,7 @@ function ekiline_search_form( $form ) {
                 <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
                 <div class="input-group">
                     <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for:', 'ekiline' ) . '"/>
-                    <span class="input-group-btn"><input class="btn btn-secondary" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
+                    <span class="input-group-btn"><button class="btn btn-secondary" type="submit" id="searchsubmit"><i class="fa fa-search"></i> '. esc_attr__( 'Search', 'ekiline' ) .'</button></span>
                 </div>
             </form>';
 
@@ -344,18 +344,18 @@ function ekiline_posts_navigation( $args = array() ) {
             'screen_reader_text' => __( 'Posts navigation', 'ekiline' ),
         ) );
  
-        $next_link = get_previous_posts_link( $args['next_text'] );
-        $prev_link = get_next_posts_link( $args['prev_text'] );
+        $next_link = get_previous_posts_link( $args['next_text'] . ' <span class="fa fa-angle-right"></span>' );
+        $prev_link = get_next_posts_link( '<span class="fa fa-angle-left"></span> ' . $args['prev_text'] );
  
         if ( $prev_link ) {
-            $navigation .= '<li class="previous">' . $prev_link . '</li>';
+            $navigation .= '<li class="previous page-item page-link">' . $prev_link . '</li>';
         }
  
         if ( $next_link ) {
-            $navigation .= '<li class="next">' . $next_link . '</li>';
+            $navigation .= '<li class="next page-item page-link">' . $next_link . '</li>';
         }
         
-        $navigation = '<ul class="pager">'.$navigation.'</ul>';
+        $navigation = '<ul class="pagination justify-content-center">'.$navigation.'</ul>';
  
         $navigation = _navigation_markup( $navigation, 'posts-navigation', $args['screen_reader_text'] );
     }
