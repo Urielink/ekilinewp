@@ -83,11 +83,10 @@ function ekiline_entry_footer() {
     edit_post_link(
         sprintf(
             /* translators: %s: Name of current post */
-            esc_html__( 'Edit %s', 'ekiline' ),
+            esc_html__( 'Edit %s', 'ekiline' ) . '<span class="fa fa-pencil"></span>',
             the_title( '<span class="screen-reader-text">"', '"</span> ', false )
         ),
-        '<span class="edit-link pull-right">',
-        '&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span> '
+        '<p class="edit-link">','</p>'
     );
 }
 endif;
