@@ -39,7 +39,7 @@ class HorizontalNavbarWidget extends WP_Widget {
 
         echo $args['before_widget'];
                 
-        // variable contenedora
+        // variable contenedora        
                 
         echo '<nav id="site-navigation-horizontal"  class="navbar navbar-expand-md navbar-light bg-light" role="navigation">';
         
@@ -47,7 +47,7 @@ class HorizontalNavbarWidget extends WP_Widget {
 		                       
 				if ( !empty($instance['title']) ) echo '<div class="navbar-brand">'. $instance['title'] .'</div>';
 	                                               
-		       	  	echo '<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse.'.$this->id.'"><span class="navbar-toggler-icon"></span></button>';
+		       	  	echo '<button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse.'.$this->id.'"><!--span class="navbar-toggler-icon"></span--><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>';
 		                   
 		           		echo '<div class="collapse navbar-collapse '.$this->id.'">';        
                 
