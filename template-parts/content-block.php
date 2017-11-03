@@ -24,7 +24,7 @@ $colSet = get_theme_mod('ekiline_Columns');
         
         <div class="cat-thumb">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-responsive img-thumbnail' ));?>
+                <?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-fluid img-thumbnail' ));?>
             </a>
         </div>
         

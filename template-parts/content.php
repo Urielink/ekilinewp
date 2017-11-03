@@ -28,7 +28,7 @@
 
             <?php if ( has_post_thumbnail() ) { ?>
             
-                <div class="cat-thumb pull-right">
+                <div class="cat-thumb float-right">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                         <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
                     </a>

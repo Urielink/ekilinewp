@@ -44,12 +44,12 @@ function gcollpase_shortcode( $atts, $content = null ) {
                 $return .= '<div class="card">';
                 
                     $return .= '<div class="card-header" role="tab" id="'.$heading_id.'">
-                                    <h4 class="panel-title">';
+                                    <h4>';
                     
                         $return .= '<a '.(($i!=0) ? 'class="collapsed"' : '').' role="button" data-toggle="collapse" data-parent="#'.$groupId.'" href="#'.$unique_id.'" aria-expanded="true" aria-controls="'.$unique_id.'">'.$attr['title'].'</a>';
                         
                         $return .= '</h4>
-                                </div>'; //panel-heading
+                                </div>'; //card-heading
 
                     
                     $return .= '<div id="'.$unique_id.'" class="collapse '.(($i==0) ? 'show' : '').' '.$class.'" role="tabpanel" aria-labelledby="'.$heading_id.'">';
@@ -57,12 +57,12 @@ function gcollpase_shortcode( $atts, $content = null ) {
                     $return .= '</div>';
 
                                         
-                $return .= '</div>'; //panel-default
+                $return .= '</div>'; //card
                                                         
             }
                         
 
-        $return .= '</div>'; //panel-group
+        $return .= '</div>'; //tablist
         
    return $return;
 }

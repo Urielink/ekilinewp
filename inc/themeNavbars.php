@@ -18,11 +18,11 @@ function logoTheme() {
     $logoIcono = get_site_icon_url();
     
     if ( $logoHor && !$logoIcono ) {
-        echo '<img class="img-responsive" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>';
+        echo '<img class="img-fluid" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>';
     } elseif ( !$logoHor && $logoIcono ) {
         echo '<img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' );
     } elseif ( $logoHor && $logoIcono ) {
-        echo '<img class="img-responsive d-none d-sm-block" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
+        echo '<img class="img-fluid d-none d-sm-block" src="' . $logoHor . '" alt="' . get_bloginfo( 'name' ) . '"/>
         <span class="d-block d-sm-none"><img class="brand-icon" src="' . $logoIcono . '" alt="' . get_bloginfo( 'name' ) . '"/>' . get_bloginfo( 'name' ) . '</span>';
     } else {
         echo get_bloginfo( 'name' );

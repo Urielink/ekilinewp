@@ -76,7 +76,7 @@ function ekiline_loginfrontend() {
 						<input type="password" name="pwd" id="' . esc_attr( $args['id_password'] ) . '" class="input form-control" value="" size="20" />
 					</div>
 					' . $login_form_middle . '
-					' . ( $args['remember'] ? '<p class="login-remember pull-right"><label><input name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> ' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
+					' . ( $args['remember'] ? '<p class="login-remember float-right"><label><input name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> ' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
 					<div class="form-group">
 						<input type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="btn btn-secondary btn-block" value="' . esc_attr( $args['label_log_in'] ) . '" />
 						<input type="hidden" name="redirect_to" value="' . esc_url( $args['redirect'] ) . '" />

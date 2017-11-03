@@ -219,12 +219,12 @@ function ekiline_mce_before( $init_array ) {
                 array(
                     'title'     => __( 'Pull Left', 'ekiline' ),
                     'block'  => 'div',
-                    'classes'   => 'pull-left',
+                    'classes'   => 'float-left',
                 ),
                 array(
                     'title'     => __( 'Pull Right', 'ekiline' ),
                     'block'  => 'div',
-                    'classes'   => 'pull-right',
+                    'classes'   => 'float-right',
                 ),
                 array(
                     'title'     => __( 'Clearfix', 'ekiline' ),
@@ -427,12 +427,12 @@ function ekiline_mce_before( $init_array ) {
                 array(
                     'title'     => __( 'Rounded Image', 'ekiline' ),
                     'selector'  => 'img',
-                    'classes'   => 'img-rounded',
+                    'classes'   => 'rounded',
                 ),
                 array(
                     'title'     => __( 'Circle Image', 'ekiline' ),
                     'selector'  => 'img',
-                    'classes'   => 'img-circle',
+                    'classes'   => 'rounded-circle',
                 ),
                 array(
                     'title'     => __( 'Thumbnail Image', 'ekiline' ),

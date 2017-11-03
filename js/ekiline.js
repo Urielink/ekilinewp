@@ -396,7 +396,7 @@ jQuery(document).ready(function($){
 		
 						dataWidth = '';
 		
-				        contenidoModal = '<img class="img-responsive" src="' + dataSrc + '"/>';
+				        contenidoModal = '<img class="img-fluid" src="' + dataSrc + '"/>';
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
