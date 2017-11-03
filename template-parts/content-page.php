@@ -13,7 +13,7 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-    <header class="page-header">
+    <header class="entry-header">
 
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
         
@@ -21,7 +21,7 @@
             <?php ekiline_posted_on() ?>
         </div><!-- .entry-meta -->
                 
-    </header><!-- .page-header -->
+    </header><!-- .entry-header -->
 
 	<?php endif; ?>
 

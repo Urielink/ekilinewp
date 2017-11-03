@@ -28,11 +28,11 @@ $colSet = get_theme_mod('ekiline_Columns');
             </a>
         </div>
         
-        <header class="page-header">
+        <header class="entry-header">
                         
         <?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
     
-        </header><!-- .page-header -->
+        </header><!-- .entry-header -->
     
         <div class="entry-content clearfix">
             

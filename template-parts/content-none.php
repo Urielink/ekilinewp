@@ -10,9 +10,9 @@
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
+	<header class="entry-header">
 		<h1 class="page-title"><?php echo esc_html__( 'Nothing Found', 'ekiline' ); ?></h1>
-	</header><!-- .page-header -->
+	</header><!-- .entry-header -->
 
 	<div class="page-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
