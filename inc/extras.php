@@ -112,12 +112,12 @@ function ekiline_csscolors() {
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
         .page-title, .jumbotron .entry-title{color:'.$texto.';}
-        .navbar-default { background-color:'.$menu.';}
-        .navbar-inverse { background-color:'.$menu.';}
-        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
-        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
+        .navbar.navbar-light.bg-light { background-color:'.$menu.' !important;}
+        .navbar.navbar-dark.bg-dark { background-color:'.$menu.' !important;}
+        .navbar-light .navbar-brand, .navbar-light .navbar-nav > li > a{ color:'.$texto.'; }
+        .navbar-dark .navbar-brand, .navbar-dark .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
         .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,
-        .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:'.$enlaces.';}
+        .navbar-light .navbar-nav .show .dropdown-menu>.active>a, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:focus, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:hover{background-color:'.$enlaces.';}
         .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
@@ -134,24 +134,24 @@ function ekiline_csscolors() {
     // En caso de utilizar dos colores en el menú // if uses 2nd menu color    
     if ( $mgradient != '' ){
         $miestilo .= '
-        .navbar-default, .navbar-inverse{
+        .navbar-light, .navbar-dark{
             background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$mgradient.'));
             background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$mgradient.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);
             border-color:'.$mgradient.';}              
-        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .active > a,
-        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
+        .navbar-light .navbar-nav > .show > a, .navbar-light .navbar-nav > .active > a,
+        .navbar-dark .navbar-nav > .show > a, .navbar-dark .navbar-nav > .active > a {
             background-image: -webkit-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
             background-image: -o-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$mgradient.'), to('.$menu.'));
             background-image: linear-gradient(to bottom, '.$mgradient.' 0%, '.$menu.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
     } else {
-        $miestilo .= '.navbar-default, .navbar-inverse{background-color:'.$menu.';border-color:'.$menu.';background-image: none;}
-        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.1)}
-        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.3)}
+        $miestilo .= '.navbar-light, .navbar-dark{background-color:'.$menu.';border-color:'.$menu.';background-image: none;}
+        .navbar-light .navbar-nav > .active > a, .navbar-light .navbar-nav > .active > a:focus, .navbar-light .navbar-nav > .active > a:hover, .navbar-light .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.1)}
+        .navbar-dark .navbar-nav > .active > a, .navbar-dark .navbar-nav > .active > a:focus, .navbar-dark .navbar-nav > .active > a:hover, .navbar-dark .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.3)}
         ';
                 
     }        
