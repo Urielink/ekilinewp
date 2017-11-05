@@ -96,8 +96,9 @@ jQuery(document).ready(function($){
 	if ( !$('body').hasClass('head-cover') ){
 		
 		var sticky = $( 'footer.site-footer > .container' ).height() + 50 ;
+		console.log(sticky);
 
-		if( sticky <= '150' ){
+		if( sticky <= '200' ){
 			$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
 			$('body').css('margin-bottom', sticky + 'px');
 			$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
