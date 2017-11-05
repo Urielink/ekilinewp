@@ -128,7 +128,7 @@ function primaryNavbar(){
 
 		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
 		            
-		            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse.primary">
+		            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse.primary">
 		      			<!--span class="navbar-toggler-icon"></span--><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 		            </button>
                            
@@ -186,7 +186,7 @@ function modalNavbar(){
         	
 	        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
 	        
-	        <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navModal">
+	        <button class="navbar-toggler collapsed" type="button" data-toggle="modal" data-target="#navModal">
       			<!--span class="navbar-toggler-icon"></span--><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 	        </button>
             
