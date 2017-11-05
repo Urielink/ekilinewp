@@ -887,8 +887,8 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     $wp_customize->add_setting(
             'ekiline_fontawesome', array(
-                    'default' => 'true',
-                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox',
+                    'default' => 'true'
             ) 
     );
     
@@ -904,8 +904,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_setting(
             'ekiline_bootstrapeditor', array(
-                    'default' => 'true',
-                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox',
+                    'default' => 'true'
             ) 
     );
     

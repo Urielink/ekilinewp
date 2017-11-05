@@ -223,7 +223,7 @@ function ekiline_scripts() {
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
         
     // Condición para font awesome
-    if( true === get_theme_mod('ekiline_fontawesome') ) {
+    if( true === get_theme_mod( 'ekiline_fontawesome', true ) ) {
           wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
     }
 		
@@ -407,7 +407,7 @@ require get_template_directory() . '/inc/serviceMinify.php';
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';
 // Deshabilitar bootstrap
-if( true === get_theme_mod('ekiline_bootstrapeditor') ) {
+if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
     require get_template_directory() . '/inc/adminEditor.php';
 }
 

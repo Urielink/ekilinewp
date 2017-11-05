@@ -540,7 +540,7 @@ function custom_mce_buttons() {
         add_filter( 'mce_buttons', 'register_mce_buttons' );
     }
 }
-add_action('admin_head', 'custom_mce_buttons');
+//add_action('admin_head', 'custom_mce_buttons');
 
 
 // Add the path to the js file with the custom button function
