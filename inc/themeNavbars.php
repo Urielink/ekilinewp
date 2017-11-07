@@ -55,6 +55,19 @@ function topNavbar(){
         $inverseMenu = 'navbar-light bg-light';
     }
 	
+	$navStyle = get_theme_mod('ekiline_topmenuStyles');
+	
+	if ($navStyle == '0') {
+	    $navAlign = ' mr-auto';
+		$navHelper = '';
+    } else if ($navStyle == '1') {
+        $navAlign = ''; 
+		$navHelper = ' justify-content-md-center';
+    } else if ($navStyle == '2') {
+        $navAlign = ' ml-auto'; 
+		$navHelper = '';
+    } 		
+	
 		
 	if ( has_nav_menu( 'top' ) ) : ?>
 	
@@ -62,14 +75,15 @@ function topNavbar(){
 	    <div class="container">
 
             <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
-            
+                        
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse.top">
       			<!--span class="navbar-toggler-icon"></span--><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
 
 	        
-	        <div id="navbar-collapse-out" class="collapse navbar-collapse top">
-				<span class="navbar-text d-none d-sm-block"><?php echo get_bloginfo( 'description' ); ?></span>        	
+	        <div id="navbar-collapse-out" class="collapse navbar-collapse top<?php echo $navHelper;?>">
+
+			<span class="navbar-text d-none d-sm-block"><?php echo get_bloginfo( 'description' ); ?></span>        	
 	        
     	        <?php wp_nav_menu( 
                         array(
@@ -77,7 +91,7 @@ function topNavbar(){
         	                'theme_location'    => 'top',
         	                'depth'             => 2,
         	                'container'         => '',
-        	                'menu_class'        => 'navbar-nav mr-auto',
+        	                'menu_class'        => 'navbar-nav'.$navAlign,
         	                'menu_id'           => 'top-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
         	                'walker'            => new WP_Bootstrap_Navwalker()
@@ -120,6 +134,19 @@ function primaryNavbar(){
     } else {
          $inverseMenu = 'navbar-light bg-light';
     }
+	
+	$navStyle = get_theme_mod('ekiline_primarymenuStyles');
+	
+	if ($navStyle == '0') {
+	    $navAlign = ' mr-auto';
+		$navHelper = '';
+    } else if ($navStyle == '1') {
+        $navAlign = ''; 
+		$navHelper = ' justify-content-md-center';
+    } else if ($navStyle == '2') {
+        $navAlign = ' ml-auto'; 
+		$navHelper = '';
+    } 		
     	
     if ( has_nav_menu( 'primary' ) ) : ?>
     
@@ -127,20 +154,22 @@ function primaryNavbar(){
                 <div class="container">
 
 		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php logoTheme(); ?></a>
+
+		            <span class="navbar-text d-none d-sm-block"><?php echo get_bloginfo( 'description' ); ?></span>
 		            
 		            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse.primary">
 		      			<!--span class="navbar-toggler-icon"></span--><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 		            </button>
-                           
+		                                       
                     <!-- The WordPress Menu goes here -->
                     <?php wp_nav_menu( array(
                             'menu'              => 'primary',
                             'theme_location'    => 'primary',
                             'depth'             => 2,
                             'container'         => 'div',
-                                'container_class'   => 'collapse navbar-collapse primary',
+                                'container_class'   => 'collapse navbar-collapse primary'.$navHelper,
                                 'container_id'      => 'navbar-collapse-in',
-                            'menu_class'        => 'navbar-nav mr-auto',
+                            'menu_class'        => 'navbar-nav'.$navAlign,
                             'menu_id'           => 'main-menu',
                             'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
                             'walker'            => new WP_Bootstrap_Navwalker()
@@ -195,7 +224,7 @@ function modalNavbar(){
     </div><!-- .site-navigation -->     
 
 	<!-- tipos de animacion: .zoom, .newspaper, .move-horizontal, .move-from-bottom, .unfold-3d, .zoom-out-->
-    <div id="navModal" class="modal fade zoom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+    <div id="navModal" class="modal fade move-from-bottom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

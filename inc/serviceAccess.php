@@ -120,11 +120,12 @@ add_shortcode('loginform', 'ekiline_loginfrontend');
 /* si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
  * If user is logedin add a link to menu
  * @link https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
+ * $args->theme_location == 'top'
  */
 
 function add_loginout_link( $items, $args ) {
-    if (is_user_logged_in() && $args->theme_location == 'top') {
-        $items .= '<li><a href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).'</a></li>';
+    if (is_user_logged_in()) {
+        $items .= '<li class="menu-item nav-item"><a class="nav-link" href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).' <i class="fa fa-power-off"></i></a></li>';
     }
     return $items;
 }

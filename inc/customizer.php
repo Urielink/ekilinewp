@@ -346,6 +346,27 @@ function ekiline_theme_customizer( $wp_customize ) {
                 ),
             )
         );   
+
+        $wp_customize->add_setting(
+            'ekiline_topmenuStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_topmenuStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Centered', 'ekiline' ),
+                	'2' => __( 'Right', 'ekiline' ),
+                ),
+            )
+        );   
+
         
     // Behaviors for primary menu
 
@@ -370,7 +391,27 @@ function ekiline_theme_customizer( $wp_customize ) {
                     '3' => __( 'Fix to scroll', 'ekiline' ),
                 ),
             )
-        );           
+        );    
+		
+        $wp_customize->add_setting(
+            'ekiline_primarymenuStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_primarymenuStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Centered', 'ekiline' ),
+                	'2' => __( 'Right', 'ekiline' ),
+                ),
+            )
+        );  		       
         
     // Behaviors for modal menu
 

@@ -241,7 +241,7 @@ video#bgvid{transition:1s opacity;}
 #navModal .navbar-nav .dropdown-menu.show > li > a{padding:10px 15px 10px 15px;text-align:center;}
 
 /*31 oct galeria en modal*/
-.modal button.close{position:absolute;right:-20px;top:-20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;}
+.modal button.close{position:absolute;right:20px;top:20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;}
 .modal figure {margin-bottom: 0;}
 .modal .carousel-indicators {bottom: -50px;}
 
@@ -267,19 +267,7 @@ video#bgvid{transition:1s opacity;}
 /* Bootstrap container 992 */	
 	/*.site-footer::after {content:'Bootstrap container 992';background-color:yellow;padding:10px;}*/
  .navbar-nav .show .dropdown-menu > li > a{white-space: normal;}
-	
-/** Ejecutar el menu responsivo antes: https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint **/
-	.overtake .navbar-header{float:none;}
-	.overtake .navbar-left{float:none !important;}
-	.overtake .navbar-toggle{display:block;}
-	.overtake .navbar-collapse{border-top:1px solid transparent;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);}
-	.overtake .navbar-fixed-top{top:0;border-width:0 0 1px;}
-	.overtake .navbar-collapse.collapse{display:none!important;}
-	.overtake .navbar-nav{float:none!important;margin-top:7.5px;}
- 	.overtake .navbar-nav>li{float:none;}
-	.overtake .navbar-nav>li>a{padding-top:10px;padding-bottom:10px;}
- 	.overtake .collapse.show{display:block !important;}
- 	
+	 	
 }
 
 
