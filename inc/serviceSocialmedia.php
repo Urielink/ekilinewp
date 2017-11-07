@@ -217,7 +217,7 @@ function ekiline_socialmenu($atts, $content = null) {
     if ($instSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-instagram" href="'.$instSocial.'" target="_blank" title="Instagram">'.$instIco.'</a></li>';endif;
     if ($pintSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-pinterest" href="'.$pintSocial.'" target="_blank" title="Pinterest">'.$pintIco.'</a></li>';endif;
                             
-    return '<ul class="shortcode-socialmenu list-inline">'. $menuItems .'</ul>';
+    return '<ul class="shortcode-socialmenu nav list-inline">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
     
