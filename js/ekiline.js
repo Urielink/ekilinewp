@@ -96,7 +96,7 @@ jQuery(document).ready(function($){
 	if ( !$('body').hasClass('head-cover') ){
 		
 		var sticky = $( 'footer.site-footer > .container' ).height() + 50 ;
-		console.log(sticky);
+		//console.log(sticky);
 
 		if( sticky <= '200' ){
 			$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
