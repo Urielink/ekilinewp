@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-30 20:39-0500\n"
+"PO-Revision-Date: 2017-11-09 13:36-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -694,6 +694,18 @@ msgstr "Mostrar indicadores"
 
 msgid "Speed"
 msgstr "Velocidad de transiciones"
+
+msgid "Stop"
+msgstr "Detener"
+
+msgid "3sec"
+msgstr "3seg"
+
+msgid "6sec"
+msgstr "6seg"
+
+msgid "9sec"
+msgstr "9seg"
 
 # @ ekiline
 #: carpeta/archivo.php:29

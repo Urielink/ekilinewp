@@ -72,7 +72,7 @@ function ekiline_gallery( $output,$attr ) {
         'name'       => 'default',
         'align'      => 'text-center',
         'indicators' => 'false',
-        'speed'      => '3000',
+        'speed'      => 'false',
         'transition' => ''
     ), $attr, 'gallery' );
  
@@ -347,10 +347,23 @@ add_action('print_media_templates', function(){
         <input type="checkbox" data-setting="indicators">
     </label>  
     
-    <label class="setting">
+    <!--Update, usabilidad, es mejor recurrir a un selector con valores preestablecidos-->
+    <!--label class="setting">
         <span><?php echo __( 'Speed','ekiline' ); ?></span>
-        <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="3000">
+        <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="false">
+    </label-->
+    
+    <label class="setting">
+      <span><?php echo __( 'Speed','ekiline' ); ?></span>
+      <select data-setting="speed">
+        <option value="false"> <?php echo __( 'Stop','ekiline' ); ?> </option>
+        <option value="3000"> <?php echo __( '3sec','ekiline' ); ?> </option>
+        <option value="6000"> <?php echo __( '6sec','ekiline' ); ?> </option>
+        <option value="9000"> <?php echo __( '9sec','ekiline' ); ?> </option>
+      </select>
     </label>
+    
+    
       
     </div>
   </script>
@@ -366,8 +379,7 @@ add_action('print_media_templates', function(){
         align: 'text-center',
         transition: 'none',
         indicators: false,
-        speed: '3000'
-           
+        speed: false           
       });
 
       wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({

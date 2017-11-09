@@ -115,7 +115,7 @@ jQuery(document).ready(function($){
             
     // Carrusel con swipe e impedir que avance automaticamente	
     $('.carousel').carousel({
-    	  interval: false,
+    	  //interval: false,
     	  swipe: 40
     	});	  
             
