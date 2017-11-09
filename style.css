@@ -38,8 +38,8 @@
 .loadtext{line-height:100%;position:absolute;top:46%;left:0;right:0;width:auto;height:auto;}
 .loadicon{margin:0px;padding:10px;font-size:2em;}
 
-/* body styles */
-body{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;}
+/* body styles 
+body{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;}*/
 
 /* ------------------------------------------------
  * WordPress: escencial || core items
