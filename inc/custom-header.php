@@ -305,7 +305,7 @@ function customHeader() {
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
-                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
                     $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
                     $customHeader .= '</div></header>';
                     
@@ -341,7 +341,7 @@ function customHeader() {
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
-                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
                     $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
                     $customHeader .= '</div></header>';
                     
