@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-11-09 13:36-0600\n"
+"PO-Revision-Date: 2017-11-11 21:11-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.8.12\n"
 "Last-Translator: \n"
@@ -284,6 +284,15 @@ msgstr "Mensaje de cabecera"
 
 msgid "Customize the text in your heading image"
 msgstr "Personaliza el mensaje en tu cabecera"
+
+msgid "Show all pages heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las páginas (imagen destacada y titulo)"
+
+msgid "Show all entries heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las entradas (imagen destacada y titulo)"
+
+msgid "Show all categories heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las categorias (imagen destacada y titulo)"
 
 msgid "Site view"
 msgstr "Vista del sitio"

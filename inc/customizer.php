@@ -204,7 +204,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control(
     	'ekiline_showPageHeading', array(
-    				'label'          => __( 'Show page heading image and title', 'ekiline' ),
+    				'label'          => __( 'Show all pages heading (thumbnail and title)', 'ekiline' ),
     				'section'        => 'header_image',
     				'settings'       => 'ekiline_showPageHeading',
     				'type'           => 'checkbox',
@@ -221,7 +221,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control(
     	'ekiline_showEntryHeading', array(
-    				'label'          => __( 'Show entry heading image and title', 'ekiline' ),
+    				'label'          => __( 'Show all entries heading (thumbnail and title)', 'ekiline' ),
     				'section'        => 'header_image',
     				'settings'       => 'ekiline_showEntryHeading',
     				'type'           => 'checkbox',
@@ -238,7 +238,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_control(
     	'ekiline_showCategoryHeading', array(
-    				'label'          => __( 'Show category heading image and title', 'ekiline' ),
+    				'label'          => __( 'Show all categories heading (thumbnail and title)', 'ekiline' ),
     				'section'        => 'header_image',
     				'settings'       => 'ekiline_showCategoryHeading',
     				'type'           => 'checkbox',
