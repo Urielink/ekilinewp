@@ -194,6 +194,60 @@ function ekiline_theme_customizer( $wp_customize ) {
             ) 
     );    
     
+//Show/hide header image on single, pages or categories.
+    $wp_customize->add_setting( 
+        'ekiline_showPageHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showPageHeading', array(
+    				'label'          => __( 'Show page heading image and title', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showPageHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+    $wp_customize->add_setting( 
+        'ekiline_showEntryHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showEntryHeading', array(
+    				'label'          => __( 'Show entry heading image and title', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showEntryHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+    $wp_customize->add_setting( 
+        'ekiline_showCategoryHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showCategoryHeading', array(
+    				'label'          => __( 'Show category heading image and title', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showCategoryHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+			
+	
 
 // Page wide
     $wp_customize->add_section( 

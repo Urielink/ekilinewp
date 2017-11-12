@@ -288,8 +288,8 @@ function customHeader() {
             }       
 									
 				
-		} elseif ( is_single() || is_page() ){
-		    
+		} elseif ( is_single() && true === get_theme_mod('ekiline_showEntryHeading') || is_page() && true === get_theme_mod('ekiline_showPageHeading') ){
+					    
             /**
              * Imagenes para el resto de las páginas
              * Heading image for pages and singles
@@ -320,7 +320,7 @@ function customHeader() {
 
 			}
 			
-		} elseif ( is_category() ){
+		} elseif ( is_category() && true === get_theme_mod('ekiline_showCategoryHeading') ){
 		    
             /**
              * Imagenes para categories
