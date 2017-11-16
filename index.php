@@ -17,7 +17,8 @@ get_header();
 //update: 29 08 2017 columns
 $colSet = get_theme_mod('ekiline_Columns'); 
 $cssCols = '';
-if ($colSet != '0') { $cssCols = ' row'; }
+$cssToCol = '';
+if ($colSet != '0') { $cssCols = ' row'; $cssToCol = ' col-md-12'; }
 
 ?>
 
@@ -29,7 +30,7 @@ if ($colSet != '0') { $cssCols = ' row'; }
 		<?php if ( have_posts() ) : ?>
 
 			<?php if ( is_home() && ! is_front_page() ) : ?>
-				<header>
+				<header class="entry-header<?php echo $cssToCol; ?>">
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
 			<?php endif; ?>

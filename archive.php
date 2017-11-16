@@ -12,17 +12,18 @@ get_header();
 //update: 29 08 2017 columns
 $colSet = get_theme_mod('ekiline_Columns'); 
 $cssCols = '';
-if ($colSet != '0') { $cssCols = ' row'; }
+$cssToCol = '';
+if ($colSet != '0') { $cssCols = ' row'; $cssToCol = ' col-md-12'; }
 
 ?>
 		
 		<?php dynamic_sidebar( 'content-w1' ); ?>		
 
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main<?php echo $cssCols; ?>" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="entry-header">
+			<header class="entry-header<?php echo $cssToCol; ?>">
 				<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="taxonomy-description">', '</div>' );
