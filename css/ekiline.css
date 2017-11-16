@@ -22,10 +22,7 @@ html,body{height:100%;}
 /* Cover header */
 .cover-header{position:absolute;top:0;width:inherit;}
 .cover-header-brand{float:left;width:200px;height:auto;margin-top:-30px;}
-.cover-header-nav > ul li{float:right;margin-left:20px;}
-.cover-header-nav > ul li + li{margin-left:20px;}
-.cover-header-nav > ul li > a{padding-right:0;padding-left:0;font-size:20px;font-weight:bold;border-bottom:2px solid transparent;}
-.cover-header-nav > ul li > a:hover,.cover-header-nav > li > a:focus{background-color:transparent !important;}
+.cover-header .shortcode-socialmenu li a{padding:0px 6px;font-size:20px}
 /* Cover body */
 .cover{padding:0 50px;}
 /* Cover footer */
