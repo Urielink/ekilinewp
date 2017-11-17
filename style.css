@@ -171,11 +171,7 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 
  /*Cover*/
  .cover-header-brand{margin: 40px 0 0;width:100px;}
- .cover-header-nav > ul{float:none;}
- .cover-header-nav > ul li{float:none;margin:20px 0px;}
- .cover{padding-top:80px;}
  .cover-wrapper{background-size:inherit;background-position:35% -5%;}
- .site-header>.jumbotron{height:inherit !important;}
 
  /*[modulecategoryposts]*/
  .modpostlist-carousel .carousel-inner .carousel-caption{position:relative;left:auto;right:auto;margin:0 auto;width:80%;}
