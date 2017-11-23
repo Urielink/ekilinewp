@@ -125,6 +125,7 @@ function customHeader() {
             // Permitir el uso de HTML a la vista // Alllow html on output
             $headerText = wp_kses( $headerText, array( 
                 'a' => array(
+                    'class' => array(),
                     'href' => array(),
                     'title' => array(),
                     'target' => array()
