@@ -98,6 +98,7 @@ function customHeader() {
     // Tamaño de imagen 
     // Background image size
     $rangeHead = get_theme_mod('ekiline_range_header');
+	$setVideo = get_theme_mod('ekiline_video');
  		
 /**
  * Imagen para frontpage, singles y categories
@@ -125,7 +126,6 @@ function customHeader() {
             // Permitir el uso de HTML a la vista // Alllow html on output
             $headerText = wp_kses( $headerText, array( 
                 'a' => array(
-                    'class' => array(),
                     'href' => array(),
                     'title' => array(),
                     'target' => array()
@@ -154,7 +154,7 @@ function customHeader() {
             						
             // Establece la altura de la imagen en formato jumbotron           
 			// Set the range for height value and format image as bootstrap jumbotron			
-			if ( $rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+			if ( $rangeHead <= '95' && empty( $setVideo ) ) {
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
@@ -215,7 +215,7 @@ function customHeader() {
 			
 			// Agregar video - Set video in header 
 			
-            if ( ! empty( get_theme_mod('ekiline_video') ) ) {
+            if ( ! empty( $setVideo ) ) {
                  
                 $customHeader = '<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
                                 '<header class="video-container" style="background-image: url('. get_header_image() .');background-size:cover;">
@@ -232,7 +232,7 @@ function customHeader() {
                 $customHeader .= '</div>                                                                
                                     <div class="video-media embed-responsive embed-responsive-16by9">
                                         <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
-                                            <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
+                                            <source src="'. $setVideo  .'" type="video/mp4">
                                         </video>
                                         <button id="vidpause" class="btn btn-secondary btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
                                     </div>
@@ -386,15 +386,15 @@ add_filter( 'body_class', function( $classes ) {
     
         $rangeHead = get_theme_mod('ekiline_range_header');
         
-        if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+        if ($rangeHead <= '95' && empty( $setVideo ) ) {
             
             $classes[] = 'head-jumbotron';
                         
-        } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+        } elseif ( $rangeHead >= '95' && empty( $setVideo ) ) {
             
             $classes[] = 'head-cover';
             
-        } elseif ( ! empty( get_theme_mod('ekiline_video') ) ) {
+        } elseif ( ! empty( $setVideo ) ) {
             
             $classes[] = 'head-video';
             
