@@ -73,7 +73,8 @@ function ekiline_gallery( $output,$attr ) {
         'align'      => 'text-center',
         'indicators' => 'false',
         'speed'      => 'false',
-        'transition' => ''
+        'transition' => '',
+        'gutters'	 => 'false'
     ), $attr, 'gallery' );
  
     $id = intval( $atts['id'] );
@@ -134,6 +135,8 @@ function ekiline_gallery( $output,$attr ) {
     $speed = '';
     $transition = '';
     $captionCss = '';
+    $gutters = $atts['gutters'];
+		$gutterbottom = 'mb-4';
                         
     if ( empty( $atts['carousel'] ) ) {
                 
@@ -173,13 +176,19 @@ function ekiline_gallery( $output,$attr ) {
         $showlink = 'modal-gallery';
     } else {
         $showlink = '';
-    }         
-    
+    }  
+	
+	/** Si desean ocultar los medianiles **/       
+	if ($gutters == 'true'){
+		$gutters = 'no-gutters';
+		$gutterbottom = 'mb-0';
+	} 
+	   
     /** Fin de Variables de carrusel p1 **/
     
     
     $size_class = sanitize_html_class( $atts['size'] );
-    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition}'".$speed.">";
+    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition} {$gutters}'".$speed.">";
  
     $output = $gallery_div; 
 
@@ -233,10 +242,10 @@ function ekiline_gallery( $output,$attr ) {
               
         /** A.Si no hay carrusel, entonces es una galeria con grid**/  
         if ( !empty( $atts['carousel'] ) ) {
-            $output .= "<div class='{$carouselitem}'>";
+            $output .= "<div class='{$carouselitem} {$gutters}'>";
         }
 
-        $output .= "<{$itemtag} class='gallery-item {$itemcol} {$alignitems}'>";
+        $output .= "<{$itemtag} class='gallery-item {$gutterbottom} {$itemcol} {$alignitems}'>";
         
             $output .= "<{$icontag} class='gallery-icon {$orientation}'>
                             $image_output
@@ -363,6 +372,10 @@ add_action('print_media_templates', function(){
       </select>
     </label>
     
+    <label class="setting">
+        <span><?php echo __( 'Hide gutters','ekiline' ); ?></span>
+        <input type="checkbox" data-setting="gutters">
+    </label>  
     
       
     </div>
@@ -379,7 +392,8 @@ add_action('print_media_templates', function(){
         align: 'text-center',
         transition: 'none',
         indicators: false,
-        speed: false           
+        speed: false,
+        gutters: false           
       });
 
       wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
