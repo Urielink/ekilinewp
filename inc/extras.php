@@ -39,13 +39,15 @@ add_action( 'after_setup_theme', 'ekiline_theme_setup' );
 function ekiline_theme_setup() {
     add_image_size( 'horizontal-slide', 960, 540, array( 'left', 'top' ) );
     add_image_size( 'vertical-slide', 540, 960, array( 'center', 'top' ) );
+    add_image_size( 'square', 540, 540, array( 'center', 'top' ) );
 }
  
 add_filter( 'image_size_names_choose', 'ekiline_custom_sizes' );
 function ekiline_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'horizontal-slide' => __( 'Horizontal carousel', 'ekiline' ),
-        'vertical-slide' => __( 'Vertical carousel', 'ekiline'  )
+        'vertical-slide' => __( 'Vertical carousel', 'ekiline'  ),
+        'square' => __( 'Squares', 'ekiline'  )
     ) );
 }
 
