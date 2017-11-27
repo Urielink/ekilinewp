@@ -64,7 +64,7 @@ function ekiline_description(){
         
         global $wp_query;
         $postid = $wp_query->post->ID;
-        $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
+        $stdDesc = get_post_meta($postid, 'custom_meta_description', true);
         wp_reset_query();
             
         if ( ! empty( $stdDesc ) ) {

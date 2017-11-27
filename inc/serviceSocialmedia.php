@@ -49,7 +49,7 @@ if ( is_page() || is_single() ){
         // personalizar la metadescripcion 
         // custom meta
         global $wp_query;
-        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_descripcion', true);    
+        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_description', true);    
         wp_reset_query();
         
         if ( ! empty( $stdDesc ) ) {
