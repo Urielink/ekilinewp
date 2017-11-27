@@ -123,6 +123,7 @@ function ekiline_gallery( $output,$attr ) {
     $float = is_rtl() ? 'right' : 'left';
  
     $selector = "gallery-{$instance}-".$atts['name'];
+	    $selectorCss = $atts['name'];
   
     
     /** Variables de carrusel p1: las clases CSS y variables de objetos **/
@@ -188,7 +189,7 @@ function ekiline_gallery( $output,$attr ) {
     
     
     $size_class = sanitize_html_class( $atts['size'] );
-    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition} {$gutters}'".$speed.">";
+    $gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-{$selectorCss} gallery-columns-{$columns} gallery-size-{$size_class} {$carousel} {$showlink} {$transition} {$gutters}'".$speed.">";
  
     $output = $gallery_div; 
 
