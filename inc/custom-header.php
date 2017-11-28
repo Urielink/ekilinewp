@@ -117,7 +117,7 @@ function customHeader() {
             // agregar brand image // add brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
-                $coverLogo = '<a class="cover-header-brand" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+                $coverLogo = '<a class="cover-header-brand author" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
             // Mensaje personalizado // custom message
@@ -164,7 +164,7 @@ function customHeader() {
                         $customHeader .= $coverLogo;
 
                         if ( !$headerText ){																																						
-    						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
+    						$customHeader .= '<h1 class="site-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
                             $customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
 						} else {
 						    $customHeader .= $headerText;
@@ -197,7 +197,7 @@ function customHeader() {
 							          <div class="inner cover">';
 
                                     if ( !$headerText ){                                                                                                                                                        
-                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<h1 class="cover-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
                                         $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
                                     } else {
                                         $customHeader .= $headerText;
@@ -206,7 +206,7 @@ function customHeader() {
 				$customHeader .=    '</div>
 				                      <div class="cover-footer text-right">
 							            <div class="inner">
-							             <small>&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
+							             <small class="author">&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
 							            </div>
 							          </div>
 							        </div>
@@ -224,7 +224,7 @@ function customHeader() {
                                         '.$coverLogo;
 
                                     if ( !$headerText ){                                                                                                                                                        
-                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<h1 class="cover-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
                                         $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
                                     } else {
                                         $customHeader .= $headerText;
