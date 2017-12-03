@@ -161,6 +161,19 @@ if ( is_page() || is_single() ){
 
 add_action( 'wp_head', 'registerSocial', 1);
 
+//Habilitar microdatos
+function ekiline_schema(){
+	// variables
+    $fbSocial = get_theme_mod('ekiline_fbProf','');
+    $twSocial = get_theme_mod('ekiline_twProf','');
+    $gpSocial = get_theme_mod('ekiline_gpProf','');
+		    
+    if ( $gpSocial != '' || $twSocial != '' || $fbSocial != '' ) {
+        echo ' itemscope itemtype="http://schema.org/WebPage"';
+    }
+    
+}
+
 
 //Crear un shortcode para crear un menu de redes sociales [socialmenu]
 // Add a shortcode for link this
