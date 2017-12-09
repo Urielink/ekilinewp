@@ -96,7 +96,7 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'lead',
                 ),
                 array(
-                    'title'     => __( 'Small', 'ekiline' ),
+                    'title'     => __( 'Small Text', 'ekiline' ),
                     'inline'    => 'small',
                 ),
                 array(
@@ -148,18 +148,45 @@ function ekiline_mce_before( $init_array ) {
                 ),
             ),
         ),
+
         array(
-            'title' => __( 'Colors', 'ekiline' ),
+            'title' => __( 'Big headings', 'ekiline' ),
             'items' => array(
                 array(
-                    'title'     => __( 'Muted', 'ekiline' ),
-                    'inline'    => 'span',
-                    'classes'   => 'text-muted',
-                ),
+                    'title'     => __( 'Display 1', 'ekiline' ),
+                    'selector'  => 'h1,h2,h3,h4',
+                    'classes'   => 'display-1',
+                ),                           
+                array(
+                    'title'     => __( 'Display 2', 'ekiline' ),
+                    'selector'  => 'h1,h2,h3,h4',
+                    'classes'   => 'display-2',
+                ),                           
+                array(
+                    'title'     => __( 'Display 3', 'ekiline' ),
+                    'selector'  => 'h1,h2,h3,h4',
+                    'classes'   => 'display-3',
+                ),                           
+                array(
+                    'title'     => __( 'Display 4', 'ekiline' ),
+                    'selector'  => 'h1,h2,h3,h4',
+                    'classes'   => 'display-4',
+                ),                           
+            ),
+        ),
+        
+        array(
+            'title' => __( 'Text Colors (B4)', 'ekiline' ),
+            'items' => array(
                 array(
                     'title'     => __( 'Primary', 'ekiline' ),
                     'inline'    => 'span',
                     'classes'   => 'text-primary',
+                ),
+                array(
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'inline'    => 'span',
+                    'classes'   => 'text-secondary',
                 ),
                 array(
                     'title'     => __( 'Success', 'ekiline' ),
@@ -167,9 +194,9 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'text-success',
                 ),
                 array(
-                    'title'     => __( 'Info', 'ekiline' ),
+                    'title'     => __( 'Danger', 'ekiline' ),
                     'inline'    => 'span',
-                    'classes'   => 'text-info',
+                    'classes'   => 'text-danger',
                 ),
                 array(
                     'title'     => __( 'Warning', 'ekiline' ),
@@ -177,42 +204,82 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'text-warning',
                 ),
                 array(
-                    'title'     => __( 'Danger', 'ekiline' ),
+                    'title'     => __( 'Info', 'ekiline' ),
                     'inline'    => 'span',
-                    'classes'   => 'text-danger',
+                    'classes'   => 'text-info',
                 ),
                 array(
-                    'title'     => __( 'Background Primary', 'ekiline' ),
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'inline'    => 'span',
+                    'classes'   => 'text-light',
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'inline'    => 'span',
+                    'classes'   => 'text-dark',
+                ),
+                array(
+                    'title'     => __( 'Muted', 'ekiline' ),
+                    'inline'    => 'span',
+                    'classes'   => 'text-muted',
+                ),
+            ),
+        ),
+
+        array(
+            'title' => __( 'Background colors (B4)', 'ekiline' ),
+            'items' => array(
+                array(
+                    'title'     => __( 'Primary', 'ekiline' ),
                     'block'     => 'div',
                     'classes'   => 'bg-primary',
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Background Success', 'ekiline' ),
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'bg-secondary',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Success', 'ekiline' ),
                     'block'     => 'div',
                     'classes'   => 'bg-success',
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Background Info', 'ekiline' ),
+                    'title'     => __( 'Danger', 'ekiline' ),
                     'block'     => 'div',
-                    'classes'   => 'bg-info',
+                    'classes'   => 'bg-danger',
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Background Warning', 'ekiline' ),
+                    'title'     => __( 'Warning', 'ekiline' ),
                     'block'     => 'div',
                     'classes'   => 'bg-warning',
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Background Danger', 'ekiline' ),
+                    'title'     => __( 'Info', 'ekiline' ),
                     'block'     => 'div',
-                    'classes'   => 'bg-danger',
+                    'classes'   => 'bg-info',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'bg-light',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'bg-dark',
                     'wrapper'   => true,
                 ),
             ),
         ),
+		
         array(
             'title' => __( 'Utilities', 'ekiline' ),
             'items' => array(
