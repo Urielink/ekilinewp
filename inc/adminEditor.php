@@ -284,24 +284,19 @@ function ekiline_mce_before( $init_array ) {
             'title' => __( 'Utilities', 'ekiline' ),
             'items' => array(
                 array(
-                    'title'     => __( 'Pull Left', 'ekiline' ),
-                    'block'  => 'div',
+                    'title'     => __( 'Float Left', 'ekiline' ),
+                    'selector'  => 'div, span, p',
                     'classes'   => 'float-left',
                 ),
                 array(
-                    'title'     => __( 'Pull Right', 'ekiline' ),
-                    'block'  => 'div',
+                    'title'     => __( 'Float Right', 'ekiline' ),
+                    'selector'  => 'div, span, p',
                     'classes'   => 'float-right',
                 ),
                 array(
                     'title'     => __( 'Clearfix', 'ekiline' ),
-                    'block'  => 'div',
+                    'selector'  => 'div',
                     'classes'   => 'clearfix',
-                ),
-                array(
-                    'title'     => __( 'Center Block', 'ekiline' ),
-                    'block'  => 'div',
-                    'classes'   => 'center-block',
                 ),
             ),
         ),
@@ -317,6 +312,11 @@ function ekiline_mce_before( $init_array ) {
                     'title'     => __( 'Inline List', 'ekiline' ),
                     'selector'  => 'ul,ol',
                     'classes'   => 'list-inline',
+                ),
+                array(
+                    'title'     => __( 'Inline list item', 'ekiline' ),
+                    'selector'  => 'li',
+                    'classes'   => 'list-inline-item',
                 ),
             ),
         ),

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-12-08 22:05-0600\n"
+"PO-Revision-Date: 2017-12-11 20:33-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -942,17 +942,14 @@ msgstr "Colores de fondo (B4)"
 msgid "Utilities"
 msgstr "Utilidades"
 
-msgid "Pull Left"
-msgstr "Halar a la Izquierda"
+msgid "Float Left"
+msgstr "Flotar a la Izquierda"
 
-msgid "Pull Right"
-msgstr "Halar a la Derecha"
+msgid "Float Right"
+msgstr "Flotar a la Derecha"
 
 msgid "Clearfix"
-msgstr "Forzar ajuste (Clearfix)"
-
-msgid "Center Block"
-msgstr "Centrar en bloque (Center Block)"
+msgstr "Forzar ajuste en div (Clearfix)"
 
 msgid "Lists"
 msgstr "Listas"
@@ -961,7 +958,10 @@ msgid "Unstyled List"
 msgstr "Lista sin estilo (unstyled)"
 
 msgid "Inline List"
-msgstr "Lista en linea (Inline)"
+msgstr "Lista horizontal (inline)"
+
+msgid "Inline list item"
+msgstr "Objeto de lista horizontal"
 
 msgid "Buttons"
 msgstr "Botones"
