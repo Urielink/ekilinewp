@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-12-11 20:33-0600\n"
+"PO-Revision-Date: 2017-12-12 17:47-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -963,8 +963,14 @@ msgstr "Lista horizontal (inline)"
 msgid "Inline list item"
 msgstr "Objeto de lista horizontal"
 
-msgid "Buttons"
-msgstr "Botones"
+msgid "Solid buttons"
+msgstr "Botones sólidos"
+
+msgid "Outline buttons"
+msgstr "Botones delineados"
+
+msgid "Button variables"
+msgstr "Variables de botón"
 
 msgid "Link"
 msgstr "Enlace (Link)"
@@ -987,11 +993,8 @@ msgstr "Desactivado"
 msgid "Alerts"
 msgstr "Alertas"
 
-msgid "Labels"
-msgstr "Etiquetas"
-
-msgid "Other"
-msgstr "Otros"
+msgid "Other (B4)"
+msgstr "Otros (B4)"
 
 msgid "Reverse Blockquote"
 msgstr "Cita invertida"
@@ -1000,7 +1003,7 @@ msgid "Centered Blockquote"
 msgstr "Cita centrada"
 
 msgid "Blockquote Footer"
-msgstr "Cita al pié"
+msgstr "Pié de cita"
 
 msgid "Well"
 msgstr "Enmarcar (well)"
@@ -1014,6 +1017,9 @@ msgstr "Enmarcar pequeño (Small Well)"
 msgid "Badge"
 msgstr "Insignia (Badge)"
 
+msgid "Pill"
+msgstr "Pastilla"
+
 msgid "Rounded Image"
 msgstr "Imagen redondeada"
 
@@ -1022,6 +1028,9 @@ msgstr "Imagen en círculo"
 
 msgid "Thumbnail Image"
 msgstr "Imagen miniatura"
+
+msgid "Responsive Image"
+msgstr "Imagen responsiva"
 
 # @ ekiline
 #: customizer.php

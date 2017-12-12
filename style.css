@@ -45,7 +45,7 @@ body{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;}*/
  * WordPress: escencial || core items
  * ----------------------------------------------*/
 embed,iframe,object{max-width:100%;margin:0 auto;position:relative;display:block;}
-img{max-width:100%;height:auto;}
+/*img{max-width:100%;height:auto;}*/
 .alignnone{margin:5px 20px 20px 0;}
 .aligncenter,div.aligncenter{display:block;margin:5px auto 5px auto;}
 .alignright{float:right;margin:5px 0 20px 20px;}

@@ -281,26 +281,6 @@ function ekiline_mce_before( $init_array ) {
         ),
 		
         array(
-            'title' => __( 'Utilities', 'ekiline' ),
-            'items' => array(
-                array(
-                    'title'     => __( 'Float Left', 'ekiline' ),
-                    'selector'  => 'div, span, p',
-                    'classes'   => 'float-left',
-                ),
-                array(
-                    'title'     => __( 'Float Right', 'ekiline' ),
-                    'selector'  => 'div, span, p',
-                    'classes'   => 'float-right',
-                ),
-                array(
-                    'title'     => __( 'Clearfix', 'ekiline' ),
-                    'selector'  => 'div',
-                    'classes'   => 'clearfix',
-                ),
-            ),
-        ),
-        array(
             'title' => __( 'Lists', 'ekiline' ),
             'items' => array(
                 array(
@@ -320,18 +300,19 @@ function ekiline_mce_before( $init_array ) {
                 ),
             ),
         ),
+        
         array(
-            'title' => __( 'Buttons', 'ekiline' ),
+            'title' => __( 'Solid buttons', 'ekiline' ),
             'items' => array(
-                array(
-                    'title'     => __( 'Default', 'ekiline' ),
-                    'inline'    => 'a',
-                    'classes'   => 'btn btn-secondary',
-                ),
                 array(
                     'title'     => __( 'Primary', 'ekiline' ),
                     'inline'    => 'a',
                     'classes'   => 'btn btn-primary',
+                ),
+                array(
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-secondary',
                 ),
                 array(
                     'title'     => __( 'Success', 'ekiline' ),
@@ -339,9 +320,9 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'btn btn-success',
                 ),
                 array(
-                    'title'     => __( 'Info', 'ekiline' ),
+                    'title'     => __( 'Danger', 'ekiline' ),
                     'inline'    => 'a',
-                    'classes'   => 'btn btn-info',
+                    'classes'   => 'btn btn-danger',
                 ),
                 array(
                     'title'     => __( 'Warning', 'ekiline' ),
@@ -349,10 +330,72 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'btn btn-warning',
                 ),
                 array(
+                    'title'     => __( 'Info', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-info',
+                ),
+                array(
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-light',
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-dark',
+                ),
+            ),
+        ),
+        
+        array(
+            'title' => __( 'Outline buttons', 'ekiline' ),
+            'items' => array(
+                array(
+                    'title'     => __( 'Primary', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-primary',
+                ),
+                array(
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-secondary',
+                ),
+                array(
+                    'title'     => __( 'Success', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-success',
+                ),
+                array(
                     'title'     => __( 'Danger', 'ekiline' ),
                     'inline'    => 'a',
-                    'classes'   => 'btn btn-danger',
+                    'classes'   => 'btn btn-outline-danger',
                 ),
+                array(
+                    'title'     => __( 'Warning', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-warning',
+                ),
+                array(
+                    'title'     => __( 'Info', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-info',
+                ),
+                array(
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-light',
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'inline'    => 'a',
+                    'classes'   => 'btn btn-outline-dark',
+                ),
+            ),
+        ),
+        
+        array(
+            'title' => __( 'Button variables', 'ekiline' ),
+            'items' => array(
                 array(
                     'title'     => __( 'Link', 'ekiline' ),
                     'inline'    => 'a',
@@ -369,11 +412,6 @@ function ekiline_mce_before( $init_array ) {
                     'classes'   => 'btn-sm',
                 ),
                 array(
-                    'title'     => __( 'Extra Small', 'ekiline' ),
-                    'selector'  => 'a,button,input',
-                    'classes'   => 'btn-sm',
-                ),
-                array(
                     'title'     => __( 'Block', 'ekiline' ),
                     'selector'  => 'a,button,input',
                     'classes'   => 'btn-block',
@@ -381,50 +419,80 @@ function ekiline_mce_before( $init_array ) {
                 array(
                     'title'        => __( 'Disabled', 'ekiline' ),
                     'selector'     => 'a,button,input',
+                    'classes'   => 'disabled',
                     'attributes'   => array(
                         'disabled' => 'disabled'
                     ),
                 ),
             ),
         ),
+        
         array(
-            'title' => __( 'Labels', 'ekiline' ),
+            'title' => __( 'Badge', 'ekiline' ),
             'items' => array(
-                array(
-                    'title'     => __( 'Default', 'ekiline' ),
-                    'inline'  => 'span',
-                    'classes'   => 'label label-default',
-                ),
                 array(
                     'title'     => __( 'Primary', 'ekiline' ),
                     'inline'  => 'span',
-                    'classes'   => 'label label-primary',
+                    'classes'   => 'badge badge-primary',
+                ),
+                array(
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'inline'  => 'span',
+                    'classes'   => 'badge badge-secondary',
                 ),
                 array(
                     'title'     => __( 'Success', 'ekiline' ),
                     'inline'  => 'span',
-                    'classes'   => 'label label-success',
-                ),
-                array(
-                    'title'     => __( 'Info', 'ekiline' ),
-                    'inline'  => 'span',
-                    'classes'   => 'label label-info',
-                ),
-                array(
-                    'title'     => __( 'Warning', 'ekiline' ),
-                    'inline'  => 'span',
-                    'classes'   => 'label label-warning',
+                    'classes'   => 'badge badge-success',
                 ),
                 array(
                     'title'     => __( 'Danger', 'ekiline' ),
                     'inline'  => 'span',
-                    'classes'   => 'label label-danger',
+                    'classes'   => 'badge badge-danger',
                 ),
+                array(
+                    'title'     => __( 'Warning', 'ekiline' ),
+                    'inline'  => 'span',
+                    'classes'   => 'badge badge-warning',
+                ),
+                array(
+                    'title'     => __( 'Info', 'ekiline' ),
+                    'inline'  => 'span',
+                    'classes'   => 'badge badge-info',
+                ),
+                array(
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'inline'  => 'span',
+                    'classes'   => 'badge badge-light',
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'inline'  => 'span',
+                    'classes'   => 'badge badge-dark',
+                ),                
+                array(
+                    'title'     => __( 'Pill', 'ekiline' ),
+                    'selector'  => 'span',
+                    'classes'   => 'badge-pill',
+                ),                
             ),
         ),
+        
         array(
             'title' => __( 'Alerts', 'ekiline' ),
             'items' => array(
+                array(
+                    'title'     => __( 'Primary', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'alert alert-primary',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Secondary', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'alert alert-secondary',
+                    'wrapper'   => true,
+                ),
                 array(
                     'title'     => __( 'Success', 'ekiline' ),
                     'block'     => 'div',
@@ -432,9 +500,9 @@ function ekiline_mce_before( $init_array ) {
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Info', 'ekiline' ),
+                    'title'     => __( 'Danger', 'ekiline' ),
                     'block'     => 'div',
-                    'classes'   => 'alert alert-info',
+                    'classes'   => 'alert alert-danger',
                     'wrapper'   => true,
                 ),
                 array(
@@ -444,52 +512,63 @@ function ekiline_mce_before( $init_array ) {
                     'wrapper'   => true,
                 ),
                 array(
-                    'title'     => __( 'Danger', 'ekiline' ),
+                    'title'     => __( 'Info', 'ekiline' ),
                     'block'     => 'div',
-                    'classes'   => 'alert alert-danger',
+                    'classes'   => 'alert alert-info',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Light', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'alert alert-light',
+                    'wrapper'   => true,
+                ),
+                array(
+                    'title'     => __( 'Dark', 'ekiline' ),
+                    'block'     => 'div',
+                    'classes'   => 'alert alert-dark',
                     'wrapper'   => true,
                 ),
             ),
         ),
+        
         array(
-            'title' => __( 'Other', 'ekiline' ),
+            'title' => __( 'Other (B4)', 'ekiline' ),
             'items' => array(
+                array(
+                    'title'     => __( 'Float Left', 'ekiline' ),
+                    'selector'  => 'div, span, p',
+                    'classes'   => 'float-left',
+                ),
+                array(
+                    'title'     => __( 'Float Right', 'ekiline' ),
+                    'selector'  => 'div, span, p',
+                    'classes'   => 'float-right',
+                ),
+                array(
+                    'title'     => __( 'Clearfix', 'ekiline' ),
+                    'selector'  => 'div',
+                    'classes'   => 'clearfix',
+                ),            
+                array(
+                    'title'     => __( 'Blockquote', 'ekiline' ),
+                    'selector'  => 'blockquote',
+                    'classes'   => 'blockquote',
+                ),
                 array(
                     'title'     => __( 'Reverse Blockquote', 'ekiline' ),
                     'selector'  => 'blockquote',
-                    'classes'   => 'blockquote-reverse',
+                    'classes'   => 'blockquote text-right',
                 ),
                 array(
                     'title'     => __( 'Centered Blockquote', 'ekiline' ),
                     'selector'  => 'blockquote',
-                    'classes'   => 'text-center',
+                    'classes'   => 'blockquote text-center',
                 ),
                 array(
                     'title'     => __( 'Blockquote Footer', 'ekiline' ),
                     'block'     => 'footer',
-                ),
-                array(
-                    'title'     => __( 'Well', 'ekiline' ),
-                    'block'     => 'div',
-                    'classes'   => 'well',
-                    'wrapper'   => true,
-                ),
-                array(
-                    'title'     => __( 'Large Well', 'ekiline' ),
-                    'block'     => 'div',
-                    'classes'   => 'well well-lg',
-                    'wrapper'   => true,
-                ),
-                array(
-                    'title'     => __( 'Small Well', 'ekiline' ),
-                    'block'     => 'div',
-                    'classes'   => 'well well-sm',
-                    'wrapper'   => true,
-                ),
-                array(
-                    'title'     => __( 'Badge', 'ekiline' ),
-                    'inline'     => 'span',
-                    'classes'   => 'badge',
+                    'classes'   => 'blockquote-footer',
                 ),
                 array(
                     'title'     => __( 'Rounded Image', 'ekiline' ),
@@ -506,8 +585,14 @@ function ekiline_mce_before( $init_array ) {
                     'selector'  => 'img',
                     'classes'   => 'img-thumbnail',
                 ),
+                array(
+                    'title'     => __( 'Responsive Image', 'ekiline' ),
+                    'selector'  => 'img',
+                    'classes'   => 'img-fluid',
+                ),
             ),
         ),        
+        
         array(
             'title' => __( 'Ekiline extra', 'ekiline' ),
             'items' => array(
@@ -525,16 +610,34 @@ function ekiline_mce_before( $init_array ) {
                     'title'     => __( 'Tooltip', 'ekiline' ),
                     'selector'  => 'a',
                     'classes'   => 'tooltip-default',
+                    'attributes' => array(
+                        'title' => 'Tooltip text'
+                    ),                                        
                 ),
                 array(
                     'title'     => __( 'Popover', 'ekiline' ),
                     'selector'  => 'a',
                     'classes'   => 'popover-default',
+                    'attributes' => array(
+                        'title' => 'Popover Title',
+                        'data-content' => 'Popover Content',
+                    ),                                        
                 ),
+                array(
+                    'title'     => __( 'Popover dismiss', 'ekiline' ),
+                    'selector'  => 'a',
+                    'attributes' => array(
+                        'tabindex' => '0',
+                        'data-trigger' => 'focus',
+                    ),                                        
+                ),                                
                 array(
                     'title'     => __( 'Popover Rich', 'ekiline' ),
                     'selector'  => 'a',
                     'classes'   => 'popover-rich',
+                    'attributes' => array(
+                        'title' => 'Popover Title',
+                    ),                                        
                 ),                                
                 array(
                     'title'     => __( 'Show top', 'ekiline' ),
