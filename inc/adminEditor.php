@@ -698,6 +698,9 @@ add_filter( 'tiny_mce_before_init', 'ekiline_mce_before' );
  * https://jamesdigioia.com/add-button-pop-wordpresss-tinymce-editor/
  * Un tutorial:
  * https://dobsondev.com/2015/10/16/custom-tinymce-buttons-in-wordpress/
+ * Otro ejemplo más elaborado
+ * http://www.wpexplorer.com/wordpress-tinymce-tweaks/
+ * https://github.com/SufferMyJoy/dobsondev-wordpress-tinymce-example
  **/
  
 /**
@@ -710,7 +713,7 @@ function custom_mce_buttons() {
         add_filter( 'mce_buttons', 'register_mce_buttons' );
     }
 }
-//add_action('admin_head', 'custom_mce_buttons');
+add_action('admin_head', 'custom_mce_buttons');
 
 
 // Add the path to the js file with the custom button function
