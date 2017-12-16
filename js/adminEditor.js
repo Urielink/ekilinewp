@@ -19,7 +19,8 @@
                 editor.windowManager.open( {
                     title: 'THE_TITLE_OF_THE_POPUP_WINDOW',
                     id: 'plugin-slug-insert-dialog', // El ejercicio original no invoca la clase del item, le añadí un ID.
-                    body: [{
+                    body: [
+                    {
                         type: 'textbox',
                         name: 'title',
                         placeholder: 'PLACE_HOLDER_TEXT',
@@ -92,7 +93,8 @@
                         });
                         return false;
                         }
-                    }],
+                    }
+                    ],
                     onsubmit: function( e ) {
                         // wrap it with a div and give it a class name
                         editor.insertContent( '<div class="CLASS_NAME">' + e.data.title + '</div>');
