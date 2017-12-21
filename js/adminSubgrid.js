@@ -16,13 +16,15 @@
     tinymce.PluginManager.add('custom_mce_button2', function(editor, url) {
     	
         editor.addButton('custom_mce_button2', {
-            icon: false,
-            text: 'B4_GRID_BUTTON',
+            //icon: false,
+            //text: 'B4 Cols',
+            title : 'Insertar columnas',
+            image: '../wp-content/themes/ekiline/img/ico-cols.png',
             onclick: function (e) {
             	
                 editor.windowManager.open({
                 	
-                    title: 'B4_GRID_POPUP_WINDOW',
+                    title: 'Insertar columnas',
                     minWidth: 500,
                     minHeight: 100,
 
@@ -38,7 +40,7 @@
         						  { text: 'Col 4', value: '<div class="col-sm-3">Column 1</div><div class="col-sm-3">Column 2</div><div class="col-sm-3">Column 3</div><div class="col-sm-3">Column 4</div>' },
         						  { text: 'Col 6', value: '<div class="col-sm-2">Column 1</div><div class="col-sm-2">Column 2</div><div class="col-sm-2">Column 3</div><div class="col-sm-2">Column 4</div><div class="col-sm-2">Column 5</div><div class="col-sm-2">Column 6</div>' },
 						      ]
-	                	}
+	                	},
                 	],
                     	
                     onsubmit: function (e) {
