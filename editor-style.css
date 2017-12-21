@@ -6,7 +6,7 @@
  * Disable bootstrap behaviors for correct work in editor
  **/
 .btn{-ms-touch-action:inherit;touch-action:inherit;cursor:inherit;-webkit-user-select:inherit;-moz-user-select:inherit;-ms-user-select:inherit;user-select:inherit;}
-body#tinymce.wf-ekiline.wp-editor{margin:0px 15px;} 
+body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor ( overflow-y: visible !important; )*/
 /*.embed-responsive{position:inherit;display:inherit;height:auto;padding:0;overflow:inherit;}
 .embed-responsive-4by3,.embed-responsive-16by9{padding-bottom: 0px;}*/
 /*Modo wireframe **/

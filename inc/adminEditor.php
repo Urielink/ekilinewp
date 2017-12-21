@@ -15,6 +15,11 @@
 
 add_editor_style('editor-style.css'); 
 
+/*Existe un problema en el editor, cachea el estilo, entonces
+ * es necesario forzar el refresh con este script:
+ * https://wordpress.stackexchange.com/questions/33318/forcing-reload-of-editor-style-css
+ **/
+
 
 /**
  * Añadir los tipos de estilo que se requieren para trabajar con bootstrap:
