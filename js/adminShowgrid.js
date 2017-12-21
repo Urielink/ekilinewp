@@ -29,7 +29,8 @@
         		 * **https://www.tinymce.com/docs/advanced/creating-a-custom-button/
         		 */
 				tinymce.activeEditor.dom.toggleClass( tinymce.activeEditor.dom.select('#tinymce'), 'wf-ekiline');
-
+				
+				this.active(true); //https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
 
         		
                 
@@ -37,3 +38,5 @@
         });
     });
 } )( jQuery );
+
+
