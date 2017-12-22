@@ -492,6 +492,27 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
         );                   
         
+        $wp_customize->add_setting(
+            'ekiline_modalNavStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_modalNavStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Show from bottom', 'ekiline' ),
+                	'2' => __( 'Show from left', 'ekiline' ),
+                	'3' => __( 'Show from right', 'ekiline' ),
+                ),
+            )
+        ); 
+
 
     // Page optimization
    

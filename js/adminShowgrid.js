@@ -27,12 +27,19 @@
         		 * https://www.tinymce.com/docs/api/tinymce.dom/tinymce.dom.domutils/#addclass
         		 * **https://www.tinymce.com/docs/demo/custom-toolbar-button/
         		 * **https://www.tinymce.com/docs/advanced/creating-a-custom-button/
+        		 * **https://stackoverflow.com/questions/3279947/how-to-check-classes-of-node-inside-tinymce
         		 */
 				tinymce.activeEditor.dom.toggleClass( tinymce.activeEditor.dom.select('#tinymce'), 'wf-ekiline');
-				
-				this.active(true); //https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
 
-        		
+				showf = tinymce.activeEditor.dom.select('#tinymce');
+				if ( $(showf).hasClass("wf-ekiline") ) {
+					this.active(true); 
+				} else {
+					this.active(false); 
+				}
+				
+				//https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
+				//this.active(true); 
                 
             }
         });

@@ -232,10 +232,24 @@ video#bgvid{transition:1s opacity;}
 .modal.zoom-out .modal-dialog{transition:all 0.5s;transform:scale(1.3);}
 .modal.zoom-out.show .modal-dialog{transform:scale(1);}
 
+/*21 dic menu con modal a los lados: agrega "left" or "right" en modal parent div, after class="modal" */
+.modal.left-aside .modal-dialog,
+.modal.right-aside .modal-dialog{position:fixed;margin:auto;width:320px;height:100%;-webkit-transform:translate3d(0%,0,0);-ms-transform:translate3d(0%,0,0);-o-transform:translate3d(0%,0,0);transform:translate3d(0%,0,0);}
+.modal.left-aside .modal-content,
+.modal.right-aside .modal-content{height:100%;overflow-y:auto;}
+.modal.left-aside .modal-body,
+.modal.right-aside .modal-body{padding:15px 15px 80px;}
+.modal.left-aside.fade .modal-dialog{left:-320px;-webkit-transition:opacity 0.3s linear,left 0.3s ease-out;-moz-transition:opacity 0.3s linear,left 0.3s ease-out;-o-transition:opacity 0.3s linear,left 0.3s ease-out;transition:opacity 0.3s linear,left 0.3s ease-out;}
+.modal.left-aside.fade.show .modal-dialog{left:0;} 
+.modal.right-aside.fade .modal-dialog{right:-320px;-webkit-transition:opacity 0.3s linear,right 0.3s ease-out;-moz-transition:opacity 0.3s linear,right 0.3s ease-out;-o-transition:opacity 0.3s linear,right 0.3s ease-out;transition:opacity 0.3s linear,right 0.3s ease-out;}
+.modal.right-aside.fade.show .modal-dialog{right:0;}
+
 /*19 ago menú con modal*/
 #navModal .navbar-nav{text-align:center;}
 #navModal .navbar-nav .dropdown-menu.show{position:static !important;margin-top:0;border:0;padding:0px;-ms-transform:inherit !important;-webkit-transform:inherit !important;transform:inherit !important;}
 #navModal .navbar-nav .dropdown-menu.show > li > a{padding:10px 15px 10px 15px;text-align:center;}
+#navModal.modal.move-from-bottom .modal-dialog{position:fixed;left:0;right:0;bottom:0;margin:0px auto;height:80%;}
+#navModal.modal.move-from-bottom .modal-content{height:100%;overflow-y:auto;}
 
 /*31 oct galeria en modal*/
 .modal button.close{position:absolute;right:20px;top:20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;}

@@ -205,6 +205,17 @@ function modalNavbar(){
         $inverseMenu = 'navbar-light bg-light';
     }
     
+	$navStyle = get_theme_mod('ekiline_modalNavStyles');
+	
+	if ($navStyle == '0') {
+	    $showModal = '';
+    } else if ($navStyle == '1') {
+        $showModal = 'move-from-bottom'; 
+    } else if ($navStyle == '2') {
+        $showModal = 'left-aside'; 
+    } else if ($navStyle == '3') {
+        $showModal = 'right-aside'; 
+    } 
         
     if ( has_nav_menu( 'modal' ) ) : ?>
     
@@ -223,8 +234,8 @@ function modalNavbar(){
            
     </div><!-- .site-navigation -->     
 
-	<!-- tipos de animacion: .zoom, .newspaper, .move-horizontal, .move-from-bottom, .unfold-3d, .zoom-out-->
-    <div id="navModal" class="modal fade move-from-bottom" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
+	<!-- tipos de animacion: .zoom, .newspaper, .move-horizontal, .move-from-bottom, .unfold-3d, .zoom-out, .left-aside, .right-aside-->
+    <div id="navModal" class="modal fade <?php echo $showModal;?>" tabindex="-1" role="dialog" aria-labelledby="navModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -250,9 +261,9 @@ function modalNavbar(){
                   ); ?>
         
 
-          <div class="modal-footer">
+          <!--div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+          </div-->
         </div>
       </div>
     </div>

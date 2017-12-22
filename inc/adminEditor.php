@@ -33,7 +33,7 @@ function ekiline_bootstrap_styles($buttons) {
     array_unshift($buttons, 'styleselect');
     return $buttons;
 }
-add_filter('mce_buttons_2', 'ekiline_bootstrap_styles');
+add_filter('mce_buttons_3', 'ekiline_bootstrap_styles');
 
 /*
 * Genero mi callback
@@ -715,7 +715,7 @@ function custom_mce_buttons() {
     // Check if WYSIWYG is enabled
     if ( get_user_option( 'rich_editing' ) == 'true' ) {
         add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
-        add_filter( 'mce_buttons', 'register_mce_buttons' );
+        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
     }
 }
 add_action('admin_head', 'custom_mce_buttons');

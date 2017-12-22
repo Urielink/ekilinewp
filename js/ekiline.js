@@ -71,16 +71,18 @@ jQuery(document).ready(function($){
 		});         
 	}
 		
-	// animar el boton del menu.
-	$('.navbar-toggle').on('click', function () {
+	/* animar el boton del menu.
+	$('.navbar-toggler').on('click', function () {
 		$(this).toggleClass('active');
-	});
+	});*/
 	
 	//19 ago menú con modal
+	$('#site-navigation-modal .navbar-toggler').on('click',function(){
+		$(this).removeClass('collapsed');
+	});
     $('#navModal').on('hidden.bs.modal', function(){
-    	$('#site-navigation-modal .navbar-toggle').toggleClass('active');
+    	$('#site-navigation-modal .navbar-toggler').addClass('collapsed');
     });             
-	
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
