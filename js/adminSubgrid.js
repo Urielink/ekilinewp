@@ -9,6 +9,9 @@
  * Oficial tinyMce.
  * https://www.tinymce.com/docs/advanced/creating-custom-dialogs/
  * https://www.tinymce.com/docs/demo/custom-toolbar-listbox/
+ * 
+ * Ejemplo de dialogo
+ * https://jsfiddle.net/aeutaoLf/2/
  *
  */
 
@@ -30,15 +33,24 @@
 
                     body: [
                     // item 1, las columnas
+						{
+				            type   : 'label',
+				            name   : 'description',
+				            label  : 'Columnas',
+				            text   : 'Las columnas se crean a proporción'
+						},                    
 	                    {
 	                    	type: 'listbox', 
 	                    	name: 'column', 
-	                    	label: 'Columns', 
+	                    	//label: 'Columnas', 
+	                    	//text: 'Las columnas se insertan de manera proporcional', 
 						      values: [
-        						  { text: 'Col 2', value: '<div class="col-sm-6">Column 1</div><div class="col-sm-6">Column 2</div>' },
-        						  { text: 'Col 3', value: '<div class="col-sm-4">Column 1</div><div class="col-sm-4">Column 2</div><div class="col-sm-4">Column 3</div>' },
-        						  { text: 'Col 4', value: '<div class="col-sm-3">Column 1</div><div class="col-sm-3">Column 2</div><div class="col-sm-3">Column 3</div><div class="col-sm-3">Column 4</div>' },
-        						  { text: 'Col 6', value: '<div class="col-sm-2">Column 1</div><div class="col-sm-2">Column 2</div><div class="col-sm-2">Column 3</div><div class="col-sm-2">Column 4</div><div class="col-sm-2">Column 5</div><div class="col-sm-2">Column 6</div>' },
+        						  { text: '1 columna', value: '<div class="col-sm-6">Columna 1</div>' },
+        						  { text: '2 columnas', value: '<div class="col-sm-6">Columna 1</div><div class="col-sm-6">Columna 2</div>' },
+        						  { text: '3 columnas', value: '<div class="col-sm-4">Columna 1</div><div class="col-sm-4">Columna 2</div><div class="col-sm-4">Columna 3</div>' },
+        						  { text: '4 columnas', value: '<div class="col-sm-3">Columna 1</div><div class="col-sm-3">Columna 2</div><div class="col-sm-3">Columna 3</div><div class="col-sm-3">Columna 4</div>' },
+        						  { text: '5 columnas', value: '<div class="col-sm">Columna 1</div><div class="col-sm">Columna 2</div><div class="col-sm">Columna 3</div><div class="col-sm">Columna 4</div><div class="col-sm">Columna 5</div>' },
+        						  { text: '6 columnas', value: '<div class="col-sm-2">Columna 1</div><div class="col-sm-2">Columna 2</div><div class="col-sm-2">Columna 3</div><div class="col-sm-2">Columna 4</div><div class="col-sm-2">Columna 5</div><div class="col-sm-2">Columna 6</div>' },
 						      ]
 	                	},
                 	],

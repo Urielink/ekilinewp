@@ -236,51 +236,43 @@ function ekiline_mce_before( $init_array ) {
             'items' => array(
                 array(
                     'title'     => __( 'Primary', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-primary',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Secondary', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-secondary',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Success', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-success',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Danger', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-danger',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Warning', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-warning',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Info', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-info',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Light', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-light',
-                    'wrapper'   => true,
                 ),
                 array(
                     'title'     => __( 'Dark', 'ekiline' ),
-                    'block'     => 'div',
+                    'selector'     => 'div',
                     'classes'   => 'bg-dark',
-                    'wrapper'   => true,
                 ),
             ),
         ),
@@ -728,6 +720,7 @@ function custom_tinymce_plugin( $plugin_array ) {
     //$plugin_array['custom_mce_button1'] = get_template_directory_uri() .'/js/adminEditor.js';
     $plugin_array['custom_mce_button2'] = get_template_directory_uri() .'/js/adminSubgrid.js';
     $plugin_array['custom_mce_button3'] = get_template_directory_uri() .'/js/adminShowgrid.js';
+    $plugin_array['custom_mce_button4'] = get_template_directory_uri() .'/js/adminItemBg.js';
     return $plugin_array;
 }
 
@@ -736,6 +729,7 @@ function register_mce_buttons( $buttons ) {
     //array_push( $buttons, 'custom_mce_button1' );
     array_push( $buttons, 'custom_mce_button2' );
     array_push( $buttons, 'custom_mce_button3' );
+    array_push( $buttons, 'custom_mce_button4' );
     return $buttons;
 }
 

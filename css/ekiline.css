@@ -395,19 +395,7 @@ video#bgvid{transition:1s opacity;}
 /*Modo wireframe **/
 .wf-ekiline [class*='col']{border:1px solid #ddd;}
 
-.wf-ekiline .col-xs-1::before { content: 'col-xs-1';}
-.wf-ekiline .col-xs-2::before { content: 'col-xs-2';}
-.wf-ekiline .col-xs-3::before { content: 'col-xs-3';}
-.wf-ekiline .col-xs-4::before { content: 'col-xs-4';}
-.wf-ekiline .col-xs-5::before { content: 'col-xs-5';}
-.wf-ekiline .col-xs-6::before { content: 'col-xs-6';}
-.wf-ekiline .col-xs-7::before { content: 'col-xs-7';}
-.wf-ekiline .col-xs-8::before { content: 'col-xs-8';}
-.wf-ekiline .col-xs-9::before { content: 'col-xs-9';}
-.wf-ekiline .col-xs-10::before { content: 'col-xs-10';}
-.wf-ekiline .col-xs-11::before { content: 'col-xs-11';}
-.wf-ekiline .col-xs-12::before { content: 'col-xs-12';}
-
+.wf-ekiline .col-sm::before { content: 'col-sm';}
 .wf-ekiline .col-sm-1::before { content: 'col-sm-1';}
 .wf-ekiline .col-sm-2::before { content: 'col-sm-2';}
 .wf-ekiline .col-sm-3::before { content: 'col-sm-3';}
@@ -421,6 +409,7 @@ video#bgvid{transition:1s opacity;}
 .wf-ekiline .col-sm-11::before { content: 'col-sm-11';}
 .wf-ekiline .col-sm-12::before { content: 'col-sm-12';}
 
+.wf-ekiline .col-md::before { content: 'col-md';}
 .wf-ekiline .col-md-1::before { content: 'col-md-1';}
 .wf-ekiline .col-md-2::before { content: 'col-md-2';}
 .wf-ekiline .col-md-3::before { content: 'col-md-3';}
@@ -434,6 +423,7 @@ video#bgvid{transition:1s opacity;}
 .wf-ekiline .col-md-11::before { content: 'col-md-11';}
 .wf-ekiline .col-md-12::before { content: 'col-md-12';}
 
+.wf-ekiline .col-lg::before { content: 'col-lg';}
 .wf-ekiline .col-lg-1::before { content: 'col-lg-1';}
 .wf-ekiline .col-lg-2::before { content: 'col-lg-2';}
 .wf-ekiline .col-lg-3::before { content: 'col-lg-3';}
@@ -446,6 +436,20 @@ video#bgvid{transition:1s opacity;}
 .wf-ekiline .col-lg-10::before { content: 'col-lg-10';}
 .wf-ekiline .col-lg-11::before { content: 'col-lg-11';}
 .wf-ekiline .col-lg-12::before { content: 'col-lg-12';}
+
+.wf-ekiline .col-xl::before { content: 'col-xl';}
+.wf-ekiline .col-xl-1::before { content: 'col-xl-1';}
+.wf-ekiline .col-xl-2::before { content: 'col-xl-2';}
+.wf-ekiline .col-xl-3::before { content: 'col-xl-3';}
+.wf-ekiline .col-xl-4::before { content: 'col-xl-4';}
+.wf-ekiline .col-xl-5::before { content: 'col-xl-5';}
+.wf-ekiline .col-xl-6::before { content: 'col-xl-6';}
+.wf-ekiline .col-xl-7::before { content: 'col-xl-7';}
+.wf-ekiline .col-xl-8::before { content: 'col-xl-8';}
+.wf-ekiline .col-xl-9::before { content: 'col-xl-9';}
+.wf-ekiline .col-xl-10::before { content: 'col-xl-10';}
+.wf-ekiline .col-xl-11::before { content: 'col-xl-11';}
+.wf-ekiline .col-xl-12::before { content: 'col-xl-12';}
 
 .wf-ekiline [class*="col"]::before{background:#ffdede;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;margin-left:-15px;margin-right:-15px;}
 
