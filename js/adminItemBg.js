@@ -21,43 +21,44 @@
         editor.addButton('custom_mce_button4', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Fondo',
-            image: '../wp-content/themes/ekiline/img/ico-cols.png',
+            title : 'Agregar fondo',
+            image: '../wp-content/themes/ekiline/img/ico-bg.png',
             onclick: function (e) {
             	
                 editor.windowManager.open({
                 	
-                    title: 'Dar formato',
+                    title: 'Elige una imagen o color de fondo',
                     minWidth: 500,
                     minHeight: 100,
 
                     body: [
                     // item 1, el selector de color
-						{
-				            type   : 'label',
-				            name   : 'description',
-				            label  : 'Fondos',
-				            text   : 'Elige un color de fondo o añade una imagen a tu módulo'
-						},                    
 				        {
 				            type   : 'colorpicker',
 				            name   : 'colorpicker',
-				            label  : 'Color'
+				            //label  : 'Color'
 				        },
-// item 2, el selector de imagen
-/** explorar: https://stackoverflow.com/questions/32705935/wordpress-tinymce-window-manager-upload-button-not-adding-url-to-text-field
- * http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
- * https://www.tinymce.com/docs-3x/api/dom/class_tinymce.dom.Selection.html/#selection
- * https://www.tinymce.com/docs-3x/reference/configuration/Configuration3x@selector/
- * https://jsfiddle.net/aeutaoLf/2/
- * 
- */
 
-                    {
-                        type: 'button',
-                        name: 'image',
-                        text: 'Insert Media',
-                        onclick: function(e) {
+						/** item 2, el selector de imagen
+						 * explorar: https://stackoverflow.com/questions/32705935/wordpress-tinymce-window-manager-upload-button-not-adding-url-to-text-field
+						 * http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
+						 * https://www.tinymce.com/docs-3x/api/dom/class_tinymce.dom.Selection.html/#selection
+						 * https://www.tinymce.com/docs-3x/reference/configuration/Configuration3x@selector/
+						 * https://jsfiddle.net/aeutaoLf/2/
+						 * ***** https://stackoverflow.com/questions/26263597/open-access-wp-media-library-from-tinymce-plugin-popup-window **/
+
+						// cachamos el valor de la imagen (url) en un campo de texto oculto.
+						{
+                        	type	: 'textbox',
+                        	subtype	: 'hidden',
+                        	name	: 'url',
+                        	id		: 'imageVal'
+                    	},
+                    	{
+                        	type	: 'button',
+                        	name	: 'image',
+                        	text	: 'Imagen',
+                        	onclick	: function(e) {
 
 	                            jQuery( function($){
 	
@@ -74,9 +75,9 @@
 	
 	                                // Create a new media frame
 	                                frame = wp.media({
-	                                    title: 'Selecciona la imagen de fondo',
-	                                    button: {
-	                                      text: 'Usar esta'
+	                                    title	: 'Seleccionar imagen de fondo',
+	                                    button	: {
+	                                      text	: 'Colocar'
 	                                    },
 	                                    multiple: false  // Set to true to allow multiple files to be selected
 	                                });
@@ -86,19 +87,19 @@
 	
 	                                    // Get media attachment details from the frame state
 	                                    var attachment = frame.state().get('selection').first().toJSON();
-	                                    	
-	                                    alert(attachment.url);
-	                                    console.log(attachment.url);
+                            			var hidden = jQuery('#imageVal');
+                            			
+		                                hidden.val( attachment.url );
 							
 	                                });
 	                                // Finally, open the modal on click
 	                                frame.open();
 	                        });
                         
-                        return false;
-                        
-                        }
-                    }
+	                        return false;
+	                        
+	                        }
+	                    }
 
 // fin item 2			        
                 	],
@@ -118,10 +119,7 @@
                         //v2 > bueno: http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
                         colorItem =  tinymce.activeEditor.selection.getNode();
                         tinymce.activeEditor.dom.setStyle( colorItem , 'background-color', e.data.colorpicker );
-                        
-                        console.log(e.data.image);
-
-
+                        tinymce.activeEditor.dom.setStyle( colorItem , 'background-image', 'url("'+ e.data.url +'")' );
 
                     }
                     
