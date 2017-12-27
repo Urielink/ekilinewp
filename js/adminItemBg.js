@@ -41,13 +41,14 @@
 				        {
 				            type   : 'colorpicker',
 				            name   : 'colorpicker',
-				            id	:    'colorInput',
+				            id	:    'colorInput',	
 				            //label  : 'Color',
                         	onchange : function(e) {
                         		jQuery( function($){
-	                                e.preventDefault();	                                
-                            			var txtColor = jQuery('#colorVal');
-		                                txtColor.val( this );	                        		                 			
+	                                e.preventDefault();
+                            			// var txtColor = jQuery('#colorVal');
+		                                // txtColor.val();	                        		                 					                        		
+		                                console.log('colorpicker');
                         		});
                         		
                         	}
