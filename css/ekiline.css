@@ -259,6 +259,36 @@ video#bgvid{transition:1s opacity;}
 /*Breadcrumb*/
 .breadcrumb span{padding:0px 1px;}
 
+/*26 dic backgrounds con imagen*/
+.bg-responsive {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+.bg-responsive-fix {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.bg-responsive-delay {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto;
+}
+.bg-pattern{
+	background-repeat: repeat;
+	background-position: left top;
+}
+.bg-image-left-top{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.bg-image-right-top{
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+
 /*Mapa google*/
 .map-responsive{position:relative;padding-bottom:460px;height:0;overflow:hidden;}
 .map-responsive iframe{position:absolute;top:0;left:0;width:100% !important;height:100% !important;}

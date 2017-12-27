@@ -56,7 +56,7 @@
                 	],
                     	
                     onsubmit: function (e) {
-                        editor.insertContent( '<div class="row">' + e.data.column + '</div>' );
+                        editor.insertContent( '<div class="row">' + e.data.column + '</div><br><br>' );
                     }
                     
                 }); //editor.windowManager.open

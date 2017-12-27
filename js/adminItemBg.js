@@ -32,11 +32,26 @@
                     minHeight: 100,
 
                     body: [
-                    // item 1, el selector de color
+                    // item 1, el selector de color: cachamos el valor de color en un campo de texto oculto.
+						{
+                        	type	: 'textbox',
+                        	name	: 'colorselect',
+                        	id		: 'colorVal',
+                    	},
 				        {
 				            type   : 'colorpicker',
 				            name   : 'colorpicker',
-				            //label  : 'Color'
+				            id	:    'colorInput',
+				            //label  : 'Color',
+                        	onchange : function(e) {
+                        		jQuery( function($){
+	                                e.preventDefault();	                                
+                            			var txtColor = jQuery('#colorVal');
+		                                txtColor.val( this );	                        		                 			
+                        		});
+                        		
+                        	}
+				            
 				        },
 
 						/** item 2, el selector de imagen
@@ -45,9 +60,11 @@
 						 * https://www.tinymce.com/docs-3x/api/dom/class_tinymce.dom.Selection.html/#selection
 						 * https://www.tinymce.com/docs-3x/reference/configuration/Configuration3x@selector/
 						 * https://jsfiddle.net/aeutaoLf/2/
-						 * ***** https://stackoverflow.com/questions/26263597/open-access-wp-media-library-from-tinymce-plugin-popup-window **/
+						 * ***** https://stackoverflow.com/questions/26263597/open-access-wp-media-library-from-tinymce-plugin-popup-window 
+						 * https://wordpress.org/support/topic/using-media-upload-with-tinymce/ 
+						 * **/
 
-						// cachamos el valor de la imagen (url) en un campo de texto oculto.
+						// Item 2, cachamos el valor de la imagen (url) en un campo de texto oculto.
 						{
                         	type	: 'textbox',
                         	subtype	: 'hidden',
@@ -102,8 +119,7 @@
 	                    }
 
 // fin item 2			        
-                	],
-                    	
+                	],                    	
                     onsubmit: function (e) {
                         //editor.insertContent( '<div style="min-width:100px;height:50px;background-color:' + e.data.colorpicker + ';"> color: ' + e.data.colorpicker + ' </div>' );
                         
@@ -117,10 +133,15 @@
                         //tinymce.activeEditor.dom.setStyle( tinymce.activeEditor.selection.getNode(), 'background-color' + e.data.colorpicker );
                         
                         //v2 > bueno: http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
+                        
                         colorItem =  tinymce.activeEditor.selection.getNode();
+                        
                         tinymce.activeEditor.dom.setStyle( colorItem , 'background-color', e.data.colorpicker );
-                        tinymce.activeEditor.dom.setStyle( colorItem , 'background-image', 'url("'+ e.data.url +'")' );
-
+                                                
+                        if (e.data.url !== null && e.data.url !== ''){
+	                        tinymce.activeEditor.dom.setStyle( colorItem , 'background-image', 'url("'+ e.data.url +'")' );
+                        }
+                        
                     }
                     
                 }); //editor.windowManager.open

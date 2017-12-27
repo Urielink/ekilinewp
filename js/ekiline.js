@@ -156,6 +156,24 @@ jQuery(document).ready(function($){
 		});	    	    
     }
 
+	/**
+	 * 	Delay en el background.
+	 *  https://stackoverflow.com/questions/39637176/js-css-dynamic-background-image-moving
+	 */	
+
+	// Handle the window scroll event
+	$(window).scroll(function () {
+	    // Store the distance scrolled
+	    var scrolled = $(window).scrollTop() + 1;
+	
+	    // Set the scroll speed
+	    var scrollSpeed = 0.3;
+	    
+	    // Update the background position
+	    $('.bg-responsive-delay').css('background-position', '0' + -(scrolled * scrollSpeed) + 'px');
+	});
+
+
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
