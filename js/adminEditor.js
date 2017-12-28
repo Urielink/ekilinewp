@@ -60,7 +60,7 @@
                                 var imgContainer = $( '#plugin-slug-insert-dialog .mce-textbox' );
 
                                 // ADD IMAGE LINK
-                                event.preventDefault();
+                                e.preventDefault();
 
                                 // If the media frame already exists, reopen it.
                                 if ( frame ) {

@@ -25,6 +25,46 @@
             image: '../wp-content/themes/ekiline/img/ico-bg.png',
             onclick: function (e) {
             	
+            	// reconocer el objeto seleccionado.
+                var trackitem =  tinymce.activeEditor.selection.getNode();
+                // declarar la variable de color por default (vacia para elementos sin estilo)
+            	var color = '';
+            	
+            	/**
+            	 * reconocer si existe color en los elementos seleccionados.
+            	 * http://jsfiddle.net/DCaQb/
+            	 * reconocer si tiene estilos
+            	 * https://stackoverflow.com/questions/1318076/jquery-hasattr-checking-to-see-if-there-is-an-attribute-on-an-element
+            	 */
+            	
+				var attr = $( trackitem ).attr('style');
+				
+				if (typeof attr !== typeof undefined && attr !== false) {
+				   console.log( 'si hay estilos' );
+
+	            	var x = $(trackitem).css('backgroundColor');
+				    // console.log(x);
+	           	    hexc(x);
+				    // console.log(color);
+	
+					function hexc(colorval) {
+					    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+					    delete( parts[0]);
+					    for (var i = 1; i <= 3; ++i) {
+					        parts[i] = parseInt(parts[i]).toString(16);
+					        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+					    }
+					    color = '#' + parts.join('');
+					}
+
+
+				} else {
+				   console.log( 'no hay estilos' );
+
+				}
+            	
+            	
+            	
                 editor.windowManager.open({
                 	
                     title: 'Elige una imagen o color de fondo',
@@ -33,25 +73,34 @@
 
                     body: [
                     // item 1, el selector de color: cachamos el valor de color en un campo de texto oculto.
+                    // https://laubsterboy.com/blog/2014/07/wordpress-editor-custom-buttons-dialog-windows/
 						{
                         	type	: 'textbox',
-                        	name	: 'colorselect',
-                        	id		: 'colorVal',
+                        	name	: 'bgvalue',
+                        	id		: 'bgselect',
+                        	value	: color ,
                     	},
 				        {
-				            type   : 'colorpicker',
-				            name   : 'colorpicker',
-				            id	:    'colorInput',	
-				            //label  : 'Color',
+				            type	: 'colorpicker',
+				            name	: 'colorpicker',
+				            id		: 'colorInput',	
+				            value	: color,
                         	onchange : function(e) {
+                        		
+                        		// declaro la variable que me da el color
+                        		var selected = this.value();
+                    			var txtColor = jQuery('#bgselect');
+
                         		jQuery( function($){
 	                                e.preventDefault();
-                            			// var txtColor = jQuery('#colorVal');
-		                                // txtColor.val();	                        		                 					                        		
-		                                console.log('colorpicker');
-                        		});
-                        		
+		                                txtColor.val( selected );	                        		                 					                        		
+                        		});     
+                        		                   		
                         	}
+                        	
+							// onchange: function() { 
+								// console.log( this.value() ); 
+							// }		            
 				            
 				        },
 
@@ -68,7 +117,7 @@
 						// Item 2, cachamos el valor de la imagen (url) en un campo de texto oculto.
 						{
                         	type	: 'textbox',
-                        	subtype	: 'hidden',
+                        	//subtype	: 'hidden',
                         	name	: 'url',
                         	id		: 'imageVal'
                     	},
@@ -135,12 +184,21 @@
                         
                         //v2 > bueno: http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
                         
-                        colorItem =  tinymce.activeEditor.selection.getNode();
+                        //var trackitem =  tinymce.activeEditor.selection.getNode();
                         
-                        tinymce.activeEditor.dom.setStyle( colorItem , 'background-color', e.data.colorpicker );
-                                                
-                        if (e.data.url !== null && e.data.url !== ''){
-	                        tinymce.activeEditor.dom.setStyle( colorItem , 'background-image', 'url("'+ e.data.url +'")' );
+                        console.log(e.data.bgvalue);
+                        console.log(e.data.url);
+                                                                        
+                        if (e.data.bgvalue !== null && e.data.bgvalue !== '' && e.data.bgvalue !== 'none'){
+                        	tinymce.activeEditor.dom.setStyle( trackitem , 'background-color', e.data.bgvalue );
+                        } else {
+                        	tinymce.activeEditor.dom.setStyle( trackitem , 'background-color', '' );
+                        }
+                       
+                        if (e.data.url !== null && e.data.url !== '' && e.data.url !== 'none'){
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', 'url("'+ e.data.url +'")' );
+                        } else {
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', '' );                        	
                         }
                         
                     }
