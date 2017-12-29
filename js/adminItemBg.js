@@ -29,6 +29,8 @@
                 var trackitem =  tinymce.activeEditor.selection.getNode();
                 // declarar la variable de color por default (vacia para elementos sin estilo)
             	var color = '';
+                // declarar la variable de imagen de fondo por default (vacia para elementos sin estilo)
+            	var bgimg = '';
             	
             	/**
             	 * reconocer si existe color en los elementos seleccionados.
@@ -37,12 +39,17 @@
             	 * https://stackoverflow.com/questions/1318076/jquery-hasattr-checking-to-see-if-there-is-an-attribute-on-an-element
             	 */
             	
-				var attr = $( trackitem ).attr('style');
-				
-				if (typeof attr !== typeof undefined && attr !== false) {
-				   console.log( 'si hay estilos' );
+//				var attr = $( trackitem ).attr('style');				
+//				if (typeof attr !== typeof undefined && attr !== false) {
 
-	            	var x = $(trackitem).css('backgroundColor');
+				var bgex = $( trackitem ).css('background-color');	
+				// console.log( bgex );				
+				// si el elemento no es transaparente, entonces necesita reconocer el color de fondo.
+				if ( bgex != 'transparent' && bgex != 'rgba(0, 0, 0, 0)' ) {
+					
+				   // console.log( 'si hay estilos' );
+
+	            	var x = $(trackitem).css('background-color');
 				    // console.log(x);
 	           	    hexc(x);
 				    // console.log(color);
@@ -57,13 +64,15 @@
 					    color = '#' + parts.join('');
 					}
 
-
-				} else {
-				   console.log( 'no hay estilos' );
-
+				} 
+				
+				var imgex = $( trackitem ).css('background-image');	
+				console.log( imgex );				
+				
+				if ( imgex != '' && imgex != 'none' ) {
+					    bgimg = imgex.replace('url(','').replace(')','');
 				}
-            	
-            	
+
             	
                 editor.windowManager.open({
                 	
@@ -119,7 +128,8 @@
                         	type	: 'textbox',
                         	//subtype	: 'hidden',
                         	name	: 'url',
-                        	id		: 'imageVal'
+                        	id		: 'imageVal',
+                        	value	: bgimg
                     	},
                     	{
                         	type	: 'button',
@@ -196,7 +206,7 @@
                         }
                        
                         if (e.data.url !== null && e.data.url !== '' && e.data.url !== 'none'){
-	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', 'url("'+ e.data.url +'")' );
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', 'url('+ e.data.url +')' );
                         } else {
 	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', '' );                        	
                         }
