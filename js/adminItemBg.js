@@ -67,10 +67,10 @@
 				} 
 				
 				var imgex = $( trackitem ).css('background-image');	
-				console.log( imgex );				
+				//console.log( imgex );				
 				
 				if ( imgex != '' && imgex != 'none' ) {
-					    bgimg = imgex.replace('url(','').replace(')','');
+					    bgimg = imgex.replace('url("','').replace('")','');
 				}
 
             	
@@ -176,9 +176,35 @@
 	                        return false;
 	                        
 	                        }
-	                    }
-
-// fin item 2			        
+	                    },
+// fin item 2, inicia el estilo de fondo.		        
+	                    {
+	                        type: 'listbox', 
+	                        name: 'bgstyle', 
+	                        label: 'Estilo de fondo', 
+	                        'values': [
+								{
+		                        	text	: 'Patron',
+		                        	value	: ''
+		                    	},
+								{
+		                        	text	: 'Simple',
+		                        	value	: 'bg-single'
+		                    	},
+								{
+		                        	text	: 'Responsivo',
+		                        	value	: 'bg-responsive'
+		                    	},
+								{
+		                        	text	: 'Fijo',
+		                        	value	: 'bg-responsive-fix'
+		                    	},
+								{
+		                        	text	: 'Parallax',
+		                        	value	: 'bg-responsive-delay'
+		                    	},
+	                        ]
+	                    },                      	
                 	],                    	
                     onsubmit: function (e) {
                         //editor.insertContent( '<div style="min-width:100px;height:50px;background-color:' + e.data.colorpicker + ';"> color: ' + e.data.colorpicker + ' </div>' );
@@ -196,8 +222,9 @@
                         
                         //var trackitem =  tinymce.activeEditor.selection.getNode();
                         
-                        console.log(e.data.bgvalue);
-                        console.log(e.data.url);
+                        // console.log(e.data.bgvalue);
+                        // console.log(e.data.url);
+                        // console.log(e.data.bgstyle);
                                                                         
                         if (e.data.bgvalue !== null && e.data.bgvalue !== '' && e.data.bgvalue !== 'none'){
                         	tinymce.activeEditor.dom.setStyle( trackitem , 'background-color', e.data.bgvalue );
@@ -207,6 +234,7 @@
                        
                         if (e.data.url !== null && e.data.url !== '' && e.data.url !== 'none'){
 	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', 'url('+ e.data.url +')' );
+	                        tinymce.activeEditor.dom.addClass( trackitem , e.data.bgstyle );
                         } else {
 	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', '' );                        	
                         }

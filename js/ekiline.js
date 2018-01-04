@@ -167,7 +167,7 @@ jQuery(document).ready(function($){
 	    var scrolled = $(window).scrollTop() + 1;
 	
 	    // Set the scroll speed
-	    var scrollSpeed = 0.3;
+	    var scrollSpeed = 0.2;
 	    
 	    // Update the background position
 	    $('.bg-responsive-delay').css('background-position', '0' + -(scrolled * scrollSpeed) + 'px');

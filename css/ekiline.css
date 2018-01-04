@@ -260,6 +260,12 @@ video#bgvid{transition:1s opacity;}
 .breadcrumb span{padding:0px 1px;}
 
 /*26 dic backgrounds con imagen*/
+.bg-pattern{
+	background-repeat: repeat;
+}
+.bg-single{
+	background-repeat: no-repeat;
+}
 .bg-responsive {
 	background-repeat: no-repeat;
 	background-position: center;
@@ -269,24 +275,10 @@ video#bgvid{transition:1s opacity;}
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	background-size: cover;
+	background-size: auto;
 }
 .bg-responsive-delay {
 	background-repeat: no-repeat;
-	background-position: center;
-	background-size: auto;
-}
-.bg-pattern{
-	background-repeat: repeat;
-	background-position: left top;
-}
-.bg-image-left-top{
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-.bg-image-right-top{
-	background-repeat: no-repeat;
-	background-position: right top;
 }
 
 /*Mapa google*/
