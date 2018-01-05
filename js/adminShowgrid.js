@@ -18,7 +18,7 @@
         editor.addButton('custom_mce_button3', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Mostrar columnas',
+            title : 'Show grid',
             image: '../wp-content/themes/ekiline/img/ico-grid.png',
             onclick: function (e) {
             	

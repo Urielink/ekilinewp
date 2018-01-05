@@ -21,7 +21,7 @@
         editor.addButton('custom_mce_button4', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Agregar fondo',
+            title : 'Add background',
             image: '../wp-content/themes/ekiline/img/ico-bg.png',
             onclick: function (e) {
             	
@@ -76,7 +76,7 @@
             	
                 editor.windowManager.open({
                 	
-                    title: 'Elige una imagen o color de fondo',
+                    title: 'Choose a background color or set an image',
                     minWidth: 500,
                     minHeight: 100,
 
@@ -134,7 +134,7 @@
                     	{
                         	type	: 'button',
                         	name	: 'image',
-                        	text	: 'Imagen',
+                        	text	: 'Image',
                         	onclick	: function(e) {
 
 	                            jQuery( function($){
@@ -152,9 +152,9 @@
 	
 	                                // Create a new media frame
 	                                frame = wp.media({
-	                                    title	: 'Seleccionar imagen de fondo',
+	                                    title	: 'Choose background image',
 	                                    button	: {
-	                                      text	: 'Colocar'
+	                                      text	: 'Choose'
 	                                    },
 	                                    multiple: false  // Set to true to allow multiple files to be selected
 	                                });
@@ -181,10 +181,10 @@
 	                    {
 	                        type: 'listbox', 
 	                        name: 'bgstyle', 
-	                        label: 'Estilo de fondo', 
+	                        label: 'Background style', 
 	                        'values': [
 								{
-		                        	text	: 'Patron',
+		                        	text	: 'Pattern',
 		                        	value	: ''
 		                    	},
 								{
@@ -192,11 +192,11 @@
 		                        	value	: 'bg-single'
 		                    	},
 								{
-		                        	text	: 'Responsivo',
+		                        	text	: 'Responsive',
 		                        	value	: 'bg-responsive'
 		                    	},
 								{
-		                        	text	: 'Fijo',
+		                        	text	: 'Fixed',
 		                        	value	: 'bg-responsive-fix'
 		                    	},
 								{
