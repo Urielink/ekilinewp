@@ -353,6 +353,11 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
@@ -403,6 +408,7 @@ require get_template_directory() . '/inc/serviceOptimize.php';
 require get_template_directory() . '/inc/serviceAccess.php';
 require get_template_directory() . '/inc/serviceMaintenance.php';
 require get_template_directory() . '/inc/serviceMinify.php';
+require get_template_directory() . '/inc/serviceSitemap.php';
 
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';

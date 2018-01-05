@@ -19,7 +19,7 @@
         <meta name="description" content="<?php ekiline_description(); ?>" />
         <link href="<?php echo get_template_directory_uri() . '/css/bootstrap.min.css'; ?>" rel="stylesheet" type="text/css">   
         <link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">    
-        <link href="<?php echo get_template_directory_uri() . '/css/ekiline.min.css'; ?>" rel="stylesheet" type="text/css">  
+        <link href="<?php echo get_template_directory_uri() . '/css/ekiline.css'; ?>" rel="stylesheet" type="text/css">  
         <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">  
         <?php ekiline_csscolors(); ?>
         <?php echo '<style type="text/css" id="wp-custom-css">' . strip_tags( wp_get_custom_css() ) . "\n".'</style>'."\n";?>        
@@ -30,10 +30,10 @@
                 <div class="cover-container">
                     <div class="cover-header clearfix">
                         <div class="inner">
-                            <nav class="nav cover-header-nav">
+                            <nav class="nav cover-header-nav justify-content-md-end justify-content-center">
                                 <?php echo do_shortcode("[socialmenu]"); ?>
                             </nav>              
-                            <img class="cover-header-brand" src="<?php echo get_theme_mod( 'ekiline_logo_min' ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"/>
+                            <img class="cover-header-brand author" src="<?php echo get_theme_mod( 'ekiline_logo_min' ); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>"/>
                         </div>
                     </div>
                     
@@ -44,7 +44,7 @@
                     
                     <div class="cover-footer text-right ">
                         <div class="inner">                            
-                            <small><?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?></small>
+                            <small class="author"><?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?></small>
                         </div>
                     </div>
                 </div>
