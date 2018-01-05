@@ -733,3 +733,9 @@ function register_mce_buttons( $buttons ) {
     return $buttons;
 }
 
+// idioma: https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_languages
+function ekiline_tinymce_add_locale($locales) {
+    $locales ['Ekiline-Tinymce'] = get_template_directory() . '/inc/ekiline-tinymce-langs.php';
+    return $locales;
+}
+add_filter('mce_external_languages', 'ekiline_tinymce_add_locale');

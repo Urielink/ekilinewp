@@ -18,7 +18,8 @@
         editor.addButton('custom_mce_button3', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Show grid',
+            // title : 'Show grid',
+            title : editor.getLang('ekiline_tinymce.showgrid'),
             image: '../wp-content/themes/ekiline/img/ico-grid.png',
             onclick: function (e) {
             	

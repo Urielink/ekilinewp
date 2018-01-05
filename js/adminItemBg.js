@@ -21,7 +21,8 @@
         editor.addButton('custom_mce_button4', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Add background',
+            //title : 'Add background',
+            title : editor.getLang('ekiline_tinymce.addbackground'),
             image: '../wp-content/themes/ekiline/img/ico-bg.png',
             onclick: function (e) {
             	
@@ -76,7 +77,8 @@
             	
                 editor.windowManager.open({
                 	
-                    title: 'Choose a background color or set an image',
+                    //title: 'Choose a background color or set an image',
+		            title : editor.getLang('ekiline_tinymce.choosebgcolor'),
                     minWidth: 500,
                     minHeight: 100,
 
@@ -134,7 +136,8 @@
                     	{
                         	type	: 'button',
                         	name	: 'image',
-                        	text	: 'Image',
+                        	//text	: 'Image',
+				            text : editor.getLang('ekiline_tinymce.image'),                        	
                         	onclick	: function(e) {
 
 	                            jQuery( function($){
@@ -152,9 +155,11 @@
 	
 	                                // Create a new media frame
 	                                frame = wp.media({
-	                                    title	: 'Choose background image',
+	                                    //title	: 'Choose background image',
+	                                    title	: editor.getLang('ekiline_tinymce.choosebgimg'),
 	                                    button	: {
-	                                      text	: 'Choose'
+	                                      //text	: 'Choose'
+	                                      text	: editor.getLang('ekiline_tinymce.choose')
 	                                    },
 	                                    multiple: false  // Set to true to allow multiple files to be selected
 	                                });
@@ -181,26 +186,32 @@
 	                    {
 	                        type: 'listbox', 
 	                        name: 'bgstyle', 
-	                        label: 'Background style', 
+	                        //label: 'Background style', 
+	                        label: editor.getLang('ekiline_tinymce.bgstyle'),
 	                        'values': [
 								{
-		                        	text	: 'Pattern',
+		                        	// text	: 'Pattern',
+		                        	text	: editor.getLang('ekiline_tinymce.pattern'),
 		                        	value	: ''
 		                    	},
 								{
-		                        	text	: 'Simple',
+		                        	// text	: 'Simple',
+		                        	text	: editor.getLang('ekiline_tinymce.simple'),
 		                        	value	: 'bg-single'
 		                    	},
 								{
-		                        	text	: 'Responsive',
+		                        	// text	: 'Responsive',
+		                        	text	: editor.getLang('ekiline_tinymce.responsive'),
 		                        	value	: 'bg-responsive'
 		                    	},
 								{
-		                        	text	: 'Fixed',
+		                        	// text	: 'Fixed',
+		                        	text	: editor.getLang('ekiline_tinymce.fixed'),
 		                        	value	: 'bg-responsive-fix'
 		                    	},
 								{
-		                        	text	: 'Parallax',
+		                        	// text	: 'Parallax',
+		                        	text	: editor.getLang('ekiline_tinymce.parallax'),
 		                        	value	: 'bg-responsive-delay'
 		                    	},
 	                        ]

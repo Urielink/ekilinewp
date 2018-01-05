@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-12-12 17:47-0600\n"
+"PO-Revision-Date: 2018-01-04 20:36-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -1123,3 +1123,50 @@ msgstr "Cancela el uso de carruseles y galerias de ekiline"
 
 msgid "This will remove formatting galleries and carousels to work with other plugins like jetpack"
 msgstr "Esto eliminará el formato de galerias y carruseles para trabajar con otros plugins como jetpack"
+
+# @ ekiline
+#: my-custom-tinymce-plugin-langs.php
+msgid "Show grid"
+msgstr "Mostrar columnas"
+
+msgid "Add background"
+msgstr "Agregar fondo"
+
+msgid "Choose a background color or set an image"
+msgstr "Elige un color o imagen de fondo"
+
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Choose background image"
+msgstr "Elegir imagen de fondo"
+
+msgid "Choose"
+msgstr "Elegir"
+
+msgid "Background style"
+msgstr "Estilo de fondo"
+
+msgid "Pattern"
+msgstr "Mosaico"
+
+msgid "Simple"
+msgstr "Simple"
+
+msgid "Responsive"
+msgstr "Responsivo"
+
+msgid "Fixed"
+msgstr "Fijo"
+
+msgid "Parallax"
+msgstr "Parallax"
+
+msgid "Add columns"
+msgstr "Agregar columnas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Each column is inserted by proportion"
+msgstr "Cada columna es insertada proporcion"

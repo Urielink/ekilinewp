@@ -21,13 +21,14 @@
         editor.addButton('custom_mce_button2', {
             //icon: false,
             //text: 'B4 Cols',
-            title : 'Add columns',
+            // title : 'Add columns',
+            title : editor.getLang('ekiline_tinymce.addcols'),
             image: '../wp-content/themes/ekiline/img/ico-cols.png',
             onclick: function (e) {
             	
                 editor.windowManager.open({
                 	
-                    title: 'Add columns',
+                    title: editor.getLang('ekiline_tinymce.addcols'),
                     minWidth: 500,
                     minHeight: 100,
 
@@ -36,19 +37,21 @@
 						{
 				            type   : 'label',
 				            name   : 'description',
-				            label  : 'Columns',
-				            text   : 'Each column is inserted by proportion'
+				            //label  : 'Columns',
+				            label  : editor.getLang('ekiline_tinymce.col'),
+				            // text   : 'Each column is inserted by proportion'
+				            text   : editor.getLang('ekiline_tinymce.colspec')
 						},                    
 	                    {
 	                    	type: 'listbox', 
 	                    	name: 'column', 
 						      values: [
-        						  { text: '1 column', value: '<div class="col-sm-6"><p>Col 1</p></div>' },
-        						  { text: '2 columns', value: '<div class="col-sm-6"><p>Col 1</p></div><div class="col-sm-6"><p>Col 2</p></div>' },
-        						  { text: '3 columns', value: '<div class="col-sm-4"><p>Col 1</p></div><div class="col-sm-4"><p>Col 2</p></div><div class="col-sm-4"><p>Col 3</p></div>' },
-        						  { text: '4 columns', value: '<div class="col-sm-3"><p>Col 1</p></div><div class="col-sm-3"><p>Col 2</p></div><div class="col-sm-3"><p>Col 3</p></div><div class="col-sm-3"><p>Col 4</p></div>' },
-        						  { text: '5 columns', value: '<div class="col-sm"><p>Col 1</p></div><div class="col-sm"><p>Col 2</p></div><div class="col-sm"><p>Col 3</p></div><div class="col-sm"><p>Col 4</p></div><div class="col-sm"><p>Col 5</p></div>' },
-        						  { text: '6 columns', value: '<div class="col-sm-2"><p>Col 1</p></div><div class="col-sm-2"><p>Col 2</p></div><div class="col-sm-2"><p>Col 3</p></div><div class="col-sm-2"><p>Col 4</p></div><div class="col-sm-2"><p>Col 5</p></div><div class="col-sm-2"><p>Col 6</p></div>' },
+        						  { text: '1 '+ editor.getLang('ekiline_tinymce.col'), value: '<div class="col-sm-6"><p>Col 1</p></div>' },
+        						  { text: '2 '+editor.getLang('ekiline_tinymce.col')+'s', value: '<div class="col-sm-6"><p>Col 1</p></div><div class="col-sm-6"><p>Col 2</p></div>' },
+        						  { text: '3 '+editor.getLang('ekiline_tinymce.col')+'s', value: '<div class="col-sm-4"><p>Col 1</p></div><div class="col-sm-4"><p>Col 2</p></div><div class="col-sm-4"><p>Col 3</p></div>' },
+        						  { text: '4 '+editor.getLang('ekiline_tinymce.col')+'s', value: '<div class="col-sm-3"><p>Col 1</p></div><div class="col-sm-3"><p>Col 2</p></div><div class="col-sm-3"><p>Col 3</p></div><div class="col-sm-3"><p>Col 4</p></div>' },
+        						  { text: '5 '+editor.getLang('ekiline_tinymce.col')+'s', value: '<div class="col-sm"><p>Col 1</p></div><div class="col-sm"><p>Col 2</p></div><div class="col-sm"><p>Col 3</p></div><div class="col-sm"><p>Col 4</p></div><div class="col-sm"><p>Col 5</p></div>' },
+        						  { text: '6 '+editor.getLang('ekiline_tinymce.col')+'s', value: '<div class="col-sm-2"><p>Col 1</p></div><div class="col-sm-2"><p>Col 2</p></div><div class="col-sm-2"><p>Col 3</p></div><div class="col-sm-2"><p>Col 4</p></div><div class="col-sm-2"><p>Col 5</p></div><div class="col-sm-2"><p>Col 6</p></div>' },
 						      ]
 	                	},
                 	],
