@@ -21,7 +21,7 @@ html,body{height:100%;}
 .inner{padding:30px 50px;overflow:hidden;}
 /* Cover header */
 .cover-header{position:absolute;top:0;width:inherit;}
-.cover-header-brand{float:left;width:200px;height:auto;margin-top:-30px;}
+.cover-header-brand{float:left;width:200px;height:auto;/*margin-top:-30px;*/}
 .cover-header .shortcode-socialmenu li a{padding:0px 6px;font-size:20px}
 /* Cover body */
 .cover{padding:0 50px;}

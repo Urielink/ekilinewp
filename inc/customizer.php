@@ -89,6 +89,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     // https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
     // https://developer.wordpress.org/themes/advanced-topics/customizer-api/
     // http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
+    // https://codex.wordpress.org/Class_Reference/WP_Customize_Image_Control
 
     $wp_customize->add_setting( 
         'ekiline_logo_max', array(
@@ -637,7 +638,25 @@ function ekiline_theme_customizer( $wp_customize ) {
     				'settings'       => 'ekiline_maintenance',
     				'type'           => 'checkbox',
     		)
-    );    
+    );  
+	//5 de enero imagen para la pagina de mantenimiento 
+    $wp_customize->add_setting(
+    		'ekiline_offbg', array(
+    				'default' => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
+    				'sanitize_callback' => 'ekiline_sanitize_image'
+    		) 
+    );
+		
+	$wp_customize->add_control(
+	       new WP_Customize_Image_Control(
+	           $wp_customize, 'ekiline_offbg',
+	           array(
+	               //'label'      => __( 'Offline background', 'ekiline' ),
+	               'section'    => 'ekiline_services',
+	               'settings'   => 'ekiline_offbg',
+	           )
+	       )
+	   );	  
 
     $wp_customize->add_setting(
             'ekiline_wireframe', array(
