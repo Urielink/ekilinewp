@@ -612,6 +612,47 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'type'           => 'checkbox',
             )
     );                   
+
+    // number of sitemap entries
+    $wp_customize->add_setting( 
+        'ekiline_sitemaplimit', array(
+            'default' => '20',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_sitemaplimit',
+            array(
+                'label'          => __( 'Sitemap XML', 'ekiline' ),
+                'description'    => __( 'Set a number of entries on sitemap, default is 20 and max 200','ekiline' ),
+                'section'        => 'ekiline_tracking_section',
+                'settings'       => 'ekiline_sitemaplimit',
+                'type'           => 'number',
+			    'input_attrs' => array(
+			        'min' => 1,
+			        'max' => 200,
+			    ),                
+        )
+    );   
+
+    $wp_customize->add_setting(
+            'ekiline_sitemap', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_sitemap', array(
+                    'label'          => __( 'Enable sitemap XML', 'ekiline' ),
+                    'section'        => 'ekiline_tracking_section',
+                    'settings'       => 'ekiline_sitemap',
+                    'type'           => 'checkbox',
+            )
+    );      
+	      	
     
     // Ekiline Services
          
