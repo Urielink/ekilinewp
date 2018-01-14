@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-12 18:00-0600\n"
+"PO-Revision-Date: 2018-01-13 20:29-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -1192,3 +1192,15 @@ msgstr "Pega la dirección generada por google"
 
 msgid "Replace height map"
 msgstr "Reemplazar altura de mapa"
+
+msgid "Insert Tabs"
+msgstr "Insertar pestañas"
+
+msgid "Number the necessary tabs"
+msgstr "Numera las pestañas que necesitas"
+
+msgid "Title this tab"
+msgstr "Titula esta pestaña"
+
+msgid "Add any content with format, text, images, video or galleries"
+msgstr "Añade cualquier contenido y formato; texto, imágenes, multimedia o galerías"

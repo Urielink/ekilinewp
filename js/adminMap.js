@@ -66,7 +66,7 @@
 						// return modified content to string
 						var processedHTML = $bootmap.html();
 						
-						console.log(processedHTML);
+						//console.log(processedHTML);
 
                         editor.insertContent( processedHTML + '<br><br>' );
 
