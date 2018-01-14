@@ -35,6 +35,10 @@ function ekiline_tinymce_translation() {
         'tabdesc' => __('Number the necessary tabs','ekiline'),
         'tabtitle' => __('Title this tab','ekiline'),
         'tabcont' => __('Add any content with format, text, images, video or galleries','ekiline'),
+        'addtoggle' => __('Toggle item','ekiline'),
+        'togdesc' => __('Insert a single toggle item o multiple accordion items','ekiline'),
+        'togtitle' => __('Title this toggle item','ekiline'),
+        'togcont' => __('Add any content with format, text, images, video or galleries','ekiline'),
         //        '' => __('','ekiline'),
     );
     $locale = _WP_Editors::$mce_locale;

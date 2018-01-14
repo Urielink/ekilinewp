@@ -19,9 +19,9 @@
 
 function gcollpase_shortcode( $atts, $content = null ) {
 
-    // $unique = mt_rand();
-    extract( shortcode_atts( array( 'class' => '', 'id' => 'accordion' ), $atts ) );
-    $groupId = $id;
+    $unique = mt_rand( 1 , 100 );
+    extract( shortcode_atts( array( 'class' => '' ), $atts ) );
+    $groupId = 'accordion-' . $unique;
     $regex = '\\[(\\[?)(collpasecontent)\\b([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)(?:(\\/)\\]|\\](?:([^\\[]*+(?:\\[(?!\\/\\2\\])[^\\[]*+)*+)\\[\\/\\2\\])?)(\\]?)';
     preg_match_all("/$regex/is",$content,$match);
     $content = $match[0];
