@@ -94,7 +94,7 @@ if ( is_page() || is_single() ){
                 preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
             }     
                 
-            $image_url = $matches [1] [0]; // Necesita declararse el indice        
+            $image_url = $matches [1][0]; // Necesita declararse el indice        
             ob_end_clean();  
             
             //En caso de no existir una u otra
