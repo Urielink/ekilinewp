@@ -725,13 +725,14 @@ function custom_tinymce_plugin( $plugin_array ) {
     $plugin_array['custom_mce_button6'] = get_template_directory_uri() .'/js/adminTabs.js';
     $plugin_array['custom_mce_button7'] = get_template_directory_uri() .'/js/adminToggle.js';
     $plugin_array['custom_mce_button8'] = get_template_directory_uri() .'/js/adminPops.js';
+    $plugin_array['custom_mce_button9'] = get_template_directory_uri() .'/js/adminShare.js';
     return $plugin_array;
 }
 
 // Register and add new button in the editor
 function register_mce_buttons( $buttons ) {
     //array_push( $buttons, 'custom_mce_button1' );
-    array_push( $buttons, 'custom_mce_button2, custom_mce_button3, custom_mce_button4, custom_mce_button5, custom_mce_button6, custom_mce_button7, custom_mce_button8' );
+    array_push( $buttons, 'custom_mce_button2, custom_mce_button3, custom_mce_button4, custom_mce_button5, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button9' );
     return $buttons;
 }
 

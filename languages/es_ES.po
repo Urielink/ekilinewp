@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-14 21:29-0600\n"
+"PO-Revision-Date: 2018-01-15 17:33-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -1240,3 +1240,21 @@ msgstr "Permitir contenido HTML"
 
 msgid "Set position to show pop item"
 msgstr "Elige la posicion para mostrar"
+
+msgid "Social tools"
+msgstr "Redes Social"
+
+msgid "Social links and more"
+msgstr "Enlaces a redes sociales y más"
+
+msgid "Choose a shortcode to enhance your page"
+msgstr "Elige la herramienta para mejorar tu página"
+
+msgid "Your social links nav"
+msgstr "Navegación con tus enlaces sociales"
+
+msgid "Share nav for visitors"
+msgstr "Navegación para compartir por redes"
+
+msgid "Insert a login form"
+msgstr "Formulario de ingreso"
