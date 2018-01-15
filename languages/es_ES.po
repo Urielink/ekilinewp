@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-14 13:39-0600\n"
+"PO-Revision-Date: 2018-01-14 21:29-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.5\n"
 "Last-Translator: \n"
@@ -1209,7 +1209,34 @@ msgid "Toggle item"
 msgstr "Acordeón"
 
 msgid "Insert a single toggle item o multiple accordion items"
-msgstr "Inserta un elemento colabsable o un acordeón de múltiples elementos"
+msgstr "Inserta un elemento colapsable o un acordeón de múltiples elementos"
+
+msgid "Set number"
+msgstr "Numera tus elementos"
 
 msgid "Title this toggle item"
 msgstr "Titula este elemento"
+
+msgid "Tooltips"
+msgstr "Tooltips"
+
+msgid "Create a tooltip or popover"
+msgstr "Crea un tooltip o popover"
+
+msgid "By default you set a tooltip adding only title and position. If you fill all fields tooltip transforms to popover."
+msgstr "De origen se genera un tooltip, solo añade título y posisción. Llenando todos los campos crearas un popover."
+
+msgid "Set title to item"
+msgstr "Agrega un titulo"
+
+msgid "Set description to item"
+msgstr "Agrega una descripcion"
+
+msgid "Add your content"
+msgstr "Agrega tu texto o código HTML"
+
+msgid "Allow HTML content"
+msgstr "Permitir contenido HTML"
+
+msgid "Set position to show pop item"
+msgstr "Elige la posicion para mostrar"

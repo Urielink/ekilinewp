@@ -186,7 +186,9 @@ jQuery(document).ready(function($){
     $('.tooltip-default').tooltip();
     
     //PopOvers, inicializar
-    $('.popover-default').popover();
+    $('.popover-default').popover({
+        trigger: 'focus'
+    });
              
 	    //PopOvers con contenido HTML:
 	    $('.popover-rich').popover({
@@ -196,7 +198,7 @@ jQuery(document).ready(function($){
 	            var clone = $( $(this).attr('href') ).clone(true).removeClass('hide');
 	            return clone;
 	            //console.log(clone);
-	          }
+	        }
 		   	}).click(function(e) {
 		        e.preventDefault();
 	    });

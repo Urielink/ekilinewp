@@ -32,12 +32,17 @@
                     minHeight: 100,
 
                     body: [
+						{
+                        	type	: 'label',
+                        	//text	: 'Insert a single toggle item o multiple accordion items',
+                        	text	: editor.getLang('ekiline_tinymce.togdesc'),
+                    	},
                     // item 1, numbe of items
 						{
                         	type	: 'textbox',
                         	name	: 'toggNumber',
-                        	//label	: 'Insert a single toggle item o multiple accordion items',
-                        	label	: editor.getLang('ekiline_tinymce.togdesc'),
+                        	//label	: 'Set number',
+                        	label	: editor.getLang('ekiline_tinymce.togset'),
                     	},	                          	
                 	],                    	
                     onsubmit: function (e) {

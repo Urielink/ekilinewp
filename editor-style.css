@@ -78,5 +78,7 @@ body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor
 
 #tinymce.wf-ekiline.wp-editor .hide-content{color:#ccc !important;}
 
+#tinymce.wf-ekiline.wp-editor .dotted{border:1px dotted #ddd;padding:5px;}
+
 
 .bg-single{	background-repeat: no-repeat;}
