@@ -62,6 +62,9 @@ function ekiline_tinymce_translation() {
         'socialnet' => __('Your social links nav','ekiline'),
         'socialshare' => __('Share nav for visitors','ekiline'),
         'loginform' => __('Insert a login form','ekiline'),
+    //adminShare.js
+        'modcat' => __('Entries module','ekiline'),
+        'modcatdesc' => __('Choose category and format for show entries','ekiline'),
         //        '' => __('','ekiline'),
     );
     $locale = _WP_Editors::$mce_locale;
