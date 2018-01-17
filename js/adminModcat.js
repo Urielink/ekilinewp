@@ -24,7 +24,28 @@
             title : editor.getLang('ekiline_tinymce.modcat'),
             image: '../wp-content/themes/ekiline/img/ico-insert.png',
             onclick: function (e) {
-            	
+
+// https://www.w3schools.com/js/tryit.asp?filename=tryjson_array_nested
+// https://www.w3schools.com/js/js_json_arrays.asp
+// OTRO https://www.codesd.com/item/dynamically-updating-a-tinymce-4-listbox.html
+				var myObj, i, j, x = "";
+				myObj = {
+				    "cars": [
+				        { "name":"Ford", "models":"a" },
+				        { "name":"BMW", "models":"b" },
+				        { "name":"Fiat", "models":"c" }
+				    ]
+				};
+				
+				for (i in myObj.cars) {
+				    x += " { text: '" + myObj.cars[i].name + "', value: '" + myObj.cars[i].models + "' },";
+				}
+				
+				console.log( x );
+				
+				// var data = [ {text:'ford', value: 'a' }, {text:'bmw', value: 'b' }, {text:'fiat', value: 'c' }, ];
+				// console.log(data);
+
                 editor.windowManager.open({
                 	
                     title: editor.getLang('ekiline_tinymce.modcat'),
@@ -41,14 +62,19 @@
 	                    {
 	                    	type: 'listbox', 
 	                    	name: 'tools', 
-						      values: [
-						      // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3"]
-        						  { text: editor.getLang('ekiline_tinymce.socialnet'), value: '[socialmenu]' },
-						      // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3" format="block"]
-        						  { text: editor.getLang('ekiline_tinymce.socialshare'), value: '[socialsharemenu]' },
-						      // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3" format="carousel"]
-        						  { text: editor.getLang('ekiline_tinymce.loginform'), value: '[loginform]' },
-						      ]
+						      // values: [
+						      // // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3"]
+        						  // { text: editor.getLang('ekiline_tinymce.socialnet'), value: '[socialmenu]' },
+						      // // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3" format="block"]
+        						  // { text: editor.getLang('ekiline_tinymce.socialshare'), value: '[socialsharemenu]' },
+						      // // [modulecategoryposts catid="trabajando-con-shortcodes" limit="3" format="carousel"]
+        						  // { text: editor.getLang('ekiline_tinymce.loginform'), value: '[loginform]' },        						  
+						      // ] experimento
+
+//			                values : [ {text:'ford', value: 'a' }, {text:'bmw', value: 'b' }, {text:'fiat', value: 'c' }, ] ,
+					          values: x ,
+
+
 	                	},
                 	],
                     	

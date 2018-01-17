@@ -11,7 +11,16 @@
  * @link https://developer.wordpress.org/reference/functions/query_posts/
  * @link https://codex.wordpress.org/Shortcode_API
  * @link https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
- *
+ * //16 ene 2018 WP update method.
+ * @link https://developer.wordpress.org/reference/functions/get_terms/
+ * @link https://developer.wordpress.org/reference/functions/get_the_category/
+ * 
+ * $args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+ * $cats = get_terms( 'category', $args ); 
+ * foreach ( $cats as $cat ) {
+ * 	echo '<p><a href="' . get_term_link( $cat ) . '" rel="bookmark">' . $cat->name . '</a><br>' . $cat->term_id . ' ' . $cat->description  . '</p>'; 
+ * }
+ * 
  * @package ekiline
  */
 

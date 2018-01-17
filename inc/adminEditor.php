@@ -743,3 +743,46 @@ function ekiline_tinymce_add_locale($locales) {
     return $locales;
 }
 add_filter('mce_external_languages', 'ekiline_tinymce_add_locale');
+
+/*
+ * Pruebas 
+ * Pasar datos PHP al admin para el editor.
+ * https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_plugins
+ * https://wordpress.stackexchange.com/questions/81895/how-to-list-categories-and-subcategories-in-json-format
+ */
+ 
+foreach ( array('post.php','post-new.php') as $hook ) {
+     add_action( "admin_head-$hook", 'my_admin_head' );
+}
+
+// Localize script
+
+	function my_admin_head() {
+	    	$plugin_url = plugins_url( '/', __FILE__ );
+			
+			$args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+			$categories = get_terms( 'category', $args );
+			$json = wp_json_encode($categories);
+			
+// $args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+// $cats = get_terms( 'category', $args ); 
+// $item = '';
+// foreach ( $cats as $cat ) {
+	// $item .= '[ text:' . $cat->name . ', value:' . $cat->term_id . '],' . "\n"; 
+// }
+// $json = wp_json_encode($item);
+
+	    ?>
+			<!-- TinyMCE data -->
+			<script type='text/javascript'>
+				var my_plugin = { 'url': '<?php echo $plugin_url; ?>', } ;
+				var my_cats = <?php echo $json; ?>;
+				
+        	    console.log(my_plugin.url);        	    
+				console.log( my_cats );
+				console.log( my_cats[0]['term_id'] );
+								
+			</script>
+			<!-- TinyMCE data -->
+	    <?php
+	}

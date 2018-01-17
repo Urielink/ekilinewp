@@ -45,11 +45,5 @@
 
 <?php wp_footer(); ?>
 
-<?php // Mostrar las categorias https://developer.wordpress.org/reference/functions/wp_list_categories/ ?>
-<ul>
-    <?php wp_list_categories(); ?> 
-</ul>
-
-
 </body>
 </html>
