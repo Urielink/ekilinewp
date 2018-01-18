@@ -17,7 +17,7 @@
  * https://www.w3schools.com/js/tryit.asp?filename=tryjson_array_nested
  * https://www.w3schools.com/js/js_json_arrays.asp
  * https://www.codesd.com/item/dynamically-updating-a-tinymce-4-listbox.html
- * https://thewebsitedev.com/dynamic-content-tinymce/
+ * 
  *
  */
 
@@ -30,9 +30,6 @@
             title : editor.getLang('ekiline_tinymce.modcat'),
             image: '../wp-content/themes/ekiline/img/ico-insert.png',
             onclick: function (e) {
-            	
-            	// console.log(my_plugin);
-            	// console.log(my_cats);
 
                 editor.windowManager.open({
                 	
@@ -48,10 +45,9 @@
 				            text   : editor.getLang('ekiline_tinymce.modcatdesc')
 						},                    
 	                    {
-	                    	type   : 'listbox', 
-	                    	name   : 'tools',
-	                    	// obtengo los datos desde mi función. 
-						    values : tinyCatList						    
+	                    	type: 'listbox', 
+	                    	name: 'tools', 
+						    values: getValues(), // obtengo los datos desde mi función.
 	                	},
                 	],                    	
                     onsubmit: function (e) {
@@ -62,6 +58,27 @@
                 
             }
         });
+        
+    	// 1) llamo los datos en formato json
+		//tinyMCE.activeEditor.settings.catValues = [{text: 'newtext', value: 'newvalue'},{text: '2text', value: '2value'}];    
+		tinyMCE.activeEditor.settings.catValues = [ { text: my_cats[0]['name'], value: my_cats[0]['term_id'] } ];    	
+		
+		// 1a) Creo el loop
+		// var i, x = '';
+		// for ( i in my_cats ) {
+		    //x += "{ text: '" + my_cats[i]['name'] + "', value: '" + my_cats[i]['term_id'] + "' },";
+			//x += { text: my_cats[i]['name'], value: my_cats[i]['term_id'] }+',';
+			//x += my_cats[i]['name']+','+my_cats[i]['term_id'];
+		// }
+		
+		// console.log( x );			
+		// tinyMCE.activeEditor.settings.catValues = x ;   
+		
+    	// 2) Creo la función en la carga del botón
+		function getValues() {
+	      return editor.settings.catValues;
+	    }    
+
         
     });
         

@@ -744,45 +744,43 @@ function ekiline_tinymce_add_locale($locales) {
 }
 add_filter('mce_external_languages', 'ekiline_tinymce_add_locale');
 
+
 /*
- * Pruebas 
+ * Crear una lista dinámica de categorias existentes para shortcode 
  * Pasar datos PHP al admin para el editor.
  * https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_plugins
  * https://wordpress.stackexchange.com/questions/81895/how-to-list-categories-and-subcategories-in-json-format
  */
  
+// se invoca la funcion solo si está editando algun artículo.
 foreach ( array('post.php','post-new.php') as $hook ) {
      add_action( "admin_head-$hook", 'my_admin_head' );
 }
 
-// Localize script
+// Arreglo para incorporar el script al head.
 
 	function my_admin_head() {
-	    	$plugin_url = plugins_url( '/', __FILE__ );
-			
-			$args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
-			$categories = get_terms( 'category', $args );
-			$json = wp_json_encode($categories);
-			
-// $args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
-// $cats = get_terms( 'category', $args ); 
-// $item = '';
-// foreach ( $cats as $cat ) {
-	// $item .= '[ text:' . $cat->name . ', value:' . $cat->term_id . '],' . "\n"; 
-// }
-// $json = wp_json_encode($item);
+	// Prueba como la documentacion de wordpress.
+    //$plugin_url = plugins_url( '/', __FILE__ );
 
-	    ?>
-			<!-- TinyMCE data -->
-			<script type='text/javascript'>
-				var my_plugin = { 'url': '<?php echo $plugin_url; ?>', } ;
-				var my_cats = <?php echo $json; ?>;
-				
-        	    console.log(my_plugin.url);        	    
-				console.log( my_cats );
-				console.log( my_cats[0]['term_id'] );
-								
-			</script>
-			<!-- TinyMCE data -->
-	    <?php
+    // mi arreglo para extraer los datos que necesito.
+	$args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+	$cats = get_terms( 'category', $args ); 
+	$list = array();
+
+    foreach ( $cats as $cat ) {
+		$list[] = array(
+			'text' =>	$cat->name,
+			'value'	=>	$cat->term_id
+		);
+	}
+	//var_dump($list);
+	
+	$json = wp_json_encode($list);
+	
+	// Prueba como la documentacion de wordpress.
+	echo '<script type="text/javascript">'	."\n".
+			// 'var my_plugin = { "url" : "'. $plugin_url .'" };'	."\n".
+			'var tinyCatList =' . $json . ';'	."\n".
+		 '</script>'."\n";
 	}
