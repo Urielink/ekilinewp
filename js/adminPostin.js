@@ -44,18 +44,47 @@
 						{
 				            type   : 'label',
 				            name   : 'description',
-				            // text   : 'Choose category and format to show a list of entries'
+				            // text   : 'Choose category and format to show a list of entries.'
 				            text   : editor.getLang('ekiline_tinymce.modcatdesc')
 						},                    
 	                    {
 	                    	type   : 'listbox', 
-	                    	name   : 'tools',
+	                    	name   : 'catids',
 	                    	// obtengo los datos desde mi función. 
-						    values : tinyCatList						    
+						    'values' : tinyCatList						    
 	                	},
+	                    {
+	                    	type   : 'listbox', 
+	                    	name   : 'format',
+	                        'values': [
+								{
+		                        	// text	: 'Default list',
+		                        	text	: editor.getLang('ekiline_tinymce.default'),
+		                        	value	: ''
+		                    	},
+								{
+		                        	// text	: 'Block modules',
+		                        	text	: editor.getLang('ekiline_tinymce.block'),
+		                        	value	: ' format="block"'
+			                    },
+								{
+		                        	// text	: 'Carousel slider',
+		                        	text	: editor.getLang('ekiline_tinymce.carousel'),
+		                        	value	: ' format="carousel"'
+		                    	}
+	                        ]   			    
+	                	},
+						{
+				            type   : 'textbox',
+				            name   : 'amount',
+				            value  : 5,
+				            // label   : 'Set the amount of posts'
+				            label   : editor.getLang('ekiline_tinymce.modcatdesc')
+						},                    
+
                 	],                    	
                     onsubmit: function (e) {
-                        editor.insertContent( e.data.tools + '<br><br>' );
+                        editor.insertContent(' [modulecategoryposts catid="'+ e.data.catids +'" limit="'+ e.data.amount +'"'+ e.data.format +']<br><br>' );
                     }
                     
                 }); //editor.windowManager.open

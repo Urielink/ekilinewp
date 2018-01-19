@@ -29,16 +29,29 @@
 function ekiline_addpostlist($atts, $content = null) {
     
     extract(shortcode_atts(array('catid'=>'','limit'=>'5', 'format'=>'default', 'sort'=>'DES'), $atts));
-    
+	
+	//Enero 2018, existe un roblema cuando este modulo se inserta en un mismo articulo de una misma categoría.
+	//Debe excluirse del loop para que no se cicle: post__not_in : https://codex.wordpress.org/Class_Reference/WP_Query
+	$exclude = '';
+	if( is_single() || is_category() ){
+		global $wp_query;
+		echo $wp_query->post->ID . ' es single o es categoria';
+		$exclude = $wp_query->post->ID;
+	}
     // Por el formato es que cambia el tipo de contenido (default, block or carousel).
     // Content type changes with format value
         
     ob_start(); // abre 
     
-            //Declarar las variables invoca las cotegorias necesarias WP_Query()
-            $query_string = '';
-            //$nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
-            $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
+            /***
+			 * Declarar las variables invoca las cotegorias necesarias WP_Query(), se puede llamar mediante 2 métodos:
+             * $query_string = '';
+             * $nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
+             * $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
+			 * 
+			 ***/
+            $nuevoLoop = new WP_Query(array( 'cat' => $catid, 'posts_per_page' => $limit, 'order' => $sort, 'post__not_in' => array( $exclude ) ));
+            
             // obtiene la cuenta de los posts
             // count posts
             $post_counter = 0; 
@@ -50,7 +63,7 @@ function ekiline_addpostlist($atts, $content = null) {
                 
                     echo '<div class="clearfix modpostlist-'.$format.'">';   
                     
-                        while ( $nuevoLoop->have_posts() ) {
+                        while ( $nuevoLoop->have_posts() ) :
                               $nuevoLoop->the_post(); 
                                     $post_counter++;  
                                     
@@ -62,7 +75,7 @@ function ekiline_addpostlist($atts, $content = null) {
                                                 // resetea el contador
                                                 $post_counter = 0; 
                                         endif; 
-                                }
+                        endwhile;
                             
                     echo '</div>';
                 

@@ -726,7 +726,7 @@ function custom_tinymce_plugin( $plugin_array ) {
     $plugin_array['custom_mce_button7'] = get_template_directory_uri() .'/js/adminToggle.js';
     $plugin_array['custom_mce_button8'] = get_template_directory_uri() .'/js/adminPops.js';
     $plugin_array['custom_mce_button9'] = get_template_directory_uri() .'/js/adminShare.js';
-    $plugin_array['custom_mce_button10'] = get_template_directory_uri() .'/js/adminModcat.js';
+    $plugin_array['custom_mce_button10'] = get_template_directory_uri() .'/js/adminPostin.js';
     return $plugin_array;
 }
 
