@@ -65,7 +65,11 @@ function ekiline_tinymce_translation() {
     //adminShare.js
         'modcat' => __('Entries module','ekiline'),
         'modcatdesc' => __('Choose category and format for show entries','ekiline'),
-        //        '' => __('','ekiline'),
+        'default' => __('Default','ekiline'),
+        'block' => __('Block','ekiline'),
+        'carousel' => __('Carousel','ekiline'),
+        'amount' => __('Set the amount of posts','ekiline'),
+        //        '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;
     $translated = 'tinyMCE.addI18n("' . $locale . '.ekiline_tinymce", ' . json_encode( $strings ) . ");\n";

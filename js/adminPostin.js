@@ -79,7 +79,7 @@
 				            name   : 'amount',
 				            value  : 5,
 				            // label   : 'Set the amount of posts'
-				            label   : editor.getLang('ekiline_tinymce.modcatdesc')
+				            label   : editor.getLang('ekiline_tinymce.amount')
 						},                    
 
                 	],                    	

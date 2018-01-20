@@ -258,33 +258,34 @@ function ekiline_loader(){
  * @link https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
  * @link http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
  * @link **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
+ * Enero 2018, este arreglo cicla algunos elementos. Es necesario verificar el resto.
  **/
 
-function wp_trim_excerpt_do_shortcode($text) {
-	$raw_excerpt = $text;
-	if ( '' == $text ) {
-		$text = get_the_content('');
-
-		$text = do_shortcode( $text ); 
-
-		$text = apply_filters('the_content', $text);
-		$text = str_replace(']]>', ']]>', $text);
-		$text = strip_tags($text);
-		$excerpt_length = apply_filters('excerpt_length', 55);
-		$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-		if ( count($words) > $excerpt_length ) {
-			array_pop($words);
-			$text = implode(' ', $words);
-			$text = $text . $excerpt_more;
-		} else {
-			$text = implode(' ', $words);
-		}
-	}
-	return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-}
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
+// function wp_trim_excerpt_do_shortcode($text) {
+	// $raw_excerpt = $text;
+	// if ( '' == $text ) {
+		// $text = get_the_content('');
+// 
+		// $text = do_shortcode( $text ); 
+// 
+		// $text = apply_filters('the_content', $text);
+		// $text = str_replace(']]>', ']]>', $text);
+		// $text = strip_tags($text);
+		// $excerpt_length = apply_filters('excerpt_length', 55);
+		// $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
+		// $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+		// if ( count($words) > $excerpt_length ) {
+			// array_pop($words);
+			// $text = implode(' ', $words);
+			// $text = $text . $excerpt_more;
+		// } else {
+			// $text = implode(' ', $words);
+		// }
+	// }
+	// return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
+// }
+// remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+// add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
 
 /**
  * Theming: 
