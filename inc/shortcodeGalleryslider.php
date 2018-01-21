@@ -303,6 +303,13 @@ function ekiline_gallery( $output,$attr ) {
     return $output;
 }
 
+/*Enero agregar clase responsiva a las imagenes de la galería*/
+function addImgClass( $attr ) {    
+    $attr['class'] .= ' img-fluid';
+    return $attr;
+};
+add_filter( 'wp_get_attachment_image_attributes', 'addImgClass' );
+
 
 /** 
 * Añadimos funciones de personalizacion en la admnistracion de la galeria

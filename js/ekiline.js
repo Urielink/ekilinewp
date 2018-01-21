@@ -560,7 +560,8 @@ jQuery(document).ready(function($){
 		            	//console.log(this);
 			            var url = $(this).parent('a').attr('href');
 			            //console.log(url);
-			            var img = '<img src="'+url+'" />';
+			            // Enero, transformamos todas las imagenes en responsivas
+			            var img = '<img class="img-fluid" src="'+url+'" />';
 			            // console.log(img);
 			            $(this).replaceWith(img);
 		            });
