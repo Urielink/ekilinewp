@@ -764,7 +764,8 @@ foreach ( array('post.php','post-new.php') as $hook ) {
     //$plugin_url = plugins_url( '/', __FILE__ );
 
     // mi arreglo para extraer los datos que necesito.
-	$args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+	//$args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+	$args = array( 'orderby' => 'name' ); 
 	$cats = get_terms( 'category', $args ); 
 	$list = array();
 
