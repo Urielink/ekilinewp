@@ -69,7 +69,7 @@ function ekiline_description(){
             
         if ( ! empty( $stdDesc ) ) {
            //Si utilizan nuestro custom field || If use our custom field           
-             echo $stdDesc; 
+             echo $stdDesc;
         } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
             //Si es homepage utiliza la informacion del sitio en general 
             echo get_bloginfo('description');
@@ -86,6 +86,32 @@ function ekiline_description(){
     }
     
 }
+
+
+/* Optimización El titulo con custom field para páginas y posts
+ * https://developer.wordpress.org/reference/hooks/document_title_parts/
+ */
+function ekiline_title($title){
+
+    global $wp_query;
+    $cfTitle = get_post_meta($wp_query->post->ID, 'custom_title', true);
+    wp_reset_query();
+	
+    if( is_single() || is_page() ){    	
+		 
+		if ( ! empty( $cfTitle ) ){
+	        // change title parts here
+	        $title['title'] = $cfTitle ; 
+		    // $title['page'] = ''; // opcional si la pagina está numerada
+	    	// $title['tagline'] = ''; // optional si requiere el tagline (home)
+	        $title['site'] = get_bloginfo( 'name' ); //optional
+		} 
+    }
+
+    return $title; 
+}
+add_filter('document_title_parts', 'ekiline_title', 10);
+
 
 /** 
  * Añadir css por página.
@@ -113,6 +139,32 @@ function ekiline_postcss(){
     
 }
 add_action( 'wp_head', 'ekiline_postcss', 99);
+
+/** 
+ * Añadir js por página.
+ * Custom JS by page
+ * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
+ */
+
+function ekiline_postjs(){
+    
+    // excluir si es tienda woocommerce || exclude woocommerce
+    if ( is_single() || is_page() ) {
+        
+    global $wp_query;
+    $postid = $wp_query->post->ID;
+    $myJs = get_post_meta($postid, 'custom_js_script', true);
+    wp_reset_query();
+            
+       if ( ! empty( $myJs ) ){
+           echo '<script type="text/javascript" id="custom-js-'.$postid.'">'.$myJs.'</script>'."\n";
+       } 
+     
+    } 
+    
+}
+add_action( 'wp_footer', 'ekiline_postjs', 99);
+
 
 /** Boton en menu con popwindow
  * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_before_admin_bar_render

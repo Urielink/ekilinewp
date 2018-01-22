@@ -46,10 +46,11 @@ if ( is_page() || is_single() ){
     // excluir si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ){
             
-        // personalizar la metadescripcion 
+        // personalizar la metadescripcion
         // custom meta
         global $wp_query;
         $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_description', true);    
+        $cfTitle = get_post_meta( $wp_query->post->ID, 'custom_title', true );
         wp_reset_query();
         
         if ( ! empty( $stdDesc ) ) {
@@ -111,9 +112,20 @@ if ( is_page() || is_single() ){
         }
 
         if ( is_front_page() || is_home() ){
-            $metaTitle = get_bloginfo( 'name' );
+            //$metaTitle = get_bloginfo( 'name' );
+			if ( ! empty( $cfTitle ) ){
+			    $metaTitle = $cfTitle ;
+			} else {
+	            $metaTitle = get_bloginfo( 'name' );
+			}
+
         } else {
-            $metaTitle = get_the_title();        
+            //$metaTitle = get_the_title();  
+			if ( ! empty( $cfTitle ) ){
+			    $metaTitle = $cfTitle ;
+			} else {
+	            $metaTitle = get_the_title();  
+			}
         }
                            
         

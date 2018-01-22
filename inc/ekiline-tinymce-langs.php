@@ -69,7 +69,15 @@ function ekiline_tinymce_translation() {
         'block' => __('Block','ekiline'),
         'carousel' => __('Carousel','ekiline'),
         'amount' => __('Set the amount of posts','ekiline'),
-        //        '' => __('','ekiline')
+    //adminFields.js
+        'helpterms' => __('Custom fields','ekiline'),
+        'helpdesc' => __('Choose and copy the value that you need','ekiline'),
+        'ctitle' => __('Replace meta title','ekiline'),
+        'cmdes' => __('Replace meta description','ekiline'),
+        'ccss' => __('Add css style','ekiline'),
+        'cjs' => __('Add js script','ekiline'),
+        'addcfname' => __('Set custom field with:','ekiline'),
+    	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;
     $translated = 'tinyMCE.addI18n("' . $locale . '.ekiline_tinymce", ' . json_encode( $strings ) . ");\n";

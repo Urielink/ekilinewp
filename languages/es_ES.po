@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-19 16:38-0600\n"
+"PO-Revision-Date: 2018-01-21 20:21-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -1267,3 +1267,24 @@ msgstr "Elige la categoría y formato para mostrar tus entradas"
 
 msgid "Set the amount of posts"
 msgstr "Establece un límite de publicaciones"
+
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+msgid "Choose and copy the value that you need"
+msgstr "Elige y copia el valor que necesitas"
+
+msgid "Replace meta title"
+msgstr "Reemplazar la meta de título"
+
+msgid "Replace meta description"
+msgstr "Reemplazar la meta de descripción"
+
+msgid "Add css style"
+msgstr "Añadir estilos CSS"
+
+msgid "Add js script"
+msgstr "Añadir código javascript"
+
+msgid "Set custom field with:"
+msgstr "Crea un campo personalizado con este nombre:"
