@@ -202,58 +202,96 @@ function ekiline_admin_styles() {
 add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles' );
 add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
 
+
+/**
+ * Javascript :
+ * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
+ * When scripts depend by JQuery has to be mentioned
+ * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: JS and PHP working together
+ * https://codex.wordpress.org/Function_Reference/wp_localize_script
+ * ENE, creamos la función para extraer de manera correcta los estilos y parsearlos con js.
+ */
+ 
+function ekiline_loadcss() {
+	
+    $params = null;
+    
+    if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
+            
+        global $wp_styles; 
+        
+    	// 4jun bueno!
+        $ret = array();
+        foreach( $wp_styles->queue as $handle) {
+          wp_dequeue_style($handle);
+          $ret[] = $wp_styles->registered[$handle]->src ;              
+          //$ret[] = $wp_styles->registered[$handle] ;              
+      	}        
+        //echo json_encode( $ret );             
+        $params = $ret;   
+    
+    }   
+	
+    wp_localize_script('ekiline-layout', 'allCss', $params); 
+        
+}
+add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
+    
+
+
 /**
  * Optimizar los scripts con async, esta funcion solo requiere el manejador
  * y se sobreescribira el link con el atributo dado. Por algun extraña razon no permite 
  * el agregar el atributo con el codigo de wordpress, como el caso de los scripts de IE.
  * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
  **/
-
-function wsds_defer_scripts( $tag, $handle, $src ) {
-
-	// The handles of the enqueued scripts we want to defer
-	$defer_scripts = array( 
-		'prismjs',
-		'admin-bar',
-		'et_monarch-ouibounce',
-		'et_monarch-custom-js',
-		'wpshout-js-cookie-demo',
-		'cookie',
-		'wpshout-no-broken-image',
-		'goodbye-captcha-public-script',
-		'devicepx',
-		'search-box-value',
-		'page-min-height',
-		'kamn-js-widget-easy-twitter-feed-widget',
-		'__ytprefs__',
-		'__ytprefsfitvids__',
-		'jquery-migrate',
-		'icegram',
-		'disqus',
-		'comment-reply',
-		'wp-embed',
-		'wp-emoji-release',
-		'ekiline-swipe',
-		'lazy-load',
-		'ekiline-layout',
-        'theme-scripts',
-		'google-analytics',
-		'optimizar',
-        'contact-form-7',
-        'wc-add-to-cart',
-        'woocommerce',
-        'wc-cart-fragments',
-        'jquery-blockui',
-        'js-cookie'				
-	);
-
-    if ( in_array( $handle, $defer_scripts ) ) {
-        return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
-    }
-    
-    return $tag;
-} 
-add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+// 
+// function wsds_defer_scripts( $tag, $handle, $src ) {
+// 
+	// // The handles of the enqueued scripts we want to defer
+	// $defer_scripts = array( 
+		// 'prismjs',
+		// 'admin-bar',
+		// 'et_monarch-ouibounce',
+		// 'et_monarch-custom-js',
+		// 'wpshout-js-cookie-demo',
+		// 'cookie',
+		// 'wpshout-no-broken-image',
+		// 'goodbye-captcha-public-script',
+		// 'devicepx',
+		// 'search-box-value',
+		// 'page-min-height',
+		// 'kamn-js-widget-easy-twitter-feed-widget',
+		// '__ytprefs__',
+		// '__ytprefsfitvids__',
+		// 'jquery-migrate',
+		// 'icegram',
+		// 'disqus',
+		// 'comment-reply',
+		// 'wp-embed',
+		// 'wp-emoji-release',
+		// 'ekiline-swipe',
+		// 'lazy-load',
+		// 'ekiline-layout',
+        // 'theme-scripts',
+		// 'google-analytics',
+		// 'optimizar',
+        // 'contact-form-7',
+        // 'wc-add-to-cart',
+        // 'woocommerce',
+        // 'wc-cart-fragments',
+        // 'jquery-blockui',
+        // 'js-cookie'				
+	// );
+// 
+    // if ( in_array( $handle, $defer_scripts ) ) {
+        // return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
+    // }
+//     
+    // return $tag;
+// } 
+// add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
 
@@ -268,20 +306,23 @@ add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 function google_analytics_tracking_code(){
         
     $gacode = get_theme_mod('ekiline_analytics','');
+    $gascript = '';       
 
     if ( $gacode != '' ) {
-        
-    echo "<script>
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', '" . $gacode . "', 'auto');
-            ga('send', 'pageview');
-         </script>
-         <script async defer src='https://www.google-analytics.com/analytics.js'></script>
-         ";     
+
+    $gascript .= '<script>'."\n";       
+    $gascript .= "window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;"."\n";
+    $gascript .= "ga('create', '" . $gacode . "', 'auto');"."\n";
+    $gascript .= "ga('send', 'pageview');"."\n";   
+    $gascript .= '</script>'."\n";       
+         
+    $gascript .= '<script src="https://www.google-analytics.com/analytics.js" defer async></script>'."\n";
+	       
+	echo $gascript;         
 
     }
 }
-// Usar 'wp_head' 'wp_footer' para situar el script 
+// Usar 'wp_head' para situar el script 
 // If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
 

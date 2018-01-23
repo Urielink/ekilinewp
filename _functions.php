@@ -233,6 +233,26 @@ function ekiline_scripts() {
           wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' );
     }
     
+
+    // // Optimizar carga de CSS
+    // $params = null;
+//     
+    // if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
+//             
+            // global $wp_styles; 
+//             
+        // //4jun bueno!!
+            // $ret = array();
+            // foreach( $wp_styles->queue as $handle) {
+              // wp_dequeue_style($handle);
+              // $ret[] = $wp_styles->registered[$handle]->src ;              
+              // //$ret[] = $wp_styles->registered[$handle] ;              
+          // }        
+            // //echo json_encode( $ret );             
+            // $params = $ret;   
+//     
+    // }    
+    
 /**
  * Enviar Jquery al final
  * Get Jquery to the bottom 
@@ -252,11 +272,16 @@ function ekiline_scripts() {
  * Javascript :
  * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
  * When scripts depend by JQuery has to be mentioned
+ * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: JS and PHP working together
+ * https://codex.wordpress.org/Function_Reference/wp_localize_script
  */
 	wp_enqueue_script( 'popper-script', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1', true  );
  	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline.js', array('jquery'), '20151226', true  );
+    // Este bloque de scripts debe permanecer siempre junto
+            // wp_localize_script('ekiline-layout', 'allCss', $params); 
             
 	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
@@ -398,3 +423,66 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 // 	
 // }
 
+/**
+ * investigación para optimizar la entrega de css de plugins
+ * que le pegan al performance.
+ **/ 
+// function deregister_my_styles() {
+    // $deleteStyles = array('contact-form-7','woocommerce-layout','woocommerce-smallscreen','woocommerce-general','wc-gateway-ppec-frontend-cart' );
+        // foreach($deleteStyles as $style) :
+            // wp_deregister_style( $style );
+        // endforeach;
+// }
+// add_action( 'wp_print_styles', 'deregister_my_styles', 100 );
+
+// Conocer los manejadores de los scripts: 
+// https://wordpress.org/ideas/topic/function-to-display-an-array-of-all-enqueued-scriptsstyles
+// 
+// function insite_inspect_scripts() {
+    // global $wp_scripts;
+    // echo PHP_EOL.'<!-- Script Handles: ';
+    // foreach( $wp_scripts->queue as $handle ) :
+        // echo $handle . ' || ';
+    // endforeach;
+    // echo ' -->'.PHP_EOL;
+// }
+// add_action( 'wp_print_scripts', 'insite_inspect_scripts' );
+// 
+// function insite_inspect_styles() {
+    // global $wp_styles;
+    // echo '<!-- Script Handles: ';
+    // foreach( $wp_styles->queue as $handle ) :
+        // echo $handle . ' || ' . "\n";
+        // echo $wp_styles->registered[$handle]->src . ' || ' . "\n";			              
+    // endforeach;
+    // echo ' -->';
+// }
+// //add_action( 'wp_print_styles', 'insite_inspect_styles' );
+// add_action( 'wp_footer', 'insite_inspect_styles' );
+
+
+function ekiline_optim() {
+
+    // Optimizar carga de CSS
+    $params = null;
+    
+    //if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
+            
+            global $wp_styles; 
+            
+        //4jun bueno!!
+            $ret = array();
+            foreach( $wp_styles->queue as $handle) {
+              wp_dequeue_style($handle);
+              $ret[] = $wp_styles->registered[$handle]->src ;              
+              //$ret[] = $wp_styles->registered[$handle] ;              
+          }        
+            //echo json_encode( $ret );             
+            $params = $ret;   
+    
+    //}   
+    wp_localize_script('ekiline-layout', 'allCss', $params); 
+        
+}
+add_action( 'wp_enqueue_scripts', 'ekiline_optim' );
+    
