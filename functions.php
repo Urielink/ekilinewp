@@ -219,7 +219,7 @@ function ekiline_scripts() {
     wp_enqueue_style( 'bootstrap-4', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '4', 'all' );
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );	
-	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.css', array(), '1.0', 'all' );	
+	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.min.css', array(), '1.0', 'all' );	
 	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
         
     // Condición para font awesome
