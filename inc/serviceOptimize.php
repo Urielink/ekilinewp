@@ -237,8 +237,6 @@ function ekiline_loadcss() {
         
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
-    
-
 
 /**
  * Optimizar los scripts con async, esta funcion solo requiere el manejador
@@ -246,52 +244,29 @@ add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
  * el agregar el atributo con el codigo de wordpress, como el caso de los scripts de IE.
  * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
  **/
-// 
-// function wsds_defer_scripts( $tag, $handle, $src ) {
-// 
-	// // The handles of the enqueued scripts we want to defer
-	// $defer_scripts = array( 
-		// 'prismjs',
-		// 'admin-bar',
-		// 'et_monarch-ouibounce',
-		// 'et_monarch-custom-js',
-		// 'wpshout-js-cookie-demo',
-		// 'cookie',
-		// 'wpshout-no-broken-image',
-		// 'goodbye-captcha-public-script',
-		// 'devicepx',
-		// 'search-box-value',
-		// 'page-min-height',
-		// 'kamn-js-widget-easy-twitter-feed-widget',
-		// '__ytprefs__',
-		// '__ytprefsfitvids__',
-		// 'jquery-migrate',
-		// 'icegram',
-		// 'disqus',
-		// 'comment-reply',
-		// 'wp-embed',
-		// 'wp-emoji-release',
-		// 'ekiline-swipe',
-		// 'lazy-load',
-		// 'ekiline-layout',
-        // 'theme-scripts',
-		// 'google-analytics',
-		// 'optimizar',
-        // 'contact-form-7',
-        // 'wc-add-to-cart',
-        // 'woocommerce',
-        // 'wc-cart-fragments',
-        // 'jquery-blockui',
-        // 'js-cookie'				
-	// );
-// 
-    // if ( in_array( $handle, $defer_scripts ) ) {
-        // return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
-    // }
-//     
-    // return $tag;
-// } 
-// add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+
+
+function wsds_defer_scripts( $tag, $handle, $src ) {
+
+	// invoco los scripts registrados en wordpress 
+    global $wp_scripts;   
+	// y agrupo en un array nuevo
+    $alljs = array();
+    foreach( $wp_scripts->queue as $jshandle ) {    	
+		$alljs[] = $jshandle;              
+  	} 
+	// descartando los que necesito cargar al inicio
+	// array_diff() o array_splice() : https://stackoverflow.com/questions/369602/php-delete-an-element-from-an-array
+	$allowjs = array("jquery-core","popper-script","bootstrap-script");	
+	$defer_scripts = array_diff( $alljs, $allowjs );
+		
+	// para que se inicialicen mis funciones correctamente.
+    if ( in_array( $handle, $defer_scripts ) ) {
+        return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
+    }    
+    return $tag;
+} 
+add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
 
