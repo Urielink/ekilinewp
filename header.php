@@ -15,7 +15,6 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <meta name="description" content="<?php ekiline_description(); ?>" />
 <meta name="keywords" content="<?php ekiline_keywords(); ?> " />
 <?php wp_head(); ?>

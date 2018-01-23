@@ -358,11 +358,6 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
- * Custom functions that act independently of the theme templates.
- */
-require get_template_directory() . '/inc/extras.php';
-
-/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
@@ -439,3 +434,4 @@ if (defined('WP_DEBUG') && true === WP_DEBUG) {
         // endforeach;
 // }
 // add_action( 'wp_print_styles', 'deregister_my_styles', 100 );
+
