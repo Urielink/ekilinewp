@@ -126,7 +126,7 @@ video#bgvid{transition:1s opacity;}
 /* Carousel base 
 .carousel{height:500px;margin-bottom:60px;}
 .carousel .carousel-item{height:500px;}*/
-
+.carousel .carousel-item{overflow:hidden;}
 /* Carousel multiple */
 .carousel-multiple {height: inherit;}
 .carousel-multiple .carousel-item {height: inherit;}

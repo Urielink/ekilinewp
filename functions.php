@@ -417,6 +417,17 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
     require get_template_directory() . '/inc/adminEditor.php';
 }
 
+// herramientas para debugear
+if (defined('WP_DEBUG') && true === WP_DEBUG) {
+	
+    function ekiline_querycount() {
+	// idendificar queries https://css-tricks.com/finding-and-fixing-slow-wordpress-database-queries/
+    echo '<div class="text-right bg-dark text-light fixed-bottom p-1">'. get_num_queries() .' queries in '. timer_stop() .' seconds.</div>';
+	}
+    add_action( 'wp_footer', 'ekiline_querycount' );
+	
+}
+
 /**
  * investigación para optimizar la entrega de css de plugins
  * que le pegan al performance.
