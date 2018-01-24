@@ -285,14 +285,14 @@ function google_analytics_tracking_code(){
 
     if ( $gacode != '' ) {
 
+    $gascript .= '<script async src="https://www.googletagmanager.com/gtag/js?id='. $gacode .'"></script>'."\n";
     $gascript .= '<script>'."\n";       
-    $gascript .= "window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;"."\n";
-    $gascript .= "ga('create', '" . $gacode . "', 'auto');"."\n";
-    $gascript .= "ga('send', 'pageview');"."\n";   
+    $gascript .= "window.dataLayer = window.dataLayer || [];"."\n";
+    $gascript .= "function gtag(){dataLayer.push(arguments);}"."\n";
+    $gascript .= "gtag('js', new Date());"."\n";   
+    $gascript .= "gtag('config', '". $gacode ."');"."\n";   
     $gascript .= '</script>'."\n";       
-         
-    $gascript .= '<script src="https://www.google-analytics.com/analytics.js" defer async></script>'."\n";
-	       
+         	       
 	echo $gascript;         
 
     }
