@@ -92,12 +92,12 @@ function ekiline_description(){
  * https://developer.wordpress.org/reference/hooks/document_title_parts/
  */
 function ekiline_title($title){
-
-    global $wp_query;
-    $cfTitle = get_post_meta($wp_query->post->ID, 'custom_title', true);
-    wp_reset_query();
 	
     if( is_single() || is_page() ){    	
+
+	    global $wp_query;
+	    $cfTitle = get_post_meta($wp_query->post->ID, 'custom_title', true);
+	    wp_reset_query();
 		 
 		if ( ! empty( $cfTitle ) ){
 	        // change title parts here
