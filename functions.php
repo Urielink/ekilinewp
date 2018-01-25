@@ -220,7 +220,14 @@ function ekiline_scripts() {
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.min.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );	
 	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.min.css', array(), '1.0', 'all' );	
-	wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
+	
+	// permitir el uso del tema minificado
+	$located = locate_template( 'style.min.css' );
+	if ($located != '' ) {
+		wp_enqueue_style( 'ekiline-style', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all' );	
+    } else {
+		wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
+    }	
         
     // Condición para font awesome
     if( true === get_theme_mod( 'ekiline_fontawesome', true ) ) {
