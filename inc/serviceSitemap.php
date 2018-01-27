@@ -17,15 +17,25 @@
  * @package ekiline
  */
 
-if( true === get_theme_mod('ekiline_sitemap') ) {
+if( true === get_theme_mod('ekiline_sitemap') && is_admin() ) {
  
 	// crear botón para admin. 
-	add_action('admin_bar_menu', 'add_item', 100);
+	add_action('admin_bar_menu', 'add_item', 80);
 	
 	function add_item( $admin_bar ){
+		
 	  global $pagenow;
-	  $admin_bar->add_menu( array( 'id'=>'ekiline-sitemap','title'=>'Sitemap','href'=>'#' ) );
+	  $admin_bar->add_menu( array(
+	  	'id'=>'ekiline-sitemap',
+	  	'title'=>'Sitemap','href'=>'#',
+		'meta' => array(
+			'class' => 'advice',
+			)
+		)
+	  );
+	  
 	}
+
 	
 	/* Crear la respuesta de actualización con ajax y jQuery */
 	
@@ -37,8 +47,8 @@ if( true === get_theme_mod('ekiline_sitemap') ) {
 	        var data = { 'action': 'ekiline_sitemap_write' };
 	        /* since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php */
 	        jQuery.post(ajaxurl, data, function(response) {
-	           //alert( response );
-               jQuery('#wpbody-content .wp-header-end').after('<div class="notice notice-success is-dismissible sitemap-notice"><p>'+response+'</p></div>');
+	           alert( response );
+               //jQuery('#wpbody-content .wp-header-end').after('<div class="notice notice-success is-dismissible sitemap-notice"><p>'+response+'</p></div>');
 	        });		        	                	
 	      });
 	      

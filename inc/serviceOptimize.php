@@ -172,30 +172,35 @@ add_action( 'wp_footer', 'ekiline_postjs', 99);
  * Y con estilos agregados.
  * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
  * https://gist.github.com/corvannoorloos/43980115659cb5aee571
+ * https://wordpress.stackexchange.com/questions/36394/wp-3-3-how-to-add-menu-items-to-the-admin-bar
  */
 
 function ekiline_bar_link() {
+
 	global $wp_admin_bar;
+
 	if ( !is_super_admin() || !is_admin_bar_showing() )
 		return;	
 	
 		$wp_admin_bar->add_menu( array(
-		'id' => 'goekiline',
-		'title' => __( 'FundMe', 'ekiline'),
-		'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
-		'meta' => array( 
-			'class' => 'gold',
-			'target' => '_blank',
-			'onclick' => 'jQuery(this).addClass("thickbox");'
-			)
-	) );
+			'id' => 'goekiline',
+			'title' => __( 'FundMe', 'ekiline'),
+			'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
+			'meta' => array( 
+				'class' => 'gold',
+				'target' => '_blank',
+				'onclick' => 'jQuery(this).addClass("thickbox");'
+				),
+	        'parent' => 'top-secondary'		
+		) );
 } 
-add_action('admin_bar_menu', 'ekiline_bar_link', 100 ); 
+add_action('admin_bar_menu', 'ekiline_bar_link', 0 ); 
 
 function ekiline_admin_styles() {
 	if ( !is_super_admin() )
 		return;	
 	$extracss = '.gold a::before { content: "\f511";} .gold a { background-color: #58aa03 !important; } .gold:hover a { background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
+	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
     wp_add_inline_style( 'wp-admin', $extracss );
     wp_add_inline_style( 'ekiline-style', $extracss );
 }

@@ -375,9 +375,7 @@ require get_template_directory() . '/inc/shortcodeAll.php';
 require get_template_directory() . '/inc/shortcodeTabs.php';
 require get_template_directory() . '/inc/shortcodeCollapse.php';
 require get_template_directory() . '/inc/shortcodeInsertposts.php';
-if( false === get_theme_mod('ekiline_carouseldisable') ) {
-    require get_template_directory() . '/inc/shortcodeGalleryslider.php';
-}
+require get_template_directory() . '/inc/shortcodeGalleryslider.php';
 
 // theme customizer services
 require get_template_directory() . '/inc/serviceSocialmedia.php';
@@ -390,9 +388,7 @@ require get_template_directory() . '/inc/serviceSitemap.php';
 // theme admin extend options
 require get_template_directory() . '/inc/adminCategoryfield.php';
 // Deshabilitar bootstrap
-if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
-    require get_template_directory() . '/inc/adminEditor.php';
-}
+require get_template_directory() . '/inc/adminEditor.php';
 
 // herramientas para debugear
 // if ( defined('WP_DEBUG') && true === WP_DEBUG && is_user_logged_in() ) {
