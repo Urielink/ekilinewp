@@ -141,7 +141,7 @@ function ekiline_sitemap_xml() {
 	$file = trailingslashit( $homedir ) . 'sitemap.xml';
 	$wp_filesystem->put_contents( $file, $sitemap, FS_CHMOD_FILE );
 	
-    $response = "Sitemap created!";
+    $response = __('Sitemap created successfully!', 'ekiline');
     echo $response;		
 	
     wp_die(); /* this is required to terminate immediately and return a proper response */
