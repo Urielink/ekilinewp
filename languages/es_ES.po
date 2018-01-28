@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-26 20:16-0600\n"
+"PO-Revision-Date: 2018-01-27 18:03-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -381,7 +381,7 @@ msgstr "Para velocidad de carga, minifica el código HTML"
 # @ ekiline
 #: serviceOptimize.php
 msgid "FundMe"
-msgstr "Fondea"
+msgstr "FondeaMe"
 
 # @ ekiline
 #: customizer.php

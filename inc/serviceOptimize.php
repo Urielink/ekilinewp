@@ -173,6 +173,7 @@ add_action( 'wp_footer', 'ekiline_postjs', 99);
  * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
  * https://gist.github.com/corvannoorloos/43980115659cb5aee571
  * https://wordpress.stackexchange.com/questions/36394/wp-3-3-how-to-add-menu-items-to-the-admin-bar
+ * https://wordpress.stackexchange.com/questions/266318/how-to-add-custom-submenu-links-in-wp-admin-menus
  */
 
 function ekiline_bar_link() {
@@ -185,22 +186,54 @@ function ekiline_bar_link() {
 		$wp_admin_bar->add_menu( array(
 			'id' => 'goekiline',
 			'title' => __( 'FundMe', 'ekiline'),
-			'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
+			//'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
+			'href' => 'http://ekiline.com/fondeo/',
 			'meta' => array( 
 				'class' => 'gold',
-				'target' => '_blank',
-				'onclick' => 'jQuery(this).addClass("thickbox");'
+				'target' => '_blank'
+				//'onclick' => 'jQuery(this).addClass("thickbox");'
 				),
 	        'parent' => 'top-secondary'		
 		) );
+		
 } 
 add_action('admin_bar_menu', 'ekiline_bar_link', 0 ); 
+
+
+/* subitem https://wordpress.stackexchange.com/questions/66498/add-menu-page-with-different-name-for-first-submenu-item 
+ * http://wpsites.net/wordpress-admin/add-top-level-custom-admin-menu-link-in-dashboard-to-any-url/
+ * https://developer.wordpress.org/reference/functions/add_menu_page/
+ * https://wordpress.stackexchange.com/questions/1039/adding-an-arbitrary-link-to-the-admin-menu
+ * // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+ */
+
+add_action( 'admin_menu', 'register_ekiline_menu_page' );
+function register_ekiline_menu_page() {
+  add_menu_page( 
+  	'Ekiline Menu Page Title', 
+  	__( 'FundMe', 'ekiline'), 
+  	'manage_options', 
+  	'themes.php?theme=ekiline',
+  	'', 
+  	'dashicons-carrot', 
+  	null );
+}
+
+add_action( 'admin_footer', 'ekiline_menu_page_js' );
+function ekiline_menu_page_js() { 
+	echo "<script type='text/javascript'>\n";
+	//echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold thickbox').attr('href', 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550').attr('target', '_blank');";
+	echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold').attr('href', 'http://ekiline.com/fondeo/').attr('target', '_blank');";
+	echo "\n</script>";
+}
+
 
 function ekiline_admin_styles() {
 	if ( !is_super_admin() )
 		return;	
-	$extracss = '.gold a::before { content: "\f511";} .gold a { background-color: #58aa03 !important; } .gold:hover a { background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
+	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
 	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
+	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
     wp_add_inline_style( 'wp-admin', $extracss );
     wp_add_inline_style( 'ekiline-style', $extracss );
 }

@@ -27,7 +27,8 @@ if( true === get_theme_mod('ekiline_sitemap') && is_admin() ) {
 	  global $pagenow;
 	  $admin_bar->add_menu( array(
 	  	'id'=>'ekiline-sitemap',
-	  	'title'=>'Sitemap','href'=>'#',
+	  	'title'=>'Sitemap',
+	  	'href'=>'#',
 		'meta' => array(
 			'class' => 'advice',
 			)
