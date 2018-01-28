@@ -15,7 +15,7 @@ if( true === get_theme_mod('ekiline_maintenance') ){
     function maintenace_mode() {
 		
 		global $pagenow;
-		if ( $pagenow !== 'wp-login.php' && ! current_user_can( 'manage_options' ) && ! is_admin() ) {
+		if ( $pagenow !== 'wp-login.php' && !is_admin() && !current_user_can( 'edit_posts' ) ) {
 		    
 			header( $_SERVER["SERVER_PROTOCOL"] . ' 503 Service Temporarily Unavailable', true, 503 );
 			header( 'Content-Type: text/html; charset=utf-8' ); 

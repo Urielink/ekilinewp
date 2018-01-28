@@ -250,13 +250,15 @@ add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
  * Localize: JS and PHP working together
  * https://codex.wordpress.org/Function_Reference/wp_localize_script
  * ENE, creamos la función para extraer de manera correcta los estilos y parsearlos con js.
+ * https://codex.wordpress.org/Roles_and_Capabilities
+ * https://codex.wordpress.org/Function_Reference/current_user_can
  */
  
 function ekiline_loadcss() {
 	
     $params = null;
     
-    if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
+    if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('edit_posts')){
             
         global $wp_styles; 
         
