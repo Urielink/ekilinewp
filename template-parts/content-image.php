@@ -13,11 +13,11 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-	<header class="page-header">
+	<header class="entry-header">
 	  	
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		
-	</header><!-- .page-header -->
+	</header><!-- .entry-header -->
 
 	<?php endif; ?>
 
@@ -108,7 +108,7 @@
 					esc_html__( 'Edit this image %s', 'ekiline' ),
 					the_title( '<i class="fa fa-pencil"></i> <span class="screen-reader-text">"', '"</span>', false )
 				),
-                '<span class="edit-link btn btn-default">',
+                '<span class="edit-link btn btn-secondary">',
 				'</span>'
 			);
 		?>

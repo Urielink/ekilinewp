@@ -53,13 +53,13 @@ function ekiline_entry_footer() {
     // Show category and tag text for singles.
     if ( 'post' === get_post_type() ) {
         /* translators: used between list items, there is a space after the comma */
-        $categories_list = get_the_category_list( esc_html__( ', ', 'ekiline' ) );
+        $categories_list = get_the_category_list( esc_html__( ',  ', 'ekiline' ) );
         if ( $categories_list && ekiline_categorized_blog() ) {
             printf( '<small class="cat-links">' . esc_html__( 'Posted in %1$s', 'ekiline' ) . '</small> ', $categories_list ); // WPCS: XSS OK.
         }
 
         /* translators: used between list items, there is a space after the comma */
-        $tags_list = get_the_tag_list( '', esc_html__( ', ', 'ekiline' ) );
+        $tags_list = get_the_tag_list( '', esc_html__( ',  ', 'ekiline' ) );
         if ( $tags_list ) {
             printf( '<br/><small class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</small> ', $tags_list ); // WPCS: XSS OK.
         }
@@ -68,7 +68,7 @@ function ekiline_entry_footer() {
     // Mostrar etiquetas en páginas.
     if ( is_page() ) {
         /* translators: used between list items, there is a space after the comma */
-        $tags_list = get_the_tag_list( '', esc_html__( ', ', 'ekiline' ) );
+        $tags_list = get_the_tag_list( '', esc_html__( ',  ', 'ekiline' ) );
         if ( $tags_list ) {
             printf( '<small class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</small> ', $tags_list ); // WPCS: XSS OK.
         }
@@ -83,11 +83,10 @@ function ekiline_entry_footer() {
     edit_post_link(
         sprintf(
             /* translators: %s: Name of current post */
-            esc_html__( 'Edit %s', 'ekiline' ),
+            esc_html__( 'Edit %s', 'ekiline' ) . '<span class="fa fa-pencil"></span>',
             the_title( '<span class="screen-reader-text">"', '"</span> ', false )
         ),
-        '<span class="edit-link pull-right">',
-        '&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span> '
+        '<p class="edit-link">','</p>'
     );
 }
 endif;

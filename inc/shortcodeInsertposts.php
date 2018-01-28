@@ -11,7 +11,16 @@
  * @link https://developer.wordpress.org/reference/functions/query_posts/
  * @link https://codex.wordpress.org/Shortcode_API
  * @link https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
- *
+ * //16 ene 2018 WP update method.
+ * @link https://developer.wordpress.org/reference/functions/get_terms/
+ * @link https://developer.wordpress.org/reference/functions/get_the_category/
+ * 
+ * $args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
+ * $cats = get_terms( 'category', $args ); 
+ * foreach ( $cats as $cat ) {
+ * 	echo '<p><a href="' . get_term_link( $cat ) . '" rel="bookmark">' . $cat->name . '</a><br>' . $cat->term_id . ' ' . $cat->description  . '</p>'; 
+ * }
+ * 
  * @package ekiline
  */
 
@@ -20,16 +29,30 @@
 function ekiline_addpostlist($atts, $content = null) {
     
     extract(shortcode_atts(array('catid'=>'','limit'=>'5', 'format'=>'default', 'sort'=>'DES'), $atts));
-    
+	
+	//Enero 2018, existe un roblema cuando este modulo se inserta en un mismo articulo de una misma categoría.
+	//Debe excluirse del loop para que no se cicle: post__not_in : https://codex.wordpress.org/Class_Reference/WP_Query
+	// $exclude = '';
+	// if( is_single() || is_category() ){
+		// global $wp_query;
+		// echo $wp_query->post->ID . ' es single o es categoria';
+		//$exclude = $wp_query->post->ID;
+	// }
+	
     // Por el formato es que cambia el tipo de contenido (default, block or carousel).
     // Content type changes with format value
         
     ob_start(); // abre 
     
-            //Declarar las variables invoca las cotegorias necesarias WP_Query()
-            $query_string = '';
-            //$nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
-            $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
+            /***
+			 * Declarar las variables invoca las cotegorias necesarias WP_Query(), se puede llamar mediante 2 métodos:
+             * $query_string = '';
+             * $nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
+             * $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
+			 * 
+			 ***/
+            $nuevoLoop = new WP_Query(array( 'cat' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
+            
             // obtiene la cuenta de los posts
             // count posts
             $post_counter = 0; 
@@ -41,7 +64,7 @@ function ekiline_addpostlist($atts, $content = null) {
                 
                     echo '<div class="clearfix modpostlist-'.$format.'">';   
                     
-                        while ( $nuevoLoop->have_posts() ) {
+                        while ( $nuevoLoop->have_posts() ) :
                               $nuevoLoop->the_post(); 
                                     $post_counter++;  
                                     
@@ -53,7 +76,7 @@ function ekiline_addpostlist($atts, $content = null) {
                                                 // resetea el contador
                                                 $post_counter = 0; 
                                         endif; 
-                                }
+                        endwhile;
                             
                     echo '</div>';
                 
@@ -94,7 +117,7 @@ function ekiline_addpostlist($atts, $content = null) {
                 // Clean ids commas to asign an id    
                     $catid = ekiline_cleanspchar($catid);                 
                 
-                    echo '<div id="carousel-module-00'.$catid.'" class="modpostlist-'.$format.' carousel slide carousel-fade clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
+                    echo '<div id="carousel-module-00'.$catid.'" class="modpostlist-'.$format.' carousel slide clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
                 
                 // Indicadores  Bootstrap
                     echo '<ol class="carousel-indicators">';
@@ -110,7 +133,7 @@ function ekiline_addpostlist($atts, $content = null) {
                         $count = $nuevoLoop->current_post + 0;
                         if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;                                 
                             // trae la parte del template para personalizar
-                            echo '<div class="item '.$countclass.'">';
+                            echo '<div class="carousel-item '.$countclass.'">';
                                 get_template_part( 'template-parts/content', 'carousel' );
                             echo '</div>';
                     endwhile;
@@ -118,12 +141,12 @@ function ekiline_addpostlist($atts, $content = null) {
                                 
                 // Controles        
                     echo '</div>
-                          <a class="left carousel-control" href="#carousel-module-00'.$catid.'" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <a class="carousel-control-prev" href="#carousel-module-00'.$catid.'" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                           </a>
-                          <a class="right carousel-control" href="#carousel-module-00'.$catid.'" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <a class="carousel-control-next" href="#carousel-module-00'.$catid.'" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                           </a>
                           </div>';                                      

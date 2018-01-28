@@ -3,6 +3,10 @@
  *
  * Oct 11 2017, añadir tareas al tinymce:
  * https://wordpress.stackexchange.com/questions/235020/how-to-add-insert-edit-link-button-in-custom-popup-tinymce-window 
+ * Otro estudio:
+ * https://jamesdigioia.com/add-button-pop-wordpresss-tinymce-editor/
+ * Un tutorial:
+ * https://dobsondev.com/2015/10/16/custom-tinymce-buttons-in-wordpress/
  *
  */
 
@@ -15,7 +19,8 @@
                 editor.windowManager.open( {
                     title: 'THE_TITLE_OF_THE_POPUP_WINDOW',
                     id: 'plugin-slug-insert-dialog', // El ejercicio original no invoca la clase del item, le añadí un ID.
-                    body: [{
+                    body: [
+                    {
                         type: 'textbox',
                         name: 'title',
                         placeholder: 'PLACE_HOLDER_TEXT',
@@ -55,7 +60,7 @@
                                 var imgContainer = $( '#plugin-slug-insert-dialog .mce-textbox' );
 
                                 // ADD IMAGE LINK
-                                event.preventDefault();
+                                e.preventDefault();
 
                                 // If the media frame already exists, reopen it.
                                 if ( frame ) {
@@ -88,7 +93,8 @@
                         });
                         return false;
                         }
-                    }],
+                    }
+                    ],
                     onsubmit: function( e ) {
                         // wrap it with a div and give it a class name
                         editor.insertContent( '<div class="CLASS_NAME">' + e.data.title + '</div>');

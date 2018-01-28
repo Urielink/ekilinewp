@@ -19,14 +19,14 @@
 
 function gcollpase_shortcode( $atts, $content = null ) {
 
-    // $unique = mt_rand();
-    extract( shortcode_atts( array( 'class' => '', 'id' => 'accordion' ), $atts ) );
-    $groupId = $id;
+    $unique = mt_rand( 1 , 100 );
+    extract( shortcode_atts( array( 'class' => '' ), $atts ) );
+    $groupId = 'accordion-' . $unique;
     $regex = '\\[(\\[?)(collpasecontent)\\b([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)(?:(\\/)\\]|\\](?:([^\\[]*+(?:\\[(?!\\/\\2\\])[^\\[]*+)*+)\\[\\/\\2\\])?)(\\]?)';
     preg_match_all("/$regex/is",$content,$match);
     $content = $match[0];
         
-   $return =  '<div class="panel-group '.$class.'" id="'.$groupId.'" role="tablist" aria-multiselectable="true">';
+   $return =  '<div class="'.$class.'" id="'.$groupId.'" role="tablist" aria-multiselectable="true">';
    
         $i = -1;
 
@@ -41,28 +41,28 @@ function gcollpase_shortcode( $atts, $content = null ) {
                 //creo un id grupal para cada item
                 $heading_id = ekiline_cleanspchar($attr['title']).$i.$i;
                                 
-                $return .= '<div class="panel panel-default">';
+                $return .= '<div class="card">';
                 
-                    $return .= '<div class="panel-heading" role="tab" id="'.$heading_id.'">
-                                    <h4 class="panel-title">';
+                    $return .= '<div class="card-header" role="tab" id="'.$heading_id.'">
+                                    <h4>';
                     
                         $return .= '<a '.(($i!=0) ? 'class="collapsed"' : '').' role="button" data-toggle="collapse" data-parent="#'.$groupId.'" href="#'.$unique_id.'" aria-expanded="true" aria-controls="'.$unique_id.'">'.$attr['title'].'</a>';
                         
                         $return .= '</h4>
-                                </div>'; //panel-heading
+                                </div>'; //card-heading
 
                     
-                    $return .= '<div id="'.$unique_id.'" class="panel-collapse collapse '.(($i==0) ? 'in' : '').' '.$class.'" role="tabpanel" aria-labelledby="'.$heading_id.'">';
+                    $return .= '<div id="'.$unique_id.'" class="collapse '.(($i==0) ? 'show' : '').' '.$class.'" role="tabpanel" aria-labelledby="'.$heading_id.'">';
                                     $return .= do_shortcode($c);
                     $return .= '</div>';
 
                                         
-                $return .= '</div>'; //panel-default
+                $return .= '</div>'; //card
                                                         
             }
                         
 
-        $return .= '</div>'; //panel-group
+        $return .= '</div>'; //tablist
         
    return $return;
 }
@@ -73,7 +73,7 @@ add_shortcode('modulegroupcollapse',  'gcollpase_shortcode');
 function collpasecontent_shortcode( $atts, $content = null ) {
     extract( shortcode_atts( array( 'title' => '', 'class' => ''), $atts ) );
 
-        $return = '<div class="panel-body '.$class.'">'.do_shortcode($content).'</div>';
+        $return = '<div class="card-body '.$class.'">'.do_shortcode($content).'</div>';
 
     return $return;
 }

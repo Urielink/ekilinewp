@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
     
-    	<header class="page-header">
+    	<header class="entry-header">
     				  	    		
     		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
     
@@ -22,13 +22,13 @@
     		</div><!-- .entry-meta -->
 
     		<?php endif; ?>
-    	</header><!-- .page-header -->
+    	</header><!-- .entry-header -->
     
     	<div class="entry-content clearfix">
 
             <?php if ( has_post_thumbnail() ) { ?>
             
-                <div class="cat-thumb pull-right">
+                <div class="cat-thumb float-right">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                         <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
                     </a>

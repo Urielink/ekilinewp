@@ -81,7 +81,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
             
 <?php /* Insertando un carrusel */ ?>         
 
-            <div id="<?php echo $uniqueId; ?>" class="carousel slide carousel-fade widget-carousel" data-ride="carousel">
+            <div id="<?php echo $uniqueId; ?>" class="carousel slide widget-carousel" data-ride="carousel">
             
               <div class="carousel-inner" role="listbox">
                   
@@ -101,7 +101,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                         // marcar el post 0 como el principal, para generar una clase CSS active
                         if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;                                                
                         ?>                                              
-                <div class="item text-center <?php echo $countclass; ?>">
+                <div class="carousel-item text-center <?php echo $countclass; ?>">
                     
                     <div class="thumbnail">
                       <?php the_post_thumbnail('medium');?>
@@ -119,12 +119,12 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
               </div> <!-- // fin de .carousel-inner -->
               
               <!-- Left and right controls -->
-              <a class="left carousel-control" href="#<?php echo $uniqueId; ?>" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <a class="carousel-control-prev" href="#<?php echo $uniqueId; ?>" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="right carousel-control" href="#<?php echo $uniqueId; ?>" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <a class="carousel-control-next" href="#<?php echo $uniqueId; ?>" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
               

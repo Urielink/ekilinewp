@@ -76,9 +76,9 @@ function ekiline_loginfrontend() {
 						<input type="password" name="pwd" id="' . esc_attr( $args['id_password'] ) . '" class="input form-control" value="" size="20" />
 					</div>
 					' . $login_form_middle . '
-					' . ( $args['remember'] ? '<p class="login-remember pull-right"><label><input name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> ' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
+					' . ( $args['remember'] ? '<p class="login-remember float-right"><label><input name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> ' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
 					<div class="form-group">
-						<input type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="btn btn-default btn-block" value="' . esc_attr( $args['label_log_in'] ) . '" />
+						<input type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="btn btn-secondary btn-block" value="' . esc_attr( $args['label_log_in'] ) . '" />
 						<input type="hidden" name="redirect_to" value="' . esc_url( $args['redirect'] ) . '" />
 					</div>
 					' . $login_form_bottom . '
@@ -120,11 +120,12 @@ add_shortcode('loginform', 'ekiline_loginfrontend');
 /* si el usuario queda logeado Agrega un boton para cerrar la sesion, directo en el menu.
  * If user is logedin add a link to menu
  * @link https://support.woothemes.com/hc/en-us/articles/203106357-Add-Login-Logout-Links-To-The-Custom-Primary-Menu-Area
+ * $args->theme_location == 'top'
  */
 
 function add_loginout_link( $items, $args ) {
-    if (is_user_logged_in() && $args->theme_location == 'top') {
-        $items .= '<li><a href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).'</a></li>';
+    if (is_user_logged_in()) {
+        $items .= '<li class="menu-item nav-item"><a class="nav-link" href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).' <i class="fa fa-power-off"></i></a></li>';
     }
     return $items;
 }

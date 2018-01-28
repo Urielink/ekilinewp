@@ -89,6 +89,7 @@ function ekiline_theme_customizer( $wp_customize ) {
     // https://make.wordpress.org/core/2014/07/08/customizer-improvements-in-4-0/
     // https://developer.wordpress.org/themes/advanced-topics/customizer-api/
     // http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
+    // https://codex.wordpress.org/Class_Reference/WP_Customize_Image_Control
 
     $wp_customize->add_setting( 
         'ekiline_logo_max', array(
@@ -194,6 +195,60 @@ function ekiline_theme_customizer( $wp_customize ) {
             ) 
     );    
     
+//Show/hide header image on single, pages or categories.
+    $wp_customize->add_setting( 
+        'ekiline_showPageHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showPageHeading', array(
+    				'label'          => __( 'Show all pages heading (thumbnail and title)', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showPageHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+    $wp_customize->add_setting( 
+        'ekiline_showEntryHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showEntryHeading', array(
+    				'label'          => __( 'Show all entries heading (thumbnail and title)', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showEntryHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+    $wp_customize->add_setting( 
+        'ekiline_showCategoryHeading', array(
+    				'default' => '',
+    				'sanitize_callback' => 'ekiline_sanitize_checkbox'
+        )
+    );
+    
+    $wp_customize->add_control(
+    	'ekiline_showCategoryHeading', array(
+    				'label'          => __( 'Show all categories heading (thumbnail and title)', 'ekiline' ),
+    				'section'        => 'header_image',
+    				'settings'       => 'ekiline_showCategoryHeading',
+    				'type'           => 'checkbox',
+	                'priority' 		 => 100
+        )
+    );    
+	
+			
+	
 
 // Page wide
     $wp_customize->add_section( 
@@ -346,6 +401,27 @@ function ekiline_theme_customizer( $wp_customize ) {
                 ),
             )
         );   
+
+        $wp_customize->add_setting(
+            'ekiline_topmenuStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_topmenuStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Centered', 'ekiline' ),
+                	'2' => __( 'Right', 'ekiline' ),
+                ),
+            )
+        );   
+
         
     // Behaviors for primary menu
 
@@ -370,7 +446,27 @@ function ekiline_theme_customizer( $wp_customize ) {
                     '3' => __( 'Fix to scroll', 'ekiline' ),
                 ),
             )
-        );           
+        );    
+		
+        $wp_customize->add_setting(
+            'ekiline_primarymenuStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_primarymenuStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Centered', 'ekiline' ),
+                	'2' => __( 'Right', 'ekiline' ),
+                ),
+            )
+        );  		       
         
     // Behaviors for modal menu
 
@@ -397,6 +493,27 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
         );                   
         
+        $wp_customize->add_setting(
+            'ekiline_modalNavStyles', array(
+                    'default' => '0',
+                    'sanitize_callback' => 'ekiline_sanitize_select'
+                ) 
+        );
+
+        $wp_customize->add_control(
+            'ekiline_modalNavStyles', array(
+                'type' => 'select',
+            	'section' => 'menu_locations',
+            	'priority'    => 100,
+            	'choices' => array(
+                    '0' => __( 'Default', 'ekiline' ),
+                    '1' => __( 'Show from bottom', 'ekiline' ),
+                	'2' => __( 'Show from left', 'ekiline' ),
+                	'3' => __( 'Show from right', 'ekiline' ),
+                ),
+            )
+        ); 
+
 
     // Page optimization
    
@@ -495,6 +612,47 @@ function ekiline_theme_customizer( $wp_customize ) {
                     'type'           => 'checkbox',
             )
     );                   
+
+    // number of sitemap entries
+    $wp_customize->add_setting( 
+        'ekiline_sitemaplimit', array(
+            'default' => '20',
+            'transport' => 'none',
+            'sanitize_callback' => 'ekiline_sanitize_html'
+        ) 
+    );
+    
+    $wp_customize->add_control(
+        'ekiline_sitemaplimit',
+            array(
+                'label'          => __( 'Sitemap XML', 'ekiline' ),
+                'description'    => __( 'Set a number of entries on sitemap, default is 20 and max 200','ekiline' ),
+                'section'        => 'ekiline_tracking_section',
+                'settings'       => 'ekiline_sitemaplimit',
+                'type'           => 'number',
+			    'input_attrs' => array(
+			        'min' => 1,
+			        'max' => 200,
+			    ),                
+        )
+    );   
+
+    $wp_customize->add_setting(
+            'ekiline_sitemap', array(
+                    'default' => '',
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+            ) 
+    );
+    
+    $wp_customize->add_control(
+            'ekiline_sitemap', array(
+                    'label'          => __( 'Enable sitemap XML', 'ekiline' ),
+                    'section'        => 'ekiline_tracking_section',
+                    'settings'       => 'ekiline_sitemap',
+                    'type'           => 'checkbox',
+            )
+    );      
+	      	
     
     // Ekiline Services
          
@@ -521,7 +679,25 @@ function ekiline_theme_customizer( $wp_customize ) {
     				'settings'       => 'ekiline_maintenance',
     				'type'           => 'checkbox',
     		)
-    );    
+    );  
+	//5 de enero imagen para la pagina de mantenimiento 
+    $wp_customize->add_setting(
+    		'ekiline_offbg', array(
+    				'default' => get_parent_theme_file_uri('/img/ekiline-pattern.png'),
+    				'sanitize_callback' => 'ekiline_sanitize_image'
+    		) 
+    );
+		
+	$wp_customize->add_control(
+	       new WP_Customize_Image_Control(
+	           $wp_customize, 'ekiline_offbg',
+	           array(
+	               //'label'      => __( 'Offline background', 'ekiline' ),
+	               'section'    => 'ekiline_services',
+	               'settings'   => 'ekiline_offbg',
+	           )
+	       )
+	   );	  
 
     $wp_customize->add_setting(
             'ekiline_wireframe', array(
@@ -887,8 +1063,8 @@ function ekiline_theme_customizer( $wp_customize ) {
 
     $wp_customize->add_setting(
             'ekiline_fontawesome', array(
-                    'default' => '',
-                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox',
+                    'default' => 'true'
             ) 
     );
     
@@ -904,8 +1080,8 @@ function ekiline_theme_customizer( $wp_customize ) {
     
     $wp_customize->add_setting(
             'ekiline_bootstrapeditor', array(
-                    'default' => '',
-                    'sanitize_callback' => 'ekiline_sanitize_checkbox'
+                    'sanitize_callback' => 'ekiline_sanitize_checkbox',
+                    'default' => 'true'
             ) 
     );
     

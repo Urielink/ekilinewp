@@ -8,9 +8,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-30 20:39-0500\n"
+"PO-Revision-Date: 2018-01-27 18:03-0600\n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr "¡Oops! Esta página no la hemos encontrado."
 # @ ekiline
 #: 404.php:21
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
-msgstr "Parece que no encontramos nada en esta ubicación. Prueba con los links que aparecen abajo o haz una búsqueda."
+msgstr "Parece que no encontramos nada en esta ubicación. ¿Que tal si pruebas con los links que aparecen abajo o haz una búsqueda?"
 
 # @ ekiline
 #: 404.php:29
@@ -119,7 +119,7 @@ msgstr "por %s"
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:50 inc/template-tags.php:56
 msgid ", "
-msgstr ","
+msgstr ", "
 
 # @ ekiline
 #: inc/template-tags.php:52
@@ -214,12 +214,12 @@ msgstr "http://ekiline.com/"
 # @ ekiline
 #. Description of the plugin/theme
 msgid "Hi. I'm a theme called <code>Ekiline</code>, based on <em>Underscores</em> and <em>Bootstrap</em>. "
-msgstr "Hola soy el tema llamado <code>Ekiline</code>, basado en <em>Underscores</em> y <em>Bootstrap</em>."
+msgstr "Hola soy el tema llamado <code>Ekiline</code>, basado en <em>Underscores</em> y <em>Bootstrap</em>. "
 
 # @ ekiline
 #. Author of the plugin/theme
 msgid "Urielink in Bixnia "
-msgstr "Urielink in Bixnia"
+msgstr "Urielink in Bixnia "
 
 # @ ekiline
 #: inc/custom-header.php
@@ -284,6 +284,15 @@ msgstr "Mensaje de cabecera"
 
 msgid "Customize the text in your heading image"
 msgstr "Personaliza el mensaje en tu cabecera"
+
+msgid "Show all pages heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las páginas (imagen destacada y titulo)"
+
+msgid "Show all entries heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las entradas (imagen destacada y titulo)"
+
+msgid "Show all categories heading (thumbnail and title)"
+msgstr "Muestra la cabecera en todas las categorias (imagen destacada y titulo)"
 
 msgid "Site view"
 msgstr "Vista del sitio"
@@ -356,10 +365,10 @@ msgid "Search Console"
 msgstr "Search Console"
 
 msgid "Add google site verification, only content=\"value\""
-msgstr "Inserta tu código de verificación, solo el content: value "
+msgstr "Inserta tu código de verificación, solo el content=“value”"
 
 msgid "Add msvalidate content=\"value\""
-msgstr "Inserta tu código de verificación, solo el content: value "
+msgstr "Inserta tu código de verificación, solo el content=“value”"
 
 # @ ekiline
 #: carpeta/archivo.php:29
@@ -368,6 +377,19 @@ msgstr "Optimizar HTML"
 
 msgid "Minify HTML output for site speed"
 msgstr "Para velocidad de carga, minifica el código HTML"
+
+# @ ekiline
+#: serviceOptimize.php
+msgid "FundMe"
+msgstr "FondeaMe"
+
+# @ ekiline
+#: customizer.php
+msgid "Set a number of entries on sitemap, default is 20 and max 200"
+msgstr "Elige la cantidad de entradas a publicar en tu mapa de sitio, 20 son predeterminadas, máximo 200"
+
+msgid "Enable sitemap XML"
+msgstr "Habilitar mapa de sitio xml"
 
 # @ ekiline
 #: carpeta/archivo.php:29
@@ -517,7 +539,7 @@ msgid "Sorry, that email address is already used!"
 msgstr "Lo sentimos, esta dirección de correo electrónico ya está en uso!"
 
 msgid "Thank you for registering"
-msgstr "Gracias por registrarte!"
+msgstr "Gracias por registrarte"
 
 msgid "Please check your email for receive your login password (Be sure to check your spam folder)"
 msgstr "Compruebe su correo electrónico para recibir su contraseña de acceso (Asegúrese de revisar su carpeta de spam)"
@@ -541,13 +563,13 @@ msgid "Watch all in %s"
 msgstr "Todas las publicaciones en %s"
 
 msgid "Archive from "
-msgstr "Archivo de"
+msgstr "Archivo de "
 
 msgid "Entries from "
 msgstr "Entradas de "
 
 msgid "Archive "
-msgstr "Archivo"
+msgstr "Archivo "
 
 msgid "Results "
 msgstr "Resultados "
@@ -695,6 +717,21 @@ msgstr "Mostrar indicadores"
 msgid "Speed"
 msgstr "Velocidad de transiciones"
 
+msgid "Stop"
+msgstr "Detener"
+
+msgid "3sec"
+msgstr "3seg"
+
+msgid "6sec"
+msgstr "6seg"
+
+msgid "9sec"
+msgstr "9seg"
+
+msgid "Hide gutters"
+msgstr "Ocultar medianiles"
+
 # @ ekiline
 #: carpeta/archivo.php:29
 msgid "Title:"
@@ -717,10 +754,10 @@ msgid "Number of posts to show:"
 msgstr "Número de publicaciones para mostrar:"
 
 msgid "Exclude categories:"
-msgstr "Excluir categorías"
+msgstr "Excluir categorías:"
 
 msgid "Category IDs, separated by commas"
-msgstr "ID's de categoría, separado por comas."
+msgstr "ID's de categoría, separado por comas"
 
 # @ ekiline
 #: carpeta/archivo.php:29
@@ -797,7 +834,7 @@ msgid "Home"
 msgstr "Inicio"
 
 msgid "Archive by category %s"
-msgstr "Archivo por categoría “%s”"
+msgstr "Archivo por categoría %s"
 
 msgid "Search results for %s"
 msgstr "Resultados para %s"
@@ -843,6 +880,9 @@ msgstr "Tipografía"
 msgid "Lead Text"
 msgstr "Destacar (Lead)"
 
+msgid "Small Text"
+msgstr "Pequeño <small>"
+
 msgid "Highlight"
 msgstr "Remarcar <mark>"
 
@@ -876,56 +916,53 @@ msgstr "Dirección <address>"
 msgid "Code Block"
 msgstr "Bloque de código <pre>"
 
-msgid "Colors"
-msgstr "Colores (Bootstrap)"
+msgid "Big headings"
+msgstr "Grandes encabezados"
 
-msgid "Muted"
-msgstr "Muted (inactivo o blanco)"
+msgid "Text Colors (B4)"
+msgstr "Colores de texto (B4)"
 
 msgid "Primary"
 msgstr "Primary (Azúl)"
 
+msgid "Secondary"
+msgstr "Secondary (Gris)"
+
 msgid "Success"
 msgstr "Success (Verde)"
-
-msgid "Info"
-msgstr "Info (Cyan)"
-
-msgid "Warning"
-msgstr "Warning (Amarilo)"
 
 msgid "Danger"
 msgstr "Danger (Rojo)"
 
-msgid "Background Primary"
-msgstr "Fondo Azul"
+msgid "Warning"
+msgstr "Warning (Amarilo)"
 
-msgid "Background Success"
-msgstr "Fondo Verde"
+msgid "Info"
+msgstr "Info (Cyan)"
 
-msgid "Background Info"
-msgstr "Fondo Cyan"
+msgid "Light"
+msgstr "Light (Blanco)"
 
-msgid "Background Warning"
-msgstr "Fondo Amarillo"
+msgid "Dark"
+msgstr "Dark (Negro)"
 
-msgid "Background Danger"
-msgstr "Fondo Rojo"
+msgid "Muted"
+msgstr "Muted (inactivo)"
+
+msgid "Background colors (B4)"
+msgstr "Colores de fondo (B4)"
 
 msgid "Utilities"
 msgstr "Utilidades"
 
-msgid "Pull Left"
-msgstr "Halar a la Izquierda"
+msgid "Float Left"
+msgstr "Flotar a la Izquierda"
 
-msgid "Pull Right"
-msgstr "Halar a la Derecha"
+msgid "Float Right"
+msgstr "Flotar a la Derecha"
 
 msgid "Clearfix"
-msgstr "Forzar ajuste (Clearfix)"
-
-msgid "Center Block"
-msgstr "Centrar en bloque (Center Block)"
+msgstr "Forzar ajuste en div (Clearfix)"
 
 msgid "Lists"
 msgstr "Listas"
@@ -934,10 +971,19 @@ msgid "Unstyled List"
 msgstr "Lista sin estilo (unstyled)"
 
 msgid "Inline List"
-msgstr "Lista en linea (Inline)"
+msgstr "Lista horizontal (inline)"
 
-msgid "Buttons"
-msgstr "Botones"
+msgid "Inline list item"
+msgstr "Objeto de lista horizontal"
+
+msgid "Solid buttons"
+msgstr "Botones sólidos"
+
+msgid "Outline buttons"
+msgstr "Botones delineados"
+
+msgid "Button variables"
+msgstr "Variables de botón"
 
 msgid "Link"
 msgstr "Enlace (Link)"
@@ -960,11 +1006,8 @@ msgstr "Desactivado"
 msgid "Alerts"
 msgstr "Alertas"
 
-msgid "Labels"
-msgstr "Etiquetas"
-
-msgid "Other"
-msgstr "Otros"
+msgid "Other (B4)"
+msgstr "Otros (B4)"
 
 msgid "Reverse Blockquote"
 msgstr "Cita invertida"
@@ -973,7 +1016,7 @@ msgid "Centered Blockquote"
 msgstr "Cita centrada"
 
 msgid "Blockquote Footer"
-msgstr "Cita al pié"
+msgstr "Pié de cita"
 
 msgid "Well"
 msgstr "Enmarcar (well)"
@@ -987,6 +1030,9 @@ msgstr "Enmarcar pequeño (Small Well)"
 msgid "Badge"
 msgstr "Insignia (Badge)"
 
+msgid "Pill"
+msgstr "Pastilla"
+
 msgid "Rounded Image"
 msgstr "Imagen redondeada"
 
@@ -995,6 +1041,9 @@ msgstr "Imagen en círculo"
 
 msgid "Thumbnail Image"
 msgstr "Imagen miniatura"
+
+msgid "Responsive Image"
+msgstr "Imagen responsiva"
 
 # @ ekiline
 #: customizer.php
@@ -1008,7 +1057,7 @@ msgid "Google fonts"
 msgstr "Fuentes de Google"
 
 msgid "Review and choose font type from https://fonts.google.com sample, then add the src=\"XXX\" code"
-msgstr "Revisa y elige una o más tipografías de <a href=\"https://fonts.google.com/\" target=\"_blank\">google fonts</a>, luego solo agrega el código del enlace src=\"XXX\""
+msgstr "Revisa y elige una o más tipografías de <a href=\"https://fonts.google.com/\" target=\"_blank\">google fonts</a>, después solo selecciona src=\"XXX\" y agrega el código"
 
 msgid "Summary words limit"
 msgstr "Límite de palabras para el resumen"
@@ -1039,6 +1088,9 @@ msgstr "Carrusel horizontal"
 
 msgid "Vertical carousel"
 msgstr "Carrusel vertical"
+
+msgid "Squares"
+msgstr "Cuadrados"
 
 msgid "Tooltip top"
 msgstr "Tooltip arriba"
@@ -1084,3 +1136,158 @@ msgstr "Cancela el uso de carruseles y galerias de ekiline"
 
 msgid "This will remove formatting galleries and carousels to work with other plugins like jetpack"
 msgstr "Esto eliminará el formato de galerias y carruseles para trabajar con otros plugins como jetpack"
+
+# @ ekiline
+#: ekiline-tinymce-langs.php
+msgid "Show grid"
+msgstr "Mostrar columnas"
+
+msgid "Add background"
+msgstr "Agregar fondo"
+
+msgid "Choose a background color or set an image"
+msgstr "Elige un color o imagen de fondo"
+
+msgid "Image"
+msgstr "Imagen"
+
+msgid "Choose background image"
+msgstr "Elegir imagen de fondo"
+
+msgid "Choose"
+msgstr "Elegir"
+
+msgid "Background style"
+msgstr "Estilo de fondo"
+
+msgid "Pattern"
+msgstr "Mosaico"
+
+msgid "Simple"
+msgstr "Simple"
+
+msgid "Responsive"
+msgstr "Responsivo"
+
+msgid "Fixed"
+msgstr "Fijo"
+
+msgid "Parallax"
+msgstr "Parallax"
+
+msgid "Add columns"
+msgstr "Agregar columnas"
+
+msgid "Column"
+msgstr "Columna"
+
+msgid "Each column is inserted by proportion"
+msgstr "Cada columna es insertada proporcion"
+
+msgid "Insert Google map"
+msgstr "Inserta mapa de Google"
+
+msgid "Paste link generated by google maps"
+msgstr "Pega la dirección generada por google"
+
+msgid "Replace height map"
+msgstr "Reemplazar altura de mapa"
+
+msgid "Insert Tabs"
+msgstr "Insertar pestañas"
+
+msgid "Number the necessary tabs"
+msgstr "Numera las pestañas que necesitas"
+
+msgid "Title this tab"
+msgstr "Titula esta pestaña"
+
+msgid "Add any content with format, text, images, video or galleries"
+msgstr "Añade cualquier contenido y formato; texto, imágenes, multimedia o galerías"
+
+msgid "Toggle item"
+msgstr "Acordeón"
+
+msgid "Insert a single toggle item o multiple accordion items"
+msgstr "Inserta un elemento colapsable o un acordeón de múltiples elementos"
+
+msgid "Set number"
+msgstr "Numera tus elementos"
+
+msgid "Title this toggle item"
+msgstr "Titula este elemento"
+
+msgid "Tooltips"
+msgstr "Tooltips"
+
+msgid "Create a tooltip or popover"
+msgstr "Crea un tooltip o popover"
+
+msgid "By default you set a tooltip adding only title and position. If you fill all fields tooltip transforms to popover."
+msgstr "De origen se genera un tooltip, solo añade título y posisción. Llenando todos los campos crearas un popover."
+
+msgid "Set title to item"
+msgstr "Agrega un titulo"
+
+msgid "Set description to item"
+msgstr "Agrega una descripcion"
+
+msgid "Add your content"
+msgstr "Agrega tu texto o código HTML"
+
+msgid "Allow HTML content"
+msgstr "Permitir contenido HTML"
+
+msgid "Set position to show pop item"
+msgstr "Elige la posicion para mostrar"
+
+msgid "Social tools"
+msgstr "Redes Social"
+
+msgid "Social links and more"
+msgstr "Enlaces a redes sociales y más"
+
+msgid "Choose a shortcode to enhance your page"
+msgstr "Elige la herramienta para mejorar tu página"
+
+msgid "Your social links nav"
+msgstr "Navegación con tus enlaces sociales"
+
+msgid "Share nav for visitors"
+msgstr "Navegación para compartir por redes"
+
+msgid "Insert a login form"
+msgstr "Formulario de ingreso"
+
+msgid "Entries module"
+msgstr "Módulo de entradas"
+
+msgid "Choose category and format for show entries"
+msgstr "Elige la categoría y formato para mostrar tus entradas"
+
+msgid "Set the amount of posts"
+msgstr "Establece un límite de publicaciones"
+
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+msgid "Choose and copy the value that you need"
+msgstr "Elige y copia el valor que necesitas"
+
+msgid "Replace meta title"
+msgstr "Reemplazar la meta de título"
+
+msgid "Replace meta description"
+msgstr "Reemplazar la meta de descripción"
+
+msgid "Add css style"
+msgstr "Añadir estilos CSS"
+
+msgid "Add js script"
+msgstr "Añadir código javascript"
+
+msgid "Set custom field with:"
+msgstr "Crea un campo personalizado con este nombre:"
+
+msgid "Sitemap created successfully!"
+msgstr "Sitemap creado exitosamente!"

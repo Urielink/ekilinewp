@@ -98,6 +98,7 @@ function customHeader() {
     // Tamaño de imagen 
     // Background image size
     $rangeHead = get_theme_mod('ekiline_range_header');
+	$setVideo = get_theme_mod('ekiline_video');
  		
 /**
  * Imagen para frontpage, singles y categories
@@ -116,7 +117,7 @@ function customHeader() {
             // agregar brand image // add brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
-                $coverLogo = '<a class="cover-header-brand" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+                $coverLogo = '<a class="cover-header-brand author" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
             }
             
             // Mensaje personalizado // custom message
@@ -125,6 +126,7 @@ function customHeader() {
             // Permitir el uso de HTML a la vista // Alllow html on output
             $headerText = wp_kses( $headerText, array( 
                 'a' => array(
+                    'class' => array(),
                     'href' => array(),
                     'title' => array(),
                     'target' => array()
@@ -153,7 +155,7 @@ function customHeader() {
             						
             // Establece la altura de la imagen en formato jumbotron           
 			// Set the range for height value and format image as bootstrap jumbotron			
-			if ( $rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+			if ( $rangeHead <= '95' && empty( $setVideo ) ) {
 
 				$customHeader .= '<header id="masthead" class="site-header container-fluid" role="banner">';
 				    
@@ -162,7 +164,7 @@ function customHeader() {
                         $customHeader .= $coverLogo;
 
                         if ( !$headerText ){																																						
-    						$customHeader .= '<h1 class="site-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
+    						$customHeader .= '<h1 class="site-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                														
                             $customHeader .= '<p class="site-description">'. $siteDescription.'</p>';
 						} else {
 						    $customHeader .= $headerText;
@@ -188,14 +190,14 @@ function customHeader() {
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
 							            <div class="inner">
-							              <nav class="nav cover-header-nav">'. do_shortcode("[socialmenu]") .'</nav>
+							              <nav class="nav cover-header-nav justify-content-md-end justify-content-center">'. do_shortcode("[socialmenu]") .'</nav>
 							              '. $coverLogo .'
 							            </div>
 							          </div>
 							          <div class="inner cover">';
 
                                     if ( !$headerText ){                                                                                                                                                        
-                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<h1 class="cover-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
                                         $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
                                     } else {
                                         $customHeader .= $headerText;
@@ -204,7 +206,7 @@ function customHeader() {
 				$customHeader .=    '</div>
 				                      <div class="cover-footer text-right">
 							            <div class="inner">
-							             <small>&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
+							             <small class="author">&copy; Copyright '. esc_attr( date('Y') ) .' '. $siteName .'</small>
 							            </div>
 							          </div>
 							        </div>
@@ -214,7 +216,7 @@ function customHeader() {
 			
 			// Agregar video - Set video in header 
 			
-            if ( ! empty( get_theme_mod('ekiline_video') ) ) {
+            if ( ! empty( $setVideo ) ) {
                  
                 $customHeader = '<!--[if lt IE 9]><script>document.createElement("video");</script><![endif]-->'.
                                 '<header class="video-container" style="background-image: url('. get_header_image() .');background-size:cover;">
@@ -222,7 +224,7 @@ function customHeader() {
                                         '.$coverLogo;
 
                                     if ( !$headerText ){                                                                                                                                                        
-                                        $customHeader .= '<h1 class="cover-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
+                                        $customHeader .= '<h1 class="cover-title entry-title"><a href="'.esc_url( home_url( '/' ) ).'" rel="home">'. $siteName .'</a></h1>';                                                                                     
                                         $customHeader .= '<p class="cover-description">'. $siteDescription.'</p>';
                                     } else {
                                         $customHeader .= $headerText;
@@ -231,9 +233,9 @@ function customHeader() {
                 $customHeader .= '</div>                                                                
                                     <div class="video-media embed-responsive embed-responsive-16by9">
                                         <video autoplay loop poster="'. get_header_image() .'" id="bgvid">
-                                            <source src="'. get_theme_mod('ekiline_video')  .'" type="video/mp4">
+                                            <source src="'. $setVideo  .'" type="video/mp4">
                                         </video>
-                                        <button id="vidpause" class="btn btn-default btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
+                                        <button id="vidpause" class="btn btn-secondary btn-sm">'. __( 'Pause', 'ekiline' ) .'</button>
                                     </div>
                                  </header>';
                                  
@@ -288,8 +290,8 @@ function customHeader() {
             }       
 									
 				
-		} elseif ( is_single() || is_page() ){
-		    
+		} elseif ( is_single() && true === get_theme_mod('ekiline_showEntryHeading') || is_page() && true === get_theme_mod('ekiline_showPageHeading') ){
+					    
             /**
              * Imagenes para el resto de las páginas
              * Heading image for pages and singles
@@ -305,7 +307,7 @@ function customHeader() {
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
-                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
                     $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
                     $customHeader .= '</div></header>';
                     
@@ -320,7 +322,7 @@ function customHeader() {
 
 			}
 			
-		} elseif ( is_category() ){
+		} elseif ( is_category() && true === get_theme_mod('ekiline_showCategoryHeading') ){
 		    
             /**
              * Imagenes para categories
@@ -341,7 +343,7 @@ function customHeader() {
                 if ( $rangeHead >= '95' ) {
                     
                     $customHeader .= '<header id="masthead" class="site-header">';
-                    $customHeader .= '<div class="site-branding jumbo" style="background-image: url(' . $url . ');">';
+                    $customHeader .= '<div class="site-branding jumbotron" style="background-image: url(' . $url . ');">';
                     $customHeader .= '<div class="inner"><h1 class="entry-title text-center" >'.$titulo.'</h1></div>';
                     $customHeader .= '</div></header>';
                     
@@ -385,15 +387,15 @@ add_filter( 'body_class', function( $classes ) {
     
         $rangeHead = get_theme_mod('ekiline_range_header');
         
-        if ($rangeHead <= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+        if ($rangeHead <= '95' && empty( $setVideo ) ) {
             
             $classes[] = 'head-jumbotron';
                         
-        } elseif ( $rangeHead >= '95' && empty( get_theme_mod('ekiline_video') ) ) {
+        } elseif ( $rangeHead >= '95' && empty( $setVideo ) ) {
             
             $classes[] = 'head-cover';
             
-        } elseif ( ! empty( get_theme_mod('ekiline_video') ) ) {
+        } elseif ( ! empty( $setVideo ) ) {
             
             $classes[] = 'head-video';
             

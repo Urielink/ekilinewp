@@ -46,10 +46,11 @@ if ( is_page() || is_single() ){
     // excluir si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ){
             
-        // personalizar la metadescripcion 
+        // personalizar la metadescripcion
         // custom meta
         global $wp_query;
-        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_descripcion', true);    
+        $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_description', true);    
+        $cfTitle = get_post_meta( $wp_query->post->ID, 'custom_title', true );
         wp_reset_query();
         
         if ( ! empty( $stdDesc ) ) {
@@ -94,7 +95,7 @@ if ( is_page() || is_single() ){
                 preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
             }     
                 
-            $image_url = $matches [1] [0]; // Necesita declararse el indice        
+            $image_url = $matches [1][0]; // Necesita declararse el indice        
             ob_end_clean();  
             
             //En caso de no existir una u otra
@@ -111,9 +112,20 @@ if ( is_page() || is_single() ){
         }
 
         if ( is_front_page() || is_home() ){
-            $metaTitle = get_bloginfo( 'name' );
+            //$metaTitle = get_bloginfo( 'name' );
+			if ( ! empty( $cfTitle ) ){
+			    $metaTitle = $cfTitle ;
+			} else {
+	            $metaTitle = get_bloginfo( 'name' );
+			}
+
         } else {
-            $metaTitle = get_the_title();        
+            //$metaTitle = get_the_title();  
+			if ( ! empty( $cfTitle ) ){
+			    $metaTitle = $cfTitle ;
+			} else {
+	            $metaTitle = get_the_title();  
+			}
         }
                            
         
@@ -161,6 +173,19 @@ if ( is_page() || is_single() ){
 
 add_action( 'wp_head', 'registerSocial', 1);
 
+//Habilitar microdatos
+function ekiline_schema(){
+	// variables
+    $fbSocial = get_theme_mod('ekiline_fbProf','');
+    $twSocial = get_theme_mod('ekiline_twProf','');
+    $gpSocial = get_theme_mod('ekiline_gpProf','');
+		    
+    if ( $gpSocial != '' || $twSocial != '' || $fbSocial != '' ) {
+        echo ' itemscope itemtype="http://schema.org/WebPage"';
+    }
+    
+}
+
 
 //Crear un shortcode para crear un menu de redes sociales [socialmenu]
 // Add a shortcode for link this
@@ -206,18 +231,18 @@ function ekiline_socialmenu($atts, $content = null) {
     $pintSocial = get_theme_mod('ekiline_pintProf','');
     $menuItems = '';
         
-    if ($emSocial) : $menuItems .= '<li><a class="text-muted" href="mailto:'.$emSocial.'" target="_blank" title="Email">'.$emaIco.'</a></li>'; endif;
-    if ($telSocial) : $menuItems .= '<li><a class="text-muted" href="tel:'.$telSocial.'" target="_blank" title="Telefono">'.$telIco.'</a></li>'; endif;
-    if ($whaSocial) : $menuItems .= '<li><a class="text-whatsapp" href="https://api.whatsapp.com/send?phone='.$whaSocial.'&text=hola,%20quiero%20saber%20sobre%20Snowonder" target="_blank" title="Enviar mensaje">'.$whaIco.'</a></li>'; endif;
-    if ($fbSocial) : $menuItems .= '<li><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
-    if ($twSocial) : $menuItems .= '<li><a class="text-twitter" href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
-    if ($gpSocial) : $menuItems .= '<li><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
-    if ($inSocial) : $menuItems .= '<li><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
-    if ($ytSocial) : $menuItems .= '<li><a class="text-youtube" href="'.$ytSocial.'" target="_blank" title="YouTube">'.$ytIco.'</a></li>';endif;
-    if ($instSocial) : $menuItems .= '<li><a class="text-instagram" href="'.$instSocial.'" target="_blank" title="Instagram">'.$instIco.'</a></li>';endif;
-    if ($pintSocial) : $menuItems .= '<li><a class="text-pinterest" href="'.$pintSocial.'" target="_blank" title="Pinterest">'.$pintIco.'</a></li>';endif;
+    if ($emSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-muted" href="mailto:'.$emSocial.'" target="_blank" title="Email">'.$emaIco.'</a></li>'; endif;
+    if ($telSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-muted" href="tel:'.$telSocial.'" target="_blank" title="Telefono">'.$telIco.'</a></li>'; endif;
+    if ($whaSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-whatsapp" href="https://api.whatsapp.com/send?phone='.$whaSocial.'&text=hola,%20quiero%20saber%20sobre%20Snowonder" target="_blank" title="Enviar mensaje">'.$whaIco.'</a></li>'; endif;
+    if ($fbSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-facebook" href="'.$fbSocial.'" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-twitter" href="https://twitter.com/'.$twSocial.'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-google" href="'.$gpSocial.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-linkedin" href="'.$inSocial.'" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
+    if ($ytSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-youtube" href="'.$ytSocial.'" target="_blank" title="YouTube">'.$ytIco.'</a></li>';endif;
+    if ($instSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-instagram" href="'.$instSocial.'" target="_blank" title="Instagram">'.$instIco.'</a></li>';endif;
+    if ($pintSocial) : $menuItems .= '<li class="list-inline-item"><a class="text-pinterest" href="'.$pintSocial.'" target="_blank" title="Pinterest">'.$pintIco.'</a></li>';endif;
                             
-    return '<ul class="shortcode-socialmenu list-inline no-margin">'. $menuItems .'</ul>';
+    return '<ul class="shortcode-socialmenu nav list-inline">'. $menuItems .'</ul>';
 }
 add_shortcode('socialmenu', 'ekiline_socialmenu');    
     
@@ -252,11 +277,11 @@ function ekiline_socialsharing($atts, $content = null) {
     $inSocial = get_theme_mod('ekiline_inProf','');
     $menuItems = '';
         
-    if ($fbSocial) : $menuItems .= '<li><a class="bg-facebook" href="http://www.facebook.com/sharer.php?u=' . $url . '" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
-    if ($twSocial) : $menuItems .= '<li><a class="bg-twitter" href="https://twitter.com/share?url=' . $url .'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
-    if ($gpSocial) : $menuItems .= '<li><a class="bg-google" href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
-    if ($inSocial) : $menuItems .= '<li><a class="bg-linkedin" href="http://www.linkedin.com/shareArticle?url=' . $url . '" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
-    if ($whaSocial) : $menuItems .= '<li><a class="bg-whatsapp" href="whatsapp://send?text=' . $url . '" data-action="share/whatsapp/share">'.$whaIco.'</a></li>'; endif;
+    if ($fbSocial) : $menuItems .= '<li class="nav-item"><a class="bg-facebook nav-link" href="http://www.facebook.com/sharer.php?u=' . $url . '" target="_blank" title="Facebook">'.$fbIco.'</a></li>'; endif;
+    if ($twSocial) : $menuItems .= '<li class="nav-item"><a class="bg-twitter nav-link" href="https://twitter.com/share?url=' . $url .'" target="_blank" title="Twitter">'.$ttIco.'</a></li>'; endif;
+    if ($gpSocial) : $menuItems .= '<li class="nav-item"><a class="bg-google nav-link" href="https://plus.google.com/share?url=' . $url.'" target="_blank" title="Google Plus">'.$gpIco.'</a></li>'; endif;
+    if ($inSocial) : $menuItems .= '<li class="nav-item"><a class="bg-linkedin nav-link" href="http://www.linkedin.com/shareArticle?url=' . $url . '" target="_blank" title="Linkedin">'.$inIco.'</a></li>';endif;
+    if ($whaSocial) : $menuItems .= '<li class="nav-item"><a class="bg-whatsapp nav-link" href="whatsapp://send?text=' . $url . '" data-action="share/whatsapp/share">'.$whaIco.'</a></li>'; endif;
                         
     return '<div class="shortcode-socialsharemenu"><ul class="nav nav-pills">'. $menuItems .'</ul></div>';
 }

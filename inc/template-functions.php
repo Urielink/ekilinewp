@@ -1,12 +1,10 @@
 <?php
 /**
- * Custom functions that act independently of the theme templates.
- *
- * Eventually, some of the functionality here could be replaced by core features.
+ * Functions which enhance the theme by hooking into WordPress
  *
  * @package ekiline
  */
- 
+
 /**
  * Limpiar los caracteres especiales para otras funciones del tema
  * Clean special characters for more ekiline addons or customs.
@@ -39,13 +37,15 @@ add_action( 'after_setup_theme', 'ekiline_theme_setup' );
 function ekiline_theme_setup() {
     add_image_size( 'horizontal-slide', 960, 540, array( 'left', 'top' ) );
     add_image_size( 'vertical-slide', 540, 960, array( 'center', 'top' ) );
+    add_image_size( 'square', 540, 540, array( 'center', 'top' ) );
 }
  
 add_filter( 'image_size_names_choose', 'ekiline_custom_sizes' );
 function ekiline_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'horizontal-slide' => __( 'Horizontal carousel', 'ekiline' ),
-        'vertical-slide' => __( 'Vertical carousel', 'ekiline'  )
+        'vertical-slide' => __( 'Vertical carousel', 'ekiline'  ),
+        'square' => __( 'Squares', 'ekiline'  )
     ) );
 }
 
@@ -81,6 +81,18 @@ function ekiline_body_css( $classes ) {
 add_filter( 'body_class', 'ekiline_body_css' );
 
 
+
+/**
+ * Add a pingback url auto-discovery header for singularly identifiable articles.
+ */
+function ekiline_pingback_header() {
+	if ( is_singular() && pings_open() ) {
+		echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
+	}
+}
+add_action( 'wp_head', 'ekiline_pingback_header' );
+
+
 /**
  * Customizer: Add theme colors (customizer.php).
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
@@ -111,47 +123,47 @@ function ekiline_csscolors() {
     $miestilo = '
         body{ color:'.$texto.'; }
         a:hover,a:focus,a:active{ color:'.$enlaces.';opacity:.6; }
-        .page-title, .jumbotron .entry-title, .site-main h1, .site-main h2, .site-main h3 {color:'.$texto.';}
-        .navbar-default { background-color:'.$menu.';}
-        .navbar-inverse { background-color:'.$menu.';}
-        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a{ color:'.$texto.'; }
-        .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
+        .page-title, .jumbotron .entry-title{color:'.$texto.';}
+        .navbar.navbar-light.bg-light { background-color:'.$menu.' !important;}
+        .navbar.navbar-dark.bg-dark { background-color:'.$menu.' !important;}
+        .navbar-light .navbar-brand, .navbar-light .navbar-nav > li > a{ color:'.$texto.'; }
+        .navbar-dark .navbar-brand, .navbar-dark .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
         .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,
-        .navbar-default .navbar-nav .open .dropdown-menu>.active>a, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{background-color:'.$enlaces.';}
+        .navbar-light .navbar-nav .show .dropdown-menu>.active>a, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:focus, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:hover,.bg-link{background-color:'.$enlaces.';}
         .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
-        .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third {background:'.$footer.';}
-        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} .pager li>a, .pager li>span, .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
-        .page-header, .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} hr, .modal-footer{border-top: 1px solid '.$modulos.';}
+        .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third,.bg-footer{background:'.$footer.';}
+        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} 
+        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
+        .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} hr, .modal-footer{border-top: 1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
-        .carousel.slide, .breadcrumb, .bg-module { background-color:'.$modulos.'; }
-        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.well-sm,.well-lg,.well,.panel-group .panel,.panel,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.pager li > a,.pager li > span,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-xs,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
-        .panel-group .panel-heading,.nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
-        .pagination>li:first-child>a, .pagination>li:first-child>span{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
-        .pagination>li:last-child>a, .pagination>li:last-child>span{border-top-right-radius: '.$rangeLmnts.'px;border-bottom-right-radius: '.$rangeLmnts.'px}
+        .breadcrumb, .bg-module{ background-color:'.$modulos.'; }
+        .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-sm,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
+        .nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
+        .pagination-sm .page-item:first-child .page-link{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
+        .pagination-sm .page-item:last-child .page-link{border-top-right-radius: '.$rangeLmnts.'px;border-bottom-right-radius: '.$rangeLmnts.'px}
         ';
     // En caso de utilizar dos colores en el menú // if uses 2nd menu color    
     if ( $mgradient != '' ){
         $miestilo .= '
-        .navbar-default, .navbar-inverse, .panel-default > .panel-heading {
+        .navbar-light, .navbar-dark{
             background-image: -webkit-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -o-linear-gradient(top, '.$menu.' 0%, '.$mgradient.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$menu.'), to('.$mgradient.'));
             background-image: linear-gradient(to bottom, '.$menu.' 0%, '.$mgradient.' 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);
-            border-color:'.$mgradient.';}              
-        .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .active > a,
-        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$menu.'", endColorstr="'.$mgradient.'", GradientType=0);}              
+        .navbar-light .navbar-nav > .show > a, .navbar-light .navbar-nav > .active > a,
+        .navbar-dark .navbar-nav > .show > a, .navbar-dark .navbar-nav > .active > a {
             background-image: -webkit-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
             background-image: -o-linear-gradient(top, '.$mgradient.' 0%, '.$menu.' 100%);
             background-image: -webkit-gradient(linear, left top, left bottom, from('.$mgradient.'), to('.$menu.'));
             background-image: linear-gradient(to bottom, '.$mgradient.' 0%, '.$menu.' 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="'.$mgradient.'", endColorstr="'.$menu.'", GradientType=0);}';
     } else {
-        $miestilo .= '.navbar-default, .navbar-inverse, .panel-default > .panel-heading {background-color:'.$menu.';border-color:'.$menu.';background-image: none;}
-        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.1)}
-        .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.3)}
+        $miestilo .= '.navbar-light, .navbar-dark{background-color:'.$menu.';background-image: none;}
+        .navbar-light .navbar-nav > .active > a, .navbar-light .navbar-nav > .active > a:focus, .navbar-light .navbar-nav > .active > a:hover, .navbar-light .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.1)}
+        .navbar-dark .navbar-nav > .active > a, .navbar-dark .navbar-nav > .active > a:focus, .navbar-dark .navbar-nav > .active > a:hover, .navbar-dark .navbar-nav > .current-menu-ancestor > a {background-color:rgba(0,0,0,.3)}
         ';
                 
     }        
@@ -194,7 +206,7 @@ function ekiline_search_form( $form ) {
                 <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
                 <div class="input-group">
                     <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for:', 'ekiline' ) . '"/>
-                    <span class="input-group-btn"><input class="btn btn-default" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search', 'ekiline' ) .'" /></span>
+                    <span class="input-group-btn"><button class="btn btn-secondary" type="submit" id="searchsubmit"><i class="fa fa-search"></i> '. esc_attr__( 'Search', 'ekiline' ) .'</button></span>
                 </div>
             </form>';
 
@@ -225,7 +237,7 @@ add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
 // Excerpt Button 
 function ekiline_excerpt_button( $more ) {
-    return '<p><a class="read-more btn btn-default" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
+    return '<p><a class="read-more btn btn-secondary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 
@@ -257,33 +269,34 @@ function ekiline_loader(){
  * @link https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
  * @link http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
  * @link **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
+ * Enero 2018, este arreglo cicla algunos elementos. Es necesario verificar el resto.
  **/
 
-function wp_trim_excerpt_do_shortcode($text) {
-	$raw_excerpt = $text;
-	if ( '' == $text ) {
-		$text = get_the_content('');
-
-		$text = do_shortcode( $text ); 
-
-		$text = apply_filters('the_content', $text);
-		$text = str_replace(']]>', ']]>', $text);
-		$text = strip_tags($text);
-		$excerpt_length = apply_filters('excerpt_length', 55);
-		$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-		if ( count($words) > $excerpt_length ) {
-			array_pop($words);
-			$text = implode(' ', $words);
-			$text = $text . $excerpt_more;
-		} else {
-			$text = implode(' ', $words);
-		}
-	}
-	return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-}
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
+// function wp_trim_excerpt_do_shortcode($text) {
+	// $raw_excerpt = $text;
+	// if ( '' == $text ) {
+		// $text = get_the_content('');
+// 
+		// $text = do_shortcode( $text ); 
+// 
+		// $text = apply_filters('the_content', $text);
+		// $text = str_replace(']]>', ']]>', $text);
+		// $text = strip_tags($text);
+		// $excerpt_length = apply_filters('excerpt_length', 55);
+		// $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
+		// $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+		// if ( count($words) > $excerpt_length ) {
+			// array_pop($words);
+			// $text = implode(' ', $words);
+			// $text = $text . $excerpt_more;
+		// } else {
+			// $text = implode(' ', $words);
+		// }
+	// }
+	// return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
+// }
+// remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+// add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
 
 /**
  * Theming: 
@@ -307,17 +320,17 @@ function ekiline_pages_navigation(){
     $nextID = (isset($pages[$current+1])) ? $pages[$current+1] : '';
     
     if (!empty($prevID)) {
-        $thePages .= '<li class="previous">';
-        $thePages .= '<a href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
+        $thePages .= '<li class="previous page-item">';
+        $thePages .= '<a class="page-link" href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
         $thePages .= "</li>";
     }
     if (!empty($nextID)) {
-        $thePages .= '<li class="next">';
-        $thePages .= '<a href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
+        $thePages .= '<li class="next page-item">';
+        $thePages .= '<a class="page-link" href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
         $thePages .= "</li>";      
     }
     
-    $thePages = '<ul class="pager">'.$thePages.'</ul>';
+    $thePages = '<ul class="pagination pagination-sm justify-content-center">'.$thePages.'</ul>';
     
     if (!is_front_page()){
         echo $thePages;
@@ -344,18 +357,18 @@ function ekiline_posts_navigation( $args = array() ) {
             'screen_reader_text' => __( 'Posts navigation', 'ekiline' ),
         ) );
  
-        $next_link = get_previous_posts_link( $args['next_text'] );
-        $prev_link = get_next_posts_link( $args['prev_text'] );
+        $next_link = get_previous_posts_link( $args['next_text'] . ' <span class="fa fa-angle-right"></span>' );
+        $prev_link = get_next_posts_link( '<span class="fa fa-angle-left"></span> ' . $args['prev_text'] );
  
         if ( $prev_link ) {
-            $navigation .= '<li class="previous">' . $prev_link . '</li>';
+            $navigation .= '<li class="previous page-item page-link">' . $prev_link . '</li>';
         }
  
         if ( $next_link ) {
-            $navigation .= '<li class="next">' . $next_link . '</li>';
+            $navigation .= '<li class="next page-item page-link">' . $next_link . '</li>';
         }
         
-        $navigation = '<ul class="pager">'.$navigation.'</ul>';
+        $navigation = '<ul class="pagination justify-content-center">'.$navigation.'</ul>';
  
         $navigation = _navigation_markup( $navigation, 'posts-navigation', $args['screen_reader_text'] );
     }
@@ -396,20 +409,22 @@ function ekiline_archive_pagination() {
         $pagination .= '<ul class="pagination">';
         
         foreach ($pages as $i => $page) {
-            
+            //27 10 17 add CSS B4 pagination
+            $page = str_replace( 'page-numbers', 'page-link', $page );			
+			
             if ($current_page == 1 && $i == 0) {
                 
-                $pagination .= "<li class='active'>$page</li>";
+                $pagination .= "<li class='page-item active'>$page</li>";
                 
             } else {
                 
                 if ($current_page != 1 && $current_page == $i) {
                     
-                    $pagination .= "<li class='active'>$page</li>";
+                    $pagination .= "<li class='page-item active'>$page</li>";
                     
                 } else {
                     
-                    $pagination .= "<li>$page</li>";
+                    $pagination .= "<li class='page-item'>$page</li>";
                     
                 }
             }

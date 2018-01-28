@@ -71,16 +71,18 @@ jQuery(document).ready(function($){
 		});         
 	}
 		
-	// animar el boton del menu.
-	$('.navbar-toggle').on('click', function () {
+	/* animar el boton del menu.
+	$('.navbar-toggler').on('click', function () {
 		$(this).toggleClass('active');
-	});
+	});*/
 	
 	//19 ago menú con modal
+	$('#site-navigation-modal .navbar-toggler').on('click',function(){
+		$(this).removeClass('collapsed');
+	});
     $('#navModal').on('hidden.bs.modal', function(){
-    	$('#site-navigation-modal .navbar-toggle').toggleClass('active');
+    	$('#site-navigation-modal .navbar-toggler').addClass('collapsed');
     });             
-	
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -96,8 +98,9 @@ jQuery(document).ready(function($){
 	if ( !$('body').hasClass('head-cover') ){
 		
 		var sticky = $( 'footer.site-footer > .container' ).height() + 50 ;
+		//console.log(sticky);
 
-		if( sticky <= '150' ){
+		if( sticky <= '200' ){
 			$('html').css({ 'position':'relative','height':'auto','min-height':'100%' });
 			$('body').css('margin-bottom', sticky + 'px');
 			$( 'footer.site-footer' ).css({'position':'absolute','bottom':'0','width':'100%','min-height': sticky + 'px' });
@@ -114,54 +117,63 @@ jQuery(document).ready(function($){
             
     // Carrusel con swipe e impedir que avance automaticamente	
     $('.carousel').carousel({
-    	  interval: false,
+    	  //interval: false,
     	  swipe: 40
     	});	  
             
-    // Affix: calcula la altura del header para el top-navbar
+/** 11 de octubre B4: 
+ *  Ya no sirve affix como tal, se reemplaza por sticky en elementos que así sea necesario.   
+ * 	En el caso de Ekiline, se calcula la altura del header y se añade la clase fixed-top.
+ **/
+            
     if ( $('#masthead').length ) {	    	
-    	$('.top-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
+	    
+		$(window).on('scroll', function (event) {
+			
+		    var scrollValue = $(window).scrollTop();
+		    var headHeight = $('#masthead').height();
+		    
+		    if (scrollValue > headHeight) {
+		        $('.navbar.navbar-sticky').addClass('fixed-top');
+		    } else{
+		        $('.navbar.navbar-sticky').removeClass('fixed-top');
+		    }		    
+		    
+		});
     } else {
-    	$('.top-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.top-navbar').height()
-	        }
-	    });	    		    	
+    	
+		$(window).on('scroll', function (event) {
+			
+		    var scrollValue = $(window).scrollTop();
+		    var menuHeight = $('.navbar').height();
+		    
+		    if (scrollValue > menuHeight) {
+		        $('.navbar.navbar-sticky').addClass('fixed-top');
+		    } else{
+		        $('.navbar.navbar-sticky').removeClass('fixed-top');
+		    }
+		    
+		});	    	    
     }
-    
-    // Affix: calcula la altura del header para el primary-navbar
-    if ( $('#masthead').length ) {	    	
-    	$('.primary-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
-    } else {
-    	$('.primary-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.primary-navbar').height()
-	        }
-	    });	    		    	
-    }    
-    
-    // Affix: calcula la altura del header para el primary-navbar
-    if ( $('#masthead').length ) {	    	
-    	$('.modal-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('#masthead').height()
-	        }
-	    });
-    } else {
-    	$('.modal-navbar.navbar-affix').affix({
-	        offset: {
-	          top: $('.modal-navbar').height()
-	        }
-	    });	    		    	
-    }        
+
+	/**
+	 * 	Delay en el background.
+	 *  https://stackoverflow.com/questions/39637176/js-css-dynamic-background-image-moving
+	 */	
+
+	// Handle the window scroll event
+	$(window).scroll(function () {
+	    // Store the distance scrolled
+	    var scrolled = $(window).scrollTop() + 1;
+	
+	    // Set the scroll speed
+	    var scrollSpeed = 0.2;
+	    
+	    // Update the background position
+	    $('.bg-responsive-delay').css('background-position', '0' + -(scrolled * scrollSpeed) + 'px');
+	});
+
+
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -174,7 +186,9 @@ jQuery(document).ready(function($){
     $('.tooltip-default').tooltip();
     
     //PopOvers, inicializar
-    $('.popover-default').popover();
+    $('.popover-default').popover({
+        trigger: 'focus'
+    });
              
 	    //PopOvers con contenido HTML:
 	    $('.popover-rich').popover({
@@ -184,7 +198,7 @@ jQuery(document).ready(function($){
 	            var clone = $( $(this).attr('href') ).clone(true).removeClass('hide');
 	            return clone;
 	            //console.log(clone);
-	          }
+	        }
 		   	}).click(function(e) {
 		        e.preventDefault();
 	    });
@@ -193,9 +207,12 @@ jQuery(document).ready(function($){
 		$('.popover-rich').each(function(){
 			//extraigo el enlace del contenido
 		    var popHtml = $(this).attr('href');
-		    $(popHtml).addClass('hide');
+			//Creo un envoltorio
+			var popWrap = $('<div/>', { "class" : "collapse" });
+			//Envuelvo
+		    $( popHtml ).wrap( popWrap );
 		});    
-    
+
     
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
@@ -206,8 +223,8 @@ jQuery(document).ready(function($){
 			
 	$( '.widget_rss ul' ).addClass( 'list-group' );		
 	$( '.widget_rss ul li' ).addClass( 'list-group-item' );		
-	$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
-	$( 'table#wp-calendar' ).addClass( 'table table-striped');
+	//$( '#calendar_wrap, .calendar_wrap' ).addClass( 'table-responsive');
+	$( 'table#wp-calendar' ).addClass( 'table responsive table-sm table-striped');
 	$( '.widget_text select, .widget_archive select, .widget_categories select' ).addClass( 'form-control');
 	$( '.widget_recent_comments ul' ).addClass('list-group');
 	$( '.widget_recent_comments ul li' ).addClass( 'list-group-item');		
@@ -216,7 +233,10 @@ jQuery(document).ready(function($){
 	$( '.nav-links .nav-next' ).addClass( 'next');		
 	$( '.nav-links .nav-previous' ).addClass( 'previous');		
 	
-	
+	// Videos embedados responsivos
+    if ( $('.embed-responsive').length ) {	
+         $('.embed-responsive').find('iframe').addClass('embed-responsive-item'); 
+    }	
 	
 	
 	
@@ -226,7 +246,7 @@ jQuery(document).ready(function($){
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/			
 						
-	$('.carousel-multiple .item').each(function(){
+	$('.carousel-multiple .carousel-item').each(function(){
 	    
 	    var cThumb = $(this).children();
 	                                                 
@@ -356,20 +376,23 @@ jQuery(document).ready(function($){
 				var dataSrc = $(this).attr('data-src') || null;
 				
 		        // si hay titulo en el boton genero un modal con titulo 
-				var attrTittle = $(this).attr('title') || null;
-		
+				var attrTittle = $(this).attr('title') || null;		
 		
 				// Declaro mis espacios para insertar el tipo de elemento
 		
 		            var contenidoModal = ''; // acorde al tipo de contenido este campo se Agrega. 
 		            
 		            //Abr 28 2017: añado una clase extra al modal para poder maniobrar las medidas por tipo de contenido y le añado un sufijo "linkClass.substr(1)"
-					var modalHtml = '<div class="modal window-'+ linkClass.substr(7) +' fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
+					//var modalHtml = '<div class="modal window-'+ linkClass.substr(7) +' fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
+					var modalHtml = $('<div/>',{'class':'modal window-'+ linkClass.substr(7) +' fade zoom', 'id': hrefToid, 'html': $('<div/>',{ 'class':'modal-dialog modal-lg', 'html': $('<div/>',{ 'class':'modal-dialog modal-lg', 'html': $('<div/>',{ 'class':'modal-content', 'html': $('<div/>',{ 'class':'modal-body', 'html': contenidoModal }) }) }) }) });
 		
-					var modalTitle = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>';
+					//var modalTitle = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>';
+					var modalTitle = $('<div/>',{'class':'modal-header', 'html': $('<button/>',{'class':'close', 'type': 'button', 'data-dismiss': 'modal', 'html': $('<span/>',{'html':'&times;'}) }) });
+
 		
 					// de momento el footer no se requiere, pero lo dejaremos solo como referencia.
-					var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>';
+					//var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>';
+					var modalFooter = $('<div/>',{'class':'modal-footer', 'html': $('<button/>',{'class':'btn btn-secondary', 'type': 'button', 'data-dismiss': 'modal', 'html':'Cerrar' }) });
 			
 		
 		    	// Precarga la ventana que contendra la informacion
@@ -383,7 +406,8 @@ jQuery(document).ready(function($){
 			        
 			    	// Si hay titulo, Agrega un H4 en el espacio del titulo
 			        if ( attrTittle != null ){
-			            $('#' + hrefToid + ' .modal-content .modal-header').append( '<h4 class="modal-title">' + attrTittle +'</div>' );	        	
+			            //$('#' + hrefToid + ' .modal-content .modal-header').append( '<h4 class="modal-title">' + attrTittle +'</div>' );	        	
+			            $('#' + hrefToid + ' .modal-content .modal-header').append( $('<h4/>', { 'class':'modal-title','html': attrTittle }) );	        	
 			        }
 			        
 			        
@@ -391,7 +415,8 @@ jQuery(document).ready(function($){
 			            	
 					if ( linkClass == '.modal-iframe' ){
 						
-			            contenidoModal = '<iframe frameborder="0" scrolling="yes" allowtransparency="true" src="' + dataSrc + '" width="100%" height="100%"></iframe>';
+			            //contenidoModal = '<iframe frameborder="0" scrolling="yes" allowtransparency="true" src="' + dataSrc + '" width="100%" height="100%"></iframe>';
+			            contenidoModal = $('<iframe/>', { 'frameborder':'0', 'scrolling':'yes', 'allowtransparency': 'true', 'src': dataSrc, 'width':'100%', 'height': '100%' });
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
@@ -399,7 +424,8 @@ jQuery(document).ready(function($){
 		
 						dataWidth = '';
 		
-				        contenidoModal = '<img class="img-responsive" src="' + dataSrc + '"/>';
+				        //contenidoModal = '<img class="img-fluid" src="' + dataSrc + '"/>';
+				        contenidoModal = $('<img/>', { 'class':'img-fluid', 'src': dataSrc });
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
@@ -492,7 +518,7 @@ jQuery(document).ready(function($){
 	 * 
 	 *	ModalBox para galeria de imagenes
 	 * 
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/				
 	
 	$('.modal-gallery').each(function() {
 	    // necesito diferenciar el objeto en cada caso
@@ -501,68 +527,88 @@ jQuery(document).ready(function($){
 	    //console.log( rename );
         //Jun 5 ajuste cuando sea un carrusel
 	    var isCarousel = $(this).hasClass( 'carousel' );
-		
+				
 	    // agrega parametros de bootstrap
-	    $( rename + ' a:not(.carousel-control)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
+	    $( rename + ' a:not(.carousel-control-prev,.carousel-control-next)' ).attr({"data-toggle" : "modal","data-target" : "#galleryModal" });    
 	        
-	    $( rename + ' a:not(.carousel-control)' ).on('click',function(){
+	    $( rename + ' a:not(.carousel-control-prev,.carousel-control-next)' ).on('click',function(){
 	        
 	        var gallery = $( rename ).html();
-	                
-	        var modalgallery = '';
-	        modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body">';	                            
-	        modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel"><button type="button" class="close" data-dismiss="modal">&times;</button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a></div>';                  
-	        modalgallery += '</div></div></div></div>';
+	        	                
+	        //var modalgallery = '';
+	        // modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">';	                            
+	        // modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
+	        // modalgallery += '</div></div></div></div>';
+	        
+	        //elementos centrales
+			var mgClose = $('<button/>', { 'type':'button', 'class':'close', 'data-dismiss':'modal', 'html': $('<span/>', { 'aria-hidden':'true', 'html': '&times;' }) });				
+			var mgLi = $('<ol/>', { 'class':'carousel-indicators' });
+			var mgGal = $('<div/>', { 'class':'carousel-inner', 'role':'listbox', 'html': gallery });
+	        //controles
+			var pico = $('<span/>', { 'class':'carousel-control-prev-icon', 'aria-hidden':'true' });
+			var pdes = $('<span/>', { 'class':'sr-only', 'aria-hidden':'true', 'html': 'Previous' });								
+			var nico = $('<span/>', { 'class':'carousel-control-next-icon', 'aria-hidden':'true' });
+			var ndes = $('<span/>', { 'class':'sr-only', 'aria-hidden':'true', 'html': 'Next' });
+			var mgPre = $('<a/>', { 'class':'carousel-control-prev', 'href':'#carousel-modal', 'role':'button', 'data-slide':'prev'}).append( pico , pdes );
+			var mgNex = $('<a/>', { 'class':'carousel-control-next', 'href':'#carousel-modal', 'role':'button', 'data-slide':'next'}).append( nico , mgNex );      					
+	        //el conjunto de carrusel
+	        var mgAll = $('<div/>',{ 'id':'carousel-modal', 'class':'carousel slide carousel-fade', 'data-ride':'carousel', 'style':'display:none;'}).append( mgClose , mgLi , mgGal, mgPre, mgNex );
+	        	        
+        	var modalgallery = $('<div/>', { 'class':'modal fade zoom', 'id': 'galleryModal', 'role':'dialog', 'html': $('<div/>', { 'class':'modal-dialog modal-lg','html': $('<div/>', { 'class':'modal-content','html': $('<div/>', { 'class':'modal-body','html': mgAll }) }) }) });
 	        
 	        $( modalgallery ).modal('show');
-	        	         
+	        	        	         
 	        // saber a que elemento le dio click        
 	        var nc = $(this).index( rename + ' a' );        
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
 	         //console.log(nc);
-	
-	        
+		        
 	        // Ejecuta las variables para activarse
 	        $('body').on('shown.bs.modal', function(){  
 	        	
-	            $('.carousel').carousel({ swipe: 100 });	    	    
+	            $('.carousel').carousel({ swipe: 100 });	
+	            // Oculto el preformato de la operación y luego la presento L505 : style="display:none;    	    
+	            $('.carousel').css('display','block');	    	    
 
 	                      
 	            // busco cada item y limpio las clases reemplazandola por item.
-	            $(this).find('#galleryModal .item').removeClass().addClass('item');
+	            $(this).find('#galleryModal .carousel-item').removeClass().addClass('carousel-item');
+	            
 	            
 	            // busco el link original y guardo la dirección en una variable para cuando elacen la imagen pequeña, se muestre la grande
 		            $(this).find('#galleryModal figure a img').each(function(){
 		            	//console.log(this);
 			            var url = $(this).parent('a').attr('href');
 			            //console.log(url);
-			            var img = '<img src="'+url+'" />';
+			            // Enero, transformamos todas las imagenes en responsivas
+			            //var img = '<img class="img-fluid" src="'+url+'" />';
+			            var img = $('<img/>', { 'class':'img-fluid', 'src': url });
 			            // console.log(img);
 			            $(this).replaceWith(img);
 		            });
 		        
 		        // Busco el rengón de texto y le añado la clase carousel-caption
-	            $(this).find('#galleryModal .item .gallery-caption').addClass('carousel-caption');
+	            $(this).find('#galleryModal .carousel-item .gallery-caption').addClass('carousel-caption');
 	            
 	            
 	            // busco elmentos que no necesito y los elimino
-	            $(this).find('#galleryModal .clearfix').remove();
-	            $(this).find('#galleryModal figure').removeClass().addClass('text-center');
-	            $(this).find('#galleryModal figure img').unwrap();
-	            	$(this).find('#galleryModal figure img').unwrap();// esto se hace cada que un envoltorio estorba
-	            	$(this).find('#galleryModal figure img').unwrap();
+	            $(this).find('#galleryModal .w-100').remove();
+	            $(this).find('#galleryModal figure').removeClass().addClass('text-center carousel-item');
+
 	    	        //Jun 5 ajuste cuando sea un carrusel
 	            	if (isCarousel){
-		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner > .carousel-control').remove();
+	            		$(this).find('#carousel-modal .carousel-inner > div figure img').unwrap().unwrap().unwrap();// esto se hace cada que un envoltorio anida el objeto
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-control-prev').remove();
+		            	$(this).find('#galleryModal .carousel-inner > .carousel-control-next').remove();
 		            	$(this).find('#galleryModal .carousel-inner > .carousel-inner').unwrap();
-		            	$(this).find('#galleryModal .item > img').nextAll('img').remove();
-		            	$(this).find('#galleryModal .item > figcaption').nextAll('figcaption').remove();
+		            	$(this).find('#galleryModal .carousel-item > img').nextAll('img').remove();
+		            	$(this).find('#galleryModal .carousel-item > figcaption').nextAll('figcaption').remove();
 	            	}
 	
 	            // busca los slides para hacer un índice.
-	            var slides = $('body').find('#galleryModal').find('.item');
+	            var slides = $('body').find('#galleryModal').find('.carousel-item');
 	            //console.log(slides);
 	                        
 	            // saca el total de elmentos que existen.
@@ -574,7 +620,8 @@ jQuery(document).ready(function($){
 	            // creo el loop de contadores            
 	            for (var i=0; i<ns; i++) {
 	                // console.log('intento ' + i);
-	                $(this).find('#galleryModal .carousel-indicators').append('<li data-target="#carousel-modal" data-slide-to="'+i+'"></li>');
+	                //$(this).find('#galleryModal .carousel-indicators').append('<li data-target="#carousel-modal" data-slide-to="'+i+'"></li>');
+	                $(this).find('#galleryModal .carousel-indicators').append( $('<li/>', { 'data-target':'#carousel-modal', 'data-slide-to': i }) );	                
 	            }            
 	            
 	            // al primer slide activalo
@@ -597,6 +644,17 @@ jQuery(document).ready(function($){
 		
 	}); // fin modal-gallery function
 	
+
+	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	 * 
+	 *	Utilidades, compartir vía redes sociales.
+	 * 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/				
+	    $('.shortcode-socialsharemenu .nav-link').click(function(e) {
+	        e.preventDefault();
+	        window.open( $(this).attr('href'), 'ShareContent', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+	        return false;
+	    });
 
 			
 }); 			

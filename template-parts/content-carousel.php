@@ -18,7 +18,7 @@
                 
         <a class="link-image" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">             
             
-        	<?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-responsive' ));?>
+        	<?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-fluid' ));?>
         	
         </a>
         

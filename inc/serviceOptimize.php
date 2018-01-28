@@ -64,12 +64,12 @@ function ekiline_description(){
         
         global $wp_query;
         $postid = $wp_query->post->ID;
-        $stdDesc = get_post_meta($postid, 'custom_meta_descripcion', true);
+        $stdDesc = get_post_meta($postid, 'custom_meta_description', true);
         wp_reset_query();
             
         if ( ! empty( $stdDesc ) ) {
            //Si utilizan nuestro custom field || If use our custom field           
-             echo $stdDesc; 
+             echo $stdDesc;
         } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
             //Si es homepage utiliza la informacion del sitio en general 
             echo get_bloginfo('description');
@@ -86,6 +86,32 @@ function ekiline_description(){
     }
     
 }
+
+
+/* Optimización El titulo con custom field para páginas y posts
+ * https://developer.wordpress.org/reference/hooks/document_title_parts/
+ */
+function ekiline_title($title){
+	
+    if( is_single() || is_page() ){    	
+
+	    global $wp_query;
+	    $cfTitle = get_post_meta($wp_query->post->ID, 'custom_title', true);
+	    wp_reset_query();
+		 
+		if ( ! empty( $cfTitle ) ){
+	        // change title parts here
+	        $title['title'] = $cfTitle ; 
+		    // $title['page'] = ''; // opcional si la pagina está numerada
+	    	// $title['tagline'] = ''; // optional si requiere el tagline (home)
+	        $title['site'] = get_bloginfo( 'name' ); //optional
+		} 
+    }
+
+    return $title; 
+}
+add_filter('document_title_parts', 'ekiline_title', 10);
+
 
 /** 
  * Añadir css por página.
@@ -114,7 +140,141 @@ function ekiline_postcss(){
 }
 add_action( 'wp_head', 'ekiline_postcss', 99);
 
+/** 
+ * Añadir js por página.
+ * Custom JS by page
+ * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
+ */
 
+function ekiline_postjs(){
+    
+    // excluir si es tienda woocommerce || exclude woocommerce
+    if ( is_single() || is_page() ) {
+        
+    global $wp_query;
+    $postid = $wp_query->post->ID;
+    $myJs = get_post_meta($postid, 'custom_js_script', true);
+    wp_reset_query();
+            
+       if ( ! empty( $myJs ) ){
+           echo '<script type="text/javascript" id="custom-js-'.$postid.'">'.$myJs.'</script>'."\n";
+       } 
+     
+    } 
+    
+}
+add_action( 'wp_footer', 'ekiline_postjs', 99);
+
+
+/** Boton en menu con popwindow
+ * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_before_admin_bar_render
+ * https://codex.wordpress.org/Javascript_Reference/ThickBox
+ * Y con estilos agregados.
+ * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
+ * https://gist.github.com/corvannoorloos/43980115659cb5aee571
+ * https://wordpress.stackexchange.com/questions/36394/wp-3-3-how-to-add-menu-items-to-the-admin-bar
+ * https://wordpress.stackexchange.com/questions/266318/how-to-add-custom-submenu-links-in-wp-admin-menus
+ */
+
+function ekiline_bar_link() {
+
+	global $wp_admin_bar;
+
+	if ( !is_super_admin() || !is_admin_bar_showing() )
+		return;	
+	
+		$wp_admin_bar->add_menu( array(
+			'id' => 'goekiline',
+			'title' => __( 'FundMe', 'ekiline'),
+			//'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
+			'href' => 'http://ekiline.com/fondeo/',
+			'meta' => array( 
+				'class' => 'gold',
+				'target' => '_blank'
+				//'onclick' => 'jQuery(this).addClass("thickbox");'
+				),
+	        'parent' => 'top-secondary'		
+		) );
+		
+} 
+add_action('admin_bar_menu', 'ekiline_bar_link', 0 ); 
+
+
+/* subitem https://wordpress.stackexchange.com/questions/66498/add-menu-page-with-different-name-for-first-submenu-item 
+ * http://wpsites.net/wordpress-admin/add-top-level-custom-admin-menu-link-in-dashboard-to-any-url/
+ * https://developer.wordpress.org/reference/functions/add_menu_page/
+ * https://wordpress.stackexchange.com/questions/1039/adding-an-arbitrary-link-to-the-admin-menu
+ * // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+ */
+
+add_action( 'admin_menu', 'register_ekiline_menu_page' );
+function register_ekiline_menu_page() {
+  add_menu_page( 
+  	'Ekiline Menu Page Title', 
+  	__( 'FundMe', 'ekiline'), 
+  	'manage_options', 
+  	'themes.php?theme=ekiline',
+  	'', 
+  	'dashicons-carrot', 
+  	null );
+}
+
+add_action( 'admin_footer', 'ekiline_menu_page_js' );
+function ekiline_menu_page_js() { 
+	echo "<script type='text/javascript'>\n";
+	//echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold thickbox').attr('href', 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550').attr('target', '_blank');";
+	echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold').attr('href', 'http://ekiline.com/fondeo/').attr('target', '_blank');";
+	echo "\n</script>";
+}
+
+
+function ekiline_admin_styles() {
+	if ( !is_super_admin() )
+		return;	
+	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
+	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
+	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
+    wp_add_inline_style( 'wp-admin', $extracss );
+    wp_add_inline_style( 'ekiline-style', $extracss );
+}
+add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles' );
+add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
+
+
+/**
+ * Javascript :
+ * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
+ * When scripts depend by JQuery has to be mentioned
+ * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: JS and PHP working together
+ * https://codex.wordpress.org/Function_Reference/wp_localize_script
+ * ENE, creamos la función para extraer de manera correcta los estilos y parsearlos con js.
+ */
+ 
+function ekiline_loadcss() {
+	
+    $params = null;
+    
+    if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('administrator') ){
+            
+        global $wp_styles; 
+        
+    	// 4jun bueno!
+        $ret = array();
+        foreach( $wp_styles->queue as $handle) {
+          wp_dequeue_style($handle);
+          $ret[] = $wp_styles->registered[$handle]->src ;              
+          //$ret[] = $wp_styles->registered[$handle] ;              
+      	}        
+        //echo json_encode( $ret );             
+        $params = $ret;   
+    
+    }   
+	
+    wp_localize_script('ekiline-layout', 'allCss', $params); 
+        
+}
+add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
 
 /**
  * Optimizar los scripts con async, esta funcion solo requiere el manejador
@@ -123,48 +283,25 @@ add_action( 'wp_head', 'ekiline_postcss', 99);
  * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
  **/
 
+
 function wsds_defer_scripts( $tag, $handle, $src ) {
 
-	// The handles of the enqueued scripts we want to defer
-	$defer_scripts = array( 
-		'prismjs',
-		'admin-bar',
-		'et_monarch-ouibounce',
-		'et_monarch-custom-js',
-		'wpshout-js-cookie-demo',
-		'cookie',
-		'wpshout-no-broken-image',
-		'goodbye-captcha-public-script',
-		'devicepx',
-		'search-box-value',
-		'page-min-height',
-		'kamn-js-widget-easy-twitter-feed-widget',
-		'__ytprefs__',
-		'__ytprefsfitvids__',
-		'jquery-migrate',
-		'icegram',
-		'disqus',
-		'comment-reply',
-		'wp-embed',
-		'wp-emoji-release',
-		'ekiline-swipe',
-		'lazy-load',
-		'ekiline-layout',
-        'theme-scripts',
-		'google-analytics',
-		'optimizar',
-        'contact-form-7',
-        'wc-add-to-cart',
-        'woocommerce',
-        'wc-cart-fragments',
-        'jquery-blockui',
-        'js-cookie'				
-	);
-
+	// invoco los scripts registrados en wordpress 
+    global $wp_scripts;   
+	// y agrupo en un array nuevo
+    $alljs = array();
+    foreach( $wp_scripts->queue as $jshandle ) {    	
+		$alljs[] = $jshandle;              
+  	} 
+	// descartando los que necesito cargar al inicio
+	// array_diff() o array_splice() : https://stackoverflow.com/questions/369602/php-delete-an-element-from-an-array
+	$allowjs = array("jquery-core","popper-script","bootstrap-script");	
+	$defer_scripts = array_diff( $alljs, $allowjs );
+		
+	// para que se inicialicen mis funciones correctamente.
     if ( in_array( $handle, $defer_scripts ) ) {
         return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
-    }
-    
+    }    
     return $tag;
 } 
 add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
@@ -182,20 +319,23 @@ add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 function google_analytics_tracking_code(){
         
     $gacode = get_theme_mod('ekiline_analytics','');
+    $gascript = '';       
 
     if ( $gacode != '' ) {
-        
-    echo "<script>
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', '" . $gacode . "', 'auto');
-            ga('send', 'pageview');
-         </script>
-         <script async defer src='https://www.google-analytics.com/analytics.js'></script>
-         ";     
+
+    $gascript .= '<script async src="https://www.googletagmanager.com/gtag/js?id='. $gacode .'"></script>'."\n";
+    $gascript .= '<script>'."\n";       
+    $gascript .= "window.dataLayer = window.dataLayer || [];"."\n";
+    $gascript .= "function gtag(){dataLayer.push(arguments);}"."\n";
+    $gascript .= "gtag('js', new Date());"."\n";   
+    $gascript .= "gtag('config', '". $gacode ."');"."\n";   
+    $gascript .= '</script>'."\n";       
+         	       
+	echo $gascript;         
 
     }
 }
-// Usar 'wp_head' 'wp_footer' para situar el script 
+// Usar 'wp_head' para situar el script 
 // If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
 
