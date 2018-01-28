@@ -180,8 +180,8 @@ function ekiline_bar_link() {
 
 	global $wp_admin_bar;
 
-	if ( !is_super_admin() || !is_admin_bar_showing() )
-		return;	
+	// if ( !is_admin_bar_showing() )
+		// return;	
 	
 		$wp_admin_bar->add_menu( array(
 			'id' => 'goekiline',
@@ -212,7 +212,8 @@ function register_ekiline_menu_page() {
   add_menu_page( 
   	'Ekiline Menu Page Title', 
   	__( 'FundMe', 'ekiline'), 
-  	'manage_options', 
+  	//'manage_options', 
+  	'edit_posts', 
   	'themes.php?theme=ekiline',
   	'', 
   	'dashicons-carrot', 
@@ -229,8 +230,8 @@ function ekiline_menu_page_js() {
 
 
 function ekiline_admin_styles() {
-	if ( !is_super_admin() )
-		return;	
+	// if ( !is_super_admin() )
+		// return;	
 	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
 	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
 	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
