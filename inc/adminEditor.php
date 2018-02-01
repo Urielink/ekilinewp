@@ -705,14 +705,14 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	/**
 	 * Add a custom button to tinymce editor
 	 */
-	function custom_mce_buttons() {
+	add_action('admin_head', 'custom_mce_buttons');
+ 	function custom_mce_buttons() {
 	    // Check if WYSIWYG is enabled
 	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
 	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
 	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
 	    }
 	}
-	add_action('admin_head', 'custom_mce_buttons');
 	
 	
 	// Add the path to the js file with the custom button function

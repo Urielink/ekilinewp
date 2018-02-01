@@ -21,6 +21,9 @@
  *
  * @uses ekiline_header_style()
  */
+ 
+add_action( 'after_setup_theme', 'ekiline_custom_header_setup' );
+
 function ekiline_custom_header_setup() {
 	add_theme_support( 'custom-header', 
     	apply_filters( 'ekiline_custom_header_args', array(
@@ -41,7 +44,6 @@ function ekiline_custom_header_setup() {
         ),
     ) );   
 }
-add_action( 'after_setup_theme', 'ekiline_custom_header_setup' );
 
 if ( ! function_exists( 'ekiline_header_style' ) ) :
 /**
@@ -246,7 +248,9 @@ function customHeader() {
                  * @link https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
                  * @link https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
                  */                                                                   
-                                
+
+                add_action( 'wp_footer', 'ekiline_headervideo', 110 );
+
                 function ekiline_headervideo() { 
                 
                     echo '<script type="text/javascript">
@@ -283,9 +287,6 @@ function customHeader() {
                     </script>';
                     
                     }
-                    
-                add_action( 'wp_footer', 'ekiline_headervideo', 110 );
-                                 
                                  
             }       
 									
