@@ -401,3 +401,6 @@ require get_template_directory() . '/inc/adminEditor.php';
 // 	
 // }
 
+/*Revisar la compatiilidad de AMP
+ * https://isabelcastillo.com/wordpress-amp-plugin
+ * */
