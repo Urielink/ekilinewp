@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-03 15:02-0600\n"
+"PO-Revision-Date: 2018-02-03 16:24-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -1309,3 +1309,9 @@ msgstr "Acepto"
 
 msgid "Find out more."
 msgstr "Más información."
+
+msgid "Privacy and cookies"
+msgstr "Cookies y privacidad"
+
+msgid "Choose the privacy information page to display a warning about the use of cookies"
+msgstr "Elige la página de información de privacidad para mostrar una advertencia acerca al uso de cookies"

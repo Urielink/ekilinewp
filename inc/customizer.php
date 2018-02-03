@@ -751,7 +751,24 @@ function ekiline_theme_customizer( $wp_customize ) {
             )
     );  
         
-  
+	// ene 2018 cookies warning 
+	// https://gist.github.com/ajskelton/27369df4a529ac38ec83980f244a7227
+
+	$wp_customize->add_setting(	
+		'ekiline_dropdownpages_setting_id', array(
+	  		'capability' => 'edit_theme_options', // establecer el permiso de modificacion
+	  		'sanitize_callback' => 'ekiline_sanitize_dropdown_pages', // nombro la seleccion de paginas
+		) 
+	);
+	
+	$wp_customize->add_control( 
+		'ekiline_dropdownpages_setting_id', array(
+			'type' => 'dropdown-pages',
+			'section' => 'ekiline_services', 
+	    	'label'          => __( 'Privacy and cookies', 'ekiline' ),
+	    	'description' 	 => __( 'Choose the privacy information page to display a warning about the use of cookies', 'ekiline' ),
+		)
+	);
     
     // Ekiline social media and communication
          
@@ -1173,4 +1190,10 @@ function ekiline_sanitize_select( $input, $setting ) {
     return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 }
 
+function ekiline_sanitize_dropdown_pages( $page_id, $setting ) {
+  // Ensure $input is an absolute integer.
+  $page_id = absint( $page_id );
 
+  // If $page_id is an ID of a published page, return it; otherwise, return the default.
+  return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
+}	
