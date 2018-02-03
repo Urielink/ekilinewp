@@ -121,7 +121,7 @@ add_filter('document_title_parts', 'ekiline_title', 10);
 
 function ekiline_postcss(){
     
-    // excluir si es tienda woocommerce || exclude woocommerce
+    // no aplica si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ) {
         
     global $wp_query;
@@ -148,7 +148,7 @@ add_action( 'wp_head', 'ekiline_postcss', 99);
 
 function ekiline_postjs(){
     
-    // excluir si es tienda woocommerce || exclude woocommerce
+    // no aplica si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ) {
         
     global $wp_query;
@@ -176,7 +176,7 @@ add_action( 'wp_footer', 'ekiline_postjs', 99);
  * https://wordpress.stackexchange.com/questions/266318/how-to-add-custom-submenu-links-in-wp-admin-menus
  */
 
-function ekiline_bar_link() {
+function ekiline_bar() {
 
 	global $wp_admin_bar;
 
@@ -197,7 +197,7 @@ function ekiline_bar_link() {
 		) );
 		
 } 
-add_action('admin_bar_menu', 'ekiline_bar_link', 0 ); 
+add_action('admin_bar_menu', 'ekiline_bar', 0 ); 
 
 
 /* subitem https://wordpress.stackexchange.com/questions/66498/add-menu-page-with-different-name-for-first-submenu-item 
