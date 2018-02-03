@@ -80,7 +80,7 @@ if ($pagenow=='term.php' ) { ?>
 <script type='text/javascript'>
 	jQuery(document).ready(function($){
 		
-		console.log('catscript');
+		//console.log('catscript');
 	
 	  $('.image-upload-button').click(function(e) {
 	  	
