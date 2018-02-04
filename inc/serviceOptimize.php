@@ -55,7 +55,7 @@ function ekiline_keywords() {
 }
 
 
-// Optimización de la meta descripción con custom field
+// Optimizacion de la meta descripcion con custom field
 // Meta description , allow custom term by wp customfield
 
 function ekiline_description(){
@@ -88,7 +88,7 @@ function ekiline_description(){
 }
 
 
-/* Optimización El titulo con custom field para páginas y posts
+/* Optimizacion El titulo con custom field para paginas y posts
  * https://developer.wordpress.org/reference/hooks/document_title_parts/
  */
 function ekiline_title($title){
@@ -102,7 +102,7 @@ function ekiline_title($title){
 		if ( ! empty( $cfTitle ) ){
 	        // change title parts here
 	        $title['title'] = $cfTitle ; 
-		    // $title['page'] = ''; // opcional si la pagina está numerada
+		    // $title['page'] = ''; // opcional si la pagina esta numerada
 	    	// $title['tagline'] = ''; // optional si requiere el tagline (home)
 	        $title['site'] = get_bloginfo( 'name' ); //optional
 		} 
@@ -114,7 +114,7 @@ add_filter('document_title_parts', 'ekiline_title', 10);
 
 
 /** 
- * Añadir css por página.
+ * Agregar css por pagina.
  * Custom CSS by page
  * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
  */
@@ -141,7 +141,7 @@ function ekiline_postcss(){
 add_action( 'wp_head', 'ekiline_postcss', 99);
 
 /** 
- * Añadir js por página.
+ * Agregar js por pagina.
  * Custom JS by page
  * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
  */
@@ -186,7 +186,7 @@ function ekiline_bar() {
 		$wp_admin_bar->add_menu( array(
 			'id' => 'goekiline',
 			'title' => __( 'FundMe', 'ekiline'),
-			//'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
+			// 'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
 			'href' => 'http://ekiline.com/fondeo/',
 			'meta' => array( 
 				'class' => 'gold',
@@ -202,31 +202,86 @@ add_action('admin_bar_menu', 'ekiline_bar', 0 );
 
 /* subitem https://wordpress.stackexchange.com/questions/66498/add-menu-page-with-different-name-for-first-submenu-item 
  * http://wpsites.net/wordpress-admin/add-top-level-custom-admin-menu-link-in-dashboard-to-any-url/
- * https://developer.wordpress.org/reference/functions/add_menu_page/
+ * https://developer.wordpress.org/reference/functions/add_ menu_page/
  * https://wordpress.stackexchange.com/questions/1039/adding-an-arbitrary-link-to-the-admin-menu
  * // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
  */
 
-add_action( 'admin_menu', 'register_ekiline_menu_page' );
-function register_ekiline_menu_page() {
-  add_menu_page( 
-  	'Ekiline Menu Page Title', 
-  	__( 'FundMe', 'ekiline'), 
-  	//'manage_options', 
-  	'edit_posts', 
-  	'themes.php?theme=ekiline',
-  	'', 
-  	'dashicons-carrot', 
-  	null );
-}
+// add_action( 'admin_menu', 'register_ekiline_menu_page' );
+// function register_ekiline_menu_page() {
+  // add_menu_page( 
+  	// 'Ekiline Menu Page Title', 
+  	// __( 'FundMe', 'ekiline'), 
+  	// //'manage_options', 
+  	// 'edit_posts', 
+  	// 'themes.php?theme=ekiline',
+  	// '', 
+  	// 'dashicons-carrot', 
+  	// null );
+// }
 
-add_action( 'admin_footer', 'ekiline_menu_page_js' );
-function ekiline_menu_page_js() { 
-	echo "<script type='text/javascript'>\n";
-	//echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold thickbox').attr('href', 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550').attr('target', '_blank');";
-	echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold').attr('href', 'http://ekiline.com/fondeo/').attr('target', '_blank');";
-	echo "\n</script>";
+// add_action( 'admin_footer', 'ekiline_menu_page_js' );
+// function ekiline_menu_page_js() { 
+	// echo "<script type='text/javascript'>\n";
+	// //echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold thickbox').attr('href', 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550').attr('target', '_blank');";
+	// echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold').attr('href', 'http://ekiline.com/fondeo/').attr('target', '_blank');";
+	// echo "\n</script>";
+// }
+
+function ekiline_theme_page() {
+    add_theme_page( 
+    	'Ekiline Menu Page Title', 
+    	__( 'About Ekiline', 'ekiline'), 
+    	'edit_posts', 
+    	'ekiline_options', 
+    	'theme_html_page',
+    	'dashicons-chart-pie'
+	);
 }
+add_action( 'admin_menu', 'ekiline_theme_page' );
+ 
+function theme_html_page() { ?>
+<div class="wrap">
+	<h1><span class="dashicons dashicons-layout" aria-hidden="true"></span> <?php echo __('About Ekiline for Wordpress','ekiline'); ?></h1>
+    
+	<div id="welcome-panel" class="welcome-panel">
+		
+		<div class="welcome-panel-content">
+	
+			<h2><?php echo __('Gracias por utilizar este tema!','ekiline'); ?></h2>
+			<hr />
+			<p class="about-description">Aqui encontraras enlaces de apoyo para la personalizacion de tu sitio.</p>
+				
+			<div class="welcome-panel-column-container">
+				<div class="welcome-panel-column">
+					<h3>Obten la version definitiva</h3>
+					<a class="button button-primary button-hero" href="<?php echo __('http://ekiline.com/docs/','ekiline'); ?>">Solo $250 mxn</a>
+					<p>o, <a href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>"> fondea el desarrollo</a></p>
+				</div>
+				<div class="welcome-panel-column">
+					<h3>Documentacion</h3>
+					<ul>
+						<li><a href="http://localhost:8888/wtdv/wp-admin/post.php?post=2&amp;action=edit" class="welcome-icon welcome-edit-page">Edita tu pagina de inicio</a></li>
+						<li><a href="http://localhost:8888/wtdv/wp-admin/post-new.php?post_type=page" class="welcome-icon welcome-add-page">Agrega paginas adicionales</a></li>
+						<li><a href="http://localhost:8888/wtdv/" class="welcome-icon welcome-view-site">Ver tu sitio</a></li>
+					</ul>
+				</div>
+				<div class="welcome-panel-column welcome-panel-last">
+					<h3>Mas acciones</h3>
+					<ul>
+						<li><div class="welcome-icon welcome-widgets-menus">Gestiona <a href="http://localhost:8888/wtdv/wp-admin/widgets.php">widgets</a> o <a href="http://localhost:8888/wtdv/wp-admin/nav-menus.php">menus</a></div></li>
+						<li><a href="http://localhost:8888/wtdv/wp-admin/options-discussion.php" class="welcome-icon welcome-comments">Activa o desactiva los comentarios</a></li>
+						<li><a href="https://codex.wordpress.org/First_Steps_With_WordPress" class="welcome-icon welcome-learn-more">Aprende mas de como comenzar</a></li>
+					</ul>
+				</div>
+			</div>			
+	
+	
+		</div>
+	</div>    
+    
+</div>
+<?php }
 
 
 function ekiline_admin_styles() {
@@ -246,10 +301,10 @@ add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
  * Javascript :
  * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
  * When scripts depend by JQuery has to be mentioned
- * Localize: es un método que wordpress ha habilitado para trabajar con variables de PHP en JS
+ * Localize: es un metodo que wordpress ha habilitado para trabajar con variables de PHP en JS
  * Localize: JS and PHP working together
  * https://codex.wordpress.org/Function_Reference/wp_localize_script
- * ENE, creamos la función para extraer de manera correcta los estilos y parsearlos con js.
+ * ENE, creamos la funcion para extraer de manera correcta los estilos y parsearlos con js.
  * https://codex.wordpress.org/Roles_and_Capabilities
  * https://codex.wordpress.org/Function_Reference/current_user_can
  */
@@ -281,7 +336,7 @@ add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
 
 /**
  * Optimizar los scripts con async, esta funcion solo requiere el manejador
- * y se sobreescribira el link con el atributo dado. Por algun extraña razon no permite 
+ * y se sobreescribira el link con el atributo dado. Por alguna razon no permite 
  * el agregar el atributo con el codigo de wordpress, como el caso de los scripts de IE.
  * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
  **/
@@ -344,7 +399,7 @@ add_action('wp_footer', 'google_analytics_tracking_code', 100);
 
 
 /**
- * OPTIMIZACIoN: Registrar páginas (customizer.php)
+ * OPTIMIZACIoN: Registrar paginas (customizer.php)
  * https://wordpress.stackexchange.com/questions/237100/how-to-add-meta-tag-to-wordpress-posts-filter
 **/
 
