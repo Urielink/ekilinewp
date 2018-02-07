@@ -550,49 +550,49 @@ add_action( 'admin_menu', 'ekiline_theme_page' );
 function theme_html_page() { 
 	//add_thickbox(); ?>
 <div class="wrap">
-	<h1><span class="dashicons dashicons-layout" aria-hidden="true"></span> <?php echo __('About Ekiline for Wordpress','ekiline'); ?></h1>
+	<h1><span class="dashicons dashicons-layout" aria-hidden="true"></span> <?php _e('About Ekiline for Wordpress','ekiline'); ?></h1>
     
 	<div id="welcome-panel" class="welcome-panel">
 		
 		<div class="welcome-panel-content">
 	
-			<h2><?php echo __('Gracias por utilizar este tema!','ekiline'); ?></h2>
+			<h2><?php _e('Thanks for using this theme!','ekiline'); ?></h2>
 			<hr />
-			<p class="about-description">Encuentra más informacion para mejorar tus habilidades en la personalizacion de tu sitio.</p>
+			<p class="about-description"><?php _e('Find more information to improve your skills in the personalization of your site.','ekiline'); ?></p>
 				
 			<div class="welcome-panel-column-container">
 				<div class="welcome-panel-column">
 					<div style="padding:4px;">
-						<h3>Obtén la version definitiva y dale poder a tus clientes</h3>
+						<h3><?php _e('Get the definitive version, with more benefits for the distribution of your projects:','ekiline'); ?></h3>
 						<ul>
-							<li><span class="dashicons dashicons-book dash-note"></span>Guía rápida de uso para distribución a tus clientes, editable y en formatos: Keynote, Power Point y PDF.</li>
-							<li><span class="dashicons dashicons-edit dash-note"></span>Diseños CSS precargados para tema general.</li>
-							<li><span class="dashicons dashicons-layout dash-note"></span>Estructuras HTML precargados para uso por publicación.</li>
-							<li><span class="dashicons dashicons-welcome-view-site dash-note"></span>Tema completo, sin enlaces externos, anuncios o tips.</li>
+							<li><span class="dashicons dashicons-book dash-note"></span><?php _e('Quick use guide for your clients, in Keynote and Power Point format for editing.','ekiline'); ?></li>
+							<li><span class="dashicons dashicons-edit dash-note"></span><?php _e('CSS complementary designs for general theme.','ekiline'); ?></li>
+							<li><span class="dashicons dashicons-layout dash-note"></span><?php _e('HTML structures preloaded for use in publications.','ekiline'); ?></li>
+							<li><span class="dashicons dashicons-welcome-view-site dash-note"></span><?php _e('Complete theme, without external links, ads or tips.','ekiline'); ?></li>
 						</ul>
 						<p>
-							<a class="button button-primary button-hero" href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>" target="_blank"><span class="dashicons dashicons-cart"></span> <?php echo __('$20 usd','ekiline'); ?></a>
+							<a class="button button-primary button-hero" href="<?php _e('http://ekiline.com/compra/','ekiline'); ?>" target="_blank"><span class="dashicons dashicons-cart"></span> <?php _e('Buy and download','ekiline'); ?></a>
 						</p>
-						<p><span class="dashicons dashicons-carrot"></span> También puedes <a href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>" target="_blank">fondear el desarrollo</a> 
-							o <a href="<?php echo __('http://ekiline.com/gana/','ekiline'); ?>" target="_blank">ganar dinero</a> ayudando.</p>
+						<p><span class="dashicons dashicons-carrot"></span> <?php _e('You can also','ekiline'); ?> <a href="<?php _e('http://ekiline.com/fondeo/','ekiline'); ?>" target="_blank"><?php _e('fund the development','ekiline'); ?></a> 
+							<?php _e('or','ekiline'); ?> <a href="<?php _e('http://ekiline.com/gana/','ekiline'); ?>" target="_blank"><?php _e('earn money','ekiline'); ?></a> <?php _e('by helping.','ekiline'); ?></p>
 					</div>
 				</div>
 				<div class="welcome-panel-column">
 					<div style="padding:4px;">
-						<h3>Acerca</h3>
-						<p>Ekiline agiliza el proceso de creación de un sitio web, es un método simplificado de los estándares de la industria de internet, que facilita las tareas de las áreas de planeación, diseño y desarrollo.</p>
-						<p><strong>Responsabilidad limitada</strong></p>
-						<p><small>Como cortesía, proporcionamos información sobre cómo utilizar determinados productos de terceros, pero no respaldamos o apoyamos directamente su empleo y no somos responsables de las funciones o fiabilidad de dichos productos. Los nombres, marcas y logotipos de terceros son marcas registradas de sus respectivos propietarios. Todos los derechos reservados.</small></p>
+						<h3><?php _e('About','ekiline'); ?></h3>
+						<p><?php _e('Ekiline simplifies the creation of a website with Wordpress, it is a working method that brings together the standard practices of the internet industry, to facilitate the tasks of planning, design, development and optimization. For more information visit ekiline.com','ekiline'); ?></p>
+						<p><strong><?php _e('Limited liability','ekiline'); ?></strong></p>
+						<p><small><?php _e('As a courtesy, we provide information on how to use certain third-party products, but we do not directly support their use and we are not responsible for the functions, reliability or compatibility of such products. The names, trademarks and logos of third parties are registered trademarks of their respective owners.','ekiline'); ?></small></p>
 					</div>
 				</div>
 				<div class="welcome-panel-column welcome-panel-last">
 					<div style="padding:4px;">
-						<h3>Documentación</h3>
+						<h3><?php _e('Documentation','ekiline'); ?></h3>
 						<ul>
-							<li><a href="<?php echo __('http://ekiline.com/instala/','ekiline'); ?>" target="_blank"> Instalación</a></li>
-							<li><a href="<?php echo __('http://ekiline.com/personaliza/','ekiline'); ?>" target="_blank"> Personalización</a></li>
-							<li><a href="<?php echo __('http://ekiline.com/elementos/','ekiline'); ?>" target="_blank"> Elementos y shortcodes</a></li>
-							<li><a href="<?php echo __('http://ekiline.com/compatible/','ekiline'); ?>" target="_blank"> Compatibilidad</a></li>
+							<li><a href="<?php _e('http://ekiline.com/instala/','ekiline'); ?>" target="_blank"> <?php _e('Installation','ekiline'); ?></a></li>
+							<li><a href="<?php _e('http://ekiline.com/personaliza/','ekiline'); ?>" target="_blank"> <?php _e('Personalization','ekiline'); ?></a></li>
+							<li><a href="<?php _e('http://ekiline.com/elementos/','ekiline'); ?>" target="_blank"> <?php _e('Elements and shortcodes','ekiline'); ?></a></li>
+							<li><a href="<?php _e('http://ekiline.com/compatible/','ekiline'); ?>" target="_blank"> <?php _e('Compatibility','ekiline'); ?></a></li>
 						</ul>
 					</div>
 				</div>
@@ -600,7 +600,7 @@ function theme_html_page() {
 	
 		</div>
 	</div>   
-	<p style="text-align: right;"><small>©2018 Ekiline. Todos los derechos reservados. Ekiline es un desarrollo de <a href="<?php echo __('https://bixnia.com/','ekiline'); ?>" target="_blank"> B I X N I A</a></small></p>
+	<p style="text-align: right;"><small><?php printf( esc_html__( '&copy; Copyright %1$s Ekiline', 'ekiline' ), esc_attr( date('Y') ) );?>. <?php _e('All rights reserved. Ekiline is a development of','ekiline'); ?> <a href="<?php _e('https://bixnia.com/','ekiline'); ?>" target="_blank"> <?php _e('B&nbsp;I&nbsp;X&nbsp;N&nbsp;I&nbsp;A','ekiline'); ?></a></small></p>
     
 </div>
 <?php }
@@ -651,14 +651,13 @@ endif;
 	
 ?>
     <div class="notice notice-success is-dismissible">
-    	<h2 style="float:left;margin:14px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h2>
-    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money with Ekiline', 'ekiline' ); ?></a>
-    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/fondeo/" target="_blank"><?php _e( 'Support Ekiline', 'ekiline' ); ?></a>
-    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/fondeo/" target="_blank"><?php _e( 'Buy Ekiline', 'ekiline' ); ?></a>
-    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/docs/" target="_blank"><?php _e( 'Visit Docs', 'ekiline' ); ?></a>
+    	<h2 style="float:left;margin:12px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h2>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/compra/" target="_blank"><?php _e( 'Get more', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="themes.php?page=ekiline_options"><?php _e( 'About', 'ekiline' ); ?></a>
 		<ul>
 		    <?php if ( $maxitems == 0 ) : ?>
-		        <li><?php _e( 'Nada que mostrar', 'ekiline' ); ?></li>
+		        <li><?php _e( 'Connection not established', 'ekiline' ); ?></li>
 		    <?php else : ?>
 		    	<?php $i = 1; // en caso de querer mostrar menos noticias; ?>
 		        <?php // Loop through each feed item and display each item as a hyperlink. ?>

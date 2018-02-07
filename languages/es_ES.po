@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-03 16:24-0600\n"
+"PO-Revision-Date: 2018-02-07 17:27-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -1315,3 +1315,87 @@ msgstr "Cookies y privacidad"
 
 msgid "Choose the privacy information page to display a warning about the use of cookies"
 msgstr "Elige la página de información de privacidad para mostrar una advertencia acerca al uso de cookies"
+
+msgid "Ekiline tips:"
+msgstr "Nota Ekiline:"
+
+msgid "Get more"
+msgstr "Obtén más"
+
+msgid "Make money"
+msgstr "Gana dinero"
+
+msgid "Connection not established"
+msgstr "Conexión no establecida"
+
+msgid "About Ekiline for Wordpress"
+msgstr "Acerca de Ekiline para Wordpress"
+
+msgid "Thanks for using this theme!"
+msgstr "¡Gracias por utilizar este tema!"
+
+msgid "Find more information to improve your skills in the personalization of your site."
+msgstr "Encuentra más informacion para mejorar tus habilidades en la personalizacion de tu sitio."
+
+msgid "Get the definitive version, with more benefits for the distribution of your projects:"
+msgstr "Obtén la versión definitiva, con más beneficios para la distribución de tus proyectos:"
+
+msgid "Quick use guide for your clients, in Keynote and Power Point format for editing."
+msgstr "Guía de uso rápido para tus clientes, en formato Keynote y Power Point para edición."
+
+msgid "CSS complementary designs for general theme."
+msgstr "Diseños CSS complementarios para tema general."
+
+msgid "HTML structures preloaded for use in publications."
+msgstr "Estructuras HTML precargados para uso en publicaciones."
+
+msgid "Complete theme, without external links, ads or tips."
+msgstr "Tema completo, sin enlaces externos, anuncios o tips."
+
+msgid "Buy and download"
+msgstr "Comprar y descargar"
+
+msgid "You can also"
+msgstr "También puedes"
+
+msgid "fund the development"
+msgstr "fondear el desarrollo"
+
+msgid "or"
+msgstr "ó"
+
+msgid "earn money"
+msgstr "ganar dinero"
+
+msgid "by helping."
+msgstr "ayudando."
+
+msgid "About"
+msgstr "Acerca"
+
+msgid "Ekiline simplifies the creation of a website with Wordpress, it is a working method that brings together the standard practices of the internet industry, to facilitate the tasks of planning, design, development and optimization. For more information visit ekiline.com"
+msgstr "Ekiline simplifica la creación de un sitio web con Wordpress, es un método de trabajo que reúne las prácticas estándar de la industria de internet, para facilitar las tareas de planeación, diseño, desarrollo y optimización. Para mayor información visita ekiline.com"
+
+msgid "Limited liability"
+msgstr "Responsabilidad limitada"
+
+msgid "As a courtesy, we provide information on how to use certain third-party products, but we do not directly support their use and we are not responsible for the functions, reliability or compatibility of such products. The names, trademarks and logos of third parties are registered trademarks of their respective owners."
+msgstr "Como cortesía, proporcionamos información de cómo utilizar determinados productos de terceros, pero no respaldamos directamente su uso y no somos responsables de las funciones, fiabilidad o compatibilidad de dichos productos. Los nombres, marcas y logotipos de terceros son marcas registradas de sus respectivos propietarios."
+
+msgid "Documentation"
+msgstr "Documentación"
+
+msgid "Installation"
+msgstr "Instalación"
+
+msgid "Personalization"
+msgstr "Personalización"
+
+msgid "Elements and shortcodes"
+msgstr "Elementos y shortcodes"
+
+msgid "Compatibility"
+msgstr "Compatibilidad"
+
+msgid "All rights reserved. Ekiline is a development of"
+msgstr "Todos los derechos reservados. Ekiline es un desarrollo de"
