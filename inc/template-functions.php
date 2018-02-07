@@ -471,7 +471,9 @@ if( true === get_theme_mod('ekiline_mediacomment') ){
 }
 
 
-/** Boton en menu con popwindow
+/** 
+ * Theming Admin theme page
+ * Admin bar button
  * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_before_admin_bar_render
  * https://codex.wordpress.org/Javascript_Reference/ThickBox
  * Y con estilos agregados.
@@ -545,7 +547,8 @@ function ekiline_theme_page() {
 }
 add_action( 'admin_menu', 'ekiline_theme_page' );
  
-function theme_html_page() { ?>
+function theme_html_page() { 
+	//add_thickbox(); ?>
 <div class="wrap">
 	<h1><span class="dashicons dashicons-layout" aria-hidden="true"></span> <?php echo __('About Ekiline for Wordpress','ekiline'); ?></h1>
     
@@ -555,35 +558,49 @@ function theme_html_page() { ?>
 	
 			<h2><?php echo __('Gracias por utilizar este tema!','ekiline'); ?></h2>
 			<hr />
-			<p class="about-description">Aqui encontraras enlaces de apoyo para la personalizacion de tu sitio.</p>
+			<p class="about-description">Encuentra más informacion para mejorar tus habilidades en la personalizacion de tu sitio.</p>
 				
 			<div class="welcome-panel-column-container">
 				<div class="welcome-panel-column">
-					<h3>Obten la version definitiva</h3>
-					<a class="button button-primary button-hero" href="<?php echo __('http://ekiline.com/docs/','ekiline'); ?>">Solo $250 mxn</a>
-					<p>o, <a href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>"> fondea el desarrollo</a></p>
+					<div style="padding:4px;">
+						<h3>Obtén la version definitiva y dale poder a tus clientes</h3>
+						<ul>
+							<li><span class="dashicons dashicons-book dash-note"></span>Guía rápida de uso para distribución a tus clientes, editable y en formatos: Keynote, Power Point y PDF.</li>
+							<li><span class="dashicons dashicons-edit dash-note"></span>Diseños CSS precargados para tema general.</li>
+							<li><span class="dashicons dashicons-layout dash-note"></span>Estructuras HTML precargados para uso por publicación.</li>
+							<li><span class="dashicons dashicons-welcome-view-site dash-note"></span>Tema completo, sin enlaces externos, anuncios o tips.</li>
+						</ul>
+						<p>
+							<a class="button button-primary button-hero" href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>" target="_blank"><span class="dashicons dashicons-cart"></span> <?php echo __('$20 usd','ekiline'); ?></a>
+						</p>
+						<p><span class="dashicons dashicons-carrot"></span> También puedes <a href="<?php echo __('http://ekiline.com/fondeo/','ekiline'); ?>" target="_blank">fondear el desarrollo</a> 
+							o <a href="<?php echo __('http://ekiline.com/gana/','ekiline'); ?>" target="_blank">ganar dinero</a> ayudando.</p>
+					</div>
 				</div>
 				<div class="welcome-panel-column">
-					<h3>Documentacion</h3>
-					<ul>
-						<li><a href="http://localhost:8888/wtdv/wp-admin/post.php?post=2&amp;action=edit" class="welcome-icon welcome-edit-page">Edita tu pagina de inicio</a></li>
-						<li><a href="http://localhost:8888/wtdv/wp-admin/post-new.php?post_type=page" class="welcome-icon welcome-add-page">Agrega paginas adicionales</a></li>
-						<li><a href="http://localhost:8888/wtdv/" class="welcome-icon welcome-view-site">Ver tu sitio</a></li>
-					</ul>
+					<div style="padding:4px;">
+						<h3>Acerca</h3>
+						<p>Ekiline agiliza el proceso de creación de un sitio web, es un método simplificado de los estándares de la industria de internet, que facilita las tareas de las áreas de planeación, diseño y desarrollo.</p>
+						<p><strong>Responsabilidad limitada</strong></p>
+						<p><small>Como cortesía, proporcionamos información sobre cómo utilizar determinados productos de terceros, pero no respaldamos o apoyamos directamente su empleo y no somos responsables de las funciones o fiabilidad de dichos productos. Los nombres, marcas y logotipos de terceros son marcas registradas de sus respectivos propietarios. Todos los derechos reservados.</small></p>
+					</div>
 				</div>
 				<div class="welcome-panel-column welcome-panel-last">
-					<h3>Mas acciones</h3>
-					<ul>
-						<li><div class="welcome-icon welcome-widgets-menus">Gestiona <a href="http://localhost:8888/wtdv/wp-admin/widgets.php">widgets</a> o <a href="http://localhost:8888/wtdv/wp-admin/nav-menus.php">menus</a></div></li>
-						<li><a href="http://localhost:8888/wtdv/wp-admin/options-discussion.php" class="welcome-icon welcome-comments">Activa o desactiva los comentarios</a></li>
-						<li><a href="https://codex.wordpress.org/First_Steps_With_WordPress" class="welcome-icon welcome-learn-more">Aprende mas de como comenzar</a></li>
-					</ul>
+					<div style="padding:4px;">
+						<h3>Documentación</h3>
+						<ul>
+							<li><a href="<?php echo __('http://ekiline.com/instala/','ekiline'); ?>" target="_blank"> Instalación</a></li>
+							<li><a href="<?php echo __('http://ekiline.com/personaliza/','ekiline'); ?>" target="_blank"> Personalización</a></li>
+							<li><a href="<?php echo __('http://ekiline.com/elementos/','ekiline'); ?>" target="_blank"> Elementos y shortcodes</a></li>
+							<li><a href="<?php echo __('http://ekiline.com/compatible/','ekiline'); ?>" target="_blank"> Compatibilidad</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>			
 	
-	
 		</div>
-	</div>    
+	</div>   
+	<p style="text-align: right;"><small>©2018 Ekiline. Todos los derechos reservados. Ekiline es un desarrollo de <a href="<?php echo __('https://bixnia.com/','ekiline'); ?>" target="_blank"> B I X N I A</a></small></p>
     
 </div>
 <?php }
@@ -595,6 +612,7 @@ function ekiline_admin_styles() {
 	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
 	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
 	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
+	$extracss .= '.dash-note{margin: 0px 10px 0px 0px;float: left;font-size: 20px;}'; 				    
     wp_add_inline_style( 'wp-admin', $extracss );
     wp_add_inline_style( 'ekiline-style', $extracss );
 }
@@ -602,3 +620,62 @@ add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles' );
 add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
 
 
+/*
+ * Noticias para el suscriptor de Ekiline
+ * https://codex.wordpress.org/Function_Reference/fetch_feed
+ * https://codex.wordpress.org/Plugin_API/Action_Reference/admin_notices
+ */
+ 
+function ekiline_docs_feed() {
+	
+// Get RSS Feed(s)
+include_once( ABSPATH . WPINC . '/feed.php' );
+
+// Get a SimplePie feed object from the specified feed source.
+$rss = fetch_feed( 'http://ekiline.com/feed/' );
+
+$maxitems = 0;
+
+if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+
+    // Figure out how many total items there are, but limit it to 5. 
+    $maxitems = $rss->get_item_quantity( 20 ); 
+
+    // Build an array of all the items, starting with element 0 (first element).
+    $rss_items = $rss->get_items( 0, $maxitems );
+	
+	// order in notices: http://php.net/manual/es/function.shuffle.php
+	shuffle($rss_items);	
+
+endif;
+	
+?>
+    <div class="notice notice-success is-dismissible">
+    	<h2 style="float:left;margin:14px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h2>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money with Ekiline', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/fondeo/" target="_blank"><?php _e( 'Support Ekiline', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/fondeo/" target="_blank"><?php _e( 'Buy Ekiline', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/docs/" target="_blank"><?php _e( 'Visit Docs', 'ekiline' ); ?></a>
+		<ul>
+		    <?php if ( $maxitems == 0 ) : ?>
+		        <li><?php _e( 'Nada que mostrar', 'ekiline' ); ?></li>
+		    <?php else : ?>
+		    	<?php $i = 1; // en caso de querer mostrar menos noticias; ?>
+		        <?php // Loop through each feed item and display each item as a hyperlink. ?>
+		        <?php foreach ( $rss_items as $item ) : ?>
+		            <li>
+		                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+		                   title="<?php printf( __( 'Posted %s', 'ekiline' ), $item->get_date('j F Y | g:i a') ); ?>"
+		                   target="_blank">
+		                    <?php echo esc_html( $item->get_title() ); ?>
+		                </a>
+		            </li>
+		            <?php if ($i++ == 1) break; ?>
+		        <?php endforeach; ?>
+		    <?php endif; ?>
+		</ul>  
+    </div>
+
+<?php
+}
+add_action( 'admin_notices', 'ekiline_docs_feed' );
