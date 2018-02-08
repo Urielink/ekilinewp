@@ -77,6 +77,12 @@ function ekiline_tinymce_translation() {
         'ccss' => __('Add css style','ekiline'),
         'cjs' => __('Add js script','ekiline'),
         'addcfname' => __('Set custom field with:','ekiline'),
+    //adminModal.js
+        'addmodal' => __('Modal box','ekiline'),
+        'modaltitle' => __('Create a modalbox with custom content','ekiline'),
+        'modaldesc' => __('Assign modal on selected item, set title and edit content','ekiline'),
+        'mbxtitle' => __('Set title to modal window','ekiline'),
+        'mbxdesc' => __('Add modal content','ekiline'),
     	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;

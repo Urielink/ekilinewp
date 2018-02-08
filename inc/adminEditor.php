@@ -730,13 +730,14 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    $plugin_array['custom_mce_button9'] = get_template_directory_uri() .'/js/adminShare.js';
 	    $plugin_array['custom_mce_button10'] = get_template_directory_uri() .'/js/adminPostin.js';
 	    $plugin_array['custom_mce_button11'] = get_template_directory_uri() .'/js/adminFields.js';
+	    $plugin_array['custom_mce_button12'] = get_template_directory_uri() .'/js/adminModal.js';
 	    return $plugin_array;
 	}
 	
 	// Register and add new button in the editor
 	function register_mce_buttons( $buttons ) {
 	    //array_push( $buttons, 'custom_mce_button1' );
-	    array_push( $buttons, 'custom_mce_button2, custom_mce_button3, custom_mce_button4, custom_mce_button5, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button9, custom_mce_button10, custom_mce_button11' );
+	    array_push( $buttons, 'custom_mce_button2, custom_mce_button3, custom_mce_button4, custom_mce_button5, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button9, custom_mce_button10, custom_mce_button11, custom_mce_button12' );
 	    return $buttons;
 	}
 	

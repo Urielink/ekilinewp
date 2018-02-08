@@ -333,7 +333,18 @@ jQuery(document).ready(function($){
 	    var setId = getSrc.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
 	    // reemplazar el src
 	    $(this).attr('href', '#'+setId );		
-	});	
+	});		
+	
+		
+    //Modals, ocultar el contenido HTML, esto depende del attr=Href, para que surta efecto.
+	$('.modal-inline').each(function(){
+		//extraigo el enlace del contenido
+	    var inlineHtml = $(this).attr('href').replace( '#','.');
+		//Creo un envoltorio
+		var inlineWrap = $('<div/>', { "class" : "collapse" });
+		//Envuelvo
+	    $( inlineHtml ).wrap( inlineWrap );	     
+	});  	
 	
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -429,7 +440,14 @@ jQuery(document).ready(function($){
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
-					} 
+					} else if ( linkClass == '.modal-inline' ){
+						
+					    contenidoModal = dataHref.replace( '#','.' );
+						contenidoModal = $( contenidoModal ).clone();
+						
+			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
+		
+					}  
 		
 					// Personalizo la medidas de las ventanas modal depende de si existe width, height en el boton.
 					 
@@ -512,6 +530,7 @@ jQuery(document).ready(function($){
       // invocar los 2 tipos de modalbox que existen
 	ekilinemodals.multipleModals( '.modal-iframe' );
 	ekilinemodals.multipleModals( '.modal-image' );
+	ekilinemodals.multipleModals( '.modal-inline' );
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
