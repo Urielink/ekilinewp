@@ -230,7 +230,8 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
     }    
     return $tag;
 } 
-add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+//add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
+if ( ! is_admin() ) add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
 
