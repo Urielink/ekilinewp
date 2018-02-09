@@ -83,6 +83,10 @@ function ekiline_tinymce_translation() {
         'modaldesc' => __('Assign modal on selected item, set title and edit content','ekiline'),
         'mbxtitle' => __('Set title to modal window','ekiline'),
         'mbxdesc' => __('Add modal content','ekiline'),
+    //adminLayout.js
+        'addlays' => __('Quick designs','ekiline'),
+        'laylab' => __('HTML presets','ekiline'),
+        'laytext' => __('Choose a design to create an amazing publication','ekiline'),
     	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;

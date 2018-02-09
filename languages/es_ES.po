@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-08 03:23-0600\n"
+"PO-Revision-Date: 2018-02-08 22:05-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -1303,6 +1303,15 @@ msgstr "Agrega título"
 
 msgid "Add modal content"
 msgstr "Agrega contenido"
+
+msgid "Quick designs"
+msgstr "Diseño rápido"
+
+msgid "HTML presets"
+msgstr "Plantillas HTML"
+
+msgid "Choose a design to create an amazing publication"
+msgstr "Elige un diseño para crear una página increíble"
 
 msgid "Sitemap created successfully!"
 msgstr "Sitemap creado exitosamente!"
