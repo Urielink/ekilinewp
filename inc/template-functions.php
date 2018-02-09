@@ -651,7 +651,7 @@ endif;
 	
 ?>
     <div class="notice notice-success is-dismissible">
-    	<h2 style="float:left;margin:12px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h2>
+    	<h4 style="float:left;margin:13px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h4>
     	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money', 'ekiline' ); ?></a>
     	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/compra/" target="_blank"><?php _e( 'Get more', 'ekiline' ); ?></a>
     	<a class="button button-primary" style="float:right;margin:8px 4px;" href="themes.php?page=ekiline_options"><?php _e( 'About', 'ekiline' ); ?></a>
