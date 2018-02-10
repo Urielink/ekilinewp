@@ -30,9 +30,9 @@
             	// https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
             	// https://www.tinymce.com/docs/plugins/template/#templates
 
-				$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+/**				$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
 				   $('#preset').val( data );
-				});            	
+				});            	**/
 					
                 editor.windowManager.open({
                 	
@@ -50,13 +50,13 @@
 				            // text   : 'Choose a design to create an amazing publication'
 				            text   : editor.getLang('ekiline_tinymce.laytext')
 						},   
-						{
+/**						{
                         	type	: 'textbox',
                         	//subtype	: 'hidden',
                         	name	: 'preset',
                         	id	: 'preset',
                         	value : ''
-                    	},
+                    	},**/
 	                    {
 	                    	type: 'listbox', 
 	                    	name: 'choose', 
@@ -77,7 +77,7 @@
 	                	},
                 	],
                     	
-                    onsubmit: function (e) {
+/**                    onsubmit: function (e) {
                     	
                     	var choose = e.data.choose;
                     	var preset = e.data.preset;
@@ -100,14 +100,26 @@
 						
 						console.log(processedHTML);
 
-                        //editor.insertContent( processedHTML + '<br><br>' );
+                        editor.insertContent( processedHTML + '<br><br>' );
 
-                        
-                        
-                        
-                        
+// corto                        
+                    	//var choose = e.data.choose;
+                    	//var preset = $('<div>').html($('<div>').html( e.data.preset ).find('#'+choose).clone());
+                        //editor.insertContent( preset.html() + '<br><br>' );  
                	
-                    }
+                    }**/
+                   
+                   onsubmit: function(e){
+                   	
+					$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+                    	var choose = e.data.choose;
+                    	console.log(choose);
+                    	var preset = $('<div>').html( $('<div>').html( data ).find('#'+choose).clone() ).html();
+                    	console.log(preset);
+                        editor.insertContent( preset + '<br><br>' );  
+					});            	
+
+                   }
                     
                 }); //editor.windowManager.open
                 
