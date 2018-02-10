@@ -26,6 +26,14 @@
             image: '../wp-content/themes/ekiline/img/ico-layout.png',
             onclick: function (e) {
             	
+            	// Obtengo plantillas de PHP y lo guardo en una variable
+            	// https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
+            	// https://www.tinymce.com/docs/plugins/template/#templates
+
+				$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+				   $('#preset').val( data );
+				});            	
+					
                 editor.windowManager.open({
                 	
                     title: editor.getLang('ekiline_tinymce.addlays'),
@@ -33,7 +41,7 @@
                     minHeight: 100,
 
                     body: [
-                    // item 1, las columnas
+                    // item 1, las plantillas
 						{
 				            type   : 'label',
 				            name   : 'description',
@@ -41,10 +49,17 @@
 				            label  : editor.getLang('ekiline_tinymce.laylab'),
 				            // text   : 'Choose a design to create an amazing publication'
 				            text   : editor.getLang('ekiline_tinymce.laytext')
-						},                    
+						},   
+						{
+                        	type	: 'textbox',
+                        	//subtype	: 'hidden',
+                        	name	: 'preset',
+                        	id	: 'preset',
+                        	value : ''
+                    	},
 	                    {
 	                    	type: 'listbox', 
-	                    	name: 'preset', 
+	                    	name: 'choose', 
 						      values: [
         						  { text: 'set 1', 
         						  	value: 'album' },
@@ -63,22 +78,35 @@
                 	],
                     	
                     onsubmit: function (e) {
-                        // editor.insertContent( '<div class="ekiline-preset">' + e.data.preset + '</div><br><br>' );
-                    	var choose = e.data.preset;
-
-		            	// Obtengo el archivo de plantillas y lo guardo en una variable
-		            	// https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
-		            	// https://www.tinymce.com/docs/plugins/template/#templates
-		            	// ejercicio 1
-						$.get('../wp-content/themes/ekiline/js/adminLibrary.html', function(content) {
-							
-							console.log(content);
-
-	                        editor.insertContent( content + '<br><br>' );
-	                        
-						});	
-						// intentar cachar el dato en un campo oculto.	
                     	
+                    	var choose = e.data.choose;
+                    	var preset = e.data.preset;
+                    	
+                    	console.log(choose);                    	
+                    	//console.log(preset);                    	
+
+                        //editor.insertContent( '<div class="ekiline-preset">' + e.data.preset + '</div><br><br>' );
+                        
+						// create element and set string as it's content
+						var $preset = $('<div class="layout">').html( preset );
+						
+						// modify attributes
+						//$preset.find('#'+choose).css('color', 'red' );
+						$preset = $preset.find('#'+choose).clone();
+						$preset = $('<div class="layout2">').html( $preset );
+						
+						// return modified content to string
+						var processedHTML = $preset.html();
+						
+						console.log(processedHTML);
+
+                        //editor.insertContent( processedHTML + '<br><br>' );
+
+                        
+                        
+                        
+                        
+               	
                     }
                     
                 }); //editor.windowManager.open
