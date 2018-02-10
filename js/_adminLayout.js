@@ -70,14 +70,45 @@
 		            	// https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
 		            	// https://www.tinymce.com/docs/plugins/template/#templates
 		            	// ejercicio 1
-						$.get('../wp-content/themes/ekiline/js/adminLibrary.html', function(content) {
-							
-							console.log(content);
+						// $.get('../wp-content/themes/ekiline/js/adminLibrary.html', function(content) {
+// 
+						// var nucontent = $('<div class="dada">').html( content ).html();	
+// 						
+						// console.log(nucontent);
+// 						
+							// nucontent = $(nucontent).find('#album').css('background-color','red');
+// 
+							// console.log(nucontent);
+// 								                        
+// 
+	                        // editor.insertContent( nucontent + '<br><br>' );
+// 	                        
+						// });		
+						
+//test2 https://stackoverflow.com/questions/9958282/how-do-i-load-html-into-a-variable-with-jquery
 
-	                        editor.insertContent( content + '<br><br>' );
-	                        
-						});	
-						// intentar cachar el dato en un campo oculto.	
+						// $.get('../wp-content/themes/ekiline/js/adminLibrary.html', function( content ) {
+// 
+	                        // editor.insertContent( content + '<br><br>' );
+// 	                        
+						// }, 'html');
+						
+// test3  https://stackoverflow.com/questions/16885538/how-to-load-an-html-fragment-with-jquery-ajax
+
+							// $.get( '../wp-content/themes/ekiline/js/adminLibrary.html', { id : "album" } )
+							  // .done(function( data ) {
+							    // alert( "Data Loaded: " + data );
+							  // }, 'html');						
+						
+							$.get( '../wp-content/themes/ekiline/js/adminLibrary.html', function( data ) {
+							  var content = $(data).html();
+							  console.log(content);
+
+							  //editor.insertContent( content + '<br><br>' );
+							}, 'html');
+						
+						
+						
                     	
                     }
                     
