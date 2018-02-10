@@ -110,14 +110,14 @@
                     }**/
                    
                    onsubmit: function(e){
-                   	
-					$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
-                    	var choose = e.data.choose;
-                    	console.log(choose);
-                    	var preset = $('<div>').html( $('<div>').html( data ).find('#'+choose).clone() ).html();
-                    	console.log(preset);
-                        editor.insertContent( preset + '<br><br>' );  
-					});            	
+                   		//invoco el archivo de las plantillas.
+						$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+	                    	var choose = e.data.choose;
+	                    	//console.log(choose);
+	                    	var preset = $('<div/>').html( $('<div/>').html( data ).find('#'+choose).clone() ).html();
+	                    	//console.log(preset);
+	                        editor.insertContent( preset + '<br><br>' );  
+						});            	
 
                    }
                     
