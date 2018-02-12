@@ -19,7 +19,6 @@
 </div>
 
 <div id="cards">  
-
   <div class="cards py-5 bg-light">
     <div class="container">
 
@@ -73,5 +72,20 @@
       </div>
     </div>
   </div>
+</div>
 
+<div id="item3">
+      <h1 class="jumbotron-heading">i3 example</h1>
+</div>
+
+<div id="item4">
+      <h1 class="jumbotron-heading">i4 example</h1>
+</div>
+
+<div id="item5">
+      <h1 class="jumbotron-heading">i5 example</h1>
+</div>
+
+<div id="item6">
+      <h1 class="jumbotron-heading">i6 example</h1>
 </div>

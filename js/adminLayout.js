@@ -33,7 +33,55 @@
 /**				$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
 				   $('#preset').val( data );
 				});            	**/
-					
+				
+				var tstdato;
+
+				var promise = $.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+											
+				// var IDs = $( data )         // find spans with ID attribute
+				  // .map(function() { return this.id; }) // convert to set of IDs
+				  // .get(); // convert to instance of Array (optional)
+				  
+					// var IDs = [];
+					// $('<div/>',{ html:data }).children().each(function(){ IDs.push(this.id); });
+					// console.log(IDs);
+				
+				    jsonObj = [];
+				    
+				    $('<div/>',{ html:data }).children().each(function() {
+				    							
+				        var nameId = $(this).attr("id");
+				
+				        item = {};
+				        item ["text"] = nameId;
+				        item ["value"] = nameId;
+				
+				        jsonObj.push(item);
+				        
+				    });
+				
+				    //console.log(jsonObj);
+				    				    
+				    data = JSON.stringify(jsonObj);
+				    
+				    //console.log(data);	
+				    
+				    tstdato = data;			    
+				    				    									
+				});	
+				
+				promise.done(function() {
+					console.log('one '+tstdato);
+					tstdato = tstdato;
+				});
+				
+				// var tstdato = [ 
+				 // {"text": 10004, "value": "club"}, 
+				 // {"text": 10040, "value": "qaz"}, 
+				 // {"text": 10059, "value": "jjjjjjj"}
+				// ];		
+				
+									
                 editor.windowManager.open({
                 	
                     title: editor.getLang('ekiline_tinymce.addlays'),
@@ -60,7 +108,8 @@
 	                    {
 	                    	type: 'listbox', 
 	                    	name: 'choose', 
-						      values: [
+	                    	id: 'choose', 
+						      /**values: [
         						  { text: 'set 1', 
         						  	value: 'album' },
         						  { text: 'set 2', 
@@ -73,7 +122,10 @@
         						  	value: '5' },
         						  { text: 'set 6', 
         						  	value: '6' },
-						      ]
+						      ]**/
+						    'values' : ''
+
+
 	                	},
                 	],
                     	
@@ -116,7 +168,7 @@
 	                    	//console.log(choose);
 	                    	var preset = $('<div/>').html( $('<div/>').html( data ).find('#'+choose).clone() ).html();
 	                    	//console.log(preset);
-	                        editor.insertContent( preset + '<br><br>' );  
+	                        editor.insertContent( preset + '<br><br>' + otro );  
 						});            	
 
                    }
