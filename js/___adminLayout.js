@@ -17,7 +17,9 @@
 
 ( function ( $ ) {
     tinymce.PluginManager.add('custom_mce_button13', function(editor, url) {
-    	    	
+    	
+    	var datafull;
+    	
         editor.addButton('custom_mce_button13', {
             //icon: false,
             //text: 'Quick designs',
@@ -25,25 +27,49 @@
             title : editor.getLang('ekiline_tinymce.addlays'),
             image: '../wp-content/themes/ekiline/img/ico-layout.png',
             onclick: function (e) {
-            
-            //llamar el catalogo de diseños
-        	$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(laysrc){
+            	
+//funcion            	
+            	$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
 															
-			    jsonObj = [];
-			    
-			    $('<div/>',{ html:laysrc }).children().each(function() {
-			    							
-			        var nameId = $(this).attr("id");
-			
-			        item = {};
-			        item ["text"] = nameId;
-			        item ["value"] = nameId;
-			
-			        jsonObj.push(item);
-			        
-			    });
+				    jsonObj = [];
 				    
-				//ejecutar el editor								
+				    $('<div/>',{ html:data }).children().each(function() {
+				    							
+				        var nameId = $(this).attr("id");
+				
+				        item = {};
+				        item ["text"] = nameId;
+				        item ["value"] = nameId;
+				
+				        jsonObj.push(item);
+				        
+				    });
+				
+				    console.log(jsonObj); // así es como lo lee tinymce
+				    
+				    allmighty(jsonObj);
+				    				    				    				    				    
+				    // data = JSON.stringify(jsonObj); // así lo usas para imprimir
+// 				    
+				    // console.log('paqueveas');	
+				    // console.log(data);	
+				    				    				    									
+				});	
+
+//fin funcion				
+
+
+			   // function getValues() {
+			      // return  [{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}];
+			   // }	
+			   
+				// function getValues() {														
+				    // data = [{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}];
+				    // console.log(data);
+				    // return(data);
+				// }
+	function allmighty(resto){					
+								
                 editor.windowManager.open({
                 	
                     title: editor.getLang('ekiline_tinymce.addlays'),
@@ -64,8 +90,8 @@
 	                    	type: 'listbox', 
 	                    	name: 'choose', 
 	                    	id: 'choose', 
-	                    	// cargar los recursos
-						    'values' : jsonObj
+						    'values' : resto //[{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}]
+						    //'' //getValues()
 
 	                	},
                 	],
@@ -76,29 +102,19 @@
 		            	// https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
 		            	// https://www.tinymce.com/docs/plugins/template/#templates
 
-						//$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+						$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
 	                    	var choose = e.data.choose;
 	                    	//console.log(choose);
-	                    	var preset = $('<div/>').html( $('<div/>').html( laysrc ).find('#'+choose).clone() ).html();
+	                    	var preset = $('<div/>').html( $('<div/>').html( data ).find('#'+choose).clone() ).html();
 	                    	//console.log(preset);
 	                        editor.insertContent( preset + '<br><br>' );  
-						//});            	
+						});            	
 
                    }
                     
                 }); //editor.windowManager.open 
-                
-
-				    				    				    				    				    
-				    				    				    									
-			});	
-
-//fin funcion				
-
-
-
-	           
-            } //fin onclick
+	} // fin allmighty                
+            }
         });
     });
 } )( jQuery );
