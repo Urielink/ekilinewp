@@ -18,8 +18,6 @@
 ( function ( $ ) {
     tinymce.PluginManager.add('custom_mce_button13', function(editor, url) {
     	
-    	var datafull;
-    	
         editor.addButton('custom_mce_button13', {
             //icon: false,
             //text: 'Quick designs',
@@ -28,8 +26,8 @@
             image: '../wp-content/themes/ekiline/img/ico-layout.png',
             onclick: function (e) {
             	
-//funcion            	
-            	$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
+			    var choData;
+            	var promise = $.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(data){
 															
 				    jsonObj = [];
 				    
@@ -45,31 +43,36 @@
 				        
 				    });
 				
-				    console.log(jsonObj); // así es como lo lee tinymce
+				    //console.log(jsonObj);
 				    
-				    allmighty(jsonObj);
-				    				    				    				    				    
-				    // data = JSON.stringify(jsonObj); // así lo usas para imprimir
-// 				    
-				    // console.log('paqueveas');	
-				    // console.log(data);	
-				    				    				    									
+				    choData = jsonObj;
+				    				    				    
+				    //data = JSON.stringify(jsonObj);
+				    
+				    //console.log(data);	
+				    
+				    //tstdato = data;			    
+
+				    //console.log(tstdato);	
+				    				    									
 				});	
+				
+				promise.done(function() {
+				    console.log(choData);
+				    $('#choose').val(choData);
+				    // alert( JSON.stringify(choData) ); 				    
+			    });
 
-//fin funcion				
-
-
-			   // function getValues() {
-			      // return  [{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}];
-			   // }	
-			   
-				// function getValues() {														
-				    // data = [{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}];
-				    // console.log(data);
-				    // return(data);
-				// }
-	function allmighty(resto){					
+												
+				// var choData = [
+				 // {"text": 10004, "value": "club"}, 
+				 // {"text": 10040, "value": "qaz"}, 
+				 // {"text": 10059, "value": "jjjjjjj"}
+				// ];		
 								
+				//console.log(choData); // lo retorna como array y lo lee el tinymce
+				//// console.log(JSON.stringify(choData)); // lo retorna como cadena JSON y no lo lee el tinymce.
+									
                 editor.windowManager.open({
                 	
                     title: editor.getLang('ekiline_tinymce.addlays'),
@@ -90,8 +93,7 @@
 	                    	type: 'listbox', 
 	                    	name: 'choose', 
 	                    	id: 'choose', 
-						    'values' : resto //[{"text":"album","value":"album"},{"text":"cards","value":"cards"},{"text":"item3","value":"item3"},{"text":"item4","value":"item4"},{"text":"item5","value":"item5"},{"text":"item6","value":"item6"}]
-						    //'' //getValues()
+						    'values' : ''
 
 	                	},
                 	],
@@ -107,13 +109,13 @@
 	                    	//console.log(choose);
 	                    	var preset = $('<div/>').html( $('<div/>').html( data ).find('#'+choose).clone() ).html();
 	                    	//console.log(preset);
-	                        editor.insertContent( preset + '<br><br>' );  
+	                        editor.insertContent( preset + '<br><br>' + otro );  
 						});            	
 
                    }
                     
-                }); //editor.windowManager.open 
-	} // fin allmighty                
+                }); //editor.windowManager.open
+                
             }
         });
     });
