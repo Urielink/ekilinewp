@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom themes for editor, act independently of the theme templates
+ * Custom presets for editor, act independently of the theme templates
  *
  * @package ekiline
  */
