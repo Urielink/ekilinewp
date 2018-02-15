@@ -402,22 +402,22 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                ),
 	                array(
 	                    'title'     => __( 'Large', 'ekiline' ),
-	                    'selector'  => 'a,button,input',
+	                    'selector'  => '.btn',
 	                    'classes'   => 'btn-lg',
 	                ),
 	                array(
 	                    'title'     => __( 'Small', 'ekiline' ),
-	                    'selector'  => 'a,button,input',
+	                    'selector'  => '.btn',
 	                    'classes'   => 'btn-sm',
 	                ),
 	                array(
 	                    'title'     => __( 'Block', 'ekiline' ),
-	                    'selector'  => 'a,button,input',
+	                    'selector'  => '.btn',
 	                    'classes'   => 'btn-block',
 	                ),
 	                array(
 	                    'title'        => __( 'Disabled', 'ekiline' ),
-	                    'selector'     => 'a,button,input',
+	                    'selector'  => '.btn',
 	                    'classes'   => 'disabled',
 	                    'attributes'   => array(
 	                        'disabled' => 'disabled'
