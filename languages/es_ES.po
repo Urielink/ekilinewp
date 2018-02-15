@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-13 13:54-0600\n"
+"PO-Revision-Date: 2018-02-15 16:47-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -1315,6 +1315,21 @@ msgstr "Plantillas HTML"
 
 msgid "Choose a design to create an amazing publication"
 msgstr "Elige un diseño para crear una página increíble"
+
+msgid "If you buy the definitive version of Ekiline you will have access to more designs!"
+msgstr "¡Si adquieres la versión definitiva de Ekiline tendrás acceso a más diseños!"
+
+msgid "Custom presets"
+msgstr "Formatos personalizados"
+
+msgid "Your HTML presets"
+msgstr "Tu HTML personalizado"
+
+msgid "Go to Appearance > Editor and edit custom-layouts file to replace and add more HTML sets"
+msgstr "Ve a Apariencia > Editor y edita el archivo custom-layouts para reemplazar o añadir tu formato HTML"
+
+msgid "Edit your HTML presets:"
+msgstr "Edita tus sets de HTML:"
 
 msgid "Sitemap created successfully!"
 msgstr "Sitemap creado exitosamente!"

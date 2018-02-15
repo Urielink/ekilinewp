@@ -593,6 +593,8 @@ function theme_html_page() {
 							<li><a href="<?php _e('http://ekiline.com/personaliza/','ekiline'); ?>" target="_blank"> <?php _e('Personalization','ekiline'); ?></a></li>
 							<li><a href="<?php _e('http://ekiline.com/elementos/','ekiline'); ?>" target="_blank"> <?php _e('Elements and shortcodes','ekiline'); ?></a></li>
 							<li><a href="<?php _e('http://ekiline.com/compatible/','ekiline'); ?>" target="_blank"> <?php _e('Compatibility','ekiline'); ?></a></li>
+							<li><?php _e('Edit your HTML presets:','ekiline'); ?></li>
+							<li><a href="<?php _e('theme-editor.php?file=template-parts%2Fcustom-layouts.php&theme=ekiline','ekiline'); ?>" target="_blank"> <?php _e('Custom presets','ekiline'); ?></a></li>
 						</ul>
 					</div>
 				</div>

@@ -87,6 +87,11 @@ function ekiline_tinymce_translation() {
         'addlays' => __('Quick designs','ekiline'),
         'laylab' => __('HTML presets','ekiline'),
         'laytext' => __('Choose a design to create an amazing publication','ekiline'),
+        'laymark' => __('If you buy the definitive version of Ekiline you will have access to more designs!','ekiline'),
+    //adminCustom.js
+        'addmydesign' => __('Custom presets','ekiline'),
+        'mydeslab' => __('Your HTML presets','ekiline'),
+        'mydestext' => __('Go to Appearance > Editor and edit custom-layouts file to replace and add more HTML sets','ekiline'),
     	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;

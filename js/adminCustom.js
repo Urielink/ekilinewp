@@ -16,18 +16,18 @@
  */
 
 ( function ( $ ) {
-    tinymce.PluginManager.add('custom_mce_button13', function(editor, url) {
+    tinymce.PluginManager.add('custom_mce_button14', function(editor, url) {
     	    	
-        editor.addButton('custom_mce_button13', {
+        editor.addButton('custom_mce_button14', {
             //icon: false,
-            //text: 'Quick designs',
-            // title : 'Quick designs',
-            title : editor.getLang('ekiline_tinymce.addlays'),
-            image: '../wp-content/themes/ekiline/img/ico-layout.png',
+            //text: 'Custom presets',
+            // title : 'Custom presets',
+            title : editor.getLang('ekiline_tinymce.addmydesign'),
+            image: '../wp-content/themes/ekiline/img/ico-custom.png',
             onclick: function (e) {
             
 	            //llamar el catalogo de diseños
-	        	$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(laysrc){
+	        	$.get('../wp-content/themes/ekiline/template-parts/custom-layouts.php', function(laysrc){
 					
 					// crear variable para cadena de JSON											
 				    jsonObj = [];
@@ -50,7 +50,7 @@
 					//ejecutar el editor								
 	                editor.windowManager.open({
 	                	
-	                    title: editor.getLang('ekiline_tinymce.addlays'),
+	                    title: editor.getLang('ekiline_tinymce.addmydesign'),
 	                    minWidth: 500,
 	                    minHeight: 100,
 	
@@ -59,10 +59,10 @@
 							{
 					            type   : 'label',
 					            name   : 'description',
-					            //label  : 'HTML presets',
-					            label  : editor.getLang('ekiline_tinymce.laylab'),
-					            // text   : 'Choose a design to create an amazing publication'
-					            text   : editor.getLang('ekiline_tinymce.laytext')
+					            //label  : 'Your HTML presets',
+					            label  : editor.getLang('ekiline_tinymce.mydeslab'),
+					            // text   : 'Go to Appearance > Editor and edit custom-layouts file to replace and add more HTML sets'
+					            text   : editor.getLang('ekiline_tinymce.mydestext')
 							},   
 		                    {
 		                    	type: 'listbox', 
@@ -71,12 +71,6 @@
 		                    	// JSON loop para textbox
 							    'values' : jsonObj	
 		                	},
-							{
-					            type   : 'label',
-					            name   : 'invitation',
-					            // text   : 'If you buy the definitive version of Ekiline you will have access to more designs!'
-					            text   : editor.getLang('ekiline_tinymce.laymark')
-							},   		                	
 	                	],
 	                	
 	                   onsubmit: function(e){
