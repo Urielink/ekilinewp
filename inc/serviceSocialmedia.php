@@ -209,14 +209,14 @@ function ekiline_socialmenu($atts, $content = null) {
     if( true === get_theme_mod('ekiline_fontawesome') ) {
         $emaIco = '<i class="fa fa-envelope"></i>';
         $telIco = '<i class="fa fa-phone"></i>';
-        $whaIco = '<i class="fa fa-whatsapp"></i>';
-        $fbIco = '<i class="fa fa-facebook"></i>';
-        $ttIco = '<i class="fa fa-twitter"></i>';
-        $gpIco = '<i class="fa fa-google-plus"></i>';
-        $inIco = '<i class="fa fa-linkedin"></i>';
-        $ytIco = '<i class="fa fa-youtube-play"></i>';
-        $instIco = '<i class="fa fa-instagram"></i>';
-        $pintIco = '<i class="fa fa-pinterest"></i>';
+        $whaIco = '<i class="fab fa-whatsapp"></i>';
+        $fbIco = '<i class="fab fa-facebook"></i>';
+        $ttIco = '<i class="fab fa-twitter"></i>';
+        $gpIco = '<i class="fab fa-google-plus"></i>';
+        $inIco = '<i class="fab fa-linkedin"></i>';
+        $ytIco = '<i class="fab fa-youtube-play"></i>';
+        $instIco = '<i class="fab fa-instagram"></i>';
+        $pintIco = '<i class="fab fa-pinterest"></i>';
     }    
     
     $emSocial = get_theme_mod('ekiline_emaProf','');
@@ -263,11 +263,11 @@ function ekiline_socialsharing($atts, $content = null) {
     $whaIco = 'WhatsApp';
                 
     if( true === get_theme_mod('ekiline_fontawesome') ) {
-        $whaIco = '<i class="fa fa-whatsapp"></i>';
-        $fbIco = '<i class="fa fa-facebook"></i>';
-        $ttIco = '<i class="fa fa-twitter"></i>';
-        $gpIco = '<i class="fa fa-google-plus"></i>';
-        $inIco = '<i class="fa fa-linkedin"></i>';
+        $whaIco = '<i class="fab fa-whatsapp"></i>';
+        $fbIco = '<i class="fab fa-facebook"></i>';
+        $ttIco = '<i class="fab fa-twitter"></i>';
+        $gpIco = '<i class="fab fa-google-plus"></i>';
+        $inIco = '<i class="fab fa-linkedin"></i>';
     }
     
     $whaSocial = get_theme_mod('ekiline_whaProf','');

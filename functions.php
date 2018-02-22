@@ -231,7 +231,8 @@ function ekiline_scripts() {
         
     // Condición para font awesome
     if( true === get_theme_mod( 'ekiline_fontawesome', true ) ) {
-          wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
+          //wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
+          wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/fontawesome-all.min.css', array(), '5.0.6', 'all' ); 
     }
 		
 	// Añadir googlefonts
