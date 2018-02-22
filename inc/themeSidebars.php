@@ -95,8 +95,13 @@ function rightSideOn() {
     if ( is_active_sidebar( 'sidebar-2' ) ) : echo ' col-sm-3 order-sm-3'; endif;     
 }
 
-function cssSides() {    
-	if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) {
+function cssSides() {	
+    //Llamo a mis variables
+    $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
+    $rightOn = get_theme_mod('ekiline_sidebarRight','on');
+	    
+	//if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) {
+	if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'on' || is_active_sidebar( 'sidebar-2' ) && $rightOn == 'on' ) {
         echo ' row';
     }
 }

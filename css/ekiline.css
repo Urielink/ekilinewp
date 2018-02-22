@@ -8,7 +8,7 @@
 
 /* Animaciones en objetos */
 .navbar,.navbar .navbar-brand,.navbar-nav li a, a:hover, .btn:hover{-webkit-transition:all 0.7s ease-in-out;-moz-transition:all 0.7s ease-in-out;-ms-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-in-out;transition:all 0.7s ease-in-out;}
-.toggle-sidebars #page,.toggle-sidebars #primary,.toggle-sidebars #secondary,.toggle-sidebars #third,.icon-bar{-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}
+.toggle-sidebars #page,.toggle-sidebars #primary,.toggle-sidebars #secondary,.toggle-sidebars #third,.btn-sbleft,.btn-sbright,.icon-bar{-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}
 
 /** Cover **/
 html,body{height:100%;}
@@ -89,10 +89,10 @@ video#bgvid{transition:1s opacity;}
 .toggle-sidebars.right-on.active-sidebar-right #content #third{right:300px;}
     
  /* Botones de sidebars */
- .sidebar-toggle{padding:9px 10px;}
- .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#000;}
- .btn-sbleft{position:fixed;top:10px;left:10px;z-index:3000;}
- .btn-sbright{position:fixed;top:10px;right:10px;z-index:3000;}
+ .sidebar-toggle{padding: .50rem .75rem;color:#00000080;border:1px solid #0000001a;border-radius:.25rem;}
+ .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#888;}
+ .btn-sbleft{position:fixed;bottom:50%;left:10px;z-index:3000;}
+ .btn-sbright{position:fixed;bottom:50%;right:10px;z-index:3000;}
 
  .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
  .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
@@ -105,6 +105,8 @@ video#bgvid{transition:1s opacity;}
  .active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
  .active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
  .active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
+ .active-sidebar-left .btn-sbleft {left:280px}
+ .active-sidebar-right .btn-sbright {right:280px}
 
 /* Sidebar en caso de necesitar el menu de bootstrap */
 
