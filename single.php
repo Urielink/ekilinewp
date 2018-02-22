@@ -23,8 +23,8 @@ get_header(); ?>
 
 			<nav id="page-navigation" aria-label="Post navigation">
 			  <ul class="pagination justify-content-center">			    
-		    	<?php previous_post_link('<li class="page-item page-link">'.'%link'.'</li>', '<span class="fa fa-angle-left"></span> %title', TRUE); ?>			    			    
-		    	<?php next_post_link('<li class="page-item page-link">'.'%link'.'</li>', '%title <span class="fa fa-angle-right"></span>', TRUE); ?>
+		    	<?php previous_post_link('<li class="page-item page-link">'.'%link'.'</li>', '<span class="fa fa-chevron-left"></span> %title', TRUE); ?>			    			    
+		    	<?php next_post_link('<li class="page-item page-link">'.'%link'.'</li>', '%title <span class="fa fa-chevron-right"></span>', TRUE); ?>
 			  </ul>
 			</nav>
 			    

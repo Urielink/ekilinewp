@@ -2,7 +2,7 @@
 /**
  * Template part for displaying page content in image.php.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://codex.wordpress.org/Template_Hierarchy 
  *
  * @package ekiline
  */
@@ -114,10 +114,10 @@
 		?>
 	</footer><!-- .entry-footer -->
 	
-    <nav id="image-navigation">
-      <ul class="pager">
-        <li class="previous"><?php previous_image_link( false, __( '&larr; Previous', 'ekiline' ) ); ?></li>
-        <li class="next"><?php next_image_link( false, __( 'Next &rarr;', 'ekiline' ) ); ?></li>
+    <nav id="image-navigation" aria-label="Image navigation">
+	  <ul class="pagination justify-content-center">			    
+        <li class="page-item page-link"><span class="fa fa-chevron-left"></span> <?php previous_image_link( false, __( 'Previous', 'ekiline' ) ); ?></li>
+        <li class="page-item page-link"><?php next_image_link( false, __( 'Next', 'ekiline' ) ); ?> <span class="fa fa-chevron-right"></span></li>
       </ul>
     </nav><!-- #image-navigation -->        
 	

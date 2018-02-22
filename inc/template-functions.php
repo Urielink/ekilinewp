@@ -357,8 +357,8 @@ function ekiline_posts_navigation( $args = array() ) {
             'screen_reader_text' => __( 'Posts navigation', 'ekiline' ),
         ) );
  
-        $next_link = get_previous_posts_link( $args['next_text'] . ' <span class="fa fa-angle-right"></span>' );
-        $prev_link = get_next_posts_link( '<span class="fa fa-angle-left"></span> ' . $args['prev_text'] );
+        $next_link = get_previous_posts_link( $args['next_text'] . ' <span class="fa fa-chevron-right"></span>' );
+        $prev_link = get_next_posts_link( '<span class="fa fa-chevron-left"></span> ' . $args['prev_text'] );
  
         if ( $prev_link ) {
             $navigation .= '<li class="previous page-item page-link">' . $prev_link . '</li>';
