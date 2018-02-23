@@ -403,6 +403,13 @@ require get_template_directory() . '/inc/adminEditor.php';
 // 	
 // }
 
-/*Revisar la compatiilidad de AMP
+/* Revisar:
+ * La compatiilidad de AMP
  * https://isabelcastillo.com/wordpress-amp-plugin
- * */
+ * 
+ * Agregar tab a libreria de medios.
+ * https://wordpress.stackexchange.com/questions/216284/how-to-extend-media-library-wp-4-4
+ * https://wordpress.stackexchange.com/questions/125692/how-to-know-if-admin-is-in-edit-page-or-post
+ * https://codex.wordpress.org/Function_Reference/wp_iframe
+ * 
+ */
