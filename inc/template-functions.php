@@ -680,3 +680,28 @@ endif;
 <?php
 }
 add_action( 'admin_notices', 'ekiline_docs_feed' );
+
+/**
+ * Fontawesome helper
+ */
+function ekiline_faw() {
+
+	global $wp_admin_bar;
+
+	// if ( !is_admin_bar_showing() )
+		// return;	
+	
+		$wp_admin_bar->add_menu( array(
+			'id' => 'fawekiline',
+			'title' => __( 'FAw5', 'ekiline'),
+			'href' => 'http://127.0.0.1:8020/pruebas-rapidas/fa5gen.html?TB_iframe=true&width=600&height=550',
+			'meta' => array( 
+				'class' => 'fawfive',
+				'target' => '_blank',
+				'onclick' => 'jQuery(this).addClass("thickbox");'
+				),
+	        //'parent' => 'top-secondary'		
+		) );
+		
+} 
+add_action('admin_bar_menu', 'ekiline_faw', 80 ); 
