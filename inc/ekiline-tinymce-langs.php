@@ -92,6 +92,8 @@ function ekiline_tinymce_translation() {
         'addmydesign' => __('Custom presets','ekiline'),
         'mydeslab' => __('Your HTML presets','ekiline'),
         'mydestext' => __('Go to Appearance > Editor and edit custom-layouts file to replace and add more HTML sets','ekiline'),
+    //adminFawfive.js
+        'addfaw' => __('Add FontAwesome icon','ekiline'),
     	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;

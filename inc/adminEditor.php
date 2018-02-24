@@ -792,5 +792,27 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 				'var tinyCatList =' . $json . ';'	."\n".
 			 '</script>'."\n";
 		}
+		
+		// agregar font awesome en admin solo en la edicion
+		// https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
+		function fontawesome_admin_style() {	
+		    wp_register_style( 'fontawesome_admin_style', get_template_directory_uri() . '/css/fontawesome-all.min.css', false, '1.0.0' );
+		    wp_enqueue_style( 'fontawesome_admin_style' );
+		
+			//la libreria de font awesome		    
+			$extracss = '.mce-window.mce-container.mce-fontawesome-panel .mce-container-body.mce-abs-layout{overflow: hidden;}';
+			//la interfaz de font awesome : font-family: Font Awesome 5 Free;
+			$extracss .= '#iconCat-body ul{width:840px;max-width:840px;min-height:600px;}';
+			$extracss .= '#iconCat-body ul,#iconCat-body ul li{padding:0px;margin:0px;}';
+			$extracss .= '#iconCat-body ul li{text-align:center;padding:8px 0px 6px;width:40px;height:24px;cursor:pointer;float:left;}';
+			$extracss .= '#iconCat-body ul li:hover{background-color:#f7f7f7;}';
+			$extracss .= '#iconCat-body .fa,#iconCat-body .far,#iconCat-body .fas {font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 900;}';
+			$extracss .= '#iconCat-body .fab {font-family:"Font Awesome 5 Brands";font-size:20px;}';		
+			$extracss .= '#iconCat-body #icoDesc {position:fixed;top:37px;left:0px;right:0px;text-align:center;font-size:16px;background-color:#294350;color:#94f7ff;padding:4px;margin:0px;line-height:100%;}';		
+		    wp_add_inline_style( 'wp-admin', $extracss );
+		}
+		add_action( 'admin_enqueue_scripts', 'fontawesome_admin_style');
+
 
 }
+
