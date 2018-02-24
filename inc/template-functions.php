@@ -614,13 +614,29 @@ function ekiline_admin_styles() {
 	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
 	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
 	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
-	$extracss .= '.dash-note{margin: 0px 10px 0px 0px;float: left;font-size: 20px;}'; 				    
+	$extracss .= '.dash-note{margin: 0px 10px 0px 0px;float: left;font-size: 20px;}'; 		
+	//la libreria de font awesome		    
+	$extracss .= '.mce-window.mce-container.mce-fontawesome-panel .mce-container-body.mce-abs-layout{overflow: hidden;}';
+	//la interfaz de font awesome : font-family: Font Awesome 5 Free;
+	$extracss .= '#iconCat-body ul{width:840px;max-width:840px;min-height:600px;}';
+	$extracss .= '#iconCat-body ul,#iconCat-body ul li{padding:0px;margin:0px;}';
+	$extracss .= '#iconCat-body ul li{text-align:center;border:1px solid #dddd;padding:8px;width:24px;height:24px;cursor:pointer;float:left;}';
+	$extracss .= '#iconCat-body .fa,#iconCat-body .far,#iconCat-body .fas {font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 900;}';
+	$extracss .= '#iconCat-body .fab {font-family:"Font Awesome 5 Brands";font-size:20px;}';
+		
     wp_add_inline_style( 'wp-admin', $extracss );
     wp_add_inline_style( 'ekiline-style', $extracss );
 }
-add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles' );
-add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles' );
+add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles');
+add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles');
 
+// agregar font awesome en admin solo en la edicion
+// https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
+function fontawesome_admin_style() {
+        wp_register_style( 'fontawesome_admin_style', get_template_directory_uri() . '/css/fontawesome-all.min.css', false, '1.0.0' );
+        wp_enqueue_style( 'fontawesome_admin_style' );
+}
+add_action( 'admin_enqueue_scripts', 'fontawesome_admin_style');
 
 /*
  * Noticias para el suscriptor de Ekiline
