@@ -628,32 +628,36 @@ add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles');
  */
  
 function ekiline_docs_feed() {
+//variables para noticias	
+global $pagenow;
+$pages = array('index.php','edit.php','post.php','themes.php','tools.php');
+if ( in_array( $pagenow, $pages, true ) ){
+
+	// Get RSS Feed(s)
+	include_once( ABSPATH . WPINC . '/feed.php' );
 	
-// Get RSS Feed(s)
-include_once( ABSPATH . WPINC . '/feed.php' );
-
-// Get a SimplePie feed object from the specified feed source.
-$rss = fetch_feed( 'http://ekiline.com/feed/' );
-
-$maxitems = 0;
-
-if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
-
-    // Figure out how many total items there are, but limit it to 5. 
-    $maxitems = $rss->get_item_quantity( 20 ); 
-
-    // Build an array of all the items, starting with element 0 (first element).
-    $rss_items = $rss->get_items( 0, $maxitems );
+	// Get a SimplePie feed object from the specified feed source.
+	$rss = fetch_feed( 'http://ekiline.com/feed/' );
 	
-	// order in notices: http://php.net/manual/es/function.shuffle.php
-	shuffle($rss_items);	
-
-endif;
+	$maxitems = 0;
 	
+	if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+	
+	    // Figure out how many total items there are, but limit it to 5. 
+	    $maxitems = $rss->get_item_quantity( 20 ); 
+	
+	    // Build an array of all the items, starting with element 0 (first element).
+	    $rss_items = $rss->get_items( 0, $maxitems );
+		
+		// order in notices: http://php.net/manual/es/function.shuffle.php
+		shuffle($rss_items);	
+	
+	endif;
+		
 ?>
-    <div class="notice notice-success is-dismissible">
+    <div class="notice notice-success is-dismissible ekiline-notice" style="display: none;">
     	<h4 style="float:left;margin:13px 5px 0px;"><?php _e( 'Ekiline tips:', 'ekiline' ); ?></h4>
-    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money', 'ekiline' ); ?></a>
+    	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/gana/" target="_blank"><?php _e( 'Make money', 'ekiline' ); ?> <i class="far fa-money-bill-alt"></i></a>
     	<a class="button button-primary" style="float:right;margin:8px 4px;" href="http://ekiline.com/compra/" target="_blank"><?php _e( 'Get more', 'ekiline' ); ?></a>
     	<a class="button button-primary" style="float:right;margin:8px 4px;" href="themes.php?page=ekiline_options"><?php _e( 'About', 'ekiline' ); ?></a>
 		<ul>
@@ -677,8 +681,26 @@ endif;
     </div>
 
 <?php
+	}
 }
 add_action( 'admin_notices', 'ekiline_docs_feed' );
+
+function ekiline_docs_feed_set() {
+global $pagenow;
+$pages = array('index.php','edit.php','post.php','themes.php','tools.php');
+if ( in_array( $pagenow, $pages, true ) ) { ?>	
+	
+<script type='text/javascript'>
+	jQuery(document).ready(function($){
+		//$('.ekiline-notice').show(1).delay(1000).hide(1);
+		$('.ekiline-notice').delay(2000).show(100);
+	});
+</script>
+
+<?php }
+}
+add_action( 'admin_footer', 'ekiline_docs_feed_set' );
+
 
 /**
  * Fontawesome helper

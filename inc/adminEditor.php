@@ -806,7 +806,8 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			$extracss .= '#iconCat-body ul,#iconCat-body ul li{padding:0px;margin:0px;}';
 			$extracss .= '#iconCat-body ul li{text-align:center;padding:8px 0px 6px;width:40px;height:24px;cursor:pointer;float:left;}';
 			$extracss .= '#iconCat-body ul li:hover{background-color:#f7f7f7;}';
-			$extracss .= '#iconCat-body .fa,#iconCat-body .far,#iconCat-body .fas {font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 900;}';
+			$extracss .= '#iconCat-body .fa,#iconCat-body .fas{font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 900;}';
+			$extracss .= '#iconCat-body .far {font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 400;}';
 			$extracss .= '#iconCat-body .fab {font-family:"Font Awesome 5 Brands";font-size:20px;}';		
 			$extracss .= '#iconCat-body #icoDesc {position:fixed;top:37px;left:0px;right:0px;text-align:center;font-size:16px;background-color:#294350;color:#94f7ff;padding:4px;margin:0px;line-height:100%;}';		
 		    wp_add_inline_style( 'wp-admin', $extracss );
