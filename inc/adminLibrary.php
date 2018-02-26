@@ -13,16 +13,16 @@
 				Something short and leading about the collection below its contents, the creator, etc. Make it short and sweet, but not too short so folks don&#39;t simply skip over it entirely.
 			</p>
 			<p>
-				<a href="#" class="btn btn-primary my-2">Main call to action</a><a href="#" class="btn btn-secondary my-2">Secondary action</a>
+				<a href="#" class="btn btn-primary my-2">Main call to action</a>  <a href="#" class="btn btn-secondary my-2">Secondary action</a>
 			</p>
 		</div>
 	</section>
-	<div class="album py-5 bg-light">
+	<div class="py-5 bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -43,7 +43,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -64,7 +64,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -85,7 +85,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -127,7 +127,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+						<img class="card-img-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="100" height="255"/>
 						<div class="card-body">
 							<p class="card-text">
 								This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -176,7 +176,7 @@
 					</p>
 					<a href="#">Continue reading</a>
 				</div>
-				<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+				<img class="card-img-right flex-auto d-none d-md-block" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="200" height="280"/>
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -191,7 +191,7 @@
 					</p>
 					<a href="#">Continue reading</a>
 				</div>
-				<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+				<img class="card-img-right flex-auto d-none d-md-block" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="200" height="280"/>
 			</div>
 		</div>
 	</div>
@@ -262,7 +262,8 @@
 <div id="features">
 	<div class="row">
 		<div class="col-lg-4">
-			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"><h2>Heading</h2>
+			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+			<h2>Heading</h2>
 			<p>
 				Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
 			</p>
@@ -271,7 +272,8 @@
 			</p>
 		</div>
 		<div class="col-lg-4">
-			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"><h2>Heading</h2>
+			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+			<h2>Heading</h2>
 			<p>
 				Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
 			</p>
@@ -280,7 +282,8 @@
 			</p>
 		</div>
 		<div class="col-lg-4">
-			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"><h2>Heading</h2>
+			<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+			<h2>Heading</h2>
 			<p>
 				Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
 			</p>
@@ -289,43 +292,43 @@
 			</p>
 		</div>
 	</div>
-	<hr class="featurette-divider">
-	<div class="row featurette">
+	<hr>
+	<div class="row align-items-center">
 		<div class="col-md-7">
-			<h2 class="featurette-heading">First featurette heading. <span class="text-muted">It&#39;ll blow your mind.</span></h2>
+			<h2 class="display-3">First featurette heading. <span class="text-muted">It&#39;ll blow your mind.</span></h2>
 			<p class="lead">
 				Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
 			</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			<img class="img-fluid mx-auto" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="400" height="400"/>
 		</div>
 	</div>
-	<hr class="featurette-divider">
-	<div class="row featurette">
+	<hr>
+	<div class="row align-items-center">
 		<div class="col-md-7 order-md-2">
-			<h2 class="featurette-heading">Oh yeah, it&#39;s that good. <span class="text-muted">See for yourself.</span></h2>
+			<h2 class="display-3">Oh yeah, it&#39;s that good. <span class="text-muted">See for yourself.</span></h2>
 			<p class="lead">
 				Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
 			</p>
 		</div>
 		<div class="col-md-5 order-md-1">
-			<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			<img class="img-fluid mx-auto" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="400" height="400"/>
 		</div>
 	</div>
-	<hr class="featurette-divider">
-	<div class="row featurette">
+	<hr>
+	<div class="row align-items-center">
 		<div class="col-md-7">
-			<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+			<h2 class="display-3">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
 			<p class="lead">
 				Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
 			</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			<img class="img-fluid mx-auto" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="400" height="400"/>
 		</div>
 	</div>
-	<hr class="featurette-divider">
+	<hr>
 </div>
 
 <div id="draft">
@@ -372,7 +375,7 @@
 </div>
 
 <div id="pricing">
-	<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 		<h1 class="display-4">Pricing</h1>
 		<p class="lead">
 			Quickly build an effective pricing table for your potential customers with this Bootstrap example. It&#39;s built with default Bootstrap components and utilities with little customization.
