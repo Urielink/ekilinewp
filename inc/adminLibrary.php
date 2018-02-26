@@ -13,7 +13,7 @@
 				Something short and leading about the collection below its contents, the creator, etc. Make it short and sweet, but not too short so folks don&#39;t simply skip over it entirely.
 			</p>
 			<p>
-				<a href="#" class="btn btn-primary my-2">Main call to action</a>  <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+				<a href="#" class="btn btn-primary my-2">Main call to action</a><a href="#" class="btn btn-secondary my-2">Secondary action</a>
 			</p>
 		</div>
 	</section>
@@ -461,7 +461,7 @@
 </div>
 
 <div id="product">
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+	<div class="position-relative p-3 p-md-5 m-md-3 text-center bg-light" style="overflow:hidden;">
 		<div class="col-md-5 p-lg-5 mx-auto my-5">
 			<h1 class="display-4 font-weight-normal">Punny headline</h1>
 			<p class="lead font-weight-normal">
@@ -469,11 +469,11 @@
 			</p>
 			<a class="btn btn-outline-secondary" href="#">Coming soon</a>
 		</div>
-		<div class="product-device box-shadow d-none d-md-block"></div>
-		<div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+		<div class="product-device box-shadow d-none d-md-block" style="top: -25%;right: auto;bottom: 0;left: 5%;background-color: #e5e5e5;position: absolute;width: 300px;height: 540px;border-radius: 21px;-webkit-transform: rotate(30deg);transform: rotate(30deg);"></div>
+		<div class="product-device product-device-2 box-shadow d-none d-md-block" style="position: absolute;right: 10%;bottom: -30%;width: 300px;height: 540px;background-color: #333;border-radius: 21px;-webkit-transform: rotate(30deg);transform: rotate(30deg);"></div>
 	</div>
 	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+		<div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white col">
 			<div class="my-3 py-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -482,7 +482,7 @@
 			</div>
 			<div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
 		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 p-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -493,7 +493,7 @@
 		</div>
 	</div>
 	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 p-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -502,7 +502,7 @@
 			</div>
 			<div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
 		</div>
-		<div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+		<div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white col">
 			<div class="my-3 py-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -513,7 +513,7 @@
 		</div>
 	</div>
 	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 p-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -522,7 +522,7 @@
 			</div>
 			<div class="bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
 		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 py-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -533,7 +533,7 @@
 		</div>
 	</div>
 	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 p-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
@@ -542,7 +542,7 @@
 			</div>
 			<div class="bg-white box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
 		</div>
-		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+		<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center col">
 			<div class="my-3 py-3">
 				<h2 class="display-5">Another headline</h2>
 				<p class="lead">
