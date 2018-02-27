@@ -6,6 +6,19 @@ jQuery(document).ready(function($){
     setTimeout(function(){
         $('#pageLoad').fadeOut(500);
     }, 600);			          
+    
+    // Ajuste en dropdown de widgets dentro de navbar
+	$('.widget.navbar-btn.dropdown .dropdown-menu').on('click', function(event){
+		event.stopPropagation();
+		event.preventDefault();
+		$('.carousel-control-prev').click(function() {
+		  $( $( this ).parent() ).carousel('prev');
+		});
+		
+		$('.carousel-control-next').click(function() {
+		  $( $( this ).parent() ).carousel('next');
+		});
+	});
    
 		
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
