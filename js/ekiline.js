@@ -20,6 +20,9 @@ jQuery(document).ready(function($){
 		});
 	});
    
+    // Ajuste en dropdown de widgets dentro de navbar
+	$( '.external-toggle .nav-link' ).attr('data-toggle', 'collapse' );	 
+  
 		
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 

@@ -121,6 +121,9 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) {
 
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
 			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
+			//feb2017 agregar descripcion como campo de accion
+			$atts['alt']    = ! empty( $item->description )		? $item->description	: '';
+			$atts['data-target'] = ! empty( $item->description ) ? $item->description	: '';
 			// If item has_children add atts to a.
 			if ( $args->has_children && 0 === $depth && $args->depth > 1 ) {
 				$atts['href']   		= '#';
