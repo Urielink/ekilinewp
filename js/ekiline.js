@@ -8,9 +8,9 @@ jQuery(document).ready(function($){
     }, 600);			          
     
     // Ajuste en dropdown de widgets dentro de navbar
-	$('.widget.navbar-btn.dropdown .dropdown-menu').on('click', function(event){
-		event.stopPropagation();
-		event.preventDefault();
+	$('.widget.navbar-btn.dropdown .dropdown-menu').on('click', function(e){
+		e.stopPropagation();
+		e.preventDefault();
 		$('.carousel-control-prev').click(function() {
 		  $( $( this ).parent() ).carousel('prev');
 		});
@@ -248,6 +248,7 @@ jQuery(document).ready(function($){
 	$( '.nav-links' ).addClass( 'pager');		
 	$( '.nav-links .nav-next' ).addClass( 'next');		
 	$( '.nav-links .nav-previous' ).addClass( 'previous');		
+	$( '.caption-button > a' ).addClass( 'btn btn-secondary');		
 	
 	// Videos embedados responsivos
     if ( $('.embed-responsive').length ) {	
@@ -577,6 +578,7 @@ jQuery(document).ready(function($){
 	        
 	        //elementos centrales
 			var mgClose = $('<button/>', { 'type':'button', 'class':'close', 'data-dismiss':'modal', 'html': $('<span/>', { 'aria-hidden':'true', 'html': '&times;' }) });				
+			var fullSize = $('<button/>', { 'type':'button', 'class':'resize', 'html': $('<i/>', { 'class':'fas fa-arrows-alt'}) });				
 			var mgLi = $('<ol/>', { 'class':'carousel-indicators' });
 			var mgGal = $('<div/>', { 'class':'carousel-inner', 'role':'listbox', 'html': gallery });
 	        //controles
@@ -587,30 +589,38 @@ jQuery(document).ready(function($){
 			var mgPre = $('<a/>', { 'class':'carousel-control-prev', 'href':'#carousel-modal', 'role':'button', 'data-slide':'prev'}).append( pico , pdes );
 			var mgNex = $('<a/>', { 'class':'carousel-control-next', 'href':'#carousel-modal', 'role':'button', 'data-slide':'next'}).append( nico , mgNex );      					
 	        //el conjunto de carrusel
-	        var mgAll = $('<div/>',{ 'id':'carousel-modal', 'class':'carousel slide carousel-fade', 'data-ride':'carousel', 'style':'display:none;'}).append( mgClose , mgLi , mgGal, mgPre, mgNex );
+	        
+	        var mgAll = $('<div/>',{ 'id':'carousel-modal', 'class':'carousel slide carousel-fade', 'data-ride':'carousel', 'style':'display:none;'}).append( mgClose , fullSize , mgLi , mgGal, mgPre, mgNex );
 	        	        
         	var modalgallery = $('<div/>', { 'class':'modal fade zoom', 'id': 'galleryModal', 'role':'dialog', 'html': $('<div/>', { 'class':'modal-dialog modal-lg','html': $('<div/>', { 'class':'modal-content','html': $('<div/>', { 'class':'modal-body','html': mgAll }) }) }) });
 	        
 	        $( modalgallery ).modal('show');
 	        	        	         
-	        // saber a que elemento le dio click        
-	        var nc = $(this).index( rename + ' a' );        
+	        // saber a que elemento le dio click     
+	        // var nc = $(this).index( rename + ' a' ); 
+	        
+	        // feb2018 update: al crear un boton de enlaces debo identificar el objeto padre para tener un conteo efectivo.
+	        var itemParent = $(this).closest( '.gallery-item' );
+	        var nc = $(itemParent).index();        	           
+	        
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
-	         //console.log(nc);
-		        
 	        // Ejecuta las variables para activarse
-	        $('body').on('shown.bs.modal', function(){  
-	        	
-	            $('.carousel').carousel({ swipe: 100 });	
-	            // Oculto el preformato de la operación y luego la presento L505 : style="display:none;    	    
-	            $('.carousel').css('display','block');	    	    
+	        $('body').on('shown.bs.modal', function(){
+	        		        		        		        	
+		        // // feb2018 update: boton para cambiar la ventana de tamaño.
+	        	$( '.resize' ).click(function(){
+	        		$('.modal-open').toggleClass('modal-full');
+	        	});
 
+
+	            $('.carousel').carousel({ swipe: 100 });	
+	            // Oculto el preformato de la operación y luego la presento L591 : style="display:none;    	    
+	            $('.carousel').css('display','block');	    	    
 	                      
 	            // busco cada item y limpio las clases reemplazandola por item.
 	            $(this).find('#galleryModal .carousel-item').removeClass().addClass('carousel-item');
-	            
 	            
 	            // busco el link original y guardo la dirección en una variable para cuando elacen la imagen pequeña, se muestre la grande
 		            $(this).find('#galleryModal figure a img').each(function(){
@@ -624,12 +634,13 @@ jQuery(document).ready(function($){
 			            $(this).replaceWith(img);
 		            });
 		        
-		        // Busco el rengón de texto y le añado la clase carousel-caption
-	            $(this).find('#galleryModal .carousel-item .gallery-caption').addClass('carousel-caption');
+		        // Busco el renglon de texto y le añado la clase carousel-caption
+	            //$(this).find('#galleryModal .carousel-item .gallery-caption').addClass('carousel-caption'); 
+	            $(this).find('#galleryModal .gallery-caption').addClass('carousel-caption'); 
 	            
 	            
 	            // busco elmentos que no necesito y los elimino
-	            $(this).find('#galleryModal .w-100').remove();
+	            $(this).find('#galleryModal .w-100,#galleryModal .caption-button').remove();
 	            $(this).find('#galleryModal figure').removeClass().addClass('text-center carousel-item');
 
 	    	        //Jun 5 ajuste cuando sea un carrusel
@@ -672,9 +683,11 @@ jQuery(document).ready(function($){
 	        
 	        // Borrar registro del modal
 	        $('body').on('hidden.bs.modal', function(){
-	          $( '#galleryModal.modal, .modal-backdrop' ).remove();
-	        });             
-	        
+		        // feb2018 update: boton para cambiar la ventana de tamaño.
+        		$( this ).removeClass('modal-full');
+	          	$( '#galleryModal.modal, .modal-backdrop' ).remove();		          	          
+	        }); 
+	        	 
 	   });  
 		
 	}); // fin modal-gallery function

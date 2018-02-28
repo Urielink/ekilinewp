@@ -255,8 +255,15 @@ video#bgvid{transition:1s opacity;}
 
 /*31 oct galeria en modal*/
 .modal button.close{position:absolute;right:20px;top:20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;}
+.modal button.resize{cursor: pointer;position:absolute;left:20px;top:20px;z-index:1000;opacity:1;background:#000;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;border:0px;color:#fff;transform:rotate(45deg);}
 .modal figure {margin-bottom: 0;}
 .modal .carousel-indicators {bottom: -50px;}
+/*27 feb galeria full modal*/
+.modal-full .modal.show {padding: 0px !important;}
+.modal-full .modal-dialog{width:100%;max-width: 100%;margin:0px auto;}
+.modal-full .modal-body{padding:0px;}
+.modal-full .modal-backdrop{opacity:1;}
+.modal-full .carousel-indicators { bottom: 10px; }
 
 /*Breadcrumb*/
 .breadcrumb span{padding:0px 1px;}

@@ -71,6 +71,7 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	        //agregado
 	        'carousel'   => '',
 	        'showlink'   => '',
+	        'showbutton' => 'false',
 	        'name'       => 'default',
 	        'align'      => 'text-center',
 	        'indicators' => 'false',
@@ -263,9 +264,29 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	                if( (!empty( $atts['carousel'] )) ){ $captionCss = 'carousel-caption';}
 	                if( $attachment->post_title && (!empty( $atts['carousel'] )) ){ $captionTitle = '<h2 class="'.$alignitems.'">' . wptexturize($attachment->post_title) . '</h2>';}
 	                if( $attachment->post_excerpt ){ $captionText = '<p class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</p>';}
-	                                                
+	                     
+//feb2018 boton de enlace es necesario de manera ocasional.
+					/*boton de enlace*/
+					$captionBtn = '';
+	                                
+	                if ( $atts['showbutton'] == 'true' ) {
+	                	
+				        $attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+						
+				        if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+							$captionBtn = wp_get_attachment_link( $id, '', false, false, $attachment->post_title, $attr );
+				        } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+							$captionBtn = ''; //wp_get_attachment_link( $id, '', false, $attr ); // si no hay enlace, no hay boton.
+				        } else {
+							$captionBtn = wp_get_attachment_link( $id, '', true, false, $attachment->post_title, $attr );
+				        }
+							
+						$captionBtn = '<p class="caption-button '.$alignitems.'">' . $captionBtn . '</p>';
+						
+					}							 
+						                            
 	            $output .= "<{$captiontag} class='wp-caption-text gallery-caption $captionCss' id='$selector-$id'>
-	                        " . $captionTitle . $captionText . "
+	                        " . $captionTitle . $captionText . $captionBtn . "
 	                        </{$captiontag}>";      
 	                                          
 	            }
@@ -278,12 +299,12 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	        }
 	        
 	        if ( empty( $atts['carousel'] ) && $columns > 1 && ++$i % $columns == 0 ) {
-	            $output .= '<div class="w-100"></div>';
+	            //$output .= '<div class="w-100"></div>';
 	        }
 	    }
 	 
 	    if ( empty( $atts['carousel'] ) && $columns > 0 && $i % $columns !== 0 ) {
-	        $output .= '<div class="w-100 last"></div>';
+	        //$output .= '<div class="w-100 last"></div>';
 	    }
 	    
 	    if ( ! empty( $atts['carousel'] ) ) {
@@ -388,6 +409,11 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 		        <span><?php echo __( 'Hide gutters','ekiline' ); ?></span>
 		        <input type="checkbox" data-setting="gutters">
 		    </label>  
+
+		    <label class="setting">
+		        <span><?php echo __( 'Show link as button','ekiline' ); ?></span>
+		        <input type="checkbox" data-setting="showbutton">
+		    </label>  
 		    
 		      
 		    </div>
@@ -405,7 +431,8 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 		        transition: 'none',
 		        indicators: false,
 		        speed: false,
-		        gutters: false           
+		        gutters: false,
+		        showbutton: false           
 		      });
 		
 		      wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
