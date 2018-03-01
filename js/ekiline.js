@@ -571,9 +571,9 @@ jQuery(document).ready(function($){
 	        
 	        var gallery = $( rename ).html();
 	        	                
-	        //var modalgallery = '';
+	        // var modalgallery = '';
 	        // modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">';	                            
-	        // modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
+	        // modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><button type="button" class="resize"><i class="fas fa-arrows-alt"></i></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
 	        // modalgallery += '</div></div></div></div>';
 	        
 	        //elementos centrales
@@ -587,7 +587,7 @@ jQuery(document).ready(function($){
 			var nico = $('<span/>', { 'class':'carousel-control-next-icon', 'aria-hidden':'true' });
 			var ndes = $('<span/>', { 'class':'sr-only', 'aria-hidden':'true', 'html': 'Next' });
 			var mgPre = $('<a/>', { 'class':'carousel-control-prev', 'href':'#carousel-modal', 'role':'button', 'data-slide':'prev'}).append( pico , pdes );
-			var mgNex = $('<a/>', { 'class':'carousel-control-next', 'href':'#carousel-modal', 'role':'button', 'data-slide':'next'}).append( nico , mgNex );      					
+			var mgNex = $('<a/>', { 'class':'carousel-control-next', 'href':'#carousel-modal', 'role':'button', 'data-slide':'next'}).append( nico , ndes );      					
 	        //el conjunto de carrusel
 	        
 	        var mgAll = $('<div/>',{ 'id':'carousel-modal', 'class':'carousel slide carousel-fade', 'data-ride':'carousel', 'style':'display:none;'}).append( mgClose , fullSize , mgLi , mgGal, mgPre, mgNex );
@@ -597,12 +597,10 @@ jQuery(document).ready(function($){
 	        $( modalgallery ).modal('show');
 	        	        	         
 	        // saber a que elemento le dio click     
-	        // var nc = $(this).index( rename + ' a' ); 
-	        
+	        // var nc = $(this).index( rename + ' a' ); 	        
 	        // feb2018 update: al crear un boton de enlaces debo identificar el objeto padre para tener un conteo efectivo.
-	        var itemParent = $(this).closest( '.gallery-item' );
-	        var nc = $(itemParent).index();        	           
-	        
+	        var nc = $(this).closest( '.gallery-item' ).index();
+	        console.log(nc);
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
@@ -611,9 +609,8 @@ jQuery(document).ready(function($){
 	        		        		        		        	
 		        // // feb2018 update: boton para cambiar la ventana de tamaño.
 	        	$( '.resize' ).click(function(){
-	        		$('.modal-open').toggleClass('modal-full');
+        			$('.modal-open').toggleClass('modal-full');
 	        	});
-
 
 	            $('.carousel').carousel({ swipe: 100 });	
 	            // Oculto el preformato de la operación y luego la presento L591 : style="display:none;    	    

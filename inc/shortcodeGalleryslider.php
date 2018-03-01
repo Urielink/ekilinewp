@@ -265,7 +265,7 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	                if( $attachment->post_title && (!empty( $atts['carousel'] )) ){ $captionTitle = '<h2 class="'.$alignitems.'">' . wptexturize($attachment->post_title) . '</h2>';}
 	                if( $attachment->post_excerpt ){ $captionText = '<p class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</p>';}
 	                     
-//feb2018 boton de enlace es necesario de manera ocasional.
+					//feb2018 boton de enlace es necesario de manera ocasional.
 					/*boton de enlace*/
 					$captionBtn = '';
 	                                
@@ -281,7 +281,7 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 							$captionBtn = wp_get_attachment_link( $id, '', true, false, $attachment->post_title, $attr );
 				        }
 							
-						$captionBtn = '<p class="caption-button '.$alignitems.'">' . $captionBtn . '</p>';
+						$captionBtn = '<p class="caption-button mt-2 '.$alignitems.'">' . $captionBtn . '</p>';
 						
 					}							 
 						                            
