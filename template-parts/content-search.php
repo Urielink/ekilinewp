@@ -36,7 +36,7 @@
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer text-muted clearfix">
+	<footer class="entry-footer text-muted">
 		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 	

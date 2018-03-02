@@ -55,7 +55,7 @@
     		
     	</div><!-- .entry-content -->
     
-    	<footer class="entry-footer page-footer">
+    	<footer class="entry-footer page-footer mb-3 py-2 border-top">
     		<?php ekiline_entry_footer(); ?>
     	</footer><!-- .entry-footer -->
 

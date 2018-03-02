@@ -22,9 +22,9 @@ get_header(); ?>
 
                 <?php get_template_part( 'template-parts/content', 'page' ); ?>
                 
-                    <nav id="page-navigation">
-                        <?php ekiline_pages_navigation(); ?>         
-                    </nav><!-- #page-navigation -->        
+                <nav id="page-navigation">
+                    <?php ekiline_pages_navigation(); ?>         
+                </nav><!-- #page-navigation -->        
 
                 <?php
                     // If comments are open or we have at least one comment, load up the comment template.

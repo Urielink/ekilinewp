@@ -31,7 +31,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer text-muted clearfix">
+	<footer class="entry-footer text-muted clearfix mb-3 py-2">
 		<?php ekiline_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 	
