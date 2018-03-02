@@ -70,7 +70,6 @@ if ($colSet != '0') { $cssCols = ' row'; $cssToCol = ' col-md-12'; }
 				?>
 
 			<?php endwhile; ?>			
-			
 
         <nav id="page-navigation">
             <?php ekiline_archive_pagination();?>

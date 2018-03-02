@@ -50,6 +50,16 @@ if ( ! function_exists( 'ekiline_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function ekiline_entry_footer() {
+
+    edit_post_link(
+        sprintf(
+            /* translators: %s: Name of current post */
+            esc_html__( 'Edit %s', 'ekiline' ) . '<span class="fa fa-pencil-alt"></span>',
+            the_title( '<span class="screen-reader-text">"', '"</span> ', false )
+        ),
+        '<small class="edit-link float-right">','</small>'
+    );
+		
     // Show category and tag text for singles.
     if ( 'post' === get_post_type() ) {
         /* translators: used between list items, there is a space after the comma */
@@ -80,14 +90,7 @@ function ekiline_entry_footer() {
         echo '</span> ';
     }
 
-    edit_post_link(
-        sprintf(
-            /* translators: %s: Name of current post */
-            esc_html__( 'Edit %s', 'ekiline' ) . '<span class="fa fa-pencil-alt"></span>',
-            the_title( '<span class="screen-reader-text">"', '"</span> ', false )
-        ),
-        '<p class="edit-link">','</p>'
-    );
+
 }
 endif;
 
