@@ -24,7 +24,7 @@
     		<?php endif; ?>
     	</header><!-- .entry-header -->
     
-    	<div class="entry-content clearfix">
+    	<div class="entry-content clearfix mb-3 py-2 border-top">
 
             <?php if ( has_post_thumbnail() ) { ?>
             
@@ -55,7 +55,7 @@
     		
     	</div><!-- .entry-content -->
     
-    	<footer class="entry-footer page-footer mb-3 py-2 border-top">
+    	<footer class="entry-footer page-footer">
     		<?php ekiline_entry_footer(); ?>
     	</footer><!-- .entry-footer -->
 
