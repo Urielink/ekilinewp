@@ -57,7 +57,7 @@ function ekiline_entry_footer() {
             esc_html__( 'Edit %s', 'ekiline' ) . '<span class="fa fa-pencil-alt"></span>',
             the_title( '<span class="screen-reader-text">"', '"</span> ', false )
         ),
-        '<small class="edit-link float-right">','</small>'
+        '<span class="edit-link float-right">','</span>'
     );
 		
     // Show category and tag text for singles.
@@ -65,13 +65,13 @@ function ekiline_entry_footer() {
         /* translators: used between list items, there is a space after the comma */
         $categories_list = get_the_category_list( esc_html__( ',  ', 'ekiline' ) );
         if ( $categories_list && ekiline_categorized_blog() ) {
-            printf( '<small class="cat-links">' . esc_html__( 'Posted in %1$s', 'ekiline' ) . '</small> ', $categories_list ); // WPCS: XSS OK.
+            printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ekiline' ) . '</span> ', $categories_list ); // WPCS: XSS OK.
         }
 
         /* translators: used between list items, there is a space after the comma */
         $tags_list = get_the_tag_list( '', esc_html__( ',  ', 'ekiline' ) );
         if ( $tags_list ) {
-            printf( '<br/><small class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</small> ', $tags_list ); // WPCS: XSS OK.
+            printf( '<br/><span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</span> ', $tags_list ); // WPCS: XSS OK.
         }
     }
     
@@ -80,7 +80,7 @@ function ekiline_entry_footer() {
         /* translators: used between list items, there is a space after the comma */
         $tags_list = get_the_tag_list( '', esc_html__( ',  ', 'ekiline' ) );
         if ( $tags_list ) {
-            printf( '<small class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</small> ', $tags_list ); // WPCS: XSS OK.
+            printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ekiline' ) . '</span> ', $tags_list ); // WPCS: XSS OK.
         }
     }   
 

@@ -25,19 +25,19 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 
-		<div class="entry-meta">
+		<small class="entry-meta">
 			<?php ekiline_posted_on(); ?>
-		</div><!-- .entry-meta -->
+		</small><!-- .entry-meta -->
 		
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-summary">
+	<div class="entry-summary border-top pt-2 mt-2">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer text-muted">
-		<?php ekiline_entry_footer(); ?>
+	<footer class="entry-footer text-muted clearfix bg-light px-2 mb-5">
+		<small><?php ekiline_entry_footer(); ?></small>
 	</footer><!-- .entry-footer -->
 	
 </article><!-- #post-## -->

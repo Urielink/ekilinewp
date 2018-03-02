@@ -71,9 +71,9 @@
 
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer text-muted clearfix">
+	<footer class="entry-footer text-muted clearfix bg-light px-2 mb-5">
 
-        <p class="entry-meta">
+        <small class="entry-meta">
             <?php 
 
                 $metadata = wp_get_attachment_metadata();                
@@ -99,7 +99,7 @@
                 
             ?>
             
-        </p><!-- .entry-meta -->
+        </small><!-- .entry-meta -->
 	    
 		<?php
 			edit_post_link(

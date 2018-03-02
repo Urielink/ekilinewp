@@ -17,14 +17,14 @@
     
     		<?php if ( 'post' === get_post_type() ) : ?>
     		    
-    		<div class="entry-meta">
+    		<small class="entry-meta">
     			<?php ekiline_posted_on(); ?>
-    		</div><!-- .entry-meta -->
+    		</small><!-- .entry-meta -->
 
     		<?php endif; ?>
     	</header><!-- .entry-header -->
     
-    	<div class="entry-content clearfix">
+    	<div class="entry-content clearfix border-top pt-2 mt-2">
 
             <?php if ( has_post_thumbnail() ) { ?>
             
@@ -55,8 +55,8 @@
     		
     	</div><!-- .entry-content -->
     
-    	<footer class="entry-footer page-footer">
-    		<?php ekiline_entry_footer(); ?>
+    	<footer class="entry-footer page-footer bg-light px-2 mb-5">
+    		<small><?php ekiline_entry_footer(); ?></small>
     	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

@@ -25,7 +25,7 @@
 
 	<?php endif; ?>
 
-	<div class="entry-content clearfix">
+	<div class="entry-content clearfix border-top pt-2 mt-2">
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -38,9 +38,9 @@
 
     <?php if ( !is_home() && ! is_front_page() ) : ?> 
    	
-	<footer class="entry-footer text-muted">
+	<footer class="entry-footer page-footer bg-light px-2 mb-5">
 	    
-       <?php ekiline_entry_footer(); ?>
+       <small><?php ekiline_entry_footer(); ?></small>
            
 	</footer><!-- .entry-footer -->
 	

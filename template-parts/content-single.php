@@ -15,13 +15,13 @@
 
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-		<div class="entry-meta">
+		<small class="entry-meta">
 			<?php ekiline_posted_on(); ?>
-		</div><!-- .entry-meta -->
+		</small><!-- .entry-meta -->
 		
 	</header><!-- .entry-header -->
 
-	<div class="entry-content clearfix">
+	<div class="entry-content clearfix border-top pt-2 mt-2">
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
@@ -31,8 +31,8 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer text-muted clearfix mb-3 py-2">
-		<?php ekiline_entry_footer(); ?>
+	<footer class="entry-footer text-muted clearfix bg-light px-2 mb-5">
+		<small><?php ekiline_entry_footer(); ?></small>
 	</footer><!-- .entry-footer -->
 	
 </article><!-- #post-## -->
