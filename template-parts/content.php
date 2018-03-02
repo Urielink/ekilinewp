@@ -24,7 +24,7 @@
     		<?php endif; ?>
     	</header><!-- .entry-header -->
     
-    	<div class="entry-content clearfix mb-3 py-2 border-top">
+    	<div class="entry-content clearfix">
 
             <?php if ( has_post_thumbnail() ) { ?>
             
