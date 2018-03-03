@@ -263,7 +263,13 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	                                
 	                if( (!empty( $atts['carousel'] )) ){ $captionCss = 'carousel-caption';}
 	                if( $attachment->post_title && (!empty( $atts['carousel'] )) ){ $captionTitle = '<h2 class="'.$alignitems.'">' . wptexturize($attachment->post_title) . '</h2>';}
-	                if( $attachment->post_excerpt ){ $captionText = '<p class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</p>';}
+	                if( $attachment->post_excerpt ){
+						if ( !empty( $atts['carousel'] ) ) {
+							 $captionText = '<p class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</p>'; 
+						} else {
+		                	 $captionText = '<small class="'.$alignitems.'">' . wptexturize($attachment->post_excerpt) . '</small>';
+						}						
+                	 }
 	                     
 					//feb2018 boton de enlace es necesario de manera ocasional.
 					/*boton de enlace*/

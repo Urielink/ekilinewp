@@ -20,17 +20,13 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area well well-sm">
+<div id="comments" class="comments-area bg-light p-2 clearfix">
     
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-	    
-    <button class="btn btn-secondary btn-block" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?></button>    
-    
-    <div id="comments-activity" class="collapse">
-	    
-		<h4 class="comments-title">
+		<button class="btn btn-sm btn-secondary float-right" data-toggle="collapse" data-target="#comments-activity"><?php echo __('Show comments','ekiline'); ?> <i class="fas fa-comments"></i></button>    
+		<p class="comments-title text-secondary mb-2 pb-2 pt-1 border-bottom">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ekiline' ) ),
@@ -38,7 +34,10 @@ if ( post_password_required() ) {
 					'<span>' . get_the_title() . '</span>'
 				);
 			?>
-		</h4>
+		</p>
+    
+    <div id="comments-activity" class="collapse">
+	    
 		
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
@@ -57,6 +56,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'class'      => 'border',
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -103,31 +103,31 @@ $args = array(
 	'<textarea id="comment" name="comment" class="form-control" aria-required="true"></textarea></div>',
 
   	'fields' => apply_filters( 'comment_form_default_fields', array(
-
-    'author' =>
-      '<div class="comment-form-author">' .
-      '<label for="author">' . __( 'Name','ekiline' ) . '</label> ' .
-      ( $req ? '<span class="required">*</span>' : '' ) .
-      '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-      '" size="30"' . $aria_req . ' /></div>',
-
-    'email' =>
-      '<div class="comment-form-email"><label for="email">' . __( 'Email','ekiline' ) . '</label> ' .
-      ( $req ? '<span class="required">*</span>' : '' ) .
-      '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-      '" size="30"' . $aria_req . ' /></div>',
-      
-    'url' =>
-      '<div class="comment-form-url"><label for="url">' .
-      __( 'Website','ekiline' ) . '</label>' .
-      ( $req ? '<span class="required">*</span>' : '' ) .            
-      '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
-      '" size="30" /></div><br/>'      
-	  )),
+	    'author' =>
+	      '<div class="comment-form-author">' .
+	      '<label for="author">' . __( 'Name','ekiline' ) . '</label> ' .
+	      ( $req ? '<span class="required">*</span>' : '' ) .
+	      '<input id="author" name="author" class="form-control" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+	      '" size="30"' . $aria_req . ' /></div>',
+	
+	    'email' =>
+	      '<div class="comment-form-email"><label for="email">' . __( 'Email','ekiline' ) . '</label> ' .
+	      ( $req ? '<span class="required">*</span>' : '' ) .
+	      '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	      '" size="30"' . $aria_req . ' /></div>',
+	      
+	    'url' =>
+	      '<div class="comment-form-url"><label for="url">' .
+	      __( 'Website','ekiline' ) . '</label>' .
+	      ( $req ? '<span class="required">*</span>' : '' ) .            
+	      '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr( $commenter['comment_author_url'] ) .
+	      '" size="30" /></div><br/>'      
+	  	)
+	  ),
 	  
     // las clases de manera independiente:
     'class_form'           => 'comment-form form',
-    'class_submit' => 'submit btn btn-secondary'  
+    'class_submit' => 'submit btn btn-sm btn-secondary float-right'  
 	
 );
 

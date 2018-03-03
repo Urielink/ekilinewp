@@ -113,13 +113,14 @@
 			);
 		?>
 	</footer><!-- .entry-footer -->
-	
+	<?php if ( !is_archive ){?>
     <nav id="image-navigation" aria-label="Image navigation">
 	  <ul class="pagination justify-content-center">			    
         <li class="page-item page-link"><span class="fa fa-chevron-left"></span> <?php previous_image_link( false, __( 'Previous', 'ekiline' ) ); ?></li>
         <li class="page-item page-link"><?php next_image_link( false, __( 'Next', 'ekiline' ) ); ?> <span class="fa fa-chevron-right"></span></li>
       </ul>
     </nav><!-- #image-navigation -->        
+	<?php }?>
 	
 </article><!-- #post-## -->
 

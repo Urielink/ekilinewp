@@ -22,7 +22,7 @@ get_header(); ?>
 
                 <?php get_template_part( 'template-parts/content', 'page' ); ?>
                 
-                <nav id="page-navigation">
+                <nav id="page-navigation" class="small" aria-label="Page navigation"> 
                     <?php ekiline_pages_navigation(); ?>         
                 </nav><!-- #page-navigation -->        
 
