@@ -235,12 +235,12 @@ function ekiline_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
-// Excerpt Button 
-function ekiline_excerpt_button( $more ) {
+// Excerpt button y etiqueta <!--more-->
+function ekiline_excerpt_button() {
     return '<p><a class="read-more btn btn-primary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
-
+add_filter('the_content_more_link', 'ekiline_excerpt_button', 10, 2);
 
 /**
  * Theming: Use a loader.
@@ -631,7 +631,7 @@ function ekiline_docs_feed() {
 //variables para noticias	
 global $pagenow;
 $pages = array('index.php','edit.php','post.php','themes.php','tools.php');
-if ( in_array( $pagenow, $pages, true ) ){
+if ( is_admin() && in_array( $pagenow, $pages, true ) ){
 
 	// Get RSS Feed(s)
 	include_once( ABSPATH . WPINC . '/feed.php' );
@@ -728,3 +728,20 @@ function ekiline_faw() {
 add_action('admin_bar_menu', 'ekiline_faw', 80 ); 
  * 
  */
+ 
+/*
+ * Personalizar el formulario de proteccion de lectura.
+ * https://developer.wordpress.org/reference/functions/get_the_password_form/
+ */
+function ekiline_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form form-inline col-sm-8 p-4 mx-auto text-center" method="post">';
+    $output .= '<p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>';
+    $output .= '<div class="form-inline"><label for="' . $label . '">' . __( 'Password:' ) . ' </label>';
+    $output .= '<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" />';
+    $output .= '<input class="btn btn-secondary" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form' ) . '" /></div></form>';
+    return $output;
+} 
+add_filter( 'the_password_form', 'ekiline_password_form' );
+ 

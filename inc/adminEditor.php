@@ -817,3 +817,10 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 
 }
 
+//faltan botones
+function wp_mce_buttons( $buttons ) {	
+	$buttons[] = 'wp_page';
+	return $buttons;
+}
+add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
+

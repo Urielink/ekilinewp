@@ -31,10 +31,16 @@ add_shortcode('singlecollapse', 'ekiline_collapse_single');
  */
 
 function ekiline_embed_override($html, $url, $atts, $post_id) {
-    
-    extract( shortcode_atts(array( 'responsive' => '16by9',), $atts) );    
+	$tag = '';
+	
+	if( strpos( $url, 'youtube.com' ) ) {
+	    extract( shortcode_atts( array( 'responsive' => '16by9', ) , $atts) );    
+		$tag = '<div class="embed-responsive embed-responsive-'.$responsive.'">' . $html . '</div>';
+	} else {
+		$tag = $html;
+	}
         
-    return '<div class="embed-responsive embed-responsive-'.$responsive.'">' . $html . '</div>';
+    return $tag;
 }
 add_filter('embed_oembed_html', 'ekiline_embed_override', 99, 4);
 // add_filter('wp_video_shortcode', 'ekiline_embed_override', 99, 4);

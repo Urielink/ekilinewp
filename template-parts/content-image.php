@@ -108,12 +108,12 @@
 					esc_html__( 'Edit this image %s', 'ekiline' ),
 					the_title( '<i class="fa fa-pencil-alt"></i> <span class="screen-reader-text">"', '"</span>', false )
 				),
-                '<span class="edit-link btn btn-secondary">',
-				'</span>'
+                '<small class="edit-link float-right">',
+				'</small>'
 			);
 		?>
 	</footer><!-- .entry-footer -->
-	<?php if ( !is_archive ){?>
+	<?php if ( is_single() ) {?>
     <nav id="image-navigation" aria-label="Image navigation">
 	  <ul class="pagination justify-content-center">			    
         <li class="page-item page-link"><span class="fa fa-chevron-left"></span> <?php previous_image_link( false, __( 'Previous', 'ekiline' ) ); ?></li>
