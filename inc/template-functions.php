@@ -114,7 +114,7 @@ function ekiline_csscolors() {
         
     // Si no existen colores, añadir estos // add default value
     if ( !$texto ) : $texto = '#333333'; endif;
-    if ( !$enlaces ) : $enlaces = '#337ab7'; endif;
+    if ( !$enlaces ) : $enlaces = '#007bff'; endif;
     if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
@@ -202,7 +202,7 @@ function ekiline_pagewidth() {
  
 function ekiline_search_form( $form ) {
     
-    $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
+    $form = '<form role="search" method="get" id="searchform" class="searchform my-2" action="' . home_url( '/' ) . '" >
                 <label class="screen-reader-text" for="s">' . esc_html__( 'Search Results for: %s', 'ekiline' ) . '</label>
                 <div class="input-group">
                     <input class="form-control" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_html__( 'Search Results for:', 'ekiline' ) . '"/>
@@ -237,7 +237,7 @@ add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
 // Excerpt Button 
 function ekiline_excerpt_button( $more ) {
-    return '<p><a class="read-more btn btn-secondary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
+    return '<p><a class="read-more btn btn-primary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
 add_filter( 'excerpt_more', 'ekiline_excerpt_button' );
 

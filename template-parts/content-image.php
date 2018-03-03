@@ -66,7 +66,7 @@
 
         <?php the_content(); ?>
         
-        <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'ekiline' ), 'after' => '</div>' ) ); ?>
+        <?php wp_link_pages( array( 'before' => '<div class="page-links text-center my-2">' . __( 'Pages:', 'ekiline' ), 'after' => '</div>' ) ); ?>
 
 
 	</div><!-- .entry-content -->

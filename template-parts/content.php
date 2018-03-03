@@ -28,7 +28,7 @@
 
             <?php if ( has_post_thumbnail() ) { ?>
             
-                <div class="cat-thumb float-right">
+                <div class="cat-thumb float-left mr-2 my-1">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                         <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
                     </a>
@@ -48,7 +48,7 @@
           
     		<?php
     			wp_link_pages( array(
-    				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ekiline' ),
+    				'before' => '<div class="page-links text-center my-2">' . esc_html__( 'Pages:', 'ekiline' ),
     				'after'  => '</div>',
     			) );
     		?>

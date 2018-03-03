@@ -11,15 +11,6 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
     
-    <?php if ( has_post_thumbnail() ) { ?>	    
-        <div class="cat-thumb float-right">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
-            </a>
-        </div>	        
-    <?php } ?>
-    
-    
 	<header class="entry-header">
 		<?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
@@ -31,9 +22,19 @@
 		
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<div class="entry-summary border-top pt-2 mt-2">
+	    
+	<div class="entry-summary clearfix border-top pt-2 mt-2">
+		
+	    <?php if ( has_post_thumbnail() ) { ?>	    
+	        <div class="cat-thumb float-left mr-2 my-1">
+	            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+	                <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'img-thumbnail')); ?>
+	            </a>
+	        </div>	        
+	    <?php } ?>
+		
 		<?php the_excerpt(); ?>
+		
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer text-muted clearfix bg-light px-2 mb-5">

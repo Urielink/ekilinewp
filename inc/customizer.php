@@ -36,7 +36,7 @@ function ekiline_theme_customizer( $wp_customize ) {
 // Colors array
     $colors = array();
     $colors[] = array( 'slug'=>'text_color', 'default' => '#333333', 'label' => __( 'Text color', 'ekiline' ), 'description' => '' );
-    $colors[] = array( 'slug'=>'links_color', 'default' => '#337ab7', 'label' => __( 'Links color', 'ekiline' ), 'description' => '' );
+    $colors[] = array( 'slug'=>'links_color', 'default' => '#007bff', 'label' => __( 'Links color', 'ekiline' ), 'description' => '' );
     $colors[] = array( 'slug'=>'menu_color', 'default' => '', 'label' => __( 'Menu color', 'ekiline' ), 'description' => __( 'Choose a base color, add second color for make a gradient', 'ekiline' ) );
     $colors[] = array( 'slug'=>'menu_gradient', 'default' => '', 'label' => '', 'description' => '' );
     $colors[] = array( 'slug'=>'module_color', 'default' => '#eeeeee', 'label' => __( 'Module colors', 'ekiline' ), 'description' => '' );
