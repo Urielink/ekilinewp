@@ -391,7 +391,10 @@ require get_template_directory() . '/inc/adminCategoryfield.php';
 // Deshabilitar bootstrap
 require get_template_directory() . '/inc/adminEditor.php';
 
-// herramientas para debugear
+/**
+ * Herramientas para debugear
+ **/
+
 // if ( defined('WP_DEBUG') && true === WP_DEBUG && is_user_logged_in() ) {
 // 	
     // function ekiline_querycount() {
@@ -401,6 +404,14 @@ require get_template_directory() . '/inc/adminEditor.php';
     // add_action( 'wp_footer', 'ekiline_querycount' );
 // 	
 // }
+
+/**
+ * Liberar la cache de sobreescritura
+ * https://codex.wordpress.org/Function_Reference/flush_rewrite_rules
+ * https://developer.wordpress.org/reference/functions/flush_rewrite_rules/
+ **/
+
+add_action( 'after_switch_theme', 'flush_rewrite_rules' );
 
 /* Revisar:
  * La compatiilidad de AMP
