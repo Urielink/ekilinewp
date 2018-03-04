@@ -321,16 +321,16 @@ function ekiline_pages_navigation(){
     
     if (!empty($prevID)) {
         $thePages .= '<li class="previous page-item">';
-        $thePages .= '<a class="page-link" href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'">'. __( '&larr; Previous', 'ekiline' ) .'</a>';
+        $thePages .= '<a class="page-link" href="'. get_permalink($prevID) .'" title="'. get_the_title($prevID) .'"><span class="fa fa-chevron-left"></span> '. get_the_title($prevID) .'</a>';
         $thePages .= "</li>";
     }
     if (!empty($nextID)) {
         $thePages .= '<li class="next page-item">';
-        $thePages .= '<a class="page-link" href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. __( 'Next &rarr;', 'ekiline' ) .'</a>';
+        $thePages .= '<a class="page-link" href="'. get_permalink($nextID) .'" title="'. get_the_title($nextID) .'">'. get_the_title($nextID) .' <span class="fa fa-chevron-right"></span></a>';
         $thePages .= "</li>";      
     }
     
-    $thePages = '<ul class="pagination pagination-sm justify-content-center">'.$thePages.'</ul>';
+    $thePages = '<ul class="pagination pagination-sm justify-content-between">'.$thePages.'</ul>';
     
     if (!is_front_page()){
         echo $thePages;

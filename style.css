@@ -121,6 +121,9 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 .widget_nav_menu ul li.current-menu-item{background:#eee;padding:2px 8px;}
 /*Widget navbar vertical en algún sidebar*/
 .sidebar-nav .navbar-nav .open .dropdown-menu > li > a{border-bottom:1px solid #E7E7E7;background-color:#F8F8F8;}
+/*Widget carrusel de articulos*/
+.widget-carousel .carousel-inner > .carousel-item .link-image img{margin:0 auto;width:100%;}
+.widget-carousel .carousel-inner .no-thumb .carousel-caption{position:relative;left:auto;right:auto;margin:0px auto;width:80%;}
 
 /* ------------------------------------------------
  * PLUGINS

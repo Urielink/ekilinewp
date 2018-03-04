@@ -117,7 +117,7 @@ function ekiline_addpostlist($atts, $content = null) {
                 // Clean ids commas to asign an id    
                     $catid = ekiline_cleanspchar($catid);                 
                 
-                    echo '<div id="carousel-module-00'.$catid.'" class="modpostlist-'.$format.' carousel slide clearfix" data-ride="carousel"><div class="carousel-inner" role="listbox">';   
+                    echo '<div id="carousel-module-00'.$catid.'" class="modpostlist-'.$format.' carousel slide clearfix bg-dark" data-ride="carousel" data-interval="false"><div class="carousel-inner" role="listbox">';   
                 
                 // Indicadores  Bootstrap
                     echo '<ol class="carousel-indicators">';

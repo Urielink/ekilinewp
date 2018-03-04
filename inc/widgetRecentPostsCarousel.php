@@ -81,7 +81,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
             
 <?php /* Insertando un carrusel */ ?>         
 
-            <div id="<?php echo $uniqueId; ?>" class="carousel slide widget-carousel" data-ride="carousel">
+            <div id="<?php echo $uniqueId; ?>" class="widget-carousel carousel slide bg-dark" data-ride="carousel" data-interval="false">
             
               <div class="carousel-inner" role="listbox">
                   
@@ -99,20 +99,23 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
                 <?php // conteo de posts
                         $count = $r->current_post + 0;
                         // marcar el post 0 como el principal, para generar una clase CSS active
-                        if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;                                                
+                        if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;        
                         ?>                                              
-                <div class="carousel-item text-center <?php echo $countclass; ?>">
+                <div class="carousel-item <?php echo $countclass; ?>">
+                    <article<?php if ( !has_post_thumbnail() ) : echo ' class="no-thumb"'; endif; ?>>
                     
-                    <div class="thumbnail">
-                      <?php the_post_thumbnail('medium');?>
-                    </div>
-
-                    <div class="caption">
-                      <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+				    <?php if ( has_post_thumbnail() ){?>
+				        <a class="link-image" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">             
+				        	<?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-fluid' ));?>
+				        </a>
+				    <?php }?>
+				    
+                    <div class="carousel-caption p-5">
+                      <h4 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
                       <p><?php the_excerpt(); ?></p>
                       <small><?php the_time( get_option( 'date_format' ) ); ?></small>                        
                     </div>
-                      
+                    </article>
                 </div> <!-- // fin de .item -->  
                 <?php endwhile;?>   
 
