@@ -190,7 +190,7 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
  			
  			$args = array(
 		        'name'             => $this->get_field_name('category'),
-		        'show_option_none' => __( 'Select category' ),
+		        'show_option_none' => __( 'Select category', 'ekiline' ),
 		        'show_count'       => 1,
 		        'orderby'          => 'name',
 		        'echo'             => 0,

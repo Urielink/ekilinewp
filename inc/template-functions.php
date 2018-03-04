@@ -737,10 +737,10 @@ function ekiline_password_form() {
     global $post;
     $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
     $output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form form-inline col-sm-8 p-4 mx-auto text-center" method="post">';
-    $output .= '<p>' . __( 'This content is password protected. To view it please enter your password below:' ) . '</p>';
-    $output .= '<div class="form-inline"><label for="' . $label . '">' . __( 'Password:' ) . ' </label>';
+    $output .= '<p>' . __( 'This content is password protected. To view it please enter your password below:','ekiline' ) . '</p>';
+    $output .= '<div class="form-inline"><label for="' . $label . '">' . __( 'Password:','ekiline' ) . ' </label>';
     $output .= '<input class="form-control" name="post_password" id="' . $label . '" type="password" size="20" />';
-    $output .= '<input class="btn btn-secondary" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form' ) . '" /></div></form>';
+    $output .= '<input class="btn btn-secondary" type="submit" name="Submit" value="' . esc_attr_x( 'Enter', 'post password form', 'ekiline' ) . '" /></div></form>';
     return $output;
 } 
 add_filter( 'the_password_form', 'ekiline_password_form' );
