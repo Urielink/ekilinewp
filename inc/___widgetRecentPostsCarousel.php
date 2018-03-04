@@ -180,28 +180,10 @@ class WP_Widget_Recent_Posts_Exclude extends WP_Widget {
         <input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" value="<?php echo $number; ?>" size="3" /></p>
         
         <p>
-            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php echo __( 'Exclude categories:','ekiline' ); ?></label> 
-        	<small><?php echo __( 'Category IDs, separated by commas','ekiline' ); ?></small>
-            <!--input type="text" value="<?php //echo $exclude; ?>" name="<?php //echo $this->get_field_name('exclude'); ?>" id="<?php //echo $this->get_field_id('exclude'); ?>" class="widefat" /-->            
+            <label for="<?php echo $this->get_field_id('exclude'); ?>"><?php echo __( 'Exclude categories:','ekiline' ); ?></label> <input type="text" value="<?php echo $exclude; ?>" name="<?php echo $this->get_field_name('exclude'); ?>" id="<?php echo $this->get_field_id('exclude'); ?>" class="widefat" />
+            <br />
+            <small><?php echo __( 'Category IDs, separated by commas','ekiline' ); ?></small>
         </p>
- 		<?php 
- 			// dropdown de categorias
- 			// https://codex.wordpress.org/Function_Reference/wp_dropdown_categories
- 			
- 			$args = array(
-		        'name'             => $this->get_field_name('category'),
-		        'show_option_none' => __( 'Select category', 'ekiline' ),
-		        'show_count'       => 1,
-		        'orderby'          => 'name',
-		        'echo'             => 0,
-		       	'selected'         => $exclude,
-		        'class'            => 'widefat'
-		    );
-            echo wp_dropdown_categories($args); 
-
-            // chekclist de categorias: https://codex.wordpress.org/Function_Reference/wp_category_checklist
-            // echo wp_category_checklist($args); 
-        ?>
         
 <?php
     }
