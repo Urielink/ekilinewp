@@ -7,6 +7,39 @@
  * @package ekiline
  */
  
+//1400 https://wordpress.stackexchange.com/questions/124772/using-wp-category-checklist-in-a-widget
+// This is required to be sure Walker_Category_Checklist class is available
+require_once ABSPATH . 'wp-admin/includes/template.php';
+/**
+ * Custom walker to print category checkboxes for widget forms
+ */
+class Walker_Category_Checklist_Widget extends Walker_Category_Checklist {
+
+    private $name;
+    private $id;
+
+    function __construct( $name = '', $id = '' ) {
+        $this->name = $name;
+        $this->id = $id;
+    }
+
+    function start_el( &$output, $cat, $depth = 0, $args = array(), $id = 0 ) {
+        extract( $args );
+        if ( empty( $taxonomy ) ) $taxonomy = 'category';
+        $class = in_array( $cat->term_id, $popular_cats ) ? ' class="popular-category"' : '';
+        $id = $this->id . '-' . $cat->term_id;
+        $checked = checked( in_array( $cat->term_id, $selected_cats ), true, false );
+        $output .= "\n<li id='{$taxonomy}-{$cat->term_id}'$class>" 
+            . '<label class="selectit"><input value="' 
+            . $cat->term_id . '" type="checkbox" name="' . $this->name 
+            . '[]" id="in-'. $id . '"' . $checked 
+            . disabled( empty( $args['disabled'] ), false, false ) . ' /> ' 
+            . esc_html( apply_filters( 'the_category', $cat->name ) ) 
+            . '</label>';
+      }
+}
+//1400
+
 /**
  * Core class used to implement a Recent Posts widget.
  *
@@ -62,9 +95,8 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		}
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 		
-//1900 llamar por categoria selecta: https://codex.wordpress.org/Class_Reference/WP_Query
-		//$checked = isset( $instance['widget_categories'] ) ? $instance['widget_categories'] : false;
-		$selected = isset($instance['selected']) ? $instance['selected'] : '';
+//1400 llamar por categoria selecta: https://codex.wordpress.org/Class_Reference/WP_Query
+		$checked = isset( $instance['widget_categories'] ) ? $instance['widget_categories'] : false;
 
 		/**
 		 * Filters the arguments for the Recent Posts widget.
@@ -82,7 +114,7 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
 			'ignore_sticky_posts' => true,
-			'category__in' => $selected
+			'category__in' => $checked
 		), $instance ) );
 
 		if ( ! $r->have_posts() ) {
@@ -110,7 +142,7 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 				</li>
 			<?php endforeach; ?>
 		</ul>
-<!--small><?php // print_r($selected); ?></small-->
+<!--1400 ><?php // print_r($checked); ?></small-->
 
 		<?php
 		echo $args['after_widget'];
@@ -131,8 +163,8 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
-//1900
-		$instance['selected'] = (!empty($new_instance['selected'])) ? absint($new_instance['selected']) : '';
+//1400
+        $instance['widget_categories'] = $new_instance['widget_categories'];
 
 		return $instance;
 	}
@@ -148,16 +180,14 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false ;
-//1900		
-		$selected = isset($instance['selected']) ? $instance['selected'] : '';
-		$args = array(
-			'show_option_all' => esc_html__('Select Category', 'ekiline'), 
-			'show_count' => true, 
-			'selected' => absint($selected), 
-			'name' => esc_attr($this -> get_field_name('selected')), 
-			'id' => esc_attr($this -> get_field_id('selected')), 
-			'class' => 'widefat'
-			);
+//1400		
+        $defaults = array( 'widget_categories' => array() );
+        $instance = wp_parse_args( (array) $instance, $defaults );    
+        // Instantiate the walker passing name and id as arguments to constructor
+        $walker = new Walker_Category_Checklist_Widget(
+            $this->get_field_name( 'widget_categories' ), 
+            $this->get_field_id( 'widget_categories' )
+        );
 		
 ?>
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -166,9 +196,10 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
 		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
 
-		<!-- Formulario 19:00 -->
-		<?php wp_dropdown_categories($args); ?>
-        
+		<!-- Formulario 14:00 -->
+        <?php echo '<ul class="categorychecklist" style="height:180px;overflow-y:scroll;">';
+        wp_category_checklist( 0, 0, $instance['widget_categories'], FALSE, $walker, FALSE );
+        echo '</ul>'; ?>
         <small>Se mostrarán las entradas más recientes de cada categoría por su fecha de publicacion</small>
 
 		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />

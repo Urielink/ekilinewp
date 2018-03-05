@@ -6,7 +6,7 @@
  *
  * @package ekiline
  */
- 
+
 /**
  * Core class used to implement a Recent Posts widget.
  *
@@ -27,7 +27,7 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 			'description' => __( 'The most recent posts on your site in carousel format','ekiline' ),
 			'customize_selective_refresh' => true,
 		);
-		// Cancelar herencia.
+		//Cancelar herencia.
 		//parent::__construct( 'recent-posts', __( 'Recent Posts' ), $widget_ops );
 		parent::__construct(false, __( 'Recent posts carousel','ekiline' ), $widget_ops);
 		$this->alt_option_name = 'widget_recent_entries';
@@ -61,10 +61,21 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 			$number = 5;
 		}
 		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+//selecciones
+		// $selected     = isset( $instance['selected'] ) ? absint( $instance['selected'] ) : 0 ;
+		// $checked     = isset( $instance['checked'] ) ? (bool) $instance['checked'] : false ;
+
+		$selected = ( ! empty( $instance['selected'] ) ) ? absint( $instance['selected'] ) : 0;
+		// if ( ! $selected ) {
+			// $selected = 0;
+		// }
 		
-//1900 llamar por categoria selecta: https://codex.wordpress.org/Class_Reference/WP_Query
-		//$checked = isset( $instance['widget_categories'] ) ? $instance['widget_categories'] : false;
-		$selected = isset($instance['selected']) ? $instance['selected'] : '';
+		$checked = isset( $instance['checked'] ) ? $instance['checked'] : false;
+		// if ( ! $checked ) {
+			// $checked = '0,1';
+		// }
+//fin selecciones
+
 
 		/**
 		 * Filters the arguments for the Recent Posts widget.
@@ -82,7 +93,6 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
 			'ignore_sticky_posts' => true,
-			'category__in' => $selected
 		), $instance ) );
 
 		if ( ! $r->have_posts() ) {
@@ -90,13 +100,12 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		}
 		?>
 		<?php echo $args['before_widget']; ?>
-		
 		<?php
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 		?>
-		<ul class="list-unstyled">
+		<ul>
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title = get_the_title( $recent_post->ID );
@@ -105,13 +114,12 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 				<li>
 					<a href="<?php the_permalink( $recent_post->ID ); ?>"><?php echo $title ; ?></a>
 					<?php if ( $show_date ) : ?>
-						<span class="post-date small"><?php echo get_the_date( '', $recent_post->ID ); ?></small>
+						<span class="post-date"><?php echo get_the_date( '', $recent_post->ID ); ?></span>
 					<?php endif; ?>
 				</li>
 			<?php endforeach; ?>
 		</ul>
-<!--small><?php // print_r($selected); ?></small-->
-
+		<small><?php echo $selected; ?> | <?php echo $checked; ?></small>
 		<?php
 		echo $args['after_widget'];
 	}
@@ -131,9 +139,10 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
-//1900
-		$instance['selected'] = (!empty($new_instance['selected'])) ? absint($new_instance['selected']) : '';
-
+//selecciones
+		$instance['selected'] = (int) $new_instance['selected'];
+		$instance['checked'] = isset( $new_instance['checked'] ) ? (bool) $new_instance['checked'] : false;
+//fin selecciones
 		return $instance;
 	}
 
@@ -148,16 +157,26 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
 		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false ;
-//1900		
-		$selected = isset($instance['selected']) ? $instance['selected'] : '';
+//selecciones
+		$selected     = isset( $instance['selected'] ) ? absint( $instance['selected'] ) : 0 ;
+		$checked     = isset( $instance['checked'] ) ? (bool) $instance['checked'] : false ;
+		
+		// dropdown de categorias: https://codex.wordpress.org/Function_Reference/wp_dropdown_categories
 		$args = array(
-			'show_option_all' => esc_html__('Select Category', 'ekiline'), 
-			'show_count' => true, 
-			'selected' => absint($selected), 
-			'name' => esc_attr($this -> get_field_name('selected')), 
-			'id' => esc_attr($this -> get_field_id('selected')), 
-			'class' => 'widefat'
-			);
+	        'name'             => $this->get_field_name('category'),
+	        'show_option_none' => __( 'Select category', 'ekiline' ),
+	        'show_count'       => 1,
+	        'orderby'          => 'name',
+	        'echo'             => 0,
+	       	'selected'         => $selected, //0,
+	        'class'            => 'widefat'
+	    );
+        $show_cats = wp_dropdown_categories($args); 
+		
+        // chekclist de categorias: https://codex.wordpress.org/Function_Reference/wp_category_checklist
+        // args: wp_category_checklist($post_id, $descendants_and_self, $selected_cats,$popular_cats, $walker, $checked_ontop)
+        $sel_cats = wp_category_checklist( 0 , 0 , $checked, false, null, false ); 
+//fin selecciones				
 		
 ?>
 		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -166,14 +185,15 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
 		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
 
-		<!-- Formulario 19:00 -->
-		<?php wp_dropdown_categories($args); ?>
-        
-        <small>Se mostrarán las entradas más recientes de cada categoría por su fecha de publicacion</small>
-
 		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
-						
+		
+		<?php echo $show_cats; //selecciones ?>
+		
+		<?php echo $sel_cats; //selecciones ?>
+		
+		<!-- punto de partida 13:39 -->
+		
 <?php
 	}
 }
