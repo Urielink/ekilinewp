@@ -603,10 +603,13 @@ msgid "The most recent posts on your site in carousel format"
 msgstr "Los mensajes más recientes en su sitio en formato carrusel"
 
 msgid "Recent posts carousel"
-msgstr "Carrusel de Recientes publicaciones del blog"
+msgstr "Carusel de entradas"
 
 msgid "Recent posts"
 msgstr "Publicaciones recientes"
+
+msgid "Filter categories:"
+msgstr "Filtrar categorías:"
 
 msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 msgstr "Publicado <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> en <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> en <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"

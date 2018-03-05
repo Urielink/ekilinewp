@@ -11,7 +11,6 @@
  * checklist de categorias: https://codex.wordpress.org/Function_Reference/wp_category_checklist
  * https://wordpress.stackexchange.com/questions/124772/using-wp-category-checklist-in-a-widget
  * 
- * 
  */
  
 // This is required to be sure Walker_Category_Checklist class is available
@@ -133,8 +132,13 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+
+// variables para carrusel
+        $uniqueId = 'widgetCarousel'.mt_rand();
+		
 		?>
-		<ul class="list-unstyled">
+
+		<?php /**<ul class="list-unstyled">
 			<?php foreach ( $r->posts as $recent_post ) : ?>
 				<?php
 				$post_title = get_the_title( $recent_post->ID );
@@ -148,7 +152,65 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 				</li>
 			<?php endforeach; ?>
 		</ul>
-<!--1400 ><?php // print_r($checked); ?></small-->
+		<hr /> **/?>
+
+<!-- inicia carrusel -->
+		
+            <div id="<?php echo $uniqueId; ?>" class="widget-carousel carousel slide bg-dark" data-ride="carousel" data-interval="false">
+            
+              <div class="carousel-inner" role="listbox">
+                  
+                <ol class="carousel-indicators">
+                <?php while( $r->have_posts() ) : $r->the_post();?> 
+                <?php // conteo de posts
+                        $count = $r->current_post + 0;
+                        if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif; 
+                        ?>                                                        
+                    <li data-target="#<?php echo $uniqueId; ?>" data-slide-to="<?php echo $count; ?>" class="<?php echo $countclass; ?>"></li>
+                <?php endwhile;?>
+                </ol> <!-- // fin de .carousel-indicators -->                      
+                  
+                <?php while( $r->have_posts() ) : $r->the_post();?>                   
+                <?php // conteo de posts
+                        $count = $r->current_post + 0;
+                        // marcar el post 0 como el principal, para generar una clase CSS active
+                        if ($count == '0') : $countclass = 'active' ; elseif ($count !='0') : $countclass = '' ; endif;        
+                        ?>                                              
+                <div class="carousel-item <?php echo $countclass; ?>">
+                    <article<?php if ( !has_post_thumbnail() ) : echo ' class="no-thumb"'; endif; ?>>
+                    
+				    <?php if ( has_post_thumbnail() ){?>
+				        <a class="link-image" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">             
+				        	<?php the_post_thumbnail( 'horizontal-slide', array( 'class' => 'img-fluid' ));?>
+				        </a>
+				    <?php }?>
+				    
+                    <div class="carousel-caption p-5">
+                      <h4 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                      <p><?php the_excerpt(); ?></p>
+                      <?php if ( $show_date ) : ?>
+                      	<small><?php the_time( get_option( 'date_format' ) ); ?></small>      
+                      <?php endif; ?>                  
+                    </div>
+                    </article>
+                </div> <!-- // fin de .item -->  
+                <?php endwhile;?>   
+
+              </div> <!-- // fin de .carousel-inner -->
+              
+              <!-- Left and right controls -->
+              <a class="carousel-control-prev" href="#<?php echo $uniqueId; ?>" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#<?php echo $uniqueId; ?>" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+              
+            </div> <!-- // fin de .widget-carousel --> 
+		
+<!-- finaliza carrusel -->
 
 		<?php
 		echo $args['after_widget'];
@@ -203,10 +265,10 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" /></p>
 
 		<!-- Formulario 14:00 -->
-        <?php echo '<ul class="categorychecklist" style="height:180px;overflow-y:scroll;">';
+		<p><label for="<?php echo $this->get_field_id( 'widget_categories' ); ?>"><?php _e( 'Filter categories:','ekiline' ); ?></label></p>
+        <?php echo '<ul class="categorychecklist" style="height:180px;overflow-y:scroll;border:solid 1px #ddd;padding:4px;">';
         wp_category_checklist( 0, 0, $instance['widget_categories'], FALSE, $walker, FALSE );
         echo '</ul>'; ?>
-        <small>Se mostrarán las entradas más recientes de cada categoría por su fecha de publicacion</small>
 
 		<p><input class="checkbox" type="checkbox"<?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
