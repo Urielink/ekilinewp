@@ -349,7 +349,8 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	**/
 	//FEB, con el widget de galeria no funcionan las opciones hay que investigar.
 	global $pagenow;
-	if ( ( $pagenow != 'widgets.php' ) ) {
+	//if ( ( $pagenow != 'widgets.php' ) ) {
+	if ( ( $pagenow == 'post.php' ) ) {
 		add_action('print_media_templates', function(){
 		  ?>
 		 
