@@ -83,7 +83,7 @@
                 
 // cargado el contenido crea el contenido.
               
-				jQuery('ul li').on('click',function(e) {
+				$('ul li').on('click',function(e) {
 			    	e.preventDefault(); //prevenir el click discriminado.
 			    	$(this).css({'background' : '#0085ba','color' : '#FFFFFF','border-radius' : '2px','box-shadow' : '0px 2px 0px #006799'}).siblings().css({'background' : '','color' : '','border-radius' : '','box-shadow' : ''});
 			    	

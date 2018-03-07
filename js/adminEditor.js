@@ -37,9 +37,9 @@
                         text: 'Insert/Edit link',
                         onclick: function( e ) {
                             //get the Wordpess' "Insert/edit link" popup window.
-//                            var textareaId = jQuery('.mce-custom-textarea').attr('id'); 
+//                            var textareaId = $('.mce-custom-textarea').attr('id'); 
 // El ejercicio original no invoca la clase del item, le añadí un ID.
-                            var textareaId = jQuery('#plugin-slug-insert-dialog .mce-textbox').attr('id');
+                            var textareaId = $('#plugin-slug-insert-dialog .mce-textbox').attr('id');
                             console.log(textareaId + ' hola');
                             wpActiveEditor = true; //we need to override this var as the link dialogue is expecting an actual wp_editor instance
                             wpLink.open( textareaId ); //open the link popup
@@ -53,7 +53,7 @@
                         text: 'Insert Media',
                         onclick: function( e ) {
 
-                            jQuery( function($){
+                            $( function($){
                                 // Set all variables to be used in scope
                                 var frame;
                                 //it has to match the "textareaID" above, because it is the input field that we are

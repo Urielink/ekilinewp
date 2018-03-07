@@ -69,10 +69,10 @@ class ekiline_recent_posts_carousel extends WP_Widget {
 		//parent::__construct( 'recent-posts', __( 'Recent Posts' ), $widget_ops );
 		parent::__construct(false, __( 'Recent posts carousel','ekiline' ), $widget_ops);
 		$this->alt_option_name = 'widget_recent_entries';
-		// acciones para refrescar este widget
-        add_action( 'save_post', array(&$this, 'flush_widget_cache') );
-        add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
-        add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
+		// acciones para refrescar este widget Depreciado.
+        // add_action( 'save_post', array(&$this, 'flush_widget_cache') );
+        // add_action( 'deleted_post', array(&$this, 'flush_widget_cache') );
+        // add_action( 'switch_theme', array(&$this, 'flush_widget_cache') );
 	}
 
 	/**
