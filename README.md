@@ -39,13 +39,14 @@ Ekiline includes tools that works with bootstrap: galleries, images, tooltips, p
 
 = 1.0 - May 01 2017 =
 * Initial release
-= 2.0 - Oct 02 2017 =
+= 2.0 - Feb 07 2018 =
 * New release
 
 == Credits ==
 
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later] (https://www.gnu.org/licenses/gpl-2.0.html)
-* Bootstrap v4.0.0-beta.3 http://getbootstrap.com, Copyright 2011-2017 Twitter, Inc., Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* Bootstrap v4.0.0 http://getbootstrap.com, Copyright 2011-2018 Twitter, Inc., Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
 * Dimox breadcrumb licensed under [MIT] http://dimox.net/wordpress-breadcrumbs-without-a-plugin 
 * Bootstrap Navwalker [GPLv3 or later] https://github.com/twittem/wp-bootstrap-navwalker
 * Wordpress tools: https://codex.wordpress.org/Theme_Unit_Test
