@@ -310,7 +310,7 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	    }
 	 
 	    if ( empty( $atts['carousel'] ) && $columns > 0 && $i % $columns !== 0 ) {
-	        //$output .= '<div class="w-100 last"></div>';
+	        $output .= '<div class="w-100 last"></div>';
 	    }
 	    
 	    if ( ! empty( $atts['carousel'] ) ) {
