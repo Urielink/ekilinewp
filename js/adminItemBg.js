@@ -1,5 +1,7 @@
 /**
- * adminEditor.js
+ * Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com
+ * 
+ * adminItemBg.js
  *
  * Dic 15 2017, layouts o grid:
  * Casos de estudio
@@ -12,6 +14,18 @@
  * 
  * Ejemplo de dialogo
  * https://jsfiddle.net/aeutaoLf/2/
+ * reconocer si existe color en los elementos seleccionados.
+ * http://jsfiddle.net/DCaQb/
+ * reconocer si tiene estilos
+ * https://stackoverflow.com/questions/1318076/jquery-hasattr-checking-to-see-if-there-is-an-attribute-on-an-element
+ * https://laubsterboy.com/blog/2014/07/wordpress-editor-custom-buttons-dialog-windows/
+ * explorar: https://stackoverflow.com/questions/32705935/wordpress-tinymce-window-manager-upload-button-not-adding-url-to-text-field
+ * http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.setStyle
+ * https://www.tinymce.com/docs-3x/api/dom/class_tinymce.dom.Selection.html/#selection
+ * https://www.tinymce.com/docs-3x/reference/configuration/Configuration3x@selector/
+ * https://jsfiddle.net/aeutaoLf/2/
+ * ***** https://stackoverflow.com/questions/26263597/open-access-wp-media-library-from-tinymce-plugin-popup-window 
+ * https://wordpress.org/support/topic/using-media-upload-with-tinymce/ 
  *
  */
 

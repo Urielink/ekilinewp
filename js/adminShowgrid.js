@@ -1,5 +1,5 @@
 /**
- * adminEditor.js
+ * adminShowgrid.js
  *
  * Dic 15 2017, layouts o grid:
  * Casos de estudio
@@ -9,6 +9,13 @@
  * Oficial tinyMce.
  * https://www.tinymce.com/docs/advanced/creating-custom-dialogs/
  * https://www.tinymce.com/docs/demo/custom-toolbar-listbox/
+ * 
+ * Estudio
+ * https://www.tinymce.com/docs/api/tinymce.dom/tinymce.dom.domutils/#addclass
+ * https://www.tinymce.com/docs/demo/custom-toolbar-button/
+ * https://www.tinymce.com/docs/advanced/creating-a-custom-button/
+ * https://stackoverflow.com/questions/3279947/how-to-check-classes-of-node-inside-tinymce
+ * https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
  *
  */
 

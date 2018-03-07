@@ -1,14 +1,18 @@
 /**
- * adminEditor.js
+ * Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com
+ * 
+ * adminCustom.js
  *
  * Dic 15 2017, layouts o grid:
  * Casos de estudio
  * https://stackoverflow.com/questions/24695323/tinymce-listbox-onsubmit-giving-object-object-rather-than-value
  * https://stackoverflow.com/questions/23476463/wordpress-tinymce-add-a-description-to-a-popup-form
+ * https://stackoverflow.com/questions/1582251/how-to-load-html-using-jquery-into-a-tinymce-textarea
  * 
  * Oficial tinyMce.
  * https://www.tinymce.com/docs/advanced/creating-custom-dialogs/
  * https://www.tinymce.com/docs/demo/custom-toolbar-listbox/
+ * https://www.tinymce.com/docs/plugins/template/#templates
  * 
  * Ejemplo de dialogo
  * https://jsfiddle.net/aeutaoLf/2/

@@ -1,10 +1,7 @@
 /**
- * adminEditor.js
- *
- * Dic 15 2017, layouts o grid:
- * Casos de estudio
- * https://stackoverflow.com/questions/24695323/tinymce-listbox-onsubmit-giving-object-object-rather-than-value
- * https://stackoverflow.com/questions/23476463/wordpress-tinymce-add-a-description-to-a-popup-form
+ * Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com
+ * 
+ * adminPops.js
  * 
  * Oficial tinyMce.
  * https://www.tinymce.com/docs/advanced/creating-custom-dialogs/
@@ -12,6 +9,10 @@
  * 
  * Ejemplo de dialogo
  * https://jsfiddle.net/aeutaoLf/2/
+ * 
+ * Estudio:
+ * https://www.tinymce.com/docs/api/tinymce.dom/tinymce.dom.selection/#setcontent
+ * http://archive.tinymce.com/wiki.php/api4:method.tinymce.dom.DOMUtils.setAttribs
  *
  */
 

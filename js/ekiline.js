@@ -1,4 +1,4 @@
-/*ekiline for WordPress Theme, Copyright 2015-2017 Ricardo Uriel P. Lazcano. ekiline is distributed under the terms of the GNU GPL*/
+/* Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com */
 
 jQuery(document).ready(function($){
 	

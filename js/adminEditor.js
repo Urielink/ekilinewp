@@ -1,4 +1,6 @@
 /**
+ * Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com
+ * 
  * adminEditor.js
  *
  * Oct 11 2017, añadir tareas al tinymce:
@@ -7,6 +9,7 @@
  * https://jamesdigioia.com/add-button-pop-wordpresss-tinymce-editor/
  * Un tutorial:
  * https://dobsondev.com/2015/10/16/custom-tinymce-buttons-in-wordpress/
+ * http://archive.tinymce.com/wiki.php/API3:method.tinymce.dom.DOMUtils.add
  *
  */
 

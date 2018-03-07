@@ -1,5 +1,7 @@
 /**
- * adminEditor.js
+ * Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com
+ * 
+ * adminSubgrid.js
  *
  * Dic 15 2017, layouts o grid:
  * Casos de estudio
