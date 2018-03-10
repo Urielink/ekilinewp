@@ -151,6 +151,9 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger:hover{background-color:#1781ae;border-color:#1781ae;color:#ffffff;}
 .single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger:before{font:normal normal normal 1em/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:block;content:"\f00e";line-height:2;text-indent:0;}
 .woocommerce img.brand-icon, .woocommerce-page img.brand-icon {height: 40px !important;}
+/*WooCommerce Checkout*/
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1{max-width: inherit;}
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2{max-width: inherit;}
 
 /* ------------------------------------------------
  * Ekiline CUSTOM STYLES tus estilos || your styles
