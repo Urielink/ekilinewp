@@ -308,6 +308,16 @@ function ekiline_loader(){
 
 function ekiline_pages_navigation(){
     
+	if ( is_front_page() ){		
+        return;
+    }	
+	
+	if ( class_exists( 'WooCommerce' ) ) {
+		if ( is_cart() || is_checkout() || is_account_page() ){		
+	        return;
+	    }	
+	}
+	
     $thePages = '';
     $pagelist = get_pages('sort_column=menu_order&sort_order=asc');
     $pages = array();
@@ -332,9 +342,9 @@ function ekiline_pages_navigation(){
     
     $thePages = '<ul class="pagination pagination-sm justify-content-between">'.$thePages.'</ul>';
     
-    if (!is_front_page()){
+    //if (!is_front_page()){
         echo $thePages;
-    }
+    //}
 } 
 
 /**
