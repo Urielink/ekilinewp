@@ -65,10 +65,10 @@ jQuery(document).ready(function($){
 		var visit=GetCookie("cookies_ekiline");
 
 		if (visit==null){
-			// nueva visita
+			/* nueva visita */
 			$('body').append( alert );
-			//console.log('nueva visita');
-			// visita acepta cookies
+			/*console.log('nueva visita');*/
+			/* visita acepta cookies */
 			$("#cookieLaw .accept").on('click',function(e) {
 
 				var expire=new Date();
@@ -76,11 +76,11 @@ jQuery(document).ready(function($){
 				document.cookie="cookies_ekiline=aceptada; expires="+expire;
 
 				var visit=GetCookie("cookies_ekiline");
-				//console.log('visita da clic');
+				/*console.log('visita da clic')*/
 
 			});  				
 
-		} // visit==1 en caso de extender funciones
+		} /* visit==1 en caso de extender funciones */
 
 	});
 
