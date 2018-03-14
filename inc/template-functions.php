@@ -127,10 +127,11 @@ function ekiline_csscolors() {
         .navbar.navbar-light.bg-light { background-color:'.$menu.' !important;}
         .navbar.navbar-dark.bg-dark { background-color:'.$menu.' !important;}
         .navbar-light .navbar-brand, .navbar-light .navbar-nav > li > a{ color:'.$texto.'; }
-        .navbar-dark .navbar-brand, .navbar-dark .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a{ color:'.$enlaces.'; }
+        .navbar-dark .navbar-brand, .navbar-dark .navbar-nav > li > a, a, h1 a, h2 a, h3 a, .pagination>li>a, .page-link, .page-link:hover{ color:'.$enlaces.'; }
         .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover,
         .navbar-light .navbar-nav .show .dropdown-menu>.active>a, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:focus, .navbar-light .navbar-nav .show .dropdown-menu>.active>a:hover,.bg-link{background-color:'.$enlaces.';}
-        .pagination>.active>span,.pagination>.active>span:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
+        .page-item.active .page-link, .btn-primary, .btn-outline-primary:hover{background-color:'.$enlaces.';border-color:'.$enlaces.';}
+        .btn-outline-primary{border-color:'.$enlaces.';color:'.$enlaces.';}
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third,.bg-footer{background:'.$footer.';}
