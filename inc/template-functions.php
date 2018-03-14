@@ -118,6 +118,7 @@ function ekiline_csscolors() {
     if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
+    if ( $rangeLmnts == '' || '0' ) : $rangeLmnts = '0' ; endif;
         
     // Estilos en linea // inline styles
     $miestilo = '
