@@ -199,37 +199,116 @@
 // fin item 2, inicia el estilo de fondo.		        
 	                    {
 	                        type: 'listbox', 
-	                        name: 'bgstyle', 
-	                        //label: 'Background style', 
-	                        label: editor.getLang('ekiline_tinymce.bgstyle'),
+	                        name: 'bgRep', 
+	                        //label: 'Background repeat', 
+	                        label: editor.getLang('ekiline_tinymce.bgrLab'),
 	                        'values': [
 								{
-		                        	// text	: 'Pattern',
-		                        	text	: editor.getLang('ekiline_tinymce.pattern'),
+		                        	// text	: 'Default (repeat)',
+		                        	text	: editor.getLang('ekiline_tinymce.bgrDef'),
 		                        	value	: ''
 		                    	},
 								{
-		                        	// text	: 'Simple',
-		                        	text	: editor.getLang('ekiline_tinymce.simple'),
-		                        	value	: 'bg-single'
+		                        	// text	: 'Horizontal',
+		                        	text	: editor.getLang('ekiline_tinymce.bgrHor'),
+		                        	value	: 'repeat-x'
 		                    	},
 								{
-		                        	// text	: 'Responsive',
-		                        	text	: editor.getLang('ekiline_tinymce.responsive'),
-		                        	value	: 'bg-responsive'
+		                        	// text	: 'Vertical',
+		                        	text	: editor.getLang('ekiline_tinymce.bgrVer'),
+		                        	value	: 'repeat-y'
+		                    	},
+								{
+		                        	// text	: 'No repeat',
+		                        	text	: editor.getLang('ekiline_tinymce.bgrNo'),
+		                        	value	: 'no-repeat'
+		                    	},
+	                        ]
+	                    }, 
+	                    {
+	                        type: 'listbox', 
+	                        name: 'bgPos', 
+	                        //label: 'Background position', 
+	                        label: editor.getLang('ekiline_tinymce.bgpLab'),
+	                        'values': [
+								{
+		                        	// text	: 'top left',
+		                        	text	: editor.getLang('ekiline_tinymce.bgptlp'),
+		                        	value	: 'top left'
+		                    	},
+								{
+		                        	// text	: 'top center',
+		                        	text	: editor.getLang('ekiline_tinymce.bgptcp'),
+		                        	value	: 'top center'
+		                    	},
+								{
+		                        	// text	: 'top right',
+		                        	text	: editor.getLang('ekiline_tinymce.bgptrp'),
+		                        	value	: 'top right'
+		                    	},
+								{
+		                        	// text	: 'center left',
+		                        	text	: editor.getLang('ekiline_tinymce.bgplcp'),
+		                        	value	: 'center left'
+		                    	},
+								{
+		                        	// text	: 'center center',
+		                        	text	: editor.getLang('ekiline_tinymce.bgpccp'),
+		                        	value	: 'center center'
+		                    	},
+								{
+		                        	// text	: 'center right',
+		                        	text	: editor.getLang('ekiline_tinymce.bgpcrp'),
+		                        	value	: 'center right'
+		                    	},
+								{
+		                        	// text	: 'bottom left',
+		                        	text	: editor.getLang('ekiline_tinymce.bgpblp'),
+		                        	value	: 'bottom left'
+		                    	},
+								{
+		                        	// text	: 'bottom center',
+		                        	text	: editor.getLang('ekiline_tinymce.bgpbcp'),
+		                        	value	: 'bottom center'
+		                    	},
+								{
+		                        	// text	: 'bottom right',
+		                        	text	: editor.getLang('ekiline_tinymce.bgpbrp'),
+		                        	value	: 'bottom right'
+		                    	},
+							]
+	                    }, 
+	                    {
+	                        type: 'listbox', 
+	                        name: 'bgAtt', 
+	                        //label: 'Background attachment', 
+	                        label: editor.getLang('ekiline_tinymce.bgaLab'),
+	                        'values': [
+								{
+		                        	// text	: 'Default (scroll)',
+		                        	text	: editor.getLang('ekiline_tinymce.bgaDef'),
+		                        	value	: ''
 		                    	},
 								{
 		                        	// text	: 'Fixed',
-		                        	text	: editor.getLang('ekiline_tinymce.fixed'),
-		                        	value	: 'bg-responsive-fix'
-		                    	},
-								{
-		                        	// text	: 'Parallax',
-		                        	text	: editor.getLang('ekiline_tinymce.parallax'),
-		                        	value	: 'bg-responsive-delay'
+		                        	text	: editor.getLang('ekiline_tinymce.bgaFix'),
+		                        	value	: 'fixed'
 		                    	},
 	                        ]
-	                    },                      	
+	                    }, 	                    
+	                    {
+	                        type: 'checkbox', 
+	                        name: 'bgXt', 
+	                        //label: 'Parallax', 
+	                        label: editor.getLang('ekiline_tinymce.bgxLab'),
+		                    //text: 'Add parallax effect to full width images',
+		                    text: editor.getLang('ekiline_tinymce.bgxDesc'),
+	                        checked : false
+	                    },    
+	                    
+	                    
+	                    
+	                                      	
                 	],                    	
                     onsubmit: function (e) {
                         //editor.insertContent( '<div style="min-width:100px;height:50px;background-color:' + e.data.colorpicker + ';"> color: ' + e.data.colorpicker + ' </div>' );
@@ -249,7 +328,7 @@
                         
                         // console.log(e.data.bgvalue);
                         // console.log(e.data.url);
-                        // console.log(e.data.bgstyle);
+                        // console.log(e.data.bgXt);
                                                                         
                         if (e.data.bgvalue !== null && e.data.bgvalue !== '' && e.data.bgvalue !== 'none'){
                         	tinymce.activeEditor.dom.setStyle( trackitem , 'background-color', e.data.bgvalue );
@@ -259,7 +338,14 @@
                        
                         if (e.data.url !== null && e.data.url !== '' && e.data.url !== 'none'){
 	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', 'url('+ e.data.url +')' );
-	                        tinymce.activeEditor.dom.addClass( trackitem , e.data.bgstyle );
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-repeat', e.data.bgRep );
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-position', e.data.bgPos );
+	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-attachment', e.data.bgAtt );
+	                        if (e.data.bgXt === true ){
+		                        tinymce.activeEditor.dom.addClass( trackitem , 'bg-responsive-delay' );
+	                        } else if (e.data.bgXt === false ) {
+		                        tinymce.activeEditor.dom.removeClass( trackitem , 'bg-responsive-delay' );
+	                        }
                         } else {
 	                        tinymce.activeEditor.dom.setStyle( trackitem , 'background-image', '' );                        	
                         }
