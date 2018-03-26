@@ -11,6 +11,7 @@
  * Registrar las metadatos para campos personalizados 
  * @link  info: https://developer.wordpress.org/reference/functions/register_meta/
  * @link  samp: https://cybmeta.com/custom-fields-y-meta-boxes-para-posts-de-wordpress
+ * @link  info: https://codex.wordpress.org/Function_Reference/add_post_meta
  * 
  * custom_meta_description
  * custom_title
@@ -23,12 +24,12 @@ add_action( 'init', 'ekiline_register_meta' );
 function ekiline_register_meta() {
 	
 	$metas = array('custom_meta_description','custom_title','custom_css_style','custom_js_script');
-	
+	//sanitizar el campo
 	$args = array(
 	    'type'      => 'string', // Validate and sanitize the meta value as a string.
 	        // Default: 'string'.  
 	        // In 4.7 one of 'string', 'boolean', 'integer', 'number' must be used as 'type'. 
-	    'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
+	    // 'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
 	    'single'        => true, // Return a single value of the type. Default: false.
 	    'sanitize_callback' => 'sanitize_text_field',
 	    //'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
@@ -36,10 +37,14 @@ function ekiline_register_meta() {
 
 	foreach($metas as $key => $value) {
 		register_meta( 'post', $value, $args );
+		//agregarlo en el post 1
+		// if ( ! add_post_meta( 1, $value, $value, true ) ) { 
+		   // update_post_meta( 1, $value, 'add your data' );
+		// }	
+		add_post_meta( 1, $value, '', true );
 	}
 	// register_meta( 'post', 'custom_text_test', $args );
 }
- 
  
 /**
  * Utilizar keywords en caso de necesitar etiquetas en las paginas:
