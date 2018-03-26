@@ -7,6 +7,40 @@
  * @package ekiline 
  */
 
+/** 
+ * Registrar las metadatos para campos personalizados 
+ * @link  info: https://developer.wordpress.org/reference/functions/register_meta/
+ * @link  samp: https://cybmeta.com/custom-fields-y-meta-boxes-para-posts-de-wordpress
+ * 
+ * custom_meta_description
+ * custom_title
+ * custom_css_style
+ * custom_js_script
+ * 
+ * */
+ 
+add_action( 'init', 'ekiline_register_meta' );
+function ekiline_register_meta() {
+	
+	$metas = array('custom_meta_description','custom_title','custom_css_style','custom_js_script');
+	
+	$args = array(
+	    'type'      => 'string', // Validate and sanitize the meta value as a string.
+	        // Default: 'string'.  
+	        // In 4.7 one of 'string', 'boolean', 'integer', 'number' must be used as 'type'. 
+	    'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
+	    'single'        => true, // Return a single value of the type. Default: false.
+	    'sanitize_callback' => 'sanitize_text_field',
+	    //'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
+	);
+
+	foreach($metas as $key => $value) {
+		register_meta( 'post', $value, $args );
+	}
+	// register_meta( 'post', 'custom_text_test', $args );
+}
+ 
+ 
 /**
  * Utilizar keywords en caso de necesitar etiquetas en las paginas:
  * @link https://www.sitepoint.com/wordpress-pages-use-tags/
@@ -292,3 +326,4 @@ function iosfeatures() {
     echo $iosfeats;
 }
 add_action( 'wp_head', 'iosfeatures', 2);
+
