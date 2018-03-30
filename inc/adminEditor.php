@@ -98,11 +98,6 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	            'title' => __( 'Typography', 'ekiline' ),
 	            'items' => array(
 	                array(
-	                    'title'     => __( 'Lead Text', 'ekiline' ),
-	                    'block'  => 'p',
-	                    'classes'   => 'lead',
-	                ),
-	                array(
 	                    'title'     => __( 'Small Text', 'ekiline' ),
 	                    'inline'    => 'small',
 	                ),
@@ -157,8 +152,13 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	        ),
 	
 	        array(
-	            'title' => __( 'Big headings', 'ekiline' ),
+	            'title' => __( 'Big text', 'ekiline' ),
 	            'items' => array(
+	                array(
+	                    'title'     => __( 'Lead Text <p>', 'ekiline' ),
+	                    'selector'  => 'p,span',
+	                    'classes'   => 'lead',
+	                ),
 	                array(
 	                    'title'     => __( 'Display 1', 'ekiline' ),
 	                    'selector'  => 'h1,h2,h3,h4',
@@ -182,301 +182,294 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	            ),
 	        ),
 	        
-	        array(
-	            'title' => __( 'Text Colors (B4)', 'ekiline' ),
+			array(
+	            'title' => __( 'Colors', 'ekiline' ),
 	            'items' => array(
-	                array(
-	                    'title'     => __( 'Primary', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-primary',
-	                ),
-	                array(
-	                    'title'     => __( 'Secondary', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-secondary',
-	                ),
-	                array(
-	                    'title'     => __( 'Success', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-success',
-	                ),
-	                array(
-	                    'title'     => __( 'Danger', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-danger',
-	                ),
-	                array(
-	                    'title'     => __( 'Warning', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-warning',
-	                ),
-	                array(
-	                    'title'     => __( 'Info', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-info',
-	                ),
-	                array(
-	                    'title'     => __( 'Light', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-light',
-	                ),
-	                array(
-	                    'title'     => __( 'Dark', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-dark',
-	                ),
-	                array(
-	                    'title'     => __( 'Muted', 'ekiline' ),
-	                    'inline'    => 'span',
-	                    'classes'   => 'text-muted',
-	                ),
-	            ),
-	        ),
-	
-	        array(
-	            'title' => __( 'Background colors (B4)', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Primary', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-primary',
-	                ),
-	                array(
-	                    'title'     => __( 'Secondary', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-secondary',
-	                ),
-	                array(
-	                    'title'     => __( 'Success', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-success',
-	                ),
-	                array(
-	                    'title'     => __( 'Danger', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-danger',
-	                ),
-	                array(
-	                    'title'     => __( 'Warning', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-warning',
-	                ),
-	                array(
-	                    'title'     => __( 'Info', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-info',
-	                ),
-	                array(
-	                    'title'     => __( 'Light', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-light',
-	                ),
-	                array(
-	                    'title'     => __( 'Dark', 'ekiline' ),
-	                    'selector'     => 'div',
-	                    'classes'   => 'bg-dark',
-	                ),
-	            ),
-	        ),
+
+			        array(
+			            'title' => __( 'Text Colors', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Primary', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-primary',
+			                ),
+			                array(
+			                    'title'     => __( 'Secondary', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-secondary',
+			                ),
+			                array(
+			                    'title'     => __( 'Success', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-success',
+			                ),
+			                array(
+			                    'title'     => __( 'Danger', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-danger',
+			                ),
+			                array(
+			                    'title'     => __( 'Warning', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-warning',
+			                ),
+			                array(
+			                    'title'     => __( 'Info', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-info',
+			                ),
+			                array(
+			                    'title'     => __( 'Light', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-light',
+			                ),
+			                array(
+			                    'title'     => __( 'Dark', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-dark',
+			                ),
+			                array(
+			                    'title'     => __( 'Muted', 'ekiline' ),
+			                    'inline'    => 'span',
+			                    'classes'   => 'text-muted',
+			                ),
+			            ),
+			        ),
 			
-	        array(
-	            'title' => __( 'Lists', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Unstyled List', 'ekiline' ),
-	                    'selector'  => 'ul,ol',
-	                    'classes'   => 'list-unstyled',
-	                ),
-	                array(
-	                    'title'     => __( 'Inline List', 'ekiline' ),
-	                    'selector'  => 'ul,ol',
-	                    'classes'   => 'list-inline',
-	                ),
-	                array(
-	                    'title'     => __( 'Inline list item', 'ekiline' ),
-	                    'selector'  => 'li',
-	                    'classes'   => 'list-inline-item',
-	                ),
-	            ),
-	        ),
+			        array(
+			            'title' => __( 'Background colors', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Primary', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-primary',
+			                ),
+			                array(
+			                    'title'     => __( 'Secondary', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-secondary',
+			                ),
+			                array(
+			                    'title'     => __( 'Success', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-success',
+			                ),
+			                array(
+			                    'title'     => __( 'Danger', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-danger',
+			                ),
+			                array(
+			                    'title'     => __( 'Warning', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-warning',
+			                ),
+			                array(
+			                    'title'     => __( 'Info', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-info',
+			                ),
+			                array(
+			                    'title'     => __( 'Light', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-light',
+			                ),
+			                array(
+			                    'title'     => __( 'Dark', 'ekiline' ),
+			                    'selector'     => 'div',
+			                    'classes'   => 'bg-dark',
+			                ),
+			            ),
+			        ),
+	            
+				),
+			),
 	        
-	        array(
-	            'title' => __( 'Solid buttons', 'ekiline' ),
+			array(
+	            'title' => __( 'Buttons', 'ekiline' ),
 	            'items' => array(
-	                array(
-	                    'title'     => __( 'Primary', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-primary',
-	                ),
-	                array(
-	                    'title'     => __( 'Secondary', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-secondary',
-	                ),
-	                array(
-	                    'title'     => __( 'Success', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-success',
-	                ),
-	                array(
-	                    'title'     => __( 'Danger', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-danger',
-	                ),
-	                array(
-	                    'title'     => __( 'Warning', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-warning',
-	                ),
-	                array(
-	                    'title'     => __( 'Info', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-info',
-	                ),
-	                array(
-	                    'title'     => __( 'Light', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-light',
-	                ),
-	                array(
-	                    'title'     => __( 'Dark', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-dark',
-	                ),
-	            ),
-	        ),
-	        
-	        array(
-	            'title' => __( 'Outline buttons', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Primary', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-primary',
-	                ),
-	                array(
-	                    'title'     => __( 'Secondary', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-secondary',
-	                ),
-	                array(
-	                    'title'     => __( 'Success', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-success',
-	                ),
-	                array(
-	                    'title'     => __( 'Danger', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-danger',
-	                ),
-	                array(
-	                    'title'     => __( 'Warning', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-warning',
-	                ),
-	                array(
-	                    'title'     => __( 'Info', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-info',
-	                ),
-	                array(
-	                    'title'     => __( 'Light', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-light',
-	                ),
-	                array(
-	                    'title'     => __( 'Dark', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-outline-dark',
-	                ),
-	            ),
-	        ),
-	        
-	        array(
-	            'title' => __( 'Button variables', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Link', 'ekiline' ),
-	                    'inline'    => 'a',
-	                    'classes'   => 'btn btn-link',
-	                ),
-	                array(
-	                    'title'     => __( 'Large', 'ekiline' ),
-	                    'selector'  => '.btn',
-	                    'classes'   => 'btn-lg',
-	                ),
-	                array(
-	                    'title'     => __( 'Small', 'ekiline' ),
-	                    'selector'  => '.btn',
-	                    'classes'   => 'btn-sm',
-	                ),
-	                array(
-	                    'title'     => __( 'Block', 'ekiline' ),
-	                    'selector'  => '.btn',
-	                    'classes'   => 'btn-block',
-	                ),
-	                array(
-	                    'title'        => __( 'Disabled', 'ekiline' ),
-	                    'selector'  => '.btn',
-	                    'classes'   => 'disabled',
-	                    'attributes'   => array(
-	                        'disabled' => 'disabled'
-	                    ),
-	                ),
-	            ),
-	        ),
-	        
-	        array(
-	            'title' => __( 'Badge', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Primary', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-primary',
-	                ),
-	                array(
-	                    'title'     => __( 'Secondary', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-secondary',
-	                ),
-	                array(
-	                    'title'     => __( 'Success', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-success',
-	                ),
-	                array(
-	                    'title'     => __( 'Danger', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-danger',
-	                ),
-	                array(
-	                    'title'     => __( 'Warning', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-warning',
-	                ),
-	                array(
-	                    'title'     => __( 'Info', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-info',
-	                ),
-	                array(
-	                    'title'     => __( 'Light', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-light',
-	                ),
-	                array(
-	                    'title'     => __( 'Dark', 'ekiline' ),
-	                    'inline'  => 'span',
-	                    'classes'   => 'badge badge-dark',
-	                ),                
-	                array(
-	                    'title'     => __( 'Pill', 'ekiline' ),
-	                    'selector'  => 'span',
-	                    'classes'   => 'badge-pill',
-	                ),                
-	            ),
-	        ),
-	        
+	            
+			        array(
+			            'title' => __( 'Solid buttons', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Primary', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-primary',
+			                ),
+			                array(
+			                    'title'     => __( 'Secondary', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-secondary',
+			                ),
+			                array(
+			                    'title'     => __( 'Success', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-success',
+			                ),
+			                array(
+			                    'title'     => __( 'Danger', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-danger',
+			                ),
+			                array(
+			                    'title'     => __( 'Warning', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-warning',
+			                ),
+			                array(
+			                    'title'     => __( 'Info', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-info',
+			                ),
+			                array(
+			                    'title'     => __( 'Light', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-light',
+			                ),
+			                array(
+			                    'title'     => __( 'Dark', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-dark',
+			                ),
+			            ),
+			        ),
+			        
+			        array(
+			            'title' => __( 'Outline buttons', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Primary', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-primary',
+			                ),
+			                array(
+			                    'title'     => __( 'Secondary', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-secondary',
+			                ),
+			                array(
+			                    'title'     => __( 'Success', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-success',
+			                ),
+			                array(
+			                    'title'     => __( 'Danger', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-danger',
+			                ),
+			                array(
+			                    'title'     => __( 'Warning', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-warning',
+			                ),
+			                array(
+			                    'title'     => __( 'Info', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-info',
+			                ),
+			                array(
+			                    'title'     => __( 'Light', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-light',
+			                ),
+			                array(
+			                    'title'     => __( 'Dark', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-outline-dark',
+			                ),
+			            ),
+			        ),
+			        
+			        array(
+			            'title' => __( 'Button variables', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Link', 'ekiline' ),
+			                    'inline'    => 'a',
+			                    'classes'   => 'btn btn-link',
+			                ),
+			                array(
+			                    'title'     => __( 'Large', 'ekiline' ),
+			                    'selector'  => '.btn',
+			                    'classes'   => 'btn-lg',
+			                ),
+			                array(
+			                    'title'     => __( 'Small', 'ekiline' ),
+			                    'selector'  => '.btn',
+			                    'classes'   => 'btn-sm',
+			                ),
+			                array(
+			                    'title'     => __( 'Block', 'ekiline' ),
+			                    'selector'  => '.btn',
+			                    'classes'   => 'btn-block',
+			                ),
+			                array(
+			                    'title'        => __( 'Disabled', 'ekiline' ),
+			                    'selector'  => '.btn',
+			                    'classes'   => 'disabled',
+			                    'attributes'   => array(
+			                        'disabled' => 'disabled'
+			                    ),
+			                ),
+			            ),
+			        ),
+			        
+			        array(
+			            'title' => __( 'Badge', 'ekiline' ),
+			            'items' => array(
+			                array(
+			                    'title'     => __( 'Primary', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-primary',
+			                ),
+			                array(
+			                    'title'     => __( 'Secondary', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-secondary',
+			                ),
+			                array(
+			                    'title'     => __( 'Success', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-success',
+			                ),
+			                array(
+			                    'title'     => __( 'Danger', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-danger',
+			                ),
+			                array(
+			                    'title'     => __( 'Warning', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-warning',
+			                ),
+			                array(
+			                    'title'     => __( 'Info', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-info',
+			                ),
+			                array(
+			                    'title'     => __( 'Light', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-light',
+			                ),
+			                array(
+			                    'title'     => __( 'Dark', 'ekiline' ),
+			                    'inline'  => 'span',
+			                    'classes'   => 'badge badge-dark',
+			                ),                
+			                array(
+			                    'title'     => __( 'Pill', 'ekiline' ),
+			                    'selector'  => 'span',
+			                    'classes'   => 'badge-pill',
+			                ),                
+			            ),
+			        ),				
+				
+				),
+			),
+
 	        array(
 	            'title' => __( 'Alerts', 'ekiline' ),
 	            'items' => array(
@@ -532,7 +525,553 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	        ),
 	        
 	        array(
-	            'title' => __( 'Other (B4)', 'ekiline' ),
+	            'title' => __( 'Grid', 'ekiline' ),
+	            'items' => array(
+	                array(
+	                    'title'     => __( 'Set containers', 'ekiline' ),
+	                    
+						//valores anidados
+
+				            'items' => array(
+				                array(
+				                    'title'     => __( 'container', 'ekiline' ),
+				                    'selector'  => 'div',
+				                    'classes'   => 'container',
+				                ),
+				                array(
+				                    'title'     => __( 'container-fluid', 'ekiline' ),
+				                    'selector'  => 'div',
+				                    'classes'   => 'container-fluid',
+				                ),
+				                array(
+				                    'title'     => __( 'Set rows', 'ekiline' ),
+				                    // 'selector'  => 'div',
+				                    // 'classes'   => 'row',
+					                    // anidados
+							            'items' => array(
+							                array(
+							                    'title'     => __( 'row', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'row',
+							                ),
+							                // Horizontal
+							                array(
+							                    'title'     => __( 'justify-content-start', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'justify-content-start',
+							                ),
+							                array(
+							                    'title'     => __( 'justify-content-center', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'justify-content-center',
+							                ),
+							                array(
+							                    'title'     => __( 'justify-content-end', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'justify-content-end',
+							                ),
+							                array(
+							                    'title'     => __( 'justify-content-around', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'justify-content-around',
+							                ),
+							                array(
+							                    'title'     => __( 'justify-content-between', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'justify-content-between',
+							                ),
+							                //vertical
+							                array(
+							                    'title'     => __( 'align-items-start', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'align-items-start',
+							                ),
+							                array(
+							                    'title'     => __( 'align-items-center', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'align-items-center',
+							                ),
+							                array(
+							                    'title'     => __( 'align-items-end', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'align-items-end',
+							                ),
+							                // no margen
+							                array(
+							                    'title'     => __( 'no-gutters', 'ekiline' ),
+							                    'selector'  => '.row',
+							                    'classes'   => 'no-gutters',
+							                ),
+	         
+						
+							            ),	                    				                    				                    
+					                    // fin anidados				                    				                    
+				                ),            
+			
+				            ),	                    
+
+						//fin de valores anidados
+						
+						
+	                ),
+	                array(
+	                    'title'     => __( 'Set columns', 'ekiline' ),
+	                    // anidados
+			            'items' => array(
+			            	//estandar
+			                array(
+			                    'title'     => __( 'col', 'ekiline' ),
+			                    'selector'  => 'div',
+			                    'classes'   => 'col',
+			                ),
+			                
+			                //variable por display
+			                array(
+			                    'title'     => __( 'col-sm-*', 'ekiline' ),
+
+			                    // anidados col-sm-*
+					            'items' => array(
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-sm-6', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-sm-6',
+					                ),
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-sm-auto', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-sm-auto',
+					                ),
+					
+					            ),	                    				                    				                    
+			                    // fin anidados	col-sm-*			                    
+			                ),
+			                array(
+			                    'title'     => __( 'col-md-*', 'ekiline' ),
+
+			                    // anidados col-md-*
+					            'items' => array(
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-md-4', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-md-4',
+					                ),
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-md-auto', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-md-auto',
+					                ),
+					
+					            ),	                    				                    				                    
+			                    // fin anidados col-md-*		                    
+			                ),			     
+			                array(
+			                    'title'     => __( 'col-lg-*', 'ekiline' ),
+
+			                    // anidados col-lg-*
+					            'items' => array(
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-lg-3', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-lg-3',
+					                ),
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-lg-auto', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-lg-auto',
+					                ),
+					
+					            ),	                    				                    				                    
+			                    // fin anidados col-lg-*		                    
+			                ),
+			                array(
+			                    'title'     => __( 'col-xl-*', 'ekiline' ),
+
+			                    // anidados col-xl-*
+					            'items' => array(
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-xl-3', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-xl-3',
+					                ),
+					            	//estandar
+					                array(
+					                    'title'     => __( 'col-xl-auto', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'col-xl-auto',
+					                ),
+					
+					            ),	                    				                    				                    
+			                    // fin anidados col-xl-*		                    
+			                ),			                			                           
+			                //fin variable por display			
+			            ),	                    				                    				                    
+	                    			                    
+	                ),// fin Set Columns	
+	                
+	                array(
+	                    'title'     => __( 'Column align/order', 'ekiline' ),
+	                    // anidados
+			            'items' => array(
+			                //variable por align self
+			                array(
+			                    'title'     => __( 'align-self', 'ekiline' ),
+					            'items' => array(				            
+			                    // anidados align-self
+					                array(
+					                    'title'     => __( 'align-self-start', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'align-self-start',
+					                ),
+					                array(
+					                    'title'     => __( 'align-self-center', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'align-self-center',
+					                ),
+					                array(
+					                    'title'     => __( 'align-self-end', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'align-self-start',
+					                ),
+			                    // fin anidados	align-self			                    					
+					            ),
+			                ),//fin variable por align self
+			                
+			                //variable por order
+			                array(
+			                    'title'     => __( 'order', 'ekiline' ),
+					            'items' => array(
+					            	//estandar
+					                array(
+					                    'title'     => __( 'order-first', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'order-first',
+					                ),					            
+					                array(
+					                    'title'     => __( 'order-last', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'order-last',
+					                ),	
+					                // por tamaño de columna
+					                array(
+					                    'title'     => __( 'order-sm-*', 'ekiline' ),
+							            'items' => array(				            
+							                array(
+							                    'title'     => __( 'order-sm-first', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-sm-first',
+							                ),
+							                array(
+							                    'title'     => __( 'order-sm-last', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-sm-last',
+							                ),
+							            ),
+					                ),
+					                array(
+					                    'title'     => __( 'order-md-*', 'ekiline' ),
+							            'items' => array(				            
+							                array(
+							                    'title'     => __( 'order-md-first', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-md-first',
+							                ),
+							                array(
+							                    'title'     => __( 'order-md-last', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-md-last',
+							                ),
+							            ),
+					                ),					                
+					                array(
+					                    'title'     => __( 'order-lg-*', 'ekiline' ),
+							            'items' => array(				            
+					                    // anidados order-sm
+							                array(
+							                    'title'     => __( 'order-lg-first', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-lg-first',
+							                ),
+							                array(
+							                    'title'     => __( 'order-lg-last', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-lg-last',
+							                ),
+					                    // fin anidados	order-sm			                    					
+							            ),
+					                ),									
+					                array(
+					                    'title'     => __( 'order-xl-*', 'ekiline' ),
+							            'items' => array(				            
+					                    // anidados order-sm
+							                array(
+							                    'title'     => __( 'order-xl-first', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-xl-first',
+							                ),
+							                array(
+							                    'title'     => __( 'order-xl-last', 'ekiline' ),
+							                    'selector'  => 'div',
+							                    'classes'   => 'order-xl-last',
+							                ),
+					                    // fin anidados	order-sm			                    					
+							            ),
+					                ),
+				                	//fin por tamaño de columna			                
+					            ),
+					            //fin variable order	
+			                ),		                
+			                //variable por offset
+			                array(
+			                    'title'     => __( 'offset', 'ekiline' ),
+					            'items' => array(
+					                // por tamaño de columna
+					                array(
+					                    'title'     => __( 'offset-sm-1', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'offset-sm-1',
+					                ),
+					                array(
+					                    'title'     => __( 'offset-md-1', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'offset-md-1',
+					                ),
+					                array(
+					                    'title'     => __( 'offset-lg-1', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'offset-lg-1',
+					                ),
+					                array(
+					                    'title'     => __( 'offset-xl-1', 'ekiline' ),
+					                    'selector'  => 'div',
+					                    'classes'   => 'offset-xl-1',
+					                ),
+					                //fin por tamaño de columna			                					                					        	                    					
+					            ),
+			                ),//fin variable offset				                
+			            ),	                    			                    
+	                ),// fin Order Align Columns	
+					// Medidas, margin padding etc…
+	                array(
+	                    'title'     => __( 'Measure', 'ekiline' ),
+	                    // anidados
+			            'items' => array(
+			                //variable por margen
+			                array(
+			                    'title'     => __( 'margin', 'ekiline' ),
+			                    // anidados margin
+					            'items' => array(
+					                array(
+					                    'title'     => __( 'mt-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mt-1',
+					                ),
+					                array(
+					                    'title'     => __( 'mr-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mr-1',
+					                ),
+					                array(
+					                    'title'     => __( 'mb-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mb-1',
+					                ),
+					                array(
+					                    'title'     => __( 'ml-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'ml-1',
+					                ),
+					                array(
+					                    'title'     => __( 'mx-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mx-1',
+					                ),
+					                array(
+					                    'title'     => __( 'my-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'my-1',
+					                ),
+					            ), // fin anidados	margin	
+			                ),//fin variable por margen
+			                //variable por padding
+			                array(
+			                    'title'     => __( 'padding', 'ekiline' ),
+			                    // anidados padding
+					            'items' => array(
+					                array(
+					                    'title'     => __( 'pt-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'pt-1',
+					                ),
+					                array(
+					                    'title'     => __( 'pr-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'pr-1',
+					                ),
+					                array(
+					                    'title'     => __( 'pb-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'pb-1',
+					                ),
+					                array(
+					                    'title'     => __( 'pl-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'pl-1',
+					                ),
+					                array(
+					                    'title'     => __( 'px-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'px-1',
+					                ),
+					                array(
+					                    'title'     => __( 'py-1', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'py-1',
+					                ),
+					            ), // fin anidados	padding	
+			                ),//fin variable por padding			                
+			                //variable por width
+			                array(
+			                    'title'     => __( 'width', 'ekiline' ),
+			                    // anidados width
+					            'items' => array(
+					                array(
+					                    'title'     => __( 'w-25', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'w-25',
+					                ),
+					                array(
+					                    'title'     => __( 'w-50', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'w-50',
+					                ),
+					                array(
+					                    'title'     => __( 'w-75', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'w-75',
+					                ),
+					                array(
+					                    'title'     => __( 'w-100', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'w-100',
+					                ),
+					                array(
+					                    'title'     => __( 'mw-100', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mw-100',
+					                ),
+
+					            ), // fin anidados	width	
+			                ),//fin variable por width	
+			                //variable por height
+			                array(
+			                    'title'     => __( 'height', 'ekiline' ),
+			                    // anidados height
+					            'items' => array(
+					                array(
+					                    'title'     => __( 'h-25', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'h-25',
+					                ),
+					                array(
+					                    'title'     => __( 'h-50', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'h-50',
+					                ),
+					                array(
+					                    'title'     => __( 'h-75', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'h-75',
+					                ),
+					                array(
+					                    'title'     => __( 'h-100', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'h-100',
+					                ),
+					                array(
+					                    'title'     => __( 'mh-100', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'mh-100',
+					                ),
+
+					            ), // fin anidados	height	
+			                ),//fin variable por height	
+			            ),	                    				                    				                    
+	                    			                    
+	                ),// fin Medidas, margin padding etc…              
+	                
+	            ),
+	        ),        
+
+	        array(
+	            'title' => __( 'Lists and tables', 'ekiline' ),
+	            'items' => array(
+	                array(
+	                    'title'     => __( 'Unstyled List', 'ekiline' ),
+	                    'selector'  => 'ul,ol',
+	                    'classes'   => 'list-unstyled',
+	                ),
+	                array(
+	                    'title'     => __( 'Inline List', 'ekiline' ),
+	                    'selector'  => 'ul,ol',
+	                    'classes'   => 'list-inline',
+	                ),
+	                array(
+	                    'title'     => __( 'Inline list item', 'ekiline' ),
+	                    'selector'  => 'li',
+	                    'classes'   => 'list-inline-item',
+	                ),
+	                array(
+	                    'title'     => __( 'Table', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table',
+	                ),
+	                array(
+	                    'title'     => __( 'Table dark', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table-dark',
+	                ),
+	                array(
+	                    'title'     => __( 'Table head light', 'ekiline' ),
+	                    'selector'  => 'thead',
+	                    'classes'   => 'thead-light',
+	                ),
+	                array(
+	                    'title'     => __( 'Table head dark', 'ekiline' ),
+	                    'selector'  => 'thead',
+	                    'classes'   => 'thead-dark',
+	                ),
+	                array(
+	                    'title'     => __( 'Table striped', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table-striped',
+	                ),
+	                array(
+	                    'title'     => __( 'Table bordered', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table-bordered',
+	                ),
+	                array(
+	                    'title'     => __( 'Table hoverable', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table-hover',
+	                ),
+	                array(
+	                    'title'     => __( 'Table small', 'ekiline' ),
+	                    'selector'  => 'table',
+	                    'classes'   => 'table-sm',
+	                ),
+	            ),
+	        ),
+
+	        array(
+	            'title' => __( 'Utilities', 'ekiline' ),
 	            'items' => array(
 	                array(
 	                    'title'     => __( 'Float Left', 'ekiline' ),
@@ -590,7 +1129,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                    'classes'   => 'img-fluid',
 	                ),
 	            ),
-	        ),        
+	        ),        	        
 	        
         /** array(
 	            'title' => __( 'Ekiline extra', 'ekiline' ),
@@ -729,7 +1268,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    $plugin_array['custom_mce_button8'] = get_template_directory_uri() .'/js/adminPops.js';
 	    $plugin_array['custom_mce_button9'] = get_template_directory_uri() .'/js/adminShare.js';
 	    $plugin_array['custom_mce_button10'] = get_template_directory_uri() .'/js/adminPostin.js';
-	    $plugin_array['custom_mce_button11'] = get_template_directory_uri() .'/js/adminFields.js';
+	    // $plugin_array['custom_mce_button11'] = get_template_directory_uri() .'/js/adminFields.js';
 	    $plugin_array['custom_mce_button12'] = get_template_directory_uri() .'/js/adminModal.js';
 	    $plugin_array['custom_mce_button13'] = get_template_directory_uri() .'/js/adminLayout.js';
 	    $plugin_array['custom_mce_button14'] = get_template_directory_uri() .'/js/adminCustom.js';
@@ -740,7 +1279,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	// Register and add new button in the editor
 	function register_mce_buttons( $buttons ) {
 	    //array_push( $buttons, 'custom_mce_button1' );
-	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button5, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button9, custom_mce_button10, custom_mce_button11, custom_mce_button12, custom_mce_button13, custom_mce_button14, custom_mce_button15' );
+	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button12, custom_mce_button10, custom_mce_button13, custom_mce_button14, custom_mce_button5, custom_mce_button9, custom_mce_button15' );
 	    return $buttons;
 	}
 	

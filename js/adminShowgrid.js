@@ -36,18 +36,53 @@
         		 * **https://www.tinymce.com/docs/demo/custom-toolbar-button/
         		 * **https://www.tinymce.com/docs/advanced/creating-a-custom-button/
         		 * **https://stackoverflow.com/questions/3279947/how-to-check-classes-of-node-inside-tinymce
+        		 * 
         		 */
 				tinymce.activeEditor.dom.toggleClass( tinymce.activeEditor.dom.select('#tinymce'), 'wf-ekiline');
 
 				showf = tinymce.activeEditor.dom.select('#tinymce');
-				if ( $(showf).hasClass("wf-ekiline") ) {
-					this.active(true); 
-				} else {
-					this.active(false); 
-				}
 				
-				//https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
-				//this.active(true); 
+				if ( $(showf).hasClass("wf-ekiline") ) {
+					// bandera de estado activo https://community.tinymce.com/communityQuestion?id=90661000000Ms8XAAS
+					this.active(true); 					
+					// funcion de clic si.
+				    editor.on('click', function (e) {
+				    	
+				       // console.log('Element clicked:', e.target.nodeName + '"\n"' + e.target.outerHTML );
+				       
+				       // asignar o eliminar la clase hlight ara indicar objeto seleccionado
+
+				       if( $(e.target).hasClass('hlight') ){
+					       // console.log('no seleccion');     			      
+					       $(e.target).removeClass('hlight');	     			      
+					       $(e.target).removeAttr('data-hlight');     			      
+				       } else {
+					       // console.log('si seleccion');     			      
+					       $(e.target).addClass('hlight');						       
+					       // saber el nombre del objeto y si cuenta con una clase mostrarla.
+					       var nameClass = $(e.target.outerHTML).removeClass('hlight').attr('class');
+					       // maniobra: crear un atributo data- para llamar con css ese nombre de manera dinamica ***					       
+					       $(e.target).attr('data-hlight', e.target.nodeName + ':' + nameClass );     			      
+				       }
+				       
+				    });					
+						
+				} else {
+					this.active(false); 					
+					// funcion de clic no.
+					editor.off( "click" );
+					
+					// Buscar y remover una clase en todo el contenido
+					// https://stackoverflow.com/questions/3279947/how-to-check-classes-of-node-inside-tinymce
+					var allCont = tinyMCE.activeEditor.getBody();					
+					
+					// por cada clase hallada remueve el dato y la clase de seleccion.
+					$(allCont).find('.hlight').each(function() {
+				       $(this).removeAttr('data-hlight');     			      
+					   $(this).removeClass('hlight');
+					});
+
+				}
                 
             }
         });
