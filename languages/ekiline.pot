@@ -1,221 +1,1629 @@
-# Copyright (C) 2015 Automattic
+# Copyright (C) 2018 Ekiline
 # This file is distributed under the GNU General Public License v2 or later.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ekiline 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2015-09-16 19:02:07+00:00\n"
+"POT-Creation-Date: 2018-03-30 17:19-0600\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-03-30 17:15-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 2.0.6\n"
 
+# @ ekiline
 #: 404.php:17
-#@ ekiline
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
+# @ ekiline
 #: 404.php:21
-#@ ekiline
-msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
 msgstr ""
 
+# @ ekiline
 #: 404.php:29
-#@ ekiline
 msgid "Most Used Categories"
 msgstr ""
 
+# @ ekiline
 #. translators: %1$s: smiley
 #: 404.php:46
 #, php-format
-#@ ekiline
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
+# @ ekiline
 #: comments.php:31
 #, php-format
-#@ ekiline
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Una idea en &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s ideas en &ldquo;%2$s&rdquo;"
 
-#: comments.php:40
-#: comments.php:61
-#@ ekiline
+# @ ekiline
+#: comments.php:40 comments.php:61
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:43
-#: comments.php:64
-#@ ekiline
+# @ ekiline
+#: comments.php:43 comments.php:64
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:44
-#: comments.php:65
-#@ ekiline
+# @ ekiline
+#: comments.php:44 comments.php:65
 msgid "Newer Comments"
 msgstr ""
 
+# @ ekiline
 #: comments.php:77
-#@ ekiline
 msgid "Comments are closed."
 msgstr ""
 
+# @ ekiline
 #: footer.php:18
-#@ ekiline
 msgid "https://wordpress.org/"
 msgstr ""
 
+# @ ekiline
 #: footer.php:18
 #, php-format
-#@ ekiline
 msgid "Proudly powered by %s"
 msgstr ""
 
+msgid "By %s"
+msgstr ""
+
+msgid "and %s"
+msgstr ""
+
+# @ ekiline
 #: footer.php:20
 #, php-format
-#@ ekiline
 msgid "Theme: %1$s by %2$s."
 msgstr ""
 
-#: functions.php:47
-#: header.php:38
-#@ ekiline
+# @ ekiline
+#: functions.php:47 header.php:38
 msgid "Primary Menu"
 msgstr ""
 
+# @ ekiline
 #: functions.php:102
-#@ ekiline
 msgid "Sidebar"
 msgstr ""
 
+# @ ekiline
 #: header.php:25
-#@ ekiline
 msgid "Skip to content"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:28
 #, php-format
-#@ ekiline
 msgctxt "post date"
 msgid "Posted on %s"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:33
 #, php-format
-#@ ekiline
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
+# @ ekiline
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:50
-#: inc/template-tags.php:56
-#@ ekiline
+#: inc/template-tags.php:50 inc/template-tags.php:56
 msgid ", "
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:52
 #, php-format
-#@ ekiline
 msgid "Posted in %1$s"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:58
 #, php-format
-#@ ekiline
 msgid "Tagged %1$s"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:64
-#@ ekiline
 msgid "Leave a comment"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:64
-#@ ekiline
 msgid "1 Comment"
 msgstr ""
 
+# @ ekiline
 #: inc/template-tags.php:64
 #, php-format
-#@ ekiline
 msgid "% Comments"
 msgstr ""
 
+# @ ekiline
 #. translators: %s: Name of current post
-#: inc/template-tags.php:71
-#: template-parts/content-page.php:32
+#: inc/template-tags.php:71 template-parts/content-page.php:32
 #, php-format
-#@ ekiline
 msgid "Edit %s"
 msgstr ""
 
+# @ ekiline
 #: search.php:18
 #, php-format
-#@ ekiline
 msgid "Search Results for: %s"
 msgstr ""
 
+msgid "Search"
+msgstr ""
+
+msgid "%s results found."
+msgstr ""
+
+# @ ekiline
 #: template-parts/content-none.php:14
-#@ ekiline
 msgid "Nothing Found"
 msgstr ""
 
+# @ ekiline
 #: template-parts/content-none.php:20
 #, php-format
-#@ ekiline
-msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
+# @ ekiline
 #: template-parts/content-none.php:24
-#@ ekiline
-msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
 msgstr ""
 
+# @ ekiline
 #: template-parts/content-none.php:29
-#@ ekiline
-msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:21
-#: template-parts/content-single.php:25
+# @ ekiline
+#: template-parts/content-page.php:21 template-parts/content-single.php:25
 #: template-parts/content.php:34
-#@ ekiline
 msgid "Pages:"
 msgstr ""
 
+# @ ekiline
 #. translators: %s: Name of current post.
 #: template-parts/content.php:27
 #, php-format
-#@ ekiline
 msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
 msgstr ""
+
 #. Theme Name of the plugin/theme
-msgid "_s"
+msgid "Ekiline"
 msgstr ""
 
+# @ ekiline
 #. Theme URI of the plugin/theme
-#@ ekiline
-msgid "http://underscores.me/"
+msgid "http://ekiline.com/"
 msgstr ""
 
+# @ ekiline
 #. Description of the plugin/theme
-#@ ekiline
-msgid "Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for."
+msgid ""
+"Hi. I'm a theme called <code>Ekiline</code>, based on <em>Underscores</em> "
+"and <em>Bootstrap</em>. "
 msgstr ""
 
+# @ ekiline
 #. Author of the plugin/theme
-#@ ekiline
-msgid "Automattic"
+msgid "Urielink in Bixnia "
 msgstr ""
 
-#. Author URI of the plugin/theme
-#@ ekiline
-msgid "http://automattic.com/"
+# @ ekiline
+#: inc/custom-header.php
+msgid "Pause"
+msgstr ""
+
+msgid "Play"
+msgstr ""
+
+# @ ekiline
+#: inc/customizer.php
+msgid "Text color"
+msgstr ""
+
+msgid "Links color"
+msgstr ""
+
+msgid "Menu color"
+msgstr ""
+
+msgid "Choose a base color, add second color for make a gradient"
+msgstr ""
+
+msgid "Module colors"
+msgstr ""
+
+msgid "Footer colors"
+msgstr ""
+
+msgid "Inverse menu"
+msgstr ""
+
+msgid "Change menu from lighten to darken"
+msgstr ""
+
+msgid "Horizontal logo"
+msgstr ""
+
+msgid "This show your brand in menu"
+msgstr ""
+
+msgid "Upload video to header"
+msgstr ""
+
+msgid ""
+"Recommended formats: MP4, WEBM or OGV, your header image conserves as video "
+"background or replacement"
+msgstr ""
+
+msgid "Header image height"
+msgstr ""
+
+msgid ""
+"Choose from a standard Jumbotron size to a Cover full display format (only "
+"in homepage)"
+msgstr ""
+
+msgid "Header logo"
+msgstr ""
+
+msgid "Add your brand in your image header"
+msgstr ""
+
+msgid "Header message"
+msgstr ""
+
+msgid "Customize the text in your heading image"
+msgstr ""
+
+msgid "Show all pages heading (thumbnail and title)"
+msgstr ""
+
+msgid "Show all entries heading (thumbnail and title)"
+msgstr ""
+
+msgid "Show all categories heading (thumbnail and title)"
+msgstr ""
+
+msgid "Site view"
+msgstr ""
+
+msgid ""
+"Allow fullwidth or center the content of your website by content type: "
+"homepage, categories or single content"
+msgstr ""
+
+msgid "Homepage"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Single pages"
+msgstr ""
+
+msgid "Centered"
+msgstr ""
+
+msgid "Fullwidth"
+msgstr ""
+
+msgid "Left sidebar"
+msgstr ""
+
+msgid "Right sidebar"
+msgstr ""
+
+msgid "Show your lists in columns"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Top menu settings"
+msgstr ""
+
+msgid "Primary menu settings"
+msgstr ""
+
+msgid "Modal menu settings"
+msgstr ""
+
+msgid ""
+"Add behaviors for this menu, fix to top, fix to bottom or affix with scroll"
+msgstr ""
+
+msgid "Fixed top"
+msgstr ""
+
+msgid "Fixed bottom"
+msgstr ""
+
+msgid "Fix to scroll"
+msgstr ""
+
+msgid "Show from bottom"
+msgstr ""
+
+msgid "Show from left"
+msgstr ""
+
+msgid "Show from right"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Site Optimization"
+msgstr ""
+
+msgid "Add tracking codes and improves site performance"
+msgstr ""
+
+msgid "Google Analytics"
+msgstr ""
+
+msgid "Add Google Analytics code, only your identifier ( UA-XXXXX-XX )"
+msgstr ""
+
+msgid "Search Console"
+msgstr ""
+
+msgid "Add google site verification, only content=\"value\""
+msgstr ""
+
+msgid "Add msvalidate content=\"value\""
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Optimize HTML"
+msgstr ""
+
+msgid "Minify HTML output for site speed"
+msgstr ""
+
+# @ ekiline
+#: serviceOptimize.php
+msgid "FundMe"
+msgstr ""
+
+# @ ekiline
+#: customizer.php
+msgid "Set a number of entries on sitemap, default is 20 and max 200"
+msgstr ""
+
+msgid "Enable sitemap XML"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Other services"
+msgstr ""
+
+msgid "Special features for your site"
+msgstr ""
+
+msgid "Site over maintenance"
+msgstr ""
+
+msgid "Show a maintenance page to your visitors"
+msgstr ""
+
+msgid "Wireframe mode"
+msgstr ""
+
+msgid "Show bootstrap style boxes to help you in the design process"
+msgstr ""
+
+msgid "Cancel comments in attachments"
+msgstr ""
+
+msgid ""
+"Yo can do this each attachment in media library or hiding all with this "
+"option"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Social media"
+msgstr ""
+
+msgid "Set each field to show and allow basic social media features"
+msgstr ""
+
+msgid "E-mail"
+msgstr ""
+
+msgid "Add your email address"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Add a phone number to be contacted"
+msgstr ""
+
+msgid "WhatsApp"
+msgstr ""
+
+msgid "Add a WhatsApp number to receive messages"
+msgstr ""
+
+msgid "Facebook"
+msgstr ""
+
+msgid "Add your Facebook page url"
+msgstr ""
+
+msgid "Add your Facebook Share App ID"
+msgstr ""
+
+msgid "Twitter"
+msgstr ""
+
+msgid "Add your Twitter name (@name)"
+msgstr ""
+
+msgid "Google Plus"
+msgstr ""
+
+msgid "Add your Google Plus page url"
+msgstr ""
+
+msgid "Linkedin"
+msgstr ""
+
+msgid "Add your Linkedin page url"
+msgstr ""
+
+msgid "YouTube"
+msgstr ""
+
+msgid "Add a YouTube page url"
+msgstr ""
+
+msgid "Instagram"
+msgstr ""
+
+msgid "Add an Instagram page url"
+msgstr ""
+
+msgid "Pinterest"
+msgstr ""
+
+msgid "Add a Pinterest page url"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Search Results for:"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Read more"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Username"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Invalid username or password"
+msgstr ""
+
+msgid "Username or Password is empty"
+msgstr ""
+
+msgid "You are logged out"
+msgstr ""
+
+msgid "Sorry! Security first"
+msgstr ""
+
+msgid "A username is required for registration"
+msgstr ""
+
+msgid "Sorry, that username already exists!"
+msgstr ""
+
+msgid "You must enter a valid email address"
+msgstr ""
+
+msgid "Sorry, that email address is already used!"
+msgstr ""
+
+msgid "Thank you for registering"
+msgstr ""
+
+msgid ""
+"Please check your email for receive your login password (Be sure to check "
+"your spam folder)"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Request access"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "We are over maintenance, sorry."
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Watch all in %s"
+msgstr ""
+
+msgid "Archive from "
+msgstr ""
+
+msgid "Entries from "
+msgstr ""
+
+msgid "Archive "
+msgstr ""
+
+msgid "Results "
+msgstr ""
+
+msgid "Error "
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Add a single bootstrap navbar"
+msgstr ""
+
+msgid "Bootstrap navbar menu"
+msgstr ""
+
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr ""
+
+msgid "Add a vertical navigation bootstrap styled"
+msgstr ""
+
+msgid "Bootstrap vertical navigation"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "The most recent posts on your site in carousel format"
+msgstr ""
+
+msgid "Recent posts carousel"
+msgstr ""
+
+msgid "Recent posts"
+msgstr ""
+
+msgid "Filter categories:"
+msgstr ""
+
+msgid "Show post date?"
+msgstr ""
+
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-"
+"size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s"
+"\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+msgid ""
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
+"\"%1$s\" pubdate>%2$s</time></span> in <a href=\"%6$s\" title=\"Return to "
+"%7$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "&larr; Previous"
+msgstr ""
+
+msgid "Next &rarr;"
+msgstr ""
+
+msgid "Edit this image %s"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Comment"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Top Menu"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Footer widgets"
+msgstr ""
+
+msgid "Dropdown in top menu"
+msgstr ""
+
+msgid "Dropdown in primary menu"
+msgstr ""
+
+msgid "Dropdown in single bootstrap navbar"
+msgstr ""
+
+msgid "In page at top of content"
+msgstr ""
+
+msgid "In page on bottom of content"
+msgstr ""
+
+msgid "Top first over all content"
+msgstr ""
+
+# @ ekiline
+#: inc/adminCategoryfield.php
+msgid "Category image"
+msgstr ""
+
+msgid "Add url image"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Ekiline settings"
+msgstr ""
+
+msgid "Transform to carousel"
+msgstr ""
+
+msgid "Open linked media on modal window"
+msgstr ""
+
+msgid "Carousel name (for customize)"
+msgstr ""
+
+msgid "Carousel text caption align"
+msgstr ""
+
+msgid "Center"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Carousel transition"
+msgstr ""
+
+# borrar
+msgid "Default"
+msgstr ""
+
+msgid "Fade"
+msgstr ""
+
+msgid "Vertical"
+msgstr ""
+
+msgid "Show indicators"
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "3sec"
+msgstr ""
+
+msgid "6sec"
+msgstr ""
+
+msgid "9sec"
+msgstr ""
+
+msgid "Hide gutters"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Title:"
+msgstr ""
+
+msgid "Select Menu:"
+msgstr ""
+
+msgid "&mdash; Select &mdash;"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "CSS custom class"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Number of posts to show:"
+msgstr ""
+
+msgid "Exclude categories:"
+msgstr ""
+
+msgid "Category IDs, separated by commas"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Hello"
+msgstr ""
+
+msgid "You are already logged in"
+msgstr ""
+
+# @ ekiline
+#: carpeta/archivo.php:29
+msgid "Comments are closed"
+msgstr ""
+
+# @ ekiline
+#: inc/extras
+msgid "Older posts"
+msgstr ""
+
+# @ ekiline
+msgid "Newer posts"
+msgstr ""
+
+# @ ekiline
+msgid "Posts navigation"
+msgstr ""
+
+# @ ekiline
+#: comments.php:29
+msgid "Show comments"
+msgstr ""
+
+# @ ekiline
+#: header.php
+msgid "Loading..."
+msgstr ""
+
+# @ ekiline
+#: serviceAccess.php
+msgid "Hi "
+msgstr ""
+
+# @ ekiline
+msgid "Thank you for visit this website."
+msgstr ""
+
+# @ ekiline
+msgid "Static"
+msgstr ""
+
+# @ ekiline
+msgid "Toggle"
+msgstr ""
+
+# @ ekiline
+msgid "Javascript is disabled"
+msgstr ""
+
+# @ ekiline
+msgid "Relative urls"
+msgstr ""
+
+# @ ekiline
+msgid ""
+"Recommended for sites developed in the local environment and need to be "
+"migrated"
+msgstr ""
+
+# @ ekiline
+msgid "Default Header Image"
+msgstr ""
+
+# @ ekiline
+#: themeBreadcrumb.php
+msgid "Home"
+msgstr ""
+
+msgid "Archive by category %s"
+msgstr ""
+
+msgid "Search results for %s"
+msgstr ""
+
+msgid "Posts tagged %s"
+msgstr ""
+
+msgid "Articles posted by %s"
+msgstr ""
+
+msgid "Error 404"
+msgstr ""
+
+msgid "Page %s"
+msgstr ""
+
+msgid "Comment page %s"
+msgstr ""
+
+# @ ekiline
+#: adminEditor.php
+msgid "Columns"
+msgstr ""
+
+msgid "Columns container"
+msgstr ""
+
+msgid "2 columns"
+msgstr ""
+
+msgid "3 columns"
+msgstr ""
+
+msgid "4 columns"
+msgstr ""
+
+msgid "6 columns"
+msgstr ""
+
+msgid "Typography"
+msgstr ""
+
+msgid "Big text"
+msgstr ""
+
+msgid "Lead Text <p>"
+msgstr ""
+
+msgid "Small Text"
+msgstr ""
+
+msgid "Highlight"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Insert"
+msgstr ""
+
+msgid "Abbreviation"
+msgstr ""
+
+msgid "Initialism"
+msgstr ""
+
+msgid "Cite"
+msgstr ""
+
+msgid "User Input"
+msgstr ""
+
+msgid "Variable"
+msgstr ""
+
+msgid "Sample Output"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Code Block"
+msgstr ""
+
+msgid "Big headings"
+msgstr ""
+
+msgid "Colors"
+msgstr ""
+
+msgid "Text colors"
+msgstr ""
+
+msgid "Primary"
+msgstr ""
+
+msgid "Secondary"
+msgstr ""
+
+msgid "Success"
+msgstr ""
+
+msgid "Danger"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Muted"
+msgstr ""
+
+msgid "Background colors"
+msgstr ""
+
+msgid "Utilities"
+msgstr ""
+
+msgid "Float Left"
+msgstr ""
+
+msgid "Float Right"
+msgstr ""
+
+msgid "Clearfix"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+msgid "Unstyled List"
+msgstr ""
+
+msgid "Inline List"
+msgstr ""
+
+msgid "Inline list item"
+msgstr ""
+
+msgid "Buttons"
+msgstr ""
+
+msgid "Solid buttons"
+msgstr ""
+
+msgid "Outline buttons"
+msgstr ""
+
+msgid "Button variables"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "Small"
+msgstr ""
+
+msgid "Extra Small"
+msgstr ""
+
+msgid "Block"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Alerts"
+msgstr ""
+
+msgid "Grid"
+msgstr ""
+
+msgid "Set containers"
+msgstr ""
+
+msgid "Set rows"
+msgstr ""
+
+msgid "Set columns"
+msgstr ""
+
+msgid "Column align/order"
+msgstr ""
+
+msgid "Measure"
+msgstr ""
+
+msgid "Lists and tables"
+msgstr ""
+
+msgid "Table dark"
+msgstr ""
+
+msgid "Table head light"
+msgstr ""
+
+msgid "Table head dark"
+msgstr ""
+
+msgid "Table striped"
+msgstr ""
+
+msgid "Table bordered"
+msgstr ""
+
+msgid "Table hoverable"
+msgstr ""
+
+msgid "Table small"
+msgstr ""
+
+msgid "Reverse Blockquote"
+msgstr ""
+
+msgid "Centered Blockquote"
+msgstr ""
+
+msgid "Blockquote Footer"
+msgstr ""
+
+msgid "Well"
+msgstr ""
+
+msgid "Large Well"
+msgstr ""
+
+msgid "Small Well"
+msgstr ""
+
+msgid "Badge"
+msgstr ""
+
+msgid "Pill"
+msgstr ""
+
+msgid "Rounded Image"
+msgstr ""
+
+msgid "Circle Image"
+msgstr ""
+
+msgid "Thumbnail Image"
+msgstr ""
+
+msgid "Responsive Image"
+msgstr ""
+
+# @ ekiline
+#: customizer.php
+msgid "Design sources"
+msgstr ""
+
+msgid "Tools to complement the design of your site"
+msgstr ""
+
+msgid "Google fonts"
+msgstr ""
+
+msgid ""
+"Review and choose font type from https://fonts.google.com sample, then add "
+"the src=\"XXX\" code"
+msgstr ""
+
+msgid "Summary words limit"
+msgstr ""
+
+msgid ""
+"Assign a number of words for the summary of your articles, default value is "
+"20"
+msgstr ""
+
+msgid "Optimize CSS style loading"
+msgstr ""
+
+msgid "Increase speed loading your styles after your information"
+msgstr ""
+
+msgid "Use Font Awesome"
+msgstr ""
+
+msgid "A collection of icons to enhance your designs"
+msgstr ""
+
+msgid "Use Bootstrap in editor"
+msgstr ""
+
+msgid "Bootstrap design styles in edit control"
+msgstr ""
+
+msgid "Horizontal carousel"
+msgstr ""
+
+msgid "Vertical carousel"
+msgstr ""
+
+msgid "Squares"
+msgstr ""
+
+msgid "Tooltip top"
+msgstr ""
+
+msgid "Tooltip right"
+msgstr ""
+
+msgid "Tooltip left"
+msgstr ""
+
+msgid "Tooltip bottom"
+msgstr ""
+
+msgid "Popover top"
+msgstr ""
+
+msgid "Popover right"
+msgstr ""
+
+msgid "Popover left"
+msgstr ""
+
+msgid "Popover bottom"
+msgstr ""
+
+msgid "Share this on:"
+msgstr ""
+
+msgid "Show loader"
+msgstr ""
+
+msgid "Display your brand before loading all page resources"
+msgstr ""
+
+msgid "Round items"
+msgstr ""
+
+msgid ""
+"The corners of elements such as buttons, navigations or panels will be "
+"rounded"
+msgstr ""
+
+msgid "Disable the use of carousels and ekiline galleries"
+msgstr ""
+
+msgid ""
+"This will remove formatting galleries and carousels to work with other "
+"plugins like jetpack"
+msgstr ""
+
+# @ ekiline
+#: ekiline-tinymce-langs.php
+msgid "Show grid"
+msgstr ""
+
+msgid "Add background"
+msgstr ""
+
+msgid "Choose a background color or set an image"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Choose background image"
+msgstr ""
+
+msgid "Choose"
+msgstr ""
+
+msgid "Background style"
+msgstr ""
+
+msgid "Background repeat"
+msgstr ""
+
+msgid "Default (repeat)"
+msgstr ""
+
+msgid "Horizontal"
+msgstr ""
+
+msgid "No repeat"
+msgstr ""
+
+msgid "Background position"
+msgstr ""
+
+msgid "top left"
+msgstr ""
+
+msgid "top center"
+msgstr ""
+
+msgid "top right"
+msgstr ""
+
+msgid "center left"
+msgstr ""
+
+msgid "center center"
+msgstr ""
+
+msgid "center right"
+msgstr ""
+
+msgid "bottom left"
+msgstr ""
+
+msgid "bottom center"
+msgstr ""
+
+msgid "bottom right"
+msgstr ""
+
+msgid "Background attachment"
+msgstr ""
+
+msgid "Default (scroll)"
+msgstr ""
+
+msgid "Fixed"
+msgstr ""
+
+msgid "Parallax"
+msgstr ""
+
+msgid "Add parallax effect to full width images"
+msgstr ""
+
+msgid "Add columns"
+msgstr ""
+
+msgid "Column"
+msgstr ""
+
+msgid "Each column is inserted by proportion"
+msgstr ""
+
+msgid "Insert Google map"
+msgstr ""
+
+msgid "Paste link generated by google maps"
+msgstr ""
+
+msgid "Replace height map"
+msgstr ""
+
+msgid "Insert Tabs"
+msgstr ""
+
+msgid "Number the necessary tabs"
+msgstr ""
+
+msgid "Title this tab"
+msgstr ""
+
+msgid "Add any content with format, text, images, video or galleries"
+msgstr ""
+
+msgid "Toggle item"
+msgstr ""
+
+msgid "Insert a single toggle item o multiple accordion items"
+msgstr ""
+
+msgid "Set number"
+msgstr ""
+
+msgid "Title this toggle item"
+msgstr ""
+
+msgid "Tooltips"
+msgstr ""
+
+msgid "Create a tooltip or popover"
+msgstr ""
+
+msgid ""
+"By default you set a tooltip adding only title and position. If you fill all "
+"fields tooltip transforms to popover."
+msgstr ""
+
+msgid "Set title to item"
+msgstr ""
+
+msgid "Set description to item"
+msgstr ""
+
+msgid "Add your content"
+msgstr ""
+
+msgid "Allow HTML content"
+msgstr ""
+
+msgid "Set position to show pop item"
+msgstr ""
+
+msgid "Extra shortocodes"
+msgstr ""
+
+msgid "Social links and more"
+msgstr ""
+
+msgid "Choose a shortcode to enhance your page"
+msgstr ""
+
+msgid "Your social links nav"
+msgstr ""
+
+msgid "Share nav for visitors"
+msgstr ""
+
+msgid "Insert a login form"
+msgstr ""
+
+msgid "Entries module"
+msgstr ""
+
+msgid "Choose category and format for show entries"
+msgstr ""
+
+msgid "Set the amount of posts"
+msgstr ""
+
+msgid "Custom fields"
+msgstr ""
+
+msgid "Choose and copy the value that you need"
+msgstr ""
+
+msgid "Replace meta title"
+msgstr ""
+
+msgid "Replace meta description"
+msgstr ""
+
+msgid "Add css style"
+msgstr ""
+
+msgid "Add js script"
+msgstr ""
+
+msgid "Set custom field with:"
+msgstr ""
+
+msgid "Modal box"
+msgstr ""
+
+msgid "Create a modalbox with custom content"
+msgstr ""
+
+msgid "Assign modal on selected item, set title and edit content"
+msgstr ""
+
+msgid "Set title to modal window"
+msgstr ""
+
+msgid "Add modal content"
+msgstr ""
+
+msgid "Quick designs"
+msgstr ""
+
+msgid "HTML presets"
+msgstr ""
+
+msgid "Choose a design to create an amazing publication"
+msgstr ""
+
+msgid ""
+"If you buy the definitive version of Ekiline you will have access to more "
+"designs!"
+msgstr ""
+
+msgid "Custom presets"
+msgstr ""
+
+msgid "Your HTML presets"
+msgstr ""
+
+msgid ""
+"Go to Appearance > Editor and edit custom-layouts file to replace and add "
+"more HTML sets"
+msgstr ""
+
+msgid "Add FontAwesome icon"
+msgstr ""
+
+msgid "Edit your HTML presets:"
+msgstr ""
+
+msgid "Sitemap created successfully!"
+msgstr ""
+
+msgid "Upload image"
+msgstr ""
+
+msgid "Upload or choose image"
+msgstr ""
+
+msgid "Add image"
+msgstr ""
+
+msgid ""
+"This site uses cookies. By continuing to browse the site, you are agreeing "
+"to our use of cookies."
+msgstr ""
+
+msgid "Agree"
+msgstr ""
+
+msgid "Find out more."
+msgstr ""
+
+msgid "Privacy and cookies"
+msgstr ""
+
+msgid ""
+"Choose the privacy information page to display a warning about the use of "
+"cookies"
+msgstr ""
+
+msgid "Ekiline tips:"
+msgstr ""
+
+msgid "Get more"
+msgstr ""
+
+msgid "Make money"
+msgstr ""
+
+msgid "Connection not established"
+msgstr ""
+
+msgid "About Ekiline for Wordpress"
+msgstr ""
+
+msgid "Thanks for using this theme!"
+msgstr ""
+
+msgid ""
+"Find more information to improve your skills in the personalization of your "
+"site."
+msgstr ""
+
+msgid ""
+"Get the definitive version, with more benefits for the distribution of your "
+"projects:"
+msgstr ""
+
+msgid ""
+"Quick use guide for your clients, in Keynote and Power Point format for "
+"editing."
+msgstr ""
+
+msgid "CSS complementary designs for general theme."
+msgstr ""
+
+msgid "HTML structures preloaded for use in publications."
+msgstr ""
+
+msgid "Complete theme, without external links, ads or tips."
+msgstr ""
+
+msgid "Buy and download"
+msgstr ""
+
+msgid "You can also"
+msgstr ""
+
+msgid "fund the development"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "earn money"
+msgstr ""
+
+msgid "by helping."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "About Ekiline"
+msgstr ""
+
+msgid ""
+"Ekiline simplifies the creation of a website with Wordpress, it is a working "
+"method that brings together the standard practices of the internet industry, "
+"to facilitate the tasks of planning, design, development and optimization. "
+"For more information visit ekiline.com"
+msgstr ""
+
+msgid "Limited liability"
+msgstr ""
+
+msgid ""
+"As a courtesy, we provide information on how to use certain third-party "
+"products, but we do not directly support their use and we are not "
+"responsible for the functions, reliability or compatibility of such "
+"products. The names, trademarks and logos of third parties are registered "
+"trademarks of their respective owners."
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Installation"
+msgstr ""
+
+msgid "Personalization"
+msgstr ""
+
+msgid "Elements and shortcodes"
+msgstr ""
+
+msgid "Compatibility"
+msgstr ""
+
+msgid "All rights reserved. Ekiline is a development of"
+msgstr ""
+
+msgid ""
+"This content is password protected. To view it please enter your password "
+"below:"
+msgstr ""
+
+msgid "Password:"
+msgstr ""
+
+msgid "Enter"
+msgstr ""
+
+msgid "Select category"
 msgstr ""
