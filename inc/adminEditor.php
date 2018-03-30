@@ -161,22 +161,22 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                ),
 	                array(
 	                    'title'     => __( 'Display 1', 'ekiline' ),
-	                    'selector'  => 'h1,h2,h3,h4',
+	                    'selector'  => 'p,h1,h2,h3,h4',
 	                    'classes'   => 'display-1',
 	                ),                           
 	                array(
 	                    'title'     => __( 'Display 2', 'ekiline' ),
-	                    'selector'  => 'h1,h2,h3,h4',
+	                    'selector'  => 'p,h1,h2,h3,h4',
 	                    'classes'   => 'display-2',
 	                ),                           
 	                array(
 	                    'title'     => __( 'Display 3', 'ekiline' ),
-	                    'selector'  => 'h1,h2,h3,h4',
+	                    'selector'  => 'p,h1,h2,h3,h4',
 	                    'classes'   => 'display-3',
 	                ),                           
 	                array(
 	                    'title'     => __( 'Display 4', 'ekiline' ),
-	                    'selector'  => 'h1,h2,h3,h4',
+	                    'selector'  => 'p,h1,h2,h3,h4',
 	                    'classes'   => 'display-4',
 	                ),                           
 	            ),
@@ -187,7 +187,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	            'items' => array(
 
 			        array(
-			            'title' => __( 'Text Colors', 'ekiline' ),
+			            'title' => __( 'Text colors', 'ekiline' ),
 			            'items' => array(
 			                array(
 			                    'title'     => __( 'Primary', 'ekiline' ),

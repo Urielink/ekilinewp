@@ -70,7 +70,7 @@ function ekiline_tinymce_translation() {
         'bottom' => __('bottom','ekiline'),
         'left' => __('left','ekiline'),
     //adminShare.js
-        'share' => __('Social tools','ekiline'),
+        'share' => __('Extra shortocodes','ekiline'),
         'sharelabel' => __('Social links and more','ekiline'),
         'sharetext' => __('Choose a shortcode to enhance your page','ekiline'),
         'socialnet' => __('Your social links nav','ekiline'),

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-03-18 21:35-0600\n"
+"PO-Revision-Date: 2018-03-30 16:53-0600\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.0.6\n"
 "Last-Translator: \n"
@@ -895,8 +895,11 @@ msgstr "6 columnas"
 msgid "Typography"
 msgstr "Tipografía"
 
-msgid "Lead Text"
-msgstr "Destacar (Lead)"
+msgid "Big text"
+msgstr "Texto grande"
+
+msgid "Lead Text <p>"
+msgstr "Destacar <p>"
 
 msgid "Small Text"
 msgstr "Pequeño <small>"
@@ -937,8 +940,11 @@ msgstr "Bloque de código <pre>"
 msgid "Big headings"
 msgstr "Grandes encabezados"
 
-msgid "Text Colors (B4)"
-msgstr "Colores de texto (B4)"
+msgid "Colors"
+msgstr "Colores"
+
+msgid "Text colors"
+msgstr "Colores de texto"
 
 msgid "Primary"
 msgstr "Primary (Azúl)"
@@ -967,8 +973,8 @@ msgstr "Dark (Negro)"
 msgid "Muted"
 msgstr "Muted (inactivo)"
 
-msgid "Background colors (B4)"
-msgstr "Colores de fondo (B4)"
+msgid "Background colors"
+msgstr "Colores de fondo"
 
 msgid "Utilities"
 msgstr "Utilidades"
@@ -993,6 +999,9 @@ msgstr "Lista horizontal (inline)"
 
 msgid "Inline list item"
 msgstr "Objeto de lista horizontal"
+
+msgid "Buttons"
+msgstr "Botones"
 
 msgid "Solid buttons"
 msgstr "Botones sólidos"
@@ -1024,8 +1033,47 @@ msgstr "Desactivado"
 msgid "Alerts"
 msgstr "Alertas"
 
-msgid "Other (B4)"
-msgstr "Otros (B4)"
+msgid "Grid"
+msgstr "Retícula"
+
+msgid "Set containers"
+msgstr "Contenedores"
+
+msgid "Set rows"
+msgstr "Filas"
+
+msgid "Set columns"
+msgstr "Columnas"
+
+msgid "Column align/order"
+msgstr "Columna alinear/orden"
+
+msgid "Measure"
+msgstr "Medidas"
+
+msgid "Lists and tables"
+msgstr "Listas y tablas"
+
+msgid "Table dark"
+msgstr "Tabla oscura"
+
+msgid "Table head light"
+msgstr "Encabezado claro"
+
+msgid "Table head dark"
+msgstr "Encabezado oscuro"
+
+msgid "Table striped"
+msgstr "Tabla rayada"
+
+msgid "Table bordered"
+msgstr "Tabla bordeada"
+
+msgid "Table hoverable"
+msgstr "Reacción al cursor (hover)"
+
+msgid "Table small"
+msgstr "Tabla pequeña"
 
 msgid "Reverse Blockquote"
 msgstr "Cita invertida"
@@ -1158,7 +1206,7 @@ msgstr "Esto eliminará el formato de galerias y carruseles para trabajar con ot
 # @ ekiline
 #: ekiline-tinymce-langs.php
 msgid "Show grid"
-msgstr "Mostrar columnas"
+msgstr "Ver reticula"
 
 msgid "Add background"
 msgstr "Agregar fondo"
@@ -1301,8 +1349,8 @@ msgstr "Permitir contenido HTML"
 msgid "Set position to show pop item"
 msgstr "Elige la posicion para mostrar"
 
-msgid "Social tools"
-msgstr "Redes Social"
+msgid "Extra shortocodes"
+msgstr "Extra shortocodes"
 
 msgid "Social links and more"
 msgstr "Enlaces a redes sociales y más"

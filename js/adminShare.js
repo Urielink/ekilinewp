@@ -22,7 +22,7 @@
     	
         editor.addButton('custom_mce_button9', {
             //icon: false,
-            // title : 'Social tools',
+            // title : 'Extra shortocodes',
             title : editor.getLang('ekiline_tinymce.share'),
             image: '../wp-content/themes/ekiline/img/ico-share.png',
             onclick: function (e) {
