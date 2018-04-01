@@ -104,7 +104,6 @@ function ekiline_csscolors() {
     $bgcolor = '#'.get_background_color();
     $texto = get_option('text_color');
     $enlaces = get_option('links_color');
-    $modulos = get_option('module_color');
     $menu = get_option('menu_color');
     $mgradient = get_option('menu_gradient');
     $footer = get_option('footer_color');
@@ -115,7 +114,6 @@ function ekiline_csscolors() {
     // Si no existen colores, añadir estos // add default value
     if ( !$texto ) : $texto = '#333333'; endif;
     if ( !$enlaces ) : $enlaces = '#007bff'; endif;
-    if ( !$modulos ) : $modulos = '#eeeeee'; endif;
     if ( !$footer ) : $footer = '#eeeeee'; endif;
     if ( $inverse ) : $inverse = '#ffffff;' ; endif;
     if ( $rangeLmnts == '' || '0' ) : $rangeLmnts = '0' ; endif;
@@ -136,11 +134,7 @@ function ekiline_csscolors() {
         .site-footer { background-color: '.$footer.';}         
         .cat-thumb{background:url("'.get_site_icon_url().'") no-repeat center center / 100px;}
         .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third,.bg-footer{background:'.$footer.';}
-        #secondary{border-right:1px solid '.$modulos.';} #third{border-left:1px solid '.$modulos.';} 
-        .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{border: 1px solid '.$modulos.';}
-        .modal-header, .nav-tabs{border-bottom: 1px solid '.$modulos.';} hr, .modal-footer{border-top: 1px solid '.$modulos.';}
         #pageLoad {width: 100%;height: 100%;position: fixed;text-align: center;z-index: 5000;top: 0;left: 0;right: 0;background-color:'.$bgcolor.';}  
-        .breadcrumb, .bg-module{ background-color:'.$modulos.'; }
         .carousel-indicators li,.popover-title,.popover,.tooltip-inner,.modal-content,.progress,.alert,.thumbnail,.container .jumbotron,.container-fluid .jumbotron,.label,.navbar-toggle .icon-bar,.navbar-toggle,.nav-tabs-justified > li > a,.nav-pills > li > a,.nav-tabs.nav-justified > li > a,.input-group-addon.input-lg,.input-group-addon.input-sm,.input-group-addon,.input-group-sm > .form-control,.input-group-sm > .input-group-addon,.input-group-sm > .input-group-btn > .btn,.input-group-lg > .form-control,.input-group-lg > .input-group-addon,.input-group-lg > .input-group-btn > .btn,.form-control,.input-sm,.form-group-sm .form-control,.input-lg,.form-group-lg .form-control,.btn,.btn-lg,.btn-group-lg > .btn,.btn-sm,.btn-group-sm > .btn,.btn-sm,.btn-group-xs > .btn,.dropdown-menu,.pagination,.breadcrumb{border-radius:'.$rangeLmnts.'px;}        
         .nav-tabs > li > a{border-radius: '.$rangeLmnts.'px '.$rangeLmnts.'px 0px 0px;}
         .pagination-sm .page-item:first-child .page-link{border-top-left-radius: '.$rangeLmnts.'px;border-bottom-left-radius: '.$rangeLmnts.'px}
