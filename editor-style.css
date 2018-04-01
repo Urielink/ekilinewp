@@ -7,8 +7,7 @@
  **/
 .btn{-ms-touch-action:inherit;touch-action:inherit;cursor:inherit;-webkit-user-select:inherit;-moz-user-select:inherit;-ms-user-select:inherit;user-select:inherit;}
 body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor ( overflow-y: visible !important; )*/
-/*.embed-responsive{position:inherit;display:inherit;height:auto;padding:0;overflow:inherit;}
-.embed-responsive-4by3,.embed-responsive-16by9{padding-bottom: 0px;}*/
+
 /*Modo wireframe **/
 #tinymce.wf-ekiline.wp-editor [class*='col']{border:1px solid #ddd;}
 
@@ -78,15 +77,12 @@ body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor
 #tinymce.wf-ekiline.wp-editor .row::before { content: 'row';}
 #tinymce.wf-ekiline.wp-editor .card-deck{border:1px dotted #ddd;}
 #tinymce.wf-ekiline.wp-editor .card-deck::before { content: 'card-deck';}
+#tinymce.wp-editor .dotted{border:1px dashed #ddd;}
+#tinymce.wf-ekiline.wp-editor .dotted::before { content: 'hidden-html';}
 
 #tinymce.wf-ekiline.wp-editor .container::before,
 #tinymce.wf-ekiline.wp-editor .row::before,
-#tinymce.wf-ekiline.wp-editor .card-deck::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;width:100%;}
+#tinymce.wf-ekiline.wp-editor .card-deck::before,#tinymce.wf-ekiline.wp-editor .dotted::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;width:100%;}
 
-#tinymce.wf-ekiline.wp-editor .hide-content{color:#ccc !important;}
-
-#tinymce.wf-ekiline.wp-editor .dotted{border:1px dotted #ddd;padding:5px;}
-.bg-single{	background-repeat: no-repeat;}
 #tinymce.wf-ekiline.wp-editor .hlight{border:1px solid #494974;}
-
 #tinymce.wf-ekiline.wp-editor .hlight::before{content:attr(data-hlight);background:#494974;color:#fff;font-size:8px;text-transform:lowercase;line-height:100%;padding:3px 4px;display:block;}
