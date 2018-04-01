@@ -17,19 +17,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	
 	add_editor_style('editor-style.min.css'); 
 	
-	/*Existe un problema en el editor, cachea el estilo, entonces
+	/* Existe un problema en el editor, cachea el estilo, entonces
 	 * es necesario forzar el refresh con este script:
 	 * https://wordpress.stackexchange.com/questions/33318/forcing-reload-of-editor-style-css
 	 **/
-	
-	
-	/**
-	 * Añadir los tipos de estilo que se requieren para trabajar con bootstrap:
-	 * http://www.wpbeginner.com/wp-tutorials/how-to-add-custom-styles-to-wordpress-visual-editor/ 
-	 */
-	 
-	//Registro mi menu de estilos 
-	//Register Ekiline styles 
+		 
+	//Registro mi menu de estilos || Register Ekiline styles 
 	
 	function ekiline_bootstrap_styles($buttons) {
 	    array_unshift($buttons, 'styleselect');
@@ -37,15 +30,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	}
 	add_filter('mce_buttons_3', 'ekiline_bootstrap_styles');
 	
-	/*
-	* Genero mi callback
-	* Add my callback
-	*/
+	// Genero mi callback || Add my callback
 	
 	function ekiline_mce_before( $init_array ) {  
 	
 	/**
-	 * La definición de estilos se agrega con arreglos, cada arreglo equivale a un objeto y este puede anidarse
+	 * La definicion de estilos se agrega con arreglos, cada arreglo equivale a un objeto y este puede anidarse
 	 * Define the style_formats array
 	 * Each array child is a format with it's own settings
 	 * Notice that each array has title, block, classes, and wrapper arguments
@@ -60,40 +50,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 * **https://getunderskeleton.com/wordpress-custom-styles-dropdown/
 	 */
 	
-	    $style_formats = array(      
-	    
-	/**        array(  
-	            'title' => __('Columns', 'ekiline'),  
-	            'items' => array(                
-	                array(  
-	                    'title' => __('Columns container', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'row',
-	                    'wrapper' => true,
-	                ),
-	                array(  
-	                    'title' => __('2 columns', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'col-sm-6',
-	                ),
-	                array(  
-	                    'title' => __('3 columns', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'col-sm-4',
-	                ),
-	                array(  
-	                    'title' => __('4 columns', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'col-sm-3',
-	                ),
-	                array(  
-	                    'title' => __('6 columns', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'col-sm-2',
-	                ),              
-	            ),            
-	        ), 
-	**/        
+	    $style_formats = array(      	    
 	        array(
 	            'title' => __( 'Typography', 'ekiline' ),
 	            'items' => array(
@@ -529,8 +486,6 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	            'items' => array(
 	                array(
 	                    'title'     => __( 'Set containers', 'ekiline' ),
-	                    
-						//valores anidados
 
 				            'items' => array(
 				                array(
@@ -545,9 +500,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 				                ),
 				                array(
 				                    'title'     => __( 'Set rows', 'ekiline' ),
-				                    // 'selector'  => 'div',
-				                    // 'classes'   => 'row',
-					                    // anidados
+
 							            'items' => array(
 							                array(
 							                    'title'     => __( 'row', 'ekiline' ),
@@ -602,17 +555,10 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							                    'selector'  => '.row',
 							                    'classes'   => 'no-gutters',
 							                ),
-	         
-						
 							            ),	                    				                    				                    
-					                    // fin anidados				                    				                    
 				                ),            
 			
 				            ),	                    
-
-						//fin de valores anidados
-						
-						
 	                ),
 	                array(
 	                    'title'     => __( 'Set columns', 'ekiline' ),
@@ -623,12 +569,10 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			                    'title'     => __( 'col', 'ekiline' ),
 			                    'selector'  => 'div',
 			                    'classes'   => 'col',
-			                ),
-			                
+			                ),			                
 			                //variable por display
 			                array(
 			                    'title'     => __( 'col-sm-*', 'ekiline' ),
-
 			                    // anidados col-sm-*
 					            'items' => array(
 					            	//estandar
@@ -642,14 +586,11 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'title'     => __( 'col-sm-auto', 'ekiline' ),
 					                    'selector'  => 'div',
 					                    'classes'   => 'col-sm-auto',
-					                ),
-					
+					                ),					
 					            ),	                    				                    				                    
-			                    // fin anidados	col-sm-*			                    
 			                ),
 			                array(
 			                    'title'     => __( 'col-md-*', 'ekiline' ),
-
 			                    // anidados col-md-*
 					            'items' => array(
 					            	//estandar
@@ -666,11 +607,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                ),
 					
 					            ),	                    				                    				                    
-			                    // fin anidados col-md-*		                    
 			                ),			     
 			                array(
 			                    'title'     => __( 'col-lg-*', 'ekiline' ),
-
 			                    // anidados col-lg-*
 					            'items' => array(
 					            	//estandar
@@ -687,11 +626,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                ),
 					
 					            ),	                    				                    				                    
-			                    // fin anidados col-lg-*		                    
 			                ),
 			                array(
 			                    'title'     => __( 'col-xl-*', 'ekiline' ),
-
 			                    // anidados col-xl-*
 					            'items' => array(
 					            	//estandar
@@ -708,9 +645,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                ),
 					
 					            ),	                    				                    				                    
-			                    // fin anidados col-xl-*		                    
 			                ),			                			                           
-			                //fin variable por display			
 			            ),	                    				                    				                    
 	                    			                    
 	                ),// fin Set Columns	
@@ -739,10 +674,8 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'selector'  => 'div',
 					                    'classes'   => 'align-self-start',
 					                ),
-			                    // fin anidados	align-self			                    					
 					            ),
-			                ),//fin variable por align self
-			                
+			                ),			                
 			                //variable por order
 			                array(
 			                    'title'     => __( 'order', 'ekiline' ),
@@ -803,7 +736,6 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							                    'selector'  => 'div',
 							                    'classes'   => 'order-lg-last',
 							                ),
-					                    // fin anidados	order-sm			                    					
 							            ),
 					                ),									
 					                array(
@@ -820,12 +752,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							                    'selector'  => 'div',
 							                    'classes'   => 'order-xl-last',
 							                ),
-					                    // fin anidados	order-sm			                    					
 							            ),
 					                ),
-				                	//fin por tamaño de columna			                
 					            ),
-					            //fin variable order	
 			                ),		                
 			                //variable por offset
 			                array(
@@ -852,11 +781,10 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'selector'  => 'div',
 					                    'classes'   => 'offset-xl-1',
 					                ),
-					                //fin por tamaño de columna			                					                					        	                    					
 					            ),
-			                ),//fin variable offset				                
+			                ),
 			            ),	                    			                    
-	                ),// fin Order Align Columns	
+	                ),
 					// Medidas, margin padding etc…
 	                array(
 	                    'title'     => __( 'Measure', 'ekiline' ),
@@ -897,8 +825,8 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
 					                    'classes'   => 'my-1',
 					                ),
-					            ), // fin anidados	margin	
-			                ),//fin variable por margen
+					            ),
+			                ),
 			                //variable por padding
 			                array(
 			                    'title'     => __( 'padding', 'ekiline' ),
@@ -934,8 +862,8 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
 					                    'classes'   => 'py-1',
 					                ),
-					            ), // fin anidados	padding	
-			                ),//fin variable por padding			                
+					            ),
+			                ),
 			                //variable por width
 			                array(
 			                    'title'     => __( 'width', 'ekiline' ),
@@ -967,8 +895,8 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'classes'   => 'mw-100',
 					                ),
 
-					            ), // fin anidados	width	
-			                ),//fin variable por width	
+					            ),
+			                ),
 			                //variable por height
 			                array(
 			                    'title'     => __( 'height', 'ekiline' ),
@@ -1000,10 +928,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    'classes'   => 'mh-100',
 					                ),
 
-					            ), // fin anidados	height	
-			                ),//fin variable por height	
-			            ),	                    				                    				                    
-	                    			                    
+					            ),
+			                ),
+			            ),	                    				                    				                    	                    			                    
 	                ),// fin Medidas, margin padding etc…              
 	                
 	            ),
@@ -1129,91 +1056,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                    'classes'   => 'img-fluid',
 	                ),
 	            ),
-	        ),        	        
-	        
-        /** array(
-	            'title' => __( 'Ekiline extra', 'ekiline' ),
-	            'items' => array(
-	                array(
-	                    'title'     => __( 'Iframe modal', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'classes'   => 'modal-iframe',
-	                ),
-	                array(
-	                    'title'     => __( 'Image modal', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'classes'   => 'modal-image',
-	                ),
-	                array(
-	                    'title'     => __( 'Tooltip', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'classes'   => 'tooltip-default',
-	                    'attributes' => array(
-	                        'title' => 'Tooltip text'
-	                    ),                                        
-	                ),
-	                array(
-	                    'title'     => __( 'Popover', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'classes'   => 'popover-default',
-	                    'attributes' => array(
-	                        'title' => 'Popover Title',
-	                        'data-content' => 'Popover Content',
-	                    ),                                        
-	                ),
-	                array(
-	                    'title'     => __( 'Popover dismiss', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'attributes' => array(
-	                        'tabindex' => '0',
-	                        'data-trigger' => 'focus',
-	                    ),                                        
-	                ),                                
-	                array(
-	                    'title'     => __( 'Popover Rich', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'classes'   => 'popover-rich',
-	                    'attributes' => array(
-	                        'title' => 'Popover Title',
-	                    ),                                        
-	                ),                                
-	                array(
-	                    'title'     => __( 'Show top', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'attributes' => array(
-	                        'data-placement' => 'top'
-	                    ),                                        
-	                ),
-	                array(
-	                    'title'     => __( 'Show right', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'attributes' => array(
-	                        'data-placement' => 'right'
-	                    ),                                        
-	                ),
-	                array(
-	                    'title'     => __( 'Show bottom', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'attributes' => array(
-	                        'data-placement' => 'bottom'
-	                    ),                                        
-	                ),
-	                array(
-	                    'title'     => __( 'Show left', 'ekiline' ),
-	                    'selector'  => 'a',
-	                    'attributes' => array(
-	                        'data-placement' => 'left'
-	                    ),                                        
-	                ),
-	                array(  
-	                    'title' => __('Hide content', 'ekiline'),  
-	                    'block' => 'div',  
-	                    'classes' => 'hide-content',
-	                ),                                
-	                                                
-	            ),
-	        ),	**/                        
-	    
+	        ),        	        	    
 	    );  
 	    
 	    // Insertar los arreglos
@@ -1224,8 +1067,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    return $init_array;  
 	  
 	} 
-	// Se agrega el filtro para sobreescribir las ordenes en el editor TinyMCE
-	// Attach callback to 'tiny_mce_before_init' 
+	// Se agrega el filtro para sobreescribir las ordenes en el editor TinyMCE || Attach callback to 'tiny_mce_before_init' 
 	add_filter( 'tiny_mce_before_init', 'ekiline_mce_before' ); 
 	
 	
@@ -1242,11 +1084,11 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 **/
 	 
 	/**
-	 * Add a custom button to tinymce editor
+	 * 1) Agregar botones a tinymce editor || Add a custom button to tinymce editor
 	 */
 	add_action('admin_head', 'custom_mce_buttons');
  	function custom_mce_buttons() {
-	    // Check if WYSIWYG is enabled
+	    // Verificar si esta habilitado || Check is enabled
 	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
 	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
 	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
@@ -1254,7 +1096,10 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	}
 	
 	
-	// Add the path to the js file with the custom button function
+	/**
+	 * 2) Agregar la ruta a la funcion del boton || Add the path to the js file with the custom button function
+	 */
+
 	function custom_tinymce_plugin( $plugin_array ) {
 	    // $plugin_array['custom_mce_button1'] = get_template_directory_uri() .'PATH_TO_THE_JS_FILE';
 	    // $plugin_array['custom_mce_button2'] = get_template_directory_uri() .'PATH_TO_THE_OTHER_JS_FILE';
@@ -1276,7 +1121,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    return $plugin_array;
 	}
 	
-	// Register and add new button in the editor
+	// Registrar el boton y agregarlo || Register and add new button in the editor
 	function register_mce_buttons( $buttons ) {
 	    //array_push( $buttons, 'custom_mce_button1' );
 	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button12, custom_mce_button10, custom_mce_button13, custom_mce_button14, custom_mce_button5, custom_mce_button9, custom_mce_button15' );
@@ -1292,18 +1137,18 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	
 	
 	/*
-	 * Crear una lista dinámica de categorias existentes para shortcode 
-	 * Pasar datos PHP al admin para el editor.
+	 * Crear una lista dinámica de categorias existentes para shortcode || add a category list to tinymce button
+	 * Pasar datos PHP al admin para el editor || PHP to JS admim
 	 * https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_plugins
 	 * https://wordpress.stackexchange.com/questions/81895/how-to-list-categories-and-subcategories-in-json-format
 	 */
 	 
-	// se invoca la funcion solo si está editando algun artículo.
+	// se invoca la funcion solo si está editando algun artículo || call function if is admin
 	foreach ( array('post.php','post-new.php') as $hook ) {
 	     add_action( "admin_head-$hook", 'my_admin_head' );
 	}
 	
-	// Arreglo para incorporar el script al head.
+	// Arreglo para incorporar el script al head || add script to head
 	
 		function my_admin_head() {
 		// Prueba como la documentacion de wordpress.
@@ -1356,7 +1201,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 
 }
 
-//faltan botones
+// Faltan botones de wordpress || Add hidden wordpress buttons.
 function wp_mce_buttons( $buttons ) {	
 	$buttons[] = 'wp_page';
 	return $buttons;

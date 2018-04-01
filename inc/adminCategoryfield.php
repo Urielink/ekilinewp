@@ -14,13 +14,11 @@
  * https://en.bainternet.info/wordpress-category-extra-fields/
  */
 
-//declarar accion para el campo extra
-//add extra fields to category edit form hook
+//declarar accion para el campo extra || add extra fields to category edit form hook
 add_action ( 'edit_category_form_fields', 'extra_category_fields');
 
 function extra_category_fields( $tag ) {
-    // revisar la existencia del ID
-    // check for existing featured ID
+    // revisar la existencia del ID || check for existing featured ID
     $t_id = $tag->term_id;
     $cat_meta = get_option( "category_$t_id");	
 ?>
@@ -38,8 +36,7 @@ function extra_category_fields( $tag ) {
 <?php
 }
 
-// guardar el dato de nuestro campo
-// save extra category extra fields hook
+// guardar el dato de nuestro campo || save extra category extra fields hook
 add_action ( 'edited_category', 'save_extra_category_fileds');
 
 function save_extra_category_fileds( $term_id ) {
