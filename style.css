@@ -42,14 +42,10 @@
 .loadtext{line-height:100%;position:absolute;top:46%;left:0;right:0;width:auto;height:auto;}
 .loadicon{margin:0px;padding:10px;font-size:2em;}
 
-/* body styles 
-body{-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;}*/
-
 /* ------------------------------------------------
  * WordPress: escencial || core items
  * ----------------------------------------------*/
 embed,iframe,object{max-width:100%;margin:0 auto;position:relative;display:block;}
-/*img{max-width:100%;height:auto;}*/
 .alignnone{margin:5px 20px 20px 0;}
 .aligncenter,div.aligncenter{display:block;margin:5px auto 5px auto;}
 .alignright{float:right;margin:5px 0 20px 20px;}
@@ -68,23 +64,17 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 .wp-video{margin:0 auto;}
 .wp-video .mejs-container{max-width:100%;}
 .screen-reader-text{clip:rect(1px,1px,1px,1px);position:absolute !important;white-space:nowrap;height:1px;width:1px;overflow:hidden;}
-.screen-reader-text:focus{background-color:#f1f1f1;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,0.6);clip:auto !important;color:#21759b;display:block;font-size:14px;font-size:0.875 rem;font-weight:bold;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000;}
+.screen-reader-text:focus{background-color:#f1f1f1;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,0.6);clip:auto !important;color:#21759b;display:block;font-size:14px;font-size:0.875rem;font-weight:bold;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000;}
 .sticky{display:block;}
 .bypostauthor{display:block;}
-/*caso admin logged-in admin-bar*/
 .logged-in .navbar.fixed-top{ margin-top: 30px; }
-#user_switching_switch_on{position:fixed;left:0;padding:.4rem;margin:0px;bottom:0px;z-index:3000;background-color:#343A40;font-size:.8rem;}
+#user_switching_switch_on{position:fixed;left:0;padding:0.4rem;margin:0px;bottom:0px;z-index:3000;background-color:#343A40;font-size:0.8rem;}
 
 /* ------------------------------------------------
  * Ekiline LAYOUT
  * ----------------------------------------------*/
 /* Logo en navbar || Brand in navbar */
-.navbar-brand > img {
-    height: 50px !important;
-    max-width: 220px !important;
-    margin-top: -10px;
-    margin-bottom: -10px;
-}
+.navbar-brand > img{height:50px !important;max-width:220px !important;margin-top:-10px;margin-bottom:-10px;}
 
 /* ------------------------------------------------
  * Ekiline SHORTCODES
@@ -169,18 +159,12 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 	.container { max-width: 100%;}		
 }
 
-/* SEGUNDO CAMBIO Tablets y smartphones horizontales */
+/* SEGUNDO CAMBIO Tablets y smartphones horizontales || Tablets or smartphone horizontal */
 @media only screen and (max-width:768px){
 		
- /*Ajustes en menu navbar || navbar fixes*/
- .navbar-brand{font-size:12px;}
-
-.navbar-brand img {
-    margin-top: -10px;
-    margin-right: 10px;
-    height: 40px;
-    margin-bottom: -10px;
-}
+/*Ajustes en menu navbar || navbar fixes*/
+.navbar-brand{font-size:12px;}
+.navbar-brand img{margin-top:-10px;margin-right:10px;height:40px;margin-bottom:-10px;}
 
  /*Cover*/
  .cover-header-brand{margin: 40px 0 0;width:100px;}
@@ -193,7 +177,7 @@ a.woocommerce-product-gallery__trigger{text-decoration:none;}
 @media only screen and (max-width:480px){
  /*Widget:Dropdown in navbar*/
  .navbar .widget{width:100%;}
- }
+}
 
 /* TERCER CAMBIO Smartphones verticales */
 

@@ -1,13 +1,23 @@
 /* Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com */
 /* CSS que afectan al layout general de Ekiline. No sobreescribir. Recomiendo utilizar el editor CSS de Wordpress o los campos personalizados para agregar modificaciones. 
- * CSS that affect the general layout of Ekiline. No override. I recommend using the Wordpress CSS editor or the custom fields to add modifications.
+ * CSS that affect the general layout of Ekiline. No override. I recommend using the Wordpress CSS editor or the custom fields to personalize your css.
  */
 
-/** Animaciones || Animations **/
+/** Animaciones || Animations 
+-------------------------------------------------------------------------**/
 .navbar,.navbar .navbar-brand,.navbar-nav li a, a:hover, .btn:hover{-webkit-transition:all 0.7s ease-in-out;-moz-transition:all 0.7s ease-in-out;-ms-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-in-out;transition:all 0.7s ease-in-out;}
 .toggle-sidebars #page,.toggle-sidebars #primary,.toggle-sidebars #secondary,.toggle-sidebars #third,.btn-sbleft,.btn-sbright,.icon-bar{-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}
+/* Animacion de toggle btn en menu || Toggle navbar btn animation */
+.navbar-toggler .icon-bar{background-color:#888;display:block;width:22px;height:2px;border-radius:1px;margin:4px 0px;}
+.navbar-toggler .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:6px;}
+.navbar-toggler .icon-bar:nth-child(2){width:0%;opacity:0;}
+.navbar-toggler .icon-bar:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-6px;}
+.navbar-toggler.collapsed .icon-bar:nth-child(1){-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);position:relative;top:0px;}
+.navbar-toggler.collapsed .icon-bar:nth-child(2){width:22px;opacity:1;}
+.navbar-toggler.collapsed .icon-bar:nth-child(3){-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);position:relative;top:0px;}
 
-/** Bootstrap Cover **/
+/** Bootstrap Cover 
+-------------------------------------------------------------------------**/
 html,body{height:100%;}
 /* Cover quitar margen al menu || rest margin to navbar */
 .head-cover .navbar, .head-video .navbar{margin-bottom:0px;}
@@ -24,7 +34,6 @@ html,body{height:100%;}
 .cover{padding:0 50px;}
 /* Cover footer */
 .cover-footer{position:absolute;bottom:0;width:inherit;}
-
 /* Cover con video || If header has video */
 .video-container{position:relative;}
 .video-container .video-text{position:absolute;left:0;right:0;margin:20% auto 0;max-width:1024px;z-index:1;}
@@ -33,74 +42,40 @@ html,body{height:100%;}
 video#bgvid{transition:1s opacity;}
 .stopfade{opacity:.5;}
 
-/** Animacion de toggle btn en menu || Toggle navbar btn animation **/
-.navbar-toggler .icon-bar{background-color:#888;display:block;width:22px;height:2px;border-radius:1px;margin:4px 0px;}
-.navbar-toggler .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:6px;}
-.navbar-toggler .icon-bar:nth-child(2){width:0%;opacity:0;}
-.navbar-toggler .icon-bar:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-6px;}
-.navbar-toggler.collapsed .icon-bar:nth-child(1){-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);position:relative;top:0px;}
-.navbar-toggler.collapsed .icon-bar:nth-child(2){width:22px;opacity:1;}
-.navbar-toggler.collapsed .icon-bar:nth-child(3){-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);position:relative;top:0px;}
-
-/** En caso de toggle sidebars || If uses toggle sidebars **/
-/* El envoltorio */
+/** En caso de toggle sidebars || If uses toggle sidebars
+-------------------------------------------------------------------------**/
+/* El envoltorio || wrapper for columns */
 .toggle-sidebars #content { height: 100%;}
-
-/* El contenido (#primary), 
- * originalmente puede medir el 100%, sin utilizar bootstrap
- * Utilizando bootstrap se puede asignar una clase de columna y este respetará el ancho de la misma
- * en caso de no necesitarlo entonces se usa esta operación sencilla. **
-.toggle-sidebars #primary{padding-left:0;margin-left:0;width:100%;height:auto;}
-.toggle-sidebars.left-on #primary{width:75%;}
-.toggle-sidebars.right-on #primary{width:75%;}
-.toggle-sidebars.right-on.left-on #primary{width:100%;}
-**/
-
-/*Posiciones Sidebar izquierdo,Sidebar derecho*/
+/*Posiciones Sidebar izquierdo, Sidebar derecho || Positions, left and right sidebar */
 .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third{position:fixed;top:0px;height:100%;z-index:1020;overflow:auto;}
-
-/* Sidebar izquierdo */
+/* Sidebar izquierdo || Left sidebar */
 .toggle-sidebars.left-on #content{padding-left:0px;}
 .toggle-sidebars.left-on #secondary{left:0px;margin-left:-300px;width:300px;}
-
-/* Sidebar izquierdo activado */
+/* Sidebar izquierdo activado || Left sidebar active */
 .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0px;}
-/*.toggle-sidebars.left-on.active-sidebar-left #page.container-fluid{padding-left:300px;}*/
 .toggle-sidebars.left-on.active-sidebar-left #content #secondary{left:300px;}
-
-/* Sidebar derecho */
+/* Sidebar derecho || Right sidebar */
 .toggle-sidebars.right-on #content{padding-right:0px;}
 .toggle-sidebars.right-on #third{right:0px;margin-right:-300px;width:300px;}
-    
-/*Sidebar derecho activado*/
+/*Sidebar derecho activado || Right sidebar active */
 .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0px;}
-/*.toggle-sidebars.right-on.active-sidebar-right #page.container-fluid{padding-right:300px;}*/
 .toggle-sidebars.right-on.active-sidebar-right #content #third{right:300px;}
-    
- /* Botones de sidebars */
- .sidebar-toggle{padding: .50rem .75rem;color:#00000080;border:1px solid #0000001a;border-radius:.25rem;}
- .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#888;}
- .btn-sbleft{position:fixed;bottom:50%;left:10px;z-index:3000;}
- .btn-sbright{position:fixed;bottom:50%;right:10px;z-index:3000;}
 
- .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
- .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
- .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
- .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
-
-/** .active-sidebar-left .btn-sbleft{position:absolute;left:auto;right:0;}
-.active-sidebar-right .btn-sbright{position:absolute;right:auto;left:0;}**/
- .active-sidebar-left .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
- .active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
- .active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
- .active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
- .active-sidebar-left .btn-sbleft {left:280px}
- .active-sidebar-right .btn-sbright {right:280px}
-
-/* Sidebar en caso de necesitar el menu de bootstrap */
-
-/* Division para el menu */
- 
+ /* Botones de sidebars || Both sidebar buttons */
+.sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#888;}
+.btn-sbleft{position:fixed;bottom:50%;left:10px;z-index:3000;}
+.btn-sbright{position:fixed;bottom:50%;right:10px;z-index:3000;}
+.btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
+.btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
+.btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
+.btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
+.active-sidebar-left .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
+.active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
+.active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
+.active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
+.active-sidebar-left .btn-sbleft {left:280px}
+.active-sidebar-right .btn-sbright {right:280px}
+/* Sidebar en caso de necesitar el menu de bootstrap || If need a sidebar with bootstrap navigation */
 .sidebar-nav{display:block;padding:0;}
 .sidebar-nav .navbar-collapse{padding-left:0px;padding-right:0px;}
 .sidebar-nav .navbar-collapse.show{overflow-y:visible;}
@@ -111,25 +86,19 @@ video#bgvid{transition:1s opacity;}
 .sidebar-nav .navbar-nav .show .dropdown-menu > li > a{padding:10px 15px 10px 15px;white-space: normal;}
 .sidebar-nav .dropdown-menu .dropdown-divider{height:1px;margin:1px 0;}
 
-/* Carrusel en general
--------------------------------------------------- */
-
-/* Carousel base 
-.carousel{height:500px;margin-bottom:60px;}
-.carousel .carousel-item{height:500px;}*/
+/* Carrusel extendido || Carousel extended
+------------------------------------------------------------------------- */
+/* Carousel base */
 .carousel .carousel-item{overflow:hidden;}
 /* Carousel multiple */
 .carousel-multiple {height: inherit;}
 .carousel-multiple .carousel-item {height: inherit;}
-/*.carousel-inner > .carousel-item > img{position:absolute;right:0;left:0;min-width:100%;height:500px;}*/
-
-/* efectos para slider fade y vertical*/
+/* Efectos para carrusel: fade y vertical || Carousel effects: fade and vertical */
 .carousel-fade .carousel-inner .carousel-item{opacity:0;-webkit-transition-property:opacity;-moz-transition-property:opacity;-o-transition-property:opacity;transition-property:opacity;}
 .carousel-fade .carousel-inner .active{opacity:1;}
 .carousel-fade .carousel-inner .active.carousel-item-left,.carousel-fade .carousel-inner .active.carousel-item-right{left:0;opacity:0;z-index:1;}
 .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,.carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right{opacity:1;}
 .carousel-fade .carousel-control{z-index:2;}
-
 /* Vertical FX */
 .carousel-vertical .carousel-inner{height:100%;}
 .carousel-vertical .carousel-item{-webkit-transition:0.6s ease-in-out top;-moz-transition:0.6s ease-in-out top;-ms-transition:0.6s ease-in-out top;-o-transition:0.6s ease-in-out top;transition:0.6s ease-in-out top;}
@@ -140,9 +109,7 @@ video#bgvid{transition:1s opacity;}
 .carousel-vertical .active.carousel-item-left{top:-400px;}
 .carousel-vertical .active.carousel-item-right{top:400px;}
 .carousel-vertical .carousel-item{left:0;}
-
-/* Carousel con thumbs versión de multiplos de*/
-
+/* Carousel con minuaturas, multiples. || Thumbnails in crausel multiples*/
 .carousel-thumbs{height:auto;}
 .carousel-thumbs .thumbnails.list{margin:0px;}
 .carousel-thumbs .carousel-item{height:auto;background-color:none;}
@@ -150,57 +117,39 @@ video#bgvid{transition:1s opacity;}
 .carousel-thumbs .carousel-control{}
 .carousel-thumbs .carousel-control-prev{left:0;}
 .carousel-thumbs .carousel-control-next{right:0;}
-
-/* width:260px;height:180px;no es necesario determinar medidas si se añade la clase responsive //
-.thumbnail{overflow:hidden;border:0;box-shadow:0 12px 12px -10px #c4c4c4;-webkit-box-shadow:0 17px 22px -20px #c4c4c4;-moz-box-shadow:0 12px 12px -10px #c4c4c4;margin:0px;}
-/* mantener proporciones de thumbs //
-.thumbnail img{width:100%;height:auto;}
-/* texto en thumbs //
-.thumbnail p{text-align:center;padding:10px;}
-***/
-
-/* Regla general: posición de objetos */
+/* Regla general: posición de objetos || Rule: object position */
 .carousel-multiple .carousel-inner .active.carousel-item-left,.carousel-multiple .carousel-inner .active.carousel-item-right{left:0%;-webkit-transition:all .6s ease 0s;-moz-transition:all .6s ease 0s;-o-transition:all .6s ease 0s;-ms-transition:all .6s ease 0s;transition:all .6s ease 0s;}
 .carousel-multiple .carousel-inner .carousel-item figure{display:inline-block;}
-
-/*variable por 2 thumbs (col-sm-6)*/
+/* variable por 2 thumbs (col-sm-6) || 2 thumbs */
 .carousel-multiple.x2 .carousel-inner .active.carousel-item-left{-webkit-transform:translate3d(-50%,0,0);-moz-transform:translate3d(-50%,0,0);-ms-transform:translate3d(-50%,0,0);transform:translate3d(-50%,0,0);}
 .carousel-multiple.x2 .carousel-inner .active.carousel-item-right{-webkit-transform:translate3d(50%,0,0);-moz-transform:translate3d(50%,0,0);-ms-transform:translate3d(50%,0,0);transform:translate3d(50%,0,0);}
 .carousel-multiple.x2 .carousel-inner .carousel-item-prev{left:-50%;}
 .carousel-multiple.x2 .carousel-inner .carousel-item-next{left:50%;}
-
-/*variable por 3 thumbs (col-sm-4)*/
+/* variable por 3 thumbs (col-sm-4) || 3 thumbs */
 .carousel-multiple.x3 .carousel-inner .active.carousel-item-left{-webkit-transform:translate3d(-33.33333333%,0,0);-moz-transform:translate3d(-33.33333333%,0,0);-ms-transform:translate3d(-33.33333333%,0,0);transform:translate3d(-33.33333333%,0,0);}
 .carousel-multiple.x3 .carousel-inner .active.carousel-item-right{-webkit-transform:translate3d(33.33333333%,0,0);-moz-transform:translate3d(33.33333333%,0,0);-ms-transform:translate3d(33.33333333%,0,0);transform:translate3d(33.33333333%,0,0);}
 .carousel-multiple.x3 .carousel-inner .carousel-item-prev{left:-33.33333333%;}
 .carousel-multiple.x3 .carousel-inner .carousel-item-next{left:33.33333333%;}
-
-/*variable por 4 thumbs (col-sm-3)*/
+/* variable por 4 thumbs (col-sm-3) || 4 thumbs */
 .carousel-multiple.x4 .carousel-inner .active.carousel-item-left{-webkit-transform:translate3d(-25%,0,0);-moz-transform:translate3d(-25%,0,0);-ms-transform:translate3d(-25%,0,0);transform:translate3d(-25%,0,0);}
 .carousel-multiple.x4 .carousel-inner .active.carousel-item-right{-webkit-transform:translate3d(25%,0,0);-moz-transform:translate3d(25%,0,0);-ms-transform:translate3d(25%,0,0);transform:translate3d(25%,0,0);}
 .carousel-multiple.x4 .carousel-inner .carousel-item-prev{left:-25%;}
 .carousel-multiple.x4 .carousel-inner .carousel-item-next{left:25%;}
-
-/*variable por 6 thumbs (col-sm-2) */
+/* variable por 6 thumbs (col-sm-2) || 6 thumbs */
 .carousel-multiple.x6 .carousel-inner .active.carousel-item-left{-webkit-transform:translate3d(-16.66666667%,0,0);-moz-transform:translate3d(-16.66666667%,0,0);-ms-transform:translate3d(-16.66666667%,0,0);transform:translate3d(-16.66666667%,0,0);}
 .carousel-multiple.x6 .carousel-inner .active.carousel-item-right{-webkit-transform:translate3d(16.66666667%,0,0);-moz-transform:translate3d(16.66666667%,0,0);-ms-transform:translate3d(16.66666667%,0,0);transform:translate3d(16.66666667%,0,0);}
 .carousel-multiple.x6 .carousel-inner .carousel-item-prev{left:-16.66666667%;}
-.carousel-multiple.x6 .carousel-inner .carousel-item-next{left:16.66666667%;} 
-    
-/* Regla general: posición de objetos, después del clic 
-    .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left { left:  0%;opacity: 0; }
-    .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right { left: 0%;opacity: 0; }      */  
+.carousel-multiple.x6 .carousel-inner .carousel-item-next{left:16.66666667%;}     
+/* Regla general: posición de objetos, después del clic || Objects after clic */  
 .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left{left:0%;}
 .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right{left:0%;}
 .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left div,.carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left figure{opacity:0;}
 .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left div:last-child,.carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left figure:last-child{opacity:1;}
 .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right div,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right figure{opacity:0;}
 .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right div:first-child,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right figure:first-child{opacity:1;}
-
-/* Personalización de controles de carrusel */
+/* Personalización de controles de carrusel || Carousel controls */
 .carousel-control-prev-icon,.carousel-control-next-icon{background-size:15px;}
-
-/*columnas auxiliares (intermedias)*/
+/* Columnas auxiliares (intermedias) || Intermediate columns */
 .col-lg-1a5,.col-sm-1a5,.col-xs-1a5,.col-lg-1a7,.col-sm-1a7,.col-xs-1a7,
 .col-lg-1a8,.col-sm-1a8,.col-xs-1a8,.col-lg-1a9,.col-sm-1a9,.col-xs-1a9{position:relative;min-height:1px;padding-right:15px;padding-left:15px;float:left;}
 .col-lg-1a5,.col-sm-1a5,.col-xs-1a5{width:20%;*width:20%;}
@@ -208,8 +157,9 @@ video#bgvid{transition:1s opacity;}
 .col-lg-1a8,.col-sm-1a8,.col-xs-1a8{width:12.5%;*width:12.5%;}
 .col-lg-1a9,.col-sm-1a9,.col-xs-1a9{width:11.1111111%;*width:11.1111111%;}
 
-/* Modulo: Modal */
-
+/* Modulo: Modal || Modals
+------------------------------------------------------------------------- */
+/* Effectos || Effects: zoom, newspaper, move-horizontal, move-from-bottom, unfold-3d, zoom-out */
 .modal.zoom .modal-dialog{-webkit-transition:all 0.5s ease-in-out;-o-transition:all 0.5s ease-in-out;transition:all 0.5s ease-in-out;transform:scale(0.6);}
 .modal.zoom.show .modal-dialog{-webkit-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;transform:scale(1);}
 .modal.newspaper .modal-dialog{-webkit-transition:all 0.5s ease-in-out;transition:all 0.5s;transform:scale(0) rotate(500deg);}
@@ -222,8 +172,7 @@ video#bgvid{transition:1s opacity;}
 .modal.unfold-3d.show .modal-dialog{transform:rotateY(0deg);}
 .modal.zoom-out .modal-dialog{transition:all 0.5s;transform:scale(1.3);}
 .modal.zoom-out.show .modal-dialog{transform:scale(1);}
-
-/*21 dic menu con modal a los lados: agrega "left" or "right" en modal parent div, after class="modal" */
+/* Modal lateral: agregar "left" or "right" en modal parent div, after class="modal" || Add left or right class in parent div.modal */
 .modal.left-aside .modal-dialog,
 .modal.right-aside .modal-dialog{position:fixed;margin:auto;width:320px;height:100%;-webkit-transform:translate3d(0%,0,0);-ms-transform:translate3d(0%,0,0);-o-transform:translate3d(0%,0,0);transform:translate3d(0%,0,0);}
 .modal.left-aside .modal-content,
@@ -234,227 +183,93 @@ video#bgvid{transition:1s opacity;}
 .modal.left-aside.fade.show .modal-dialog{left:0;} 
 .modal.right-aside.fade .modal-dialog{right:-320px;-webkit-transition:opacity 0.3s linear,right 0.3s ease-out;-moz-transition:opacity 0.3s linear,right 0.3s ease-out;-o-transition:opacity 0.3s linear,right 0.3s ease-out;transition:opacity 0.3s linear,right 0.3s ease-out;}
 .modal.right-aside.fade.show .modal-dialog{right:0;}
-
-/*19 ago menú con modal*/
+/* Modal con nav || Modal with nav*/
 #navModal .navbar-nav{text-align:center;}
 #navModal .navbar-nav .dropdown-menu.show{position:static !important;margin-top:0;border:0;padding:0px;-ms-transform:inherit !important;-webkit-transform:inherit !important;transform:inherit !important;}
 #navModal .navbar-nav .dropdown-menu.show > li > a{padding:10px 15px 10px 15px;text-align:center;}
 #navModal.modal.move-from-bottom .modal-dialog{position:fixed;left:0;right:0;bottom:0;margin:0px auto;height:80%;}
 #navModal.modal.move-from-bottom .modal-content{height:100%;overflow-y:auto;}
-
-/*31 oct galeria en modal*/
+/* Galeria en modal || Modal gallery */
 .modal button.close{position:absolute;right:20px;top:20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;}
 .modal button.resize{cursor: pointer;position:absolute;left:20px;top:20px;z-index:1000;opacity:1;background:#000;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;border:0px;color:#fff;transform:rotate(45deg);}
 .modal figure {margin-bottom: 0;}
 .modal .carousel-indicators {bottom: -50px;}
-/*27 feb galeria full modal*/
+/* Galeria con modal a todo lo ancho || Full modal gallery */
 .modal-full .modal.show {padding: 0px !important;}
 .modal-full .modal-dialog{width:100%;max-width: 100%;margin:0px auto;}
 .modal-full .modal-body{padding:0px;}
 .modal-full .modal-backdrop{opacity:1;}
 .modal-full .carousel-indicators { bottom: 10px; }
-
-/*Breadcrumb*/
+/* Ruta || Breadcrumb */
 .breadcrumb span{padding:0px 1px;}
-
-/*26 dic backgrounds con imagen*/
-.bg-responsive-delay {}
-
-/*Mapa google*/
+/* Mapa google */
 .map-responsive{position:relative;padding-bottom:460px;height:0;overflow:hidden;}
 .map-responsive iframe{position:absolute;top:0;left:0;width:100% !important;height:100% !important;}
 
-/*.site-footer::after{content:'normal';text-align:center;color:#000000;width:100%;height:10px;position:fixed;left:0px;right:0px;bottom:30px;background:#FFFFFF;z-index:1000;}*/
+/* Modo wireframe || wireframe mode */
+.wf-ekiline [class*="col"]::before,.wf-ekiline .container::before,.wf-ekiline nav .container::before,.wf-ekiline .row::before{font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;width:100%;}
 
+.wf-ekiline [class*='col']{border:1px solid #ffdede;}
+.wf-ekiline [class*='col']::before{content:attr(class);}
+.wf-ekiline [class*='col']::before{background:#ffdede;}
 
-/* CSS RESPONSIVO: Non-Mobile First Method
+.wf-ekiline .container{border:1px solid #ddd;}
+.wf-ekiline .container::before,.wf-ekiline nav .container::before{content:attr(class);background:#DDD;}
+
+.wf-ekiline .row{border:1px solid #d7eaff;}
+.wf-ekiline .row::before{content:attr(class);background:#d7eaff;}
+
+.wf-ekiline .navbar [class*="container"]{-ms-flex-wrap:wrap;flex-wrap:wrap;}
+.wf-ekiline .navbar [class*="col"]{border:none;}
+.wf-ekiline .navbar [class*="col"]::before{display:none;}
+
+.wf-ekiline [class*="col"]:hover::before,.wf-ekiline .container:hover::before,.wf-ekiline nav .container:hover::before,.wf-ekiline .row:hover::before{font-size:14px;color:#fff;background-color:#494974;}
+.wf-ekiline [class*="col"]:hover,.wf-ekiline .container:hover,.wf-ekiline nav .container:hover,.wf-ekiline .row:hover{border-color:#494974;}
+
+/*--------------------------------------------------------------------------------
+ * CSS RESPONSIVO: Método Escritorio a movil || Desktop First Method
+ *-------------------------------------------------------------------------------- 
+ */
+
+/* PRIMER CAMBIO: Bootstrap container 1200/992 ( Monitores )
  -------------------------------------------------- */
-
-/*--------------------------------------------------------------------------------
- * PRIMER CAMBIO
- *-------------------------------------------------------------------------------- 
- */
-
 @media only screen and (max-width : 1200px) {
-/* Bootstrap container 1200 */
-	/*.site-footer::after {content:'Bootstrap container 1200';background-color: orange;padding:10px;}*/
-	.cover-container{width: 100%;}
+ .cover-container{width: 100%;}
 }
-
 @media only screen and (max-width : 992px) {
-/* Bootstrap container 992 */	
-	/*.site-footer::after {content:'Bootstrap container 992';background-color:yellow;padding:10px;}*/
- .navbar-nav .show .dropdown-menu > li > a{white-space: normal;}
-	 	
+ .navbar-nav .show .dropdown-menu > li > a{white-space: normal;}	 	
 }
 
-
-/*--------------------------------------------------------------------------------
- * SEGUNDO CAMBIO
- *-------------------------------------------------------------------------------- 
- */
-
-
-@media only screen and (max-width : 768px) { 
-	
- /*Cambio a tablet en bootstrap */
- /*.site-footer::after{content:'Cambio a tablet en bootstrap se activa toogle menu';background-color:teal;padding:10px;}*/
-
- /* SideBars plegables */
+/* SEGUNDO CAMBIO: Bootstrap container 768/480 ( tablet/smarphone-hor )
+ -------------------------------------------------- */
+@media only screen and (max-width : 768px) {
+/* En caso de toggle sidebars || If uses toggle sidebars */
  #page-content-wrapper,.toggle-sidebars.left-on #primary{width:inherit;}
  #page-content-wrapper,.toggle-sidebars.right-on #primary{width:inherit;}
-
- /*carrusel*/
+/* Carrusel extendido || Carousel extended */
  .carousel-multiple .carousel-item > div:nth-child(n+2),.carousel-multiple .carousel-item > figure:nth-child(n+2){display:none;}
-
- /* ajuste en la transición para los smartphones */
  .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left div,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right div,.carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left figure,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right figure{opacity:1;}
  .carousel-multiple.x2 .carousel-inner .active.carousel-item-left,.carousel-multiple.x3 .carousel-inner .active.carousel-item-left,.carousel-multiple.x4 .carousel-inner .active.carousel-item-left,.carousel-multiple.x6 .carousel-inner .active.carousel-item-left{-webkit-transform:translate3d(-100%,0,0);-moz-transform:translate3d(-100%,0,0);-ms-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0);}
  .carousel-multiple.x2 .carousel-inner .active.carousel-item-right,.carousel-multiple.x3 .carousel-inner .active.carousel-item-right,.carousel-multiple.x4 .carousel-inner .active.carousel-item-right,.carousel-multiple.x6 .carousel-inner .active.carousel-item-right{-webkit-transform:translate3d(100%,0,0);-moz-transform:translate3d(100%,0,0);-ms-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);} 
-
-/*columnas auxiliares (intermedias)*/
-.col-sm-1a5,.col-xs-1a5,.col-sm-1a7,.col-xs-1a7,.col-sm-1a8,.col-xs-1a8,.col-sm-1a9,.col-xs-1a9{width:100%;*width:100%;}
-
-#navModal .modal-dialog{width:90%;}
-
+ .col-sm-1a5,.col-xs-1a5,.col-sm-1a7,.col-xs-1a7,.col-sm-1a8,.col-xs-1a8,.col-sm-1a9,.col-xs-1a9{width:100%;*width:100%;}
+/* Modal con nav || Modal with nav */
+ #navModal .modal-dialog{width:90%;}
 }
 
 @media only screen and (max-width : 480px) {
-	#main{padding:0;}
-	/*.site-footer::after {content:'screen and (max-width: 480px)';background-color:aqua;padding:10px;}*/
-	.entry-content p > img{ max-width:100%; }
-
-/* En caso de toggle sidebars */
+/* Cover con video || If header has video */	
+  .video-text { display: none;}
+/* En caso de toggle sidebars || If uses toggle sidebars */
  .toggle-sidebars.left-on.active-sidebar-left #content #secondary{margin-left:0px;left:0px;width:100%;}
  .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
  .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;}
  .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
-/* El video */	
-    .video-text { display: none;}
+/* Ajustes en contenido WP || WP content adjustments */
+ #main{padding:0;}
+ .entry-content p > img{ max-width:100%; }
 }
 
-/*--------------------------------------------------------------------------------
- * TERCER CAMBIO
- *-------------------------------------------------------------------------------- 
- */
+/* TERCER CAMBIO: Bootstrap container 320px ( smarphone-ver )
+ -------------------------------------------------- */
 
-@media only screen and (max-width : 320px){
-	/*Smartphones en general, modo vertical*/	
-	/*.site-footer::after {content:'screen and (max-width: 320px)';background-color:gray;padding:10px;}	*/
-}	
-
-
-/* CSS RESPONSIVO Mobile First Method
- -------------------------------------------------- **
-
-/*--------------------------------------------------------------------------------
- * PRIMER CAMBIO
- *--------------------------------------------------------------------------------
- **
-
-/*widescreens, pantallas grandes en general**
-@media screen and (max-width: 1500px) {}
-@media (max-width: 1200px) {}
-
-/*Caso atipico de monitor que necesitara ajuste**
-@media screen and (max-width: 1100px) {}
-@media (max-width: 980px) {}
-@media (max-width: 979px) {}
-
-/*Monitor generico y tablet en modo horizontal**
-@media screen and (max-width: 900px) {}
-
-/*--------------------------------------------------------------------------------
- * SEGUNDO CAMBIO
- *--------------------------------------------------------------------------------
- **
-
-/*Cambio a tablet en bootstrap **
-@media (max-width: 767px) {}
-
-/*Tabletas grandes en general**
-@media screen and (max-width: 750px) {}
-
-/*Tabletas en general, modo vertical**
-@media screen and (max-width: 600px) {}
-
-@media (max-width: 480px) {}
-
-/*--------------------------------------------------------------------------------
- * TERCER CAMBIO
- *--------------------------------------------------------------------------------
- **
-
-/*Smartphones en general, modo horizontal**
-@media screen and (max-width: 450px) {}
-
-/*Smartphones en general, modo vertical**
-@media screen and (max-width: 320px) {}
-*/
-
-/*Modo wireframe **/
-.wf-ekiline [class*='col']{border:1px solid #ddd;}
-
-.wf-ekiline .col-sm::before { content: 'col-sm';}
-.wf-ekiline .col-sm-1::before { content: 'col-sm-1';}
-.wf-ekiline .col-sm-2::before { content: 'col-sm-2';}
-.wf-ekiline .col-sm-3::before { content: 'col-sm-3';}
-.wf-ekiline .col-sm-4::before { content: 'col-sm-4';}
-.wf-ekiline .col-sm-5::before { content: 'col-sm-5';}
-.wf-ekiline .col-sm-6::before { content: 'col-sm-6';}
-.wf-ekiline .col-sm-7::before { content: 'col-sm-7';}
-.wf-ekiline .col-sm-8::before { content: 'col-sm-8';}
-.wf-ekiline .col-sm-9::before { content: 'col-sm-9';}
-.wf-ekiline .col-sm-10::before { content: 'col-sm-10';}
-.wf-ekiline .col-sm-11::before { content: 'col-sm-11';}
-.wf-ekiline .col-sm-12::before { content: 'col-sm-12';}
-
-.wf-ekiline .col-md::before { content: 'col-md';}
-.wf-ekiline .col-md-1::before { content: 'col-md-1';}
-.wf-ekiline .col-md-2::before { content: 'col-md-2';}
-.wf-ekiline .col-md-3::before { content: 'col-md-3';}
-.wf-ekiline .col-md-4::before { content: 'col-md-4';}
-.wf-ekiline .col-md-5::before { content: 'col-md-5';}
-.wf-ekiline .col-md-6::before { content: 'col-md-6';}
-.wf-ekiline .col-md-7::before { content: 'col-md-7';}
-.wf-ekiline .col-md-8::before { content: 'col-md-8';}
-.wf-ekiline .col-md-9::before { content: 'col-md-9';}
-.wf-ekiline .col-md-10::before { content: 'col-md-10';}
-.wf-ekiline .col-md-11::before { content: 'col-md-11';}
-.wf-ekiline .col-md-12::before { content: 'col-md-12';}
-
-.wf-ekiline .col-lg::before { content: 'col-lg';}
-.wf-ekiline .col-lg-1::before { content: 'col-lg-1';}
-.wf-ekiline .col-lg-2::before { content: 'col-lg-2';}
-.wf-ekiline .col-lg-3::before { content: 'col-lg-3';}
-.wf-ekiline .col-lg-4::before { content: 'col-lg-4';}
-.wf-ekiline .col-lg-5::before { content: 'col-lg-5';}
-.wf-ekiline .col-lg-6::before { content: 'col-lg-6';}
-.wf-ekiline .col-lg-7::before { content: 'col-lg-7';}
-.wf-ekiline .col-lg-8::before { content: 'col-lg-8';}
-.wf-ekiline .col-lg-9::before { content: 'col-lg-9';}
-.wf-ekiline .col-lg-10::before { content: 'col-lg-10';}
-.wf-ekiline .col-lg-11::before { content: 'col-lg-11';}
-.wf-ekiline .col-lg-12::before { content: 'col-lg-12';}
-
-.wf-ekiline .col-xl::before { content: 'col-xl';}
-.wf-ekiline .col-xl-1::before { content: 'col-xl-1';}
-.wf-ekiline .col-xl-2::before { content: 'col-xl-2';}
-.wf-ekiline .col-xl-3::before { content: 'col-xl-3';}
-.wf-ekiline .col-xl-4::before { content: 'col-xl-4';}
-.wf-ekiline .col-xl-5::before { content: 'col-xl-5';}
-.wf-ekiline .col-xl-6::before { content: 'col-xl-6';}
-.wf-ekiline .col-xl-7::before { content: 'col-xl-7';}
-.wf-ekiline .col-xl-8::before { content: 'col-xl-8';}
-.wf-ekiline .col-xl-9::before { content: 'col-xl-9';}
-.wf-ekiline .col-xl-10::before { content: 'col-xl-10';}
-.wf-ekiline .col-xl-11::before { content: 'col-xl-11';}
-.wf-ekiline .col-xl-12::before { content: 'col-xl-12';}
-
-.wf-ekiline [class*="col"]::before{background:#ffdede;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;margin-left:-15px;margin-right:-15px;}
-
-.wf-ekiline .container{border:1px dashed #ddd;}
-.wf-ekiline .container::before { content: 'container';}
-.wf-ekiline .row{border:1px dotted #ddd;}
-.wf-ekiline .row::before { content: 'row';}
-.wf-ekiline .container::before,.wf-ekiline .row::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;width:100%;}
+@media only screen and (max-width : 320px){}	

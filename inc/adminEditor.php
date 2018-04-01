@@ -15,7 +15,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 * Add styles to wordpress admin editor
 	 */
 	
-	add_editor_style('editor-style.css'); 
+	add_editor_style('editor-style.min.css'); 
 	
 	/*Existe un problema en el editor, cachea el estilo, entonces
 	 * es necesario forzar el refresh con este script:
