@@ -390,7 +390,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_topmenuSettings', array(
                 'type' => 'select',
                 'label' => __( 'Top menu settings', 'ekiline' ),
-            	'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+            	'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or fixed with scroll', 'ekiline' ),
             	'section' => 'menu_locations',
             	'priority'    => 100,
             	'choices' => array(
@@ -436,7 +436,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_primarymenuSettings', array(
                 'type' => 'select',
                 'label' => __( 'Primary menu settings', 'ekiline' ),
-                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or fixed with scroll', 'ekiline' ),
                 'section' => 'menu_locations',
                 'priority'    => 100,
                 'choices' => array(
@@ -481,7 +481,7 @@ function ekiline_theme_customizer( $wp_customize ) {
             'ekiline_modalNavSettings', array(
                 'type' => 'select',
                 'label' => __( 'Modal menu settings', 'ekiline' ),
-                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or affix with scroll', 'ekiline' ),
+                'description' => __( 'Add behaviors for this menu, fix to top, fix to bottom or fixed with scroll', 'ekiline' ),
                 'section' => 'menu_locations',
                 'priority'    => 100,
                 'choices' => array(

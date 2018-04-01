@@ -1,20 +1,17 @@
 /* Ekiline for WordPress Theme, Copyright 2018 Uri Lazcano. Ekiline is distributed under the terms of the GNU GPL. http://ekiline.com */
-/*
- * General:
- * Estos estilos afectan al layout general.
- * Para asignar colores backgrounds utilizar un nuevo archivo de estilos
- * No sobreescribas en esta.
+/* CSS que afectan al layout general de Ekiline. No sobreescribir. Recomiendo utilizar el editor CSS de Wordpress o los campos personalizados para agregar modificaciones. 
+ * CSS that affect the general layout of Ekiline. No override. I recommend using the Wordpress CSS editor or the custom fields to add modifications.
  */
 
-/* Animaciones en objetos */
+/** Animaciones || Animations **/
 .navbar,.navbar .navbar-brand,.navbar-nav li a, a:hover, .btn:hover{-webkit-transition:all 0.7s ease-in-out;-moz-transition:all 0.7s ease-in-out;-ms-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-in-out;transition:all 0.7s ease-in-out;}
 .toggle-sidebars #page,.toggle-sidebars #primary,.toggle-sidebars #secondary,.toggle-sidebars #third,.btn-sbleft,.btn-sbright,.icon-bar{-webkit-transition:all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-out;-o-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}
 
-/** Cover **/
+/** Bootstrap Cover **/
 html,body{height:100%;}
-/*En caso de existir cover,quitar margen al menu*/
+/* Cover quitar margen al menu || rest margin to navbar */
 .head-cover .navbar, .head-video .navbar{margin-bottom:0px;}
-/*Envoltorio de cover*/
+/* Cover envoltorio || Cover wrapper */
 .cover-wrapper{display:table;width:100%;height:100%;min-height:100%;-webkit-box-shadow:inset 0 0 100px rgba(0,0,0,.2);box-shadow:inset 0 0 100px rgba(0,0,0,.2);position:relative;margin-bottom:0px;background-position:center center;background-repeat:no-repeat;background-size:cover;background-attachment:fixed;}
 .cover-wrapper-inner{display:table-cell;vertical-align:middle;}
 .cover-container{margin-right:auto;margin-left:auto;width: 1170px;}
@@ -28,7 +25,7 @@ html,body{height:100%;}
 /* Cover footer */
 .cover-footer{position:absolute;bottom:0;width:inherit;}
 
-/* Header con video */
+/* Cover con video || If header has video */
 .video-container{position:relative;}
 .video-container .video-text{position:absolute;left:0;right:0;margin:20% auto 0;max-width:1024px;z-index:1;}
 .video-container .video-media{}
@@ -36,7 +33,7 @@ html,body{height:100%;}
 video#bgvid{transition:1s opacity;}
 .stopfade{opacity:.5;}
 
-/** animacion de toggle btn en menu **/
+/** Animacion de toggle btn en menu || Toggle navbar btn animation **/
 .navbar-toggler .icon-bar{background-color:#888;display:block;width:22px;height:2px;border-radius:1px;margin:4px 0px;}
 .navbar-toggler .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:6px;}
 .navbar-toggler .icon-bar:nth-child(2){width:0%;opacity:0;}
@@ -45,15 +42,7 @@ video#bgvid{transition:1s opacity;}
 .navbar-toggler.collapsed .icon-bar:nth-child(2){width:22px;opacity:1;}
 .navbar-toggler.collapsed .icon-bar:nth-child(3){-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);position:relative;top:0px;}
 
-/*En caso de usar affix en los sidebars*/
-#primary{ position: relative;z-index:1;}
-	/* En caso de fijar el sidebar a la izquierda */
-	#secondary.affix{height:auto;width:inherit;left:auto;right:auto;}
-	/* En caso de fijar el sidebar a la derecha */
-	#third.affix{height:auto;width:inherit;left:auto;right:auto;}
-
-/* En caso de toggle sidebars */
-
+/** En caso de toggle sidebars || If uses toggle sidebars **/
 /* El envoltorio */
 .toggle-sidebars #content { height: 100%;}
 
@@ -289,7 +278,6 @@ video#bgvid{transition:1s opacity;}
 @media only screen and (max-width : 1200px) {
 /* Bootstrap container 1200 */
 	/*.site-footer::after {content:'Bootstrap container 1200';background-color: orange;padding:10px;}*/
-	#secondary.affix { width: 235px; }	
 	.cover-container{width: 100%;}
 }
 

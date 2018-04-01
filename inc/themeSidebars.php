@@ -114,10 +114,10 @@ function cssSides() {
  
 function leftSideButton(){
     $leftOn = get_theme_mod('ekiline_sidebarLeft','on');    
-    if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
+    if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'off') : echo '<button id="show-sidebar-left" class="sidebar-toggle btn btn-sbleft" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }
 
 function rightSideButton(){
     $rightOn = get_theme_mod('ekiline_sidebarRight','on');        
-    if ( is_active_sidebar( 'sidebar-2' ) && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
+    if ( is_active_sidebar( 'sidebar-2' ) && $rightOn == 'off') : echo '<button id="show-sidebar-right" class="sidebar-toggle btn btn-sbright" type="button"><span class="icon-bar"></span><span class="icon-bar"></span></button>'; endif;
 }

@@ -138,8 +138,9 @@ jQuery(document).ready(function($){
     	});	  
             
 /** 11 de octubre B4: 
- *  Ya no sirve affix como tal, se reemplaza por sticky en elementos que así sea necesario.   
+ *  Ya no sirve fixed como tal, se reemplaza por sticky en elementos que así sea necesario.   
  * 	En el caso de Ekiline, se calcula la altura del header y se añade la clase fixed-top.
+ *  31-03-18, adoptar fixed https://www.codeply.com/go/i8xuvOmVw3/bootstrap-4-fixed-nav-and-sidebar-layout;
  **/
             
     if ( $('#masthead').length ) {	    	
