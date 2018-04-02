@@ -17,12 +17,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	
 	add_editor_style('editor-style.min.css'); 
 	
-	/* Existe un problema en el editor, cachea el estilo, entonces
-	 * es necesario forzar el refresh con este script:
+	/* Existe un problema en el editor, cachea el estilo, entonces es necesario forzar el refresh con este script:
+	 * Maybe you need to refresh admin cache to look changes.
 	 * https://wordpress.stackexchange.com/questions/33318/forcing-reload-of-editor-style-css
 	 **/
 		 
-	//Registro mi menu de estilos || Register Ekiline styles 
+	// Registro mi menu de estilos || Register Ekiline styles 
 	
 	function ekiline_bootstrap_styles($buttons) {
 	    array_unshift($buttons, 'styleselect');
@@ -1059,7 +1059,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	        ),        	        	    
 	    );  
 	    
-	    // Insertar los arreglos
+	    // Insertar los arreglos en formato JSON
 	    // Insert the array, JSON ENCODED, into 'style_formats'
 	    
 	    $init_array['style_formats'] = json_encode( $style_formats );  
@@ -1121,14 +1121,18 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    return $plugin_array;
 	}
 	
-	// Registrar el boton y agregarlo || Register and add new button in the editor
+	/**
+	 * 3) Registrar el boton y agregarlo || Register and add new button in the editor
+	 */	
 	function register_mce_buttons( $buttons ) {
 	    //array_push( $buttons, 'custom_mce_button1' );
 	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button12, custom_mce_button10, custom_mce_button13, custom_mce_button14, custom_mce_button5, custom_mce_button9, custom_mce_button15' );
 	    return $buttons;
 	}
 	
-	// idioma: https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_languages
+	/**
+	 * 4) idioma: https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_languages
+	 */
 	function ekiline_tinymce_add_locale($locales) {
 	    $locales ['Ekiline-Tinymce'] = get_template_directory() . '/inc/ekiline-tinymce-langs.php';
 	    return $locales;

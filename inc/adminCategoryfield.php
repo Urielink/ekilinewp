@@ -71,43 +71,43 @@ function load_wp_media_files() {
  
 add_action( 'admin_footer', 'ekiline_catimage_js' );
 function ekiline_catimage_js() { 
-global $pagenow;
-if ($pagenow=='term.php' ) { ?>	
-	
-<script type='text/javascript'>
-	jQuery(document).ready(function($){
-		
-		//console.log('catscript');
-	
-	  $('.image-upload-button').click(function(e) {
-	  	
-		var frame;
-	    e.preventDefault();
-	    // Dialogo de imagenes abrir o reabrir,
-	      if (frame) {
-	      	frame.open();
-	      return;
-	    }
-	    
-	    // Opciones wp.media 
-	    frame = wp.media.frames.file_frame = wp.media({
-	      title: '<?php echo __( 'Upload or choose image','ekiline' ); ?>',
-	      button: { text: '<?php echo __( 'Add image','ekiline' ); ?>' }, multiple: false 
-				});
-	
-	    // Al seleccionar imagen, insertala en el campo. 
-	    frame.on('select', function() {
-	      var attachment = frame.state().get('selection').first().toJSON();
-	      $('.image-upload-field').val(attachment.url);
-	    });
-	    
-	    // Open the uploader dialog
-	    frame.open();
-	
-	  });
-	
-	});
-</script>
 
-<?php }
+	global $pagenow;
+	if ($pagenow=='term.php' ) { ?>	
+		
+	<script type='text/javascript'>
+		jQuery(document).ready(function($){
+			
+		  $('.image-upload-button').click(function(e) {
+		  	
+			var frame;
+		    e.preventDefault();
+		    
+		    // Dialogo de imagenes abrir o reabrir || dialog box open
+		      if (frame) {
+		      	frame.open();
+		      return;
+		    }
+		    
+		    // Opciones wp.media 
+		    frame = wp.media.frames.file_frame = wp.media({
+		      title: '<?php echo __( 'Upload or choose image','ekiline' ); ?>',
+		      button: { text: '<?php echo __( 'Add image','ekiline' ); ?>' }, multiple: false 
+					});
+		
+		    // Al seleccionar imagen, insertala en el campo || When choose add in field
+		    frame.on('select', function() {
+		      var attachment = frame.state().get('selection').first().toJSON();
+		      $('.image-upload-field').val(attachment.url);
+		    });
+		    
+		    // Abrir dialogo de subir archivos || Open the uploader dialog
+		    frame.open();
+		
+		  });
+		
+		});
+	</script>
+	
+	<?php }
 }
