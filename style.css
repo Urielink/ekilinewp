@@ -1,37 +1,16 @@
 /*
- Theme Name: ekiline
- Theme URI: http://www.ekiline.com/
- Author: Uri Lazcano (Urielink)
- Author URI: https://www.linkedin.com/in/urielink
- Description:Este tema ha sido desarrollado con Bootstrap 4 Cuenta con una distribucion de espacios y elementos diseñados para facilitar la creacion de un sitio web. Documentacion: http://www.ekiline.com
- Version: 2.0
- License: GNU General Public License v2 or later
- License URI: http://www.gnu.org/licenses/gpl-2.0.html
- Text Domain: ekiline
+ Theme Name:   Ekiline Child
+ Theme URI:    http://www.ekiline.com/
+ Description:  Ekiline Child Theme
+ Author:       Uri Lazcano (Urielink)
+ Author URI:   https://www.linkedin.com/in/urielink
+ Template:     ekiline
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, flexible-header, custom-background, custom-colors, custom-header, custom-menu, custom-logo, featured-image-header, featured-images, footer-widgets, full-width-template, microformats, theme-options, translation-ready, blog, e-commerce, entertainment, food-and-drink, news, portfolio, photography
-
- ekiline for WordPress Theme, Copyright 2018 Uri Lazcano
- ekiline is distributed under the terms of the GNU GPL
-
- This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License along with this program.
-
- Ekiline for WordPress Theme is derived from Underscores WordPress Theme, Copyright 2013 Automattic, Inc.
- Underscores WordPress Theme is distributed under the terms of the GNU GPL
-
- Ekiline for WordPress Theme bundles the following third-party resources:
-
- Bootstrap Bootstrap v4.0.0 (https://getbootstrap.com), Copyright 2011-2018 Twitter, Inc.
- Bootstrap are licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- Source: https://getbootstrap.com
- 
- Font Awesome Free 5.0.6 by @fontawesome
- License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- Source: http://fontawesome.com
-
- */
+ Text Domain:  ekiline
+*/
 
 /* ------------------------------------------------
  * Ekiline: Primera carga de objetos || First load items
