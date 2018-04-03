@@ -50,21 +50,21 @@ video#bgvid{transition:1s opacity;}
 .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third{position:fixed;top:0px;height:100%;z-index:1020;overflow:auto;}
 /* Sidebar izquierdo || Left sidebar */
 .toggle-sidebars.left-on #content{padding-left:0px;}
-.toggle-sidebars.left-on #secondary{left:0px;margin-left:-300px;width:300px;}
+.toggle-sidebars.left-on #secondary{left:0px;margin-left:-33%;width:33%;min-width:33%;}
 /* Sidebar izquierdo activado || Left sidebar active */
 .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0px;}
-.toggle-sidebars.left-on.active-sidebar-left #content #secondary{left:300px;}
+.toggle-sidebars.left-on.active-sidebar-left #content #secondary{left:33%;}
 /* Sidebar derecho || Right sidebar */
 .toggle-sidebars.right-on #content{padding-right:0px;}
-.toggle-sidebars.right-on #third{right:0px;margin-right:-300px;width:300px;}
+.toggle-sidebars.right-on #third{right:0px;margin-right:-33%;width:33%;min-width:33%;}
 /*Sidebar derecho activado || Right sidebar active */
 .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0px;}
-.toggle-sidebars.right-on.active-sidebar-right #content #third{right:300px;}
+.toggle-sidebars.right-on.active-sidebar-right #content #third{right:33%;}
 
  /* Botones de sidebars || Both sidebar buttons */
 .sidebar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px;margin:2px 0;background-color:#888;}
-.btn-sbleft{position:fixed;bottom:50%;left:10px;z-index:3000;}
-.btn-sbright{position:fixed;bottom:50%;right:10px;z-index:3000;}
+.btn-sbleft{position:fixed;top:40%;bottom:40%;left:0px;z-index:3000;}
+.btn-sbright{position:fixed;top:40%;bottom:40%;right:0px;z-index:3000;}
 .btn-sbleft .icon-bar:nth-child(1){-webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
 .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:-8px;position:relative;}
 .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(-30deg);-moz-transform:rotate(-30deg);-o-transform:rotate(-30deg);transform:rotate(-30deg);width:20px;height:2px;margin:4px 0;top:8px;position:relative;}
@@ -73,8 +73,8 @@ video#bgvid{transition:1s opacity;}
 .active-sidebar-left .btn-sbleft .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
 .active-sidebar-right .btn-sbright .icon-bar:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);position:relative;top:3px;}
 .active-sidebar-right .btn-sbright .icon-bar:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);position:relative;top:-3px;}
-.active-sidebar-left .btn-sbleft {left:280px}
-.active-sidebar-right .btn-sbright {right:280px}
+.active-sidebar-left .btn-sbleft {left:0px;opacity:.4;}
+.active-sidebar-right .btn-sbright {right:0px;opacity:.4;}
 /* Sidebar en caso de necesitar el menu de bootstrap || If need a sidebar with bootstrap navigation */
 .sidebar-nav{display:block;padding:0;}
 .sidebar-nav .navbar-collapse{padding-left:0px;padding-right:0px;}
@@ -242,7 +242,7 @@ video#bgvid{transition:1s opacity;}
 
 /* SEGUNDO CAMBIO: Bootstrap container 768/480 ( tablet/smarphone-hor )
  -------------------------------------------------- */
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width : 767px) {
 /* En caso de toggle sidebars || If uses toggle sidebars */
  #page-content-wrapper,.toggle-sidebars.left-on #primary{width:inherit;}
  #page-content-wrapper,.toggle-sidebars.right-on #primary{width:inherit;}
@@ -254,16 +254,16 @@ video#bgvid{transition:1s opacity;}
  .col-sm-1a5,.col-xs-1a5,.col-sm-1a7,.col-xs-1a7,.col-sm-1a8,.col-xs-1a8,.col-sm-1a9,.col-xs-1a9{width:100%;*width:100%;}
 /* Modal con nav || Modal with nav */
  #navModal .modal-dialog{width:90%;}
+/* En caso de toggle sidebars || If uses toggle sidebars */
+ .toggle-sidebars.left-on.active-sidebar-left #content #secondary{margin-left:0px;left:0px;width:100%;min-width:50%;}
+ .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
+ .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;min-width:50%;}
+ .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
 }
 
 @media only screen and (max-width : 480px) {
 /* Cover con video || If header has video */	
   .video-text { display: none;}
-/* En caso de toggle sidebars || If uses toggle sidebars */
- .toggle-sidebars.left-on.active-sidebar-left #content #secondary{margin-left:0px;left:0px;width:100%;}
- .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
- .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;}
- .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
 /* Ajustes en contenido WP || WP content adjustments */
  #main{padding:0;}
  .entry-content p > img{ max-width:100%; }

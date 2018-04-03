@@ -59,8 +59,8 @@ function sideOn() {
     } else if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ){
 
         if ($leftOn == 'off' && $rightOn == 'off' ) : $sideon = ' toggle-bothsides';  
-        elseif ($leftOn == 'off' && $rightOn != 'off' ) : $sideon = ' col-sm-9 toggle-side1'; 
-        elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 toggle-side2'; 
+        elseif ($leftOn == 'off' && $rightOn != 'off' ) : $sideon = ' col-sm-9 order-sm-2 toggle-side1'; 
+        elseif ($leftOn != 'off' && $rightOn == 'off' ) : $sideon = ' col-sm-9 order-sm-2 toggle-side2'; 
         else : $sideon = ' col-sm-6 order-sm-2 side1 side2'; endif;              
         
     } else if ( !is_active_sidebar( 'sidebar-1' ) && !is_active_sidebar( 'sidebar-2' ) ) {
