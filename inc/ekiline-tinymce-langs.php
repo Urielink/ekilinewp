@@ -108,7 +108,12 @@ function ekiline_tinymce_translation() {
         'mydestext' => __('Go to Appearance > Editor and edit custom-layouts file to replace and add more HTML sets','ekiline'),
     //adminFawfive.js
         'addfaw' => __('Add FontAwesome icon','ekiline'),
-    	// '' => __('','ekiline')
+    //adminPro.js
+        'getMore' => __('Get more','ekiline'),
+        'getMoreTitle' => __('Get the definitive version!','ekiline'),
+        'getMoreDesc' => __('All the features and tools to distribute your projects','ekiline'),
+        'getMoreBuy' => __('Get more','ekiline'),
+	// '' => __('','ekiline')
     );
     $locale = _WP_Editors::$mce_locale;
     $translated = 'tinyMCE.addI18n("' . $locale . '.ekiline_tinymce", ' . json_encode( $strings ) . ");\n";

@@ -1118,6 +1118,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    $plugin_array['custom_mce_button13'] = get_template_directory_uri() .'/js/adminLayout.min.js';
 	    $plugin_array['custom_mce_button14'] = get_template_directory_uri() .'/js/adminCustom.min.js';
 	    $plugin_array['custom_mce_button15'] = get_template_directory_uri() .'/js/adminFawfive.min.js';
+	    $plugin_array['custom_mce_button16'] = get_template_directory_uri() .'/js/adminPro.min.js';
 	    return $plugin_array;
 	}
 	
@@ -1126,7 +1127,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 */	
 	function register_mce_buttons( $buttons ) {
 	    //array_push( $buttons, 'custom_mce_button1' );
-	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button12, custom_mce_button10, custom_mce_button13, custom_mce_button14, custom_mce_button5, custom_mce_button9, custom_mce_button15' );
+	    array_push( $buttons, 'custom_mce_button3, custom_mce_button2, custom_mce_button4, custom_mce_button6, custom_mce_button7, custom_mce_button8, custom_mce_button12, custom_mce_button10, custom_mce_button13, custom_mce_button14, custom_mce_button5, custom_mce_button9, custom_mce_button15, custom_mce_button16' );
 	    return $buttons;
 	}
 	
