@@ -21,8 +21,8 @@ if ( $offBg ) : $offBg = '.cover-wrapper { background-image: url("' . strip_tags
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
         <meta name="description" content="<?php ekiline_description(); ?>" />
         <link href="<?php echo get_template_directory_uri() . '/css/bootstrap.min.css'; ?>" rel="stylesheet" type="text/css">   
-        <link href="<?php echo get_template_directory_uri() . '/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">    
-        <link href="<?php echo get_template_directory_uri() . '/css/ekiline.css'; ?>" rel="stylesheet" type="text/css">  
+        <link href="<?php echo get_template_directory_uri() . '/css/fontawesome-all.min.css'; ?>" rel="stylesheet" type="text/css">    
+        <link href="<?php echo get_template_directory_uri() . '/css/ekiline.min.css'; ?>" rel="stylesheet" type="text/css">  
         <link href="<?php echo get_stylesheet_uri(); ?>" rel="stylesheet" type="text/css">  
         <?php ekiline_csscolors(); ?>
         <?php echo '<style type="text/css" id="wp-custom-css">' . strip_tags( wp_get_custom_css() ) . "\n" . $offBg . '</style>' . "\n" ;?>        
@@ -53,6 +53,6 @@ if ( $offBg ) : $offBg = '.cover-wrapper { background-image: url("' . strip_tags
                 </div>
             </div>
         </header>       
-        <a style="color:#ddd;position:fixed;left:4px;bottom:4px;" href="<?php echo wp_login_url(); ?>" title="login"><i class="fa fa-key"></i></a>     
+        <!--a style="color:#ddd;position:fixed;left:4px;bottom:4px;" href="<?php echo wp_login_url(); ?>" title="login"><i class="fa fa-key"></i></a-->     
     </body>
 </html> 
