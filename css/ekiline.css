@@ -45,7 +45,7 @@ video#bgvid{transition:1s opacity;}
 /** En caso de toggle sidebars || If uses toggle sidebars
 -------------------------------------------------------------------------**/
 /* El envoltorio || wrapper for columns */
-.toggle-sidebars #content { height: 100%;}
+.toggle-sidebars #content { height: 100%;overflow:hidden;}
 /*Posiciones Sidebar izquierdo, Sidebar derecho || Positions, left and right sidebar */
 .toggle-sidebars.left-on #secondary,.toggle-sidebars.right-on #third{position:fixed;top:0px;height:100%;z-index:1020;overflow:auto;}
 /* Sidebar izquierdo || Left sidebar */
@@ -243,9 +243,9 @@ video#bgvid{transition:1s opacity;}
 /* SEGUNDO CAMBIO: Bootstrap container 768/480 ( tablet/smarphone-hor )
  -------------------------------------------------- */
 @media only screen and (max-width : 767px) {
-/* En caso de toggle sidebars || If uses toggle sidebars */
+/* En caso de toggle sidebars || If uses toggle sidebars 
  #page-content-wrapper,.toggle-sidebars.left-on #primary{width:inherit;}
- #page-content-wrapper,.toggle-sidebars.right-on #primary{width:inherit;}
+ #page-content-wrapper,.toggle-sidebars.right-on #primary{width:inherit;}*/
 /* Carrusel extendido || Carousel extended */
  .carousel-multiple .carousel-item > div:nth-child(n+2),.carousel-multiple .carousel-item > figure:nth-child(n+2){display:none;}
  .carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left div,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right div,.carousel-multiple .carousel-inner .carousel-item-next.carousel-item-left figure,.carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right figure{opacity:1;}
@@ -266,7 +266,7 @@ video#bgvid{transition:1s opacity;}
   .video-text { display: none;}
 /* Ajustes en contenido WP || WP content adjustments */
  #main{padding:0;}
- .entry-content p > img{ max-width:100%; }
+ .entry-content p > img{ max-width:100%;height:auto; }
 }
 
 /* TERCER CAMBIO: Bootstrap container 320px ( smarphone-ver )
