@@ -223,10 +223,18 @@ function ekiline_loadcss() {
     if( true === get_theme_mod('ekiline_loadcss') && !is_admin() && !current_user_can('edit_posts')){
             
         global $wp_styles; 
-        
+
+	    $allcss = array();
+	    foreach( $wp_styles->queue as $csshandle ) {    	
+			$allcss[] = $csshandle;              
+	  	} 
+		$allowcss = array('photoswipe-default-skin');	
+		//permitir la carga de estilos que tienen dependencia o prioridad
+		$load_css = array_diff( $allcss, $allowcss );        
+		
     	// 4jun bueno!
         $ret = array();
-        foreach( $wp_styles->queue as $handle) {
+        foreach( $load_css as $handle) {
           wp_dequeue_style($handle);
 		//update 2018
           $ret[] = array( 'id' => $handle , 'src' => $wp_styles->registered[$handle]->src , 'media' => $wp_styles->registered[$handle]->args ) ;              
@@ -262,7 +270,7 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
   	} 
 	// descartando los que necesito cargar al inicio
 	// array_diff() o array_splice() : https://stackoverflow.com/questions/369602/php-delete-an-element-from-an-array
-	$allowjs = array("jquery-core","popper-script","bootstrap-script");	
+	$allowjs = array('jquery-core','popper-script','bootstrap-script');	
 	$defer_scripts = array_diff( $alljs, $allowjs );
 		
 	// para que se inicialicen mis funciones correctamente.
