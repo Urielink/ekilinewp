@@ -42,13 +42,17 @@ jQuery(document).ready(function($){
 		// crear un estilo por cada ruta extríada.
 		
 		$.each( obj, function( key, value ) {
+			
 				 //alert( key + ": " + value );
+				 //update 2018
+				 //alert( key + ": " + value.style );
 		
 			var $head = $("head");
 			var $wpcss = $head.find("style[id='ekiline-inline']"); 
 			var $cssinline = $head.find("style:last");
 			var $ultimocss = $head.find("link[rel='stylesheet']:last");
-			var linkCss = "<link id='"+ key +"' rel='stylesheet' href='"+ value +"' type='text/css' media='screen'>";
+			// var linkCss = "<link id='"+ value.id +"' rel='stylesheet' href='"+ value.src +"' type='text/css' media='"+ value.media +"'>";
+			var linkCss = $('<link/>',{'rel':'stylesheet','id':value.id,'href':value.src,'type':'text/css','media':value.media});
 		
 		  // En caso de de encontrar una etiqueta de estilo ó link ó nada inserta el otro estilo css, 
 		

@@ -228,7 +228,9 @@ function ekiline_loadcss() {
         $ret = array();
         foreach( $wp_styles->queue as $handle) {
           wp_dequeue_style($handle);
-          $ret[] = $wp_styles->registered[$handle]->src ;              
+		//update 2018
+          $ret[] = array( 'id' => $handle , 'src' => $wp_styles->registered[$handle]->src , 'media' => $wp_styles->registered[$handle]->args ) ;              
+          // $ret[] = $wp_styles->registered[$handle]->src;              
           //$ret[] = $wp_styles->registered[$handle] ;              
       	}        
         //echo json_encode( $ret );             
