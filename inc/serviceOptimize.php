@@ -267,7 +267,7 @@ function wsds_defer_scripts( $tag, $handle, $src ) {
 		
 	// para que se inicialicen mis funciones correctamente.
     if ( in_array( $handle, $defer_scripts ) ) {
-        return '<script src="' . $src . '" type="text/javascript" defer async></script>' . "\n";
+        return '<script type="text/javascript" src="' . $src . '" defer="defer" async="async"></script>' . "\n";
     }    
     return $tag;
 } 
