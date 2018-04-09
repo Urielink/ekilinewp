@@ -119,7 +119,7 @@ function customHeader() {
             // agregar brand image // add brand image
             $coverLogo = get_theme_mod( 'ekiline_logo_min' );            
             if ( $coverLogo ){
-                $coverLogo = '<a class="cover-header-brand author" href="'.esc_url( home_url( '/' ) ).'" rel="home"><img src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/></a>';
+                $coverLogo = '<img class="cover-header-brand author img-fluid" src="' . get_theme_mod( 'ekiline_logo_min' ) . '" alt="' . get_bloginfo( 'name' ) . '"/>';
             }
             
             // Mensaje personalizado // custom message

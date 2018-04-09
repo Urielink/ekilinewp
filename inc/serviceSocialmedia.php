@@ -214,7 +214,7 @@ function ekiline_socialmenu($atts, $content = null) {
         $ttIco = '<i class="fab fa-twitter"></i>';
         $gpIco = '<i class="fab fa-google-plus"></i>';
         $inIco = '<i class="fab fa-linkedin"></i>';
-        $ytIco = '<i class="fab fa-youtube-play"></i>';
+        $ytIco = '<i class="fab fa-youtube"></i>';
         $instIco = '<i class="fab fa-instagram"></i>';
         $pintIco = '<i class="fab fa-pinterest"></i>';
     }    
