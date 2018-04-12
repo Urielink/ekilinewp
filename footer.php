@@ -33,7 +33,7 @@
             
             
             <div class="site-info text-center clearfix">    
-                <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?> <a class="btn btn-secondary btn-sm float-right" href="#top"><span class="fa fa-chevron-up"></span></a>                    
+                <?php printf( esc_html__( '&copy; Copyright %1$s', 'ekiline' ), esc_attr( date('Y') . ' ' . get_bloginfo( 'name', 'display' )) );?> <a class="goTop btn btn-secondary btn-sm float-right" href="#top"><span class="fa fa-chevron-up"></span></a>                    
                 <br/>                
                 <!--small class="float-left"><?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href="https://wordpress.org/">WordPress</a>' ); ?> <?php printf( esc_html__( 'and %s', 'ekiline' ), '<a href="'.__('http://ekiline.com','ekiline').'" target="_blank">Ekiline</a>' ); ?></small-->                
 				<small class="tooltip-default float-left my-2 d-inline-block" tabindex="0" data-toggle="tooltip" data-html="true" title="<small><?php printf( esc_html__( 'Proudly powered by %s', 'ekiline' ), '<a href=\'https://wordpress.org/\'>WordPress</a>' ); ?> <?php printf( esc_html__( 'and %s', 'ekiline' ), '<a href=\''.__('http://ekiline.com','ekiline').'\' >Ekiline</a>' ); ?></small>">

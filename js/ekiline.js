@@ -697,7 +697,9 @@ jQuery(document).ready(function($){
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
-	 *	Utilidades, compartir vía redes sociales.
+	 *	Utilidades: 
+	 *  a) compartir vía redes sociales.
+	 *  b) scroll suave al subir
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/				
 	    $('.shortcode-socialsharemenu .nav-link').click(function(e) {
@@ -705,6 +707,12 @@ jQuery(document).ready(function($){
 	        window.open( $(this).attr('href'), 'ShareContent', 'height=450, width=550, top=' + ($(window).height() / 2 - 275) + ', left=' + ($(window).width() / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
 	        return false;
 	    });
+
+		$('.goTop').click(function() {
+		  $('html, body').animate({ 
+		  	scrollTop:0 }, 'slow');		
+		});
+	    
 
 			
 }); 			
