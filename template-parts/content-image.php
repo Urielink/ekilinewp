@@ -13,7 +13,7 @@
 	
 	<?php if ( !is_home() && ! is_front_page() ) : ?> 
 		
-	<header class="entry-header">
+	<header class="entry-header border-bottom pb-2 mb-2">
 	  	
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		

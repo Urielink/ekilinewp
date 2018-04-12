@@ -22,7 +22,7 @@ $colSet = get_theme_mod('ekiline_Columns');
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $colClass ); ?>>
                 
-        <header class="entry-header">
+        <header class="entry-header border-bottom pb-2 mb-2">
                         
         <?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
         
@@ -36,7 +36,7 @@ $colSet = get_theme_mod('ekiline_Columns');
     
         </header><!-- .entry-header -->
     
-        <div class="entry-content clearfix border-top pt-2 mt-2">
+        <div class="entry-content clearfix">
             
 	        <?php if ( has_post_thumbnail() ) { ?>
 	        	

@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
     
-	<header class="entry-header">
+	<header class="entry-header border-bottom pb-2 mb-2">
 
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
@@ -21,7 +21,7 @@
 		
 	</header><!-- .entry-header -->
 
-	<div class="entry-content clearfix border-top pt-2 mt-2">
+	<div class="entry-content clearfix">
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
