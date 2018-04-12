@@ -124,8 +124,9 @@ add_shortcode('loginform', 'ekiline_loginfrontend');
  */
 
 function add_loginout_link( $items, $args ) {
-    if (is_user_logged_in()) {
-        $items .= '<li class="menu-item nav-item"><a class="nav-link" href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).' <i class="fa fa-power-off"></i></a></li>';
+    // if ( is_user_logged_in() && $args->theme_location == 'top' || $args->theme_location == 'primary' || $args->theme_location == 'modal' ) {
+    if ( is_user_logged_in() && in_array( $args->theme_location , array('top','primary','modal') ) ) {
+        $items .= '<li class="menu-item nav-item"><a class="nav-link" href="'. wp_logout_url(home_url()) .'">'.esc_html__( 'Exit', 'ekiline' ).' <i class="fas fa-power-off"></i></a></li>';
     }
     return $items;
 }
