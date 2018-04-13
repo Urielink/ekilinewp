@@ -99,11 +99,16 @@ function ekiline_sitemap_xml() {
 	}
 	
 	// Select posts and pages
+	$arrayPosts = array( 'post','page' );
+	if ( class_exists( 'WooCommerce' ) ) {
+		$arrayPosts = array( 'post','page','product' );
+	} 	
+
 	$postsForSitemap = get_posts(array(
 		//	'numberposts' => -1,
 			'numberposts' => $sitemapLimit,
 			'orderby' => 'modified',
-			'post_type' => array( 'post','page' ),
+			'post_type' => $arrayPosts,
 			'order' => 'DESC'
 	));
 	
@@ -151,8 +156,8 @@ function ekiline_sitemap_xml() {
 	$homedir = $wp_filesystem->abspath();
 	$file = trailingslashit( $homedir ) . 'sitemap.xml';
 	$wp_filesystem->put_contents( $file, $sitemap, FS_CHMOD_FILE );
-	
-    $response = __('Sitemap created successfully!', 'ekiline');
+	// crear la ruta de acceso al sitemap: https://developer.wordpress.org/reference/functions/get_site_url/
+    $response = __('Sitemap created successfully!', 'ekiline') . "\n" . get_site_url() . '/sitemap.xml';
     echo $response;		
 	
     wp_die(); /* this is required to terminate immediately and return a proper response */
