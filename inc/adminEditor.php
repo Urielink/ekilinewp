@@ -1096,12 +1096,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	}
 	
 // ajuste en el front	
-	add_action('wp_head', 'custom_mce_buttons_front');
- 	function custom_mce_buttons_front() {
-	    // Verificar si esta habilitado || Check is enabled
-	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
-	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
-	}
+	// add_action('wp_head', 'custom_mce_buttons_front');
+ 	// function custom_mce_buttons_front() {
+	    // // Verificar si esta habilitado || Check is enabled
+	        // add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
+	        // add_filter( 'mce_buttons_3', 'register_mce_buttons' );
+	// }
 	
 	
 	/**
