@@ -31,7 +31,7 @@
             onclick: function (e) {
             
 	            //llamar el catalogo de diseños
-	        	$.get('../wp-content/themes/ekiline/template-parts/custom-layouts.php', function(laysrc){
+	        	$.get(editor.getLang('ekiline_tinymce.themePath')+'/template-parts/custom-layouts.php', function(laysrc){
 					
 					// crear variable para cadena de JSON											
 				    jsonObj = [];

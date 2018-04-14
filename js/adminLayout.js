@@ -21,7 +21,7 @@
             onclick: function (e) {
             
 	            //llamar el catalogo de diseños
-	        	$.get('../wp-content/themes/ekiline/inc/adminLibrary.php', function(laysrc){
+	        	$.get(editor.getLang('ekiline_tinymce.themePath')+'/inc/adminLibrary.php', function(laysrc){
 					
 					// crear variable para cadena de JSON											
 				    jsonObj = [];
