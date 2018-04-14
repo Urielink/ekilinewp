@@ -1161,6 +1161,11 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	foreach ( array('post.php','post-new.php') as $hook ) {
 	     add_action( "admin_head-$hook", 'my_admin_head' );
 	}
+	// llamar los datos en el front.
+	if( !is_admin() ){
+	    add_action( 'wp_head', 'my_admin_head' );	
+	}	
+    
 	
 	// Arreglo para incorporar el script al head || add script to head
 	
@@ -1191,6 +1196,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			 '</script>'."\n";
 		}
 		
+/** 
+ *  Abril de 2018: simplificado, todo se abstrae desde el plugin: adminFawfive.js;
+ * 		
 		// agregar font awesome en admin solo en la edicion
 		// https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
 		function fontawesome_admin_style() {	
@@ -1200,7 +1208,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			//la libreria de font awesome		    
 			$extracss = '.mce-window.mce-container.mce-fontawesome-panel .mce-container-body.mce-abs-layout{overflow: hidden;}';
 			//la interfaz de font awesome : font-family: Font Awesome 5 Free;
-			$extracss .= '#iconCat-body ul{width:840px;max-width:840px;min-height:600px;}';
+			$extracss .= '#iconCat-body ul{width:840px;max-width:840px;min-height:600px;list-style:none;}';
 			$extracss .= '#iconCat-body ul,#iconCat-body ul li{padding:0px;margin:0px;}';
 			$extracss .= '#iconCat-body ul li{text-align:center;padding:8px 0px 6px;width:40px;height:24px;cursor:pointer;float:left;}';
 			$extracss .= '#iconCat-body ul li:hover{background-color:#f7f7f7;}';
@@ -1209,9 +1217,28 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			$extracss .= '#iconCat-body .fab {font-family:"Font Awesome 5 Brands";font-size:20px;}';		
 			$extracss .= '#iconCat-body #icoDesc {position:fixed;top:37px;left:0px;right:0px;text-align:center;font-size:16px;background-color:#294350;color:#94f7ff;padding:4px;margin:0px;line-height:100%;}';		
 		    wp_add_inline_style( 'wp-admin', $extracss );
+			//Abril 2018: en el front
+		    // wp_add_inline_style( 'ekiline-style', $extracss );
 		}
 		add_action( 'admin_enqueue_scripts', 'fontawesome_admin_style');
+		//Abril 2018: en el front
+		// add_action( 'wp_enqueue_scripts', 'fontawesome_admin_style');
 
+
+		 // Abril 2018: nueva manera de invocar los estilos, que se ejecuten solo para el editor 
+		 // Por ejemplo para personalizarlo.
+		 // * Oficial https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_css
+
+		// function plugin_mce_css( $mce_css ) {
+			// if ( ! empty( $mce_css ) )
+				// $mce_css .= ',';		
+			// $font_url = get_template_directory_uri() . '/css/fontawesome-all.min.css';
+			// $mce_css .= str_replace( ',', '%2C', $font_url );
+ 		
+			// return $mce_css;
+		// }
+		// add_filter( 'mce_css', 'plugin_mce_css' );	
+***/		
 
 }
 

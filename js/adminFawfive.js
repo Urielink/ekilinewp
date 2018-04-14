@@ -14,7 +14,20 @@
             image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-faw.png',
             onclick: function (e) {
             	
-//mi html previo
+//mi html previo CSS y HTML
+				var	uiCss = '<link rel="stylesheet" href="'+editor.getLang('ekiline_tinymce.themePath')+'/css/fontawesome-all.min.css" type="text/css" media="all" />'; 
+					uiCss += '<style type="text/css">';
+					uiCss += '.mce-window.mce-container.mce-fontawesome-panel .mce-container-body.mce-abs-layout{overflow: hidden;}';
+					uiCss += '#iconCat-body ul{width:840px;max-width:840px;min-height:600px;list-style:none;}';
+					uiCss += '#iconCat-body ul,#iconCat-body ul li{padding:0px;margin:0px;}';
+					uiCss += '#iconCat-body ul li{text-align:center;padding:8px 0px 6px;width:40px;height:24px;cursor:pointer;float:left;}';
+					uiCss += '#iconCat-body ul li:hover{background-color:#f7f7f7;}';
+					uiCss += '#iconCat-body .fa,#iconCat-body .fas{font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 900;}';
+					uiCss += '#iconCat-body .far {font-family:"Font Awesome 5 Free";font-size:20px;font-weight: 400;}';
+					uiCss += '#iconCat-body .fab {font-family:"Font Awesome 5 Brands";font-size:20px;}';		
+					uiCss += '#iconCat-body #icoDesc {position:fixed;top:37px;left:0px;right:0px;text-align:center;font-size:16px;background-color:#294350;color:#94f7ff;padding:4px;margin:0px;line-height:100%;}';		
+					uiCss += '</style>';
+				
             	var uiFaw = '';
             	var uiFawS = '';
             	var uiFawR = '';
@@ -42,7 +55,7 @@
 				     //console.log(arrayBra[i]);         
 				     uiFaw += $( '<div><li title="' + arrayBra[i] + '"><i class="fab fa-' + arrayBra[i] + '"><!--' + arrayBra[i] + '--></i></li></div>' ).html();
 				}    
-				uiFaw = '<p id="icoDesc"></p><ul>'+ uiFaw +'</ul>'; 
+				uiFaw = uiCss + '<p id="icoDesc"></p><ul>'+ uiFaw +'</ul>'; 
 				
 // fin mi html previo            	
 
