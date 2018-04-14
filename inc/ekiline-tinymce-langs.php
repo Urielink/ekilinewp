@@ -10,6 +10,7 @@ if ( ! class_exists( '_WP_Editors' ) )
 
 function ekiline_tinymce_translation() {
     $strings = array(
+        'themePath' => get_template_directory_uri(),
     //adminShowgrid.js
         'showgrid' => __('Show grid', 'ekiline'),
     //adminItemBg.js

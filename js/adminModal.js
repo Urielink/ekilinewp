@@ -20,7 +20,7 @@
             //title : 'Modal box',
             //text: 'Modal box',
             title : editor.getLang('ekiline_tinymce.addmodal'),
-            image: '../wp-content/themes/ekiline/img/ico-modal.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-modal.png',
             onclick: function (e) {
             	
             	//1) inicio la seleccion del objeto

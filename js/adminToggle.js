@@ -24,7 +24,7 @@
             //icon: false,
             //title : 'Toggle item',
             title : editor.getLang('ekiline_tinymce.addtoggle'),
-            image: '../wp-content/themes/ekiline/img/ico-toggle.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-toggle.png',
             onclick: function (e) {            	
                 editor.windowManager.open({
                 	

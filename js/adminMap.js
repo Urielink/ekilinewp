@@ -20,7 +20,7 @@
             //title : 'Insert Google map',
             //text: 'Insert Google map',
             title : editor.getLang('ekiline_tinymce.insertgmap'),
-            image: '../wp-content/themes/ekiline/img/ico-gmap.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-gmap.png',
             onclick: function (e) {            	
                 editor.windowManager.open({
                 	

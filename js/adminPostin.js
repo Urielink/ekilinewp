@@ -30,7 +30,7 @@
             //icon: false,
             // title : 'Entries module',
             title : editor.getLang('ekiline_tinymce.modcat'),
-            image: '../wp-content/themes/ekiline/img/ico-insert.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-insert.png',
             onclick: function (e) {
             	
             	// console.log(my_plugin);

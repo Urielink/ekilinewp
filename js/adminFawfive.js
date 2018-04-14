@@ -11,7 +11,7 @@
         editor.addButton('custom_mce_button15', {
             //icon: false,
             title : 'FontAwesome',
-            image: '../wp-content/themes/ekiline/img/ico-faw.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-faw.png',
             onclick: function (e) {
             	
 //mi html previo

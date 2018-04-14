@@ -30,7 +30,7 @@
             //icon: false,
             // title : 'Custom fields',
             title : editor.getLang('ekiline_tinymce.helpterms'),
-            image: '../wp-content/themes/ekiline/img/ico-help.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-help.png',
             onclick: function (e) {
             	
             	// console.log(my_plugin);

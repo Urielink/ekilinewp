@@ -24,7 +24,7 @@
             //icon: false,
             // title : 'Extra shortocodes',
             title : editor.getLang('ekiline_tinymce.share'),
-            image: '../wp-content/themes/ekiline/img/ico-share.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-share.png',
             onclick: function (e) {
             	
                 editor.windowManager.open({

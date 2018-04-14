@@ -37,7 +37,7 @@
             //text: 'B4 Cols',
             //title : 'Add background',
             title : editor.getLang('ekiline_tinymce.addbackground'),
-            image: '../wp-content/themes/ekiline/img/ico-bg.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-bg.png',
             onclick: function (e) {
             	
             	// reconocer el objeto seleccionado.

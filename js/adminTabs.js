@@ -24,7 +24,7 @@
             //icon: false,
             //title : 'Insert Tabs',
             title : editor.getLang('ekiline_tinymce.addtabs'),
-            image: '../wp-content/themes/ekiline/img/ico-tabs.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-tabs.png',
             onclick: function (e) {            	
                 editor.windowManager.open({
                 	

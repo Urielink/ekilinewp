@@ -27,7 +27,7 @@
             //text: 'Custom presets',
             // title : 'Custom presets',
             title : editor.getLang('ekiline_tinymce.addmydesign'),
-            image: '../wp-content/themes/ekiline/img/ico-custom.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-custom.png',
             onclick: function (e) {
             
 	            //llamar el catalogo de diseños

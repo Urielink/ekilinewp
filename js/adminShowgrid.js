@@ -27,7 +27,7 @@
             //text: 'B4 Cols',
             // title : 'Show grid',
             title : editor.getLang('ekiline_tinymce.showgrid'),
-            image: '../wp-content/themes/ekiline/img/ico-grid.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-grid.png',
             onclick: function (e) {
             	
         		//editor.insertContent('&nbsp;<b>It\'s my button!</b>&nbsp;');

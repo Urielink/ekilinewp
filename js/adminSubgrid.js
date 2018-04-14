@@ -25,7 +25,7 @@
             //text: 'B4 Cols',
             // title : 'Add columns',
             title : editor.getLang('ekiline_tinymce.addcols'),
-            image: '../wp-content/themes/ekiline/img/ico-cols.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-cols.png',
             onclick: function (e) {
             	
                 editor.windowManager.open({

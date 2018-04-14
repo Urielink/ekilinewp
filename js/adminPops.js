@@ -24,7 +24,7 @@
             //title : 'Tooltips',
             //text: 'Tooltips',
             title : editor.getLang('ekiline_tinymce.addtooltips'),
-            image: '../wp-content/themes/ekiline/img/ico-tooltip.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-tooltip.png',
             onclick: function (e) {
             	
             	//1) inicio la seleccion del objeto

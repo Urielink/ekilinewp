@@ -17,7 +17,7 @@
             //text: 'Quick designs',
             // title : 'Quick designs',
             title : editor.getLang('ekiline_tinymce.addlays'),
-            image: '../wp-content/themes/ekiline/img/ico-layout.png',
+            image: editor.getLang('ekiline_tinymce.themePath')+'/img/ico-layout.png',
             onclick: function (e) {
             
 	            //llamar el catalogo de diseños
