@@ -1055,6 +1055,17 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                    'selector'  => 'img',
 	                    'classes'   => 'img-fluid',
 	                ),
+	                array(
+	                    'title'     => __( 'Iframe modal', 'ekiline' ),
+	                    'selector'  => 'a',
+	                    'classes'   => 'modal-iframe',
+	                ),                
+	                array(
+	                    'title'     => __( 'Image modal', 'ekiline' ),
+	                    'selector'  => 'a',
+	                    'classes'   => 'modal-image',
+	                ), 	                
+					
 	            ),
 	        ),        	        	    
 	    );  
