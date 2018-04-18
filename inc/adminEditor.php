@@ -796,6 +796,11 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			                    // anidados margin
 					            'items' => array(
 					                array(
+					                    'title'     => __( 'm-0', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'm-0',
+					                ),
+					                array(
 					                    'title'     => __( 'mt-1', 'ekiline' ),
 					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
 					                    'classes'   => 'mt-1',
@@ -832,6 +837,11 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			                    'title'     => __( 'padding', 'ekiline' ),
 			                    // anidados padding
 					            'items' => array(
+					                array(
+					                    'title'     => __( 'p-0', 'ekiline' ),
+					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'classes'   => 'p-0',
+					                ),
 					                array(
 					                    'title'     => __( 'pt-1', 'ekiline' ),
 					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
