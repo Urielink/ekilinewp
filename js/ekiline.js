@@ -318,71 +318,65 @@ jQuery(document).ready(function($){
 	      }			
 	}); 
 	
-	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
-	 * 
-	 *	Preparar los ModalBox por tipo de enlace
-	 * 
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
-	
 
-	$('.modal-image').each(function() {
-	    // necesito extraer el src y copiarlo en otro atributo
-	    var getSrc = $(this).attr('href');
-	    // añadirlo como dato paralelo
-	    $(this).attr('data-src', getSrc );	 
-	    
-	    // y por último modificar el src, convertirlo a un #id, basado en la último parte de la url.	    
-	    
-	    // var urlRest = getSrc.substring(0, getSrc.lastIndexOf("/") + 1);
-	    var urlLast = getSrc.substring(getSrc.lastIndexOf("/") + 1, getSrc.length);	    
-	    // limpiar los caracteres
-	    var setId = urlLast.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-	    // reemplazar el src
-	    $(this).attr('href', '#'+setId );		
-	});
-	
-	$('.modal-iframe').each(function() {
-	    // necesito extraer el src y copiarlo en otro atributo
-	    var getSrc = $(this).attr('href');
-	    // añadirlo como dato paralelo
-	    $(this).attr('data-src', getSrc );	 
-	    
-	    // Segmentar la url implica muchos riezgos ajenos al usuario 
-	    // Y por el uso de rewrite, hay que verificar que las url no contengan "/" al final
-	    var cSlash = getSrc.replace(/\/$/, '');
-
-	    // solo se limpiarán los caracteres
-	    var setId = getSrc.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-	    // reemplazar el src
-	    $(this).attr('href', '#'+setId );		
-	});		
-	
-		
-    //Modals, ocultar el contenido HTML, esto depende del attr=Href, para que surta efecto.
-	$('.modal-inline').each(function(){
-		//extraigo el enlace del contenido
-	    var inlineHtml = $(this).attr('href').replace( '#','.');
-		//Creo un envoltorio
-		var inlineWrap = $('<div/>', { "class" : "collapse" });
-		//Envuelvo
-	    $( inlineHtml ).wrap( inlineWrap );	     
-	});  	
-	
 
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 	 * 
-	 *	ModalBox para diferente contenido
+	 *	Plugin para extender el uso de modals, por tipo.
+	 *  Mejorado 2018. B4
+	 *  NOTA: debe cargar después del carrusel mejorado.
+	 *  tip: Ejecutar un modal después de cargar
+ 	 *  $('#perfil_doctor').modal('show');
 	 * 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/		
-			
-	var ekilinemodals = {			
+
+	var ekilinemodals = {
 		
 		multipleModals: function ( linkClass ) {
 			
 			//Abr 28 2017 añadir un atributo a los links, para ejecutar los modals.
-	        $( linkClass ).each(function(){        	
+	        $( linkClass ).each(function(){
+	        	
 	          $(this).attr('data-toggle','modal');
-	        });				
+
+		        //Marz 2018 preparar el contenido por boton.			
+		          
+			    // Extraigo el src
+				    var gSrc = $(this).attr('href');		    
+								
+					if ( $(this).hasClass('modal-inline') ){
+					    // crea nuevo id
+					    var newId = gSrc.replace( '#','' );
+						//Envuelvo
+						var inlineWrap = $('<div/>', { "class" : "collapse" });
+					    $( gSrc ).wrap( inlineWrap );	 
+				    	// encuentra el contenido oculto y reemplaza el id por clase.
+				    	$( gSrc ).removeAttr('id').addClass( newId + ' p-2' );
+						
+					} else if ( $(this).hasClass('modal-image') ){
+		
+					    // agrego dato
+					    $(this).attr('data-src', gSrc );	 			    
+					    // modifico el src, convertir en #id, basado en la último parte de la url.	    
+					    var urlLast = gSrc.substring(gSrc.lastIndexOf("/") + 1, gSrc.length);	    
+					    // limpio caracteres
+					    var setId = urlLast.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+					    // reemplazar el src
+					    $(this).attr('href', '#'+setId );								
+						
+					} else if ( $(this).hasClass('modal-iframe') ){
+		
+						// agrego dato
+					    $(this).attr('data-src', gSrc );	 			    		
+					    // solo se limpiarán los caracteres
+					    var setId = gSrc.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+					    // reemplazar el src
+					    $(this).attr('href', '#'+setId );				
+						
+					} 		          
+	          
+	        });	//botones listos.
+	        
 	
 	        $( linkClass ).on('click',function(){
 	
@@ -394,16 +388,6 @@ jQuery(document).ready(function($){
 						// quitar el hashtag a #contenido para generar un id="" nuevo en el modal.			
 						var hrefToid = dataHref.substr(1);
 					}			        
-		        
-		        // En caso de tener ancho o alto para especificar el tamaño de la ventana, por default genera un modal a todo lo ancho y a todo lo alto.
-				var dataWidth = $(this).attr('data-width') || null;
-				var dataHeight = $(this).attr('data-height') || null;
-				
-				// pero si no esta especificado, dejar las ventanas al 100%
-					if (dataWidth == null || dataHeight == null){
-						dataWidth = '100';
-						dataHeight = '100';
-					}
 				
 				// por el tipo de clase CSS determino el recurso a utilizar
 				var dataSrc = $(this).attr('data-src') || null;
@@ -415,18 +399,22 @@ jQuery(document).ready(function($){
 		
 		            var contenidoModal = ''; // acorde al tipo de contenido este campo se Agrega. 
 		            
-		            //Abr 28 2017: añado una clase extra al modal para poder maniobrar las medidas por tipo de contenido y le añado un sufijo "linkClass.substr(1)"
-					//var modalHtml = '<div class="modal window-'+ linkClass.substr(7) +' fade zoom" id="' + hrefToid + '"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">' + contenidoModal + '</div></div></div></div>';
-					var modalHtml = $('<div/>',{'class':'modal window-'+ linkClass.substr(7) +' fade zoom', 'id': hrefToid, 'html': $('<div/>',{ 'class':'modal-dialog modal-lg', 'html': $('<div/>',{ 'class':'modal-dialog modal-lg', 'html': $('<div/>',{ 'class':'modal-content', 'html': $('<div/>',{ 'class':'modal-body', 'html': contenidoModal }) }) }) }) });
-		
-					//var modalTitle = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span>&times;</span></button></div>';
-					var modalTitle = $('<div/>',{'class':'modal-header', 'html': $('<button/>',{'class':'close', 'type': 'button', 'data-dismiss': 'modal', 'html': $('<span/>',{'html':'&times;'}) }) });
-
-		
-					// de momento el footer no se requiere, pero lo dejaremos solo como referencia.
-					//var modalFooter = '<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>';
-					var modalFooter = $('<div/>',{'class':'modal-footer', 'html': $('<button/>',{'class':'btn btn-secondary', 'type': 'button', 'data-dismiss': 'modal', 'html':'Cerrar' }) });
+					var modalHtmlBody = $('<div/>',{ 'class':'modal-body', 'html': contenidoModal });						
+					var modalHtmlContent = $('<div/>',{ 'class':'modal-content', 'html': modalHtmlBody });
+					var modalHtmlDialog = $('<div/>',{ 'class':'modal-dialog modal-lg modal-dialog-centered', 'html': modalHtmlContent });						
+					var modalHtmlWindow = $('<div/>',{'class':'modal window-'+ linkClass.substr(7) +' fade zoom', 'id': hrefToid, 'html': modalHtmlDialog });
+					var modalHtml = modalHtmlWindow;
 			
+					var modalTitleX = $('<span/>',{'html':'&times;'});
+					var modalTitleClose = $('<button/>',{'class':'close', 'type': 'button', 'data-dismiss': 'modal', 'html': modalTitleX });
+					var modalFull = $('<button/>', { 'type':'button', 'class':'resize', 'html': $('<i/>', { 'class':'fas fa-expand'}) });				
+					var modalTitleHeader = $('<div/>',{'class':'modal-header', 'html':[ modalFull, modalTitleClose ] });
+					var modalTitle = modalTitleHeader;
+			
+					var modalFooterClose = $('<button/>',{'class':'btn btn-secondary', 'type': 'button', 'data-dismiss': 'modal', 'html':'Cerrar' });							
+					var modalFooterFooter = $('<div/>',{'class':'modal-footer', 'html': modalFooterClose });							
+
+					var modalFooter = modalFooterFooter;				
 		
 		    	// Precarga la ventana que contendra la informacion
 			        $( 'body' ).append(modalHtml);
@@ -439,8 +427,7 @@ jQuery(document).ready(function($){
 			        
 			    	// Si hay titulo, Agrega un H4 en el espacio del titulo
 			        if ( attrTittle != null ){
-			            //$('#' + hrefToid + ' .modal-content .modal-header').append( '<h4 class="modal-title">' + attrTittle +'</div>' );	        	
-			            $('#' + hrefToid + ' .modal-content .modal-header').append( $('<h4/>', { 'class':'modal-title','html': attrTittle }) );	        	
+			            $('#' + hrefToid + ' .modal-content .modal-header').prepend( $('<h4/>', { 'class':'modal-title','html': attrTittle }) );	        	
 			        }
 			        
 			        
@@ -448,16 +435,12 @@ jQuery(document).ready(function($){
 			            	
 					if ( linkClass == '.modal-iframe' ){
 						
-			            //contenidoModal = '<iframe frameborder="0" scrolling="yes" allowtransparency="true" src="' + dataSrc + '" width="100%" height="100%"></iframe>';
 			            contenidoModal = $('<iframe/>', { 'frameborder':'0', 'scrolling':'yes', 'allowtransparency': 'true', 'src': dataSrc, 'width':'100%', 'height': '100%' });
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
 		
 					} else if ( linkClass == '.modal-image' ){
-		
-						dataWidth = '';
-		
-				        //contenidoModal = '<img class="img-fluid" src="' + dataSrc + '"/>';
+
 				        contenidoModal = $('<img/>', { 'class':'img-fluid', 'src': dataSrc });
 		
 			            $('#' + hrefToid + ' .modal-content .modal-body').html( contenidoModal );
@@ -474,17 +457,6 @@ jQuery(document).ready(function($){
 					// Personalizo la medidas de las ventanas modal depende de si existe width, height en el boton.
 					 
 				    $( '#'+hrefToid ).on('show.bs.modal', function () {
-				    	
-		
-				        $(this).find('.modal-dialog').css({
-				                  // modal-dialog abarca el 100% de la ventana.
-				                  width: dataWidth + '%', //ancho de ventana
-				                  height: dataHeight + '%', //alto de ventana
-				                  'padding':'0',
-								  'margin': '0',
-								  'margin-right': 'auto',
-								  'margin-left': 'auto'
-				           });
 				           
 				         $(this).find('.modal-content').css({
 				                  'padding':'0'
@@ -494,52 +466,23 @@ jQuery(document).ready(function($){
 				                  'padding':'0'
 				         });
 				         
-			         //Abr 27, después de añadir la clase auxiliar, le pedimos que ajuste las medidas. 
+			         //Abr 27, después de añadir la clase auxiliar, le pedimos que ajuste las medidas del iframe. 
 				         $('.window-iframe').find('.modal-body').css({
-			                  // modal body hereda la altura de la ventana (el .8 es por un desfase extraño)
-			                   'height': dataHeight * $(window).height() / 100 * 0.8
-				         });	
-				           
+			                  // modal body hereda la altura de la ventana 
+			                   'height': 100 * $(window).height() / 100 * 0.75
+				         });
+				         
+				        // // feb2018 update: boton para cambiar la ventana de tamaño.
+			        	$( '.resize' ).click(function(){
+		        			$('.modal-open').toggleClass('modal-full');
+			        	});
+
 				    }); 	
-				    
-				    // función para ajustar los modals respecto al contenido interno
-				    // https://codepen.io/dimbslmh/full/mKfCc
-				    function setModalMaxHeight(element) {
-				    	  this.$element     = $(element);  
-				    	  this.$content     = this.$element.find('.modal-content');
-				    	  var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
-				    	  var dialogMargin  = $(window).width() < 768 ? 20 : 60;
-				    	  var contentHeight = $(window).height() - (dialogMargin + borderWidth);
-				    	  var headerHeight  = this.$element.find('.modal-header').outerHeight() || 0;
-				    	  var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
-				    	  var maxHeight     = contentHeight - (headerHeight + footerHeight);
-	
-				    	  this.$content.css({
-				    	      'overflow': 'hidden'
-				    	  });
-				    	  
-				    	  this.$element
-				    	    .find('.modal-body').css({
-				    	      'max-height': maxHeight,
-				    	      'overflow-y': 'auto'
-				    	  });
-				    	}
-	
-				    	$('.modal').on('show.bs.modal', function() {
-				    	  $(this).show();
-				    	  setModalMaxHeight(this);
-				    	});
-	
-				    	$(window).resize(function() {
-				    	  if ($('.modal.in').length != 0) {
-				    	    setModalMaxHeight($('.modal.in'));
-				    	  }
-				    	});					    
-		
 		
 				// Borrar ventana
 				  	$( '#'+hrefToid ).on('hidden.bs.modal', function(){
 				    	$(this).remove();
+		        		$('body').removeClass('modal-full');
 					});				
 	
 	
@@ -553,6 +496,7 @@ jQuery(document).ready(function($){
 	ekilinemodals.multipleModals( '.modal-iframe' );
 	ekilinemodals.multipleModals( '.modal-image' );
 	ekilinemodals.multipleModals( '.modal-inline' );
+
 	
 	
 	/** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
@@ -578,12 +522,12 @@ jQuery(document).ready(function($){
 	        	                
 	        // var modalgallery = '';
 	        // modalgallery += '<div class="modal fade zoom" role="dialog" id="galleryModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body">';	                            
-	        // modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><button type="button" class="resize"><i class="fas fa-arrows-alt"></i></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
+	        // modalgallery += '<div id="carousel-modal" class="carousel slide carousel-fade" data-ride="carousel" style="display:none;"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button><button type="button" class="resize"><i class="fas fa-expand"></i></button><ol class="carousel-indicators"></ol><div class="carousel-inner" role="listbox">'+ gallery +'</div><a class="carousel-control-prev" href="#carousel-modal" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-modal" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></a></div>';
 	        // modalgallery += '</div></div></div></div>';
 	        
 	        //elementos centrales
 			var mgClose = $('<button/>', { 'type':'button', 'class':'close', 'data-dismiss':'modal', 'html': $('<span/>', { 'aria-hidden':'true', 'html': '&times;' }) });				
-			var fullSize = $('<button/>', { 'type':'button', 'class':'resize', 'html': $('<i/>', { 'class':'fas fa-arrows-alt'}) });				
+			var fullSize = $('<button/>', { 'type':'button', 'class':'resize', 'html': $('<i/>', { 'class':'fas fa-expand'}) });				
 			var mgLi = $('<ol/>', { 'class':'carousel-indicators' });
 			var mgGal = $('<div/>', { 'class':'carousel-inner', 'role':'listbox', 'html': gallery });
 	        //controles

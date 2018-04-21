@@ -189,17 +189,34 @@ video#bgvid{transition:1s opacity;}
 #navModal .navbar-nav .dropdown-menu.show > li > a{padding:10px 15px 10px 15px;text-align:center;}
 #navModal.modal.move-from-bottom .modal-dialog{position:fixed;left:0;right:0;bottom:0;margin:0px auto;height:80%;}
 #navModal.modal.move-from-bottom .modal-content{height:100%;overflow-y:auto;}
+
+/*Modal boton fullsize*/
+.modal-dialog .resize{padding:1.2rem 1rem;margin:-1rem;cursor:pointer;background-color:transparent;border:0;font-size:1.2rem;line-height:1;color:#000;text-shadow:0 1px 0 #fff;opacity:.5;position:absolute;right:3.4rem;}
+.modal-dialog .resize:hover,.modal-dialog .resize:focus,.modal-full .modal-dialog .resize{opacity:.75;}
+
+/*full modal*/
+.modal-full .modal,.modal-full .modal-body{padding:0px !important;}
+.modal-full .modal-dialog{width:100%;max-width:100%;margin:0px auto;}
+.modal-full .modal,.modal-full .modal .modal-dialog,.modal-full .modal .modal-content,.modal-full .modal .modal-body{height:100%;}
+.modal-full .modal-backdrop{opacity:.9;}
+/*Modal header y footer*/
+.modal-full .modal-header,.modal-full .modal-footer{position:absolute;z-index:1000;border:none;}
+.modal-full .modal-header{top:0;left:0;right:0;}
+.modal-full .modal-footer{bottom:0;right:0;padding:0px;}
+
+/*full modal específicos,inline,iframe*/
+.modal-full .window-inline .modal-header{position:relative;}
+.modal-full .window-image,.modal-full .window-image .modal-dialog,.modal-full .window-image .modal-content,.modal-full .window-image .modal-body{height:auto;}
+
 /* Galeria en modal || Modal gallery */
-.modal button.close{position:absolute;right:20px;top:20px;z-index:1000;opacity:1;background:#fff;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;}
-.modal button.resize{cursor: pointer;position:absolute;left:20px;top:20px;z-index:1000;opacity:1;background:#000;text-align:center;border-radius:50px;width:30px;height:30px;padding:0px;border:0px;color:#fff;transform:rotate(45deg);}
 .modal figure {margin-bottom: 0;}
 .modal .carousel-indicators {bottom: -50px;}
-/* Galeria con modal a todo lo ancho || Full modal gallery */
-.modal-full .modal.show {padding: 0px !important;}
-.modal-full .modal-dialog{width:100%;max-width: 100%;margin:0px auto;}
-.modal-full .modal-body{padding:0px;}
-.modal-full .modal-backdrop{opacity:1;}
 .modal-full .carousel-indicators { bottom: 10px; }
+
+/*ajuste en los dispositivos mobiles y touch */
+ .modal-body{-webkit-overflow-scrolling:touch;overflow-y:auto;}
+
+
 /* Ruta || Breadcrumb */
 .breadcrumb span{padding:0px 1px;}
 /* Mapa google */
@@ -242,7 +259,7 @@ video#bgvid{transition:1s opacity;}
 
 /* SEGUNDO CAMBIO: Bootstrap container 768/480 ( tablet/smarphone-hor )
  -------------------------------------------------- */
-@media only screen and (max-width : 767px) {
+@media only screen and (max-width : 768px) {
 /* En caso de toggle sidebars || If uses toggle sidebars 
  #page-content-wrapper,.toggle-sidebars.left-on #primary{width:inherit;}
  #page-content-wrapper,.toggle-sidebars.right-on #primary{width:inherit;}*/
@@ -259,7 +276,14 @@ video#bgvid{transition:1s opacity;}
  .toggle-sidebars.left-on.active-sidebar-left #content{padding-left:0%;}   
  .toggle-sidebars.right-on.active-sidebar-right #content #third{margin-right:0px;right:0px;width:100%;min-width:50%;}
  .toggle-sidebars.right-on.active-sidebar-right #content{padding-right:0%;}   
+ /*full modal específicos,image,iframe*/
+ .modal-full .window-image .modal-body img,.modal-full .window-image .modal-body img.img-fluid{max-width:inherit;} 
+ .modal-full .window-image,.modal-full .window-image .modal-dialog,.modal-full .window-image .modal-content,.modal-full .window-image .modal-body{height:100%;} 
 }
+
+/* TERCER CAMBIO: Bootstrap col-sm 576 ( tablet-ver/smarphone-hor )
+ -------------------------------------------------- */
+@media only screen and (max-width: 576px) {}
 
 @media only screen and (max-width : 480px) {
 /* Cover con video || If header has video */	
@@ -269,7 +293,7 @@ video#bgvid{transition:1s opacity;}
  .entry-content p > img{ max-width:100%;height:auto; }
 }
 
-/* TERCER CAMBIO: Bootstrap container 320px ( smarphone-ver )
+/* CUARTO CAMBIO: Bootstrap container 320px ( smarphone-ver )
  -------------------------------------------------- */
 
 @media only screen and (max-width : 320px){}	
