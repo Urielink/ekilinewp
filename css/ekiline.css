@@ -209,11 +209,13 @@ video#bgvid{transition:1s opacity;}
 .modal-full .window-image,.modal-full .window-image .modal-dialog,.modal-full .window-image .modal-content,.modal-full .window-image .modal-body{height:auto;}
 
 /* Galeria en modal || Modal gallery */
-.modal figure {margin-bottom: 0;}
-.modal .carousel-indicators {bottom: -50px;}
-.modal-full .carousel-indicators { bottom: 10px; }
+.window-gallery figure {margin-bottom: 0;}
+.window-gallery .resize,.window-gallery .close{z-index:1000;position:absolute;top:10px;}
+.window-gallery .close{right:10px;}
+.modal-full .window-gallery,.modal-full .window-gallery .modal-dialog,.modal-full .window-gallery .modal-content,.modal-full .window-gallery .modal-body{height:auto;}
+.window-gallery .carousel-control-next, .window-gallery .carousel-control-prev {top: 10%;bottom: 10%;}
 
-/*ajuste en los dispositivos mobiles y touch */
+/*ajuste en los dispositivos moviles y touch */
  .modal-body{-webkit-overflow-scrolling:touch;overflow-y:auto;}
 
 

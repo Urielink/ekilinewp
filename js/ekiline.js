@@ -347,9 +347,10 @@ jQuery(document).ready(function($){
 					if ( $(this).hasClass('modal-inline') ){
 					    // crea nuevo id
 					    var newId = gSrc.replace( '#','' );
+					    var newCss = '.'+newId;
 						//Envuelvo
 						var inlineWrap = $('<div/>', { "class" : "collapse" });
-					    $( gSrc ).wrap( inlineWrap );	 
+					    $( newCss ).wrap( inlineWrap );	 
 				    	// encuentra el contenido oculto y reemplaza el id por clase.
 				    	$( gSrc ).removeAttr('id').addClass( newId + ' p-2' );
 						
@@ -541,7 +542,7 @@ jQuery(document).ready(function($){
 	        
 	        var mgAll = $('<div/>',{ 'id':'carousel-modal', 'class':'carousel slide carousel-fade', 'data-ride':'carousel', 'style':'display:none;'}).append( mgClose , fullSize , mgLi , mgGal, mgPre, mgNex );
 	        	        
-        	var modalgallery = $('<div/>', { 'class':'modal fade zoom', 'id': 'galleryModal', 'role':'dialog', 'html': $('<div/>', { 'class':'modal-dialog modal-lg','html': $('<div/>', { 'class':'modal-content','html': $('<div/>', { 'class':'modal-body','html': mgAll }) }) }) });
+        	var modalgallery = $('<div/>', { 'class':'modal window-gallery fade zoom', 'id': 'galleryModal', 'role':'dialog', 'html': $('<div/>', { 'class':'modal-dialog modal-lg modal-dialog-centered','html': $('<div/>', { 'class':'modal-content','html': $('<div/>', { 'class':'modal-body','html': mgAll }) }) }) });
 	        
 	        $( modalgallery ).modal('show');
 	        	        	         
@@ -549,7 +550,7 @@ jQuery(document).ready(function($){
 	        // var nc = $(this).index( rename + ' a' ); 	        
 	        // feb2018 update: al crear un boton de enlaces debo identificar el objeto padre para tener un conteo efectivo.
 	        var nc = $(this).closest( '.gallery-item' ).index();
-	        console.log(nc);
+	        // console.log(nc);
 	        //Jun 5 ajuste cuando sea un carrusel
 	        if (isCarousel){ nc = '0'; };
          	
