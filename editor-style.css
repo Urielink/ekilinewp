@@ -71,8 +71,9 @@ body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor
 
 #tinymce.wf-ekiline.wp-editor [class*="col"]::before{background:#ffdede;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;margin-left:-15px;margin-right:-15px;}
 
-#tinymce.wf-ekiline.wp-editor .container{border:1px dashed #ddd;}
+#tinymce.wf-ekiline.wp-editor .container,#tinymce.wf-ekiline.wp-editor .container-fluid{border:1px dashed #ddd;}
 #tinymce.wf-ekiline.wp-editor .container::before { content: 'container';}
+#tinymce.wf-ekiline.wp-editor .container-fluid::before { content: 'container-fluid';}
 #tinymce.wf-ekiline.wp-editor .row{border:1px dotted #ddd;}
 #tinymce.wf-ekiline.wp-editor .row::before { content: 'row';}
 #tinymce.wf-ekiline.wp-editor .card-deck{border:1px dotted #ddd;}
@@ -81,6 +82,7 @@ body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor
 #tinymce.wf-ekiline.wp-editor .dotted::before { content: 'hidden-html';}
 
 #tinymce.wf-ekiline.wp-editor .container::before,
+#tinymce.wf-ekiline.wp-editor .container-fluid::before,
 #tinymce.wf-ekiline.wp-editor .row::before,
 #tinymce.wf-ekiline.wp-editor .card-deck::before,#tinymce.wf-ekiline.wp-editor .dotted::before{background:#DDD;font-size:8px;padding:2px 4px;line-height:100%;display:block;text-align:center;width:100%;}
 

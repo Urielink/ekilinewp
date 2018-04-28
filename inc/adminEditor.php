@@ -199,42 +199,42 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			            'items' => array(
 			                array(
 			                    'title'     => __( 'Primary', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-primary',
 			                ),
 			                array(
 			                    'title'     => __( 'Secondary', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-secondary',
 			                ),
 			                array(
 			                    'title'     => __( 'Success', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-success',
 			                ),
 			                array(
 			                    'title'     => __( 'Danger', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-danger',
 			                ),
 			                array(
 			                    'title'     => __( 'Warning', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-warning',
 			                ),
 			                array(
 			                    'title'     => __( 'Info', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-info',
 			                ),
 			                array(
 			                    'title'     => __( 'Light', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-light',
 			                ),
 			                array(
 			                    'title'     => __( 'Dark', 'ekiline' ),
-			                    'selector'     => 'div',
+			                    'selector'     => '*',
 			                    'classes'   => 'bg-dark',
 			                ),
 			            ),
@@ -490,13 +490,15 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 				            'items' => array(
 				                array(
 				                    'title'     => __( 'container', 'ekiline' ),
-				                    'selector'  => 'div',
+				                    'block'  => 'div',
 				                    'classes'   => 'container',
+				                    'wrapper'   => true,
 				                ),
 				                array(
 				                    'title'     => __( 'container-fluid', 'ekiline' ),
-				                    'selector'  => 'div',
+				                    'block'  => 'div',
 				                    'classes'   => 'container-fluid',
+				                    'wrapper'   => true,
 				                ),
 				                array(
 				                    'title'     => __( 'Set rows', 'ekiline' ),
@@ -504,8 +506,9 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							            'items' => array(
 							                array(
 							                    'title'     => __( 'row', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'block'  => 'div',
 							                    'classes'   => 'row',
+							                    'wrapper'   => true,
 							                ),
 							                // Horizontal
 							                array(
@@ -567,7 +570,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			            	//estandar
 			                array(
 			                    'title'     => __( 'col', 'ekiline' ),
-			                    'selector'  => 'div',
+			                    'block'  => 'div',
 			                    'classes'   => 'col',
 			                ),			                
 			                //variable por display
@@ -578,13 +581,13 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-sm-6', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-sm-6',
 					                ),
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-sm-auto', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-sm-auto',
 					                ),					
 					            ),	                    				                    				                    
@@ -596,13 +599,13 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-md-4', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-md-4',
 					                ),
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-md-auto', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-md-auto',
 					                ),
 					
@@ -615,13 +618,13 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-lg-3', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-lg-3',
 					                ),
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-lg-auto', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-lg-auto',
 					                ),
 					
@@ -634,13 +637,13 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-xl-3', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-xl-3',
 					                ),
 					            	//estandar
 					                array(
 					                    'title'     => __( 'col-xl-auto', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'col-xl-auto',
 					                ),
 					
@@ -661,17 +664,17 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 			                    // anidados align-self
 					                array(
 					                    'title'     => __( 'align-self-start', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'align-self-start',
 					                ),
 					                array(
 					                    'title'     => __( 'align-self-center', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'align-self-center',
 					                ),
 					                array(
 					                    'title'     => __( 'align-self-end', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'align-self-start',
 					                ),
 					            ),
@@ -683,12 +686,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            	//estandar
 					                array(
 					                    'title'     => __( 'order-first', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'order-first',
 					                ),					            
 					                array(
 					                    'title'     => __( 'order-last', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'order-last',
 					                ),	
 					                // por tamaño de columna
@@ -697,12 +700,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							            'items' => array(				            
 							                array(
 							                    'title'     => __( 'order-sm-first', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-sm-first',
 							                ),
 							                array(
 							                    'title'     => __( 'order-sm-last', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-sm-last',
 							                ),
 							            ),
@@ -712,12 +715,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 							            'items' => array(				            
 							                array(
 							                    'title'     => __( 'order-md-first', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-md-first',
 							                ),
 							                array(
 							                    'title'     => __( 'order-md-last', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-md-last',
 							                ),
 							            ),
@@ -728,12 +731,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    // anidados order-sm
 							                array(
 							                    'title'     => __( 'order-lg-first', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-lg-first',
 							                ),
 							                array(
 							                    'title'     => __( 'order-lg-last', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-lg-last',
 							                ),
 							            ),
@@ -744,12 +747,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                    // anidados order-sm
 							                array(
 							                    'title'     => __( 'order-xl-first', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-xl-first',
 							                ),
 							                array(
 							                    'title'     => __( 'order-xl-last', 'ekiline' ),
-							                    'selector'  => 'div',
+							                    'selector'  => '*',
 							                    'classes'   => 'order-xl-last',
 							                ),
 							            ),
@@ -763,22 +766,22 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					                // por tamaño de columna
 					                array(
 					                    'title'     => __( 'offset-sm-1', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'offset-sm-1',
 					                ),
 					                array(
 					                    'title'     => __( 'offset-md-1', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'offset-md-1',
 					                ),
 					                array(
 					                    'title'     => __( 'offset-lg-1', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'offset-lg-1',
 					                ),
 					                array(
 					                    'title'     => __( 'offset-xl-1', 'ekiline' ),
-					                    'selector'  => 'div',
+					                    'selector'  => '*',
 					                    'classes'   => 'offset-xl-1',
 					                ),
 					            ),
@@ -797,37 +800,37 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            'items' => array(
 					                array(
 					                    'title'     => __( 'm-0', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'm-0',
 					                ),
 					                array(
 					                    'title'     => __( 'mt-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mt-1',
 					                ),
 					                array(
 					                    'title'     => __( 'mr-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mr-1',
 					                ),
 					                array(
 					                    'title'     => __( 'mb-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mb-1',
 					                ),
 					                array(
 					                    'title'     => __( 'ml-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'ml-1',
 					                ),
 					                array(
 					                    'title'     => __( 'mx-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mx-1',
 					                ),
 					                array(
 					                    'title'     => __( 'my-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'my-1',
 					                ),
 					            ),
@@ -839,37 +842,37 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            'items' => array(
 					                array(
 					                    'title'     => __( 'p-0', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'p-0',
 					                ),
 					                array(
 					                    'title'     => __( 'pt-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'pt-1',
 					                ),
 					                array(
 					                    'title'     => __( 'pr-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'pr-1',
 					                ),
 					                array(
 					                    'title'     => __( 'pb-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'pb-1',
 					                ),
 					                array(
 					                    'title'     => __( 'pl-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'pl-1',
 					                ),
 					                array(
 					                    'title'     => __( 'px-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'px-1',
 					                ),
 					                array(
 					                    'title'     => __( 'py-1', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'py-1',
 					                ),
 					            ),
@@ -881,27 +884,27 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            'items' => array(
 					                array(
 					                    'title'     => __( 'w-25', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'w-25',
 					                ),
 					                array(
 					                    'title'     => __( 'w-50', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'w-50',
 					                ),
 					                array(
 					                    'title'     => __( 'w-75', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'w-75',
 					                ),
 					                array(
 					                    'title'     => __( 'w-100', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'w-100',
 					                ),
 					                array(
 					                    'title'     => __( 'mw-100', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mw-100',
 					                ),
 
@@ -914,27 +917,27 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 					            'items' => array(
 					                array(
 					                    'title'     => __( 'h-25', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'h-25',
 					                ),
 					                array(
 					                    'title'     => __( 'h-50', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'h-50',
 					                ),
 					                array(
 					                    'title'     => __( 'h-75', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'h-75',
 					                ),
 					                array(
 					                    'title'     => __( 'h-100', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'h-100',
 					                ),
 					                array(
 					                    'title'     => __( 'mh-100', 'ekiline' ),
-					                    'selector'  => 'div,h1,h2,h3,h4,h5,h6,p,li,a',
+					                    'selector'  => '*',
 					                    'classes'   => 'mh-100',
 					                ),
 
