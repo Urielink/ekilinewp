@@ -207,9 +207,7 @@ jQuery(document).ready(function($){
     $('.tooltip-default').tooltip();
     
     //PopOvers, inicializar
-    $('.popover-default').popover({
-        trigger: 'focus'
-    });
+    $('.popover-default').popover();
              
 	    //PopOvers con contenido HTML:
 	    $('.popover-rich').popover({
