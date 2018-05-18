@@ -1273,3 +1273,13 @@ function wp_mce_buttons( $buttons ) {
 }
 add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
 
+/**
+ * La llega de gutenberg es inminente.
+ * Agregar estilos
+ * https://richtabor.com/add-wordpress-theme-styles-to-gutenberg/
+ */
+function ekiline_gutenberg_styles() {
+     wp_enqueue_style( 'ekiline-gutenberg', get_template_directory_uri() . '/editor-style.min.css', array(), '1', 'all' );
+}
+add_action( 'enqueue_block_editor_assets', 'ekiline_gutenberg_styles' ); 
+ 
