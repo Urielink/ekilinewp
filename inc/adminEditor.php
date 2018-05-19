@@ -16,6 +16,28 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 */
 	
 	add_editor_style('editor-style.min.css'); 
+
+	/**
+	 * La llega de gutenberg es inminente.
+	 * Si el plugin existe y está activo:
+	 * https://codex.wordpress.org/Function_Reference/is_plugin_active
+	 * https://wordpress.stackexchange.com/questions/244663/check-if-plugin-exists-active-class-exists-does-not-work-on-plugin-territory?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+	 * Agregar estilos CSS para trabajar
+	 * https://richtabor.com/add-wordpress-theme-styles-to-gutenberg/
+	 * la compatibilidad con el tinymce
+	 * https://github.com/WordPress/gutenberg/blob/master/lib/client-assets.php
+	 */
+	// if ( is_plugin_active( 'plugin-directory/gutenberg.php' ) ) { }  
+	$gutenbergExists = 'mce_buttons_3';	
+	if ( in_array( 'gutenberg/gutenberg.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+		$gutenbergExists = 'mce_buttons_2';
+		// agregar estilos en gutenberg
+		function ekiline_gutenberg_styles() {
+		     wp_enqueue_style( 'ekiline-gutenberg', get_template_directory_uri() . '/editor-style.min.css', array(), '1', 'all' );
+		}
+		add_action( 'enqueue_block_editor_assets', 'ekiline_gutenberg_styles' ); 		
+	}	
+	
 	
 	/* Existe un problema en el editor, cachea el estilo, entonces es necesario forzar el refresh con este script:
 	 * Maybe you need to refresh admin cache to look changes.
@@ -28,7 +50,7 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	    array_unshift($buttons, 'styleselect');
 	    return $buttons;
 	}
-	add_filter('mce_buttons_3', 'ekiline_bootstrap_styles');
+	add_filter($gutenbergExists, 'ekiline_bootstrap_styles');
 	
 	// Genero mi callback || Add my callback
 	
@@ -1109,18 +1131,14 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 
 	/**
 	 * 1) Agregar botones a tinymce editor || Add a custom button to tinymce editor
-	 * May 18 
-	 * Este metodo permite mostrar los botones en gutenberg
-	 * https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_plugins
 	 */
-	// add_action('admin_head', 'custom_mce_buttons');
-	add_action( 'admin_init', 'custom_mce_buttons' );
-	 	function custom_mce_buttons() {
+	add_action('admin_head', 'custom_mce_buttons');
+ 	function custom_mce_buttons() {
 	    // Verificar si esta habilitado || Check is enabled
-	    // if ( get_user_option( 'rich_editing' ) == 'true' ) {
-	    if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {    	
-	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
+	    // if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {    		    
+	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
 	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
+	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
 	    }
 	}
 	
@@ -1133,7 +1151,6 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 		        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
 		}
 	}	
-				
 	
 	/**
 	 * 2) Agregar la ruta a la funcion del boton || Add the path to the js file with the custom button function
@@ -1278,16 +1295,3 @@ function wp_mce_buttons( $buttons ) {
 	return $buttons;
 }
 add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
-
-/**
- * La llega de gutenberg es inminente.
- * Agregar estilos
- * https://richtabor.com/add-wordpress-theme-styles-to-gutenberg/
- * la compatibilidad con el tinymce
- * https://github.com/WordPress/gutenberg/blob/master/lib/client-assets.php
- */
-function ekiline_gutenberg_styles() {
-     wp_enqueue_style( 'ekiline-gutenberg', get_template_directory_uri() . '/editor-style.min.css', array(), '1', 'all' );
-}
-add_action( 'enqueue_block_editor_assets', 'ekiline_gutenberg_styles' ); 
- 
