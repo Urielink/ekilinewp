@@ -1109,25 +1109,31 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	 
 	/**
 	 * 1) Agregar botones a tinymce editor || Add a custom button to tinymce editor
+	 * May 18 
+	 * Este metodo permite mostrar los botones en gutenberg
+	 * https://codex.wordpress.org/Plugin_API/Filter_Reference/mce_external_plugins
 	 */
 	// add_action('admin_head', 'custom_mce_buttons');
- 	// function custom_mce_buttons() {
+	add_action( 'admin_init', 'custom_mce_buttons' );
+	 	function custom_mce_buttons() {
 	    // Verificar si esta habilitado || Check is enabled
-	    if ( get_user_option( 'rich_editing' ) == 'true' ) {
-	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
+	    // if ( get_user_option( 'rich_editing' ) == 'true' ) {
+	    if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {    	
 	        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
+	        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
 	    }
-	// }
+	}
 	
 	// ajuste para su uso en el front	
-	// if( !is_admin() ){
-		// add_action('wp_head', 'custom_mce_buttons_front');
-	 	// function custom_mce_buttons_front() {
+	if( !is_admin() ){
+		add_action('wp_head', 'custom_mce_buttons_front');
+	 	function custom_mce_buttons_front() {
 		    // Verificar si esta habilitado || Check is enabled
-		        // add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
-		        // add_filter( 'mce_buttons_3', 'register_mce_buttons' );
-		// }
-	// }	
+		        add_filter( 'mce_external_plugins', 'custom_tinymce_plugin' );
+		        add_filter( 'mce_buttons_3', 'register_mce_buttons' );
+		}
+	}	
+				
 	
 	/**
 	 * 2) Agregar la ruta a la funcion del boton || Add the path to the js file with the custom button function
@@ -1277,6 +1283,8 @@ add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
  * La llega de gutenberg es inminente.
  * Agregar estilos
  * https://richtabor.com/add-wordpress-theme-styles-to-gutenberg/
+ * la compatibilidad con el tinymce
+ * https://github.com/WordPress/gutenberg/blob/master/lib/client-assets.php
  */
 function ekiline_gutenberg_styles() {
      wp_enqueue_style( 'ekiline-gutenberg', get_template_directory_uri() . '/editor-style.min.css', array(), '1', 'all' );
