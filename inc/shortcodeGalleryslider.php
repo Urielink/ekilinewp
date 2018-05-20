@@ -4,12 +4,6 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  * Sobreescribir la galeria de wordpress para permitir añadir elmentos de bootstrap
- * Add bootstrap elements to gallery
- * Algunos ejemplos del overide: 
- * Some example to override gallery.
- * Oficial: https://developer.wordpress.org/reference/functions/gallery_shortcode/
- * Corroborando los problemas que da: 
- *   -https://wordpress.stackexchange.com/questions/43558/how-to-manually-fix-the-wordpress-gallery-code-using-php-in-functions-php
  *
  * @package ekiline
  */
@@ -26,7 +20,6 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	    $instance++;
 	 
 	    if ( ! empty( $attr['ids'] ) ) {
-	        // 'ids' is explicitly ordered, unless you specify otherwise.
 	        if ( empty( $attr['orderby'] ) ) {
 	            $attr['orderby'] = 'post__in';
 	        }
@@ -68,7 +61,7 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	        'include'    => '',
 	        'exclude'    => '',
 	        'link'       => '',
-	        //agregado
+	        //agregado || added
 	        'carousel'   => '',
 	        'showlink'   => '',
 	        'showbutton' => 'false',
@@ -343,9 +336,6 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 	/** 
 	* Añadimos funciones de personalizacion en la admnistracion de la galeria
 	* Add options menu in gallery admin panel
-	* http://wordpress.stackexchange.com/questions/179357/custom-wordpress-gallery-option
-	* https://wordpress.org/support/topic/how-to-add-fields-to-gallery-settings
-	* http://wordpress.stackexchange.com/questions/182821/add-custom-fields-to-wp-native-gallery-settings
 	**/
 	//FEB, con el widget de galeria no funcionan las opciones hay que investigar.
 	global $pagenow;
@@ -395,12 +385,6 @@ if( false === get_theme_mod('ekiline_carouseldisable') ) {
 		        <span><?php echo __( 'Show indicators','ekiline' ); ?></span>
 		        <input type="checkbox" data-setting="indicators">
 		    </label>  
-		    
-		    <!--Update, usabilidad, es mejor recurrir a un selector con valores preestablecidos-->
-		    <!--label class="setting">
-		        <span><?php echo __( 'Speed','ekiline' ); ?></span>
-		        <input type="number" value="" data-setting="speed" min="1000" max="9000" placeholder="false">
-		    </label-->
 		    
 		    <label class="setting">
 		      <span><?php echo __( 'Speed','ekiline' ); ?></span>

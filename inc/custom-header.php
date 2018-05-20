@@ -92,13 +92,10 @@ endif;  // ekiline_admin_header_image
  */
  
 function customHeader() {
-    
-    // Variables 
+
     $customHeader = '';
     $siteName = get_bloginfo( 'name', 'display' );
     $siteDescription = get_bloginfo( 'description', 'display'  );
-    // Tamaño de imagen 
-    // Background image size
     $rangeHead = get_theme_mod('ekiline_range_header');
 	$setVideo = get_theme_mod('ekiline_video');
  		
@@ -241,14 +238,8 @@ function customHeader() {
                                     </div>
                                  </header>';
                                  
-                /**
-                 * Agregar script para el video // Add inline script
-                 * @link https://developer.wordpress.org/reference/functions/wp_add_inline_script/
-                 * @link https://make.wordpress.org/core/2016/11/26/video-headers-in-4-7/
-                 * @link https://wordpress.stackexchange.com/questions/33008/how-to-add-a-javascript-snippet-to-the-footer-that-requires-jquery
-                 * @link https://wordpress.stackexchange.com/questions/24851/wp-enqueue-inline-script-due-to-dependancies
-                 */                                                                   
-
+                // Agregar script para el video // Add inline script
+                 
                 add_action( 'wp_footer', 'ekiline_headervideo', 110 );
 
                 function ekiline_headervideo() { 
@@ -334,11 +325,9 @@ function customHeader() {
 			$titulo = single_cat_title("", false);			
 			$cat_id = get_query_var('cat');
 			$cat_data = get_option("category_$cat_id");
-							
-			// si tiene imagen
+
 			if ( $cat_data['img'] ) {
-		
-				// dame la url
+
 				$url = $cat_data['img'];
 
                 if ( $rangeHead >= '95' ) {
@@ -366,8 +355,6 @@ function customHeader() {
         /**
          * Si utiliza woocommerce, el producto no requiere imagen de cabecera, a menos que crees un homepage con imagen principal.
          * If is woocommerce post doesnt need a header image, but if you want a store with frontpage params allow it.
-         * @link https://docs.woocommerce.com/document/conditional-tags/
-         * class_exists( 'WooCommerce' ), 
          */ 
                 
         if ( get_post_type( get_the_ID() ) == 'product' && !is_front_page() ){

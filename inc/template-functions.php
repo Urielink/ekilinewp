@@ -24,14 +24,12 @@ function ekiline_cleanspchar($text) {
     while (substr($alias, 0, 1) == "-") {
         $alias = substr($alias, 1, 100);
     }
-
     return $alias;
 }
 
 /**
  * Creamos nuevos tamaños de imagen para varios elmentos.
  * Add new image sizes
- * @link https://developer.wordpress.org/reference/functions/add_image_size/
  */
 add_action( 'after_setup_theme', 'ekiline_theme_setup' );
 function ekiline_theme_setup() {
@@ -55,23 +53,20 @@ function ekiline_custom_sizes( $sizes ) {
  */
  
 function ekiline_body_css( $classes ) {
-	// Adds a class of group-blog to blogs with more than 1 published author.
+
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
 
-	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
 	}
 
-	//Page Slug Body Class
 	global $post;
 	if ( isset( $post ) ) {
 		$classes[] = $post->post_type . '-' . $post->post_name;
 	}
-	
-	// Theming: Ekiline services, Wireframe mode active, show bootstrap divs
+
 	if( true === get_theme_mod('ekiline_wireframe') ){
         $classes[] = 'wf-ekiline';
 	}
@@ -79,8 +74,6 @@ function ekiline_body_css( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'ekiline_body_css' );
-
-
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
@@ -95,12 +88,11 @@ add_action( 'wp_head', 'ekiline_pingback_header' );
 
 /**
  * Customizer: Add theme colors (customizer.php).
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference/wp_head
  */
  
 function ekiline_csscolors() {
         
-// Variables de color // Color values
+    // Variables de color // Color values
     $bgcolor = '#'.get_background_color();
     $texto = get_option('text_color');
     $enlaces = get_option('links_color');
@@ -216,22 +208,17 @@ add_filter( 'get_search_form', 'ekiline_search_form' );
  * Theming: 
  * Modificar el extracto
  * Excerpt override
- * @link https://codex.wordpress.org/Function_Reference/the_excerpt
  *
  **/
 
 // Excerpt lenght 
 function ekiline_excerpt_length( $length ) {
-    
     $cutexcerpt = get_theme_mod('ekiline_cutexcerpt','');
-    
     if (!$cutexcerpt){ $cutexcerpt = 20; }
-    
     return $cutexcerpt;
 }
 add_filter( 'excerpt_length', 'ekiline_excerpt_length', 999 );
 
-// Excerpt button y etiqueta <!--more-->
 function ekiline_excerpt_button() {
     return '<p><a class="read-more btn btn-primary" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read more', 'ekiline' ) . '</a></p>';
 }
@@ -241,7 +228,6 @@ add_filter('the_content_more_link', 'ekiline_excerpt_button', 10, 2);
 /**
  * Theming: Use a loader.
  **/
- 
 
 function ekiline_loader(){
              
@@ -257,49 +243,10 @@ function ekiline_loader(){
     }
 } 
 
-
-/** 
- * Theming: 
- * Remover los shortcodes existentes en el extracto
- * Excerpt override and Remove [shortcode] items in excerpt: 
- * @link https://wordpress.org/support/topic/stripping-shortcodes-keeping-the-content
- * @link http://wordpress.stackexchange.com/questions/112010/strip-shortcode-from-excerpt 
- * @link **https://wordpress.org/support/topic/how-to-enable-shortcodes-in-excerpts
- * Enero 2018, este arreglo cicla algunos elementos. Es necesario verificar el resto.
- **/
-
-// function wp_trim_excerpt_do_shortcode($text) {
-	// $raw_excerpt = $text;
-	// if ( '' == $text ) {
-		// $text = get_the_content('');
-// 
-		// $text = do_shortcode( $text ); 
-// 
-		// $text = apply_filters('the_content', $text);
-		// $text = str_replace(']]>', ']]>', $text);
-		// $text = strip_tags($text);
-		// $excerpt_length = apply_filters('excerpt_length', 55);
-		// $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-		// $words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
-		// if ( count($words) > $excerpt_length ) {
-			// array_pop($words);
-			// $text = implode(' ', $words);
-			// $text = $text . $excerpt_more;
-		// } else {
-			// $text = implode(' ', $words);
-		// }
-	// }
-	// return apply_filters('wp_trim_excerpt', $text, $raw_excerpt);
-// }
-// remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-// add_filter('get_the_excerpt', 'wp_trim_excerpt_do_shortcode');
-
 /**
  * Theming: 
  * Paginacion para pages aplica solo en internas
  * Next and prevoius links for pages
- * @link https://codex.wordpress.org/Next_and_Previous_Links
- *
  **/
 
 function ekiline_pages_navigation(){
@@ -337,25 +284,20 @@ function ekiline_pages_navigation(){
     }
     
     $thePages = '<ul class="pagination pagination-sm justify-content-between">'.$thePages.'</ul>';
-    
-    //if (!is_front_page()){
-        echo $thePages;
-    //}
+
+    echo $thePages;
+
 } 
 
 /**
  * Theming: 
  * Paginacion para entradas o singles
  * Next and prevoius links for posts in archive or category
- * @link https://codex.wordpress.org/Next_and_Previous_Links
- * @link https://digwp.com/2016/10/wordpress-post-navigation-redux/
- *
  **/
 
 function ekiline_posts_navigation( $args = array() ) {
     $navigation = '';
- 
-    // Don't print empty markup if there's only one page.
+
     if ( $GLOBALS['wp_query']->max_num_pages > 1 ) {
         $args = wp_parse_args( $args, array(
             'prev_text'          => __( 'Older posts', 'ekiline' ),
@@ -386,8 +328,6 @@ function ekiline_posts_navigation( $args = array() ) {
  * Theming: 
  * Paginacion para listados
  * Paginate links
- * @link https://codex.wordpress.org/Function_Reference/paginate_links
- * @link https://brinidesigner.com/wordpress-custom-pagination-for-bootstrap/
  **/
 
 function ekiline_archive_pagination() {
@@ -415,7 +355,7 @@ function ekiline_archive_pagination() {
         $pagination .= '<ul class="pagination">';
         
         foreach ($pages as $i => $page) {
-            //27 10 17 add CSS B4 pagination
+        	
             $page = str_replace( 'page-numbers', 'page-link', $page );			
 			
             if ($current_page == 1 && $i == 0) {
@@ -480,31 +420,19 @@ if( true === get_theme_mod('ekiline_mediacomment') ){
 /** 
  * Theming Admin theme page
  * Admin bar button
- * https://codex.wordpress.org/Plugin_API/Action_Reference/wp_before_admin_bar_render
- * https://codex.wordpress.org/Javascript_Reference/ThickBox
- * Y con estilos agregados.
- * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
- * https://gist.github.com/corvannoorloos/43980115659cb5aee571
- * https://wordpress.stackexchange.com/questions/36394/wp-3-3-how-to-add-menu-items-to-the-admin-bar
- * https://wordpress.stackexchange.com/questions/266318/how-to-add-custom-submenu-links-in-wp-admin-menus
  */
 
 function ekiline_bar() {
 
 	global $wp_admin_bar;
 
-	// if ( !is_admin_bar_showing() )
-		// return;	
-	
 		$wp_admin_bar->add_menu( array(
 			'id' => 'goekiline',
 			'title' => __( 'FundMe', 'ekiline'),
-			// 'href' => 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550',
 			'href' => 'http://ekiline.com/fondeo/',
 			'meta' => array( 
 				'class' => 'gold',
 				'target' => '_blank'
-				//'onclick' => 'jQuery(this).addClass("thickbox");'
 				),
 	        'parent' => 'top-secondary'		
 		) );
@@ -512,34 +440,6 @@ function ekiline_bar() {
 } 
 add_action('admin_bar_menu', 'ekiline_bar', 0 ); 
 
-
-/* subitem https://wordpress.stackexchange.com/questions/66498/add-menu-page-with-different-name-for-first-submenu-item 
- * http://wpsites.net/wordpress-admin/add-top-level-custom-admin-menu-link-in-dashboard-to-any-url/
- * https://developer.wordpress.org/reference/functions/add_ menu_page/
- * https://wordpress.stackexchange.com/questions/1039/adding-an-arbitrary-link-to-the-admin-menu
- * // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
- */
-
-// add_action( 'admin_menu', 'register_ekiline_menu_page' );
-// function register_ekiline_menu_page() {
-  // add_menu_page( 
-  	// 'Ekiline Menu Page Title', 
-  	// __( 'FundMe', 'ekiline'), 
-  	// //'manage_options', 
-  	// 'edit_posts', 
-  	// 'themes.php?theme=ekiline',
-  	// '', 
-  	// 'dashicons-carrot', 
-  	// null );
-// }
-
-// add_action( 'admin_footer', 'ekiline_menu_page_js' );
-// function ekiline_menu_page_js() { 
-	// echo "<script type='text/javascript'>\n";
-	// //echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold thickbox').attr('href', 'http://ekiline.com/fondeo/?TB_iframe=true&width=600&height=550').attr('target', '_blank');";
-	// echo "jQuery('li#toplevel_page_themes-theme-ekiline a').addClass('gold').attr('href', 'http://ekiline.com/fondeo/').attr('target', '_blank');";
-	// echo "\n</script>";
-// }
 
 function ekiline_theme_page() {
     add_theme_page( 
@@ -554,7 +454,7 @@ function ekiline_theme_page() {
 add_action( 'admin_menu', 'ekiline_theme_page' );
  
 function theme_html_page() { 
-	//add_thickbox(); ?>
+?>
 <div class="wrap">
 	<h1><span class="dashicons dashicons-layout" aria-hidden="true"></span> <?php _e('About Ekiline for Wordpress','ekiline'); ?></h1>
     
@@ -615,8 +515,7 @@ function theme_html_page() {
 
 
 function ekiline_admin_styles() {
-	// if ( !is_super_admin() )
-		// return;	
+
 	$extracss = '.gold a::before { content: "\f511";} .gold a{ background-color: #58aa03 !important; } .gold:hover a{ background-color: #ffb900 !important; color: #fff !important; } .gold:hover a::before { content: "\f339"; color: #fff !important; }'; 				    
 	$extracss .= '.advice a::before { content: "\f325";} .advice a { background-color: #ff7e00 !important; } .advice:hover a { background-color: #ff7e00 !important; color: #fff !important; } .advice:hover a::before { content: "\f325"; color: #fff !important; }'; 				    
 	$extracss .= 'a.gold{ background-color: #58aa03 !important; } a.gold:hover{ background-color: #ffb900 !important; color: #fff !important; } a.gold:hover .dashicons-carrot::before {content: "\f339";color: #fff !important;}'; 				    
@@ -627,37 +526,20 @@ function ekiline_admin_styles() {
 add_action( 'admin_enqueue_scripts', 'ekiline_admin_styles');
 add_action( 'wp_enqueue_scripts', 'ekiline_admin_styles');
 
-/*
- * Noticias para el suscriptor de Ekiline
- * https://codex.wordpress.org/Function_Reference/fetch_feed
- * https://codex.wordpress.org/Plugin_API/Action_Reference/admin_notices
- */
- 
 function ekiline_docs_feed() {
-//variables para noticias	
+
 global $pagenow;
 $pages = array('index.php','edit.php','post.php','themes.php','tools.php');
 if ( is_admin() && in_array( $pagenow, $pages, true ) ){
 
-	// Get RSS Feed(s)
 	include_once( ABSPATH . WPINC . '/feed.php' );
-	
-	// Get a SimplePie feed object from the specified feed source.
-	$rss = fetch_feed( 'http://ekiline.com/feed/' );
-	
+	$rss = fetch_feed( 'http://ekiline.com/feed/' );	
 	$maxitems = 0;
 	
-	if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
-	
-	    // Figure out how many total items there are, but limit it to 5. 
+	if ( ! is_wp_error( $rss ) ) :
 	    $maxitems = $rss->get_item_quantity( 20 ); 
-	
-	    // Build an array of all the items, starting with element 0 (first element).
 	    $rss_items = $rss->get_items( 0, $maxitems );
-		
-		// order in notices: http://php.net/manual/es/function.shuffle.php
-		shuffle($rss_items);	
-	
+		shuffle($rss_items);		
 	endif;
 		
 ?>
@@ -670,8 +552,7 @@ if ( is_admin() && in_array( $pagenow, $pages, true ) ){
 		    <?php if ( $maxitems == 0 ) : ?>
 		        <li><?php _e( 'Connection not established', 'ekiline' ); ?></li>
 		    <?php else : ?>
-		    	<?php $i = 1; // en caso de querer mostrar menos noticias; ?>
-		        <?php // Loop through each feed item and display each item as a hyperlink. ?>
+		    	<?php $i = 1;?>
 		        <?php foreach ( $rss_items as $item ) : ?>
 		            <li>
 		                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
@@ -698,7 +579,6 @@ if ( in_array( $pagenow, $pages, true ) ) { ?>
 	
 <script type='text/javascript'>
 	jQuery(document).ready(function($){
-		//$('.ekiline-notice').show(1).delay(1000).hide(1);
 		$('.ekiline-notice').delay(2000).show(100);
 	});
 </script>
@@ -706,39 +586,8 @@ if ( in_array( $pagenow, $pages, true ) ) { ?>
 <?php }
 }
 add_action( 'admin_footer', 'ekiline_docs_feed_set' );
-
-
-/**
- * Fontawesome helper
- *
-function ekiline_faw() {
-
-	global $wp_admin_bar;
-
-	// if ( !is_admin_bar_showing() )
-		// return;	
-	
-		$wp_admin_bar->add_menu( array(
-			'id' => 'fawekiline',
-			'title' => __( 'FAw5', 'ekiline'),
-			'href' => 'http://127.0.0.1:8020/pruebas-rapidas/fa5gen.html?TB_iframe=true&width=600&height=550',
-			'meta' => array( 
-				'class' => 'fawfive',
-				'target' => '_blank',
-				'onclick' => 'jQuery(this).addClass("thickbox");'
-				),
-	        //'parent' => 'top-secondary'		
-		) );
-		
-} 
-add_action('admin_bar_menu', 'ekiline_faw', 80 ); 
- * 
- */
  
-/*
- * Personalizar el formulario de proteccion de lectura.
- * https://developer.wordpress.org/reference/functions/get_the_password_form/
- */
+// Personalizar el formulario de proteccion de lectura.
 function ekiline_password_form() {
     global $post;
     $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );

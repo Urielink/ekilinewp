@@ -4,22 +4,6 @@
  *
  * Ekiline: Importar un listado de entradas de alguna categoria, se genera un loop. 
  * Ekiline: Insert a list of posts everywhere, it generates a loop
- * @link https://css-tricks.com/snippets/wordpress/run-loop-on-posts-of-specific-category/ 
- * @link http://code.tutsplus.com/tutorials/create-a-shortcode-to-list-posts-with-multiple-parameters--wp-32199
- * Especial atencion en el uso de ob_start();
- * @link http://wordpress.stackexchange.com/questions/41012/proper-use-of-output-buffer
- * @link https://developer.wordpress.org/reference/functions/query_posts/
- * @link https://codex.wordpress.org/Shortcode_API
- * @link https://wordpress.stackexchange.com/questions/96646/creating-wp-query-with-posts-with-specific-category
- * //16 ene 2018 WP update method.
- * @link https://developer.wordpress.org/reference/functions/get_terms/
- * @link https://developer.wordpress.org/reference/functions/get_the_category/
- * 
- * $args = array( 'orderby' => 'slug', 'parent' => 0, 'exclude' => '1' ); 
- * $cats = get_terms( 'category', $args ); 
- * foreach ( $cats as $cat ) {
- * 	echo '<p><a href="' . get_term_link( $cat ) . '" rel="bookmark">' . $cat->name . '</a><br>' . $cat->term_id . ' ' . $cat->description  . '</p>'; 
- * }
  * 
  * @package ekiline
  */
@@ -29,28 +13,9 @@
 function ekiline_addpostlist($atts, $content = null) {
     
     extract(shortcode_atts(array('catid'=>'','limit'=>'5', 'format'=>'default', 'sort'=>'DES'), $atts));
-	
-	//Enero 2018, existe un roblema cuando este modulo se inserta en un mismo articulo de una misma categoría.
-	//Debe excluirse del loop para que no se cicle: post__not_in : https://codex.wordpress.org/Class_Reference/WP_Query
-	// $exclude = '';
-	// if( is_single() || is_category() ){
-		// global $wp_query;
-		// echo $wp_query->post->ID . ' es single o es categoria';
-		//$exclude = $wp_query->post->ID;
-	// }
-	
-    // Por el formato es que cambia el tipo de contenido (default, block or carousel).
-    // Content type changes with format value
         
-    ob_start(); // abre 
+    ob_start();
     
-            /***
-			 * Declarar las variables invoca las cotegorias necesarias WP_Query(), se puede llamar mediante 2 métodos:
-             * $query_string = '';
-             * $nuevoLoop = new WP_Query($query_string . '&cat='.$catid.'&posts_per_page='.$limit.'&order='.$sort );
-             * $nuevoLoop = new WP_Query(array( 'category_name' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
-			 * 
-			 ***/
             $nuevoLoop = new WP_Query(array( 'cat' => $catid, 'posts_per_page' => $limit, 'order' => $sort ));
             
             // obtiene la cuenta de los posts
@@ -104,7 +69,6 @@ function ekiline_addpostlist($atts, $content = null) {
                                 get_template_part( 'template-parts/content', 'block' );
                                 
                                 // por cada 3 posts agrega un divisor, necesario para mantener alineaciones
-                                //if ($count == 3) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
                                 if ($count == $colCount ) : echo '<div class="clearfix middle"></div>'; $count = 0;  endif;
                                                                 
                             endwhile;

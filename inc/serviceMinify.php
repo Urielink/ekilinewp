@@ -93,7 +93,7 @@ function wp_html_compression_finish($html) {
 function wp_html_compression_start() {
     ob_start('wp_html_compression_finish');
 }
-// if customizer checked and is not admin
+
 if( true === get_theme_mod('ekiline_minify') && !is_admin() && !current_user_can('edit_posts') ){
     add_action('get_header', 'wp_html_compression_start');
 }

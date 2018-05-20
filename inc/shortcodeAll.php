@@ -21,14 +21,8 @@ function ekiline_collapse_single($atts, $content = null) {
 add_shortcode('singlecollapse', 'ekiline_collapse_single');
 
 
-/* Extender el Shortcode [Embed] para añadir comportamineto responsivo a videos de youtube
- * Extend shortcode [Embed] por youtube linked video
- * @link https://developer.wordpress.org/reference/classes/wp_embed/run_shortcode/
- * @link https://wordpress.stackexchange.com/questions/134228/how-to-overwrite-youtube-embed
- * @link https://wordpress.stackexchange.com/questions/13810/adding-a-filter-to-a-shortcode
- * @link https://wordpress.stackexchange.com/questions/112294/filter-specific-shortcode-output
- * @link https://wordpress.stackexchange.com/questions/99978/how-add-class-youtube-and-type-html-to-oembed-code
- */
+// Extender el Shortcode [Embed] para añadir comportamineto responsivo a videos de youtube
+// Extend shortcode [Embed] por youtube linked video
 
 function ekiline_embed_override($html, $url, $atts, $post_id) {
 	$tag = '';
@@ -43,15 +37,9 @@ function ekiline_embed_override($html, $url, $atts, $post_id) {
     return $tag;
 }
 add_filter('embed_oembed_html', 'ekiline_embed_override', 99, 4);
-// add_filter('wp_video_shortcode', 'ekiline_embed_override', 99, 4);
 
-
-
-/* Eliminar parrafos vacios en shortcodes.
- * Clear all empty paragraphs in shortcodes.
- * @link http://mattpierce.info/2015/10/fixing-shortcodes-and-paragraph-tags-in-wordpress/
- * @link https://gist.github.com/maxxscho/2058547
- */
+// Eliminar parrafos vacios en shortcodes.
+// Clear all empty paragraphs in shortcodes.
 
  function shortcode_empty_paragraph_fix($content) {  
     $array = array (

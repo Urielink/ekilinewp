@@ -9,7 +9,6 @@
 
 /**
  * Extend nav menu widget 
- *
  * Adds different formatting to the default WordPress Nav Menu Widget
  */
 

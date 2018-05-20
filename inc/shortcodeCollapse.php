@@ -1,6 +1,6 @@
 <?php
 /**
-* Bootstrap Tab Content: https://github.com/takien/WordPress/blob/master/Bootstrapcollpasecontent/bootstrap-tab-content.php
+* Bootstrap Tab Content: 
 * Add Bootstrap tab on WordPress posts/page using shortcode.
 * Example usage
     [modulegroupcollapse]
@@ -31,14 +31,9 @@ function gcollpase_shortcode( $atts, $content = null ) {
         $i = -1;
 
             foreach($content as $c){ $i++;
-            
-                //El nombre del tab va despues de $attr
-                //$unique_id = 'tab_tab_'.$unique.'_'.$i;
                 preg_match('/\[collpasecontent ([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)/',$c,$matchattr);
                 $attr = shortcode_parse_atts($matchattr[1]);
-                //Filtramos los caracteres y añadimos un contador.
                 $unique_id = ekiline_cleanspchar($attr['title']).'-'.$i;
-                //creo un id grupal para cada item
                 $heading_id = ekiline_cleanspchar($attr['title']).$i.$i;
                                 
                 $return .= '<div class="card">';

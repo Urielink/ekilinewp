@@ -1,21 +1,13 @@
 <?php
 /**
  * Custom functions that act independently of the theme templates
- *
- * Eventually, some of the functionality here could be replaced by core features
- *     // Jugar con urls https://wordpress.stackexchange.com/questions/29512/permalink-for-category-pages-and-posts
- *
  * @package ekiline 
  */
 
 
 function registerSocial() {
-    
-//Globales
+
     global $wp;
-    
-//Indice en Facebook, Twitter GooglePlus y Linkedin (customizer.php)
-//Get social media accounts (customizer.php)
     $fbSocial = get_theme_mod('ekiline_fbProf','');
     $twSocial = get_theme_mod('ekiline_twProf','');
     $gpSocial = get_theme_mod('ekiline_gpProf','');
@@ -24,16 +16,11 @@ function registerSocial() {
     $fbAppid = get_theme_mod('ekiline_fbSharid','');
     $currentUrl = '';
     $metaSocial = '';
-    
-// Arreglos para extraer la informacion en cada caso
-// Get the info for each kind of tag
     $metaTitle = '';
     $metaDescription = '';
     $metaImages = get_site_icon_url();
     $metaType = 'website';
-    
-// Obtener la Url de la pagina
-// Get current page Url
+
 if ( is_page() || is_single() ){
     $currentUrl = get_permalink();
 } elseif ( is_category() ){
@@ -46,8 +33,7 @@ if ( is_page() || is_single() ){
     // excluir si es tienda woocommerce || exclude woocommerce
     if ( is_single() || is_page() ){
             
-        // personalizar la metadescripcion
-        // custom meta
+        // personalizar la metadescripcion || custom meta
         global $wp_query;
         $stdDesc = get_post_meta( $wp_query->post->ID, 'custom_meta_description', true);    
         $cfTitle = get_post_meta( $wp_query->post->ID, 'custom_title', true );
@@ -58,47 +44,32 @@ if ( is_page() || is_single() ){
         } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
             $metaDescription = get_bloginfo('description');
         } else {
-            // metodo 1 con el extracto
-            //$metaDescription = strip_tags( get_the_excerpt() );
-            // metodo 2 con el contenido escapado
-            // en promedio 24 palabras es un twitt.
             $metaDescription = wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
-            // metodo 3 con el contenido escapado y limitado a numero de caracteres 
-            // $metaDescription = wp_trim_words( get_the_content() );
-            // $metaDescription = mb_strimwidth( $metaDescription, 0, 180, '...');
         }
         
-        // La imagen
-        // The image
+        // La imagen || The image
         if ( is_attachment() ) {
-            // si es un attachment
-            $metaImages = wp_get_attachment_url();        
-            
+            $metaImages = wp_get_attachment_url();                    
         } elseif ( get_header_image() && is_front_page() || is_home() ) {
             $metaImages = get_header_image();           
         } elseif ( has_post_thumbnail() ) {
-            // si tiene imagen destacada     
-            // if has post_thumbnail              
-            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );                   
-            
+            $metaImages = wp_get_attachment_url( get_post_thumbnail_id() );                               
         } else {
             
             global $post, $posts;
             $image_url = '';
             
             ob_start();
-            // verificar si existe una galeria y tomar la primera imagen que encuentre
-            // verify if has gallery
+            // verificar si existe una galeria y tomar la primera imagen que encuentre || verify if has gallery
             if ( get_post_gallery() ) {
                 preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_post_gallery(), $matches);  
             } else {
                 preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
             }     
                 
-            $image_url = $matches [1][0]; // Necesita declararse el indice        
+            $image_url = $matches [1][0];
             ob_end_clean();  
-            
-            //En caso de no existir una u otra
+
             if( ! empty($image_url) ){
                 $metaImages =  $image_url;            
             }              
@@ -112,15 +83,12 @@ if ( is_page() || is_single() ){
         }
 
         if ( is_front_page() || is_home() ){
-            //$metaTitle = get_bloginfo( 'name' );
 			if ( ! empty( $cfTitle ) ){
 			    $metaTitle = $cfTitle ;
 			} else {
 	            $metaTitle = get_bloginfo( 'name' );
 			}
-
         } else {
-            //$metaTitle = get_the_title();  
 			if ( ! empty( $cfTitle ) ){
 			    $metaTitle = $cfTitle ;
 			} else {
@@ -191,9 +159,7 @@ function ekiline_schema(){
 // Add a shortcode for link this
 
 function ekiline_socialmenu($atts, $content = null) {
-    
-    // extract(shortcode_atts(array('type' => 'menu'), $atts));
-    
+
     // en caso de no habilitar font awesome
     $emaIco = 'E-mail';
     $telIco = 'Phone';
@@ -249,9 +215,7 @@ add_shortcode('socialmenu', 'ekiline_socialmenu');
 //Crear un shortcode para crear un menu de compartir [socialsharemenu]
 
 function ekiline_socialsharing($atts, $content = null) {
-    
-    // extract(shortcode_atts(array('type' => 'menu'), $atts));
-                       
+
     global $wp;
     $url = home_url( add_query_arg(array(),$wp->request) );
     

@@ -5,19 +5,14 @@
  * 
  * @package ekiline
  */
-// Si el widget está activo: https://codex.wordpress.org/Function_Reference/is_active_widget
-// is_active_sidebar(), is_active_widget(), is_dynamic_sidebar();
- 
+
 /**
  * Agrega clase css para habilitar sidebars
  * Add css to enable or disable Ekiline sidebars
- * @link  https://codex.wordpress.org/Plugin_API/Filter_Reference/body_class
- * @link  https://developer.wordpress.org/reference/functions/body_class/
  */
 
 add_filter( 'body_class', function( $classes ) {
-    
-    //Llamo a mis variables
+
     $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
     $rightOn = get_theme_mod('ekiline_sidebarRight','on');    
     
@@ -99,8 +94,7 @@ function cssSides() {
     //Llamo a mis variables
     $leftOn = get_theme_mod('ekiline_sidebarLeft','on');
     $rightOn = get_theme_mod('ekiline_sidebarRight','on');
-	    
-	//if ( is_active_sidebar( 'sidebar-1' ) || is_active_sidebar( 'sidebar-2' ) ) {
+
 	if ( is_active_sidebar( 'sidebar-1' ) && $leftOn == 'on' || is_active_sidebar( 'sidebar-2' ) && $rightOn == 'on' ) {
         echo ' row';
     }

@@ -6,10 +6,6 @@
  *
  * Establecer la politica de privacidad, ley cookie.
  * Set privacy terms and cookies.
- * 
- * @link una version sencilla: http://www.estudiosurestao.com/blog/mensaje-politica-de-cookies/
- * @link extraer el permanlink de un listado: https://developer.wordpress.org/reference/functions/get_permalink/
- * @link https://gist.github.com/ajskelton/27369df4a529ac38ec83980f244a7227
  *
  * @package ekiline 
  */
@@ -65,22 +61,17 @@ jQuery(document).ready(function($){
 		var visit=GetCookie("cookies_ekiline");
 
 		if (visit==null){
-			/* nueva visita */
 			$('body').append( alert );
-			/*console.log('nueva visita');*/
-			/* visita acepta cookies */
 			$("#cookieLaw .accept").on('click',function(e) {
 
 				var expire=new Date();
 				expire=new Date(expire.getTime()+7776000000);
 				document.cookie="cookies_ekiline=aceptada; expires="+expire;
-
 				var visit=GetCookie("cookies_ekiline");
-				/*console.log('visita da clic')*/
 
 			});  				
 
-		} /* visit==1 en caso de extender funciones */
+		}
 
 	});
 

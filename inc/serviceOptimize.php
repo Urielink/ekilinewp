@@ -7,50 +7,25 @@
  * @package ekiline 
  */
 
-/** 
- * Registrar las metadatos para campos personalizados 
- * @link  info: https://developer.wordpress.org/reference/functions/register_meta/
- * @link  samp: https://cybmeta.com/custom-fields-y-meta-boxes-para-posts-de-wordpress
- * @link  info: https://codex.wordpress.org/Function_Reference/add_post_meta
- * 
- * custom_meta_description
- * custom_title
- * custom_css_style
- * custom_js_script
- * 
- * */
+// Registrar las metadatos para campos personalizados
  
 add_action( 'init', 'ekiline_register_meta' );
 function ekiline_register_meta() {
 	
 	$metas = array('custom_meta_description','custom_title','custom_css_style','custom_js_script');
-	//sanitizar el campo
+
 	$args = array(
-	    'type'      => 'string', // Validate and sanitize the meta value as a string.
-	        // Default: 'string'.  
-	        // In 4.7 one of 'string', 'boolean', 'integer', 'number' must be used as 'type'. 
-	    // 'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
-	    'single'        => true, // Return a single value of the type. Default: false.
+	    'type'      => 'string',
+	    'single'        => true,
 	    'sanitize_callback' => 'sanitize_text_field',
-	    //'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
 	);
 
 	foreach($metas as $key => $value) {
 		register_meta( 'post', $value, $args );
-		//agregarlo en el post 1
-		// if ( ! add_post_meta( 1, $value, $value, true ) ) { 
-		   // update_post_meta( 1, $value, 'add your data' );
-		// }	
 		add_post_meta( 1, $value, '', true );
 	}
-	// register_meta( 'post', 'custom_text_test', $args );
 }
  
-/**
- * Utilizar keywords en caso de necesitar etiquetas en las paginas:
- * @link https://www.sitepoint.com/wordpress-pages-use-tags/
- */
-
 // Permitir el uso de etiquetas en pages
 // add tag support to pages
 function tags_support_all() {
@@ -66,9 +41,7 @@ function tags_support_query($wp_query) {
 }
 add_action('pre_get_posts', 'tags_support_query');
 
-
 // Extraer las etiquetas como keywords
-
 function ekiline_keywords() {        
     global $post;
     
@@ -107,17 +80,14 @@ function ekiline_description(){
         wp_reset_query();
             
         if ( ! empty( $stdDesc ) ) {
-           //Si utilizan nuestro custom field || If use our custom field           
              echo $stdDesc;
         } elseif ( get_bloginfo('description') && is_front_page() || is_home() ) {
-            //Si es homepage utiliza la informacion del sitio en general 
             echo get_bloginfo('description');
         } else {
             echo wp_trim_words( strip_shortcodes( get_the_content() ), 24, '...' );
         }      
     } 
     elseif ( is_archive() ) {
-    // las metas https://codex.wordpress.org/Meta_Tags_in_WordPress
         echo single_cat_title();
     } 
     else {
@@ -127,9 +97,8 @@ function ekiline_description(){
 }
 
 
-/* Optimizacion El titulo con custom field para paginas y posts
- * https://developer.wordpress.org/reference/hooks/document_title_parts/
- */
+// Optimizacion El titulo con custom field para paginas y posts
+
 function ekiline_title($title){
 	
     if( is_single() || is_page() ){    	
@@ -139,10 +108,7 @@ function ekiline_title($title){
 	    wp_reset_query();
 		 
 		if ( ! empty( $cfTitle ) ){
-	        // change title parts here
 	        $title['title'] = $cfTitle ; 
-		    // $title['page'] = ''; // opcional si la pagina esta numerada
-	    	// $title['tagline'] = ''; // optional si requiere el tagline (home)
 	        $title['site'] = get_bloginfo( 'name' ); //optional
 		} 
     }
@@ -152,11 +118,7 @@ function ekiline_title($title){
 add_filter('document_title_parts', 'ekiline_title', 10);
 
 
-/** 
- * Agregar css por pagina.
- * Custom CSS by page
- * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
- */
+// Agregar css por pagina. || Custom CSS by page
 
 function ekiline_postcss(){
     
@@ -169,8 +131,6 @@ function ekiline_postcss(){
     wp_reset_query();
             
        if ( ! empty( $myCss ) ){
-           // Si utilizan nuestro custom field
-           // here is our custom field
            echo '<style type="text/css" id="custom-css-'.$postid.'">'.$myCss.'</style>';
        } 
      
@@ -179,11 +139,7 @@ function ekiline_postcss(){
 }
 add_action( 'wp_head', 'ekiline_postcss', 99);
 
-/** 
- * Agregar js por pagina.
- * Custom JS by page
- * https://codex.wordpress.org/Function_Reference/wp_add_inline_style
- */
+// Agregar js por pagina. || Custom JS by page
 
 function ekiline_postjs(){
     
@@ -204,17 +160,6 @@ function ekiline_postjs(){
 }
 add_action( 'wp_footer', 'ekiline_postjs', 99);
 
-/**
- * Javascript :
- * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
- * When scripts depend by JQuery has to be mentioned
- * Localize: es un metodo que wordpress ha habilitado para trabajar con variables de PHP en JS
- * Localize: JS and PHP working together
- * https://codex.wordpress.org/Function_Reference/wp_localize_script
- * ENE, creamos la funcion para extraer de manera correcta los estilos y parsearlos con js.
- * https://codex.wordpress.org/Roles_and_Capabilities
- * https://codex.wordpress.org/Function_Reference/current_user_can
- */
  
 function ekiline_loadcss() {
 	
@@ -229,19 +174,12 @@ function ekiline_loadcss() {
 			$allcss[] = $csshandle;              
 	  	} 
 		$allowcss = array('photoswipe-default-skin');	
-		//permitir la carga de estilos que tienen dependencia o prioridad
 		$load_css = array_diff( $allcss, $allowcss );        
-		
-    	// 4jun bueno!
         $ret = array();
         foreach( $load_css as $handle) {
           wp_dequeue_style($handle);
-		//update 2018
           $ret[] = array( 'id' => $handle , 'src' => $wp_styles->registered[$handle]->src , 'media' => $wp_styles->registered[$handle]->args ) ;              
-          // $ret[] = $wp_styles->registered[$handle]->src;              
-          //$ret[] = $wp_styles->registered[$handle] ;              
       	}        
-        //echo json_encode( $ret );             
         $params = $ret;   
     
     }   
@@ -251,46 +189,26 @@ function ekiline_loadcss() {
 }
 add_action( 'wp_enqueue_scripts', 'ekiline_loadcss' );
 
-/**
- * Optimizar los scripts con async, esta funcion solo requiere el manejador
- * y se sobreescribira el link con el atributo dado. Por alguna razon no permite 
- * el agregar el atributo con el codigo de wordpress, como el caso de los scripts de IE.
- * Ad async or defer attribute scripts, it needs the handler, even if you install a new plugin.
- **/
-
-
 function wsds_defer_scripts( $tag, $handle, $src ) {
 
-	// invoco los scripts registrados en wordpress 
     global $wp_scripts;   
-	// y agrupo en un array nuevo
     $alljs = array();
     foreach( $wp_scripts->queue as $jshandle ) {    	
 		$alljs[] = $jshandle;              
   	} 
-	// descartando los que necesito cargar al inicio
-	// array_diff() o array_splice() : https://stackoverflow.com/questions/369602/php-delete-an-element-from-an-array
 	$allowjs = array('jquery-core','popper-script','bootstrap-script');	
 	$defer_scripts = array_diff( $alljs, $allowjs );
-		
-	// para que se inicialicen mis funciones correctamente.
     if ( in_array( $handle, $defer_scripts ) ) {
         return '<script type="text/javascript" src="' . $src . '" defer="defer" async="async"></script>' . "\n";
     }    
     return $tag;
 } 
-//add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 if ( ! is_admin() ) add_filter( 'script_loader_tag', 'wsds_defer_scripts', 10, 3 );
 
 
 
-/**
- * OPTIMIZACIoN: Registrar google analytics (customizer.php)
- * Add google analyitcs script
- * @link https://developers.google.com/analytics/devguides/collection/gajs/
- * @link https://digwp.com/2012/06/add-google-analytics-wordpress/
- **/
- 
+// OPTIMIZACIoN: Registrar google analytics (customizer.php)
+// Add google analyitcs script
 
 function google_analytics_tracking_code(){
         
@@ -315,15 +233,9 @@ function google_analytics_tracking_code(){
 // If you need to allow in head just change wp_footer value
 add_action('wp_footer', 'google_analytics_tracking_code', 100); 
 
-
-/**
- * OPTIMIZACIoN: Registrar paginas (customizer.php)
- * https://wordpress.stackexchange.com/questions/237100/how-to-add-meta-tag-to-wordpress-posts-filter
-**/
+//Indice en Google y Bing
 
 function registerSite() {
-
-//Indice en Google y Bing
     $sconsole = get_theme_mod('ekiline_wmtools','');
     $wmbing = get_theme_mod('ekiline_wmbing','');
     if ( $sconsole != '' ) { echo '<meta name="google-site-verification" content="'. $sconsole .'" />'."\n"; }
