@@ -69,7 +69,8 @@ a img.aligncenter{display:block;margin-left:auto;margin-right:auto;}
 .bypostauthor{display:block;}
 .logged-in .navbar.fixed-top{ margin-top: 30px; }
 #user_switching_switch_on{position:fixed;left:0;padding:0.4rem;margin:0px;bottom:0px;z-index:3000;background-color:#343A40;font-size:0.8rem;}
-
+/*gutenberg*/
+.wp-block-image img{max-width:100%;}
 /* ------------------------------------------------
  * Ekiline LAYOUT
  * ----------------------------------------------*/
