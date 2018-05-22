@@ -206,8 +206,6 @@ add_action( 'widgets_init', 'ekiline_widgets_init' );
 /**
  * Ingreso de CSS y JS, para fines de optimización cargamos estilos y js de manera asincrona.
  * Enqueue scripts and styles (ekiline add css by other methods)
- * Add CSS and JS https://codex.wordpress.org/Function_Reference/wp_enqueue_script
- * CSS with condition: https://developer.wordpress.org/reference/functions/wp_style_add_data/
  */
   
 function ekiline_scripts() {
@@ -219,33 +217,23 @@ function ekiline_scripts() {
 	wp_enqueue_style( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/css/ie10-viewport-bug-workaround.min.css', array(), '1', 'all' );
 		wp_style_add_data( 'ie10-viewport-bug-workaround', 'conditional', 'gte IE 8' );	
 	wp_enqueue_style( 'layout', get_template_directory_uri() . '/css/ekiline.min.css', array(), '1.0', 'all' );	
-	
-	// permitir el uso del tema minificado
+
 	$located = locate_template( 'style.min.css' );
 	if ($located != '' ) {
 		wp_enqueue_style( 'ekiline-style', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all' );	
     } else {
 		wp_enqueue_style( 'ekiline-style', get_stylesheet_uri() );	
     }	
-        
-    // Condición para font awesome
+
     if( true === get_theme_mod( 'ekiline_fontawesome', true ) ) {
-          //wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0', 'all' ); 
           wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/fontawesome-all.min.css', array(), '5.0.6', 'all' ); 
     }
-		
-	// Añadir googlefonts
+
     $gfont = get_theme_mod('ekiline_gfont','');
     if ($gfont != '') {
           wp_enqueue_style( 'google-font', $gfont, array(), '0.0.0', 'all' );
     }
-    
-/**
- * Enviar Jquery al final
- * Get Jquery to the bottom 
- * http://stackoverflow.com/questions/35663927/wordpress-jquery-on-footer 
- */
-        
+
     if( !is_admin() ){
         wp_dequeue_script('jquery');
         wp_dequeue_script('jquery-core');
@@ -254,18 +242,12 @@ function ekiline_scripts() {
         wp_enqueue_script('jquery-core', false, array(), false, true);
         wp_enqueue_script('jquery-migrate', false, array(), false, true);          
      }        	
-     
-/**
- * Javascript :
- * Jquery libraries (https://codex.wordpress.org/Function_Reference/wp_enqueue_script)
- * When scripts depend by JQuery has to be mentioned
- */
+
 	wp_enqueue_script( 'popper-script', get_template_directory_uri() . '/js/popper.min.js', array('jquery'), '1', true  );
  	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '4', true  );
     wp_enqueue_script( 'ekiline-swipe', get_template_directory_uri() . '/js/carousel-swipe.min.js', array('jquery'), '20150716', true  );
     wp_enqueue_script( 'ekiline-layout', get_template_directory_uri() . '/js/ekiline.min.js', array('jquery'), '20151226', true  );
-            
-	// scripts con condicionales, caso IE https://developer.wordpress.org/reference/functions/wp_script_add_data/
+
 	wp_enqueue_script( 'ie10-vpbugwkrnd', get_template_directory_uri() . '/js/ie10-viewport-bug-workaround.min.js' );
 		wp_script_add_data( 'ie10-vpbugwkrnd', 'conditional', 'gte IE 8' );
 	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' );
@@ -311,11 +293,8 @@ add_filter('widget_text', 'do_shortcode');
 
 /**
  * Declarar compatibilidad con woocommerce
- * https://woocommerce.wordpress.com/2017/02/28/adding-support-for-woocommerce-2-7s-new-gallery-feature-to-your-theme/
- * Eliminar los productos relacionados:
- * https://docs.woocommerce.com/document/remove-related-posts-output/
- * remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
  */
+ 
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
     add_theme_support( 'woocommerce' );
@@ -390,36 +369,3 @@ require get_template_directory() . '/inc/serviceCookies.php';
 require get_template_directory() . '/inc/adminCategoryfield.php';
 // Deshabilitar bootstrap
 require get_template_directory() . '/inc/adminEditor.php';
-
-/**
- * Herramientas para debugear
- **/
-
-// if ( defined('WP_DEBUG') && true === WP_DEBUG && is_user_logged_in() ) {
-// 	
-    // function ekiline_querycount() {
-	// // idendificar queries https://css-tricks.com/finding-and-fixing-slow-wordpress-database-queries/
-    // echo '<div class="text-right bg-dark text-light fixed-bottom p-1">'. get_num_queries() .' queries in '. timer_stop() .' seconds.</div>';
-	// }
-    // add_action( 'wp_footer', 'ekiline_querycount' );
-// 	
-// }
-
-/**
- * Liberar la cache de sobreescritura
- * https://codex.wordpress.org/Function_Reference/flush_rewrite_rules
- * https://developer.wordpress.org/reference/functions/flush_rewrite_rules/
- **/
-
-add_action( 'after_switch_theme', 'flush_rewrite_rules' );
-
-/* Revisar:
- * La compatiilidad de AMP
- * https://isabelcastillo.com/wordpress-amp-plugin
- * 
- * Agregar tab a libreria de medios.
- * https://wordpress.stackexchange.com/questions/216284/how-to-extend-media-library-wp-4-4
- * https://wordpress.stackexchange.com/questions/125692/how-to-know-if-admin-is-in-edit-page-or-post
- * https://codex.wordpress.org/Function_Reference/wp_iframe
- * 
- */
