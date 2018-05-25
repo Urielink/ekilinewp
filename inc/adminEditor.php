@@ -1289,9 +1289,22 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 
 }
 
-// Faltan botones de wordpress || Add hidden wordpress buttons.
-function wp_mce_buttons( $buttons ) {	
-	$buttons[] = 'wp_page';
-	return $buttons;
+// Agregar otros botones necesarios de wordpress: segmentar página y tablas || Add hidden wordpress buttons.
+// function wp_mce_buttons( $buttons ) {	
+	// $buttons[] = 'wp_page';
+	// return $buttons;
+// }
+// add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
+
+
+function wp_mce_buttons( $buttons ) {
+   array_push( $buttons, 'wp_page', 'separator', 'table' );
+   return $buttons;
 }
 add_filter( 'mce_buttons_2', 'wp_mce_buttons' );
+
+function wp_mce_table_btn( $plugins ) {
+    $plugins['table'] = get_template_directory_uri() . '/js/table.min.js';
+    return $plugins;
+}
+add_filter( 'mce_external_plugins', 'wp_mce_table_btn' );
