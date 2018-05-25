@@ -41,7 +41,7 @@ Ekiline includes tools that works with bootstrap: galleries, images, tooltips, p
 * Initial release
 = 2.0 - Feb 07 2018 =
 * New release
-= 2.1 - May 18 2018 =
+= 2.1 - May 18 2018 = 
 * Gutenberg compatibility 
 
 == Credits ==
