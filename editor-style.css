@@ -9,6 +9,7 @@
 body#tinymce.wp-editor{margin:0px 15px;} /*posible ajuste en overflow del editor ( overflow-y: visible !important; )*/
 
 /*Modo wireframe **/
+body#tinymce.wp-editor.wf-ekiline{cursor: default;}
 #tinymce.wf-ekiline.wp-editor [class*='col']{border:1px solid #ddd;}
 
 #tinymce.wf-ekiline.wp-editor .col::before { content: 'col';}
