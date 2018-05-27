@@ -1029,6 +1029,12 @@ if( true === get_theme_mod( 'ekiline_bootstrapeditor', true ) ) {
 	                    'selector'  => 'table',
 	                    'classes'   => 'table-sm',
 	                ),
+	                array(
+	                    'title'     => __( 'Table responsive', 'ekiline' ),
+	                    'block'     => 'div',
+	                    'classes'   => 'table-responsive',
+	                    'wrapper'   => true,
+	                ),
 	            ),
 	        ),
 
