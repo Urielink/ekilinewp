@@ -192,7 +192,7 @@ function customHeader() {
 							        <div class="cover-container">
 							          <div class="cover-header clearfix">
 							            <div class="inner">
-							              <nav class="nav cover-header-nav justify-content-md-end justify-content-center">'. do_shortcode("[socialmenu]") .'</nav>
+							              <div class="nav cover-header-nav justify-content-md-end justify-content-center">'. do_shortcode("[socialmenu]") .'</div>
 							              '. $coverLogo .'
 							            </div>
 							          </div>
